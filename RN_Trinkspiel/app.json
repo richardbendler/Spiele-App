@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React_Trinkspiel",
-    "slug": "React_Trinkspiel",
+    "name": "RN_Trinkspiel",
+    "slug": "RN_Trinkspiel",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
