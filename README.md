@@ -2,6 +2,14 @@
 
 Vorbereitungen:
 Node.js und npm installieren: https://phoenixnap.com/kb/install-node-js-npm-on-windows
+danach:
+npm install
+(npm audit fix --force)
+
+Expo installieren:
+npm install -g expo-cli
+(Zum Test "expo" ausführen)
+(Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)
 
 Start:
 - cd RN_Trinkspiel
@@ -10,6 +18,8 @@ Start:
 - npm run ios # requires an iOS device or macOS for access to an iOS simulator
 - npm run web
 
+Expo Go auf dem Handy zum testen
+(Falls Fehler kommt: Wrong Expo version: "expo update 47.0.0)
 __________________________________________________
 
 To test on pc:
