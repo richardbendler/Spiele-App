@@ -1,17 +1,68 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useState} from 'react-native';
 
-const commonStyles = StyleSheet.create({
-    container: {
+const primaryColor = '#008b8b';
+const secondaryColor = '#ff7474';
+
+const pageStyles = StyleSheet.create({
+  pageContainer: {
+    backgroundColor: primaryColor, 
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+const menuStyles = StyleSheet.create({
+  menuContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#ecf0f1',
+      backgroundColor: primaryColor, 
     },
-    gameContainer: {
-      flex: 1,
-      width: '100%',
-      position: 'relative',
-    },
+  menuButton: {
+    backgroundColor: secondaryColor,
+    padding: 40,
+    borderRadius: 15,
+    margin: 20,
+    width: '100%',
+    alignItems: 'center',
+  },
+});
+
+const gameStyles = StyleSheet.create({
+  gameContainer: {
+    flex: 1,
+    width: '100%',
+    position: 'relative',
+  },
+
+  manyquestionsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  manyQuestionsText: {
+    fontSize: 20,
+    textAlign: 'center',
+    padding: 20,
+  },
+});
+
+const commonStyles = StyleSheet.create({    
+  exitButton:{
+    position: 'absolute',
+    top: 60,
+    right: 10,
+    backgroundColor: 'red', // Customize the button color
+    padding: 10,
+    borderRadius: 5,
+  },
+  exitButtonText:{
+    color: 'white',
+  },
+
+  
     addButton: {
       backgroundColor: '#3498db',
       padding: 20,
@@ -20,24 +71,14 @@ const commonStyles = StyleSheet.create({
       alignItems: 'center',
     },
     startButton: {
-      backgroundColor: '#27ae60',
+      backgroundColor: secondaryColor,
       padding: 15,
       borderRadius: 5,
     },
     buttonText: {
       color: 'white',
     },
-    exitButton:{
-      position: 'absolute',
-      top: 60,
-      right: 10,
-      backgroundColor: 'red', // Customize the button color
-      padding: 10,
-      borderRadius: 5,
-    },
-    exitButtonText:{
-      color: 'white',
-    },
+    
     // ... (other styles)
     
     appContainer:{
@@ -59,6 +100,9 @@ const commonStyles = StyleSheet.create({
 
 export const appStyles = {
     ...commonStyles,
+    ...menuStyles,
+    ...pageStyles,
+    ...gameStyles,
   startContainer: {
     ...commonStyles.container,
     paddingHorizontal: 20,
