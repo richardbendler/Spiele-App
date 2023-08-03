@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { appStyles } from './styles';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 import Question from './src/Question';
+import manyQuestions from './src/local_questions';
+
+//import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
 //import WeatherButton from './src/WeatherButton';
 //import WeatherQuestion from './src/WeatherQuestion';
@@ -55,6 +58,82 @@ export default function App() {
     }
   }
 
+  //Database
+  //GET
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchDataFromServer();
+  }, []);
+  const fetchDataFromServer = async () => {
+    try {
+      const response = await fetch('http://45.9.63.16:3000/api/getUserData');
+      if (response.ok) {
+        const responseData = await response.json();
+        setData(responseData);
+      } else {
+        console.error('Fehler beim Abrufen der Daten.');
+      }
+    } catch (error) {
+      console.error('Ein Fehler ist aufgetreten:', error);
+    }
+  };
+  //POST AND RESPONSE
+  const [text, setText] = useState('');
+  const [response, setResponse] = useState('');
+  const handleSendText = async () => {
+    try {
+      const response = await fetch('http://45.9.63.16:3000/api/sendText', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text }),
+      });
+
+      if (response.ok) {
+        const responseText = await response.text();
+        setResponse(responseText);
+      } else {
+        console.error('Fehler beim Senden des Texts.');
+      }
+    } catch (error) {
+      console.error('Ein Fehler ist aufgetreten:', error);
+    }
+  };
+  //SQL REQUEST
+  //const [sqlRequest, setSqlRequest] = useState('');
+  const handleSqlRequest = async (sqlRequest) => {
+    ret = '';
+    try {
+      const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sqlRequest }),
+      });
+
+      if (response.ok) {
+        const responseText = await response.text();
+        ret = responseText
+      } else {
+        console.error('Fehler beim Senden des Texts.');
+      }
+    } catch (error) {
+      console.error('Ein Fehler ist aufgetreten:', error);
+    }
+    return ret;
+  };
+  const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  //TODO: hier müssten analog für die anderen spiele noch sqls eingefügt werden
+  
+  /*useEffect(() => {
+    console.log("1234");
+    //setSqlRequest('SELECT * FROM games_list');
+    //console.log(sqlRequest);
+    
+  }, []);*/
+  
 
   const [playerNames, setPlayerNames] = useState([]);
   const [currentName, setCurrentName] = useState('');
@@ -70,22 +149,33 @@ export default function App() {
     switch(game){
       case "vorglühen":
         setVorglühenGameStarted(true);
+        break;
       case "schonGutDabei":
         setSchonGutDabeiGameStarted(true); 
+        break;
       case "heiß":
         setHeißGameStarted(true); 
+        break;
       case "wahrheitOderPflicht":
         setwahrheitOderPflichtGameStarted(true);
+        break;
       case "manyquestions":
+        console.log(sqlResponseManyQuestions);
+        //setSqlResponseManyQuestions(sqlResponseManyQuestions.map(row => row.content));
         setManyQuestionsStarted(true);
+        break;
       case "kingscup":
         setKingsCupGameStarted(true);
-      case "manyquestions":
+        break;
+      case "klatschen": 
         setklatschenGameStarted(true);
+        break;
       case "mäxxchen":
         setMäxxchenGameStarted(true);
+        break;
       case "activity":
         setActivityGameStarted(true);
+        break;
     }
   };
 
@@ -103,21 +193,6 @@ export default function App() {
   }
 
   
-  
-  const manyQuestions = [
-    'What is the capital of France?',
-    'What is the largest mammal?',
-    'Who wrote the play "Romeo and Juliet"?',
-    // Add more general questions here
-  ];
-  
-  const weatherQuestions = [
-    'What causes rain?',
-    'What is a tornado?',
-    'How is temperature measured?',
-    // Add more weather-related questions here
-  ];
-
   const endAnyGame = () => {
     setCurrentScreen(ScreenTypes.mainMenu);
     //end all games
@@ -135,12 +210,6 @@ export default function App() {
   const showNextQuestion = () => {
     if (questionIndex < manyQuestions.length - 1) {
       setQuestionIndex(questionIndex + 1);
-    }
-  };
-
-  const showNextWeatherQuestion = () => {
-    if (weatherQuestionIndex < weatherQuestions.length - 1) {
-      setWeatherQuestionIndex(weatherQuestionIndex + 1);
     }
   };
 
@@ -171,13 +240,13 @@ export default function App() {
         <TouchableOpacity onPress={() => handleButtonClick("game","manyquestions")} style={appStyles.menuButton}>
           <Text>100.000 Questions</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","kingscup")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","kingscup")}*/ style={appStyles.menuButton}>
           <Text>Kings Cup / Klatschen</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleButtonClick("menu","minigames")} style={appStyles.menuButton}>
           <Text>Mini Games</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","activity")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","activity")}*/ style={appStyles.menuButton}>
           <Text>Activity / Scharade</Text>
         </TouchableOpacity>
       </View>
@@ -186,16 +255,16 @@ export default function App() {
   const printKlassikerMenu = () => {
     return(
       <View>
-        <TouchableOpacity onPress={() => handleButtonClick("game","vorglühen")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","vorglühen")}*/ style={appStyles.menuButton}>
           <Text>Vorglühen</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","schonGutDabei")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","schonGutDabei")}*/ style={appStyles.menuButton}>
           <Text>Schon gut dabei</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","heiß")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","heiß")}*/ style={appStyles.menuButton}>
           <Text>Heiß</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","wahrheitOderPflicht")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("game","wahrheitOderPflicht")}*/ style={appStyles.menuButton}>
           <Text>Wahrheit oder Pflicht</Text>
         </TouchableOpacity>
 
@@ -208,7 +277,7 @@ export default function App() {
   const printMiniGamesMenu = () => {
     return(
       <View>
-        <TouchableOpacity onPress={() => handleButtonClick("menu","mäxxchen")} style={appStyles.menuButton}>
+        <TouchableOpacity /*onPress={() => handleButtonClick("menu","mäxxchen")}*/ style={appStyles.menuButton}>
           <Text>Mäxchen</Text>
         </TouchableOpacity>
 
@@ -242,6 +311,27 @@ export default function App() {
   
   return (
     <View style={appStyles.pageContainer}>
+      
+      {/*<View>
+        <Text>Aus der Datenbank abgerufene Daten:</Text>
+        {data.map((item) => (
+          <Text key = {item.id}>{item.content}</Text>
+        ))}
+      </View>
+      <View>
+        <TextInput
+          placeholder="Name"
+          value={userData.name}
+          onChangeText={(text) => setUserData({ ...userData, name: text })}
+        />
+        <TextInput
+          placeholder="E-Mail"
+          value={userData.email}
+          onChangeText={(text) => setUserData({ ...userData, email: text })}
+        />
+        <Button title="Daten speichern" onPress={handleSaveData} />
+        </View>*/}
+
       {/* Hide all start buttons once any game starts */}
       <View style={appStyles.menuContainer}>
         {currentScreen == ScreenTypes.mainMenu 
@@ -262,6 +352,15 @@ export default function App() {
         {currentScreen == ScreenTypes.profileMenu 
         ?<View>{printMainMenu()}</View>
         :(null)}
+      </View>
+      <View style={{absolute:"relative",top:0, left:50}}>
+        <TextInput
+          placeholder="Text eingeben"
+          value={text}
+          onChangeText={setText}
+        />
+        <Button title="Text senden" onPress={handleSendText} />
+        <Text>{response}</Text>
       </View>
 
       {manyQuestionsGameStarted 
