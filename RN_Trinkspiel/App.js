@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 import Question from './src/Question';
-import manyQuestions from './src/local_questions';
+//import manyQuestions from './src/local_questions';
 
 //import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
@@ -103,19 +103,21 @@ export default function App() {
   //SQL REQUEST
   //const [sqlRequest, setSqlRequest] = useState('');
   const handleSqlRequest = async (sqlRequest) => {
+    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNTQxODksImV4cCI6MTY5MTE1Nzc4OX0.s0E0dG0r2G89YZ_msnavEo_g_afBz5VGf__rCSVpMNM"; // Token generieren und hier einfügen
     ret = '';
     try {
       const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': token,
         },
         body: JSON.stringify({ sqlRequest }),
       });
 
       if (response.ok) {
         const responseText = await response.text();
-        ret = responseText
+        ret = JSON.parse(responseText);
       } else {
         console.error('Fehler beim Senden des Texts.');
       }
@@ -124,7 +126,13 @@ export default function App() {
     }
     return ret;
   };
+  
+  
   const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  const [manyQuestions, setManyQuestions] = useState([]);
+  // Konvertiere das SQL-Ergebnis in ein Array, wenn es nicht bereits eins ist
+  //const sqlResponseManyQuestionsArray = Array.isArray(sqlResponseManyQuestions) ? sqlResponseManyQuestions : [sqlResponseManyQuestions];
+  //const [manyQuestionsTmp, setManyQuestionsTmp] = useState((dict["_z"])) //.map(row => row.content)
   //TODO: hier müssten analog für die anderen spiele noch sqls eingefügt werden
   
   /*useEffect(() => {
@@ -160,8 +168,8 @@ export default function App() {
         setwahrheitOderPflichtGameStarted(true);
         break;
       case "manyquestions":
-        console.log(sqlResponseManyQuestions);
-        //setSqlResponseManyQuestions(sqlResponseManyQuestions.map(row => row.content));
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
         setManyQuestionsStarted(true);
         break;
       case "kingscup":
