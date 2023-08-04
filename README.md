@@ -66,6 +66,7 @@ Auf Netcup-Server pushen
 Node und npm installieren: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-debian-10
 sudo apt install npm
 npm install express body-parser mysql2
+npm install jsonwebtoken
 sudo ufw allow 3000 #damit app den server anpingen kann
 sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann
 mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise'); // Stelle sicher, dass du mysql2 installiert hast
+const { generateToken, verifyToken } = require('./auth'); // Pfad zur auth.js-Datei anpassen
 
 
 const app = express();
@@ -24,6 +25,20 @@ app.post('/api/sendText', (req, res) => {
     res.send('Nachricht empfangen: ' + receivedText);
 });
 app.post('/api/sqlRequest', async (req, res) => {
+    //check Token
+    const token = req.headers.authorization;
+    console.log('Empfangener Token:', token); 
+    if (!token) {
+        console.log("Kein Token vorhanden");
+        return res.status(401).json({ error: 'Kein Token vorhanden.' });
+    }
+    const decodedToken = verifyToken(token.split(' ')[1]);
+    if (!decodedToken) {
+        console.log("Ungültiger oder abgelaufener Token");
+        return res.status(401).json({ error: 'Ungültiger oder abgelaufener Token.' });
+    }
+    console.log("Gültiger Token");
+    /////////////////////////////
     const receivedText = req.body.sqlRequest;
     console.log(receivedText);
     try {
@@ -39,7 +54,6 @@ app.get('/api/getUserData', async (req, res) => {
     try {
         const [rows, fields] = await db.query('SELECT * FROM `game_simple_questions`'); // Annahme: Tabelle "users" existiert in deiner Datenbank
         res.status(200).json(rows);
-        console.log("SUCCESS");
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
         res.status(500).json({ error: 'Fehler beim Abrufen der Daten. Nicht mit DB verbunden?' });
