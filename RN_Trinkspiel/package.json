@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "expo": "^47.0.0",
+    "expo-av": "^13.4.1",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-audio-toolkit": "^1.0.6",
+    "react-native-sound": "^0.11.2",
     "react-native-sqlite-storage": "^6.0.1"
   },
   "devDependencies": {
