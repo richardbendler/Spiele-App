@@ -1,28 +1,22 @@
 import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { appStyles } from '../../styles';
 
 function KlassikerMenu({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Button 
-        title="Vorglühen" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        /> 
-    <Button 
-        title="Schon gut dabei" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        /> 
-    <Button 
-        title="Heiß" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        /> 
-    <Button 
-        title="Wahrheit oder Pflicht" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        /> 
-
-
-      
+    <View style={appStyles.menuContainer}>
+      <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Vorglühen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Schon gut dabei</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Heiß</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Wahrheit oder Pflicht</Text>
+      </TouchableOpacity>
     </View>
   );
 }
