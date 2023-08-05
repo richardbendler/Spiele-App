@@ -1,6 +1,6 @@
 # Trinkspielapp
 
-## Vorbereitungen:
+## Lokal - Vorbereitungen:
 ### Node.js und npm installieren: 
 https://phoenixnap.com/kb/install-node-js-npm-on-windows
 
@@ -15,11 +15,11 @@ npm install -g expo-cli
 _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
 
 ### Datenbank installieren
-npm install react-native-sqlite-storage
+~~npm install react-native-sqlite-storage~~
 
 __________________________________________________
 
-## Start:
+## Lokal - Start:
 - cd RN_Trinkspiel
 - npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
 
@@ -27,7 +27,6 @@ __________________________________________________
 - ~~npm run android~~
 - ~~npm run ios # requires an iOS device or macOS for access to an iOS simulator~~
 - ~~npm run web~~
-
 
 __________________________________________________
 
@@ -41,27 +40,39 @@ Android Studio: https://developer.android.com/studio
 _(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple Laptops selbst!)_
 
 __________________________________________________
-### Datenbank nutzen
+## Datenbank
+
+### Datenbank bearbeiten
 http://45.9.63.16/phpmyadmin/
 Benutzername: phpmyadmin
 Passwort: _hat Richard_
 Name unserer DB: TrinkspielDB
 
-
 ### Datenbank verwalten
 ssh trinkspielapp@45.9.63.16
--> Passwort hat Richard
+Passwort: _hat Richard_
 
+### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12
 create db: https://mariadb.com/kb/en/create-database/
 phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
 sudo systemctl restart apache2
 
-
+### Produktionsumgebung
 _Das hier sollte vor der Production noch passieren: By default, a MariaDB installation has an anonymous user, allowing anyone to log into MariaDB without having to have a user account created for them.  This is intended only for testing, and to make the installation go a bit smoother.  You should remove them before moving into a production environment. Remove anonymous users? [Y/n] n ... skipping._
 
-### Backend
+_________________________________________________________
+
+## Backend
+### Start - Entwicklungsumgebung
+cd Trinkspielapp_Backend
+node server.js
+
+### Start - Produktionsumgebung
+To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
+
+### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 Auf Netcup-Server pushen
 Node und npm installieren: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-debian-10
 sudo apt install npm
@@ -73,7 +84,6 @@ mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-conn
 iadb.conf.d/50-server.cnf weil wir mariaDB haben
 wenn Host nicht allowd für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
-To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
 __________________________________________________
 
 ### Using Expo Go
