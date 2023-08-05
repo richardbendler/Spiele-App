@@ -4,16 +4,16 @@ import { Audio } from 'expo-av';
 
 // Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
 const diceImages = {
-  1: require('../assets/images/würfel_1.png'),
-  2: require('../assets/images/würfel_2.png'),
-  3: require('../assets/images/würfel_3.png'),
-  4: require('../assets/images/würfel_4.png'),
-  5: require('../assets/images/würfel_5.png'),
-  6: require('../assets/images/würfel_6.png'),
+  1: require('../../assets/images/würfel_1.png'),
+  2: require('../../assets/images/würfel_2.png'),
+  3: require('../../assets/images/würfel_3.png'),
+  4: require('../../assets/images/würfel_4.png'),
+  5: require('../../assets/images/würfel_5.png'),
+  6: require('../../assets/images/würfel_6.png'),
 };
 
 const diceSound = new Audio.Sound();
-diceSound.loadAsync(require('../assets/sounds/dice_shake.mp3'));
+diceSound.loadAsync(require('../../assets/sounds/dice_shake.mp3'));
 
 const MaexchenGame = () => {
   const [dice1, setDice1] = useState(1);

@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+
+
 import { appStyles } from './styles';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 import Question from './src/Question';
-import MaexchenGame from './src/Mäxchen';
+import MaexchenGame from './src/games/Mäxchen';
 //import manyQuestions from './src/local_questions';
+
+// Importieren Sie alle Ihre Menükomponenten
+import MainMenu from './src/menus/MainMenu';
+import KlassikerMenu from './src/menus/KlassikerMenu';
+import MiniGamesMenu from './src/menus/MiniGamesMenu';
+
+//Spiele importieren
+import ManyQuestionsGame from './src/games/ManyQuestions';
 
 //import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
@@ -23,6 +35,9 @@ export default function App() {
   const [klatschenGameStarted, setklatschenGameStarted] = useState(false);
   const [mäxchenGameStarted, setMäxchenGameStarted] = useState(false);
   const [activityGameStarted, setActivityGameStarted] = useState(false);
+
+  //Für Menus
+  const Stack = createStackNavigator();
 
   //Menus
   const ScreenTypes =  {
@@ -150,7 +165,7 @@ export default function App() {
         break;
       case "manyquestions":
         //console.log(sqlResponseManyQuestions);
-        setManyQuestions(sqlResponseManyQuestions["_j"].map(row=>row.content));
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
         setManyQuestionsStarted(true);
         break;
@@ -294,113 +309,24 @@ export default function App() {
     </>
   }
   
+  
+
   return (
-    <View style={appStyles.pageContainer}>
+    <NavigationContainer>
       
-
-      {manyQuestionsGameStarted 
-      ? ( manyQuestionsGame() )
-      : null}
-      {mäxchenGameStarted 
-      ? ( <MaexchenGame/> )
-      : null}
-      {/*<View>
-        <Text>Aus der Datenbank abgerufene Daten:</Text>
-        {data.map((item) => (
-          <Text key = {item.id}>{item.content}</Text>
-        ))}
-      </View>
-      <View>
-        <TextInput
-          placeholder="Name"
-          value={userData.name}
-          onChangeText={(text) => setUserData({ ...userData, name: text })}
-        />
-        <TextInput
-          placeholder="E-Mail"
-          value={userData.email}
-          onChangeText={(text) => setUserData({ ...userData, email: text })}
-        />
-        <Button title="Daten speichern" onPress={handleSaveData} />
-        </View>*/}
-
-      {/* Hide all start buttons once any game starts */}
-      {currentScreen != ScreenTypes.None ?
-        <View style={appStyles.menuContainer}>
-          {currentScreen == ScreenTypes.mainMenu 
-          ?<View>{printMainMenu()}</View>
-          :(null)}
-          {currentScreen == ScreenTypes.klassikerMenu 
-          ?<View>{printKlassikerMenu()}</View> //TODO: Funktionen schreiben
-          :(null)}
-          {currentScreen == ScreenTypes.miniGamesMenu 
-          ?<View>{printMiniGamesMenu()}</View>
-          :(null)}
-          {currentScreen == ScreenTypes.settingsMenu 
-          ?<View>{printMainMenu()}</View>
-          :(null)}
-          {currentScreen == ScreenTypes.addingPlayerMenu 
-          ?<View>{printMainMenu()}</View>
-          :(null)}
-          {currentScreen == ScreenTypes.profileMenu 
-          ?<View>{printMainMenu()}</View>
-          :(null)}
-        </View>
-      :(null)}
-      
-      {currentScreen != ScreenTypes.mainMenu ?
-      <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-        <Text style={appStyles.exitButtonText}>Back</Text>
-      </TouchableOpacity>
-      :(null)}
-      {/*<View style={{absolute:"relative",top:0, left:50}}>
-        <TextInput
-          placeholder="Text eingeben"
-          value={text}
-          onChangeText={setText}
-        />
-        <Button title="Text senden" onPress={handleSendText} />
-        <Text>{response}</Text>
-        </View>*/}
-
-      
-      
-
-      {false ? (
-          <View>{printAddPlayer()}</View>
-      ) : null}
-
-      
-      {/*{generalGameStarted ? (
-        <>
-          <TouchableOpacity onPress={showNextQuestion}>
-            <Question question={manyQuestions[questionIndex]} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-            <Text style={appStyles.exitButtonText}>Exit</Text>
-          </TouchableOpacity>
-        </>
-      ) : null}
-
-      {weatherGameStarted ? (
-        <>
-          <TouchableOpacity onPress={showNextWeatherQuestion}>
-            <Question question={weatherQuestions[weatherQuestionIndex]} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-            <Text style={appStyles.exitButtonText}>Exit</Text>
-          </TouchableOpacity>
-        </>
-      ) : null}*/}
-
-      
-    </View>
-    /*<View sytle={appStyles.appContainer}>
-      <View style={appStyles.inputContainer}>
-        <TextInput style={appStyles.textInput} placeholder="Bitte trag hier was ein"/>
-        <Button title="Add Goal"/>
-      </View>
-      <View></View>
-  </View>*/
+    <Stack.Navigator 
+      initialRouteName="MainMenu"
+      screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <Stack.Screen name="MainMenu" component={MainMenu} />
+      <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
+      <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
+      <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} />
+      <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+      {/* Fügen Sie hier weitere Screens hinzu... */}
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
