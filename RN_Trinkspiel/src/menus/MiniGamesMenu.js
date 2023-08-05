@@ -1,13 +1,14 @@
 import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { appStyles } from '../../styles';
 
 function MiniGamesMenu({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Button 
-        title="Mäxchen" 
-        onPress={() => navigation.navigate('MaexchenGame')}
-        /> 
+    <View style={appStyles.menuContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>Mäxchen</Text>
+        </TouchableOpacity>
+        
     </View>
   );
 }

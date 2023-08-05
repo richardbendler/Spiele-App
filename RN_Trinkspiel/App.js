@@ -7,7 +7,7 @@ import { appStyles } from './styles';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
-import Question from './src/Question';
+
 import MaexchenGame from './src/games/Mäxchen';
 //import manyQuestions from './src/local_questions';
 
@@ -18,6 +18,7 @@ import MiniGamesMenu from './src/menus/MiniGamesMenu';
 
 //Spiele importieren
 import ManyQuestionsGame from './src/games/ManyQuestions';
+
 
 //import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
@@ -136,7 +137,7 @@ export default function App() {
   const [currentName, setCurrentName] = useState('');
 
   const [generalGameStarted, setGeneralGameStarted] = useState(false);
-  const [questionIndex, setQuestionIndex] = useState(0);
+  
   const [weatherGameStarted, setWeatherGameStarted] = useState(false);
   const [weatherQuestionIndex, setWeatherQuestionIndex] = useState(0);
   
@@ -190,7 +191,7 @@ export default function App() {
     }
   };
 
-  const manyQuestionsGame = () => {
+  /*const manyQuestionsGame = () => {
     return(
       <View>
         <TouchableOpacity onPress={showNextQuestion}>
@@ -198,7 +199,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
     )
-  }
+  }*/
 
   
   const endAnyGame = () => {
@@ -215,11 +216,7 @@ export default function App() {
     setActivityGameStarted(false);
   };
   
-  const showNextQuestion = () => {
-    if (questionIndex < manyQuestions.length - 1) {
-      setQuestionIndex(questionIndex + 1);
-    }
-  };
+  
 
   const handleAddPlayer = () => {
     if (currentName.trim() !== '') {
@@ -323,8 +320,8 @@ export default function App() {
       <Stack.Screen name="MainMenu" component={MainMenu} />
       <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
       <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
-      <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} />
       <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+      <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame(manyQuestions)} />
       {/* Fügen Sie hier weitere Screens hinzu... */}
     </Stack.Navigator>
   </NavigationContainer>
