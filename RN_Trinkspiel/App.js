@@ -35,7 +35,6 @@ export default function App() {
   }
   const [currentScreen, setCurrentScreen] = useState(ScreenTypes.mainMenu)
   const openMenu = (menu) => {
-    
     switch(menu){
       case "mainMenu":
         setCurrentScreen(ScreenTypes.mainMenu);
@@ -55,28 +54,13 @@ export default function App() {
       case "profileMenu":
         setCurrentScreen(ScreenTypes.profileMenu); 
         break;
+      case "None":
+        setCurrentScreen(ScreenTypes.None);
+        break;
     }
   }
 
   //Database
-  //GET
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetchDataFromServer();
-  }, []);
-  const fetchDataFromServer = async () => {
-    try {
-      const response = await fetch('http://45.9.63.16:3000/api/getUserData');
-      if (response.ok) {
-        const responseData = await response.json();
-        setData(responseData);
-      } else {
-        console.error('Fehler beim Abrufen der Daten.');
-      }
-    } catch (error) {
-      console.error('Ein Fehler ist aufgetreten:', error);
-    }
-  };
   //POST AND RESPONSE
   const [text, setText] = useState('');
   const [response, setResponse] = useState('');
@@ -101,9 +85,8 @@ export default function App() {
     }
   };
   //SQL REQUEST
-  //const [sqlRequest, setSqlRequest] = useState('');
   const handleSqlRequest = async (sqlRequest) => {
-    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNTQxODksImV4cCI6MTY5MTE1Nzc4OX0.s0E0dG0r2G89YZ_msnavEo_g_afBz5VGf__rCSVpMNM"; // Token generieren und hier einfügen
+    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
     ret = '';
     try {
       const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
@@ -126,22 +109,12 @@ export default function App() {
     }
     return ret;
   };
-  
-  
+  const [sqlResponseVorglühen, setSqlResponseVorglühen] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  const [vorglühenQuestions, setVorglühenQuestions] = useState([]);
+
   const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
   const [manyQuestions, setManyQuestions] = useState([]);
-  // Konvertiere das SQL-Ergebnis in ein Array, wenn es nicht bereits eins ist
-  //const sqlResponseManyQuestionsArray = Array.isArray(sqlResponseManyQuestions) ? sqlResponseManyQuestions : [sqlResponseManyQuestions];
-  //const [manyQuestionsTmp, setManyQuestionsTmp] = useState((dict["_z"])) //.map(row => row.content)
-  //TODO: hier müssten analog für die anderen spiele noch sqls eingefügt werden
-  
-  /*useEffect(() => {
-    console.log("1234");
-    //setSqlRequest('SELECT * FROM games_list');
-    //console.log(sqlRequest);
-    
-  }, []);*/
-  
+
 
   const [playerNames, setPlayerNames] = useState([]);
   const [currentName, setCurrentName] = useState('');
@@ -151,20 +124,27 @@ export default function App() {
   const [weatherGameStarted, setWeatherGameStarted] = useState(false);
   const [weatherQuestionIndex, setWeatherQuestionIndex] = useState(0);
   
-  
   const startGame = (game) => {
     setCurrentScreen(ScreenTypes.None)
     switch(game){
       case "vorglühen":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setVorglühenGameStarted(true);
         break;
       case "schonGutDabei":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setSchonGutDabeiGameStarted(true); 
         break;
       case "heiß":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setHeißGameStarted(true); 
         break;
       case "wahrheitOderPflicht":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setwahrheitOderPflichtGameStarted(true);
         break;
       case "manyquestions":
@@ -173,15 +153,23 @@ export default function App() {
         setManyQuestionsStarted(true);
         break;
       case "kingscup":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setKingsCupGameStarted(true);
         break;
       case "klatschen": 
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setklatschenGameStarted(true);
         break;
       case "mäxxchen":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setMäxxchenGameStarted(true);
         break;
       case "activity":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setActivityGameStarted(true);
         break;
     }
