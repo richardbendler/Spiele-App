@@ -1,31 +1,27 @@
 import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { appStyles } from '../../styles';
 
 function MainMenu({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Button 
-        style={appStyles.menuButtonText}
-        title="Klassiker"
-        onPress={() => navigation.navigate('KlassikerMenu')}
-      />
-      <Button 
-        title="100.000 Questions" 
-        onPress={() => navigation.navigate('ManyQuestionsGame')}
-        /> 
-        <Button 
-        title="Kingscup / Klatschen" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        />   
-      <Button
-        title="Mini Games"
-        onPress={() => navigation.navigate('MiniGamesMenu')}
-      />
-      <Button 
-        title="Activity / Scharade" 
-        //onPress={() => navigation.navigate('ManyQuestionsGame')}
-        />  
+    <View style={appStyles.menuContainer}>
+      <TouchableOpacity onPress={() => navigation.navigate('KlassikerMenu')} style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>Klassiker</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
+        </TouchableOpacity>
+        <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>Kings Cup / Klatschen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('MiniGamesMenu')} style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>Mini Games</Text>
+        </TouchableOpacity>
+        <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+          <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
+        </TouchableOpacity>
+
+      
       
       {/* Fügen Sie hier weitere Buttons hinzu... */}
     </View>
