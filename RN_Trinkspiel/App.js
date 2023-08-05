@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 import Question from './src/Question';
+import MaxchenGame from './src/Mäxchen';
 //import manyQuestions from './src/local_questions';
 
 //import db from './src/Database'; 
@@ -20,7 +21,7 @@ export default function App() {
   const [manyQuestionsGameStarted, setManyQuestionsStarted] = useState(false);
   const [kingsCupGameStarted, setKingsCupGameStarted] = useState(false);
   const [klatschenGameStarted, setklatschenGameStarted] = useState(false);
-  const [mäxxchenGameStarted, setMäxxchenGameStarted] = useState(false);
+  const [mäxchenGameStarted, setMäxchenGameStarted] = useState(false);
   const [activityGameStarted, setActivityGameStarted] = useState(false);
 
   //Menus
@@ -162,10 +163,8 @@ export default function App() {
         setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setklatschenGameStarted(true);
         break;
-      case "mäxxchen":
-        //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setMäxxchenGameStarted(true);
+      case "mäxchen":
+        setMäxchenGameStarted(true);
         break;
       case "activity":
         //TODO: Austauschen
@@ -273,7 +272,7 @@ export default function App() {
   const printMiniGamesMenu = () => {
     return(
       <View>
-        <TouchableOpacity /*onPress={() => handleButtonClick("menu","mäxxchen")}*/ style={appStyles.menuButton}>
+        <TouchableOpacity onPress={() => handleButtonClick("game","mäxchen")} style={appStyles.menuButton}>
           <Text>Mäxchen</Text>
         </TouchableOpacity>
 
@@ -362,7 +361,10 @@ export default function App() {
       {manyQuestionsGameStarted 
       ? ( manyQuestionsGame() )
       : null}
-
+      {mäxchenGameStarted 
+      ? ( MaxchenGame() )
+      : null}
+      {MaxchenGame()}
 
       {false ? (
           <View>{printAddPlayer()}</View>
