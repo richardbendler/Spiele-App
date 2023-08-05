@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 import Question from './src/Question';
-import MaxchenGame from './src/Mäxchen';
+import MaexchenGame from './src/Mäxchen';
 //import manyQuestions from './src/local_questions';
 
 //import db from './src/Database'; 
@@ -149,7 +149,8 @@ export default function App() {
         setwahrheitOderPflichtGameStarted(true);
         break;
       case "manyquestions":
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //console.log(sqlResponseManyQuestions);
+        setManyQuestions(sqlResponseManyQuestions["_j"].map(row=>row.content));
         //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
         setManyQuestionsStarted(true);
         break;
@@ -180,9 +181,6 @@ export default function App() {
         <TouchableOpacity onPress={showNextQuestion}>
           <Question question={manyQuestions[questionIndex]} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-          <Text style={appStyles.exitButtonText}>Exit</Text>
-        </TouchableOpacity>
       </View>
     )
   }
@@ -198,7 +196,7 @@ export default function App() {
     setManyQuestionsStarted(false);
     setKingsCupGameStarted(false);
     setklatschenGameStarted(false);
-    setMäxxchenGameStarted(false);
+    setMäxchenGameStarted(false);
     setActivityGameStarted(false);
   };
   
@@ -230,19 +228,19 @@ export default function App() {
     return(
       <View>
         <TouchableOpacity onPress={() => handleButtonClick("menu","klassiker")} style={appStyles.menuButton}>
-          <Text>Klassiker</Text>
+          <Text style={appStyles.menuButtonText}>Klassiker</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleButtonClick("game","manyquestions")} style={appStyles.menuButton}>
-          <Text>100.000 Questions</Text>
+          <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
         </TouchableOpacity>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","kingscup")}*/ style={appStyles.menuButton}>
-          <Text>Kings Cup / Klatschen</Text>
+          <Text style={appStyles.menuButtonText}>Kings Cup / Klatschen</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleButtonClick("menu","minigames")} style={appStyles.menuButton}>
-          <Text>Mini Games</Text>
+          <Text style={appStyles.menuButtonText}>Mini Games</Text>
         </TouchableOpacity>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","activity")}*/ style={appStyles.menuButton}>
-          <Text>Activity / Scharade</Text>
+          <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
         </TouchableOpacity>
       </View>
     );
@@ -251,21 +249,17 @@ export default function App() {
     return(
       <View>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","vorglühen")}*/ style={appStyles.menuButton}>
-          <Text>Vorglühen</Text>
+          <Text style={appStyles.menuButtonText}>Vorglühen</Text>
         </TouchableOpacity>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","schonGutDabei")}*/ style={appStyles.menuButton}>
-          <Text>Schon gut dabei</Text>
+          <Text style={appStyles.menuButtonText}>Schon gut dabei</Text>
         </TouchableOpacity>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","heiß")}*/ style={appStyles.menuButton}>
-          <Text>Heiß</Text>
+          <Text style={appStyles.menuButtonText}>Heiß</Text>
         </TouchableOpacity>
         <TouchableOpacity /*onPress={() => handleButtonClick("game","wahrheitOderPflicht")}*/ style={appStyles.menuButton}>
-          <Text>Wahrheit oder Pflicht</Text>
+          <Text style={appStyles.menuButtonText}>Wahrheit oder Pflicht</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-            <Text style={appStyles.exitButtonText}>Back</Text>
-          </TouchableOpacity>
       </View>
     );
   };
@@ -273,12 +267,8 @@ export default function App() {
     return(
       <View>
         <TouchableOpacity onPress={() => handleButtonClick("game","mäxchen")} style={appStyles.menuButton}>
-          <Text>Mäxchen</Text>
+          <Text style={appStyles.menuButtonText}>Mäxchen</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
-            <Text style={appStyles.exitButtonText}>Back</Text>
-          </TouchableOpacity>
       </View>
     );
   };
@@ -307,6 +297,13 @@ export default function App() {
   return (
     <View style={appStyles.pageContainer}>
       
+
+      {manyQuestionsGameStarted 
+      ? ( manyQuestionsGame() )
+      : null}
+      {mäxchenGameStarted 
+      ? ( <MaexchenGame/> )
+      : null}
       {/*<View>
         <Text>Aus der Datenbank abgerufene Daten:</Text>
         {data.map((item) => (
@@ -328,27 +325,35 @@ export default function App() {
         </View>*/}
 
       {/* Hide all start buttons once any game starts */}
-      <View style={appStyles.menuContainer}>
-        {currentScreen == ScreenTypes.mainMenu 
-        ?<View>{printMainMenu()}</View>
-        :(null)}
-        {currentScreen == ScreenTypes.klassikerMenu 
-        ?<View>{printKlassikerMenu()}</View> //TODO: Funktionen schreiben
-        :(null)}
-        {currentScreen == ScreenTypes.miniGamesMenu 
-        ?<View>{printMiniGamesMenu()}</View>
-        :(null)}
-        {currentScreen == ScreenTypes.settingsMenu 
-        ?<View>{printMainMenu()}</View>
-        :(null)}
-        {currentScreen == ScreenTypes.addingPlayerMenu 
-        ?<View>{printMainMenu()}</View>
-        :(null)}
-        {currentScreen == ScreenTypes.profileMenu 
-        ?<View>{printMainMenu()}</View>
-        :(null)}
-      </View>
-      <View style={{absolute:"relative",top:0, left:50}}>
+      {currentScreen != ScreenTypes.None ?
+        <View style={appStyles.menuContainer}>
+          {currentScreen == ScreenTypes.mainMenu 
+          ?<View>{printMainMenu()}</View>
+          :(null)}
+          {currentScreen == ScreenTypes.klassikerMenu 
+          ?<View>{printKlassikerMenu()}</View> //TODO: Funktionen schreiben
+          :(null)}
+          {currentScreen == ScreenTypes.miniGamesMenu 
+          ?<View>{printMiniGamesMenu()}</View>
+          :(null)}
+          {currentScreen == ScreenTypes.settingsMenu 
+          ?<View>{printMainMenu()}</View>
+          :(null)}
+          {currentScreen == ScreenTypes.addingPlayerMenu 
+          ?<View>{printMainMenu()}</View>
+          :(null)}
+          {currentScreen == ScreenTypes.profileMenu 
+          ?<View>{printMainMenu()}</View>
+          :(null)}
+        </View>
+      :(null)}
+      
+      {currentScreen != ScreenTypes.mainMenu ?
+      <TouchableOpacity onPress={endAnyGame} style={appStyles.exitButton}>
+        <Text style={appStyles.exitButtonText}>Back</Text>
+      </TouchableOpacity>
+      :(null)}
+      {/*<View style={{absolute:"relative",top:0, left:50}}>
         <TextInput
           placeholder="Text eingeben"
           value={text}
@@ -356,15 +361,10 @@ export default function App() {
         />
         <Button title="Text senden" onPress={handleSendText} />
         <Text>{response}</Text>
-      </View>
+        </View>*/}
 
-      {manyQuestionsGameStarted 
-      ? ( manyQuestionsGame() )
-      : null}
-      {mäxchenGameStarted 
-      ? ( MaxchenGame() )
-      : null}
-      {MaxchenGame()}
+      
+      
 
       {false ? (
           <View>{printAddPlayer()}</View>
