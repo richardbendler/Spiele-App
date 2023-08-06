@@ -26,11 +26,14 @@ const handleSqlRequest = async (sqlRequest) => {
   } catch (error) {
     console.error('Ein Fehler ist aufgetreten:', error);
   }
+  console.log(ret);
+  //console.log("responseText: " + responseText);
   return ret;
 };
 
 const ManyQuestionsGame = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
+  console.log(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
   const [manyQuestions, setManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`')["_z"].map(row=>row.content));
 
   
