@@ -39,13 +39,10 @@ const menuStyles = StyleSheet.create({
 
 const gameStyles = StyleSheet.create({
   gameContainer: {
+    backgroundColor: primaryColor, 
     flex: 1,
     width: '100%',
     position: 'relative',
-  },
-
-  manyquestionsContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
@@ -15,10 +15,12 @@ import MaexchenGame from './src/games/Mäxchen';
 import MainMenu from './src/menus/MainMenu';
 import KlassikerMenu from './src/menus/KlassikerMenu';
 import MiniGamesMenu from './src/menus/MiniGamesMenu';
+import AddPlayer from './src/menus/AddPlayer';
 
 //Spiele importieren
 import ManyQuestionsGame from './src/games/ManyQuestions';
 
+import { VariablesContext } from './VariablesContext';
 
 //import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
@@ -102,6 +104,7 @@ export default function App() {
     }
   };
   //SQL REQUEST
+  //SQL REQUEST
   const handleSqlRequest = async (sqlRequest) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
     ret = '';
@@ -124,17 +127,19 @@ export default function App() {
     } catch (error) {
       console.error('Ein Fehler ist aufgetreten:', error);
     }
+    console.log(ret);
+    console.log("Das grad eben war handlesqlrequest")
+    //console.log("responseText: " + responseText);
     return ret;
   };
-  const [sqlResponseVorglühen, setSqlResponseVorglühen] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
-  const [vorglühenQuestions, setVorglühenQuestions] = useState([]);
+  //const [sqlResponseVorglühen, setSqlResponseVorglühen] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  //const [vorglühenQuestions, setVorglühenQuestions] = useState([]);
 
-  const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
-  const [manyQuestions, setManyQuestions] = useState([]);
+  //const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  //const [manyQuestions, setManyQuestions] = useState([]);
 
 
   const [playerNames, setPlayerNames] = useState([]);
-  const [currentName, setCurrentName] = useState('');
 
   const [generalGameStarted, setGeneralGameStarted] = useState(false);
   
@@ -146,17 +151,17 @@ export default function App() {
     switch(game){
       case "vorglühen":
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setVorglühenGameStarted(true);
         break;
       case "schonGutDabei":
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setSchonGutDabeiGameStarted(true); 
         break;
       case "heiß":
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setHeißGameStarted(true); 
         break;
       case "wahrheitOderPflicht":
@@ -166,18 +171,18 @@ export default function App() {
         break;
       case "manyquestions":
         //console.log(sqlResponseManyQuestions);
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
         setManyQuestionsStarted(true);
         break;
       case "kingscup":
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setKingsCupGameStarted(true);
         break;
       case "klatschen": 
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setklatschenGameStarted(true);
         break;
       case "mäxchen":
@@ -185,7 +190,7 @@ export default function App() {
         break;
       case "activity":
         //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
         setActivityGameStarted(true);
         break;
     }
@@ -218,12 +223,7 @@ export default function App() {
   
   
 
-  const handleAddPlayer = () => {
-    if (currentName.trim() !== '') {
-      setPlayerNames([...playerNames, currentName]);
-      setCurrentName('');
-    }
-  };
+  
 
   //Handles any clicked button
   const handleButtonClick = (type, content) => {
@@ -285,45 +285,48 @@ export default function App() {
     );
   };
   
-  const printAddPlayer = () => {
-    <>
-      <Text style={appStyles.title}>Enter Player Names</Text>
-      <TextInput
-        placeholder="Enter a name"
-        value={currentName}
-        onChangeText={text => setCurrentName(text)}
-        style={appStyles.input}
-      />
-      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.addButton}>
-        <Text style={appStyles.buttonText}>Add Player</Text>
-      </TouchableOpacity>
-      <FlatList
-        data={playerNames}
-        renderItem={({ item }) => <Text>{item}</Text>}
-        keyExtractor={(item, index) => index.toString()}
-        style={appStyles.playerList}
-      />
-    </>
-  }
   
   
+  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    console.log("updating manyquestions***************")
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
+      /*if (result && result["_z"]) {
+        console.log("looks good")
+        setManyQuestions(result["_z"].map(row => row.content));
+      }else{
+        console.log("!!!!!!!!!!!!!!!!")
+        console.log(result)
+      }*/
+      setManyQuestions(result.map(row => row.content));
+  };
+  fetchData();
+  }, []);
 
   return (
-    <NavigationContainer>
-      
-    <Stack.Navigator 
-      initialRouteName="MainMenu"
-      screenOptions={{
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-    >
-      <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
-      <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
-      <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-      <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame(manyQuestions)} />
-      {/* Fügen Sie hier weitere Screens hinzu... */}
-    </Stack.Navigator>
-  </NavigationContainer>
+    <VariablesContext.Provider value={{ playerNames, setPlayerNames }}>
+      <NavigationContainer>
+        
+      <Stack.Navigator 
+        initialRouteName="AddPlayer"
+        screenOptions={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      >
+        <Stack.Screen name="MainMenu" component={MainMenu} />
+        <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
+        <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
+        <Stack.Screen name="AddPlayer" component={AddPlayer} />
+        <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+        <Stack.Screen 
+            name="ManyQuestionsGame" 
+            component={ManyQuestionsGame}
+            initialParams={{ manyQuestions: manyQuestions }} 
+        />
+        {/* Fügen Sie hier weitere Screens hinzu... */}
+      </Stack.Navigator>
+    </NavigationContainer>
+  </VariablesContext.Provider>
   );
 }
