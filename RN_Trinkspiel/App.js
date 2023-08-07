@@ -131,7 +131,7 @@ export default function App() {
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9');
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9 OR fk_pool = 10');
       setWords((result.map(row => row.content)));
   };
   fetchData();
@@ -147,7 +147,6 @@ export default function App() {
   const [playerNames, setPlayerNames] = useState([]);
   const [drinkTypes, setDrinkTypes] = useState([]); 
 
-  //TODO: tmp
   //const names = ["Alice", "Bob", "Charlie", "David"];
   function replaceHashtagsWithoutDuplicates(inputArray) {
     // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
