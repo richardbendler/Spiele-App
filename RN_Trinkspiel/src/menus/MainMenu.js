@@ -17,7 +17,7 @@ function MainMenu({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate('MiniGamesMenu')} style={appStyles.menuButton}>
           <Text style={appStyles.menuButtonText}>Mini Games</Text>
         </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={appStyles.menuButton}>
           <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('DrinkCounter')} style={appStyles.menuButton}>

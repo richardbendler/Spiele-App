@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import Button from './src/Button';
 
-import MaexchenGame from './src/games/Mäxchen';
+
 //import manyQuestions from './src/local_questions';
 
 // Importieren Sie alle Ihre Menükomponenten
@@ -19,8 +19,11 @@ import AddPlayer from './src/menus/AddPlayer';
 
 //Spiele importieren
 import ManyQuestionsGame from './src/games/ManyQuestions';
+import KlassikerGame from './src/games/KlassikerGame';
 import Kingscup from './src/games/Kingscup';
+import MaexchenGame from './src/games/Mäxchen';
 import DrinkCounter from './src/games/DrinkCounter';
+import Activity from './src/games/Activity';
 
 import { VariablesContext } from './VariablesContext';
 
@@ -241,54 +244,7 @@ export default function App() {
   };
 
   
-  const printMainMenu = () => {
-    return(
-      <View>
-        <TouchableOpacity onPress={() => handleButtonClick("menu","klassiker")} style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Klassiker</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("game","manyquestions")} style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
-        </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","kingscup")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Kings Cup / Klatschen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleButtonClick("menu","minigames")} style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Mini Games</Text>
-        </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","activity")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-  const printKlassikerMenu = () => {
-    return(
-      <View>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","vorglühen")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Vorglühen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","schonGutDabei")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Schon gut dabei</Text>
-        </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","heiß")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Heiß</Text>
-        </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => handleButtonClick("game","wahrheitOderPflicht")}*/ style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Wahrheit oder Pflicht</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-  const printMiniGamesMenu = () => {
-    return(
-      <View>
-        <TouchableOpacity onPress={() => handleButtonClick("game","mäxchen")} style={appStyles.menuButton}>
-          <Text style={appStyles.menuButtonText}>Mäxchen</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+  
   
   
   
@@ -305,6 +261,26 @@ export default function App() {
         console.log(result)
       }*/
       setManyQuestions(result.map(row => row.content));
+  };
+  fetchData();
+  }, []);
+
+  const [texts, setTexts] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    console.log("updating texts################")
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
+      setTexts(result.map(row => row.content));
+  };
+  fetchData();
+  }, []);
+
+  const [words, setWords] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    console.log("updating words----------------")
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
+      setWords(result.map(row => row.content));
   };
   fetchData();
   }, []);
@@ -330,6 +306,16 @@ export default function App() {
             name="ManyQuestionsGame" 
             component={ManyQuestionsGame}
             initialParams={{ manyQuestions: manyQuestions }} 
+        />
+        <Stack.Screen 
+            name="KlassikerGame" 
+            component={KlassikerGame}
+            initialParams={{ texts: texts }} 
+        />
+        <Stack.Screen 
+            name="Activity" 
+            component={Activity}
+            initialParams={{ words: words }} 
         />
         {/* Fügen Sie hier weitere Screens hinzu... */}
       </Stack.Navigator>
