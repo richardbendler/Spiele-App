@@ -19,6 +19,7 @@ import AddPlayer from './src/menus/AddPlayer';
 
 //Spiele importieren
 import ManyQuestionsGame from './src/games/ManyQuestions';
+import Kingscup from './src/games/Kingscup';
 
 import { VariablesContext } from './VariablesContext';
 
@@ -319,6 +320,7 @@ export default function App() {
         <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
         <Stack.Screen name="AddPlayer" component={AddPlayer} />
         <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+        <Stack.Screen name="Kingscup" component={Kingscup} />
         <Stack.Screen 
             name="ManyQuestionsGame" 
             component={ManyQuestionsGame}

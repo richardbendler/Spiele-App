@@ -11,7 +11,7 @@ function MainMenu({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={appStyles.menuButton}>
           <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
         </TouchableOpacity>
-        <TouchableOpacity /*onPress={() => navigation.navigate('ManyQuestionsGame')}*/ style={appStyles.menuButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={appStyles.menuButton}>
           <Text style={appStyles.menuButtonText}>Kings Cup / Klatschen</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('MiniGamesMenu')} style={appStyles.menuButton}>
