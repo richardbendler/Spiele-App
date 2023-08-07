@@ -22,8 +22,8 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
         onChangeText={text => setCurrentName(text)}
         style={appStyles.input}
       />
-      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.addButton}>
-        <Text style={appStyles.buttonText}>Add Player</Text>
+      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.submitButton}>
+        <Text style={appStyles.submitButtonText}>Add Player</Text>
       </TouchableOpacity>
     </>
   );

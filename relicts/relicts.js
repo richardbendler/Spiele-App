@@ -193,3 +193,179 @@ const printMiniGamesMenu = () => {
     </View>
   );
 };
+
+
+
+
+  
+
+  //Handles any clicked button
+  const handleButtonClick = (type, content) => {
+    if(type == "menu"){
+      openMenu(content);
+    }
+    if(type == "game"){
+      startGame(content);
+    }
+  };
+
+
+  
+  const endAnyGame = () => {
+    setCurrentScreen(ScreenTypes.mainMenu);
+    //end all games
+    setVorglühenGameStarted(false);
+    setSchonGutDabeiGameStarted(false);
+    setHeißGameStarted(false);
+    setwahrheitOderPflichtGameStarted(false);
+    setManyQuestionsStarted(false);
+    setKingsCupGameStarted(false);
+    setklatschenGameStarted(false);
+    setMäxchenGameStarted(false);
+    setActivityGameStarted(false);
+  };
+  
+
+    /*const manyQuestionsGame = () => {
+    return(
+      <View>
+        <TouchableOpacity onPress={showNextQuestion}>
+          <Question question={manyQuestions[questionIndex]} />
+        </TouchableOpacity>
+      </View>
+    )
+  }*/
+
+  
+
+  
+  const startGame = (game) => {
+    setCurrentScreen(ScreenTypes.None)
+    switch(game){
+      case "vorglühen":
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setVorglühenGameStarted(true);
+        break;
+      case "schonGutDabei":
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setSchonGutDabeiGameStarted(true); 
+        break;
+      case "heiß":
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setHeißGameStarted(true); 
+        break;
+      case "wahrheitOderPflicht":
+        //TODO: Austauschen
+        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setwahrheitOderPflichtGameStarted(true);
+        break;
+      case "manyquestions":
+        //console.log(sqlResponseManyQuestions);
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
+        setManyQuestionsStarted(true);
+        break;
+      case "kingscup":
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setKingsCupGameStarted(true);
+        break;
+      case "klatschen": 
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setklatschenGameStarted(true);
+        break;
+      case "mäxchen":
+        setMäxchenGameStarted(true);
+        break;
+      case "activity":
+        //TODO: Austauschen
+        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
+        setActivityGameStarted(true);
+        break;
+    }
+  };
+
+
+  
+
+  const [generalGameStarted, setGeneralGameStarted] = useState(false);
+  
+  const [weatherGameStarted, setWeatherGameStarted] = useState(false);
+  const [weatherQuestionIndex, setWeatherQuestionIndex] = useState(0);
+
+
+
+    //const [sqlResponseVorglühen, setSqlResponseVorglühen] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  //const [vorglühenQuestions, setVorglühenQuestions] = useState([]);
+
+  //const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
+  //const [manyQuestions, setManyQuestions] = useState([]);
+
+    //Games started bools
+    const [vorglühenGameStarted, setVorglühenGameStarted] = useState(false);
+    const [schonGutDabeiGameStarted, setSchonGutDabeiGameStarted] = useState(false);
+    const [heißGameStarted, setHeißGameStarted] = useState(false);
+    const [wahrheitOderPflichtGameStarted, setwahrheitOderPflichtGameStarted] = useState(false);
+    const [manyQuestionsGameStarted, setManyQuestionsStarted] = useState(false);
+    const [kingsCupGameStarted, setKingsCupGameStarted] = useState(false);
+    const [klatschenGameStarted, setklatschenGameStarted] = useState(false);
+    const [mäxchenGameStarted, setMäxchenGameStarted] = useState(false);
+    const [activityGameStarted, setActivityGameStarted] = useState(false);
+
+  //Menus
+  const ScreenTypes =  {
+    mainMenu: 'mainMenu',
+    klassikerMenu: 'klassikerMenu',
+    miniGamesMenu: 'miniGamesMenu',
+    settingsMenu: 'settingsMenu',
+    addingPlayerMenu: 'addingPlayerMenu',
+    profileMenu: 'profileMenu',
+    None: 'None',
+  }
+ 
+  const [currentScreen, setCurrentScreen] = useState(ScreenTypes.mainMenu)
+  const openMenu = (menu) => {
+    switch(menu){
+      case "mainMenu":
+        setCurrentScreen(ScreenTypes.mainMenu);
+        break;
+      case "klassiker":
+        setCurrentScreen(ScreenTypes.klassikerMenu);  
+        break;
+      case "minigames":
+        setCurrentScreen(ScreenTypes.miniGamesMenu); 
+        break;
+      case "settingsMenu":
+        setCurrentScreen(ScreenTypes.settingsMenu);
+        break;
+      case "addingPlayerMenu":
+        setCurrentScreen(ScreenTypes.addingPlayerMenu);  
+        break;
+      case "profileMenu":
+        setCurrentScreen(ScreenTypes.profileMenu); 
+        break;
+      case "None":
+        setCurrentScreen(ScreenTypes.None);
+        break;
+    }
+  }
+
+
+  
+//import db from './src/Database'; 
+// Similar to Question.js, adjust styling if needed:
+//import WeatherButton from './src/WeatherButton';
+//import WeatherQuestion from './src/WeatherQuestion';
+
+
+import { appStyles } from './styles';
+import { StatusBar } from 'expo-status-bar';
+import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import Button from './src/Button';
+
+
+//import manyQuestions from './src/local_questions';
