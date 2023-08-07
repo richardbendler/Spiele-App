@@ -1,15 +1,14 @@
 // In einer Datei namens VorglühenGame.js
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Question from './Question';
+import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 
-
-
-
+import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import HandleFeedback from './sublements/HandleFeedBack';
 
 const ManyQuestionsGame = ({route }) => {
-  const { manyQuestions } = route.params;
+  const { manyQuestions } = shuffleArrayFisherYates(route.params);
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const showNextQuestion = () => {
@@ -24,11 +23,13 @@ const ManyQuestionsGame = ({route }) => {
   };
 
   return (
-    <View style={appStyles.gameContainer}>
-      <TouchableOpacity onPress={showNextQuestion}>
-        <Question question={manyQuestions && manyQuestions.length > 0 ? manyQuestions[questionIndex] : ''}/>
-        
-      </TouchableOpacity>
+    <View style={appStyles.completeScreenGameContainer}>
+      <View style={appStyles.gameContainer}>
+        <TouchableOpacity onPress={showNextQuestion}>
+          <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
+        </TouchableOpacity>
+      </View>
+      <HandleFeedback texts={manyQuestions} textsIndex={questionIndex}/>
     </View>
   );
 };

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
+//Import der Datenbankvorlagen
+import { handleSqlRequest } from './src/general';
+
 //Import der Menüs
 import MainMenu from './src/menus/MainMenu';
 import KlassikerMenu from './src/menus/KlassikerMenu';
@@ -21,9 +24,7 @@ import { VariablesContext } from './VariablesContext';
 
 
 export default function App() {
-  
-  //Database
-  //POST AND RESPONSE
+  //API zu Backend
   const [text, setText] = useState('');
   const [response, setResponse] = useState('');
   const handleSendText = async () => {
@@ -46,34 +47,9 @@ export default function App() {
       console.error('Ein Fehler ist aufgetreten:', error);
     }
   };
+
+
   
-
-  //HANDLE SQL REQUESTS
-  const handleSqlRequest = async (sqlRequest) => {
-    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
-    ret = '';
-    try {
-      const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token,
-        },
-        body: JSON.stringify({ sqlRequest }),
-      });
-
-      if (response.ok) {
-        const responseText = await response.text();
-        ret = JSON.parse(responseText);
-      } else {
-        console.error('Fehler beim Senden des Texts.');
-      }
-    } catch (error) {
-      console.error('Ein Fehler ist aufgetreten:', error);
-    }
-    //console.log(ret);
-    return ret;
-  };
 
 
   ////////////////////////////////////////////////////////
@@ -85,7 +61,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 1');
-      setTexts_Vorglühen(shuffleArrayFisherYates(result.map(row => row.content)));
+      setTexts_Vorglühen(result);
   };
   fetchData();
   }, []);
@@ -94,7 +70,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 2');
-      setTexts_SchonGutDabei(shuffleArrayFisherYates(result.map(row => row.content)));
+      setTexts_SchonGutDabei(result);
   };
   fetchData();
   }, []);
@@ -103,7 +79,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 3');
-      setTexts_Heiß(shuffleArrayFisherYates(result.map(row => row.content)));
+      setTexts_Heiß(result);
   };
   fetchData();
   }, []);
@@ -112,7 +88,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 4');
-      setTexts_WahrheitOderPflicht(shuffleArrayFisherYates(result.map(row => row.content)));
+      setTexts_WahrheitOderPflicht(result);
   };
   fetchData();
   }, []);
@@ -122,7 +98,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 6');
-      setManyQuestions(shuffleArrayFisherYates(result.map(row => row.content)));
+      setManyQuestions(result);
   };
   fetchData();
   }, []);
@@ -132,7 +108,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9 OR fk_pool = 10');
-      setWords(shuffleArrayFisherYates(result.map(row => row.content)));
+      setWords(result);
   };
   fetchData();
   }, []);
@@ -147,38 +123,6 @@ export default function App() {
   const [playerNames, setPlayerNames] = useState([]);
   const [drinkTypes, setDrinkTypes] = useState([]); 
 
-  //const names = ["Alice", "Bob", "Charlie", "David"];
-  function replaceHashtagsWithoutDuplicates(inputArray) {
-    // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
-    let availableNames = [...playerNames];
-  
-    return inputArray.map((string) => {
-      return string.replace(/#[a-zA-Z0-9_]+/g, () => {
-        if (availableNames.length === 0) {
-          // Wenn alle Namen verwendet wurden, setze die Liste zurück
-          availableNames = [...playerNames];
-        }
-  
-        // Zufälligen Index aus den verfügbaren Namen auswählen
-        const randomIndex = Math.floor(Math.random() * availableNames.length);
-        const selectedName = availableNames[randomIndex];
-  
-        // Den ausgewählten Namen aus den verfügbaren Namen entfernen
-        availableNames.splice(randomIndex, 1);
-  
-        return selectedName;
-      });
-    });
-  }
-
-  //Sortiert ein Array zufällig neu
-  function shuffleArrayFisherYates(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Elemente tauschen
-    }
-    return array;
-  }
 
   return (
     <VariablesContext.Provider value={{ playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
@@ -198,27 +142,27 @@ export default function App() {
         <Stack.Screen 
             name="VorglühenGame" 
             component={KlassikerGame}
-            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_Vorglühen) }} 
+            initialParams={{ texts: texts_Vorglühen }} 
         />
         <Stack.Screen 
             name="SchonGutDabeiGame" 
             component={KlassikerGame}
-            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_SchonGutDabei) }} 
+            initialParams={{ texts: texts_SchonGutDabei }} 
         />
         <Stack.Screen 
             name="HeißGame" 
             component={KlassikerGame}
-            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_Heiß) }} 
+            initialParams={{ texts: texts_Heiß }} 
         />
         <Stack.Screen 
             name="WahrheitOderPflichtGame" 
             component={KlassikerGame}
-            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_WahrheitOderPflicht) }} 
+            initialParams={{ texts: texts_WahrheitOderPflicht }} 
         />
         <Stack.Screen 
             name="ManyQuestionsGame" 
             component={ManyQuestionsGame}
-            initialParams={{ manyQuestions: replaceHashtagsWithoutDuplicates(manyQuestions) }} 
+            initialParams={{ manyQuestions: manyQuestions }} 
         />
         <Stack.Screen name="Kingscup" component={Kingscup} />
         <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
