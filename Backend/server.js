@@ -44,6 +44,7 @@ app.post('/api/sqlRequest', async (req, res) => {
     try {
         const [rows, fields] = await db.query(receivedText); // Annahme: Tabelle "users" existiert in deiner Datenbank
         res.status(200).json(rows);
+        console.log(rows);
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
         res.status(500).json({ error: 'Fehler beim Abrufen der Daten. Nicht mit DB verbunden?' });
