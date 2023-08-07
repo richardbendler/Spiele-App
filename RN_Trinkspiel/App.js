@@ -2,22 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
-
-import { appStyles } from './styles';
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
-import Button from './src/Button';
-
-
-//import manyQuestions from './src/local_questions';
-
-// Importieren Sie alle Ihre Menükomponenten
+//Import der Menüs
 import MainMenu from './src/menus/MainMenu';
 import KlassikerMenu from './src/menus/KlassikerMenu';
 import MiniGamesMenu from './src/menus/MiniGamesMenu';
 import AddPlayer from './src/menus/AddPlayer';
 
-//Spiele importieren
+//Import der Spiele
 import ManyQuestionsGame from './src/games/ManyQuestions';
 import KlassikerGame from './src/games/KlassikerGame';
 import Kingscup from './src/games/Kingscup';
@@ -25,66 +16,12 @@ import MaexchenGame from './src/games/Mäxchen';
 import DrinkCounter from './src/games/DrinkCounter';
 import Activity from './src/games/Activity';
 
+//Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from './VariablesContext';
 
 
-//import db from './src/Database'; 
-// Similar to Question.js, adjust styling if needed:
-//import WeatherButton from './src/WeatherButton';
-//import WeatherQuestion from './src/WeatherQuestion';
-
 export default function App() {
-  //Games started bools
-  const [vorglühenGameStarted, setVorglühenGameStarted] = useState(false);
-  const [schonGutDabeiGameStarted, setSchonGutDabeiGameStarted] = useState(false);
-  const [heißGameStarted, setHeißGameStarted] = useState(false);
-  const [wahrheitOderPflichtGameStarted, setwahrheitOderPflichtGameStarted] = useState(false);
-  const [manyQuestionsGameStarted, setManyQuestionsStarted] = useState(false);
-  const [kingsCupGameStarted, setKingsCupGameStarted] = useState(false);
-  const [klatschenGameStarted, setklatschenGameStarted] = useState(false);
-  const [mäxchenGameStarted, setMäxchenGameStarted] = useState(false);
-  const [activityGameStarted, setActivityGameStarted] = useState(false);
-
-  //Für Menus
-  const Stack = createStackNavigator();
-
-  //Menus
-  const ScreenTypes =  {
-    mainMenu: 'mainMenu',
-    klassikerMenu: 'klassikerMenu',
-    miniGamesMenu: 'miniGamesMenu',
-    settingsMenu: 'settingsMenu',
-    addingPlayerMenu: 'addingPlayerMenu',
-    profileMenu: 'profileMenu',
-    None: 'None',
-  }
-  const [currentScreen, setCurrentScreen] = useState(ScreenTypes.mainMenu)
-  const openMenu = (menu) => {
-    switch(menu){
-      case "mainMenu":
-        setCurrentScreen(ScreenTypes.mainMenu);
-        break;
-      case "klassiker":
-        setCurrentScreen(ScreenTypes.klassikerMenu);  
-        break;
-      case "minigames":
-        setCurrentScreen(ScreenTypes.miniGamesMenu); 
-        break;
-      case "settingsMenu":
-        setCurrentScreen(ScreenTypes.settingsMenu);
-        break;
-      case "addingPlayerMenu":
-        setCurrentScreen(ScreenTypes.addingPlayerMenu);  
-        break;
-      case "profileMenu":
-        setCurrentScreen(ScreenTypes.profileMenu); 
-        break;
-      case "None":
-        setCurrentScreen(ScreenTypes.None);
-        break;
-    }
-  }
-
+  
   //Database
   //POST AND RESPONSE
   const [text, setText] = useState('');
@@ -109,8 +46,9 @@ export default function App() {
       console.error('Ein Fehler ist aufgetreten:', error);
     }
   };
-  //SQL REQUEST
-  //SQL REQUEST
+  
+
+  //HANDLE SQL REQUESTS
   const handleSqlRequest = async (sqlRequest) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
     ret = '';
@@ -133,191 +71,155 @@ export default function App() {
     } catch (error) {
       console.error('Ein Fehler ist aufgetreten:', error);
     }
-    console.log(ret);
-    console.log("Das grad eben war handlesqlrequest")
-    //console.log("responseText: " + responseText);
+    //console.log(ret);
     return ret;
   };
-  //const [sqlResponseVorglühen, setSqlResponseVorglühen] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
-  //const [vorglühenQuestions, setVorglühenQuestions] = useState([]);
 
-  //const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
-  //const [manyQuestions, setManyQuestions] = useState([]);
 
+  ////////////////////////////////////////////////////////
+  ///////////////////// SQL-ABFRAGEN  ////////////////////
+  ////////////////////////////////////////////////////////
+
+  //Klassiker: Vorglühen
+  const [texts_Vorglühen, setTexts_Vorglühen] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 1');
+      setTexts_Vorglühen((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+  //Klassiker: Schon gut dabei
+  const [texts_SchonGutDabei, setTexts_SchonGutDabei] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 2');
+      setTexts_SchonGutDabei((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+  //Klassiker: Heiß
+  const [texts_Heiß, setTexts_Heiß] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 3');
+      setTexts_Heiß((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+  //Klassiker: Wahrheit oder Pflicht
+  const [texts_WahrheitOderPflicht, setTexts_WahrheitOderPflicht] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 4');
+      setTexts_WahrheitOderPflicht((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+
+  //100.000 Questions
+  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 6');
+      setManyQuestions((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+
+  //Activity
+  const [words, setWords] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9');
+      setWords((result.map(row => row.content)));
+  };
+  fetchData();
+  }, []);
+
+
+
+
+  //Für Menus
+  const Stack = createStackNavigator();
+  
   //Globale Variablen aus Context
   const [playerNames, setPlayerNames] = useState([]);
   const [drinkTypes, setDrinkTypes] = useState([]); 
 
-
-  const [generalGameStarted, setGeneralGameStarted] = useState(false);
+  //TODO: tmp
+  //const names = ["Alice", "Bob", "Charlie", "David"];
+  function replaceHashtagsWithoutDuplicates(inputArray) {
+    // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
+    let availableNames = [...playerNames];
   
-  const [weatherGameStarted, setWeatherGameStarted] = useState(false);
-  const [weatherQuestionIndex, setWeatherQuestionIndex] = useState(0);
+    return inputArray.map((string) => {
+      return string.replace(/#[a-zA-Z0-9_]+/g, () => {
+        if (availableNames.length === 0) {
+          // Wenn alle Namen verwendet wurden, setze die Liste zurück
+          availableNames = [...playerNames];
+        }
   
-  const startGame = (game) => {
-    setCurrentScreen(ScreenTypes.None)
-    switch(game){
-      case "vorglühen":
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setVorglühenGameStarted(true);
-        break;
-      case "schonGutDabei":
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setSchonGutDabeiGameStarted(true); 
-        break;
-      case "heiß":
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setHeißGameStarted(true); 
-        break;
-      case "wahrheitOderPflicht":
-        //TODO: Austauschen
-        setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setwahrheitOderPflichtGameStarted(true);
-        break;
-      case "manyquestions":
-        //console.log(sqlResponseManyQuestions);
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        //console.log(sqlResponseManyQuestions["_z"].map(row=>row.content))
-        setManyQuestionsStarted(true);
-        break;
-      case "kingscup":
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setKingsCupGameStarted(true);
-        break;
-      case "klatschen": 
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setklatschenGameStarted(true);
-        break;
-      case "mäxchen":
-        setMäxchenGameStarted(true);
-        break;
-      case "activity":
-        //TODO: Austauschen
-        //setManyQuestions(sqlResponseManyQuestions["_z"].map(row=>row.content));
-        setActivityGameStarted(true);
-        break;
-    }
-  };
-
-  /*const manyQuestionsGame = () => {
-    return(
-      <View>
-        <TouchableOpacity onPress={showNextQuestion}>
-          <Question question={manyQuestions[questionIndex]} />
-        </TouchableOpacity>
-      </View>
-    )
-  }*/
-
+        // Zufälligen Index aus den verfügbaren Namen auswählen
+        const randomIndex = Math.floor(Math.random() * availableNames.length);
+        const selectedName = availableNames[randomIndex];
   
-  const endAnyGame = () => {
-    setCurrentScreen(ScreenTypes.mainMenu);
-    //end all games
-    setVorglühenGameStarted(false);
-    setSchonGutDabeiGameStarted(false);
-    setHeißGameStarted(false);
-    setwahrheitOderPflichtGameStarted(false);
-    setManyQuestionsStarted(false);
-    setKingsCupGameStarted(false);
-    setklatschenGameStarted(false);
-    setMäxchenGameStarted(false);
-    setActivityGameStarted(false);
-  };
+        // Den ausgewählten Namen aus den verfügbaren Namen entfernen
+        availableNames.splice(randomIndex, 1);
   
-  
-
-  
-
-  //Handles any clicked button
-  const handleButtonClick = (type, content) => {
-    if(type == "menu"){
-      openMenu(content);
-    }
-    if(type == "game"){
-      startGame(content);
-    }
-  };
-
-  
-  
-  
-  
-  
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    console.log("updating manyquestions***************")
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
-      /*if (result && result["_z"]) {
-        console.log("looks good")
-        setManyQuestions(result["_z"].map(row => row.content));
-      }else{
-        console.log("!!!!!!!!!!!!!!!!")
-        console.log(result)
-      }*/
-      setManyQuestions(result.map(row => row.content));
-  };
-  fetchData();
-  }, []);
-
-  const [texts, setTexts] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    console.log("updating texts################")
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
-      setTexts(result.map(row => row.content));
-  };
-  fetchData();
-  }, []);
-
-  const [words, setWords] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    console.log("updating words----------------")
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions`');
-      setWords(result.map(row => row.content));
-  };
-  fetchData();
-  }, []);
+        return selectedName;
+      });
+    });
+  }
 
   return (
     <VariablesContext.Provider value={{ playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
       <NavigationContainer>
         
-      <Stack.Navigator 
-        initialRouteName="AddPlayer"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        }}
-      >
+        <Stack.Navigator 
+          initialRouteName="AddPlayer"
+          screenOptions={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        >
         <Stack.Screen name="MainMenu" component={MainMenu} />
         <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
         <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
         <Stack.Screen name="AddPlayer" component={AddPlayer} />
-        <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-        <Stack.Screen name="Kingscup" component={Kingscup} />
-        <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
+        
+        <Stack.Screen 
+            name="VorglühenGame" 
+            component={KlassikerGame}
+            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_Vorglühen) }} 
+        />
+        <Stack.Screen 
+            name="SchonGutDabeiGame" 
+            component={KlassikerGame}
+            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_SchonGutDabei) }} 
+        />
+        <Stack.Screen 
+            name="HeißGame" 
+            component={KlassikerGame}
+            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_Heiß) }} 
+        />
+        <Stack.Screen 
+            name="WahrheitOderPflichtGame" 
+            component={KlassikerGame}
+            initialParams={{ texts: replaceHashtagsWithoutDuplicates(texts_WahrheitOderPflicht) }} 
+        />
         <Stack.Screen 
             name="ManyQuestionsGame" 
             component={ManyQuestionsGame}
-            initialParams={{ manyQuestions: manyQuestions }} 
+            initialParams={{ manyQuestions: replaceHashtagsWithoutDuplicates(manyQuestions) }} 
         />
-        <Stack.Screen 
-            name="KlassikerGame" 
-            component={KlassikerGame}
-            initialParams={{ texts: texts }} 
-        />
+        <Stack.Screen name="Kingscup" component={Kingscup} />
+        <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
         <Stack.Screen 
             name="Activity" 
             component={Activity}
             initialParams={{ words: words }} 
         />
-        {/* Fügen Sie hier weitere Screens hinzu... */}
+        <Stack.Screen name="DrinkCounter" component={DrinkCounter} />       
       </Stack.Navigator>
     </NavigationContainer>
   </VariablesContext.Provider>
