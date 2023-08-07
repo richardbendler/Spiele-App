@@ -14,6 +14,14 @@ const menuStyles = StyleSheet.create({
 });
 
 const gameStyles = StyleSheet.create({
+  completeScreenGameContainer:{
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
   gameContainer: {
     backgroundColor: primaryColor, 
     flex: 1,
