@@ -20,8 +20,10 @@ import AddPlayer from './src/menus/AddPlayer';
 //Spiele importieren
 import ManyQuestionsGame from './src/games/ManyQuestions';
 import Kingscup from './src/games/Kingscup';
+import DrinkCounter from './src/games/DrinkCounter';
 
 import { VariablesContext } from './VariablesContext';
+
 
 //import db from './src/Database'; 
 // Similar to Question.js, adjust styling if needed:
@@ -139,8 +141,10 @@ export default function App() {
   //const [sqlResponseManyQuestions, setSqlResponseManyQuestions] = useState(handleSqlRequest('SELECT * FROM `game_simple_questions`'));
   //const [manyQuestions, setManyQuestions] = useState([]);
 
-
+  //Globale Variablen aus Context
   const [playerNames, setPlayerNames] = useState([]);
+  const [drinkTypes, setDrinkTypes] = useState([]); 
+
 
   const [generalGameStarted, setGeneralGameStarted] = useState(false);
   
@@ -306,7 +310,7 @@ export default function App() {
   }, []);
 
   return (
-    <VariablesContext.Provider value={{ playerNames, setPlayerNames }}>
+    <VariablesContext.Provider value={{ playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
       <NavigationContainer>
         
       <Stack.Navigator 
@@ -321,6 +325,7 @@ export default function App() {
         <Stack.Screen name="AddPlayer" component={AddPlayer} />
         <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
         <Stack.Screen name="Kingscup" component={Kingscup} />
+        <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
         <Stack.Screen 
             name="ManyQuestionsGame" 
             component={ManyQuestionsGame}
