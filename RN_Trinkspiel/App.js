@@ -85,7 +85,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 1');
-      setTexts_Vorglühen((result.map(row => row.content)));
+      setTexts_Vorglühen(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -94,7 +94,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 2');
-      setTexts_SchonGutDabei((result.map(row => row.content)));
+      setTexts_SchonGutDabei(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -103,7 +103,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 3');
-      setTexts_Heiß((result.map(row => row.content)));
+      setTexts_Heiß(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -112,7 +112,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 4');
-      setTexts_WahrheitOderPflicht((result.map(row => row.content)));
+      setTexts_WahrheitOderPflicht(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -122,7 +122,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 6');
-      setManyQuestions((result.map(row => row.content)));
+      setManyQuestions(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -132,7 +132,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9 OR fk_pool = 10');
-      setWords((result.map(row => row.content)));
+      setWords(shuffleArrayFisherYates(result.map(row => row.content)));
   };
   fetchData();
   }, []);
@@ -169,6 +169,15 @@ export default function App() {
         return selectedName;
       });
     });
+  }
+
+  //Sortiert ein Array zufällig neu
+  function shuffleArrayFisherYates(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Elemente tauschen
+    }
+    return array;
   }
 
   return (
