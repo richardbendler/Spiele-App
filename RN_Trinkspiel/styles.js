@@ -3,6 +3,7 @@ import {StyleSheet, useState} from 'react-native';
 const primaryColor = '#008b8b';
 const secondaryColor = '#ff7474';
 
+
 const pageStyles = StyleSheet.create({
   pageContainer: {
     backgroundColor: primaryColor, 
@@ -17,7 +18,6 @@ const menuStyles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#ecf0f1',
       backgroundColor: primaryColor, 
     },
   menuButton: {
@@ -25,20 +25,24 @@ const menuStyles = StyleSheet.create({
     padding: 40,
     borderRadius: 15,
     margin: 20,
-    width: '100%',
+    width: '90%',
     alignItems: 'center',
+  },
+  menuButtonText:{
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    padding: 0,
+    textTransform: 'uppercase', //
   },
 });
 
 const gameStyles = StyleSheet.create({
   gameContainer: {
+    backgroundColor: primaryColor, 
     flex: 1,
     width: '100%',
     position: 'relative',
-  },
-
-  manyquestionsContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -54,7 +58,7 @@ const commonStyles = StyleSheet.create({
     position: 'absolute',
     top: 60,
     right: 10,
-    backgroundColor: 'red', // Customize the button color
+    backgroundColor: secondaryColor, // Customize the button color
     padding: 10,
     borderRadius: 5,
   },
@@ -64,7 +68,7 @@ const commonStyles = StyleSheet.create({
 
   
     addButton: {
-      backgroundColor: '#3498db',
+      backgroundColor: secondaryColor,
       padding: 20,
       borderRadius: 5,
       width: '100%',
@@ -90,7 +94,7 @@ const commonStyles = StyleSheet.create({
     },
     textInput:{
       borderWidth:1,
-      borderColor: "blue",
+      borderColor: secondaryColor,
       width:"80%",
       marginRight: 8,
       padding: 8
