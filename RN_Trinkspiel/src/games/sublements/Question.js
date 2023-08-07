@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { appStyles } from '../../styles';
+import { appStyles } from '../../../styles';
 
 const Question = ({question }) => {
   //console.log(question)
