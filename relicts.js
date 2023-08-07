@@ -142,3 +142,54 @@ return (
     </View>*/}
   </View>
 );
+
+
+
+const printMainMenu = () => {
+  return(
+    <View>
+      <TouchableOpacity onPress={() => handleButtonClick("menu","klassiker")} style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Klassiker</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleButtonClick("game","manyquestions")} style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","kingscup")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Kings Cup / Klatschen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleButtonClick("menu","minigames")} style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Mini Games</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","activity")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+const printKlassikerMenu = () => {
+  return(
+    <View>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","vorglühen")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Vorglühen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","schonGutDabei")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Schon gut dabei</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","heiß")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Heiß</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={() => handleButtonClick("game","wahrheitOderPflicht")}*/ style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Wahrheit oder Pflicht</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+const printMiniGamesMenu = () => {
+  return(
+    <View>
+      <TouchableOpacity onPress={() => handleButtonClick("game","mäxchen")} style={appStyles.menuButton}>
+        <Text style={appStyles.menuButtonText}>Mäxchen</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
