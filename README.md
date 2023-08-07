@@ -16,6 +16,8 @@ npm install -g expo-cli
 npm install react-native-sound
 npm install @react-navigation/native
 npm install @react-navigation/stack
+npm install @react-native-async-storage/async-storage
+
 
 
 _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
