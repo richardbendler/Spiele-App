@@ -4,6 +4,8 @@
 ### Node.js und npm installieren: 
 https://phoenixnap.com/kb/install-node-js-npm-on-windows
 
+### Powershell im RN_Trinkspiel-Ordner ausführen:
+
 danach:
 npm install
 
