@@ -75,12 +75,17 @@ _Das hier sollte vor der Production noch passieren: By default, a MariaDB instal
 _________________________________________________________
 
 ## Backend
+
+Achtung: Backend läuft gerade durchgängig - dieser Part kann zum Testen ignoriert werden
+
 ### Start - Entwicklungsumgebung
 cd Trinkspielapp_Backend
 node server.js
 
 ### Start - Produktionsumgebung
 To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
+cd Trinkspielapp_Backend
+pm2 start server.js
 
 ### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 Auf Netcup-Server pushen
