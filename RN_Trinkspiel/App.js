@@ -6,6 +6,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import { handleSqlRequest } from './src/general';
 
 //Import der Menüs
+import StartMenu from './src/menus/StartMenu';
 import MainMenu from './src/menus/MainMenu';
 import KlassikerMenu from './src/menus/KlassikerMenu';
 import MiniGamesMenu from './src/menus/MiniGamesMenu';
@@ -129,11 +130,12 @@ export default function App() {
       <NavigationContainer>
         
         <Stack.Navigator 
-          initialRouteName="AddPlayer"
+          initialRouteName="StartMenu"
           screenOptions={{
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         >
+        <Stack.Screen name="StartMenu" component={StartMenu} />
         <Stack.Screen name="MainMenu" component={MainMenu} />
         <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
         <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />

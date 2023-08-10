@@ -49,7 +49,7 @@ const AddPlayer = ({ navigation }) => {
         style={appStyles.playerList}
       />
       <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-        <Text style={appStyles.menuButtonText}>To the Games</Text>
+        <Text style={appStyles.menuButtonText}>Spielen</Text>
       </TouchableOpacity>
     </View>
   );
