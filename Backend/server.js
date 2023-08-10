@@ -20,14 +20,14 @@ app.use(bodyParser.json());
 
 app.post('/api/sendText', (req, res) => {
     const receivedText = req.body.text;
-    console.log('Empfangener Text:', receivedText);
+    //console.log('Empfangener Text:', receivedText);
     // Sende eine Antwort als Text
     res.send('Nachricht empfangen: ' + receivedText);
 });
 app.post('/api/sqlRequest', async (req, res) => {
     //check Token
     const token = req.headers.authorization;
-    console.log('Empfangener Token:', token); 
+    //console.log('Empfangener Token:', token); 
     if (!token) {
         console.log("Kein Token vorhanden");
         return res.status(401).json({ error: 'Kein Token vorhanden.' });
@@ -37,14 +37,14 @@ app.post('/api/sqlRequest', async (req, res) => {
         console.log("Ungültiger oder abgelaufener Token");
         return res.status(401).json({ error: 'Ungültiger oder abgelaufener Token.' });
     }
-    console.log("Gültiger Token");
+    //console.log("Gültiger Token");
     /////////////////////////////
     const receivedText = req.body.sqlRequest;
-    console.log(receivedText);
+    //console.log(receivedText);
     try {
         const [rows, fields] = await db.query(receivedText); // Annahme: Tabelle "users" existiert in deiner Datenbank
         res.status(200).json(rows);
-        console.log(rows);
+        //console.log(rows);
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
         res.status(500).json({ error: 'Fehler beim Abrufen der Daten. Nicht mit DB verbunden?' });
