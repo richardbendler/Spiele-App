@@ -4,7 +4,7 @@ import { appStyles } from '../../../styles';
 
 const SettingsButton = () => {
     return(
-        <TouchableOpacity /*onPress={() => navigation.navigate('MainMenu')}*/ style={appStyles.settingsButton}>
+        <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
             <Text style={appStyles.settingsButtonText}>⚙️</Text>
         </TouchableOpacity>
     )
