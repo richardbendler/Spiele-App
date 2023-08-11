@@ -40,7 +40,21 @@ const menuStyles = StyleSheet.create({
     alignItems: 'center',       // Horizontale Zentrierung
     justifyContent: 'center',   // Vertikale Zentrierung
     backgroundColor: primaryColor, 
-  }
+  },
+  settingsContainer: {
+    width: '80%',
+    height: '80%',
+    position: 'relative',
+    position: 'relative',
+    alignItems: 'center',       // Horizontale Zentrierung
+    justifyContent: 'center',   // Vertikale Zentrierung
+    backgroundColor: 'blue', 
+  },
+  smallSettingsContainer: {
+    width: '80%',
+    height: '80%',
+    backgroundColor: primaryColor, 
+  },
 
   
 });
