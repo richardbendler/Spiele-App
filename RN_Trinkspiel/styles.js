@@ -6,7 +6,7 @@ const colorSchemeArray = [
   ['#48A9A6','#D4AC0D','#E56B6F'],
 ]
 
-const colorChoice = 2
+const colorChoice = 2;
 
 const primaryColor = colorSchemeArray[colorChoice][0]//'#1E3D59';//'#008b8b';
 const secondaryColor = colorSchemeArray[colorChoice][1]//'#BFC0C0';//'#ff7474';

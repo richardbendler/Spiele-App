@@ -7,7 +7,7 @@ import { appStyles } from '../../styles';
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 
-const KlassikerGame = ({route }) => {
+const PicoloGame = ({route }) => {
   const { texts } = shuffleArrayFisherYates(route.params);
   //shuffleArrayFisherYates(result.map(row => row.content))
   const [textsIndex, setTextsIndex] = useState(0);
@@ -37,4 +37,4 @@ const KlassikerGame = ({route }) => {
 };
 
 
-export default KlassikerGame;
+export default PicoloGame;
