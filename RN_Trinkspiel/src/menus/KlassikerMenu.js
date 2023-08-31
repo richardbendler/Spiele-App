@@ -8,17 +8,11 @@ function KlassikerMenu({ navigation }) {
     <View style={appStyles.pageContainer}>
       <View style={appStyles.smallPageContainer}>
         <View style={appStyles.menuContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('VorglühenGame')} style={appStyles.menuButton}>
-            <Text style={appStyles.menuButtonText}>Vorglühen</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('PicoloGame')} style={appStyles.menuButton}>
+            <Text style={appStyles.menuButtonText}>Picolo</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('SchonGutDabeiGame')} style={appStyles.menuButton}>
-            <Text style={appStyles.menuButtonText}>Schon gut dabei</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('HeißGame')} style={appStyles.menuButton}>
-            <Text style={appStyles.menuButtonText}>Heiß</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('WahrheitOderPflichtGame')} style={appStyles.menuButton}>
-            <Text style={appStyles.menuButtonText}>Wahrheit oder Pflicht</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={appStyles.menuButton}>
+            <Text style={appStyles.menuButtonText}>100.000 Questions</Text>
           </TouchableOpacity>
         </View>
         <SettingsButton/>

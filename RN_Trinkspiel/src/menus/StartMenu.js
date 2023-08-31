@@ -38,12 +38,12 @@ const StartMenu = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                     <Text style={appStyles.menuButtonText}>Spielen</Text>
                 </TouchableOpacity>
-                <TouchableOpacity /*onPress={() => navigation.navigate('MainMenu')}*/ style={appStyles.menuButton}>
+                {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                     <Text style={appStyles.menuButtonText}>Custom Game</Text>
                 </TouchableOpacity>
-                <TouchableOpacity /*onPress={() => navigation.navigate('MainMenu')}*/ style={appStyles.menuButton}>
+                <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                     <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>*/}
 
                 
             </View>

@@ -9,12 +9,13 @@ import { handleSqlRequest } from './src/general';
 import StartMenu from './src/menus/StartMenu';
 import MainMenu from './src/menus/MainMenu';
 import KlassikerMenu from './src/menus/KlassikerMenu';
+import CardGamesMenu from './src/menus/CardGamesMenu';
 import MiniGamesMenu from './src/menus/MiniGamesMenu';
 import AddPlayer from './src/menus/AddPlayer';
 
 //Import der Spiele
+import PicoloGame from './src/games/PicoloGame';
 import ManyQuestionsGame from './src/games/ManyQuestions';
-import KlassikerGame from './src/games/KlassikerGame';
 import Kingscup from './src/games/Kingscup';
 import MaexchenGame from './src/games/Mäxchen';
 import DrinkCounter from './src/games/DrinkCounter';
@@ -58,38 +59,11 @@ export default function App() {
   ////////////////////////////////////////////////////////
 
   //Klassiker: Vorglühen
-  const [texts_Vorglühen, setTexts_Vorglühen] = useState(["Platzhalterfrage"]);
+  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 1');
-      setTexts_Vorglühen(result);
-  };
-  fetchData();
-  }, []);
-  //Klassiker: Schon gut dabei
-  const [texts_SchonGutDabei, setTexts_SchonGutDabei] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 2');
-      setTexts_SchonGutDabei(result);
-  };
-  fetchData();
-  }, []);
-  //Klassiker: Heiß
-  const [texts_Heiß, setTexts_Heiß] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 3');
-      setTexts_Heiß(result);
-  };
-  fetchData();
-  }, []);
-  //Klassiker: Wahrheit oder Pflicht
-  const [texts_WahrheitOderPflicht, setTexts_WahrheitOderPflicht] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 4');
-      setTexts_WahrheitOderPflicht(result);
+      const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
+      setTexts_Picolo(result);
   };
   fetchData();
   }, []);
@@ -98,7 +72,7 @@ export default function App() {
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 6');
+      const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
       setManyQuestions(result);
   };
   fetchData();
@@ -108,7 +82,7 @@ export default function App() {
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_simple_questions` WHERE fk_pool = 9 OR fk_pool = 10');
+      const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
       setWords(result);
   };
   fetchData();
@@ -138,28 +112,14 @@ export default function App() {
         <Stack.Screen name="StartMenu" component={StartMenu} />
         <Stack.Screen name="MainMenu" component={MainMenu} />
         <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
+        <Stack.Screen name="CardGamesMenu" component={CardGamesMenu} />
         <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
         <Stack.Screen name="AddPlayer" component={AddPlayer} />
         
         <Stack.Screen 
-            name="VorglühenGame" 
-            component={KlassikerGame}
-            initialParams={{ texts: texts_Vorglühen }} 
-        />
-        <Stack.Screen 
-            name="SchonGutDabeiGame" 
-            component={KlassikerGame}
-            initialParams={{ texts: texts_SchonGutDabei }} 
-        />
-        <Stack.Screen 
-            name="HeißGame" 
-            component={KlassikerGame}
-            initialParams={{ texts: texts_Heiß }} 
-        />
-        <Stack.Screen 
-            name="WahrheitOderPflichtGame" 
-            component={KlassikerGame}
-            initialParams={{ texts: texts_WahrheitOderPflicht }} 
+            name="PicoloGame" 
+            component={PicoloGame}
+            initialParams={{ texts: texts_Picolo }} 
         />
         <Stack.Screen 
             name="ManyQuestionsGame" 
