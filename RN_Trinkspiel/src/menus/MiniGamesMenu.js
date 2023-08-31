@@ -11,6 +11,12 @@ function MiniGamesMenu({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={appStyles.menuButton}>
               <Text style={appStyles.menuButtonText}>Mäxchen</Text>
             </TouchableOpacity>
+            <TouchableOpacity /*onPress={() => navigation.navigate('Activity')}*/ style={appStyles.menuButton}>
+              <Text style={appStyles.menuButtonText}>(Flaschendrehen)</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={appStyles.menuButton}>
+              <Text style={appStyles.menuButtonText}>Activity / Scharade</Text>
+            </TouchableOpacity>
         </View>
         <SettingsButton/>
       </View>
