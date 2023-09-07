@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet, ImageBackground } from 'react-native';
-import { Audio } from 'expo-av';
+//import { Audio } from 'expo-av'; //TODO: wieder nutzen
 
 // Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
 const diceImages = {
@@ -12,8 +12,8 @@ const diceImages = {
   6: require('../../assets/images/würfel_6.png'),
 };
 
-const diceSound = new Audio.Sound();
-diceSound.loadAsync(require('../../assets/sounds/dice_shake.mp3'));
+//const diceSound = new Audio.Sound(); //TODO: wieder nutzen
+//diceSound.loadAsync(require('../../assets/sounds/dice_shake.mp3')); //TODO: wieder nutzen
 
 const MaexchenGame = () => {
   const [dice1, setDice1] = useState(1);
@@ -32,8 +32,8 @@ const MaexchenGame = () => {
     });
 
     // Reset the playback position and play the dice sound
-    await diceSound.setPositionAsync(0);
-    await diceSound.playAsync();
+    //await diceSound.setPositionAsync(0); //TODO: wieder nutzen
+    //await diceSound.playAsync(); //TODO: wieder nutzen
 
     // Update the dice result in the middle of the animation
     setTimeout(() => {
