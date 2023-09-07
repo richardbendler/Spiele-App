@@ -26,7 +26,7 @@ const Activity = ({route }) => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
-          <TouchableOpacity onPress={showNextQuestion}>
+          <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
             <Question question={words && words.length > 0 ? replaceHashtagsWithoutDuplicates(words[wordsIndex].word) : ''}/>
           </TouchableOpacity>
         </View>
