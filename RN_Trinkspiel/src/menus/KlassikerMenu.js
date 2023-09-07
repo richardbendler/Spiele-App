@@ -20,16 +20,16 @@ function KlassikerMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: 100, top: 300 }]}>
-                <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>Picolo</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: 50, top: 185, width: 180, height: 230,}]} >
+              <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
+              <Text style={appStyles.bottleText}>Picolo</Text>
           </TouchableOpacity>
           
           <View style={{ top: 415 }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: 200, top: 550}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: 200, top: 430, width: 180, height: 230,}]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>100.000 Questions</Text>
           </TouchableOpacity>

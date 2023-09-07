@@ -20,12 +20,12 @@ function MiniGamesMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={[appStyles.imageWithTextContainer, { left: 100, top: 300 }]}>
+          <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={[appStyles.imageWithTextContainer, { left: 70, top: 185, width: 180, height: 230, }]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>Mäxchen</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity /*onPress={() => navigation.navigate('Activity')}*/ style={[appStyles.imageWithTextContainer, { left: 330, top: 300}]}>
+          <TouchableOpacity /*onPress={() => navigation.navigate('Activity')}*/ style={[appStyles.imageWithTextContainer, { left: 280, top: 185, width: 180, height: 230,}]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>(Flaschendrehen)</Text>
           </TouchableOpacity>
@@ -34,12 +34,12 @@ function MiniGamesMenu({ navigation }) {
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { left: 200, top: 550}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { left: 50, top: 430, width: 180, height: 230,}]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>Activity / Scharade</Text>
           </TouchableOpacity> 
 
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkCounter')} style={[appStyles.imageWithTextContainer, { left: 400, top: 550}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('DrinkCounter')} style={[appStyles.imageWithTextContainer, { left: 270, top: 430, width: 180, height: 230,}]}>
             <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
             <Text style={appStyles.bottleText}>Getränkezähler</Text>
           </TouchableOpacity>
