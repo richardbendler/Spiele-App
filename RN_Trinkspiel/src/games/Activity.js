@@ -1,6 +1,6 @@
 // In einer Datei namens VorglühenGame.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 
@@ -23,14 +23,16 @@ const Activity = ({route }) => {
   };
 
   return (
-    <View style={appStyles.completeScreenGameContainer}>
-      <View style={appStyles.gameContainer}>
-        <TouchableOpacity onPress={showNextQuestion}>
-          <Question question={words && words.length > 0 ? replaceHashtagsWithoutDuplicates(words[wordsIndex].content) : ''}/>
-        </TouchableOpacity>
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={appStyles.completeScreenGameContainer}>
+        <View style={appStyles.gameContainer}>
+          <TouchableOpacity onPress={showNextQuestion}>
+            <Question question={words && words.length > 0 ? replaceHashtagsWithoutDuplicates(words[wordsIndex].word) : ''}/>
+          </TouchableOpacity>
+        </View>
+        <HandleFeedback texts={words} textsIndex={wordsIndex} table={'games_activity_evaluation'}/>
       </View>
-      <HandleFeedback texts={words} textsIndex={wordsIndex}/>
-    </View>
+    </ImageBackground>
   );
 };
 

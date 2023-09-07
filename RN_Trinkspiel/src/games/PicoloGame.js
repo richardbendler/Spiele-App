@@ -1,40 +1,42 @@
 // In einer Datei namens VorglühenGame.js
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 
-const ManyQuestionsGame = ({route }) => {
-  const { manyQuestions } = shuffleArrayFisherYates(route.params);
+const PicoloGame = ({route }) => {
+  const { texts } = shuffleArrayFisherYates(route.params);
+  //shuffleArrayFisherYates(result.map(row => row.content))
+  const [textsIndex, setTextsIndex] = useState(0);
 
-  const [questionIndex, setQuestionIndex] = useState(0);
   const showNextQuestion = () => {
     try{
-      if (questionIndex < manyQuestions.length - 1) {
-        setQuestionIndex(questionIndex + 1);
+      if (textsIndex < texts.length - 1) {
+        setTextsIndex(textsIndex + 1);
       }
     }catch (error){
-      setQuestionIndex(0);
+        setTextsIndex(0);
     }
-    
   };
 
+  
+  
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
           <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
-            <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
+            <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(texts[textsIndex].content) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={manyQuestions} textsIndex={questionIndex} table={'games_klassiker_evaluation'}/>
+        <HandleFeedback texts={texts} textsIndex={textsIndex} table={'games_activity_evaluation'}/>
       </View>
     </ImageBackground>
   );
 };
 
 
-export default ManyQuestionsGame;
+export default PicoloGame;

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet, ImageBackground } from 'react-native';
 import { Audio } from 'expo-av';
 
 // Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
@@ -52,23 +52,25 @@ const MaexchenGame = () => {
   });
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Mäxchen</Text>
-      <TouchableOpacity style={styles.button} onPress={rollDice}>
-        <Text style={styles.buttonText}>Würfeln</Text>
-      </TouchableOpacity>
-      {!isDiceHidden && (
-        <View>
-          <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice1]} />
-          <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice2]} />
-        </View>
-      )}
-      {!isDiceHidden && 
-        <TouchableOpacity style={styles.button} onPress={hideDice}>
-          <Text style={styles.buttonText}>Würfel in Becher zurücklegen</Text>
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Mäxchen</Text>
+        <TouchableOpacity style={styles.button} onPress={rollDice}>
+          <Text style={styles.buttonText}>Würfeln</Text>
         </TouchableOpacity>
-      }
-    </View>
+        {!isDiceHidden && (
+          <View>
+            <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice1]} />
+            <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice2]} />
+          </View>
+        )}
+        {!isDiceHidden && 
+          <TouchableOpacity style={styles.button} onPress={hideDice}>
+            <Text style={styles.buttonText}>Würfel in Becher zurücklegen</Text>
+          </TouchableOpacity>
+        }
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -80,9 +82,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: 'white',
   },
   button: {
     backgroundColor: '#A0522D', // dunkelbraune Farbe, die an Holz erinnert
