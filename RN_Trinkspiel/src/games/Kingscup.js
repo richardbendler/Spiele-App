@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, ImageBackground } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 const CARD_WIDTH = 50;
@@ -15,9 +15,85 @@ const suitImages = {
   Spades: require('../../assets/images/icons/cards/Spades.png'),
 };
 
+const cardMeaningsSimple = {
+  '2': 'Two - You! Verteil einen Schluck', 
+  '3': 'Three - Me! - Du musst selbst trinken!', 
+  '4': 'Four - Floor! Wer als letzter den Boden berührt, trinkt!', 
+  '5': 'Five Guys! Alle Guys trinken', 
+  '6': 'Six Chicks! Alle Frauen trinken', 
+  '7': 'Seven - Heaven! Wer als letzter die Hände oben hat, trinkt!', 
+  '8': 'Eight - Mate! Wähle einen Trinkbuddy', 
+  '9': 'Nine - Rime! Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.', 
+  '10': 'Ten - Kategorie! Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.', 
+  'J': 'Regel! Bestimme eine Regel', 
+  'Q': 'Questionmaster! Niemand darf dir mehr Fragen beantworten.', 
+  'K': 'Kingscup! Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!', 
+  'A': 'Wasserfall! Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen'
+};
+
+const cardMeanings = {
+  'Hearts': {
+    '2': 'Two - You! Verteil einen Schluck', 
+    '3': 'Three - Me! - Du musst selbst trinken!', 
+    '4': 'Four - Floor! Wer als letzter den Boden berührt, trinkt!', 
+    '5': 'Five Guys! Alle Guys trinken', 
+    '6': 'Six Chicks! Alle Frauen trinken', 
+    '7': 'Seven - Heaven! Wer als letzter die Hände oben hat, trinkt!', 
+    '8': 'Eight - Mate! Wähle einen Trinkbuddy', 
+    '9': 'Nine - Rime! Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.', 
+    '10': 'Ten - Kategorie! Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.', 
+    'J': 'Regel! Bestimme eine Regel', 
+    'Q': 'Questionmaster! Niemand darf dir mehr Fragen beantworten.', 
+    'K': 'Kingscup! Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!', 
+    'A': 'Wasserfall! Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen'}, 
+  'Diamonds': {
+    '2': 'Tausche Plätze mit jemandem!', 
+    '3': 'Dreimal klatschen oder trinken!', 
+    '4': 'Berühre den Boden!', 
+    '5': 'Tanze oder trinke!', 
+    '6': 'Alle singen ein Lied!', 
+    '7': '7 Himmel! Jeder zeigt zum Himmel!', 
+    '8': 'Mache einen lustigen Tanz!', 
+    '9': 'Sage einen Zungenbrecher!', 
+    '10': '10 Sekunden Handstand oder trinken!', 
+    'J': 'Mime ein Tier nach!', 
+    'Q': 'Sei der König oder die Königin bis zur nächsten Runde!', 
+    'K': 'Erzähle einen Witz!', 
+    'A': 'Mache einen Zaubertrick!'}, 
+  'Clubs': {
+    '2': 'Zeige deinen besten Moonwalk!', 
+    '3': 'Drehe dich 3 Mal im Kreis!', 
+    '4': 'Mache 4 Liegestütze!', 
+    '5': 'Sing dein Lieblingslied!', 
+    '6': 'Alle springen hoch!', 
+    '7': 'Stelle eine Regel auf!', 
+    '8': 'Wähle jemanden zum Tanz!', 
+    '9': 'Sage ein Geheimnis!', 
+    '10': 'Mache 10 Hampelmänner!', 
+    'J': 'Erzähle eine lustige Geschichte!', 
+    'Q': 'Sei ein Roboter bis zur nächsten Runde!', 
+    'K': 'Mache eine Kniebeuge mit jemandem auf dem Rücken!', 
+    'A': 'Erzähle ein Märchen!'}, 
+  'Spades': {
+    '2': 'Wähle jemanden aus, der trinkt!', 
+    '3': 'Drehe dich und zeige auf jemanden!', 
+    '4': 'Lache laut oder trinke!', 
+    '5': 'Erzähle eine Geschichte!', 
+    '6': 'Alle stehen auf einem Bein!', 
+    '7': 'Jeder sagt einen Fakt über sich!', 
+    '8': 'Spiele Luftgitarre!', 
+    '9': 'Erzähle einen Witz!', 
+    '10': 'Jeder macht ein Tiergeräusch!', 
+    'J': 'Wähle einen Joker!', 
+    'Q': 'Mache eine Pose!', 
+    'K': 'Sei ein König und befehle jemandem!',
+     'A': 'Mache einen Zaubertrick!'}
+    };
+
 const Kingscup = () => {
   const [deck, setDeck] = useState(shuffleDeck(createDeck()));
   const [selectedCard, setSelectedCard] = useState(null);
+  const [cardMeaning, setCardMeaning] = useState('');
 
   function createDeck() {
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
@@ -45,55 +121,64 @@ const Kingscup = () => {
     const newDeck = [...deck];
     newDeck[index].revealed = true;
     setDeck(newDeck);
-    setSelectedCard(newDeck[index]);
+    //setCardMeaning(cardMeanings[selectedCard.suit][selectedCard.value]);
+    const card = newDeck[index];
+    setSelectedCard(card);
+    setCardMeaning(cardMeaningsSimple[card.value]);
+
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.deck}>
-        {deck.map((card, index) => {
-          const angle = (index / deck.length) * 360;
-          const offset = card.revealed ? OFFSET : 0;
-          const cardX = (HORIZONTAL_RADIUS + offset) * Math.sin((angle * Math.PI) / 180);
-          const cardY = -(VERTICAL_RADIUS + offset) * Math.cos((angle * Math.PI) / 180);
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={styles.container}>
+        <View style={styles.deck}>
+          {deck.map((card, index) => {
+            const angle = (index / deck.length) * 360;
+            const offset = card.revealed ? OFFSET : 0;
+            const cardX = (HORIZONTAL_RADIUS + offset) * Math.sin((angle * Math.PI) / 180);
+            const cardY = -(VERTICAL_RADIUS + offset) * Math.cos((angle * Math.PI) / 180);
 
-          return (
-            <TouchableOpacity
-              key={index}
-              style={[
-                styles.cardContainer,
-                {
-                  transform: [
-                    { translateX: cardX },
-                    { translateY: cardY },
-                    { rotate: `${angle}deg` },
-                  ],
-                },
-              ]}
-              onPress={() => revealCard(index)}
-            >
-              {card.revealed ? (
-                <View style={styles.card}>
-                  <Text style={styles.cardValue}>{card.value}</Text>
-                  <Image style={styles.suitIcon} source={suitImages[card.suit]} />
-                </View>
-              ) : (
-                <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />
-              )}
-            </TouchableOpacity>
-          );
-        })}
-        {selectedCard && (
-          <View style={styles.centerCard}>
-            <Text style={styles.centerCardValue}>{selectedCard.value}</Text>
-            <Image style={styles.centerSuitIcon} source={suitImages[selectedCard.suit]} />
+            return (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.cardContainer,
+                  {
+                    transform: [
+                      { translateX: cardX },
+                      { translateY: cardY },
+                      { rotate: `${angle}deg` },
+                    ],
+                  },
+                ]}
+                onPress={() => revealCard(index)}
+              >
+                {card.revealed ? (
+                  <View style={styles.card}>
+                    <Text style={styles.cardValue}>{card.value}</Text>
+                    <Image style={styles.suitIcon} source={suitImages[card.suit]} />
+                  </View>
+                ) : (
+                  <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />
+                )}
+              </TouchableOpacity>
+            );
+          })}
+          {selectedCard ? (
+            <View style={styles.centerCard}>
+              <Text style={styles.centerCardValue}>{selectedCard.value}</Text>
+              <Image style={styles.centerSuitIcon} source={suitImages[selectedCard.suit]} />
+            </View>
+          ) : null}
+
+        </View>
+        <View style={styles.description}>
+          <View style={{alignItems: 'center',justifyContent: 'center',}}>
+          {selectedCard ? <Text>{cardMeaning}</Text> : null}
           </View>
-        )}
+        </View>
       </View>
-      <View style={styles.description}>
-        {selectedCard && <Text>{`Bedeutung der Karte ${selectedCard.value} of ${selectedCard.suit}`}</Text>}
-      </View>
-    </View>
+      </ImageBackground>
   );
 };
 
@@ -101,7 +186,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#2e2e2e',
+    //backgroundColor: '#2e2e2e',
   },
   deck: {
     flex: 1,
@@ -156,6 +241,10 @@ const styles = StyleSheet.create({
     height: 40,
   },
   description: {
+    position: 'absolute',
+    
+    width: '100%',
+    bottom: 30,
     padding: 20,
     backgroundColor: '#e0e0e0',
     borderTopWidth: 1,

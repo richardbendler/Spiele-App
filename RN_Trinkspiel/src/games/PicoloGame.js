@@ -1,6 +1,6 @@
 // In einer Datei namens VorglühenGame.js
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 
@@ -25,14 +25,16 @@ const PicoloGame = ({route }) => {
   
   
   return (
-    <View style={appStyles.completeScreenGameContainer}>
-      <View style={appStyles.gameContainer}>
-        <TouchableOpacity onPress={showNextQuestion}>
-          <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(texts[textsIndex].content) : ''}/>
-        </TouchableOpacity>
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={appStyles.completeScreenGameContainer}>
+        <View style={appStyles.gameContainer}>
+          <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
+            <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(texts[textsIndex].content) : ''}/>
+          </TouchableOpacity>
+        </View>
+        <HandleFeedback texts={texts} textsIndex={textsIndex} table={'games_activity_evaluation'}/>
       </View>
-      <HandleFeedback texts={texts} textsIndex={textsIndex}/>
-    </View>
+    </ImageBackground>
   );
 };
 

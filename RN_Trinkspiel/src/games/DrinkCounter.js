@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ImageBackground } from 'react-native';
 import { VariablesContext } from '../../VariablesContext'; // Pfad zum VariablesContext anpassen
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -47,32 +47,34 @@ const DrinkCounter = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        {drinkTypes.map((drinkType, index) => (
-          <View key={index} style={styles.drinkTypeContainer}>
-            <Text style={styles.drinkTypeName}>{drinkType.name}</Text>
-            <View style={styles.counterContainer}>
-              <Text style={styles.drinkTypeCount}>{drinkType.count}</Text>
-              <TouchableOpacity onPress={() => incrementCount(index)} style={styles.button}>
-                <Text style={styles.buttonText}>+</Text>
-              </TouchableOpacity>
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={styles.container}>
+        <ScrollView>
+          {drinkTypes.map((drinkType, index) => (
+            <View key={index} style={styles.drinkTypeContainer}>
+              <Text style={styles.drinkTypeName}>{drinkType.name}</Text>
+              <View style={styles.counterContainer}>
+                <Text style={styles.drinkTypeCount}>{drinkType.count}</Text>
+                <TouchableOpacity onPress={() => incrementCount(index)} style={styles.button}>
+                  <Text style={styles.buttonText}>+</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        ))}
-      </ScrollView>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={inputValue}
-          onChangeText={text => setInputValue(text)}
-          placeholder="Getränketyp hinzufügen"
-        />
-        <TouchableOpacity onPress={addDrinkType} style={styles.addButton}>
-          <Text style={styles.buttonText}>Hinzufügen</Text>
-        </TouchableOpacity>
+          ))}
+        </ScrollView>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            value={inputValue}
+            onChangeText={text => setInputValue(text)}
+            placeholder="Getränketyp hinzufügen"
+          />
+          <TouchableOpacity onPress={addDrinkType} style={styles.addButton}>
+            <Text style={styles.buttonText}>Hinzufügen</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f3f3f3',
+    //backgroundColor: '#f3f3f3',
   },
   drinkTypeContainer: {
     flexDirection: 'row',
