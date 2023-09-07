@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 import { handleSqlRequest } from "../../general";
 
-const HandleFeedback = ({texts, textsIndex}) => {
+const HandleFeedback = ({texts, textsIndex, table}) => {
     //Für Feedback
     const [feedbackText, setFeedbackText] = useState(null);
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const translateY = useRef(new Animated.Value(0)).current;
     
-    function handleFeedback(feedback){
+    function handleFeedback(feedback, table){
         //Animation
         setFeedbackText(feedback==1 ? '👍 Danke für dein Feedback!' : '👎 Danke für dein Feedback!');
         Animated.parallel([
@@ -35,7 +35,8 @@ const HandleFeedback = ({texts, textsIndex}) => {
         const question_id = texts[textsIndex].id
         const question_content = texts[textsIndex].content
         //sql:
-        const sqlInsert = `INSERT INTO games_evaluation (id, fk_question, fk_type, value, comment, author, timestamp) VALUES (NULL, ${question_id}, ${feedback}, NULL, NULL, NULL, current_timestamp())`;
+        //table zB = games_klassiker_evaluation
+        const sqlInsert = `INSERT INTO ${table} (id, fk_question, fk_type, value, comment, author, timestamp) VALUES (NULL, ${question_id}, ${feedback}, NULL, NULL, NULL, current_timestamp())`;
         handleSqlRequest(sqlInsert);
     }
     
@@ -45,16 +46,16 @@ const HandleFeedback = ({texts, textsIndex}) => {
             <View style={styles.feedbackContainer}>
             <Text style={styles.questionText}>Wie findest du diese Frage?</Text>
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity onPress={() => handleFeedback(1)}>
+                <TouchableOpacity onPress={() => handleFeedback(1, table)}>
                 <Text style={styles.buttonText}>👍</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleFeedback(2)}>
+                <TouchableOpacity onPress={() => handleFeedback(2, table)}>
                 <Text style={styles.buttonText}>👎</Text>
                 </TouchableOpacity>
             </View>
             {feedbackText && (
                 <Animated.View style={[styles.feedbackTextContainer, { right: 10, opacity: fadeAnim, transform: [{ translateY }] }]}>
-                <Text style={styles.feedbackText}>{feedbackText}</Text>
+                <Text style={[styles.feedbackText, {color: 'white'}]}>{feedbackText}</Text>
                 </Animated.View>
             )}
             </View>

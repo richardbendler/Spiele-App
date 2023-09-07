@@ -5,7 +5,7 @@ import SettingsButton from './sublements/SettingsButton';
 import { VariablesContext } from '../../VariablesContext';
 import Settings from './sublements/Settings';
 
-function KlassikerMenu({ navigation }) {
+function CardGamesMenu({ navigation }) {
   const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
   return (
@@ -20,18 +20,18 @@ function KlassikerMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: 100, top: 300 }]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { left: 300, top: 300 }]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>Picolo</Text>
+                <Text style={appStyles.bottleText}>Kingscup</Text>
           </TouchableOpacity>
-          
+
           <View style={{ top: 415 }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: 200, top: 550}]}>
+          <TouchableOpacity /*onPress={() => navigation.navigate('Pferderennen')}*/ style={[appStyles.imageWithTextContainer, { left: 200, top: 550}]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>100.000 Questions</Text>
+                <Text style={appStyles.bottleText}>(Pferderennen)</Text>
           </TouchableOpacity>
 
           <View style={{ top: 645 }}>
@@ -44,4 +44,4 @@ function KlassikerMenu({ navigation }) {
   );
 }
 
-export default KlassikerMenu;
+export default CardGamesMenu;
