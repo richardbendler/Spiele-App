@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, ImageBackground, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 
@@ -22,8 +22,8 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
         onChangeText={text => setCurrentName(text)}
         style={appStyles.input}
       />
-      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.submitButton}>
-        <Text style={appStyles.submitButtonText}>Add Player</Text>
+      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.chalkboardButton}>
+        <Text style={[appStyles.chalkboardButtonText, {fontSize:20}]}>Add Player</Text>
       </TouchableOpacity>
     </>
   );
@@ -40,18 +40,30 @@ const AddPlayer = ({ navigation }) => {
   );
 
   return (
-    <View style={appStyles.menuContainer}>
-      <PlayerInput onAddPlayer={handleAddPlayer} />
-      <FlatList
-        data={playerNames}
-        renderItem={({ item }) => <Text>{item}</Text>}
-        keyExtractor={(item, index) => index.toString()}
-        style={appStyles.playerList}
-      />
-      <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-        <Text style={appStyles.menuButtonText}>Spielen</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={{flex: 1}}>
+      <View style={appStyles.menuContainer}>
+        <View style={{width:'70%'}}>
+          <PlayerInput onAddPlayer={handleAddPlayer} />
+          
+              <View style={{ height: 200 }}>
+                <FlatList
+                data={playerNames}
+                renderItem={({ item }) => <Text style={appStyles.playerListText}>{item}</Text>}
+                keyExtractor={(item, index) => index.toString()}
+                style={appStyles.playerList}
+              />
+              </View>
+
+
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('PicoloGame')} style={[appStyles.chalkboardButton, {}]}>
+          <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
+        </TouchableOpacity>
+      
+        </View>
+
+    </ImageBackground>
+
   );
 };
 

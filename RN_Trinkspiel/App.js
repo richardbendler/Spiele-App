@@ -97,10 +97,11 @@ export default function App() {
   //Globale Variablen aus Context
   const [playerNames, setPlayerNames] = useState([]);
   const [drinkTypes, setDrinkTypes] = useState([]); 
+  const [settingsVisible, setSettingsVisible] = useState(false);
 
 
   return (
-    <VariablesContext.Provider value={{ playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
+    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
       <NavigationContainer>
         
         <Stack.Navigator 
