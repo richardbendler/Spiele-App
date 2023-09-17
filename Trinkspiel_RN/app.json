@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RN_Trinkspiel",
-    "slug": "the-one",
+    "name": "Trinkspiel_RN",
+    "slug": "Trinkspiel_RN",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,24 +15,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "theone"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.richardbendler.theone"
+      "package": "com.richardbendler.Trinkspiel_RN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "58460d15-4a1e-4983-9265-bf72a58d4060"
+        "projectId": "f7a32de8-fd8a-41e0-8988-44f1c133ae94"
       }
-    },
-    "owner": "richardbendler"
+    }
   }
 }
