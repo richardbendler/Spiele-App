@@ -23,7 +23,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.richardbendler.Trinkspiel_RN",
-      "versionCode": 8
+      "versionCode": 9
     },
     "web": {
       "favicon": "./assets/favicon.png"
