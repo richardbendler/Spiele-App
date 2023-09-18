@@ -18,7 +18,10 @@ npm install -g expo-cli
 npm install react-native-sound
 npm install @react-navigation/native
 npm install @react-navigation/stack
-npm install @react-native-async-storage/async-storage
+//npm install @react-native-async-storage/async-storage
+npx expo install @react-native-async-storage/async-storage
+? npm install react-native-gesture-handler
+? npm install react-native-screens
 
 
 
