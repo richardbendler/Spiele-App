@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RN_Trinkspiel",
-    "slug": "RN_Trinkspiel",
+    "name": "Trinkspiel_RN",
+    "slug": "Trinkspiel_RN",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.richardbendler.Trinkspiel_RN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f7a32de8-fd8a-41e0-8988-44f1c133ae94"
+      }
     }
   }
 }
