@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
-//TODO: import { NavigationContainer } from '@react-navigation/native';
-//TODO: import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
 //Import der Datenbankvorlagen
 //TODO: import { handleSqlRequest } from './src/general';
@@ -27,8 +27,8 @@ import { VariablesContext } from './VariablesContext';
 
 
 
-//TODO:? import { enableScreens } from 'react-native-screens';
-//TODO:? enableScreens();
+import { enableScreens } from 'react-native-screens';
+enableScreens();
 
 
 export default function App() {
@@ -80,7 +80,7 @@ export default function App() {
 
 
   //Für Menus
-  //TODO: const Stack = createStackNavigator();
+  const Stack = createStackNavigator();
 
   
   
@@ -89,11 +89,13 @@ export default function App() {
   const [drinkTypes, setDrinkTypes] = useState([]); 
   const [settingsVisible, setSettingsVisible] = useState(false);
 
-
   return (
-    <View>
-      <MainMenu/>
-    </View>
+      <View>
+        <Text>
+          Test123
+        </Text>
+      </View>
+  
   );
 }
 

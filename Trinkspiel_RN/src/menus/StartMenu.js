@@ -20,7 +20,7 @@ const StartMenu = ({ navigation }) => {
                     
 
 
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
+                    <TouchableOpacity /*onPress={() => navigation.navigate('MainMenu')}*/ style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>

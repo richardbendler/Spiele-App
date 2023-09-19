@@ -15,9 +15,16 @@ _(npm audit fix --force)_
 npm install -g expo-cli
 
 ### Sonstiges
-npm install react-native-sound
+//Bereits installiert:
+
 npm install @react-navigation/native
 npm install @react-navigation/stack
+
+//////////////////////////////////////////
+//Noch nicht:
+
+npm install react-native-sound
+
 //npm install @react-native-async-storage/async-storage
 npx expo install @react-native-async-storage/async-storage
 ? npm install react-native-gesture-handler
