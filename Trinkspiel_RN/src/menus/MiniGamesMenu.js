@@ -39,9 +39,10 @@ function MiniGamesMenu({ navigation }) {
                 <Text style={appStyles.bottleText}>Activity / Scharade</Text>
           </TouchableOpacity> 
 
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkCounter')} style={[appStyles.imageWithTextContainer, { left: 270, top: 430, width: 180, height: 230,}]}>
+          <TouchableOpacity /*onPress={() => navigation.navigate('DrinkCounter')}*/ style={[appStyles.imageWithTextContainer, { left: 270, top: 430, width: 180, height: 230,}]}>
             <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-            <Text style={appStyles.bottleText}>Getränkezähler</Text>
+            <Text style={appStyles.bottleText}>(Getränkezähler)
+            </Text>
           </TouchableOpacity>
 
           <View style={{ top: 645 }}>
