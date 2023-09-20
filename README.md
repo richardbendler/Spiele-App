@@ -17,9 +17,13 @@ npm install -g expo-cli
 ### Sonstiges
 //Bereits installiert:
 
+npm install react-native
+npm install react-native-gesture-handler 
+npm install react-native-safe-area-context
+
 npm install @react-navigation/native
 npm install @react-navigation/stack
-npm install react-native-gesture-handler 
+
 
 //////////////////////////////////////////
 //Noch nicht:
