@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 18,
+      "versionCode": 20
+      ,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
