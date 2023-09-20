@@ -37,7 +37,7 @@ const HandleFeedback = ({texts, textsIndex, table}) => {
         //sql:
         //table zB = games_klassiker_evaluation
         const sqlInsert = `INSERT INTO ${table} (id, fk_question, fk_type, value, comment, author, timestamp) VALUES (NULL, ${question_id}, ${feedback}, NULL, NULL, NULL, current_timestamp())`;
-        //TODO: handleSqlRequest(sqlInsert);
+        handleSqlRequest(sqlInsert);
     }
     
 
