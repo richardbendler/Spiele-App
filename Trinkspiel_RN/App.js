@@ -90,11 +90,20 @@ export default function App() {
   const [settingsVisible, setSettingsVisible] = useState(false);
 
   return (
-      <View>
-        <Text>
-          Test123
-        </Text>
-      </View>
+    
+      <NavigationContainer>
+        
+        <Stack.Navigator 
+          initialRouteName="StartMenu"
+          screenOptions={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        >
+        <Stack.Screen name="StartMenu" component={StartMenu} />
+        
+      </Stack.Navigator>
+    </NavigationContainer>
+  
   
   );
 }
