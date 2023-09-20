@@ -22,14 +22,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.richardbendler.Trinkspiel_RN"
+      "versionCode": 23
+
+      ,
+      "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "f7a32de8-fd8a-41e0-8988-44f1c133ae94"
+        "projectId": "55a09fb7-1a37-4df2-910d-96989cd303db"
       }
     }
   }

@@ -30,7 +30,7 @@ function KlassikerMenu({ navigation }) {
           </View>
 
           <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: 200, top: 430, width: 180, height: 230,}]}>
-                <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
+                <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>100.000 Questions</Text>
           </TouchableOpacity>
 
