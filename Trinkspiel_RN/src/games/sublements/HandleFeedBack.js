@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
-import { handleSqlRequest } from "../../general";
+//import { handleSqlRequest } from "../../general";
 
 const HandleFeedback = ({texts, textsIndex, table}) => {
     //Für Feedback

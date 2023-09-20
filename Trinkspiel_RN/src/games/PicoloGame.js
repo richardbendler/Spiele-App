@@ -8,7 +8,7 @@ import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sub
 import HandleFeedback from './sublements/HandleFeedBack';
 
 const PicoloGame = ({route }) => {
-  const { texts } = shuffleArrayFisherYates(route.params);
+  const texts = shuffleArrayFisherYates(route.params.texts);
   //shuffleArrayFisherYates(result.map(row => row.content))
   const [textsIndex, setTextsIndex] = useState(0);
 
