@@ -2,17 +2,15 @@ import React, { useState, useContext, useCallback } from 'react';
 import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
-//TODO: import SettingsButton from './sublements/SettingsButton';
-//TODO: import Settings from './sublements/Settings';
+import SettingsButton from './sublements/SettingsButton';
+import Settings from './sublements/Settings';
 
 const StartMenu = ({ navigation }) => {
-    //TODO: const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
-    //<ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
-    /* TODO: <Settings/> */
-    //</ImageBackground>
+    const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
+
   return (
-    
-    
+    <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
+    <Settings/>
     <View style={appStyles.pageContainer}>
         
             <View style={appStyles.smallPageContainer}>
@@ -22,7 +20,7 @@ const StartMenu = ({ navigation }) => {
                     
 
 
-                    <TouchableOpacity /*onPress={() => navigation.navigate('MainMenu')}*/ style={appStyles.chalkboardButton}>
+                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
@@ -37,13 +35,13 @@ const StartMenu = ({ navigation }) => {
                     
                 </View>
 
-                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+                <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
                     <Text style={appStyles.settingsButtonText}>⚙️</Text>
-                </TouchableOpacity>*/}
+                </TouchableOpacity>
             </View>
         
     </View>
-    
+    </ImageBackground>
   );
 };
 

@@ -91,18 +91,43 @@ export default function App() {
 
   return (
     
-      <NavigationContainer>
-        
-        <Stack.Navigator 
-          initialRouteName="StartMenu"
-          screenOptions={{
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          }}
-        >
-        <Stack.Screen name="StartMenu" component={StartMenu} />
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
+    <NavigationContainer>
+      
+      <Stack.Navigator 
+        initialRouteName="StartMenu"
+        screenOptions={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      >
+      <Stack.Screen name="StartMenu" component={StartMenu} />
+      <Stack.Screen name="MainMenu" component={MainMenu} />
+      <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
+      <Stack.Screen name="CardGamesMenu" component={CardGamesMenu} />
+      <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
+      <Stack.Screen name="AddPlayer" component={AddPlayer} />
+      
+      <Stack.Screen 
+          name="PicoloGame" 
+          component={PicoloGame}
+          initialParams={{ texts: texts_Picolo }} 
+      />
+      <Stack.Screen 
+          name="ManyQuestionsGame" 
+          component={ManyQuestionsGame}
+          initialParams={{ manyQuestions: manyQuestions }} 
+      />
+      <Stack.Screen name="Kingscup" component={Kingscup} />
+      <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+      <Stack.Screen 
+          name="Activity" 
+          component={Activity}
+          initialParams={{ words: words }} 
+      />
+      {/*<Stack.Screen name="DrinkCounter" component={DrinkCounter} />*/}
+    </Stack.Navigator>
+  </NavigationContainer>
+</VariablesContext.Provider>
   
   
   );
