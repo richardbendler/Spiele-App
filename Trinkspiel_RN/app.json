@@ -15,16 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "trinkspiel-01"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 23
-
-      ,
+      "versionCode": 24,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
