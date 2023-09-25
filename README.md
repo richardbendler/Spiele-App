@@ -11,11 +11,36 @@ npm install
 
 _(npm audit fix --force)_
 
-### Expo installieren:
-npm install -g expo-cli
+__________________________________________________
 
-### Sonstiges
+## Lokal - Start:
+- cd RN_Trinkspiel
+- npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
+
+- ~~npm run android~~
+- ~~npm run ios # requires an iOS device or macOS for access to an iOS simulator~~
+- ~~npm run web~~
+
+__________________________________________________
+
+## Expo Go auf dem Handy zum testen
+_(Falls Fehler kommt: Wrong Expo version: "expo update 47.0.0)_
+__________________________________________________
+
+## To test on pc:
+Android Studio: https://developer.android.com/studio
+
+_(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple Laptops selbst!)_
+
+__________________________________________________
+
+### EAS installieren und einrichten (nur für Build relevant)
+https://docs.expo.dev/build/setup/
+
+### NPM-Geschichten (-> IST SCHON INSTALLIERT und muss nicht neu installiert werden)
 //Bereits installiert:
+
+npm install -g expo-cli
 
 npm install react-native
 npm install react-native-gesture-handler 
@@ -40,30 +65,8 @@ _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen we
 
 ### Datenbank installieren
 ~~npm install react-native-sqlite-storage~~
-
 __________________________________________________
 
-## Lokal - Start:
-- cd RN_Trinkspiel
-- npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
-
-
-- ~~npm run android~~
-- ~~npm run ios # requires an iOS device or macOS for access to an iOS simulator~~
-- ~~npm run web~~
-
-__________________________________________________
-
-## Expo Go auf dem Handy zum testen
-_(Falls Fehler kommt: Wrong Expo version: "expo update 47.0.0)_
-__________________________________________________
-
-## To test on pc:
-Android Studio: https://developer.android.com/studio
-
-_(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple Laptops selbst!)_
-
-__________________________________________________
 ## Datenbank
 
 ### Datenbank bearbeiten
