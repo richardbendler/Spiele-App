@@ -1,87 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Pferderennen = () => {
-  const [currentCard, setCurrentCard] = useState(null);
-  const [winner, setWinner] = useState(null);
+const createDeck = () => {
+  const suits = ['♦', '♥', '♠', '♣'];
+  const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  let deck = [];
+  for (let suit of suits) {
+    for (let value of values) {
+      deck.push({ suit, value });
+    }
+  }
+  return deck;
+};
 
-  const horses = ['♠️', '♣️', '♦️', '♥️'];
-  const suits = ['♠️', '♣️', '♦️', '♥️'];
-  const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-  const deckInit = [];
-  suits.forEach(suit => {
-    values.forEach(value => {
-      deckInit.push(value + suit);
-    });
-  });
+const initialField = () => {
+  let field = new Array(24).fill(null);
+  field[20] = { suit: '♦', value: 'A' };
+  field[21] = { suit: '♥', value: 'A' };
+  field[22] = { suit: '♠', value: 'A' };
+  field[23] = { suit: '♣', value: 'A' };
+  return field;
+};
 
-  const [deck, setDeck] = useState(deckInit);
+const App = () => {
+  const [deck, setDeck] = useState(createDeck());
+  const [field, setField] = useState(initialField());
+  const [discardPile, setDiscardPile] = useState([]);
 
-  useEffect(() => {
-    setDeck(prevDeck => {
-      return [...prevDeck].sort(() => Math.random() - 0.5);
-    });
-  }, []);
-
-  const [positions, setPositions] = useState({
-    '♠️': 0,
-    '♣️': 0,
-    '♦️': 0,
-    '♥️': 0,
-  });
+  const moveAceUp = (suit) => {
+    const newField = [...field];
+    for (let i = 0; i < newField.length; i++) {
+      if (newField[i] && newField[i].suit === suit && newField[i].value === 'A') {
+        if (i >= 4 && !newField[i - 4]) { // Check if there is space above to move
+          newField[i - 4] = { ...newField[i] }; // Move the ace up
+          newField[i] = null; // Clear the current space
+        }
+        break; // Exit the loop once the ace is moved
+      }
+    }
+    setField(newField);
+  };  
 
   const drawCard = () => {
-    if (deck.length === 0) {
-      alert('Kartenstapel ist leer!');
-      return;
-    }
-
-    const drawnCard = deck[0];
-    setCurrentCard(drawnCard);
-    setDeck(prevDeck => prevDeck.slice(1));
-
-    const suitOfDrawnCard = drawnCard.slice(-1);
-
-    setPositions(prevPositions => {
-      let newPosition = prevPositions[suitOfDrawnCard] + 1;
-      return {
-        ...prevPositions,
-        [suitOfDrawnCard]: newPosition,
-      };
-    });
-
-    if (positions[suitOfDrawnCard] === 9) {
-      setWinner(suitOfDrawnCard);
-    }
+    if (deck.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * deck.length);
+    const [drawnCard] = deck.splice(randomIndex, 1);
+    setDeck([...deck]);
+    setDiscardPile([drawnCard, ...discardPile]);
+    moveAceUp(drawnCard.suit); // Call the function to move the ace up
   };
 
   return (
     <View style={styles.container}>
-      {horses.map((horse, index) => (
-        <View key={index} style={styles.column}>
-          {[...Array(10)].map((_, cardIndex) => (
-            <View
-              key={cardIndex}
-              style={[
-                styles.card,
-                {
-                  backgroundColor: positions[horse] > cardIndex ? '#E5E5E5' : '#F8F8F8',
-                },
-              ]}
-            />
-          ))}
-          <Text style={[styles.horse, {bottom: 35 * positions[horse]}]}>{horse}</Text>
-        </View>
-      ))}
-      <TouchableOpacity onPress={drawCard} style={styles.drawCardContainer}>
-        <Text style={styles.drawCard}>Karte ziehen ({deck.length} übrig)</Text>
-        <Text style={styles.drawnCard}>{currentCard}</Text>
-      </TouchableOpacity>
-      {winner && (
-        <View style={styles.winnerContainer}>
-          <Text style={styles.winnerText}>Gewinner: {winner}</Text>
-        </View>
-      )}
+      <View style={styles.deckArea}>
+        <TouchableOpacity style={styles.deck} onPress={drawCard}>
+          <Text style={styles.deckText}>Deck</Text>
+        </TouchableOpacity>
+        {discardPile.length > 0 && (
+          <View style={styles.card}>
+            <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
+          </View>
+        )}
+      </View>
+      <View style={styles.field}>
+        {field.map((card, index) => (
+          <View key={index} style={card ? styles.card : styles.emptyCard}>
+            {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+          </View>
+        ))}
+      </View>
     </View>
   );
 };
@@ -89,71 +76,62 @@ const Pferderennen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    padding: 20,
-    backgroundColor: '#F2F2F2',
-  },
-  column: {
-    flexDirection: 'column-reverse',
+    backgroundColor: '#f0f0f0',
     alignItems: 'center',
-    marginHorizontal: 20,
-    position: 'relative',
+    paddingTop: 50,
   },
-  horse: {
-    fontSize: 30,
-    position: 'absolute',
-    zIndex: 10,
-    left: 10,
+  deckArea: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  deck: {
+    width: 80,
+    height: 100,
+    backgroundColor: '#228B22',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    marginRight: 20,
+  },
+  deckText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  field: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: 360, // Adjusted width
+    justifyContent: 'center',
   },
   card: {
-    width: 40,
-    height: 60,
-    marginBottom: 5,
-    borderRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-  },
-  drawCardContainer: {
-    position: 'absolute',
-    top: 30,
-    left: 30,
-    alignItems: 'center',
+    width: 80,
+    height: 100,
     backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-  },
-  drawCard: {
-    fontSize: 18,
-  },
-  drawnCard: {
-    fontSize: 25,
-    marginTop: 10,
-  },
-  winnerContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
+    margin: 5,
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 8,
   },
-  winnerText: {
-    fontSize: 40,
-    color: 'white',
-    backgroundColor: '#FFD700',
-    padding: 20,
-    borderRadius: 15,
+  emptyCard: {
+    width: 80,
+    height: 100,
+    backgroundColor: '#D3D3D3',
+    margin: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 8,
+  },
+  cardText: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 });
 
-export default Pferderennen;
+export default App;
