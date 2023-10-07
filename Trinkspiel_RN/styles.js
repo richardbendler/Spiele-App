@@ -136,15 +136,16 @@ const buttonStyles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '40%', 
+    height: '40%',
     
   },
   bottleButton: {
     position: 'absolute',
-    
-    width: 180,  // Breite des Flaschenbilds
-    height: 230, // Höhe des Flaschenbilds
     resizeMode: 'contain', // Damit das Bild korrekt skaliert wird
     alignItems: 'center',
+    height: '100%',
+    width: '100%', 
   },
   bottleText: {
     position: 'absolute',
@@ -154,6 +155,9 @@ const buttonStyles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',  // Optional: leichter Schatten für bessere Lesbarkeit
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
+    top: '63%',
+    width: '150%',
+    textAlign: 'center',
 },
   //Submit
   submitButton: {

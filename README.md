@@ -34,6 +34,20 @@ _(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple L
 
 __________________________________________________
 
+## Build
+
+Vorher: "versionCode" in app.json inkrementieren!
+
+(npm update)
+
+https://docs.expo.dev/build/setup/
+
+Diese Anleitung erstellt aber eine .aab-Datei
+
+Um apk zu bekommen https://play.google.com/console  nutzen und Projekt hochladen. Danach APK downloaden
+
+__________________________________________________
+
 ### EAS installieren und einrichten (nur für Build relevant)
 https://docs.expo.dev/build/setup/
 
