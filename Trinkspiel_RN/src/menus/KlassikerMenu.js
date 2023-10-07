@@ -20,21 +20,21 @@ function KlassikerMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: 50, top: 185, width: 180, height: 230,}]} >
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: '10%', top: '15%'}]} >
               <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
               <Text style={appStyles.bottleText}>Picolo</Text>
           </TouchableOpacity>
           
-          <View style={{ top: 415 }}>
+          <View style={{ top: '49%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: 200, top: 430, width: 180, height: 230,}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: '60%', top: '50%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                 <Text style={appStyles.bottleText}>100.000 Questions</Text>
           </TouchableOpacity>
 
-          <View style={{ top: 645 }}>
+          <View style={{ top: '83%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
