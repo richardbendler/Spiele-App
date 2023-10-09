@@ -49,6 +49,22 @@ export default function App() {
   fetchData();
   }, []);
 
+  //Spin The Bottle
+  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
+  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    const fetchData = async () => {
+      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
+      const result1 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
+      setTextsWahrheitSpinTheBottle(result1);
+
+      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3');
+      const result2 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
+      setTextsPflichtSpinTheBottle(result2);
+  };
+  fetchData();
+  }, []);
+
   //100.000 Questions
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   useEffect(() => {
@@ -118,7 +134,11 @@ export default function App() {
           initialParams={{ words: words }} 
       />
       <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
-      <Stack.Screen name="SpinTheBottle" component={SpinTheBottle} />
+      <Stack.Screen 
+          name="SpinTheBottle" 
+          component={SpinTheBottle} 
+          initialParams={{textsWahrheitSpinTheBottle: textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle: textsPflichtSpinTheBottle}}
+      />
       <Stack.Screen name="HorseRace" component={HorseRace} />
     </Stack.Navigator>
   </NavigationContainer>
