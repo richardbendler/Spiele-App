@@ -28,6 +28,7 @@ const MaexchenGame = () => {
 
   const rollDice = async () => {
     setDiceHidden(false);
+    setGameStarted(true);
     Animated.timing(rotateAnim, {
       toValue: 1,
       duration: 3000,
