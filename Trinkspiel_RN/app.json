@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 25,
+      "versionCode": 27,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
@@ -33,6 +33,7 @@
       "eas": {
         "projectId": "55a09fb7-1a37-4df2-910d-96989cd303db"
       }
-    }
+    },
+    "owner": "felsbend"
   }
 }
