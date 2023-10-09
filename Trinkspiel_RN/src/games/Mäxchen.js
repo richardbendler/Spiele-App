@@ -20,6 +20,11 @@ const MaexchenGame = () => {
   const [dice2, setDice2] = useState(1);
   const [isDiceHidden, setDiceHidden] = useState(true);
   const rotateAnim = useRef(new Animated.Value(0)).current;
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const handleChallenge = () => {
+    setDiceHidden(false);
+  };
 
   const rollDice = async () => {
     setDiceHidden(false);
@@ -64,6 +69,11 @@ const MaexchenGame = () => {
             <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice2]} />
           </View>
         )}
+        {isDiceHidden && gameStarted &&
+          <TouchableOpacity style={styles.button} onPress={handleChallenge}>
+            <Text style={styles.buttonText}>Anzweifeln</Text>
+          </TouchableOpacity>
+        }
         {!isDiceHidden && 
           <TouchableOpacity style={styles.button} onPress={hideDice}>
             <Text style={styles.buttonText}>Würfel in Becher zurücklegen</Text>
