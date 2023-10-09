@@ -31,6 +31,12 @@ export const replaceHashtagsWithoutDuplicates = (inputString) => {
       });
 }
 
+export const deleteHashtags = (inputString) => {
+  return inputString.replace(/#[a-zA-Z0-9_], +/g, () => {
+      return "";
+    });
+}
+
 //Sortiert ein Array zufällig neu
 export const shuffleArrayFisherYates =(array) => {
     for (let i = array.length - 1; i > 0; i--) {
