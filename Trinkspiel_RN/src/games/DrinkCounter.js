@@ -5,6 +5,33 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DrinkCounter = () => {
     const { drinkTypes, setDrinkTypes } = useContext(VariablesContext);
+    // Laden der drinkTypes beim Start der Komponente
+    useEffect(() => {
+        const loadDrinkTypes = async () => {
+            try {
+                const storedDrinkTypesString = await AsyncStorage.getItem('drinkTypes');
+                if (storedDrinkTypesString) {
+                    setDrinkTypes(JSON.parse(storedDrinkTypesString));
+                } // Andernfalls verwenden Sie einen Standardwert oder lassen Sie es leer
+            } catch (error) {
+                console.error('Fehler beim Laden der drinkTypes:', error);
+            }
+        };
+        loadDrinkTypes();
+    }, []); // Der leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+
+    // Speichern der drinkTypes, wenn sich diese ändern
+    useEffect(() => {
+        const saveDrinkTypes = async () => {
+            try {
+                await AsyncStorage.setItem('drinkTypes', JSON.stringify(drinkTypes));
+            } catch (error) {
+                console.error('Fehler beim Speichern der drinkTypes:', error);
+            }
+        };
+        saveDrinkTypes();
+    }, [drinkTypes]); // Der Dependency-Array mit drinkTypes stellt sicher, dass dies ausgeführt wird, wenn sich drinkTypes ändert
+
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(true); // Zustand zum Verwalten des Ladens
   
@@ -43,7 +70,10 @@ const DrinkCounter = () => {
   // ...
 
   if (isLoading) {
-    return <Text>Lade Getränke...</Text>; // Anzeigen einer Lademeldung
+    return <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+    <Text>Lade Getränke...</Text>
+  </ImageBackground>; // Anzeigen einer Lademeldung
+    
   }
 
   return (
