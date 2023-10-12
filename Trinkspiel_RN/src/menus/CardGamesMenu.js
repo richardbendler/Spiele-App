@@ -22,7 +22,10 @@ function CardGamesMenu({ navigation }) {
 
           <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { left: '50%', top: '15%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>Kingscup</Text>
+                {/* HACK: used to position Text properly */}
+                <View style={{ top: '14%', right: '75%' }}>
+                  <Text style={appStyles.bottleText}>Kingscup</Text>
+                </View>
           </TouchableOpacity>
 
           <View style={{ top: '49%', left: '0%', height: '1%', width: '100%' }}>
@@ -31,7 +34,10 @@ function CardGamesMenu({ navigation }) {
 
           <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={[appStyles.imageWithTextContainer, { left: '30%', top: '50%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>Pferderennen</Text>
+                {/* HACK: used to position Text properly */}
+                <View style={{ top: '16%', right: '75%' }}>
+                  <Text style={appStyles.bottleText}>Pferderennen</Text>
+                </View>
           </TouchableOpacity>
           
 
