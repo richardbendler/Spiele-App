@@ -16,35 +16,66 @@ const createDeck = () => {
   return deck;
 };
 
-const initialField = () => {
-  let field = new Array(24).fill(null);
-  field[20] = { suit: '♦', value: 'A' };
-  field[21] = { suit: '♥', value: 'A' };
-  field[22] = { suit: '♠', value: 'A' };
-  field[23] = { suit: '♣', value: 'A' };
+const initialField = (deck) => {
+  let field = new Array(5).fill(0);
+  
+  field[0] = new Array(7).fill(null);
+  let deckCopy = [...deck];
+  for (let i = 1; i < 7; i++) {
+      let randomIndex = Math.floor(Math.random() * deckCopy.length);
+      let card = deckCopy[randomIndex];
+      deckCopy.splice(randomIndex, 1);  // Remove the card from the temporary deck
+      field[0][i] = { ...card, isHidden: true };
+  }
+
+  field[1] = new Array(7).fill(null);
+  field[2] = new Array(7).fill(null);
+  field[3] = new Array(7).fill(null);
+  field[4] = new Array(7).fill(null);
+
+  field[1][6] = { suit: '♦', value: 'A' };
+  field[2][6] = { suit: '♥', value: 'A' };
+  field[3][6] = { suit: '♠', value: 'A' };
+  field[4][6] = { suit: '♣', value: 'A' }; 
+
   return field;
 };
 
 const App = () => {
   const [deck, setDeck] = useState(createDeck());
-  const [field, setField] = useState(initialField());
+  const [field, setField] = useState(initialField(deck));
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
 
   const restartGame = () => {
     setDeck(createDeck());
-    setField(initialField());
+    setField(initialField(deck));
     setDiscardPile([]);
     setWinner(null);
   };
 
   const moveAceUp = (suit) => {
     const newField = [...field];
-    for (let i = 0; i < newField.length; i++) {
-      if (newField[i] && newField[i].suit === suit && newField[i].value === 'A') {
-        if (i >= 4 && !newField[i - 4]) { // Check if there is space above to move
-          newField[i - 4] = { ...newField[i] }; // Move the ace up
-          newField[i] = null; // Clear the current space
+    let column = 5;
+    switch(suit){
+      case '♦':
+        column = 1;
+        break;
+      case '♥':
+        column = 2;
+        break;
+      case '♠':
+        column = 3;
+        break;
+      case '♣':
+        column = 4;
+        break;
+    }
+    for (let i = 0; i < newField[column].length; i++) {
+      if (newField[column][i] && newField[column][i].suit === suit && newField[column][i].value === 'A') {
+        if (!newField[column][i-1]) { // Check if there is space above to move
+          newField[column][i-1] = { ...newField[column][i] }; // Move the ace up
+          newField[column][i] = null; // Clear the current space
         }
         break; // Exit the loop once the ace is moved
       }
@@ -53,7 +84,7 @@ const App = () => {
   };  
 
   const drawCard = () => {
-    if (deck.length === 0 || winner) return;
+    if (deck && deck.length === 0 || winner) return;
     const randomIndex = Math.floor(Math.random() * deck.length);
     const [drawnCard] = deck.splice(randomIndex, 1);
     setDeck([...deck]);
@@ -63,8 +94,12 @@ const App = () => {
   };
 
   const checkWinner = () => {
-    const topField = field.slice(0, 4);
-    const winningAce = topField.find(card => card && card.value === 'A');
+    const topFields = new Array(4).fill(null); //field.slice(0, 4);
+    topFields[0] = field[1][0];
+    topFields[1] = field[2][0];
+    topFields[2] = field[3][0];
+    topFields[3] = field[4][0];
+    const winningAce = topFields.find(card => card && card.value === 'A');
     if (winningAce) {
       setWinner(winningAce);
     }
@@ -74,7 +109,7 @@ const App = () => {
     return (
         <View style={styles.winnerScreen}>
             <Text style={styles.winnerText}>{`Gewinner: ${winner.suit}A`}</Text>
-            <TouchableOpacity onPress={restartGame} style={styles.restartButton}>
+            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
                 <Text style={styles.buttonText}>Spiel neustarten</Text>
             </TouchableOpacity>
         </View>
@@ -84,6 +119,59 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
+        <View style={styles.field}>
+          <View style={styles.column}>
+            {field[0].map((card, index) => {
+              // Skip the first element
+              if (index === 0) return null;
+              return(
+              <View key={index} style={card ? styles.card : styles.emptyCard}>
+                {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                {card && card.isHidden && <Text style={styles.cardText}>...</Text>}
+              </View>)
+            })}
+          </View>
+          <View style={styles.column}>
+            {field[1].map((card, index) => {
+              // Skip the first element
+              if (index === 0) return null;
+              return(
+              <View key={index} style={card ? styles.card : styles.emptyCard}>
+                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+              </View>)
+            })}
+          </View>
+          <View style={styles.column}>
+            {field[2].map((card, index) => {
+              // Skip the first element
+              if (index === 0) return null;
+              return(
+              <View key={index} style={card ? styles.card : styles.emptyCard}>
+                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+              </View>)
+            })}
+          </View>
+          <View style={styles.column}>
+            {field[3].map((card, index) => {
+              // Skip the first element
+              if (index === 0) return null;
+              return(
+              <View key={index} style={card ? styles.card : styles.emptyCard}>
+                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+              </View>)
+            })}
+          </View>
+          <View style={styles.column}>
+            {field[4].map((card, index) => {
+              // Skip the first element
+              if (index === 0) return null;
+              return(
+              <View key={index} style={card ? styles.card : styles.emptyCard}>
+                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+              </View>)
+            })}
+          </View>
+        </View>
         <View style={styles.deckArea}>
           <TouchableOpacity style={styles.deck} onPress={drawCard}>
             <Text style={styles.deckText}>Aufdecken</Text>
@@ -93,13 +181,6 @@ const App = () => {
               <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
             </View>
           )}
-        </View>
-        <View style={styles.field}>
-          {field.map((card, index) => (
-            <View key={index} style={card ? styles.card : styles.emptyCard}>
-              {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-            </View>
-          ))}
         </View>
       </View>
     </ImageBackground>
@@ -121,12 +202,14 @@ const styles = StyleSheet.create({
   },
   deck: {
     width: windowWidth * 0.3,
-    height: windowHeight * 0.1,
+    height: windowHeight * 0.115,
+    margin: windowWidth * 0.01,
     backgroundColor: '#228B22',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
     marginRight: windowWidth * 0.01,
+    borderRadius: 8,
   },
   deckText: {
     fontSize: 15,
@@ -136,11 +219,17 @@ const styles = StyleSheet.create({
   field: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    width: windowWidth * 0.90,// * 360 / 100, // Adjusted width
+    width: windowWidth * 1,// * 360 / 100, // Adjusted width
+    justifyContent: 'center',
+  },
+  column: {
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    width: windowWidth * 0.19,// * 360 / 100, // Adjusted width
     justifyContent: 'center',
   },
   card: {
-    width: windowWidth * 0.2,
+    width: windowWidth * 0.17,
     height: windowHeight * 0.115,
     backgroundColor: 'white',
     margin: windowWidth * 0.01,
@@ -151,7 +240,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   emptyCard: {
-    width: windowWidth * 0.2,
+    width: windowWidth * 0.17,
     height: windowHeight * 0.115,
     backgroundColor: '#D3D3D3',
     margin: windowWidth * 0.01,
