@@ -204,7 +204,9 @@ const buttonStyles = StyleSheet.create({
 const fontStyles = StyleSheet.create({
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    marginTop: '5%',
+    marginBottom: '5%',
+    textAlign: 'center',
     color: 'white',
   },
   input: {
@@ -221,6 +223,13 @@ const fontStyles = StyleSheet.create({
   },
   playerListText: {
     color: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingLeft: 8,
+    paddingVertical: 8,
+    alignItems: 'center',
+    flexDirection: 'row', 
+    alignItems: 'center'
   },
   playerlistContainer: {
     maxHeight: 300,  // oder die gewünschte Höhe

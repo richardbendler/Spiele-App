@@ -22,7 +22,7 @@ function KlassikerMenu({ navigation }) {
 
           <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: '10%', top: '15%'}]} >
               <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-              <Text style={appStyles.bottleText}>Picolo</Text>
+                <Text style={appStyles.bottleText}>Picolo</Text>
           </TouchableOpacity>
           
           <View style={{ top: '49%', left: '0%', height: '1%', width: '100%' }}>
@@ -31,7 +31,10 @@ function KlassikerMenu({ navigation }) {
 
           <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: '60%', top: '50%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>100.000 Questions</Text>
+                  {/* HACK: used to position Text properly */}
+                  <View style={{ top: '5%', right: '75%' }}>
+                    <Text style={appStyles.bottleText}>100.000{"\n"} Questions</Text>
+                  </View>
           </TouchableOpacity>
 
           <View style={{ top: '83%', left: '0%', height: '1%', width: '100%' }}>
