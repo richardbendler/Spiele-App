@@ -229,7 +229,7 @@ const fontStyles = StyleSheet.create({
     paddingVertical: 8,
     alignItems: 'center',
     flexDirection: 'row', 
-    alignItems: 'center'
+    alignItems: 'center',    
   },
   playerlistContainer: {
     maxHeight: 300,  // oder die gewünschte Höhe
