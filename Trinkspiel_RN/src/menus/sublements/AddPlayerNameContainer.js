@@ -32,14 +32,14 @@ const NameContainer = ({ player }) => {
 
     return (
         <View style={appStyles.playerListText}>
-            <Text style={{ color: 'white', paddingRight: '2%', width: '35%' }} ellipsizeMode='tail'>{player.name}</Text>
+            <Text style={{ color: 'white', paddingRight: '2%', width: '35%' }} ellipsizeMode='tail' numberOfLines={1}>{player.name}</Text>
             <View style={{ width: '50%' }}>
                 <Button
                     onPress={() => {
                         setPlayerDrinks(!playerDrinks);
                         togglePlayerDrinks(player);
                     }}
-                    title={playerDrinks ? "trinkt" : "trinkt nicht"}
+                    title={playerDrinks ? "Trinkt" : "Trinkt nicht"}
                     color={playerDrinks ? 'green' : 'red'}
                 />
             </View>
