@@ -1,20 +1,18 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { Button, View, Text } from 'react-native';
 import { appStyles } from '../../../styles';
 import { VariablesContext } from '../../../VariablesContext';
 
 const NameContainer = ({ player }) => {
 
-    const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
-
     const { playerNames, setPlayerNames } = useContext(VariablesContext);
     // Ändern Sie die Variable "drinks" für einen bestimmten Spieler
     const togglePlayerDrinks = (playerObject) => {
         setPlayerNames((prevPlayerNames) => {
-            const updatedPlayerNames = [...prevPlayerNames]; // Erstellen Sie eine Kopie der Spielerliste
+            const updatedPlayerNames = [...prevPlayerNames]; // Create a copy of Player list
             const index = updatedPlayerNames.indexOf(player);
-            updatedPlayerNames[index].drinks = !updatedPlayerNames[index].drinks; // Ändern Sie den Wert
-            return updatedPlayerNames; // Geben Sie die aktualisierte Liste zurück
+            updatedPlayerNames[index].drinks = !updatedPlayerNames[index].drinks; // change value
+            return updatedPlayerNames; // return new list
         });
     };
 
@@ -24,9 +22,6 @@ const NameContainer = ({ player }) => {
             let newPlayerList = [...playerNames];
             newPlayerList.splice(index, 1);
             setPlayerNames(newPlayerList);
-            console.log("removed player");
-        } else {
-            console.log("Could not find player");
         }
     }
 
