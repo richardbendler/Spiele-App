@@ -18,6 +18,7 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
       <Text style={appStyles.title}>Enter Player Names</Text>
       <TextInput
         placeholder="Enter a name"
+        placeholderTextColor="white"
         value={currentName}
         onChangeText={text => setCurrentName(text)}
         style={appStyles.input}
