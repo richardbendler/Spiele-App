@@ -186,6 +186,32 @@ const buttonStyles = StyleSheet.create({
   },
   settingsButtonText: {
     color: 'white',
+    fontSize: 20,
+  },
+  //Game Info Button
+  infoButton: {
+    position: 'absolute',
+    left: 20,         // Abstand vom linken Rand des Containers
+    bottom: 20,       // Abstand vom unteren Rand des Containers
+    backgroundColor: secondaryColor,
+    padding: 5,
+    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
+    width: 50, // Breite des Buttons
+    height: 50, // Höhe des Buttons
+    alignItems: 'center',
+    justifyContent: 'center', // Zentrierung des Emojis
+  },
+  infoButtonText: {
+    color: 'white',
+    fontSize: 30,
+  },
+  infoHeaderText:{
+    color: 'white',
+    fontSize: 30,
+  },
+  infoText:{
+    color: 'white',
+    fontSize: 15,
   },
   settingsCloseButton: {
     position: 'absolute',
@@ -204,7 +230,9 @@ const buttonStyles = StyleSheet.create({
 const fontStyles = StyleSheet.create({
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    marginTop: '5%',
+    marginBottom: '5%',
+    textAlign: 'center',
     color: 'white',
   },
   input: {
@@ -221,6 +249,13 @@ const fontStyles = StyleSheet.create({
   },
   playerListText: {
     color: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingLeft: 8,
+    paddingVertical: 8,
+    alignItems: 'center',
+    flexDirection: 'row', 
+    alignItems: 'center',    
   },
   playerlistContainer: {
     maxHeight: 300,  // oder die gewünschte Höhe
@@ -240,6 +275,8 @@ const backgroundStyles = StyleSheet.create({
   imageBackgroundStyle: {
     width: '100%',  // Füllt die gesamte Breite des übergeordneten Containers aus
     height: '100%', // Füllt die gesamte Höhe des übergeordneten Containers aus
+    alignItems: 'center',
+    justifyContent: 'center',
 }
 
 });
