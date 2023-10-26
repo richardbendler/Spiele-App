@@ -97,10 +97,11 @@ export default function App() {
   const [playerNames, setPlayerNames] = useState([]);
   const [drinkTypes, setDrinkTypes] = useState([]); 
   const [settingsVisible, setSettingsVisible] = useState(false);
+  const [infoVisible, setInfoVisible] = useState(false);
 
   return (
     
-    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, playerNames, setPlayerNames, drinkTypes, setDrinkTypes }}>
+    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, playerNames, setPlayerNames, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible }}>
     <NavigationContainer>
       
       <Stack.Navigator 
