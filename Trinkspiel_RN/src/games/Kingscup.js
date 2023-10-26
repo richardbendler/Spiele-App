@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, ImageBackground } from 'react-native';
+import InfoText from './sublements/InfoText';
+import { VariablesContext } from '../../VariablesContext';
+import { appStyles } from '../../styles';
 
 const { width, height } = Dimensions.get('window');
 const CARD_WIDTH = 50;
@@ -95,6 +98,12 @@ const Kingscup = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardMeaning, setCardMeaning] = useState('');
 
+  const [finished, setFinished] = useState(false);
+
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+
+  const [kingCounter, setKingCounter] = useState(0);
+
   function createDeck() {
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
     const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -119,18 +128,53 @@ const Kingscup = () => {
 
   const revealCard = (index) => {
     const newDeck = [...deck];
+    
+    revealed = newDeck[index].revealed; //Zwischenspeichern für KingCounter unten
+    
     newDeck[index].revealed = true;
+    
     setDeck(newDeck);
     //setCardMeaning(cardMeanings[selectedCard.suit][selectedCard.value]);
     const card = newDeck[index];
     setSelectedCard(card);
     setCardMeaning(cardMeaningsSimple[card.value]);
-
+    if(!revealed && card.value == 'K'){ //Nur wenn Karte noch nicht aufgedeckt ist
+      if(kingCounter==3){
+        setFinished(true);
+      }else{
+        setKingCounter(kingCounter+1);
+      }
+    }
+    
+    
   };
+
+  const restartGame = () => {
+    setDeck(shuffleDeck(createDeck()));
+    setFinished(false);
+    setKingCounter(0);
+    setSelectedCard(null)
+  };
+
+  if (finished) {
+    return (
+        <View style={styles.winnerScreen}>
+            <Text style={styles.winnerText}>{`Spiel vorbei!`}</Text>
+            <Text style={{fontSize: 15, width:'80%', textAlign: 'center'}}>Der letzte König wurde aufgedeckt! Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken!</Text>
+            <Text></Text>
+            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
+                <Text style={styles.buttonText}>Spiel neustarten</Text>
+            </TouchableOpacity>
+        </View>
+    );
+  }
 
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
+      
+        <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
+
         <View style={styles.deck}>
           {deck.map((card, index) => {
             const angle = (index / deck.length) * 360;
@@ -177,6 +221,9 @@ const Kingscup = () => {
           {selectedCard ? <Text>{cardMeaning}</Text> : null}
           </View>
         </View>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
+        </TouchableOpacity>
       </View>
       </ImageBackground>
   );
@@ -250,6 +297,31 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#ccc',
   },
+  winnerScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FAD02E',  // You can use a gradient or image
+  },
+  winnerText: {
+      fontSize: 40,
+      fontWeight: 'bold',
+      color: '#D84315',
+      marginBottom: 20,
+      textShadowColor: 'rgba(0, 0, 0, 0.75)',
+      textShadowOffset: { width: -1, height: 1 },
+      textShadowRadius: 10
+  },
+  restartButton: {
+      padding: 15,
+      borderRadius: 8,
+      backgroundColor: '#D84315',  // Use a color that stands out
+  },
+  buttonText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#FAD02E',
+  }
 });
 
 export default Kingscup;
