@@ -11,14 +11,14 @@ const PicoloGame = ({route }) => {
   const texts = shuffleArrayFisherYates(route.params.texts);
   //shuffleArrayFisherYates(result.map(row => row.content))
   const [textsIndex, setTextsIndex] = useState(0);
-
+  
   const showNextQuestion = () => {
     try{
       if (textsIndex < texts.length - 1) {
         setTextsIndex(textsIndex + 1);
       }
     }catch (error){
-        setTextsIndex(0);
+      setTextsIndex(0);
     }
   };
 
