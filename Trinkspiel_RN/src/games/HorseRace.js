@@ -1,8 +1,11 @@
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+import { appStyles } from '../../styles';
+import InfoText from './sublements/InfoText';
+import { VariablesContext } from '../../VariablesContext';
 
 const createDeck = () => {
   const suits = ['♦', '♥', '♠', '♣'];
@@ -17,8 +20,11 @@ const createDeck = () => {
 };
 
 const initialField = (deck) => {
+  const height = 6; //height of field
+
   let field = new Array(5).fill(0);
   
+  //Die Karten am linken Seitenrand
   field[0] = new Array(7).fill(null);
   let deckCopy = [...deck];
   for (let i = 1; i < 7; i++) {
@@ -33,10 +39,10 @@ const initialField = (deck) => {
   field[3] = new Array(7).fill(null);
   field[4] = new Array(7).fill(null);
 
-  field[1][6] = { suit: '♦', value: 'A' };
-  field[2][6] = { suit: '♥', value: 'A' };
-  field[3][6] = { suit: '♠', value: 'A' };
-  field[4][6] = { suit: '♣', value: 'A' }; 
+  field[1][height] = { suit: '♦', value: 'A' };
+  field[2][height] = { suit: '♥', value: 'A' };
+  field[3][height] = { suit: '♠', value: 'A' };
+  field[4][height] = { suit: '♣', value: 'A' }; 
 
   return field;
 };
@@ -47,6 +53,8 @@ const App = () => {
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
 
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+
   const restartGame = () => {
     setDeck(createDeck());
     setField(initialField(deck));
@@ -54,7 +62,34 @@ const App = () => {
     setWinner(null);
   };
 
-  const moveAceUp = (suit) => {
+  // Funktion läuft alle Zeilen ab und checkt ob Seitenkarte aufgedeckt werden soll
+  const checkIfSideCardShouldBeDiscovered = () => {
+    const height = field[0].length-1; //height of field
+
+    for (let row = height; row>0; row--){ //Zeile
+      emptyRow = true;
+      isAlreadyRevealed = false;
+      for (let column = 1; column < 5; column++){ // Spalte
+        if(field[column][row] != null){
+          emptyRow = false;
+        }
+        if(field[0][row].isHidden == false){
+          isAlreadyRevealed = true;
+        }
+      }
+      if(emptyRow && !isAlreadyRevealed){
+        //Reveales the card
+        field[0][row].isHidden = false;
+        //Move the appropriate ace down
+        moveAceUp(field[0][row].suit, -1); //-1 for direction down
+      }
+      if(!emptyRow){
+        break;
+      }
+    }
+  }
+
+  const moveAceUp = (suit, direction) => { //directions: 1 for up, -1 for down
     const newField = [...field];
     let column = 5;
     switch(suit){
@@ -73,8 +108,8 @@ const App = () => {
     }
     for (let i = 0; i < newField[column].length; i++) {
       if (newField[column][i] && newField[column][i].suit === suit && newField[column][i].value === 'A') {
-        if (!newField[column][i-1]) { // Check if there is space above to move
-          newField[column][i-1] = { ...newField[column][i] }; // Move the ace up
+        if (!newField[column][i-direction]) { // Check if there is space above to move
+          newField[column][i-direction] = { ...newField[column][i] }; // Move the ace up
           newField[column][i] = null; // Clear the current space
         }
         break; // Exit the loop once the ace is moved
@@ -83,13 +118,15 @@ const App = () => {
     setField(newField);
   };  
 
+  //Funktion die beim Klicken des Aufdecken-Buttons ausgeführt wird
   const drawCard = () => {
     if (deck && deck.length === 0 || winner) return;
     const randomIndex = Math.floor(Math.random() * deck.length);
     const [drawnCard] = deck.splice(randomIndex, 1);
     setDeck([...deck]);
     setDiscardPile([drawnCard, ...discardPile]);
-    moveAceUp(drawnCard.suit);
+    moveAceUp(drawnCard.suit, 1); //1 for direction up
+    checkIfSideCardShouldBeDiscovered();
     checkWinner();
   };
 
@@ -119,6 +156,9 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
+
+        <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
+
         <View style={styles.field}>
           <View style={styles.column}>
             {field[0].map((card, index) => {
@@ -127,7 +167,7 @@ const App = () => {
               return(
               <View key={index} style={card ? styles.card : styles.emptyCard}>
                 {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-                {card && card.isHidden && <Text style={styles.cardText}>...</Text>}
+                {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />}
               </View>)
             })}
           </View>
@@ -181,7 +221,11 @@ const App = () => {
               <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
             </View>
           )}
+          
         </View>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -189,9 +233,10 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     
     alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: windowWidth * 0.05,
   },
   deckArea: {
@@ -238,6 +283,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
+  },
+  cardBack: {
+    width: '100%',
+    height: '100%',
   },
   emptyCard: {
     width: windowWidth * 0.17,
