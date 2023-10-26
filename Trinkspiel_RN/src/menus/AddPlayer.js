@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, ImageBackground, ScrollView } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, ImageBackground, ScrollView, Alert } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import NameContainer from './sublements/AddPlayerNameContainer';
@@ -45,6 +45,14 @@ const AddPlayer = ({ navigation }) => {
     [playerNames]
   );
 
+  const startGame = () => {
+    if (playerNames.length >= 2) {
+      navigation.navigate('PicoloGame');
+    } else {
+      Alert.alert("Zu wenig Spieler", "Um dieses Spiel zu starten werden mindestens zwei Spieler benötigt.")
+    }
+  }
+
   return (
     <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={{ flex: 1 }}>
       <View style={appStyles.menuContainer}>
@@ -64,7 +72,7 @@ const AddPlayer = ({ navigation }) => {
 
 
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('PicoloGame')} style={[appStyles.chalkboardButton, {}]}>
+        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButton, {}]}>
           <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
         </TouchableOpacity>
 
