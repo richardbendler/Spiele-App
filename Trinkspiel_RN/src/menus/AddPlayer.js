@@ -4,6 +4,7 @@ import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import NameContainer from './sublements/AddPlayerNameContainer';
 
+
 const PlayerInput = React.memo(({ onAddPlayer }) => {
   const [currentName, setCurrentName] = useState('');
 
