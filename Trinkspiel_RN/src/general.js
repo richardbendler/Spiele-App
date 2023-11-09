@@ -7,8 +7,8 @@ export const handleSqlRequest = async (sqlRequest) => {
 const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
 ret = '';
 try {
-    const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-    //const response = await fetch('https://my-tournament.org/api/sqlRequest', {
+    //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
+    const response = await fetch('https://my-tournament.org:3000/api/sqlRequest', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
