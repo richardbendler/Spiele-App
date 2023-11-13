@@ -5,7 +5,9 @@ const { generateToken, verifyToken } = require('./auth'); // Pfad zur auth.js-Da
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 443;//3000;
+//443 -> https
+//3000 -> http
 
 // Verbindung zur Datenbank herstellen
 const db = mysql.createPool({
