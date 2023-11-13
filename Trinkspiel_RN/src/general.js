@@ -8,7 +8,8 @@ const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIj
 ret = '';
 try {
     //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-    const response = await fetch('https://my-tournament.org:3000/api/sqlRequest', {
+    const response = await fetch('https://my-tournament.org/api/sqlRequest', {
+    //https nutzt Port 443
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -21,7 +22,8 @@ try {
     const responseText = await response.text();
     ret = JSON.parse(responseText);
     } else {
-    console.error('Fehler beim Senden des Texts.');
+        console.log(response)
+        console.error('Fehler beim Senden des Texts.');
     }
 } catch (error) {
     console.error('Ein Fehler ist aufgetreten:', error);
