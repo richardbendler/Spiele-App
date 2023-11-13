@@ -111,12 +111,16 @@ Achtung: Backend läuft gerade durchgängig - dieser Part kann zum Testen ignori
 
 ### Start - Entwicklungsumgebung
 cd Trinkspielapp_Backend
-node server.js
+sudo node server.js
+(sudo wegen https)
 
 ### Start - Produktionsumgebung
 To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
 cd Trinkspielapp_Backend
-pm2 start server.js
+sudo pm2 start server.js
+sudo pm2 list
+sudo pm2 stop server
+(sudo wegen https)
 
 ### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 Auf Netcup-Server pushen
