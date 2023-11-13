@@ -124,11 +124,12 @@ Node und npm installieren: https://www.digitalocean.com/community/tutorials/how-
 sudo apt install npm
 npm install express body-parser mysql2
 npm install jsonwebtoken
-sudo ufw allow 3000 #damit app den server anpingen kann
+sudo ufw allow 3000 #damit app den server anpingen kann -> http
+sudo ufw allow 3000 #damit app den server anpingen kann -> https
 sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann
 mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
 iadb.conf.d/50-server.cnf weil wir mariaDB haben
-wenn Host nicht allowd für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
 __________________________________________________
 
