@@ -8,7 +8,7 @@ const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
 ret = '';
 try {
     //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-    const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
+    const response = await fetch('https://my-tournament.org:443/api/sqlRequest', {
     //https nutzt Port 443
     method: 'POST',
     headers: {
