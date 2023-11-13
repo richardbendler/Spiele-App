@@ -1,13 +1,16 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
+
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise'); // Stelle sicher, dass du mysql2 installiert hast
 const { generateToken, verifyToken } = require('./auth'); // Pfad zur auth.js-Datei anpassen
 
-
 const app = express();
-const PORT = process.env.PORT || 443;//3000;
+const PORT = 8443;//process.env.PORT || 443;//3000;
 //443 -> https
 //3000 -> http
+
 
 // Verbindung zur Datenbank herstellen
 const db = mysql.createPool({
@@ -71,7 +74,24 @@ app.get('/api/getUserData', async (req, res) => {
     //res.status(200).json(userData);
   });
 
+
+
+  
+
+
+const httpsOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/privkey.pem'), // Pfad zur privaten Schlüsseldatei
+    cert: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/cert.pem'), // Pfad zur Zertifikatsdatei
+};
+
+const server = https.createServer(httpsOptions, app);
+
 // Starte den Server
+server.listen(PORT, () => {
+    console.log(`Server is running on https://localhost:${PORT}`);
+});
+
+/*
 app.listen(PORT, () => {
   console.log(`Server läuft auf Port ${PORT}`);
-});
+});*/
