@@ -8,7 +8,7 @@ const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIj
 ret = '';
 try {
     //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-    const response = await fetch('https://my-tournament.org/api/sqlRequest', {
+    const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
     //https nutzt Port 443
     method: 'POST',
     headers: {
