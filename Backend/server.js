@@ -7,7 +7,7 @@ const mysql = require('mysql2/promise'); // Stelle sicher, dass du mysql2 instal
 const { generateToken, verifyToken } = require('./auth'); // Pfad zur auth.js-Datei anpassen
 
 const app = express();
-const PORT = 443;//8443;//process.env.PORT || 443;//3000;
+const PORT = 8443;//8443;//process.env.PORT || 443;//3000;
 //443 -> https
 //3000 -> http
 

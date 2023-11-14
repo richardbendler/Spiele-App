@@ -24,9 +24,9 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
-        "INTERNET"
+        "android.permission.INTERNET"
       ],
-      "versionCode": 37,
+      "versionCode": 38,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
