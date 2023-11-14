@@ -10,6 +10,7 @@ import NetInfo from "@react-native-community/netinfo";
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
+    //Test Internet Connection
     const [isConnected, setIsConnected] = useState(true);
     useEffect(() => {
         // Überwache die Internetverbindung
@@ -34,13 +35,14 @@ const StartMenu = ({ navigation }) => {
                     
                     
                     <Text>
-                        {isConnected ? 'Du bist mit dem Internet verbunden.' : 'Du bist nicht mit dem Internet verbunden.'}
+                        {isConnected ? '' : 'Du bist nicht mit dem Internet verbunden...'}
                     </Text>
 
 
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
+
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                         <Text style={appStyles.menuButtonText}>Custom Game</Text>
                     </TouchableOpacity>
