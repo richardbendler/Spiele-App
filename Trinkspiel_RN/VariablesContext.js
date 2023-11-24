@@ -9,9 +9,9 @@ playerNames: {
 */
 
 export const VariablesContext = React.createContext({
-  playerNames: [],
+  /*playerNames: [],
   setPlayerNames: () => {},
   drinkTypes: [], // Initialisieren mit leerem Array
-  setDrinkTypes: () => {},
+  setDrinkTypes: () => {},*/
 });
 
