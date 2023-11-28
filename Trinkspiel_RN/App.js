@@ -46,11 +46,14 @@ export default function App() {
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-    handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-    handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
-    handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-    handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+    const fetchData = async () => {
+      handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
+      handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
+      handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
+      handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
+      handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+    }
+    fetchData();
   }, []);
 
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
@@ -68,6 +71,7 @@ export default function App() {
       if(response){
         const ret = JSON.parse(response);
         setter(ret)
+        //console.log("loaded from disk: ", ret);
       }
     } catch (error) {
         console.error('Fehler beim Laden', error);

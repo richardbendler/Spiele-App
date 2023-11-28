@@ -41,7 +41,7 @@ export const handleSqlRequestAndSafeToDisk = async (storageItem, setter, sqlRequ
     } catch (error) {
         console.error('Ein Fehler ist aufgetreten:', error);
         //alert('Ein Fehler ist aufgetreten:', error);
-        alert(error)
+        alert(error.message)
     }
     
 };
