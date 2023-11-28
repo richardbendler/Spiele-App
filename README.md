@@ -135,6 +135,12 @@ mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-conn
 iadb.conf.d/50-server.cnf weil wir mariaDB haben
 wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
+_________________________________________________________
+
+## Domain
+
+Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. Dokumentation zur Einrichtung stehen in Trello.
+
 __________________________________________________
 
 ### Using Expo Go
