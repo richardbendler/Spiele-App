@@ -9,13 +9,13 @@ ret = '';
 try {
     //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
     const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-    //https nutzt Port 443
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token,
-    },
-    body: JSON.stringify({ sqlRequest }),
+        //https nutzt Port 443
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+        },
+        body: JSON.stringify({ sqlRequest }),
     });
 
     if (response.ok) {
