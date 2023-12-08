@@ -36,10 +36,44 @@ enableScreens();
 
 
 export default function App() {
+
+  ////////////////////////////////////////////////////////
+  /////////// Daten aus lokalem Speicher holen  //////////
+  ////////////////////////////////////////////////////////
+
+  //Allgemeine Funktion zum Laden aus dem Gerätespeicher
+  const loadFromDisk = async (setter, item) => {
+    try {
+      const response = await AsyncStorage.getItem(item);
+      if(response){
+        const ret = JSON.parse(response);
+        setter(ret)
+        //console.log("loaded from disk: ", ret);
+      }
+    } catch (error) {
+        console.error('Fehler beim Laden', error);
+    }
+  }
+
+  //Relikt zum Löschen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
+
+  const [drinkTypes, setDrinkTypes] = useState([]); 
+  useEffect(() => {
+    loadFromDisk(setDrinkTypes, "drinkTypes");
+    //TODO: Wird hier nicht überschrieben falls DB-Anfrage zu lange dauert?
+    loadFromDisk(setTexts_Picolo, "texts_Picolo");
+    loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
+    loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
+    loadFromDisk(setManyQuestions, "manyQuestions");
+    loadFromDisk(setWords, "words");
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+
+
+  
   ////////////////////////////////////////////////////////
   ///////////////////// SQL-ABFRAGEN  ////////////////////
   ////////////////////////////////////////////////////////
-  /*
+  
   //LOAD FROM API and SAFE TO DISK
   const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
   const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
@@ -57,85 +91,10 @@ export default function App() {
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
   // -> Vielleicht auch einfach immer?
   //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
-  */
-
-  //Klassiker: Vorglühen
-  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo,'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-      setTexts_Picolo(result);
-  };
-  fetchData();
-  }, []);
-
-  //Spin The Bottle
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result1 = await handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-      /*const result1 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] */
-      //setTextsWahrheitSpinTheBottle(result1);
-
-      const result2 = await handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3');
-      //const result2 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
-      //setTextsPflichtSpinTheBottle(result2);
-  };
-  fetchData();
-  }, []);
-
-  //100.000 Questions
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-      //const result = [{"author": null, "bool_drink": 1, "content": "Wer stürzt immer am schnellsten ab?", "drunk_level": 5, "exposure_level": 7, "fk_pool": 22, "id": 99, "timestamp": "2023-09-07T17:35:13.000Z"}]
-      //setManyQuestions(result);
-  };
-  fetchData();
-  }, []);
-
-  //Activity
-  const [words, setWords] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await handleSqlRequestAndSafeToDisk("words", setWords,'SELECT * FROM `game_activity_words`');
-      //setWords(result);
-  };
-  fetchData();
-  }, []);
 
 
-  ////////////////////////////////////////////////////////
-  /////////// Daten aus lokalem Speicher holen  //////////
-  ////////////////////////////////////////////////////////
-
-  //Allgemeine Funktion zum Laden aus dem Gerätespeicher
-  /*const loadFromDisk = async (setter, item) => {
-    try {
-      const response = await AsyncStorage.getItem(item);
-      if(response){
-        const ret = JSON.parse(response);
-        setter(ret)
-      }
-    } catch (error) {
-        console.error('Fehler beim Laden', error);
-    }
-  }*/
-
-  //Relikt zum Löschen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
-
-  const [drinkTypes, setDrinkTypes] = useState([]); 
-  /*useEffect(() => {
-    loadFromDisk(setDrinkTypes, "drinkTypes");
-    //loadFromDisk(setTexts_Picolo, "texts_Picolo");
-    //loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
-    //loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
-    //loadFromDisk(setManyQuestions, "manyQuestions");
-    //loadFromDisk(setWords, "words");
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
-  */
+  
+  
 
 
 
