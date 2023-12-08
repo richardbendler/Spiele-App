@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
 import { handleSqlRequest } from './src/general';
@@ -81,9 +82,64 @@ export default function App() {
     const fetchData = async () => {
       const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
       setWords(result);
-  };
-  fetchData();
+    };
+    fetchData();
   }, []);
+
+
+  ////////////////////////////////////////////////////////
+  /////////// Daten aus lokalem Speicher holen  //////////
+  ////////////////////////////////////////////////////////
+
+  //Allgemeine Funktion zum Laden aus dem Gerätespeicher
+  const loadFromDisk = async (setter, item) => {
+    try {
+      const response = await AsyncStorage.getItem(item);
+      if(response){
+        const ret = JSON.parse(response);
+        setter(ret)
+        return ret;
+      }else{
+        return null;
+      }
+    } catch (error) {
+        console.error('Fehler beim Laden', error);
+    }
+  }
+
+  //Relikt zum Löschen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
+
+  const [drinkTypes, setDrinkTypes] = useState([]); 
+  useEffect(() => {
+    loadFromDisk(setDrinkTypes, "drinkTypes");
+  }, [])
+
+  /*
+  const [drinkTypes, setDrinkTypes] = useState([]); 
+  const loadDrinkTypes = async () => {
+    //console.log("Reading drink types...")
+    try {
+        const storedDrinkTypesString = await AsyncStorage.getItem("drinkTypes");
+        if (storedDrinkTypesString) {
+            setDrinkTypes(...drinkTypes, JSON.parse(storedDrinkTypesString));
+            //alert(storedDrinkTypesString)
+            //console.log("drinkTypes ausgelesen: ", storedDrinkTypesString);
+        } else{
+          //console.log("storedDrinkTypesString leer")
+        }
+        // Andernfalls verwenden Sie einen Standardwert oder lassen Sie es leer
+    } catch (error) {
+        console.error('Fehler beim Laden der drinkTypes:', error);
+    }
+  };
+  // Laden der drinkTypes beim Start der Komponente
+  useEffect(() => {
+    loadDrinkTypes();
+    
+    //Zum resetten des lokalen Speichers:
+    //AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
+  }, []); // Der leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  */
 
 
   //Für Menus
@@ -93,7 +149,6 @@ export default function App() {
   
   //Globale Variablen aus Context
   const [playerNames, setPlayerNames] = useState([]);
-  const [drinkTypes, setDrinkTypes] = useState([]); 
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
 

@@ -43,7 +43,7 @@ const handleTestAPI = async () => {
                 if (!response.ok) {
                     throw new Error('Fehler beim Senden des Texts.');
                 }
-                console.log(response);
+                //console.log(response);
                 return response.text();
             })
             .catch(error => {
@@ -116,9 +116,9 @@ const StartMenu = ({ navigation }) => {
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
 
-                    <Text>{words[0].content}</Text>
+                    <Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
-                    <Text>{ret}</Text>
+                    <Text>{ret.slice(0,50)}</Text>
 
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                         <Text style={appStyles.menuButtonText}>Custom Game</Text>
