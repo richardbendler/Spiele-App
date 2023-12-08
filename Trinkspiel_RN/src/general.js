@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
-/*import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const saveToStorage = async (item, value) => {
     try {
@@ -44,7 +44,7 @@ export const handleSqlRequestAndSafeToDisk = async (storageItem, setter, sqlRequ
         alert(error)
     }
     
-};*/
+};
 
 export const handleSqlRequest = async (sqlRequest) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
