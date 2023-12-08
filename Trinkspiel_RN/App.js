@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
 import { handleSqlRequest } from './src/general';
-//import { handleSqlRequestAndSafeToDisk } from './src/general';
+import { handleSqlRequestAndSafeToDisk } from './src/general';
 
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
@@ -63,7 +63,7 @@ export default function App() {
   const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
+      const result = await handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo,'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
       setTexts_Picolo(result);
   };
   fetchData();
@@ -74,13 +74,13 @@ export default function App() {
   const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result1 = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
+      const result1 = await handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
       /*const result1 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] */
-      setTextsWahrheitSpinTheBottle(result1);
+      //setTextsWahrheitSpinTheBottle(result1);
 
-      const result2 = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3');
+      const result2 = await handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3');
       //const result2 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
-      setTextsPflichtSpinTheBottle(result2);
+      //setTextsPflichtSpinTheBottle(result2);
   };
   fetchData();
   }, []);
@@ -89,9 +89,9 @@ export default function App() {
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
+      const result = await handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions,'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
       //const result = [{"author": null, "bool_drink": 1, "content": "Wer stürzt immer am schnellsten ab?", "drunk_level": 5, "exposure_level": 7, "fk_pool": 22, "id": 99, "timestamp": "2023-09-07T17:35:13.000Z"}]
-      setManyQuestions(result);
+      //setManyQuestions(result);
   };
   fetchData();
   }, []);
@@ -100,8 +100,8 @@ export default function App() {
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
-      setWords(result);
+      const result = await handleSqlRequestAndSafeToDisk("words", setWords,'SELECT * FROM `game_activity_words`');
+      //setWords(result);
   };
   fetchData();
   }, []);
