@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
-import { handleSqlRequest } from "../../general";
+import { handleSqlRequestAndSafeToDisk } from "../../general";
 
 const HandleFeedback = ({ texts, textsIndex, table }) => {
   //Für Feedback
@@ -37,7 +37,7 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
     //sql:
     //table zB = games_klassiker_evaluation
     const sqlInsert = `INSERT INTO ${table} (id, fk_question, fk_type, value, comment, author, timestamp) VALUES (NULL, ${question_id}, ${feedback}, NULL, NULL, NULL, current_timestamp())`;
-    //handleSqlRequest(sqlInsert);
+    //handleSqlRequestAndSafeToDisk(sqlInsert);
   }
 
   //check if user has voted
