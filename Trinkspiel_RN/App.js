@@ -5,6 +5,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
+import { handleSqlRequest } from './src/general';
 import { handleSqlRequestAndSafeToDisk } from './src/general';
 
 //Import der Menüs
@@ -35,31 +36,7 @@ enableScreens();
 
 
 export default function App() {
-  ////////////////////////////////////////////////////////
-  ///////////////////// SQL-ABFRAGEN  ////////////////////
-  ////////////////////////////////////////////////////////
-  
-  //LOAD FROM API and SAFE TO DISK
-  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
-  const [words, setWords] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-      handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-      handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
-      handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-      handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
-    }
-    fetchData();
-  }, []);
 
-  //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
-  // -> Vielleicht auch einfach immer?
-  //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
-  
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
   ////////////////////////////////////////////////////////
@@ -83,12 +60,40 @@ export default function App() {
   const [drinkTypes, setDrinkTypes] = useState([]); 
   useEffect(() => {
     loadFromDisk(setDrinkTypes, "drinkTypes");
+    //TODO: Wird hier nicht überschrieben falls DB-Anfrage zu lange dauert?
     loadFromDisk(setTexts_Picolo, "texts_Picolo");
     loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
     loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
     loadFromDisk(setManyQuestions, "manyQuestions");
     loadFromDisk(setWords, "words");
   }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+
+
+  
+  ////////////////////////////////////////////////////////
+  ///////////////////// SQL-ABFRAGEN  ////////////////////
+  ////////////////////////////////////////////////////////
+  
+  //LOAD FROM API and SAFE TO DISK
+  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
+  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
+  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
+  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
+  const [words, setWords] = useState(["Platzhalterfrage"]);
+  useEffect(() => {
+    handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
+    handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
+    handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
+    handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
+    handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+  }, []);
+
+  //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
+  // -> Vielleicht auch einfach immer?
+  //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
+
+
+  
   
 
 
@@ -152,4 +157,3 @@ export default function App() {
   
   );
 }
-
