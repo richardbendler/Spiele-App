@@ -118,7 +118,7 @@ const buttonStyles = StyleSheet.create({
   },
   //Tafel-Buttons
   chalkboardButton: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Halbtransparentes Schwarz
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
     padding: 10,  // Innenabstand
     margin: 50,  // Außenabstand
