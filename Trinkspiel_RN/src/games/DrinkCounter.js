@@ -3,78 +3,62 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ImageB
 import { VariablesContext } from '../../VariablesContext'; // Pfad zum VariablesContext anpassen
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+/*function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}*/
+
 const DrinkCounter = () => {
     const { drinkTypes, setDrinkTypes } = useContext(VariablesContext);
-    // Laden der drinkTypes beim Start der Komponente
-    useEffect(() => {
-        const loadDrinkTypes = async () => {
-            try {
-                const storedDrinkTypesString = await AsyncStorage.getItem('drinkTypes');
-                if (storedDrinkTypesString) {
-                    setDrinkTypes(JSON.parse(storedDrinkTypesString));
-                } // Andernfalls verwenden Sie einen Standardwert oder lassen Sie es leer
-            } catch (error) {
-                console.error('Fehler beim Laden der drinkTypes:', error);
-            }
-        };
-        loadDrinkTypes();
-    }, []); // Der leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+    //const [isLoading, setIsLoading] = useState(true); // Zustand zum Verwalten des Ladens
 
-    // Speichern der drinkTypes, wenn sich diese ändern
-    useEffect(() => {
-        const saveDrinkTypes = async () => {
-            try {
-                await AsyncStorage.setItem('drinkTypes', JSON.stringify(drinkTypes));
-            } catch (error) {
-                console.error('Fehler beim Speichern der drinkTypes:', error);
-            }
-        };
-        saveDrinkTypes();
-    }, [drinkTypes]); // Der Dependency-Array mit drinkTypes stellt sicher, dass dies ausgeführt wird, wenn sich drinkTypes ändert
-
-    const [inputValue, setInputValue] = useState('');
-    const [isLoading, setIsLoading] = useState(true); // Zustand zum Verwalten des Ladens
-  
-    // Funktion zum Laden der Getränkeinformationen aus dem lokalen Speicher
-    const loadDrinkTypes = async () => {
+    const saveDrinkTypesInStorage = async (newDrinkTypes) => {
       try {
-        const storedDrinkTypes = await AsyncStorage.getItem('drinkTypes');
-        if (storedDrinkTypes) {
-          setDrinkTypes(JSON.parse(storedDrinkTypes));
-        }
-        setIsLoading(false); // Laden beenden
+          await AsyncStorage.setItem("drinkTypes", JSON.stringify(newDrinkTypes));
+          //console.log("drinkTypes gespeichert: ", newDrinkTypes);
       } catch (error) {
-        console.error(error);
-        setIsLoading(false); // Laden beenden
+          console.error('Fehler beim Speichern der drinkTypes:', error);
       }
     };
 
+    //console.log(drinkTypes)
+    
+    
+
+  // Speichern der drinkTypes, wenn sich diese ändern
+  //useEffect(() => {
+  //  saveDrinkTypesInStorage();
+  //}, [drinkTypes]); // Der Dependency-Array mit drinkTypes stellt sicher, dass dies ausgeführt wird, wenn sich drinkTypes ändert
+
+  
+
+    
+
+    
+    
+  const [inputValue, setInputValue] = useState('');
   const addDrinkType = () => {
     if (inputValue.trim() !== '') {
-      setDrinkTypes([...drinkTypes, { name: inputValue, count: 0 }]);
+      const newDrinkTypes = [...drinkTypes];
+      newDrinkTypes.push({ name: inputValue, count: 0 });
+      setDrinkTypes(newDrinkTypes);
+      saveDrinkTypesInStorage(newDrinkTypes);
       setInputValue('');
     }
+    
   };
 
   const incrementCount = (index) => {
     const newDrinkTypes = [...drinkTypes];
     newDrinkTypes[index].count += 1;
     setDrinkTypes(newDrinkTypes);
+    saveDrinkTypesInStorage(newDrinkTypes);
   };
 
-  // Getränkeinformationen beim Start laden
-  useEffect(() => {
-    loadDrinkTypes();
-  }, []);
-
-  // ...
-
-  if (isLoading) {
-    return <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-    <Text>Lade Getränke...</Text>
-  </ImageBackground>; // Anzeigen einer Lademeldung
-    
-  }
+  const removeDrinkType = (index) => {
+    const updatedDrinkTypes = drinkTypes.filter((_, i) => i !== index);
+    setDrinkTypes(updatedDrinkTypes);
+    saveDrinkTypesInStorage(updatedDrinkTypes);
+  };
 
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
@@ -82,6 +66,9 @@ const DrinkCounter = () => {
         <ScrollView>
           {drinkTypes.map((drinkType, index) => (
             <View key={index} style={styles.drinkTypeContainer}>
+              <TouchableOpacity onPress={() => removeDrinkType(index)} style={styles.removeButton}>
+                <Text style={styles.removeButtonText}>❌</Text>
+            </TouchableOpacity>
               <Text style={styles.drinkTypeName}>{drinkType.name}</Text>
               <View style={styles.counterContainer}>
                 <Text style={styles.drinkTypeCount}>{drinkType.count}</Text>
