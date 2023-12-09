@@ -14,6 +14,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "permissions": ["INTERNET"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "trinkspiel-01"
@@ -23,7 +24,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 32,
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "versionCode": 70,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
