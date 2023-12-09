@@ -116,9 +116,9 @@ const StartMenu = ({ navigation }) => {
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
 
-                    <Text>{words.slice(0,50)}</Text>
+                    {/*<Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
-                    <Text>{ret.slice(0,50)}</Text>
+                    <Text>{ret.slice(0,50)}</Text>*/}
 
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                         <Text style={appStyles.menuButtonText}>Custom Game</Text>
