@@ -114,7 +114,7 @@ const StartMenu = ({ navigation }) => {
 
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
-                    </TouchableOpacity>
+                     </TouchableOpacity>
 
                     {/*<Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
@@ -132,9 +132,9 @@ const StartMenu = ({ navigation }) => {
                     
                 </View>
 
-                <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
                     <Text style={appStyles.settingsButtonText}>⚙️</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>*/}
             </View>
         
     </View>
