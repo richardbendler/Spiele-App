@@ -14,9 +14,9 @@ function KlassikerMenu({ navigation }) {
         <View style={appStyles.smallPageContainer}>
           
           {/*SettingsButton*/}
-          <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+          {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
               <Text style={appStyles.settingsButtonText}>⚙️</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
 
           <Settings/>
 
