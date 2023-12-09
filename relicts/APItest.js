@@ -6,36 +6,6 @@ import SettingsButton from './sublements/SettingsButton';
 import Settings from './sublements/Settings';
 import NetInfo from "@react-native-community/netinfo";
 
-//HANDLE SQL REQUESTS
-const handleSqlRequest = async (sqlRequest) => {
-    const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
-    ret = '';
-    try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-        //https nutzt Port 443
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token,
-        },
-        body: JSON.stringify({ sqlRequest }),
-        });
-    
-        if (response.ok) {
-        const responseText = await response.text();
-        ret = JSON.parse(responseText);
-        } else {
-            console.log(response)
-            console.error('Fehler beim Senden des Texts.');
-        }
-    } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-    }
-    //console.log(ret);
-    return ret;
-};
-
 const handleTestAPI = async () => {
     try {
         const response = await fetch('https://www.codeyourapp.de/tools/query.php?count=5&mode=0')
@@ -43,7 +13,7 @@ const handleTestAPI = async () => {
                 if (!response.ok) {
                     throw new Error('Fehler beim Senden des Texts.');
                 }
-                //console.log(response);
+                console.log(response);
                 return response.text();
             })
             .catch(error => {
@@ -58,10 +28,10 @@ const handleTestAPI = async () => {
     }
 };
 
+
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
-    //Test Internet Connection
     const [isConnected, setIsConnected] = useState(true);
     useEffect(() => {
         // Überwache die Internetverbindung
@@ -85,19 +55,6 @@ const StartMenu = ({ navigation }) => {
     fetchData();
     }, []);
 
-     //Activity
-    const [words, setWords] = useState(["Platzhalterfrage"]);
-    useEffect(() => {
-        const fetchData = async () => {
-        const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
-        setWords(JSON.stringify(result));
-    };
-    fetchData();
-    }, []);
-
-     
-
-
   return (
     <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
     <Settings/>
@@ -108,7 +65,7 @@ const StartMenu = ({ navigation }) => {
                     
                     
                     <Text>
-                        {isConnected ? '' : 'Du bist nicht mit dem Internet verbunden...'}
+                        {isConnected ? 'Du bist mit dem Internet verbunden.' : 'Du bist nicht mit dem Internet verbunden.'}
                     </Text>
 
 
@@ -116,10 +73,7 @@ const StartMenu = ({ navigation }) => {
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
                     </TouchableOpacity>
 
-                    {/*<Text>{words.slice(0,50)}</Text>
-                    <Text>--------------------------</Text>
-                    <Text>{ret.slice(0,50)}</Text>*/}
-
+                    <Text>{ret}</Text>
                     {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
                         <Text style={appStyles.menuButtonText}>Custom Game</Text>
                     </TouchableOpacity>
