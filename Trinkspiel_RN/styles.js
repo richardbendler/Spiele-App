@@ -157,6 +157,14 @@ const buttonStyles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
+
+  //InGame
+  gameActionButton: { //Wird in Menüs benutzt
+    backgroundColor: '#228B22', //green
+    borderRadius: 10,  // Abgerundete Ecken
+    padding: 10,  // Innenabstand
+    margin: 10,  // Außenabstand
+  },
   
   //Game Info Button -> Zeigt Spielerklärungen an
   infoButton: {
@@ -219,6 +227,18 @@ const buttonTextStyles = StyleSheet.create({
   submitButtonText: {
     fontFamily: font1,
     color: 'white',
+  },
+
+  //InGame
+  gameActionButtonText: {
+    fontFamily: font1,
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,  // oder eine andere passende Größe
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+    //fontFamily: 'MyHandwritingFont',
   },
 
   //Buttons wie Info und Einstellungen die nur ein i oder x enthalten

@@ -20,16 +20,16 @@ function KlassikerMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, { left: '10%', top: '15%'}]} >
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '28%', left: '20%', top: '21%'}]} >
               <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                <Text style={appStyles.bottleText}>Picolo</Text>
+              <Text style={appStyles.bottleText}>The One</Text>
           </TouchableOpacity>
           
           <View style={{ top: '49%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { left: '60%', top: '50%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '60%', top: '56%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                   {/* HACK: used to position Text properly */}
                   <View style={{ top: '5%', right: '75%' }}>
