@@ -187,6 +187,7 @@ const buttonStyles = StyleSheet.create({
   settingsButtonText: {
     color: 'white',
     fontSize: 20,
+    textAlign: 'center',
   },
   //Game Info Button
   infoButton: {
@@ -220,8 +221,8 @@ const buttonStyles = StyleSheet.create({
     backgroundColor: tertiaryColor,
     padding: 5,
     borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 70, // Breite des Buttons
-    height: 70, // Höhe des Buttons
+    width: 40, // Breite des Buttons
+    height: 40, // Höhe des Buttons
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
   },

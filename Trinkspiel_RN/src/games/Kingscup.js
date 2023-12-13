@@ -19,19 +19,19 @@ const suitImages = {
 };
 
 const cardMeaningsSimple = {
-  '2': 'Two - You! Verteil einen Schluck', 
-  '3': 'Three - Me! - Du musst selbst trinken!', 
-  '4': 'Four - Floor! Wer als letzter den Boden berührt, trinkt!', 
-  '5': 'High Five! Die beiden Spieler, die sich zuerst einen High-Five geben, dürfen verteilen!', 
-  '6': 'Six - nix! Wer zuerst lacht, muss trinken!', 
-  '7': 'Seven - Heaven! Wer als letzter die Hände oben hat, trinkt!', 
-  '8': 'Eight - Mate! Wähle einen Trinkbuddy', 
-  '9': 'Nine - Rime! Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.', 
-  '10': 'Ten - Kategorie! Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.', 
-  'J': 'Regel! Bestimme eine Regel', 
-  'Q': 'Questionmaster! Niemand darf dir mehr Fragen beantworten.', 
-  'K': 'Kingscup! Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!', 
-  'A': 'Wasserfall! Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen'
+  '2': ['Two - You!', 'Verteil einen Schluck'], 
+  '3': ['Three - Me!', 'Du musst selbst trinken!'], 
+  '4': ['Four - Floor!', 'Wer als letzter den Boden berührt, trinkt!'], 
+  '5': ['High Five!', 'Die beiden Spieler, die sich zuerst einen High-Five geben, dürfen verteilen!'], 
+  '6': ['Six - nix!', 'Wer zuerst lacht, muss trinken!'], 
+  '7': ['Seven - Heaven!', 'Wer als letzter die Hände oben hat, trinkt!'], 
+  '8': ['Eight - Mate!', 'Wähle einen Trinkbuddy'], 
+  '9': ['Nine - Rhyme!', 'Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.'], 
+  '10': ['Ten - Kategorie!', 'Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.'], 
+  'J': ['Regel!', 'Bestimme eine Regel'], 
+  'Q': ['Questionmaster!', 'Niemand darf dir mehr Fragen beantworten bis ein neuer Questionmaster gezogen wird.'], 
+  'K': ['Kingscup!', 'Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!'], 
+  'A': ['Wasserfall!', 'Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen']
 };
 
 const cardMeanings = {
@@ -96,8 +96,9 @@ const cardMeanings = {
 const Kingscup = () => {
   const [deck, setDeck] = useState(shuffleDeck(createDeck()));
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cardMeaning, setCardMeaning] = useState('');
+  const [cardMeaning, setCardMeaning] = useState(["Klicke auf eine Karte um zu starten!", "Um die Spielanleitung zu sehen, klicke oben auf Info."]);
 
+  const [gameStarted, setGameStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
@@ -127,6 +128,7 @@ const Kingscup = () => {
   }
 
   const revealCard = (index) => {
+    setGameStarted(true);
     const newDeck = [...deck];
     
     revealed = newDeck[index].revealed; //Zwischenspeichern für KingCounter unten
@@ -216,11 +218,15 @@ const Kingscup = () => {
           ) : null}
 
         </View>
-        <View style={styles.description}>
+        
+        <View style={styles.descriptionWindow}>
           <View style={{alignItems: 'center',justifyContent: 'center',}}>
-          {selectedCard ? <Text>{cardMeaning}</Text> : null}
+            {<Text style={styles.descriptionHeader}>{cardMeaning[0]}</Text>}
+            {<Text style={{fontSize: 10}}></Text>}
+            {<Text style={styles.descriptionText}>{cardMeaning[1]}</Text>}
           </View>
         </View>
+
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
@@ -236,6 +242,7 @@ const styles = StyleSheet.create({
     //backgroundColor: '#2e2e2e',
   },
   deck: {
+    height: '70%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -261,8 +268,8 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   suitIcon: {
-    width: 20,
-    height: 20,
+    width: '45%',
+    height: '30%',
   },
   cardBack: {
     width: '100%',
@@ -284,18 +291,29 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   centerSuitIcon: {
-    width: 40,
-    height: 40,
+    width: '45%',
+    height: '30%',
   },
-  description: {
-    position: 'absolute',
-    
+  descriptionWindow: {
+    //position: 'absolute',
+    height: '20%',
     width: '100%',
+    
     bottom: 30,
     padding: 20,
     backgroundColor: '#e0e0e0',
     borderTopWidth: 1,
     borderColor: '#ccc',
+  },
+  descriptionHeader:{
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  descriptionText:{
+    fontSize: 15,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   winnerScreen: {
     flex: 1,
