@@ -11,7 +11,7 @@ const InfoText = ({ navigation, header, rules}) => {
             animationType="slide"
             transparent={true}
             visible={infoVisible}
-            onRequestClose={() => setSettingsVisible(false)}
+            onRequestClose={() => setInfoVisible(false)}
             >
             <View style={{position: 'relative', alignItems: 'center', justifyContent: 'center',}}>
                 <View style={appStyles.settingsContainer} >
