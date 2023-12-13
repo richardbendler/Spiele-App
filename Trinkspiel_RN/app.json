@@ -27,7 +27,7 @@
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 77,
+      "versionCode": 78,
       "package": "com.chinberdradler.Trinkspiel_RN"
     },
     "web": {
