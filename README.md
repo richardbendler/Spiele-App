@@ -7,6 +7,7 @@ https://phoenixnap.com/kb/install-node-js-npm-on-windows
 ### Powershell im RN_Trinkspiel-Ordner ausführen:
 
 danach:
+cd RN_Trinkspiel
 npm install
 
 _(npm audit fix --force)_
@@ -64,6 +65,10 @@ npm install @react-navigation/native
 npm install @react-navigation/stack
 
 npm install @react-native-async-storage/async-storage
+
+//Fonts:
+npx expo install @expo-google-fonts/quicksand expo-font
+npx expo install @expo-google-fonts/raleway expo-font
 
 
 //////////////////////////////////////////
