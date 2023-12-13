@@ -112,21 +112,21 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   drinkTypeName: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '500',
   },
   counterContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   drinkTypeCount: {
-    fontSize: 18,
+    fontSize: 16,
     marginRight: 10,
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: '#7C83FD',
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 30,
   },
   buttonText: {
     color: '#FFFFFF',
@@ -144,12 +144,12 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     marginRight: 10,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   addButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#A5A5A5',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
 });
 
