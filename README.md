@@ -70,6 +70,8 @@ npm install @react-native-async-storage/async-storage
 npx expo install @expo-google-fonts/quicksand expo-font
 npx expo install @expo-google-fonts/raleway expo-font
 
+//Sound:
+npx expo install expo-av
 
 //////////////////////////////////////////
 //Noch nicht:
@@ -82,8 +84,6 @@ npx expo install @react-native-async-storage/async-storage
 
 _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
 
-### Datenbank installieren
-~~npm install react-native-sqlite-storage~~
 __________________________________________________
 
 ## Datenbank
