@@ -1,18 +1,21 @@
 // Import necessary React and React Native modules
-import React, { useState, useRef } from 'react';
-import { StyleSheet, View, Text, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
-
+import React, { useState, useContext, useRef } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
+import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
+import InfoText from './sublements/InfoText';
+import { appStyles } from '../../styles';
 
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({route }) => {
   const textsWahrheitSpinTheBottle = shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle);
   const textsPflichtSpinTheBottle = shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle);
   
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger!');
 
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   // State variable for the number of sips, initialized with a random value
   const [sips, setSips] = useState(generateRandomSips());
@@ -51,12 +54,15 @@ const SpinTheBottle = ({route }) => {
         rotationValue.setOffset(lastRotation.current);
         rotationValue.setValue(0);
       
+        setDisplayedText('');
+
         // Starten der neuen Animation mit einem zufälligen Endwert
         Animated.timing(rotationValue, {
           toValue: Math.random() * 360 * 30,  // Zufälliger Endwert für die Animation, multipliziert mit 5
           duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufällige Dauer zwischen 3 und 5 Sekunden
           useNativeDriver: false,
         }).start(() => {
+
           // Nach Abschluss der Animation: Aktualisieren von lastRotation und Zurücksetzen des Offsets und Werts
           lastRotation.current += rotationValue._value;
           rotationValue.setOffset(lastRotation.current);
@@ -98,17 +104,31 @@ const SpinTheBottle = ({route }) => {
 
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-      <View style={styles.container}>
-        <Text style={styles.hintText}>Drehe die Flasche mit dem Finger</Text>
-        <Animated.View 
-          {...panResponder.panHandlers} 
-          style={{ transform: [{ rotate: rotation }] }}
-        >
-          <Image source={require('../../assets/images/bottles/bottle_001.png')} style={styles.bottle} />
-        </Animated.View>
-        
-        <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
-      </View>
+
+        <View style={{flex: 1, height:'100%'}}>
+          <View style={{height: '20%', justifyContent: 'center', alignItems: 'center',}}></View>
+
+          <View style={{height: '30%', justifyContent: 'center', alignItems: 'center',}}>
+            <Animated.View 
+              {...panResponder.panHandlers} 
+              style={{ transform: [{ rotate: rotation }] }}
+            >
+              <Image source={require('../../assets/images/bottles/bottle_001.png')} style={styles.bottle} />
+            </Animated.View>
+          </View>
+          
+          <View style={{height: '40%', justifyContent: 'center', alignItems: 'center',}}>
+            <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
+          </View>
+          
+          <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
+        </View>
+
+        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
+        </TouchableOpacity>
+
     </ImageBackground>
   );
 };
