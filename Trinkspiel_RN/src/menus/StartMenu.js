@@ -6,6 +6,11 @@ import SettingsButton from './sublements/SettingsButton';
 import Settings from './sublements/Settings';
 import NetInfo from "@react-native-community/netinfo";
 
+//Fonts
+import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
+import { Quicksand_300Light } from "@expo-google-fonts/quicksand";
+import { useFonts } from "expo-font";
+
 //HANDLE SQL REQUESTS
 const handleSqlRequest = async (sqlRequest) => {
     const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
@@ -96,7 +101,13 @@ const StartMenu = ({ navigation }) => {
     }, []);
 
      
-
+    const [fontsLoaded] = useFonts({
+        Raleway_200ExtraLight,
+        Quicksand_300Light,
+        });
+        if (!fontsLoaded) {
+        return <Text>Loading...</Text>;
+    }
 
   return (
     <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
@@ -127,9 +138,6 @@ const StartMenu = ({ navigation }) => {
                         <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
                     </TouchableOpacity>*/}
 
-                
-
-                    
                 </View>
 
                 {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
