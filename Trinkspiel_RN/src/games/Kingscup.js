@@ -19,19 +19,19 @@ const suitImages = {
 };
 
 const cardMeaningsSimple = {
-  '2': 'Two - You! Verteil einen Schluck', 
-  '3': 'Three - Me! - Du musst selbst trinken!', 
-  '4': 'Four - Floor! Wer als letzter den Boden berührt, trinkt!', 
-  '5': 'Five Guys! Alle Guys trinken', 
-  '6': 'Six Chicks! Alle Frauen trinken', 
-  '7': 'Seven - Heaven! Wer als letzter die Hände oben hat, trinkt!', 
-  '8': 'Eight - Mate! Wähle einen Trinkbuddy', 
-  '9': 'Nine - Rime! Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.', 
-  '10': 'Ten - Kategorie! Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.', 
-  'J': 'Regel! Bestimme eine Regel', 
-  'Q': 'Questionmaster! Niemand darf dir mehr Fragen beantworten.', 
-  'K': 'Kingscup! Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!', 
-  'A': 'Wasserfall! Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen'
+  '2': ['Two - You!', 'Verteil einen Schluck'], 
+  '3': ['Three - Me!', 'Du musst selbst trinken!'], 
+  '4': ['Four - Floor!', 'Wer als letzter den Boden berührt, trinkt!'], 
+  '5': ['High Five!', 'Die beiden Spieler, die sich zuerst einen High-Five geben, dürfen verteilen!'], 
+  '6': ['Six - nix!', 'Wer zuerst lacht, muss trinken!'], 
+  '7': ['Seven - Heaven!', 'Wer als letzter die Hände oben hat, trinkt!'], 
+  '8': ['Eight - Mate!', 'Wähle einen Trinkbuddy'], 
+  '9': ['Nine - Rhyme!', 'Reimen im Uhrzeigersinn, bis einer keinen mehr weiß.'], 
+  '10': ['Ten - Kategorie!', 'Nenne eine Kategorie, dann geht es rum, bis keiner mehr was weiß.'], 
+  'J': ['Regel!', 'Bestimme eine Regel'], 
+  'Q': ['Questionmaster!', 'Niemand darf dir mehr Fragen beantworten bis ein neuer Questionmaster gezogen wird.'], 
+  'K': ['Kingscup!', 'Fülle den Kingscup zu einem Drittel! Falls du der Vierte King bist, trink ihn aus und das Spiel ist vorbei!'], 
+  'A': ['Wasserfall!', 'Alle setzen gleichzeitig an zu trinken und dürfen nur in Reihenfolge aufhören, jede Person darf sich aber auch Zeit lassen']
 };
 
 const cardMeanings = {
@@ -96,8 +96,9 @@ const cardMeanings = {
 const Kingscup = () => {
   const [deck, setDeck] = useState(shuffleDeck(createDeck()));
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cardMeaning, setCardMeaning] = useState('');
+  const [cardMeaning, setCardMeaning] = useState(["Klicke auf eine Karte um zu starten!", "Um die Spielanleitung zu sehen, klicke oben auf Info."]);
 
+  const [gameStarted, setGameStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
@@ -127,6 +128,7 @@ const Kingscup = () => {
   }
 
   const revealCard = (index) => {
+    setGameStarted(true);
     const newDeck = [...deck];
     
     revealed = newDeck[index].revealed; //Zwischenspeichern für KingCounter unten
@@ -150,6 +152,7 @@ const Kingscup = () => {
   };
 
   const restartGame = () => {
+    setCardMeaning(["Klicke auf eine Karte um zu starten!", "Um die Spielanleitung zu sehen, klicke oben auf Info."]);
     setDeck(shuffleDeck(createDeck()));
     setFinished(false);
     setKingCounter(0);
@@ -158,12 +161,12 @@ const Kingscup = () => {
 
   if (finished) {
     return (
-        <View style={styles.winnerScreen}>
-            <Text style={styles.winnerText}>{`Spiel vorbei!`}</Text>
-            <Text style={{fontSize: 15, width:'80%', textAlign: 'center'}}>Der letzte König wurde aufgedeckt! Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken!</Text>
+        <View style={appStyles.winnerScreen}>
+            <Text style={appStyles.winnerText}>{`Spiel vorbei!`}</Text>
+            <Text style={[appStyles.textNormal1, {fontStyle: 'italic', color: 'black', width:'80%', textAlign: 'center'}]}>Der letzte König wurde aufgedeckt! Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken!</Text>
             <Text></Text>
-            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
-                <Text style={styles.buttonText}>Spiel neustarten</Text>
+            <TouchableOpacity onPress={() => restartGame(deck)} style={appStyles.restartButton}>
+                <Text style={appStyles.restartButtonText}>Spiel neustarten</Text>
             </TouchableOpacity>
         </View>
     );
@@ -172,8 +175,6 @@ const Kingscup = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-      
-        <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
 
         <View style={styles.deck}>
           {deck.map((card, index) => {
@@ -216,11 +217,16 @@ const Kingscup = () => {
           ) : null}
 
         </View>
-        <View style={styles.description}>
+        
+        <View style={styles.descriptionWindow}>
           <View style={{alignItems: 'center',justifyContent: 'center',}}>
-          {selectedCard ? <Text>{cardMeaning}</Text> : null}
+            {<Text style={[appStyles.textHeader3, {color: 'black', textAlign: 'center'}]}>{cardMeaning[0]}</Text>}
+            {<Text style={{fontSize: 10}}></Text>}
+            {<Text style={[appStyles.textNormal2, {color: 'black', fontStyle: 'italic', textAlign: 'center'}]}>{cardMeaning[1]}</Text>}
           </View>
         </View>
+
+        <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
@@ -236,6 +242,7 @@ const styles = StyleSheet.create({
     //backgroundColor: '#2e2e2e',
   },
   deck: {
+    height: '70%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -261,8 +268,8 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   suitIcon: {
-    width: 20,
-    height: 20,
+    width: '45%',
+    height: '30%',
   },
   cardBack: {
     width: '100%',
@@ -284,44 +291,24 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   centerSuitIcon: {
-    width: 40,
-    height: 40,
+    width: '45%',
+    height: '30%',
   },
-  description: {
-    position: 'absolute',
-    
+  descriptionWindow: {
+    //position: 'absolute',
+    height: '20%',
     width: '100%',
+    
     bottom: 30,
     padding: 20,
     backgroundColor: '#e0e0e0',
     borderTopWidth: 1,
     borderColor: '#ccc',
   },
-  winnerScreen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FAD02E',  // You can use a gradient or image
-  },
-  winnerText: {
-      fontSize: 40,
-      fontWeight: 'bold',
-      color: '#D84315',
-      marginBottom: 20,
-      textShadowColor: 'rgba(0, 0, 0, 0.75)',
-      textShadowOffset: { width: -1, height: 1 },
-      textShadowRadius: 10
-  },
-  restartButton: {
-      padding: 15,
-      borderRadius: 8,
-      backgroundColor: '#D84315',  // Use a color that stands out
-  },
-  buttonText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#FAD02E',
-  }
+
+
+
+  
 });
 
 export default Kingscup;
