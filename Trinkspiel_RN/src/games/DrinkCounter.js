@@ -11,6 +11,8 @@ const DrinkCounter = () => {
     const { drinkTypes, setDrinkTypes } = useContext(VariablesContext);
     //const [isLoading, setIsLoading] = useState(true); // Zustand zum Verwalten des Ladens
 
+    const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+
     const saveDrinkTypesInStorage = async (newDrinkTypes) => {
       try {
           await AsyncStorage.setItem("drinkTypes", JSON.stringify(newDrinkTypes));
@@ -90,6 +92,11 @@ const DrinkCounter = () => {
             <Text style={styles.buttonText}>Hinzufügen</Text>
           </TouchableOpacity>
         </View>
+
+        <InfoText header={"Getränkezähler!"} rules={"..."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );

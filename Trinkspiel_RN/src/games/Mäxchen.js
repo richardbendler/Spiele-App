@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
+import InfoText from './sublements/InfoText';
+import { VariablesContext } from '../../VariablesContext';
 //import { Audio } from 'expo-av'; //TODO: wieder nutzen
 
 // Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
@@ -22,6 +24,8 @@ const MaexchenGame = () => {
   const [isDiceHidden, setDiceHidden] = useState(true);
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const [gameStarted, setGameStarted] = useState(false);
+  
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const handleChallenge = () => {
     setDiceHidden(false);
@@ -32,7 +36,7 @@ const MaexchenGame = () => {
     setGameStarted(true);
     Animated.timing(rotateAnim, {
       toValue: 1,
-      duration: 3000,
+      duration: 2000,
       useNativeDriver: true,
     }).start(() => {
       rotateAnim.setValue(0);
@@ -43,10 +47,10 @@ const MaexchenGame = () => {
     //await diceSound.playAsync(); //TODO: wieder nutzen
 
     // Update the dice result in the middle of the animation
-    setTimeout(() => {
+    //setTimeout(() => {
       setDice1(Math.floor(Math.random() * 6) + 1);
       setDice2(Math.floor(Math.random() * 6) + 1);
-    }, 1500);
+    //}, 1500);
   };
 
   const hideDice = () => {
@@ -55,44 +59,59 @@ const MaexchenGame = () => {
 
   const rotateInterpolate = rotateAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '3600deg'],  // 10 full rotations
+    outputRange: ['0deg', '7200deg'],  // 10 full rotations
   });
 
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-      <View style={styles.container}>
-        <Text style={appStyles.textHeader1}>Mäxchen</Text>
-        <TouchableOpacity style={styles.button} onPress={rollDice}>
-          <Text style={styles.buttonText}>Würfeln</Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',}}>
+        <View style={{alignItems: 'center', height:'60%', width: '80%'}}>
+          <Text style={appStyles.textHeader1}>Mäxchen</Text>
+          {isDiceHidden && (
+          <TouchableOpacity style={appStyles.chalkboardButton} onPress={rollDice}>
+            <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Würfeln</Text>
+          </TouchableOpacity>
+          )}
+
+          {!gameStarted && (
+            <Text style={[appStyles.textNormal1, {textAlign: 'center'}]}>{"Du möchtest die Regeln lesen? Dann klicke unten auf den Info-Button."}</Text>
+          )}
+          
+          {isDiceHidden && gameStarted &&
+            <View>
+              <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>{"Du glaubst der vorherigen Person nicht? Dann zweifel an:"}</Text>
+              <TouchableOpacity style={appStyles.chalkboardButton} onPress={handleChallenge}>
+                <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Anzweifeln</Text>
+              </TouchableOpacity>
+            </View>
+          }
+          {!isDiceHidden && 
+            <View>
+              <TouchableOpacity style={appStyles.chalkboardButton} onPress={hideDice}>
+                <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Würfel in Becher zurücklegen</Text>
+              </TouchableOpacity>
+            </View>
+          }
+          {!isDiceHidden && (
+            <View>
+              <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice1]} />
+              <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice2]} />
+            </View>
+          )}
+
+          
+        </View>
+
+        <InfoText header={"Mäxchen!"} rules={"Würfelt der Reihe um so, dass nur ihr selbst das Ergebnis seht. Verdeckt anschließend euer Ergebnis und gebt das Handy zur nächsten Person weiter. Diese Person muss nun ein höheres Ergebnis würfeln. Sollte sie das nicht schaffen, muss sie ein höheres Ergebnis bluffen. \n\n Die beiden Würfelergebnisse werden immer aneinandergehängt mit der höheren Zahl am Anfang. Eine 4 und eine 5 würden also die Zahl 54 ergeben, eine 3 und eine 2 die 32. Pasches sind immer über den normalen Werten und das allerhöchste Ergebnis ist 21. \n\n Wenn man nun glaub, die vorherige Person blufft, kann man anzweifeln. Wer erfolgreich angezweifelt wird, muss trinken. Wer fälschlich anzweifelt, muss ebenfalls trinken."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
-        {!isDiceHidden && (
-          <View>
-            <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice1]} />
-            <Animated.Image style={{ ...styles.dice, transform: [{ rotate: rotateInterpolate }] }} source={diceImages[dice2]} />
-          </View>
-        )}
-        {isDiceHidden && gameStarted &&
-          <TouchableOpacity style={styles.button} onPress={handleChallenge}>
-            <Text style={styles.buttonText}>Anzweifeln</Text>
-          </TouchableOpacity>
-        }
-        {!isDiceHidden && 
-          <TouchableOpacity style={styles.button} onPress={hideDice}>
-            <Text style={styles.buttonText}>Würfel in Becher zurücklegen</Text>
-          </TouchableOpacity>
-        }
       </View>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   button: {
     backgroundColor: '#A0522D', // dunkelbraune Farbe, die an Holz erinnert
     padding: 10,

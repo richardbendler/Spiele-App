@@ -175,8 +175,6 @@ const Kingscup = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-      
-        <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
 
         <View style={styles.deck}>
           {deck.map((card, index) => {
@@ -228,7 +226,7 @@ const Kingscup = () => {
           </View>
         </View>
 
-
+        <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
