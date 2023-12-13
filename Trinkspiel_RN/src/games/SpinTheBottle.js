@@ -1,7 +1,7 @@
 // Import necessary React and React Native modules
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { StyleSheet, View, Text, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
-
+import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
@@ -13,6 +13,7 @@ const SpinTheBottle = ({route }) => {
   
   const [displayedText, setDisplayedText] = useState('');
 
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   // State variable for the number of sips, initialized with a random value
   const [sips, setSips] = useState(generateRandomSips());
@@ -108,6 +109,12 @@ const SpinTheBottle = ({route }) => {
         </Animated.View>
         
         <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
+
+
+        <InfoText header={"Flaschendrehen!"} rules={"..."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>ℹ</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );

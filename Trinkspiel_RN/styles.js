@@ -195,6 +195,7 @@ const buttonTextStyles = StyleSheet.create({
 
   chalkboardButtonText: {
     fontFamily: font1,
+    textAlign: 'center',
     color: 'white',
     fontSize: 40,  // oder eine andere passende Größe
     textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
