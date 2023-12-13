@@ -91,15 +91,7 @@ const gameStyles = StyleSheet.create({
 
 const buttonStyles = StyleSheet.create({
   //Menu
-  bigMenuButton: {
-    backgroundColor: secondaryColor,
-    padding: 40,
-    borderRadius: 15,
-    margin: 30,
-    width: '90%',
-    alignItems: 'center',
-  },
-  smallMenuButton: {
+  smallMenuButton: { //Wird in Settings genutzt
     backgroundColor: secondaryColor,
     padding: 20,
     borderRadius: 15,
@@ -107,13 +99,37 @@ const buttonStyles = StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
-  
-  //Tafel-Buttons
-  chalkboardButton: {
+  chalkboardButton: { //Wird in Menüs benutzt
     backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
     padding: 10,  // Innenabstand
     margin: 50,  // Außenabstand
+  },
+
+  //Settings Button
+  settingsButton: {
+    position: 'absolute',
+    left: 20,         // Abstand vom linken Rand des Containers
+    bottom: 0,       // Abstand vom unteren Rand des Containers
+    backgroundColor: tertiaryColor,
+    padding: 5,
+    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
+    width: 70, // Breite des Buttons
+    height: 70, // Höhe des Buttons
+    alignItems: 'center',
+    justifyContent: 'center', // Zentrierung des Emojis
+  },
+  settingsCloseButton: {
+    position: 'absolute',
+    top: 20,         // Abstand vom linken Rand des Containers
+    right: 20,       // Abstand vom unteren Rand des Containers
+    backgroundColor: tertiaryColor,
+    padding: 5,
+    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
+    width: 40, // Breite des Buttons
+    height: 40, // Höhe des Buttons
+    alignItems: 'center',
+    justifyContent: 'center', // Zentrierung des Emojis
   },
   
   //Bottle Buttons
@@ -142,22 +158,7 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   
-  //Settings Button
-  //Submit
-  settingsButton: {
-    position: 'absolute',
-    left: 20,         // Abstand vom linken Rand des Containers
-    bottom: 0,       // Abstand vom unteren Rand des Containers
-    backgroundColor: tertiaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 70, // Breite des Buttons
-    height: 70, // Höhe des Buttons
-    alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
-  },
-  
-  //Game Info Button
+  //Game Info Button -> Zeigt Spielerklärungen an
   infoButton: {
     position: 'absolute',
     left: 20,         // Abstand vom linken Rand des Containers
@@ -170,24 +171,11 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
   },
-  
-  settingsCloseButton: {
-    position: 'absolute',
-    top: 20,         // Abstand vom linken Rand des Containers
-    right: 20,       // Abstand vom unteren Rand des Containers
-    backgroundColor: tertiaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 40, // Breite des Buttons
-    height: 40, // Höhe des Buttons
-    alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
-  },
 });
 
 
 const buttonTextStyles = StyleSheet.create({
-  menuButtonText:{
+  menuButtonText:{ //wird in Settings genutzt
     fontFamily: font1,
     fontWeight: 'bold',
     color: 'white',
@@ -197,9 +185,9 @@ const buttonTextStyles = StyleSheet.create({
     fontWeight: 'bold',
     //textTransform: 'uppercase', //
   },
+
   chalkboardButtonText: {
     fontFamily: font1,
-    fontWeight: '600',
     color: 'white',
     fontSize: 40,  // oder eine andere passende Größe
     textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
@@ -224,24 +212,80 @@ const buttonTextStyles = StyleSheet.create({
     fontFamily: font1,
     color: 'white',
   },
+
+  //Buttons wie Info und Einstellungen die nur ein i oder x enthalten
   settingsButtonText: {
     fontFamily: font1,
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
   },
+  infoButtonText: {
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 30,
+  },
   
 });
 
 const fontStyles = StyleSheet.create({
-  title: {
+  //Headers
+  textHeader1:{
+    fontWeight: 'bold',
     fontFamily: font1,
-    fontSize: 24,
-    marginTop: '5%',
-    marginBottom: '5%',
+    color: 'white',
+    fontSize: 40,
+  },
+  textHeader2:{
+    fontWeight: 'bold',
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 30,
+  },
+  textHeader3:{
+    fontWeight: 'bold',
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 25,
+  },
+  textHeader4:{
+    fontWeight: 'bold',
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 15,
+  },
+  //Texts
+  textNormal1:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 18,
+  },
+  textNormal2:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 15,
+  },
+  textNormal3:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 14,
+  },
+  textNormal4:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 12,
+  },
+
+  //Spziell für Picolo und andere Spiele die sich nur um Text drehen
+  onlyTextBasedGameText: {
+    fontFamily: font1,
+    fontSize: 30,
     textAlign: 'center',
+    padding: 20,
     color: 'white',
   },
+  
+  //Speziell für Picolo und Getränkecounter, wo es Eingabefelder gibt
   input: {
     fontFamily: font1,
     borderWidth: 1,
@@ -277,44 +321,6 @@ const fontStyles = StyleSheet.create({
     borderColor: 'white' // Farbe des Rahmens
 
   },
-  infoButtonText: {
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 30,
-  },
-  infoHeaderText:{
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 30,
-  },
-  infoText:{
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 15,
-  },
-  gameHeaderText:{
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 30,
-  },
-  gameText:{
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center'
-  },
-
-  onlyTextBasedGameText: {
-    fontFamily: font1,
-    fontSize: 30,
-    textAlign: 'center',
-    padding: 20,
-    color: 'white',
-  },
-
-  
-  
-
 });
 
 

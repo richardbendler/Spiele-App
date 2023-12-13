@@ -241,9 +241,9 @@ const App = () => {
             alignItems: 'center',
             justifyContent: 'center',
             }}> 
-            <Text style={appStyles.gameHeaderText}>Pferderennen {"\n"}</Text>
-            <Text style={appStyles.gameText}>Vor Spielstart muss jede Person ein Ass auswählen und eine Anzahl X Schlücke auf das Ass setzen. Sobald das geschehen ist, könnt ihr das Spiel starten! {"\n"}</Text>
-            <Text style={appStyles.gameText}>Die ausführliche Anleitung findet ihr unter dem Info-Button.{"\n\n"}</Text>
+            <Text style={appStyles.textHeader2}>Pferderennen {"\n"}</Text>
+            <Text style={appStyles.textNormal2}>Vor Spielstart muss jede Person ein Ass auswählen und eine Anzahl X Schlücke auf das Ass setzen. Sobald das geschehen ist, könnt ihr das Spiel starten! {"\n"}</Text>
+            <Text style={appStyles.textNormal2}>Die ausführliche Anleitung findet ihr unter dem Info-Button.{"\n\n"}</Text>
             
             <View style={{
               flexDirection: 'row',
