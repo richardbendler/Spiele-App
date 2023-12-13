@@ -1,10 +1,12 @@
 // Import necessary React and React Native modules
 import React, { useState, useContext, useRef } from 'react';
-import { StyleSheet, View, Text, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
+import InfoText from './sublements/InfoText';
+import { appStyles } from '../../styles';
 
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({route }) => {
@@ -111,7 +113,7 @@ const SpinTheBottle = ({route }) => {
         <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
 
 
-        <InfoText header={"Flaschendrehen!"} rules={"..."}/>
+        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
