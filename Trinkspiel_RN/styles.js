@@ -214,6 +214,15 @@ const buttonStyles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
   },
+  gameHeaderText:{
+    color: 'white',
+    fontSize: 30,
+  },
+  gameText:{
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center'
+  },
   settingsCloseButton: {
     position: 'absolute',
     top: 20,         // Abstand vom linken Rand des Containers
