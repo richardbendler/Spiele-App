@@ -6,6 +6,10 @@ const colorSchemeArray = [
   ['#48A9A6','#D4AC0D','#E56B6F'],
 ]
 
+const font1 = "Quicksand_300Light";
+const font1_bold = "Quicksand_300Bold";
+//const fontx = "Raleway_200ExtraLight";
+
 const colorChoice = 2;
 
 const primaryColor = colorSchemeArray[colorChoice][0]//'#1E3D59';//'#008b8b';
@@ -82,12 +86,7 @@ const gameStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  onlyTextBasedGameText: {
-    fontSize: 30,
-    textAlign: 'center',
-    padding: 20,
-    color: 'white',
-  },
+  
 });
 
 const buttonStyles = StyleSheet.create({
@@ -108,14 +107,7 @@ const buttonStyles = StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
-  menuButtonText:{
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-    padding: 0,
-    fontWeight: 'bold',
-    //textTransform: 'uppercase', //
-  },
+  
   //Tafel-Buttons
   chalkboardButton: {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
@@ -123,14 +115,7 @@ const buttonStyles = StyleSheet.create({
     padding: 10,  // Innenabstand
     margin: 50,  // Außenabstand
   },
-  chalkboardButtonText: {
-    color: 'white',
-    fontSize: 40,  // oder eine andere passende Größe
-    textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 2,
-    //fontFamily: 'MyHandwritingFont',
-  },
+  
   //Bottle Buttons
   imageWithTextContainer: {
     position: 'absolute',
@@ -147,18 +132,7 @@ const buttonStyles = StyleSheet.create({
     height: '100%',
     width: '100%', 
   },
-  bottleText: {
-    position: 'absolute',
-    color: 'white',  // Oder eine andere gewünschte Farbe
-    fontSize: 15,    // Oder eine andere gewünschte Schriftgröße
-    fontWeight: 'bold',
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',  // Optional: leichter Schatten für bessere Lesbarkeit
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10,
-    top: '63%',
-    width: '150%',
-    textAlign: 'center',
-},
+  
   //Submit
   submitButton: {
     backgroundColor: secondaryColor,
@@ -167,9 +141,7 @@ const buttonStyles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
-  submitButtonText: {
-    color: 'white',
-  },
+  
   //Settings Button
   //Submit
   settingsButton: {
@@ -184,11 +156,7 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
   },
-  settingsButtonText: {
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-  },
+  
   //Game Info Button
   infoButton: {
     position: 'absolute',
@@ -202,27 +170,7 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
   },
-  infoButtonText: {
-    color: 'white',
-    fontSize: 30,
-  },
-  infoHeaderText:{
-    color: 'white',
-    fontSize: 30,
-  },
-  infoText:{
-    color: 'white',
-    fontSize: 15,
-  },
-  gameHeaderText:{
-    color: 'white',
-    fontSize: 30,
-  },
-  gameText:{
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center'
-  },
+  
   settingsCloseButton: {
     position: 'absolute',
     top: 20,         // Abstand vom linken Rand des Containers
@@ -237,8 +185,57 @@ const buttonStyles = StyleSheet.create({
   },
 });
 
+
+const buttonTextStyles = StyleSheet.create({
+  menuButtonText:{
+    fontFamily: font1,
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    padding: 0,
+    fontWeight: 'bold',
+    //textTransform: 'uppercase', //
+  },
+  chalkboardButtonText: {
+    fontFamily: font1,
+    fontWeight: '600',
+    color: 'white',
+    fontSize: 40,  // oder eine andere passende Größe
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+    //fontFamily: 'MyHandwritingFont',
+  },
+  bottleText: {
+    fontFamily: font1,
+    position: 'absolute',
+    color: 'white',  // Oder eine andere gewünschte Farbe
+    fontSize: 17,    // Oder eine andere gewünschte Schriftgröße
+    fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',  // Optional: leichter Schatten für bessere Lesbarkeit
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    top: '63%',
+    width: '150%',
+    textAlign: 'center',
+  },
+  submitButtonText: {
+    fontFamily: font1,
+    color: 'white',
+  },
+  settingsButtonText: {
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  
+});
+
 const fontStyles = StyleSheet.create({
   title: {
+    fontFamily: font1,
     fontSize: 24,
     marginTop: '5%',
     marginBottom: '5%',
@@ -246,6 +243,7 @@ const fontStyles = StyleSheet.create({
     color: 'white',
   },
   input: {
+    fontFamily: font1,
     borderWidth: 1,
     borderColor: '#ccc',
     paddingVertical: 8,
@@ -255,9 +253,11 @@ const fontStyles = StyleSheet.create({
     color: 'white',
   },
   playerList: {
+    fontFamily: font1,
     marginBottom: 20,
   },
   playerListText: {
+    fontFamily: font1,
     color: 'white',
     borderWidth: 1,
     borderColor: '#ccc',
@@ -268,6 +268,7 @@ const fontStyles = StyleSheet.create({
     alignItems: 'center',    
   },
   playerlistContainer: {
+    fontFamily: font1,
     maxHeight: 300,  // oder die gewünschte Höhe
     width: '90%',
     alignSelf: 'center',
@@ -275,10 +276,48 @@ const fontStyles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'white' // Farbe des Rahmens
 
-  }
+  },
+  infoButtonText: {
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 30,
+  },
+  infoHeaderText:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 30,
+  },
+  infoText:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 15,
+  },
+  gameHeaderText:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 30,
+  },
+  gameText:{
+    fontFamily: font1,
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center'
+  },
+
+  onlyTextBasedGameText: {
+    fontFamily: font1,
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 20,
+    color: 'white',
+  },
+
+  
   
 
 });
+
+
 
 const backgroundStyles = StyleSheet.create({
 
@@ -287,7 +326,7 @@ const backgroundStyles = StyleSheet.create({
     height: '100%', // Füllt die gesamte Höhe des übergeordneten Containers aus
     alignItems: 'center',
     justifyContent: 'center',
-}
+},
 
 });
 
@@ -296,6 +335,7 @@ export const appStyles = {
   ...menuStyles,
   ...gameStyles,
   ...buttonStyles, 
+  ...buttonTextStyles,
   ...fontStyles,  
   ...backgroundStyles,
 }
