@@ -152,6 +152,7 @@ const Kingscup = () => {
   };
 
   const restartGame = () => {
+    setCardMeaning(["Klicke auf eine Karte um zu starten!", "Um die Spielanleitung zu sehen, klicke oben auf Info."]);
     setDeck(shuffleDeck(createDeck()));
     setFinished(false);
     setKingCounter(0);
@@ -160,12 +161,12 @@ const Kingscup = () => {
 
   if (finished) {
     return (
-        <View style={styles.winnerScreen}>
-            <Text style={styles.winnerText}>{`Spiel vorbei!`}</Text>
-            <Text style={{fontSize: 15, width:'80%', textAlign: 'center'}}>Der letzte König wurde aufgedeckt! Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken!</Text>
+        <View style={appStyles.winnerScreen}>
+            <Text style={appStyles.winnerText}>{`Spiel vorbei!`}</Text>
+            <Text style={[appStyles.textNormal1, {fontStyle: 'italic', color: 'black', width:'80%', textAlign: 'center'}]}>Der letzte König wurde aufgedeckt! Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken!</Text>
             <Text></Text>
-            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
-                <Text style={styles.buttonText}>Spiel neustarten</Text>
+            <TouchableOpacity onPress={() => restartGame(deck)} style={appStyles.restartButton}>
+                <Text style={appStyles.restartButtonText}>Spiel neustarten</Text>
             </TouchableOpacity>
         </View>
     );
@@ -221,11 +222,12 @@ const Kingscup = () => {
         
         <View style={styles.descriptionWindow}>
           <View style={{alignItems: 'center',justifyContent: 'center',}}>
-            {<Text style={styles.descriptionHeader}>{cardMeaning[0]}</Text>}
+            {<Text style={[appStyles.textHeader3, {color: 'black', textAlign: 'center'}]}>{cardMeaning[0]}</Text>}
             {<Text style={{fontSize: 10}}></Text>}
-            {<Text style={styles.descriptionText}>{cardMeaning[1]}</Text>}
+            {<Text style={[appStyles.textNormal2, {color: 'black', fontStyle: 'italic', textAlign: 'center'}]}>{cardMeaning[1]}</Text>}
           </View>
         </View>
+
 
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
@@ -305,41 +307,10 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#ccc',
   },
-  descriptionHeader:{
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  descriptionText:{
-    fontSize: 15,
-    textAlign: 'center',
-    fontStyle: 'italic',
-  },
-  winnerScreen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FAD02E',  // You can use a gradient or image
-  },
-  winnerText: {
-      fontSize: 40,
-      fontWeight: 'bold',
-      color: '#D84315',
-      marginBottom: 20,
-      textShadowColor: 'rgba(0, 0, 0, 0.75)',
-      textShadowOffset: { width: -1, height: 1 },
-      textShadowRadius: 10
-  },
-  restartButton: {
-      padding: 15,
-      borderRadius: 8,
-      backgroundColor: '#D84315',  // Use a color that stands out
-  },
-  buttonText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#FAD02E',
-  }
+
+
+
+  
 });
 
 export default Kingscup;
