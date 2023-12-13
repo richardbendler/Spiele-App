@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet, ImageBackground } from 'react-native';
+import { appStyles } from '../../styles';
 //import { Audio } from 'expo-av'; //TODO: wieder nutzen
 
 // Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
@@ -60,7 +61,7 @@ const MaexchenGame = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-        <Text style={styles.title}>Mäxchen</Text>
+        <Text style={appStyles.textHeader1}>Mäxchen</Text>
         <TouchableOpacity style={styles.button} onPress={rollDice}>
           <Text style={styles.buttonText}>Würfeln</Text>
         </TouchableOpacity>
@@ -91,12 +92,6 @@ const styles = StyleSheet.create({
     //backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
   },
   button: {
     backgroundColor: '#A0522D', // dunkelbraune Farbe, die an Holz erinnert

@@ -18,10 +18,10 @@ const InfoText = ({ navigation, header, rules}) => {
                 <ImageBackground source={require("../../../assets/images/bar/settings_tafel.png")} style={appStyles.imageBackgroundStyle} resizeMode="contain">
                     
                     <View style={{width:'65%', height:"90%", alignItems: 'center', justifyContent: 'center'}} >
-                        <Text style={appStyles.infoHeaderText}>{header}</Text>
+                        <Text style={appStyles.textHeader2}>{header}</Text>
                         <Text> </Text>
 
-                        <Text style={appStyles.infoText}>{rules}</Text>
+                        <Text style={appStyles.textNormal2}>{rules}</Text>
 
                         <TouchableOpacity onPress={() => setInfoVisible(false)} style={appStyles.settingsCloseButton}>
                             <Text style={appStyles.settingsButtonText}>✖</Text>
