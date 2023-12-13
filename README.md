@@ -71,7 +71,8 @@ npx expo install @expo-google-fonts/quicksand expo-font
 npx expo install @expo-google-fonts/raleway expo-font
 
 //Sound:
-npx expo install expo-av
+//npx expo install expo-av
+// -> Sorgt aktuell noch für Probleme: Google Play Console sagt beim Import: In deinem APK oder Android App Bundle werden Berechtigungen verwendet, für die eine Datenschutzerklärung erforderlich ist: android.permission.RECORD_AUDIO. Weitere Informationen
 
 //////////////////////////////////////////
 //Noch nicht:

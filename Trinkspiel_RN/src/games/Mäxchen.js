@@ -68,8 +68,8 @@ const MaexchenGame = () => {
         <View style={{alignItems: 'center', height:'60%', width: '80%'}}>
           <Text style={appStyles.textHeader1}>Mäxchen</Text>
           {isDiceHidden && (
-          <TouchableOpacity style={appStyles.chalkboardButton} onPress={rollDice}>
-            <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Würfeln</Text>
+          <TouchableOpacity style={[appStyles.gameActionButton, {margin: 40}]} onPress={rollDice}>
+            <Text style={appStyles.gameActionButtonText}>Würfeln</Text>
           </TouchableOpacity>
           )}
 
@@ -80,15 +80,15 @@ const MaexchenGame = () => {
           {isDiceHidden && gameStarted &&
             <View>
               <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>{"Du glaubst der vorherigen Person nicht? Dann zweifel an:"}</Text>
-              <TouchableOpacity style={appStyles.chalkboardButton} onPress={handleChallenge}>
-                <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Anzweifeln</Text>
+              <TouchableOpacity style={[appStyles.gameActionButton, {margin: 40}]} onPress={handleChallenge}>
+                <Text style={appStyles.gameActionButtonText}>Anzweifeln</Text>
               </TouchableOpacity>
             </View>
           }
           {!isDiceHidden && 
             <View>
-              <TouchableOpacity style={appStyles.chalkboardButton} onPress={hideDice}>
-                <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Würfel in Becher zurücklegen</Text>
+              <TouchableOpacity style={[appStyles.gameActionButton, {margin: 40}]} onPress={hideDice}>
+                <Text style={appStyles.gameActionButtonText}>Würfel in Becher zurücklegen</Text>
               </TouchableOpacity>
             </View>
           }

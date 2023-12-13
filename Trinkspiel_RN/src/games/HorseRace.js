@@ -218,15 +218,16 @@ const App = () => {
         
 
         <View style={styles.deckArea}>
-          <TouchableOpacity style={styles.deck} onPress={drawCard}>
-            <Text style={styles.deckText}>Aufdecken</Text>
+          <TouchableOpacity style={appStyles.gameActionButton} onPress={drawCard}>
+            <Text style={appStyles.gameActionButtonText}>Aufdecken</Text>
           </TouchableOpacity>
-          {discardPile.length > 0 && (
-            <View style={styles.card}>
+        </View>
+
+        {discardPile.length > 0 && (
+            <View style={[styles.card, {position: 'absolute', right: '3%', bottom: '3%'}]}>
               <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
             </View>
           )}
-        </View>
 
         
       </View>
@@ -267,8 +268,8 @@ const App = () => {
             <Text>{"\n"}</Text>
             
 
-            <TouchableOpacity style={styles.deck} onPress={() => setGameStarted(true)}>
-              <Text style={styles.deckText}>Spiel starten</Text>
+            <TouchableOpacity style={appStyles.gameActionButton} onPress={() => setGameStarted(true)}>
+              <Text style={appStyles.gameActionButtonText}>Spiel starten</Text>
             </TouchableOpacity>
           </View>
       </View>
@@ -293,7 +294,8 @@ const styles = StyleSheet.create({
   },
   deckArea: {
     height: '15%',
-    flexDirection: 'row',
+    width: '100%',
+    //flexDirection: 'row',
     marginBottom: windowWidth * 0.01,
     alignItems: 'center',
     justifyContent: 'center',
