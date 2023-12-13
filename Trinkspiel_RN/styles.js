@@ -123,7 +123,7 @@ const buttonStyles = StyleSheet.create({
     position: 'absolute',
     top: 20,         // Abstand vom linken Rand des Containers
     right: 20,       // Abstand vom unteren Rand des Containers
-    backgroundColor: tertiaryColor,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz //tertiaryColor,
     padding: 5,
     borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
     width: 40, // Breite des Buttons
@@ -170,6 +170,13 @@ const buttonStyles = StyleSheet.create({
     height: 50, // Höhe des Buttons
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
+  },
+
+  //Restart Button von Winnerpage
+  restartButton: {
+    padding: 15,
+    borderRadius: 8,
+    backgroundColor: '#D84315',  // Use a color that stands out
   },
 });
 
@@ -224,6 +231,13 @@ const buttonTextStyles = StyleSheet.create({
     fontFamily: font1,
     color: 'white',
     fontSize: 30,
+  },
+
+  //Restart Button von Winnerpage
+  restartButtonText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#FAD02E',
   },
   
 });
@@ -284,6 +298,18 @@ const fontStyles = StyleSheet.create({
     padding: 20,
     color: 'white',
   },
+
+  //Winnerpage
+  winnerText: {
+      fontFamily: font1,
+      fontSize: 40,
+      fontWeight: 'bold',
+      color: '#D84315',
+      marginBottom: 20,
+      textShadowColor: 'rgba(0, 0, 0, 0.75)',
+      textShadowOffset: { width: -1, height: 1 },
+      textShadowRadius: 10
+  },
   
   //Speziell für Picolo und Getränkecounter, wo es Eingabefelder gibt
   input: {
@@ -326,6 +352,13 @@ const fontStyles = StyleSheet.create({
 
 
 const backgroundStyles = StyleSheet.create({
+  //Winnerpage
+  winnerScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FAD02E',  // You can use a gradient or image
+  },
 
   imageBackgroundStyle: {
     width: '100%',  // Füllt die gesamte Breite des übergeordneten Containers aus
