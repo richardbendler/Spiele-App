@@ -36,12 +36,12 @@ export const handleSqlRequestAndSafeToDisk = async (storageItem, setter, sqlRequ
         } else {
             console.log(response)
             console.error('Fehler beim Senden des Texts.');
-            alert("API nicht erreichbar! - Fehler beim Senden des Texts.")
+            //alert("API nicht erreichbar! - Fehler beim Senden des Texts.")
         }
     } catch (error) {
         console.error('Ein Fehler ist aufgetreten:', error);
         //alert('Ein Fehler ist aufgetreten:', error);
-        alert(error)
+        //alert(error)
     }
     
 };

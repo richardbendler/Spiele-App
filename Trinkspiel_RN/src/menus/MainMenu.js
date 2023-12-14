@@ -34,9 +34,9 @@ function MainMenu({ navigation }) {
         </View>
         </ImageBackground>
         {/*SettingsButton*/}
-        <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+        {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
             <Text style={appStyles.settingsButtonText}>⚙️</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
       </View>
     </View>
     </ImageBackground>

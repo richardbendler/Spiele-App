@@ -117,6 +117,7 @@ export default function App() {
         initialRouteName="StartMenu"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShown: false,
         }}
       >
       <Stack.Screen name="StartMenu" component={StartMenu} />

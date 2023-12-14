@@ -52,6 +52,7 @@ const App = () => {
   const [field, setField] = useState(initialField(deck));
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
@@ -156,91 +157,145 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
+      {gameStarted? (
+      <View style={styles.container}>
 
-        <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
-
+        
         <View style={styles.field}>
-          <View style={styles.column}>
-            {field[0].map((card, index) => {
-              // Skip the first element
-              if (index === 0) return null;
-              return(
-              <View key={index} style={card ? styles.card : styles.emptyCard}>
-                {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-                {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />}
-              </View>)
-            })}
+           <View style={styles.column}>
+              {field[0].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                  {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[1].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[2].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[3].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[4].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
           </View>
-          <View style={styles.column}>
-            {field[1].map((card, index) => {
-              // Skip the first element
-              if (index === 0) return null;
-              return(
-              <View key={index} style={card ? styles.card : styles.emptyCard}>
-                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-              </View>)
-            })}
-          </View>
-          <View style={styles.column}>
-            {field[2].map((card, index) => {
-              // Skip the first element
-              if (index === 0) return null;
-              return(
-              <View key={index} style={card ? styles.card : styles.emptyCard}>
-                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-              </View>)
-            })}
-          </View>
-          <View style={styles.column}>
-            {field[3].map((card, index) => {
-              // Skip the first element
-              if (index === 0) return null;
-              return(
-              <View key={index} style={card ? styles.card : styles.emptyCard}>
-                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-              </View>)
-            })}
-          </View>
-          <View style={styles.column}>
-            {field[4].map((card, index) => {
-              // Skip the first element
-              if (index === 0) return null;
-              return(
-              <View key={index} style={card ? styles.card : styles.emptyCard}>
-                {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-              </View>)
-            })}
-          </View>
-        </View>
+        
+        
+
         <View style={styles.deckArea}>
-          <TouchableOpacity style={styles.deck} onPress={drawCard}>
-            <Text style={styles.deckText}>Aufdecken</Text>
+          <TouchableOpacity style={appStyles.gameActionButton} onPress={drawCard}>
+            <Text style={appStyles.gameActionButtonText}>Aufdecken</Text>
           </TouchableOpacity>
-          {discardPile.length > 0 && (
-            <View style={styles.card}>
+        </View>
+
+        {discardPile.length > 0 && (
+            <View style={[styles.card, {position: 'absolute', right: '3%', bottom: '3%'}]}>
               <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
             </View>
           )}
-          
-        </View>
+
+        
+      </View>
+
+      /*Falls Game noch nicht gestartet:*/
+      ):
+      
+      <View style={styles.container}>
+          <View style={{
+            height: '80%', 
+            width: '80%', 
+            alignItems: 'center',
+            justifyContent: 'center',
+            }}> 
+            <Text style={appStyles.textHeader2}>Pferderennen {"\n"}</Text>
+            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Vor Spielstart muss jede Person ein Ass auswählen und eine Anzahl X Schlücke auf das Ass setzen. Sobald das geschehen ist, könnt ihr das Spiel starten! {"\n"}</Text>
+            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Die ausführliche Anleitung findet ihr unter dem Info-Button.{"\n\n"}</Text>
+            
+            <View style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              width: windowWidth * 1,// * 360 / 100, // Adjusted width
+              justifyContent: 'center',
+            }}>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♦" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♥" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♠" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♣" + "A"}</Text>
+              </View>
+            </View>
+            <Text>{"\n"}</Text>
+            
+
+            <TouchableOpacity style={appStyles.gameActionButton} onPress={() => setGameStarted(true)}>
+              <Text style={appStyles.gameActionButtonText}>Spiel starten</Text>
+            </TouchableOpacity>
+          </View>
+      </View>
+      }
+        
+        <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>
-      </View>
+
+    </View>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    
-    
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: windowWidth * 0.05,
   },
   deckArea: {
-    flexDirection: 'row',
+    height: '15%',
+    width: '100%',
+    //flexDirection: 'row',
     marginBottom: windowWidth * 0.01,
     alignItems: 'center',
     justifyContent: 'center',
@@ -262,6 +317,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   field: {
+    height: '85%',
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: windowWidth * 1,// * 360 / 100, // Adjusted width
