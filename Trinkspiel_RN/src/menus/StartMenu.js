@@ -6,6 +6,11 @@ import SettingsButton from './sublements/SettingsButton';
 import Settings from './sublements/Settings';
 import NetInfo from "@react-native-community/netinfo";
 
+//Fonts
+import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
+import { Quicksand_300Light } from "@expo-google-fonts/quicksand";
+import { useFonts } from "expo-font";
+
 //HANDLE SQL REQUESTS
 const handleSqlRequest = async (sqlRequest) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
@@ -96,7 +101,13 @@ const StartMenu = ({ navigation }) => {
     }, []);
 
      
-
+    const [fontsLoaded] = useFonts({
+        Raleway_200ExtraLight,
+        Quicksand_300Light,
+        });
+        if (!fontsLoaded) {
+        return <Text>Loading...</Text>;
+    }
 
   return (
     <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
@@ -114,7 +125,7 @@ const StartMenu = ({ navigation }) => {
 
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
-                    </TouchableOpacity>
+                     </TouchableOpacity>
 
                     {/*<Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
@@ -127,14 +138,11 @@ const StartMenu = ({ navigation }) => {
                         <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
                     </TouchableOpacity>*/}
 
-                
-
-                    
                 </View>
 
-                <TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
                     <Text style={appStyles.settingsButtonText}>⚙️</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>*/}
             </View>
         
     </View>

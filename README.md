@@ -7,6 +7,7 @@ https://phoenixnap.com/kb/install-node-js-npm-on-windows
 ### Powershell im RN_Trinkspiel-Ordner ausführen:
 
 danach:
+cd RN_Trinkspiel
 npm install
 
 _(npm audit fix --force)_
@@ -65,6 +66,13 @@ npm install @react-navigation/stack
 
 npm install @react-native-async-storage/async-storage
 
+//Fonts:
+npx expo install @expo-google-fonts/quicksand expo-font
+npx expo install @expo-google-fonts/raleway expo-font
+
+//Sound:
+//npx expo install expo-av
+// -> Sorgt aktuell noch für Probleme: Google Play Console sagt beim Import: In deinem APK oder Android App Bundle werden Berechtigungen verwendet, für die eine Datenschutzerklärung erforderlich ist: android.permission.RECORD_AUDIO. Weitere Informationen
 
 //////////////////////////////////////////
 //Noch nicht:
@@ -77,8 +85,6 @@ npx expo install @react-native-async-storage/async-storage
 
 _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
 
-### Datenbank installieren
-~~npm install react-native-sqlite-storage~~
 __________________________________________________
 
 ## Datenbank
