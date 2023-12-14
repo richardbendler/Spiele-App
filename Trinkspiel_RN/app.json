@@ -14,7 +14,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "permissions": ["INTERNET"],
+    "permissions": [
+      "INTERNET"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "trinkspiel-01"
@@ -27,17 +29,17 @@
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 80,
-      "package": "com.chinberdradler.Trinkspiel_RN"
+      "versionCode": 3,
+      "package": "com.felsbend.Trinkspiel_RN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "felsbend",
     "extra": {
       "eas": {
-        "projectId": "55a09fb7-1a37-4df2-910d-96989cd303db"
+        "projectId": "4d547569-94ac-4d42-9c81-ce22f29f0460"
       }
-    },
-    "owner": "felsbend"
+    }
   }
 }
