@@ -38,6 +38,7 @@ __________________________________________________
 ## Build
 
 Vorher: "versionCode" in app.json inkrementieren!
+eas build --platform android  
 
 (npm update)
 
@@ -63,6 +64,8 @@ npm install react-native-safe-area-context
 
 npm install @react-navigation/native
 npm install @react-navigation/stack
+
+npm install @react-native-community/netinfo
 
 npm install @react-native-async-storage/async-storage
 
