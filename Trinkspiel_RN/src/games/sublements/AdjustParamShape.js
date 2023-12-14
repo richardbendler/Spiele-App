@@ -5,30 +5,34 @@ import { VariablesContext } from '../../../VariablesContext';
 
 //const names = ["Alice", "Bob", "Charlie", "David"];
 export const replaceHashtagsWithoutDuplicates = (inputString) => {
-    const { playerNames, setPlayerNames } = useContext(VariablesContext);
+    try{
+      const { playerNames, setPlayerNames } = useContext(VariablesContext);
 
-    // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
-    let availableNames = [...playerNames];
+      // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
+      let availableNames = [...playerNames];
 
-    
-    return inputString.replace(/#[a-zA-Z0-9_]+/g, () => {
-        if (availableNames.length === 0) {
-          // Wenn alle Namen verwendet wurden, setze die Liste zurück
-          availableNames = [...playerNames];
-        }
-    
-        // Zufälligen Index aus den verfügbaren Namen auswählen
-        const randomIndex = Math.floor(Math.random() * availableNames.length);
-    
-        // Wähle den Namen an diesem Index aus
-        const name = availableNames[randomIndex];
-    
-        // Entferne den ausgewählten Namen aus der Liste der verfügbaren Namen
-        availableNames.splice(randomIndex, 1);
-    
-        // Ersetze das Hashtag durch den ausgewählten Namen
-        return name;
-      });
+      
+      return inputString.replace(/#[a-zA-Z0-9_]+/g, () => {
+          if (availableNames.length === 0) {
+            // Wenn alle Namen verwendet wurden, setze die Liste zurück
+            availableNames = [...playerNames];
+          }
+      
+          // Zufälligen Index aus den verfügbaren Namen auswählen
+          const randomIndex = Math.floor(Math.random() * availableNames.length);
+      
+          // Wähle den Namen an diesem Index aus
+          const name = availableNames[randomIndex];
+      
+          // Entferne den ausgewählten Namen aus der Liste der verfügbaren Namen
+          availableNames.splice(randomIndex, 1);
+      
+          // Ersetze das Hashtag durch den ausgewählten Namen
+          return name;
+        });
+    }catch(error){
+      return inputString;
+    }
 }
 
 export const deleteHashtags = (inputString) => {
