@@ -9,7 +9,7 @@ function MainMenu({ navigation }) {
   const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
+    <ImageBackground source={require("../../assets/images/bar/bar_background.png")} style={{flex: 1}}>
     <View style={appStyles.pageContainer}>
       <View style={[appStyles.smallPageContainer, {height: '60%', justifyContent: 'center'}]}>
         <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={appStyles.imageBackgroundStyle} resizeMode="contain">

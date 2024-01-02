@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#366350"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -23,17 +23,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo/logo_weinglas.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/logo/adaptive_logo_weinglas.png",
+        "backgroundColor": "#366350"
       },
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 7,
+      "versionCode": 9,
       "package": "com.felsbend.Trinkspiel_RN"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/logo/favicon.png"
     },
     "owner": "felsbend",
     "extra": {
