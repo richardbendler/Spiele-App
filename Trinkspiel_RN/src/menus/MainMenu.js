@@ -11,7 +11,7 @@ function MainMenu({ navigation }) {
   return (
     <ImageBackground source={require("../../assets/images/bar/bar_image_complete.png")} style={{flex: 1}}>
     <View style={appStyles.pageContainer}>
-      <View style={appStyles.smallPageContainer}>
+      <View style={[appStyles.smallPageContainer, {height: '60%', justifyContent: 'center'}]}>
         <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={appStyles.imageBackgroundStyle} resizeMode="contain">
         <View style={appStyles.menuContainer}>
           
@@ -20,7 +20,7 @@ function MainMenu({ navigation }) {
 
 
 
-            <TouchableOpacity onPress={() => navigation.navigate('KlassikerMenu')} style={[appStyles.chalkboardButton, { marginTop: 100 }]}>
+            <TouchableOpacity onPress={() => navigation.navigate('KlassikerMenu')} style={[appStyles.chalkboardButton, { marginTop: 20 }]}>
               {<Text style={appStyles.chalkboardButtonText}>Klassiker</Text>}
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('CardGamesMenu')} style={appStyles.chalkboardButton}>
