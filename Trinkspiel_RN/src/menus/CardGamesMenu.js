@@ -20,7 +20,7 @@ function CardGamesMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '20%', top: '24%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '20%', top: '31%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
                 <View style={{ top: '10%', right: '75%' }}>
@@ -28,11 +28,11 @@ function CardGamesMenu({ navigation }) {
                 </View>
           </TouchableOpacity>
 
-          <View style={{ top: '49%', left: '0%', height: '1%', width: '100%' }}>
+          <View style={{ top: '56%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '60%', top: '59%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '60%', top: '66%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
                 <View style={{ top: '10%', right: '75%' }}>
@@ -41,7 +41,7 @@ function CardGamesMenu({ navigation }) {
           </TouchableOpacity>
           
 
-          <View style={{ top: '83%', left: '0%', height: '1%', width: '100%' }}>
+          <View style={{ top: '90%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 

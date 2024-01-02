@@ -54,7 +54,7 @@ const AddPlayer = ({ navigation }) => {
   }
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={{ flex: 1 }}>
+    <ImageBackground source={require("../../assets/images/bar/settings_tafel.png")} style={{ flex: 1 }} resizeMode="contain">
       <View style={appStyles.menuContainer}>
         <View style={{ width: '70%' }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
