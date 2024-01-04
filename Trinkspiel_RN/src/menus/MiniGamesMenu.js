@@ -23,7 +23,7 @@ function MiniGamesMenu({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '10%', top: '36%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton}/>
                 {/* HACK: used to position Text properly */}
-                <View style={{ top: '10%', right: '75%' }}>
+                <View style={{ top: '4%', right: '75%' }}>
                   <Text style={appStyles.bottleText}>Mäxchen</Text>
                 </View>
           </TouchableOpacity>
@@ -43,7 +43,7 @@ function MiniGamesMenu({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '21%', top: '71%'}]} disabled={true}>
                 <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
-                <View style={{ top: '10%', right: '75%' }}>
+                <View style={{ top: '12%', right: '75%' }}>
                   <Text style={appStyles.bottleText}>Activity</Text>
                 </View>
           </TouchableOpacity> 
@@ -51,7 +51,7 @@ function MiniGamesMenu({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '63%', top: '71%'}]} disabled={true}>
                 <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
-                <View style={{ top: '14%', right: '75%' }}>
+                <View style={{ top: '12%', right: '75%' }}>
                   <Text style={appStyles.bottleText}>Kopfpoker</Text>
                 </View>
           </TouchableOpacity>

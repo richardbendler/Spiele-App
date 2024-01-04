@@ -24,7 +24,7 @@ function MainMenu({ navigation }) {
               </TouchableOpacity>
             </View>
 
-            <View style={{position: 'absolute', top: '33%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{position: 'absolute', top: '34%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
               <TouchableOpacity onPress={() => navigation.navigate('CardGamesMenu')} style={[appStyles.chalkboardButton, {width: '65%'}]}>
                 <Text style={appStyles.chalkboardButtonText}>Kartenspiele</Text>
               </TouchableOpacity>
