@@ -169,7 +169,7 @@ const App = () => {
                 return(
                 <View key={index} style={card ? styles.card : styles.emptyCard}>
                   {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
-                  {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} />}
+                  {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} resizeMode="contain"/>}
                 </View>)
               })}
             </View>
