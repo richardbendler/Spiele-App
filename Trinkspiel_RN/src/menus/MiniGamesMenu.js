@@ -40,22 +40,13 @@ function MiniGamesMenu({ navigation }) {
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '15%', top: '63%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '30%', top: '63%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
                 <View style={{ top: '10%', right: '75%' }}>
                   <Text style={appStyles.bottleText}>Activity {"\n"}Scharade</Text>
                 </View>
           </TouchableOpacity> 
-
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkCounter')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '60%', top: '66%'}]}>
-            <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-            {/* HACK: used to position Text properly */}
-            <View style={{ top: '10%', right: '75%' }}>
-              <Text style={appStyles.bottleText}>Getränkezähler</Text>
-            </View>
-          </TouchableOpacity>
-
 
           <View style={{ top: '90%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
