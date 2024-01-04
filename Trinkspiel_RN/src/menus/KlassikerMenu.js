@@ -25,7 +25,7 @@ function KlassikerMenu({ navigation }) {
               <Text style={appStyles.bottleText}>The One</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '57%', top: '36%'}]} >
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '57%', top: '36%'}]} disabled={true}>
               <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
               <Text style={appStyles.bottleText}>Scala</Text>
           </TouchableOpacity>
@@ -34,7 +34,7 @@ function KlassikerMenu({ navigation }) {
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '20%', top: '71%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '20%', top: '71%'}]} disabled={true}>
                 <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                   {/* HACK: used to position Text properly */}
                   <View style={{ top: '11%', right: '75%' }}>
@@ -42,7 +42,7 @@ function KlassikerMenu({ navigation }) {
                   </View>
           </TouchableOpacity>
           
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '60%', top: '71%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '60%', top: '71%'}]} >
                 <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                   {/* HACK: used to position Text properly */}
                   <View style={{ top: '8%', right: '75%' }}>

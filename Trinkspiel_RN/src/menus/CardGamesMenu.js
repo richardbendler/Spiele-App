@@ -28,7 +28,7 @@ function CardGamesMenu({ navigation }) {
                 </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '60%', top: '36%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '60%', top: '36%'}]} disabled={true}>
                 <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
                 <View style={{ top: '10%', right: '75%' }}>
