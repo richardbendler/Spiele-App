@@ -20,20 +20,33 @@ function KlassikerMenu({ navigation }) {
 
           <Settings/>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '28%', left: '20%', top: '28%'}]} >
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '15%', top: '36%'}]} >
               <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
               <Text style={appStyles.bottleText}>The One</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '57%', top: '36%'}]} >
+              <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
+              <Text style={appStyles.bottleText}>Scala</Text>
           </TouchableOpacity>
           
           <View style={{ top: '56%', left: '0%', height: '1%', width: '100%' }}>
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '28%', left: '60%', top: '63%'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '20%', top: '71%'}]}>
+                <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
+                  {/* HACK: used to position Text properly */}
+                  <View style={{ top: '11%', right: '75%' }}>
+                    <Text style={appStyles.bottleText}>Top 10</Text>
+                  </View>
+          </TouchableOpacity>
+          
+          <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '60%', top: '71%'}]}>
                 <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                   {/* HACK: used to position Text properly */}
-                  <View style={{ top: '5%', right: '75%' }}>
-                    <Text style={appStyles.bottleText}>100.000{"\n"} Questions</Text>
+                  <View style={{ top: '8%', right: '75%' }}>
+                    <Text style={appStyles.bottleText}>1000 Questions</Text>
                   </View>
           </TouchableOpacity>
 
