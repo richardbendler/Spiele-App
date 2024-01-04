@@ -22,12 +22,16 @@ function KlassikerMenu({ navigation }) {
 
           <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '15%', top: '36%'}]} >
               <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-              <Text style={appStyles.bottleText}>The One</Text>
+              <View style={{ top: '11%', right: '75%' }}>
+                <Text style={appStyles.bottleText}>The One</Text>
+              </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[appStyles.imageWithTextContainer, {height: '20%', left: '57%', top: '36%'}]} disabled={true}>
               <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-              <Text style={appStyles.bottleText}>Scala</Text>
+              <View style={{ top: '12%', right: '75%' }}>
+                <Text style={appStyles.bottleText}>Scala</Text>
+              </View>
           </TouchableOpacity>
           
           <View style={{ top: '56%', left: '0%', height: '1%', width: '100%' }}>
