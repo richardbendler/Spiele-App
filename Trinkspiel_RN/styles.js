@@ -102,8 +102,8 @@ const buttonStyles = StyleSheet.create({
   chalkboardButton: { //Wird in Menüs benutzt
     backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
-    padding: 10,  // Innenabstand
-    margin: 50,  // Außenabstand
+    padding: 5,  // Innenabstand
+    margin: 30,  // Außenabstand
   },
 
   //Settings Button
@@ -203,9 +203,10 @@ const buttonTextStyles = StyleSheet.create({
 
   chalkboardButtonText: {
     fontFamily: font1,
+    fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',
-    fontSize: 40,  // oder eine andere passende Größe
+    fontSize: 33,  // oder eine andere passende Größe
     textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Textschatten
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
