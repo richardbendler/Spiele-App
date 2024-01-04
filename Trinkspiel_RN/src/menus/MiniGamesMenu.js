@@ -40,11 +40,11 @@ function MiniGamesMenu({ navigation }) {
               <Image source={require('../../assets/images/bar/shelf.png')} />
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '21%', top: '71%'}]}>
-                <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
+          <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={[appStyles.imageWithTextContainer, { height: '20%', left: '21%', top: '71%'}]} disabled={true}>
+                <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                 {/* HACK: used to position Text properly */}
                 <View style={{ top: '10%', right: '75%' }}>
-                  <Text style={appStyles.bottleText}>Activity {"\n"}Scharade</Text>
+                  <Text style={appStyles.bottleText}>Activity</Text>
                 </View>
           </TouchableOpacity> 
 
