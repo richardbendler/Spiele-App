@@ -203,6 +203,7 @@ const buttonTextStyles = StyleSheet.create({
 
   chalkboardButtonText: {
     fontFamily: font1,
+    fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',
     fontSize: 33,  // oder eine andere passende Größe

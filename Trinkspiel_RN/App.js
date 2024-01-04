@@ -116,7 +116,7 @@ export default function App() {
       <Stack.Navigator 
         initialRouteName="StartMenu"
         screenOptions={{
-          //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           headerShown: false,
         }}
       >
