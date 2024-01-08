@@ -7,6 +7,7 @@ https://phoenixnap.com/kb/install-node-js-npm-on-windows
 ### Powershell im RN_Trinkspiel-Ordner ausführen:
 
 danach:
+cd RN_Trinkspiel
 npm install
 
 _(npm audit fix --force)_
@@ -37,6 +38,7 @@ __________________________________________________
 ## Build
 
 Vorher: "versionCode" in app.json inkrementieren!
+eas build --platform android  
 
 (npm update)
 
@@ -63,8 +65,17 @@ npm install react-native-safe-area-context
 npm install @react-navigation/native
 npm install @react-navigation/stack
 
+npm install @react-native-community/netinfo
+
 npm install @react-native-async-storage/async-storage
 
+//Fonts:
+npx expo install @expo-google-fonts/quicksand expo-font
+npx expo install @expo-google-fonts/raleway expo-font
+
+//Sound:
+//npx expo install expo-av
+// -> Sorgt aktuell noch für Probleme: Google Play Console sagt beim Import: In deinem APK oder Android App Bundle werden Berechtigungen verwendet, für die eine Datenschutzerklärung erforderlich ist: android.permission.RECORD_AUDIO. Weitere Informationen
 
 //////////////////////////////////////////
 //Noch nicht:
@@ -77,8 +88,6 @@ npx expo install @react-native-async-storage/async-storage
 
 _(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
 
-### Datenbank installieren
-~~npm install react-native-sqlite-storage~~
 __________________________________________________
 
 ## Datenbank
@@ -111,12 +120,16 @@ Achtung: Backend läuft gerade durchgängig - dieser Part kann zum Testen ignori
 
 ### Start - Entwicklungsumgebung
 cd Trinkspielapp_Backend
-node server.js
+sudo node server.js
+(sudo wegen https)
 
 ### Start - Produktionsumgebung
 To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
 cd Trinkspielapp_Backend
-pm2 start server.js
+sudo pm2 start server.js
+sudo pm2 list
+sudo pm2 stop server
+(sudo wegen https)
 
 ### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 Auf Netcup-Server pushen
@@ -124,11 +137,18 @@ Node und npm installieren: https://www.digitalocean.com/community/tutorials/how-
 sudo apt install npm
 npm install express body-parser mysql2
 npm install jsonwebtoken
-sudo ufw allow 3000 #damit app den server anpingen kann
+sudo ufw allow 3000 #damit app den server anpingen kann -> http
+sudo ufw allow 3000 #damit app den server anpingen kann -> https
 sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann
 mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
 iadb.conf.d/50-server.cnf weil wir mariaDB haben
-wenn Host nicht allowd für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+
+_________________________________________________________
+
+## Domain
+
+Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. Dokumentation zur Einrichtung stehen in Trello.
 
 __________________________________________________
 
