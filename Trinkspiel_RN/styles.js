@@ -100,7 +100,7 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   chalkboardButton: { //Wird in Menüs benutzt
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
     padding: 5,  // Innenabstand
     margin: 30,  // Außenabstand
