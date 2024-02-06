@@ -50,41 +50,41 @@ function MainMenu({ navigation }) {
 
                   
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '-5%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }]} >
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '5%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
                       <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>The One</Text>
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '10%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '16%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Skala</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '20%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }]} >
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '29%', top: '32%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
                       <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Kingscup</Text>
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={{position: 'absolute', left: '35%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={{position: 'absolute', left: '45%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Schöneberg</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={[{position: 'absolute', left: '50%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }]} >
+                    <TouchableOpacity onPress={() => navigation.navigate('MaexchenGame')} style={[{position: 'absolute', left: '56%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
                       <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '5%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Mäxchen</Text>
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('SpinTheBottle')} style={{position: 'absolute', left: '60%', top: '32%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} >
+                    <TouchableOpacity onPress={() => navigation.navigate('SpinTheBottle')} style={{position: 'absolute', left: '68%', top: '32%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }} >
                       <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Flaschendrehen</Text>
                       </View>
                     </TouchableOpacity>
@@ -95,34 +95,34 @@ function MainMenu({ navigation }) {
                     <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                   </View>
                   
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '1%', top: '70%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '7%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Top 10</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '10%', top: '70%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '20%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
-                      <View style={{ top: '50%', right: '75%' }}>
+                      <View style={{ top: '1%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>1000 {"\n"} Questions</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '25%', top: '70%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '35%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
-                      <View style={{ top: '50%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>6 by 6</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={{position: 'absolute', left: '55%', top: '70%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Activity')} style={{position: 'absolute', left: '60%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
-                      <View style={{ top: '50%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Activity</Text>
                       </View>
                     </TouchableOpacity>
@@ -132,23 +132,23 @@ function MainMenu({ navigation }) {
                     <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                   </View>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '1%', top: '106%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '7%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Getränkezähler</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '28%', top: '106%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '39%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Pferderennen</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '50%', top: '106%', width: '25%', height: '30%', alignItems: 'center', justifyContent: 'bottom' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('HorseRace')} style={{position: 'absolute', left: '55%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '60%', right: '75%' }}>
+                      <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Kopfpoker</Text>
                       </View>
                     </TouchableOpacity>
