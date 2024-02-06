@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground, Image } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import SettingsButton from './sublements/SettingsButton';
@@ -106,7 +106,10 @@ const StartMenu = ({ navigation }) => {
         Quicksand_300Light,
         });
         if (!fontsLoaded) {
-        return <Text>Loading...</Text>;
+        return <View style={{justifyContent:"center", alignItems:"center"}}>
+            <Image source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')} style={appStyles.bottleButton} />
+            <Text>Loading...</Text>
+        </View> ;
     }
 
   return (
