@@ -113,7 +113,10 @@ const StartMenu = ({ navigation }) => {
     }
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/bar_background.png")} style={{flex: 1}}>
+    <View style={{alignItems: 'flex-start'}}>
+    <ImageBackground source={require("../../assets/images/bar/bar_background_small.png")} 
+    style={{width: '100%', height: '100%', resizeMode: 'cover', alignSelf: 'flex-start'}}
+    >
     <Settings/>
     <View style={appStyles.pageContainer}>
         
@@ -150,6 +153,7 @@ const StartMenu = ({ navigation }) => {
         
     </View>
     </ImageBackground>
+    </View>
   );
 };
 
