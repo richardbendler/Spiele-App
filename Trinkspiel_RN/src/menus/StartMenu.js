@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground, Image } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground, Image, Dimensions } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import SettingsButton from './sublements/SettingsButton';
@@ -66,6 +66,9 @@ const handleTestAPI = async () => {
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
+    const windowWidth = Dimensions.get('window').width;
+    
+
     //Test Internet Connection
     const [isConnected, setIsConnected] = useState(true);
     useEffect(() => {
@@ -113,44 +116,66 @@ const StartMenu = ({ navigation }) => {
     }
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/bar_background.png")} style={{flex: 1}}>
-    <Settings/>
-    <View style={appStyles.pageContainer}>
-        
-            <View style={appStyles.smallPageContainer}>
-                <View style={appStyles.menuContainer}>
-                    
-                    
-                    <Text>
-                        {isConnected ? '' : 'Du bist nicht mit dem Internet verbunden...'}
-                    </Text>
+
+        <View style={[styles.container, {width: windowWidth,}]}>
+            <Image
+                source={require("../../assets/images/bar/bar_background.png")} 
+                style={styles.backgroundImage}
+            />
+            <Settings/>
+            <View style={[appStyles.pageContainer, {width: windowWidth, }]}>
+                
+                    <View style={appStyles.smallPageContainer}>
+                        <View style={appStyles.menuContainer}>
+                            
+                            
+                            <Text>
+                                {isConnected ? '' : 'Du bist nicht mit dem Internet verbunden...'}
+                            </Text>
 
 
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
-                        <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
-                     </TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
+                                <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
+                            </TouchableOpacity>
 
-                    {/*<Text>{words.slice(0,50)}</Text>
-                    <Text>--------------------------</Text>
-                    <Text>{ret.slice(0,50)}</Text>*/}
+                            {/*<Text>{words.slice(0,50)}</Text>
+                            <Text>--------------------------</Text>
+                            <Text>{ret.slice(0,50)}</Text>*/}
 
-                    {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                        <Text style={appStyles.menuButtonText}>Custom Game</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                        <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
-                    </TouchableOpacity>*/}
+                            {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
+                                <Text style={appStyles.menuButtonText}>Custom Game</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
+                                <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
+                            </TouchableOpacity>*/}
 
-                </View>
+                        </View>
 
-                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                    <Text style={appStyles.settingsButtonText}>⚙️</Text>
-                </TouchableOpacity>*/}
+                        {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+                            <Text style={appStyles.settingsButtonText}>⚙️</Text>
+                        </TouchableOpacity>*/}
+                    </View>
+                
             </View>
-        
-    </View>
-    </ImageBackground>
+        </View>
+
   );
 };
+
+const styles = StyleSheet.create({
+    container: {
+      
+      flex: 1,
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+    },
+    backgroundImage: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '100%',
+    },
+  });
 
 export default StartMenu;
