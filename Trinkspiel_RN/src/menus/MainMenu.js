@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions } from 'react-native';
+import { Button, View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Modal, TouchableWithoutFeedback  } from 'react-native';
 import { appStyles } from '../../styles';
 import SettingsButton from './sublements/SettingsButton';
 import { VariablesContext } from '../../VariablesContext';
@@ -7,6 +7,25 @@ import Settings from './sublements/Settings';
 
 function MainMenu({ navigation }) {
   const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [gameDescription, setGameDescription] = useState('');
+  const [navigateAction, setNavigateAction] = useState('');
+
+  const gameDescriptions = {
+    'The One': { description: 'Beschreibung für The One...', navigateTo: 'AddPlayer' },
+    'Kingscup': { description: 'Beschreibung für Kingscup...', navigateTo: 'GameScreen' },
+    // Weitere Spiele hier hinzufügen
+  };
+
+  const openModalWithGame = (gameKey) => {
+    const game = gameDescriptions[gameKey];
+    setGameDescription(game.description);
+    setNavigateAction(game.navigateTo);
+    setModalVisible(true);
+  };
+
+
 
   const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
   const windowWidth = Dimensions.get('window').width;
@@ -50,7 +69,7 @@ function MainMenu({ navigation }) {
 
                   
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '5%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
+                    <TouchableOpacity onPress={() => openModalWithGame('The One')} /*onPress={() => navigation.navigate('AddPlayer')}*/ style={[{position: 'absolute', left: '5%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
                       <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>The One</Text>
@@ -103,7 +122,7 @@ function MainMenu({ navigation }) {
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={{position: 'absolute', left: '20%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ManyQuestionsGame')} style={{position: 'absolute', left: '20%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
                       <View style={{ top: '1%', right: '75%' }}>
@@ -155,57 +174,42 @@ function MainMenu({ navigation }) {
 
 
                 </View>
-                
-                {/*<View style={{ height: '100%', width: windowWidth, alignItems: 'center', justifyContent: 'center' }}>
-                  
-                  <View style={{ position: 'absolute', left: '0%', top: '58%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} />
-                  </View>
 
 
-                  <View style={{ position: 'absolute', left: '0%', top: '95%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} />
-                  </View>
-
-                </View>
-                <View style={{ height: '100%', width: windowWidth, alignItems: 'center', justifyContent: 'center' }}>
-                  
-                  <View style={{ position: 'absolute', left: '0%', top: '58%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} />
-                  </View>
-
-                  
-                  <View style={{ position: 'absolute', left: '0%', top: '95%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} />
-                  </View>
-
-                </View>*/}
-
-
-
-                
-
-                
-
-                {/*<View style={{position: 'absolute', top: '15%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                  <TouchableOpacity onPress={() => navigation.navigate('KlassikerMenu')} style={[appStyles.chalkboardButton, {width: '65%'}]}>
-                    {<Text style={appStyles.chalkboardButtonText}>Klassiker</Text>}
-                  </TouchableOpacity>
-                </View>
-
-                <View style={{position: 'absolute', top: '34%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                  <TouchableOpacity onPress={() => navigation.navigate('CardGamesMenu')} style={[appStyles.chalkboardButton, {width: '65%'}]}>
-                    <Text style={appStyles.chalkboardButtonText}>Kartenspiele</Text>
-                  </TouchableOpacity>
-                </View>
-
-                <View style={{position: 'absolute', top: '52%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                  <TouchableOpacity onPress={() => navigation.navigate('MiniGamesMenu')} style={[appStyles.chalkboardButton, {width: '65%'}]}>
-                    <Text style={appStyles.chalkboardButtonText}>Mini Games</Text>
-                  </TouchableOpacity>
-                </View>*/}
-
-                
+                {/* Modal für Spielbeschreibungen */}
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={modalVisible}
+                  onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                    <View style={styles.modalOverlay}>
+                      <TouchableWithoutFeedback onPress={() => {}}>
+                        <View style={styles.modalView}>
+                          <Text style={styles.modalText}>{gameDescription}</Text>
+                          <TouchableOpacity
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                              setModalVisible(!modalVisible);
+                              navigation.navigate(navigateAction);
+                            }}
+                          >
+                            <Text style={styles.textStyle}>Spiel starten</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={() => setModalVisible(false)}
+                          >
+                            <Text style={styles.textStyle}>X</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </TouchableWithoutFeedback>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </Modal>
                 
               </View>  
             {/*</View>*/}
@@ -222,5 +226,55 @@ function MainMenu({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dunkler Hintergrund für den Blur-Effekt
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: '#F0F0F0', // Weiche, neutrale Hintergrundfarbe
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
+  },
+  textStyle: {
+    color: '#333', // Dunklere Farbe für den Text, um Kontrast zu schaffen
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: '#555', // Sanfte Textfarbe
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 10, // Etwas Abstand zum Text oben
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3', // Farbige Schaltfläche zum Starten des Spiels
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'transparent', // Kein Hintergrund für ein subtiles Aussehen
+    padding: 5,
+  },
+});
+
+
 
 export default MainMenu;
