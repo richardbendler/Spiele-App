@@ -82,13 +82,13 @@ function MainMenu({ navigation }) {
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('AddPlayer')} style={[{position: 'absolute', left: '29%', top: '32%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
+                    <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={[{position: 'absolute', left: '29%', top: '32%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
                       <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Kingscup</Text>
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Kingscup')} style={{position: 'absolute', left: '45%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Schöneberg')} style={{position: 'absolute', left: '45%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }} disabled={true}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Schöneberg</Text>
