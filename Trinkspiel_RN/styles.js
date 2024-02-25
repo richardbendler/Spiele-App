@@ -458,3 +458,4 @@ export const appStyles = {
   ...backgroundStyles,
   ...modalStyles,
 }
+
