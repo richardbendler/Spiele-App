@@ -219,7 +219,18 @@ const modalStyles = StyleSheet.create({
     width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
+  modalTextTitle: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'white', // Sanfte Textfarbe
+    fontSize: 25,
+  },
   modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'white', // Sanfte Textfarbe
+  },
+  modalTextParameters: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
