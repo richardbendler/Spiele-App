@@ -183,7 +183,7 @@ const buttonStyles = StyleSheet.create({
     backgroundColor: secondaryColor,
     padding: 5,
     borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 50, // Breite des Buttons
+    //width: 50, // Breite des Buttons
     height: 50, // Höhe des Buttons
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
@@ -217,7 +217,7 @@ const modalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
   },
   modalTextTitle: {
     marginBottom: 15,
@@ -308,7 +308,8 @@ const buttonTextStyles = StyleSheet.create({
   infoButtonText: {
     fontFamily: font1,
     color: 'white',
-    fontSize: 30,
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 
   //Restart Button von Winnerpage

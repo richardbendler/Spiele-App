@@ -124,7 +124,7 @@ const SpinTheBottle = ({route }) => {
 
         <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
 
     </ImageBackground>

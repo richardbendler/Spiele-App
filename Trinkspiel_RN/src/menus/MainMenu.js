@@ -17,7 +17,7 @@ function MainMenu({ navigation }) {
   const gameDescriptions = {
     'The One': { title: 'The One', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Hier könnt ihr den klassischen Trinkspielmodus spielen, bei dem Fragen und Aussagen vorgelesen werden, die bestimmen wer trinkt oder z.B. eine Aufgabe erfüllen muss. Hier müsst ihr euch um nichts kümmern, außer die Namen der Mitspielenden einzutragen.', navigateTo: 'AddPlayer' },
     'Skala': { title: 'Skala', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (1/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Wo würdest du Monopoly auf einer Skala von "entspannt" bis "stressig" einordnen? Bei diesem Spiel könnt ihr in Teams gegeneinander antreten um zu versuchen, den gleichen Wert auf der Skala zu finden.', navigateTo: '' },
-    'Kingscup': { title: 'Kingscup', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Kein Kartenspiel dabei und ihr wollt trotzdem Kingscup spielen? Hier könnt ihr das tun. \n Jede Karte hat eine eigene Funktion, die beim aufdecken ausgeführt werden muss. Hier könnt ihr ohne große Regeln einfach starten und reihum aufdecken.', navigateTo: 'Kingscup' },
+    'Kingscup': { title: 'Kingscup', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Kein Kartenspiel dabei und ihr wollt trotzdem Kingscup spielen? Hier könnt ihr das tun. \n Jede Karte hat eine eigene Funktion, die beim Aufdecken ausgeführt werden muss. Hier könnt ihr ohne große Regeln einfach starten und reihum aufdecken.', navigateTo: 'Kingscup' },
     'Schöneberg': { title: 'Schöneberg', parameters: 'Trinklevel: ⚪⚪⚪⚪⚫ (4/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Im unkonventionellen Schöneberg sprechen die Geschäfte und Cafés in der Motzstraße und um den Viktoria-Luise-Platz die große Gay-Community der Gegend an. Das riesige Kaufhaus des Westens, auch KaDeWe genannt, zieht anspruchsvolle Shoppende sowie Feinschmecker mit einer Feinkostabteilung an. Originelle Galerien, türkische Lokale und Lebensmittelgeschäfte sind in der Potsdamer Straße zu finden. Familien spazieren durch das weitläufige Schöneberger Südgelände, das sich auf der Anlage eines früheren Rangierbahnhofs befindet.', navigateTo: '' },
     'MaexchenGame': { title: 'Mäxchen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Mäxchen ist ein klassisches Würfelspiel, das auf dem Prinzip von Lügen basiert. Die genauen Regeln könnt ihr nach Spielstart unter dem Infobutton lesen.', navigateTo: 'MaexchenGame' },
     'SpinTheBottle': { title: 'Flaschendrehen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Das klassiche Flaschendrehen kombiniert mit Wahrheit oder Pflicht.', navigateTo: 'SpinTheBottle' },
@@ -166,7 +166,7 @@ function MainMenu({ navigation }) {
                   </View>
 
                     <TouchableOpacity onPress={() => openModalWithGame('Getränkezähler')} style={{position: 'absolute', left: '7%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
+                      <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Getränkezähler</Text>
                       </View>
@@ -237,13 +237,14 @@ function MainMenu({ navigation }) {
                             style={appStyles.closeButton}
                             onPress={() => setModalVisible(false)}
                           >
-                            <Text style={{color: 'white'}}>X</Text>
+                            <Text style={{color: 'white'}}>✖</Text>
                           </TouchableOpacity>
 
                         </View>
                       </TouchableWithoutFeedback>
                     </View>
                   </TouchableWithoutFeedback>
+
                 </Modal>
                 
               </View>  
