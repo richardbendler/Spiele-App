@@ -9,27 +9,31 @@ function MainMenu({ navigation }) {
   const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [gameTitle, setGameTitle] = useState('');
+  const [gameParameters, setGameParameters] = useState('');
   const [gameDescription, setGameDescription] = useState('');
   const [navigateAction, setNavigateAction] = useState('');
 
   const gameDescriptions = {
-    'The One': { description: 'Beschreibung für The One...', navigateTo: 'AddPlayer' },
-    'Skala': { description: 'Beschreibung für Skala...', navigateTo: '' },
-    'Kingscup': { description: 'Beschreibung für Kingscup...', navigateTo: 'Kingscup' },
-    'Schöneberg': { description: 'Beschreibung für Schöneberg...', navigateTo: '' },
-    'MaexchenGame': { description: 'Beschreibung für MaexchenGame...', navigateTo: 'MaexchenGame' },
-    'SpinTheBottle': { description: 'Beschreibung für SpinTheBottle...', navigateTo: 'SpinTheBottle' },
-    'Top10': { description: 'Beschreibung für Top10...', navigateTo: '' },
-    'ManyQuestionsGame': { description: 'Beschreibung für ManyQuestionsGame...', navigateTo: 'ManyQuestionsGame' },
-    '6by6': { description: 'Beschreibung für 6by6...', navigateTo: '' },
-    'Activity': { description: 'Beschreibung für Activity...', navigateTo: '' },
-    'Getränkezähler': { description: 'Beschreibung für Getränkezähler...', navigateTo: '' },
-    'HorseRace': { description: 'Beschreibung für HorseRace...', navigateTo: 'HorseRace' },
-    'Kopfpoker': { description: 'Beschreibung für Kopfpoker...', navigateTo: '' },
+    'The One': { title: 'The One', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Hier könnt ihr den klassischen Trinkspielmodus spielen, bei dem Fragen und Aussagen vorgelesen werden, die bestimmen wer trinkt oder z.B. eine Aufgabe erfüllen muss. Hier müsst ihr euch um nichts kümmern, außer die Namen der Mitspielenden einzutragen.', navigateTo: 'AddPlayer' },
+    'Skala': { title: 'Skala', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (1/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Wo würdest du Monopoly auf einer Skala von "entspannt" bis "stressig" einordnen? Bei diesem Spiel könnt ihr in Teams gegeneinander antreten um zu versuchen, den gleichen Wert auf der Skala zu finden.', navigateTo: '' },
+    'Kingscup': { title: 'Kingscup', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Kein Kartenspiel dabei und ihr wollt trotzdem Kingscup spielen? Hier könnt ihr das tun. \n Jede Karte hat eine eigene Funktion, die beim aufdecken ausgeführt werden muss. Hier könnt ihr ohne große Regeln einfach starten und reihum aufdecken.', navigateTo: 'Kingscup' },
+    'Schöneberg': { title: 'Schöneberg', parameters: 'Trinklevel: ⚪⚪⚪⚪⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für Schöneberg...', navigateTo: '' },
+    'MaexchenGame': { title: 'Mäxchen', parameters: 'Trinklevel: ⚪⚪⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für MaexchenGame...', navigateTo: 'MaexchenGame' },
+    'SpinTheBottle': { title: 'Flaschendrehen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für SpinTheBottle...', navigateTo: 'SpinTheBottle' },
+    'Top10': { title: 'Top 10', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für Top10...', navigateTo: '' },
+    'ManyQuestionsGame': { title: '1000 Questions', parameters: 'Trinklevel: ⚪⚪⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für ManyQuestionsGame...', navigateTo: 'ManyQuestionsGame' },
+    '6by6': { title: 'Six by Six', parameters: 'Trinklevel: ⚪⚪⚪⚪⚪ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für 6by6...', navigateTo: '' },
+    'Activity': { title: 'Activity', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für Activity...', navigateTo: '' },
+    'Getränkezähler': { title: 'Getränkezähler', parameters: 'Trinklevel: ⚫⚫⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für Getränkezähler...', navigateTo: '' },
+    'HorseRace': { title: 'Pferderennen', parameters: 'Trinklevel: ⚪⚪⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für HorseRace...', navigateTo: 'HorseRace' },
+    'Kopfpoker': { title: 'Kopfpoker', parameters: 'Trinklevel: ⚪⚪⚫⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Beschreibung für Kopfpoker...', navigateTo: '' },
   };
 
   const openModalWithGame = (gameKey) => {
     const game = gameDescriptions[gameKey];
+    setGameTitle(game.title);
+    setGameParameters(game.parameters)
     setGameDescription(game.description);
     setNavigateAction(game.navigateTo);
     setModalVisible(true);
@@ -199,6 +203,10 @@ function MainMenu({ navigation }) {
                     <View style={appStyles.modalOverlay}>
                       <TouchableWithoutFeedback onPress={() => {}}>
                         <View style={appStyles.modalView}>
+
+                          <Text style={appStyles.modalTextTitle}>{gameTitle}</Text>
+
+                          <Text style={appStyles.modalTextParameters}>{gameParameters}</Text>
                           <Text style={appStyles.modalText}>{gameDescription}</Text>
                           
                           {navigateAction !== '' ? (
