@@ -89,38 +89,33 @@ function MainMenu({ navigation }) {
                         <Text style={appStyles.bottleText}>The One</Text>
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '16%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '10%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Skala</Text>
+                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '16%', top: '32%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                      <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
+                      {/* HACK: used to position Text properly */}
+                      <View style={{ top: '1%', right: '75%' }}>
+                        <Text style={appStyles.bottleText}>1000 {"\n"} Questions</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={[{position: 'absolute', left: '29%', top: '32%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
-                      <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '10%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Kingscup</Text>
-                      </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => openModalWithGame('Schöneberg')} style={{position: 'absolute', left: '45%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Schöneberg')} style={{position: 'absolute', left: '30%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Schöneberg</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={[{position: 'absolute', left: '56%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
-                      <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '5%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Mäxchen</Text>
-                      </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '68%', top: '32%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }} >
-                      <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
+                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '44%', top: '32%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                      <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Flaschendrehen</Text>
+                        <Text style={appStyles.bottleText}>Skala</Text>
                       </View>
                     </TouchableOpacity>
+
+                    
+                    
+
+                    
+                    
 
                     
 
@@ -128,21 +123,23 @@ function MainMenu({ navigation }) {
                     <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                   </View>
                   
-                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '7%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
-                      {/* HACK: used to position Text properly */}
+                  <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={[{position: 'absolute', left: '5%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
+                      <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Top 10</Text>
+                        <Text style={appStyles.bottleText}>Kingscup</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '20%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
-                      {/* HACK: used to position Text properly */}
-                      <View style={{ top: '1%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>1000 {"\n"} Questions</Text>
+                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '20%', top: '70%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                      <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
+                      <View style={{ top: '10%', right: '75%' }}>
+                        <Text style={appStyles.bottleText}>Pferderennen</Text>
                       </View>
                     </TouchableOpacity>
+                    
+                    
+
+                    
 
                     <TouchableOpacity onPress={() => openModalWithGame('6by6')} style={{position: 'absolute', left: '35%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
@@ -152,11 +149,19 @@ function MainMenu({ navigation }) {
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '60%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '47%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       {/* HACK: used to position Text properly */}
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Activity</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '56%', top: '70%', width: '8%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                      <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
+                      {/* HACK: used to position Text properly */}
+                      <View style={{ top: '10%', right: '75%' }}>
+                        <Text style={appStyles.bottleText}>Top 10</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -165,21 +170,30 @@ function MainMenu({ navigation }) {
                     <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                   </View>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Getränkezähler')} style={{position: 'absolute', left: '7%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '3%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }} >
+                      <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
+                      <View style={{ top: '10%', right: '75%' }}>
+                        <Text style={appStyles.bottleText}>Flaschendrehen</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={[{position: 'absolute', left: '17%', top: '106%', width: '7%', height: '30%', alignItems: 'center', justifyContent: 'center' }]} >
+                      <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
+                      <View style={{ top: '5%', right: '75%' }}>
+                        <Text style={appStyles.bottleText}>Mäxchen</Text>
+                      </View>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity onPress={() => openModalWithGame('Getränkezähler')} style={{position: 'absolute', left: '30%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Getränkezähler</Text>
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '39%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                      <View style={{ top: '10%', right: '75%' }}>
-                        <Text style={appStyles.bottleText}>Pferderennen</Text>
-                      </View>
-                    </TouchableOpacity>
+                    
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '55%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '48%', top: '106%', width: '9%', height: '30%', alignItems: 'center', justifyContent: 'center' }}>
                       <Image source={require('../../assets/images/bottles/bottle_001_schwarz_weiß.png')} style={appStyles.bottleButton} />
                       <View style={{ top: '10%', right: '75%' }}>
                         <Text style={appStyles.bottleText}>Kopfpoker</Text>
