@@ -157,7 +157,7 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-      {gameStarted? (
+      
       <View style={styles.container}>
 
         
@@ -231,8 +231,9 @@ const App = () => {
 
         
       </View>
-
-      /*Falls Game noch nicht gestartet:*/
+      {/*{gameStarted? (
+      //Falls Game noch nicht gestartet:
+      pass
       ):
       
       <View style={styles.container}>
@@ -272,15 +273,16 @@ const App = () => {
               <Text style={appStyles.gameActionButtonText}>Spiel starten</Text>
             </TouchableOpacity>
           </View>
-      </View>
-      }
+        </View>
+      }*/}
         
         <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
 
     </View>
+    
     </ImageBackground>
   );
 };
