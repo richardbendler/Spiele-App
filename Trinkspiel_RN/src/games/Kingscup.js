@@ -228,7 +228,7 @@ const Kingscup = () => {
 
         <InfoText header={"Kingscup!"} rules={"Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben. \n\n Jetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu 1/3 gefüllt mit dem eigenen Getränk. Der Vierte König muss austrinken und das Spiel ist vorbei! "}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
       </View>
       </ImageBackground>
