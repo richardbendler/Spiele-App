@@ -13,12 +13,10 @@ const SpinTheBottle = ({route }) => {
   const textsWahrheitSpinTheBottle = shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle);
   const textsPflichtSpinTheBottle = shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle);
   
-  const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger!');
+  const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger! (Tippen reicht auch)');
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
-  // State variable for the number of sips, initialized with a random value
-  const [sips, setSips] = useState(generateRandomSips());
   // Ref variable for the rotation value of the bottle, initialized with 0
   const rotationValue = useRef(new Animated.Value(0)).current;
   // Ref variable for the last rotation position, initialized with 0
@@ -73,7 +71,7 @@ const SpinTheBottle = ({route }) => {
           let resultText = '';
           switch (randomSelection) {
             case 0:  // Schlucke! Option
-              resultText = `${sips} Schlucke!`;
+              resultText = `${generateRandomSips()} Schlucke!`;
               break;
             case 1:  // Wahrheit! Option
               randomTruth = textsWahrheitSpinTheBottle[Math.floor(Math.random() * textsWahrheitSpinTheBottle.length)].content
@@ -124,9 +122,9 @@ const SpinTheBottle = ({route }) => {
           <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
         </View>
 
-        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
+        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
 
     </ImageBackground>

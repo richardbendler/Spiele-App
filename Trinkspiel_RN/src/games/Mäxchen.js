@@ -104,7 +104,7 @@ const MaexchenGame = () => {
 
         <InfoText header={"Mäxchen!"} rules={"Würfelt der Reihe um so, dass nur ihr selbst das Ergebnis seht. Verdeckt anschließend euer Ergebnis und gebt das Handy zur nächsten Person weiter. Diese Person muss nun ein höheres Ergebnis würfeln. Sollte sie das nicht schaffen, muss sie ein höheres Ergebnis bluffen. \n\n Die beiden Würfelergebnisse werden immer aneinandergehängt mit der höheren Zahl am Anfang. Eine 4 und eine 5 würden also die Zahl 54 ergeben, eine 3 und eine 2 die 32. Pasches sind immer über den normalen Werten und das allerhöchste Ergebnis ist 21. \n\n Wenn man nun glaub, die vorherige Person blufft, kann man anzweifeln. Wer erfolgreich angezweifelt wird, muss trinken. Wer fälschlich anzweifelt, muss ebenfalls trinken."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

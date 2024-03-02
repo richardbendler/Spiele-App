@@ -100,10 +100,19 @@ const buttonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   chalkboardButton: { //Wird in Menüs benutzt
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
     padding: 5,  // Innenabstand
-    margin: 30,  // Außenabstand
+  },
+  chalkboardButtonPrimaryColor: { //Wird in Menüs benutzt
+    backgroundColor: primaryColor,
+    borderRadius: 10,  // Abgerundete Ecken
+    padding: 5,  // Innenabstand
+  },
+  chalkboardButtonGrey: { //Wird in Menüs benutzt
+    backgroundColor: 'grey', 
+    borderRadius: 10,  // Abgerundete Ecken
+    padding: 5,  // Innenabstand
   },
 
   //Settings Button
@@ -137,8 +146,8 @@ const buttonStyles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '40%', 
-    height: '40%',
+    width: '30%', 
+    height: '20%',
     
   },
   bottleButton: {
@@ -174,7 +183,7 @@ const buttonStyles = StyleSheet.create({
     backgroundColor: secondaryColor,
     padding: 5,
     borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 50, // Breite des Buttons
+    //width: 50, // Breite des Buttons
     height: 50, // Höhe des Buttons
     alignItems: 'center',
     justifyContent: 'center', // Zentrierung des Emojis
@@ -185,6 +194,53 @@ const buttonStyles = StyleSheet.create({
     padding: 15,
     borderRadius: 8,
     backgroundColor: '#D84315',  // Use a color that stands out
+  },
+});
+
+//Modal für die Spielbeschreibungen bevor man Spiel startet
+const modalStyles = StyleSheet.create({
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dunkler Hintergrund für den Blur-Effekt
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: '#F0F0F0', // Weiche, neutrale Hintergrundfarbe
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+  },
+  modalTextTitle: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'white', // Sanfte Textfarbe
+    fontSize: 25,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'white', // Sanfte Textfarbe
+  },
+  modalTextParameters: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'white', // Sanfte Textfarbe
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'transparent', // Kein Hintergrund für ein subtiles Aussehen
+    padding: 5,
   },
 });
 
@@ -252,7 +308,8 @@ const buttonTextStyles = StyleSheet.create({
   infoButtonText: {
     fontFamily: font1,
     color: 'white',
-    fontSize: 30,
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 
   //Restart Button von Winnerpage
@@ -399,4 +456,6 @@ export const appStyles = {
   ...buttonTextStyles,
   ...fontStyles,  
   ...backgroundStyles,
+  ...modalStyles,
 }
+

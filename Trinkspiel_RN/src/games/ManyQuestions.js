@@ -8,7 +8,7 @@ import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sub
 import HandleFeedback from './sublements/HandleFeedBack';
 
 const ManyQuestionsGame = ({route }) => {
-  const { manyQuestions } = shuffleArrayFisherYates(route.params);
+  const [manyQuestions, setManyQuestions] = useState(shuffleArrayFisherYates(route.params.texts)) ;
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const showNextQuestion = () => {
