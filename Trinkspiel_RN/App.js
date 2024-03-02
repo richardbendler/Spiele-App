@@ -11,9 +11,6 @@ import { handleSqlRequestAndSafeToDisk } from './src/general';
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
 import MainMenu from './src/menus/MainMenu';
-import KlassikerMenu from './src/menus/KlassikerMenu';
-import CardGamesMenu from './src/menus/CardGamesMenu';
-import MiniGamesMenu from './src/menus/MiniGamesMenu';
 import AddPlayer from './src/menus/AddPlayer';
 
 //Import der Spiele
@@ -122,9 +119,6 @@ export default function App() {
       >
       <Stack.Screen name="StartMenu" component={StartMenu} />
       <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
-      <Stack.Screen name="CardGamesMenu" component={CardGamesMenu} />
-      <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
       <Stack.Screen name="AddPlayer" component={AddPlayer} />
       
       <Stack.Screen 
@@ -135,7 +129,7 @@ export default function App() {
       <Stack.Screen 
           name="ManyQuestionsGame" 
           component={ManyQuestionsGame}
-          initialParams={{ manyQuestions: manyQuestions }} 
+          initialParams={{ texts: manyQuestions }} 
       />
       <Stack.Screen name="Kingscup" component={Kingscup} />
       <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
