@@ -224,7 +224,7 @@ function MainMenu({ navigation }) {
                         <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
                       </View>
                       <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Flaschen- Drehen</Text>
+                        <Text style={appStyles.bottleText}>Flaschendrehen</Text>
                       </View>
                     </TouchableOpacity>
 
@@ -249,7 +249,7 @@ function MainMenu({ navigation }) {
                         </View>
                       </View>
                       <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Getränke- Zähler</Text>
+                        <Text style={appStyles.bottleText}>Getränkezähler</Text>
                       </View>
                     </TouchableOpacity>
 
