@@ -157,6 +157,14 @@ const buttonStyles = StyleSheet.create({
     height: '100%',
     width: '100%', 
   },
+
+  bottleButtonBaldVerfügbarKasten: {
+    top: '10%',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    height: '30%',
+    padding: 10, // Fügt ein bisschen Platz um den Text hinzu
+    borderRadius: 5, // Ecken des Hintergrunds abrunden
+  },
   
   //Submit
   submitButton: {
@@ -270,15 +278,12 @@ const buttonTextStyles = StyleSheet.create({
   },
   bottleText: {
     fontFamily: font1,
-    position: 'absolute',
     color: 'white',  // Oder eine andere gewünschte Farbe
-    fontSize: 17,    // Oder eine andere gewünschte Schriftgröße
+    fontSize: 14,    // Oder eine andere gewünschte Schriftgröße
     fontWeight: 'bold',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',  // Optional: leichter Schatten für bessere Lesbarkeit
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
-    top: '63%',
-    width: '150%',
     textAlign: 'center',
   },
   submitButtonText: {
