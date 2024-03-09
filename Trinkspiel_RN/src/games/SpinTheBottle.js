@@ -111,7 +111,7 @@ const SpinTheBottle = ({route }) => {
               {...panResponder.panHandlers} 
               style={{ transform: [{ rotate: rotation }] }}
             >
-              <Image source={require('../../assets/images/bottles/bottle_001.png')} style={styles.bottle} />
+              <Image source={require('../../assets/images/bottles/bottle_003.png')} style={styles.bottle} />
             </Animated.View>
           </View>
           
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   bottle: {
-    width: 100,
+    width: 110,
     height: 250,
   },
   hintText: {
