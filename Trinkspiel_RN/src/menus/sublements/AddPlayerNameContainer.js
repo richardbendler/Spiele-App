@@ -3,50 +3,50 @@ import { Button, View, Text } from 'react-native';
 import { appStyles } from '../../../styles';
 import { VariablesContext } from '../../../VariablesContext';
 
-const NameContainer = ({ player }) => {
+const NameContainer = ({ playerObject }) => {
 
-    const { playerNames, setPlayerNames } = useContext(VariablesContext);
-    // Ändern Sie die Variable "drinks" für einen bestimmten Spieler
+    const { players, setPlayers } = useContext(VariablesContext);
+
     const togglePlayerDrinks = (playerObject) => {
-        setPlayerNames((prevPlayerNames) => {
-            const updatedPlayerNames = [...prevPlayerNames]; // Create a copy of Player list
-            const index = updatedPlayerNames.indexOf(player);
-            updatedPlayerNames[index].drinks = !updatedPlayerNames[index].drinks; // change value
-            return updatedPlayerNames; // return new list
+        setPlayers((prevPlayerList) => {
+            const updatedPlayerList = [...prevPlayerList]; // create a copy of player list
+            const index = updatedPlayerList.indexOf(playerObject);
+            updatedPlayerList[index].drinks = !updatedPlayerList[index].drinks; // toggle drinks boolean
+            return updatedPlayerList; // return new list
         });
     };
 
     const removePlayer = (playerObject) => {
-        index = playerNames.indexOf(playerObject);
+        index = players.indexOf(playerObject);
         if (index > -1) {
-            let newPlayerList = [...playerNames];
+            let newPlayerList = [...players];
             newPlayerList.splice(index, 1);
-            setPlayerNames(newPlayerList);
+            setPlayers(newPlayerList);
         }
-    }
+    };
 
 
-    const [playerDrinks, setPlayerDrinks] = useState(player.drinks);
+    const [player, setPlayer] = useState(playerObject);
 
 
 
     return (
         <View style={appStyles.playerListText}>
-            <Text style={{ color: 'white', paddingRight: '2%', width: '35%' }} ellipsizeMode='tail' numberOfLines={1}>{player.name}</Text>
+            <Text style={{ color: 'white', paddingRight: '2%', width: '35%' }} ellipsizeMode='tail' numberOfLines={1}>{playerObject.name}</Text>
             <View style={{ width: '50%' }}>
                 <Button
                     onPress={() => {
-                        setPlayerDrinks(!playerDrinks);
-                        togglePlayerDrinks(player);
+                        setPlayer(!player.drinks);
+                        togglePlayerDrinks(playerObject);
                     }}
-                    title={playerDrinks ? "Trinkt" : "Trinkt nicht"}
-                    color={playerDrinks ? 'green' : 'red'}
+                    title={playerObject.drinks ? "Trinkt" : "Trinkt nicht"}
+                    color={playerObject.drinks ? 'green' : 'red'}
                 />
             </View>
             <View style={{ paddingLeft: '2%' }}>
                 <Button
                     onPress={() => {
-                        removePlayer(player);
+                        removePlayer(playerObject);
                     }}
                     title={'-'}
                     color={'red'}
