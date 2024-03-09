@@ -7,32 +7,34 @@ import { appStyles } from '../../styles';
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 
-const PicoloGame = ({route }) => {
-  const texts = shuffleArrayFisherYates(route.params.texts);
-  //shuffleArrayFisherYates(result.map(row => row.content))
-  const [textsIndex, setTextsIndex] = useState(0);
-  
+const PicoloGame = ({ route }) => {
+  const texts = shuffleArrayFisherYates(route.params.texts); // array of available questions
+
+  // set current question to display, based on the index
+  let index = 0;
+  const [currentText, setCurrentText] = useState(texts[index].content);
+
+
   const showNextQuestion = () => {
     try{
-      if (textsIndex < texts.length - 1) {
-        setTextsIndex(textsIndex + 1);
-      }
+      index++;
+      setCurrentText(texts[index].content);
     }catch (error){
-      setTextsIndex(0);
+      // reset to first question, if error occurs
+      index = 0;
+      setCurrentText(texts[index].content);
     }
   };
-
-  
   
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
           <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
-            <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(texts[textsIndex].content) : ''}/>
+            <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(currentText) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={texts} textsIndex={textsIndex} table={'games_activity_evaluation'}/>
+        <HandleFeedback texts={texts} textsIndex={index} table={'games_activity_evaluation'}/>
       </View>
     </ImageBackground>
   );
