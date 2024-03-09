@@ -219,7 +219,7 @@ function MainMenu({ navigation }) {
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={{position: 'absolute', left: '7%', top: '106%', width: '14%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '7%', top: '106%', width: '14%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
                       </View>
