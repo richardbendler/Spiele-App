@@ -7,7 +7,7 @@ import NameContainer from './sublements/AddPlayerNameContainer';
 const PlayerInput = React.memo(({ onAddPlayer }) => {
   const [currentName, setCurrentName] = useState('');
 
-  const handleAddPlayer = () => {
+  const handler = () => {
     if (currentName.trim() !== '') {
       onAddPlayer(currentName);
       setCurrentName('');
@@ -24,7 +24,7 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
         onChangeText={text => setCurrentName(text)}
         style={appStyles.input}
       />
-      <TouchableOpacity onPress={handleAddPlayer} style={appStyles.chalkboardButton}>
+      <TouchableOpacity onPress={handler} style={appStyles.chalkboardButton}>
         <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Add Player</Text>
       </TouchableOpacity>
     </View>
@@ -35,18 +35,19 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
 let player_id = 0;
 
 const AddPlayer = ({ navigation }) => {
-  const { playerNames, setPlayerNames } = useContext(VariablesContext);
+  const { players, setPlayers } = useContext(VariablesContext);
 
   const handleAddPlayer = useCallback(
     (name) => {
-      setPlayerNames([...playerNames, {id: player_id, name, drinks: true}]);
+      //check if array already has players
+      players != [] ? setPlayers([...players, {id: player_id, name, drinks: true}]) : setPlayers([{id: player_id, name, drinks: true}]);
       player_id += 1;
     },
-    [playerNames]
+    [players]
   );
 
   const startGame = () => {
-    if (playerNames.length >= 2) {
+    if (players.length >= 2) {
       navigation.navigate('PicoloGame');
     } else {
       Alert.alert("Zu wenig Spieler", "Um dieses Spiel zu starten werden mindestens zwei Spieler benötigt.")
@@ -61,9 +62,9 @@ const AddPlayer = ({ navigation }) => {
 
           <View style={{ height: 200 }}>
             <FlatList
-              data={playerNames}
+              data={players}
               renderItem={({ item }) =>
-                <NameContainer player={item} />
+                <NameContainer playerObject={item} />
               }
               keyExtractor={(item, index) => index.toString()}
               style={appStyles.playerList}
@@ -79,7 +80,6 @@ const AddPlayer = ({ navigation }) => {
       </View>
 
     </ImageBackground>
-
   );
 };
 

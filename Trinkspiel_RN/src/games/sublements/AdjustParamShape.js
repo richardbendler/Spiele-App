@@ -8,6 +8,8 @@ export const replaceHashtagsWithoutDuplicates = (inputString) => {
     try{
       const { playerNames, setPlayerNames } = useContext(VariablesContext);
 
+      console.log(`Recieved Input: ${inputString}\n Player Names: ${playerNames}`)
+
       // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
       let availableNames = [...playerNames];
 
@@ -31,6 +33,7 @@ export const replaceHashtagsWithoutDuplicates = (inputString) => {
           return name;
         });
     }catch(error){
+      console.log(error);
       return inputString;
     }
 }
