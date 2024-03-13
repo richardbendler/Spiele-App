@@ -2,10 +2,8 @@ use rocket::serde::json::Json;
 use rocket::State;
 use sqlx::{MySql, Pool};
 
-use crate::routes::games::common::Response;
+use crate::routes::games::common::*;
 
-// same structs as for the One
-use crate::routes::games::the_one::*;
 
 //TODO: logic is currently copied from the_one.rs, generic implementation in the future would be good for maintanance
 // define routes
