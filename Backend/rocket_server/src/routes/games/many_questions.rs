@@ -1,46 +1,24 @@
 use rocket::serde::json::Json;
-use rocket::{time::OffsetDateTime, State};
-use serde::Serialize;
+use rocket::State;
 use sqlx::{MySql, Pool};
 
 use crate::routes::games::common::Response;
 
-pub struct ClassicGamesResultWithOptions {
-    pub id: i32,
-    pub fk_pool: i32,
-    pub content: Option<String>,
-    pub drunk_level: i32,
-    pub exposure_level: i32,
-    pub bool_drink: i32,
-    pub activation: i32,
-    pub author: Option<String>,
-    pub timestamp: OffsetDateTime,
-}
+// same structs as for the One
+use crate::routes::games::the_one::*;
 
-// defines result from db query without Options
-#[derive(Serialize)]
-pub struct ClassicGamesResult {
-    pub id: i32,
-    pub fk_pool: i32,
-    pub content: String,
-    pub drunk_level: i32,
-    pub exposure_level: i32,
-    pub bool_drink: i32,
-    pub activation: i32,
-    pub author: String,
-    pub timestamp: i64,
-}
-
-#[get("/theOne")]
+//TODO: logic is currently copied from the_one.rs, generic implementation in the future would be good for maintanance
+// define routes
+#[get("/manyQuestions")]
 pub async fn query(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,
-        "SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)" // query for db
+        "SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22"
     )
     .fetch_all(unwraped_pool)
     .await
-    .expect("Query was successfully executed")
+    .expect("Query for Many Questions was successully executed")
     .iter()
     .map(|entry| {
         // create new QueryResult instance
