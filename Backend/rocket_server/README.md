@@ -1,5 +1,5 @@
 # Rocket.rs HTTP Server
-This is the webserver for the app. It is build with Rust 1.76.0. To build an executable run `cargo run`.
+This is the webserver for the app. It is build with Rust 1.76.0. To build an executable run `cargo build`.
 
 ## Install
 In order to use the sqlx crate, you first need to install the sqlx-cli via `cargo install sqlx-cli`. After installing the tool, create a `.env` file in the `rocket_server` folder and add `DATABASE_URL=mysql://USER:PASSWORD@HOST/DATABASE` to the newly created file.
