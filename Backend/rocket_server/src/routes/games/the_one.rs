@@ -1,35 +1,9 @@
 use rocket::serde::json::Json;
-use rocket::{time::OffsetDateTime, State};
-use serde::Serialize;
+use rocket::State;
 use sqlx::{MySql, Pool};
 
-use crate::routes::games::common::Response;
+use crate::routes::games::common::*;
 
-pub struct ClassicGamesResultWithOptions {
-    pub id: i32,
-    pub fk_pool: i32,
-    pub content: Option<String>,
-    pub drunk_level: i32,
-    pub exposure_level: i32,
-    pub bool_drink: i32,
-    pub activation: i32,
-    pub author: Option<String>,
-    pub timestamp: OffsetDateTime,
-}
-
-// defines result from db query without Options
-#[derive(Serialize)]
-pub struct ClassicGamesResult {
-    pub id: i32,
-    pub fk_pool: i32,
-    pub content: String,
-    pub drunk_level: i32,
-    pub exposure_level: i32,
-    pub bool_drink: i32,
-    pub activation: i32,
-    pub author: String,
-    pub timestamp: i64,
-}
 
 #[get("/theOne")]
 pub async fn query(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
