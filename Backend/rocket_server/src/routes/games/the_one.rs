@@ -1,4 +1,3 @@
-
 use rocket::serde::json::Json;
 use rocket::{time::OffsetDateTime, State};
 use serde::Serialize;
@@ -6,37 +5,37 @@ use sqlx::{MySql, Pool};
 
 use crate::routes::games::common::Response;
 
-struct TheOneResultWithOptions {
-    id: i32,
-    fk_pool: i32,
-    content: Option<String>,
-    drunk_level: i32,
-    exposure_level: i32,
-    bool_drink: i32,
-    activation: i32,
-    author: Option<String>,
-    timestamp: OffsetDateTime,
+pub struct ClassicGamesResultWithOptions {
+    pub id: i32,
+    pub fk_pool: i32,
+    pub content: Option<String>,
+    pub drunk_level: i32,
+    pub exposure_level: i32,
+    pub bool_drink: i32,
+    pub activation: i32,
+    pub author: Option<String>,
+    pub timestamp: OffsetDateTime,
 }
 
 // defines result from db query without Options
 #[derive(Serialize)]
-pub struct TheOneResult {
-    id: i32,
-    fk_pool: i32,
-    content: String,
-    drunk_level: i32,
-    exposure_level: i32,
-    bool_drink: i32,
-    activation: i32,
-    author: String,
-    timestamp: i64,
+pub struct ClassicGamesResult {
+    pub id: i32,
+    pub fk_pool: i32,
+    pub content: String,
+    pub drunk_level: i32,
+    pub exposure_level: i32,
+    pub bool_drink: i32,
+    pub activation: i32,
+    pub author: String,
+    pub timestamp: i64,
 }
 
 #[get("/theOne")]
-pub async fn query_from_db(pool: &State<Pool<MySql>>) -> Json<Response<TheOneResult>> {
+pub async fn query(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
     let unwraped_pool = pool.inner();
-    let results: Vec<TheOneResult> = sqlx::query_as!(
-        TheOneResultWithOptions,
+    let results: Vec<ClassicGamesResult> = sqlx::query_as!(
+        ClassicGamesResultWithOptions,
         "SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)" // query for db
     )
     .fetch_all(unwraped_pool)
@@ -45,7 +44,7 @@ pub async fn query_from_db(pool: &State<Pool<MySql>>) -> Json<Response<TheOneRes
     .iter()
     .map(|entry| {
         // create new QueryResult instance
-        let mut unwraped_entry = TheOneResult {
+        let mut unwraped_entry = ClassicGamesResult {
             id: entry.id,
             fk_pool: entry.fk_pool,
             content: String::new(),
@@ -70,7 +69,6 @@ pub async fn query_from_db(pool: &State<Pool<MySql>>) -> Json<Response<TheOneRes
         unwraped_entry
     })
     .collect();
-
 
     Json(Response { content: results })
 }
