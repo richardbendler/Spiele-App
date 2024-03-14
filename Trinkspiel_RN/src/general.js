@@ -12,67 +12,8 @@ const saveToStorage = async (item, value) => {
 };
 
 //Database
-  //HANDLE SQL REQUESTS
-export const handleSqlRequestAndSafeToDisk = async (storageItem, setter, sqlRequest) => {
-    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
-    
-    try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token,
-            },
-            body: JSON.stringify({ sqlRequest }),
-        });
-
-        if (response.ok) {
-            const responseText = await response.text();
-            const ret = JSON.parse(responseText);
-            //console.log(ret);
-            saveToStorage(storageItem, ret)
-            setter(ret);
-        } else {
-            console.log(response)
-            console.error('Fehler beim Senden des Texts.');
-            //alert("API nicht erreichbar! - Fehler beim Senden des Texts.")
-        }
-    } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-        //alert('Ein Fehler ist aufgetreten:', error);
-        //alert(error)
-    }
-    
-};
-
 export const handleSqlRequest = async (sqlRequest) => {
-    const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
-    ret = '';
-    try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-        //https nutzt Port 443
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token,
-        },
-        body: JSON.stringify({ sqlRequest }),
-        });
-    
-        if (response.ok) {
-        const responseText = await response.text();
-        ret = JSON.parse(responseText);
-        } else {
-            console.log(response)
-            console.error('Fehler beim Senden des Texts.');
-        }
-    } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-    }
-    //console.log(ret);
-    return ret;
+    //TODO: this function is still required for HandleFeedBack.js. In the future a new route for user feedback needs to be implemented. Currently, this function does nothing.
     };
 
 
