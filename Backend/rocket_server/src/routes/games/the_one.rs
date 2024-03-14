@@ -6,7 +6,7 @@ use crate::routes::games::common::*;
 
 
 #[get("/theOne")]
-pub async fn query(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
+pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response<ClassicGamesResult>> {
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,

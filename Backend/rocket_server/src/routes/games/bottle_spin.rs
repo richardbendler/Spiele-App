@@ -8,7 +8,7 @@ use crate::routes::games::common::*;
 //TODO: logic is currently copied from the_one.rs, generic implementation in the future would be good for maintanance
 // define routes
 #[get("/bottleSpinTruth")]
-pub async fn query_truth(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
+pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response<ClassicGamesResult>> {
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,
@@ -50,7 +50,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGame
 }
 
 #[get("/bottleSpinDare")]
-pub async fn query_dare(pool: &State<Pool<MySql>>) -> Json<Response<ClassicGamesResult>> {
+pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response<ClassicGamesResult>> {
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,

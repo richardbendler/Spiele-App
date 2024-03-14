@@ -1,5 +1,11 @@
 use rocket::time::OffsetDateTime;
 use serde::Serialize;
+use rocket::http::Status;
+use rocket::request::{Request, FromRequest, Outcome};
+
+//TODO: change to proper autorization key later
+// app key for connecting to this server
+const APPKEY: &str = "Bearer REDACTED_JWT";
 
 // result send to to user
 #[derive(Serialize)]
@@ -31,4 +37,32 @@ pub struct ClassicGamesResult {
     pub activation: i32,
     pub author: String,
     pub timestamp: i64,
+}
+
+
+// key for authenticating a query comes from the app
+pub struct AppKey<'r>(&'r str);
+
+#[derive(Debug)]
+pub enum AppKeyError {
+    Missing,
+    Invalid
+}
+
+#[rocket::async_trait]
+impl<'r> FromRequest<'r> for AppKey<'r> {
+    type Error = AppKeyError;
+
+    async fn from_request(req: &'r Request<'_>) -> Outcome<Self, Self::Error> {
+        // check if key is correct
+        fn is_valid(key: &str) -> bool {
+            key == APPKEY
+        }
+
+        match req.headers().get_one("api-key") {
+            None => Outcome::Error((Status::BadRequest, AppKeyError::Missing)),
+            Some(key) if is_valid(key) => Outcome::Success(AppKey(key)),
+            Some(_) => Outcome::Error((Status::BadRequest, AppKeyError::Invalid))
+        }
+    }
 }
