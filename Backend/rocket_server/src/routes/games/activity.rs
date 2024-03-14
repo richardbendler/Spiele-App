@@ -4,7 +4,7 @@ use rocket::State;
 use serde::Serialize;
 use sqlx::{MySql, Pool};
 
-use crate::routes::games::common::Response;
+use crate::routes::games::common::*;
 
 
 // definition of data schema
@@ -32,7 +32,7 @@ pub struct ActivityResult {
 //TODO: logic is partially copied from the_one.rs, however the dataschema is different (important for later refacturing)
 // define routes
 #[get("/activity")]
-pub async fn query(pool: &State<Pool<MySql>>) -> Json<Response<ActivityResult>> {
+pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response<ActivityResult>> {
     let unwraped_pool = pool.inner();
     let results: Vec<ActivityResult> = sqlx::query_as!(
         ActivityResultWithOptions,
