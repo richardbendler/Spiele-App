@@ -5,8 +5,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
-import { handleSqlRequest } from './src/general';
-import { handleSqlRequestAndSafeToDisk } from './src/general';
+import { handleSqlRequestAndSafeToDisk, getGames } from './src/general';
 
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
@@ -72,17 +71,25 @@ export default function App() {
   ////////////////////////////////////////////////////////
   
   //LOAD FROM API and SAFE TO DISK
-  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
+  const [texts_Picolo, setTexts_Picolo] = useState([]);
   const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
   const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-    handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-    handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
-    handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-    handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+    // handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
+    // handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
+    // handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
+    // handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
+    // handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+
+    // new API routes
+    getGames("texts_Picolo", setTexts_Picolo, "theOne");
+    getGames("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
+    getGames("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
+    getGames("manyQuestions", setManyQuestions, "manyQuestions");
+    getGames("words", setWords, "activity")
+
   }, []);
 
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
@@ -124,7 +131,7 @@ export default function App() {
       <Stack.Screen 
           name="PicoloGame" 
           component={PicoloGame}
-          initialParams={{ texts: texts_Picolo }} 
+          initialParams={{ picoloData: texts_Picolo }} 
       />
       <Stack.Screen 
           name="ManyQuestionsGame" 
