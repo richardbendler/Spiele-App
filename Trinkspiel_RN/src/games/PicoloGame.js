@@ -8,12 +8,11 @@ import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sub
 import HandleFeedback from './sublements/HandleFeedBack';
 
 const PicoloGame = ({ route }) => {
-  const texts = shuffleArrayFisherYates(route.params.texts); // array of available questions
-
+  // array of available questions
+  const texts = shuffleArrayFisherYates(route.params.picoloData);
   // set current question to display, based on the index
   let index = 0;
   const [currentText, setCurrentText] = useState(texts[index].content);
-
 
   const showNextQuestion = () => {
     try{
