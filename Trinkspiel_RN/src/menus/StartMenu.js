@@ -155,24 +155,24 @@ const StartMenu = ({ navigation }) => {
 
 
                         {/* 🍾 FLASCHEN 🍾*/}
-                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '19%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '19%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '19%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '19%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '19%', width: '17%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '19%', width: '19%', height: '12%', }}/>
 
-                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={{position: 'absolute', resizeMode: 'contain', left: '-7%', top: '38%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={{position: 'absolute', resizeMode: 'contain', left: '14%', top: '38%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={{position: 'absolute', resizeMode: 'contain', left: '32%', top: '38%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_009.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '38%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={{position: 'absolute', resizeMode: 'contain', left: '66%', top: '38%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={{position: 'absolute', resizeMode: 'contain', left: '88%', top: '38%', width: '17%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_009.png')} style={{position: 'absolute', resizeMode: 'contain', left: '-7%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={{position: 'absolute', resizeMode: 'contain', left: '14%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={{position: 'absolute', resizeMode: 'contain', left: '32%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={{position: 'absolute', resizeMode: 'contain', left: '66%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_013.png')} style={{position: 'absolute', resizeMode: 'contain', left: '88%', top: '38%', width: '19%', height: '12%', }}/>
 
-                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={{position: 'absolute', resizeMode: 'contain', left: '0%', top: '56%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_013.png')} style={{position: 'absolute', resizeMode: 'contain', left: '27%', top: '56%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '56%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={{position: 'absolute', resizeMode: 'contain', left: '70%', top: '56%', width: '17%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '56%', width: '17%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={{position: 'absolute', resizeMode: 'contain', left: '0%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={{position: 'absolute', resizeMode: 'contain', left: '27%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={{position: 'absolute', resizeMode: 'contain', left: '70%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '56%', width: '19%', height: '12%', }}/>
 
                         
 
