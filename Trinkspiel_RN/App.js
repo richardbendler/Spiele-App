@@ -136,7 +136,7 @@ export default function App() {
       <Stack.Screen 
           name="ManyQuestionsGame" 
           component={ManyQuestionsGame}
-          initialParams={{ texts: manyQuestions }} 
+          initialParams={{ manyQuestionsData: manyQuestions }} 
       />
       <Stack.Screen name="Kingscup" component={Kingscup} />
       <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
