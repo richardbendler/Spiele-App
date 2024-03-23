@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
+import InfoText from './sublements/InfoText';
+import { VariablesContext } from '../../VariablesContext';
 
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
@@ -11,6 +13,8 @@ const PicoloGame = ({route }) => {
   const texts = shuffleArrayFisherYates(route.params.texts);
   //shuffleArrayFisherYates(result.map(row => row.content))
   const [textsIndex, setTextsIndex] = useState(0);
+
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
   
   const showNextQuestion = () => {
     try{
@@ -33,6 +37,11 @@ const PicoloGame = ({route }) => {
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={texts} textsIndex={textsIndex} table={'games_activity_evaluation'}/>
+
+        <InfoText header={"The One!"} rules={"Der klassischte aller Trinkspiel-Modi - und auch gleichzeitig der einfachste! \n \n Alles was ihr machen müsst, wird euch auf dem Bildschirm angezeigt."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
