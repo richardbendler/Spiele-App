@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /* 
-playerNames: {
+players: {
   id: int
   name: String,
   drinks: bool
@@ -14,6 +14,7 @@ export const VariablesContext = React.createContext({
   drinkTypes: [], // Initialisieren mit leerem Array
   setDrinkTypes: () => {},
   */
+ players: [],
+ setPlayers: () => {},
 });
-
 
