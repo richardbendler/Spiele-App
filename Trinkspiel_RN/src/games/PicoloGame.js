@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
+import InfoText from './sublements/InfoText';
+import { VariablesContext } from '../../VariablesContext';
 
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
@@ -13,6 +15,8 @@ const PicoloGame = ({ route }) => {
   // set current question to display, based on the index
   let index = 0;
   const [currentText, setCurrentText] = useState(texts[index].content);
+
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const showNextQuestion = () => {
     try{
@@ -34,6 +38,12 @@ const PicoloGame = ({ route }) => {
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={texts} textsIndex={index} table={'game_klassiker_questions'}/>
+          
+        <InfoText header={"The One!"} rules={"Der klassischte aller Trinkspiel-Modi - und auch gleichzeitig der einfachste! \n \n Alles was ihr machen müsst, wird euch auf dem Bildschirm angezeigt."}/>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+          <Text style={appStyles.infoButtonText}>Regeln</Text>
+        </TouchableOpacity>
+
       </View>
     </ImageBackground>
   );

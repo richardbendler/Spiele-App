@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import SettingsButton from './sublements/SettingsButton';
@@ -41,8 +41,20 @@ const handleTestAPI = async () => {
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
+    const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
     const windowWidth = Dimensions.get('window').width;
-    
+    const windowHeight = Dimensions.get('window').height;
+
+    const handleImageLoad = (e) => {
+        const { width, height } = e.nativeEvent.source;
+        const aspectRatio = width / height;
+        setBackgroundAspectRatio(aspectRatio);
+      };
+
+    // Berechnen der Breite des Hintergrundbildes basierend auf dem Seitenverhältnis
+    const backgroundImageWidth = windowHeight * backgroundAspectRatio;
+
+
 
     //Test Internet Connection
     const [isConnected, setIsConnected] = useState(true);
@@ -90,50 +102,93 @@ const StartMenu = ({ navigation }) => {
         </View> ;
     }
 
+    
+
   return (
-
-        <View style={[styles.container, {width: windowWidth,}]}>
-            <Image
-                source={require("../../assets/images/bar/bar_background.png")} 
-                style={styles.backgroundImage}
-            />
+    <View style={{alignItems: 'flex-start'}}>
+      <ImageBackground source={require("../../assets/images/bar/bar_background_without_bar.png")} 
+      style={{ height: windowHeight, width: backgroundImageWidth }}
+      onLoad={handleImageLoad}
+      >
+        <View style={{
+            width: windowWidth,
+            height: windowHeight, // Stellt sicher, dass die Menü-Container die gleiche Breite wie das Hintergrundbild haben
+            flexDirection: 'row',
+            justifyContent: 'center', // Anpassen nach Bedarf für die Platzierung der Menübuttons
+            alignItems: 'center', // Zentriert die Menübuttons vertikal
+        }}>
             <Settings/>
-            <View style={[appStyles.pageContainer, {width: windowWidth, }]}>
-                
-                    <View style={appStyles.smallPageContainer}>
-                        <View style={appStyles.menuContainer}>
-                            
-                            
-                            <Text>
-                                {isConnected ? '' : 'Du bist nicht mit dem Internet verbunden...'}
-                            </Text>
+                                        
+                    <Text>
+                        {isConnected ? '' : '🌍'} {/*  TODO: löschen/ersetzen */}
+                    </Text>
 
-
-                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
-                                <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
-                            </TouchableOpacity>
-
-                            {/*<Text>{words.slice(0,50)}</Text>
-                            <Text>--------------------------</Text>
-                            <Text>{ret.slice(0,50)}</Text>*/}
-
-                            {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                                <Text style={appStyles.menuButtonText}>Custom Game</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                                <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
-                            </TouchableOpacity>*/}
-
-                        </View>
-
-                        {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                            <Text style={appStyles.settingsButtonText}>⚙️</Text>
-                        </TouchableOpacity>*/}
+                    {/* SCHILD */}
+                    <View style={{position: 'absolute', top: '10%', width: '40%', height: '10%'}}>
+                        <Image source={require('../../assets/images/bar/schild.png')} style={appStyles.bottleButton} />
                     </View>
-                
-            </View>
-        </View>
 
+
+                        {/* 🍾 FLASCHEN 🍾*/}
+                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '19%', width: '19%', height: '12%', }}/>
+
+                        <Image source={require('../../assets/images/bottles/bottle_009.png')} style={{position: 'absolute', resizeMode: 'contain', left: '-7%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={{position: 'absolute', resizeMode: 'contain', left: '14%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={{position: 'absolute', resizeMode: 'contain', left: '32%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={{position: 'absolute', resizeMode: 'contain', left: '66%', top: '38%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_013.png')} style={{position: 'absolute', resizeMode: 'contain', left: '88%', top: '38%', width: '19%', height: '12%', }}/>
+
+                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={{position: 'absolute', resizeMode: 'contain', left: '0%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={{position: 'absolute', resizeMode: 'contain', left: '27%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={{position: 'absolute', resizeMode: 'contain', left: '70%', top: '56%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '56%', width: '19%', height: '12%', }}/>
+
+                        
+
+
+                    {/* REGAL 1 */}
+                    <View style={{ position: 'absolute', top: '31%', alignItems: 'center', justifyContent: 'bottm' }}>
+                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
+                    </View>
+
+
+
+
+                    {/* REGAL 2 */}
+                    <View style={{ position: 'absolute', top: '50%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
+                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
+                    </View>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
+                        <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
+                    </TouchableOpacity>
+
+                    {/*<Text>{words.slice(0,50)}</Text>
+                    <Text>--------------------------</Text>
+                    <Text>{ret.slice(0,50)}</Text>*/}
+
+                    {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
+                        <Text style={appStyles.menuButtonText}>Custom Game</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
+                        <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
+                    </TouchableOpacity>*/}
+
+                </View>
+
+                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
+                    <Text style={appStyles.settingsButtonText}>⚙️</Text>
+                </TouchableOpacity>*/}
+            
+
+        </ImageBackground>
+    </View>
   );
 };
 
