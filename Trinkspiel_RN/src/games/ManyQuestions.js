@@ -30,7 +30,7 @@ const ManyQuestionsGame = ({ route }) => {
             <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={manyQuestions} textsIndex={questionIndex} table={'games_klassiker_evaluation'}/>
+        <HandleFeedback texts={manyQuestions} textsIndex={questionIndex} table={'game_klassiker_questions'}/>
       </View>
     </ImageBackground>
   );

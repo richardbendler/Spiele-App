@@ -33,7 +33,7 @@ const PicoloGame = ({ route }) => {
             <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(currentText) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={texts} textsIndex={index} table={'games_activity_evaluation'}/>
+        <HandleFeedback texts={texts} textsIndex={index} table={'game_klassiker_questions'}/>
       </View>
     </ImageBackground>
   );
