@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
 import { VariablesContext } from '../../../VariablesContext';
 
 
-//const names = ["Alice", "Bob", "Charlie", "David"];
 export const replaceHashtagsWithoutDuplicates = (inputString) => {
     try{
-      const { playerNames, setPlayerNames } = useContext(VariablesContext);
+      const { players } = useContext(VariablesContext);
+      const playerNames = players.map(p => p.name); //array of player names
+
+
+      console.log(`Recieved Input: ${inputString}\n Player Names: ${playerNames}`)
 
       // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
       let availableNames = [...playerNames];
@@ -31,6 +33,7 @@ export const replaceHashtagsWithoutDuplicates = (inputString) => {
           return name;
         });
     }catch(error){
+      console.log(error);
       return inputString;
     }
 }
