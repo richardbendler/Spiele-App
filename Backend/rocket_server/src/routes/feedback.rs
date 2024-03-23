@@ -48,13 +48,13 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>, feedback: Json<U
             _ => add_or_subtract = String::from("")
         }
 
-        // save action, because table is in AVAILABLE_TABLES array (no SQL injection possible)
+        // safe action, because table is in AVAILABLE_TABLES array (no SQL injection possible)
         let query_string_update_record = format!("UPDATE {} SET popularity = popularity {} 1 WHERE id = ?", table, add_or_subtract);
         let query_string_create_entry = format!("INSERT INTO {} (id, fk_question, fk_type, value, comment, author, timestamp) VALUES (NULL, ?, ?, NULL, NULL, NULL, current_timestamp())", evaluation_table);
 
         // Update question record
         let update_record = sqlx::query(query_string_update_record.as_str())
-        .bind(question_id.clone()) // table, question_id
+        .bind(question_id.clone())
         .execute(&mut *tx).await;
 
         // create entry in evaluation database
