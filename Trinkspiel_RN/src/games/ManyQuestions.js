@@ -1,6 +1,6 @@
 // In einer Datei namens VorglühenGame.js
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Button } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -30,9 +30,16 @@ const ManyQuestionsGame = ({route }) => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
-          <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
-            <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
+          <View style={{height: '90%'}}>
+            <View style={{width: '100%', height: '15%',justifyContent: 'center',alignItems: 'center',}}></View>
+            <View style={{width: '100%', height: '80%',justifyContent: 'center',alignItems: 'center',}}>
+              <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
+            </View>
+          </View>
+          <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
+            <Text style={appStyles.gameActionButtonText}>Nächste Aussage</Text>
           </TouchableOpacity>
+          
         </View>
         <HandleFeedback texts={manyQuestions} textsIndex={questionIndex} table={'games_klassiker_evaluation'}/>
 
