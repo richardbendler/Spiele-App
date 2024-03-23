@@ -59,15 +59,14 @@ function MainMenu({ navigation }) {
       <ScrollView
         horizontal={true}
         pagingEnabled={false} // Optional, für ein "Seiten"-ähnliches Scrollen
-        showsHorizontalScrollIndicator={false} // Versteckt die horizontale Scroll-Leiste
+        showsHorizontalScrollIndicator={true} // Versteckt die horizontale Scroll-Leiste
       >
-      
         <ImageBackground source={require("../../assets/images/bar/bar_background_without_bar.png")} 
         style={{ height: windowHeight, width: backgroundImageWidth }}
         onLoad={handleImageLoad}
         >
-        <View style={appStyles.pageContainer}>
-          <View style={[appStyles.smallPageContainer, {height: '100%', width: '100%', justifyContent: 'top'}]}>
+          <View style={appStyles.pageContainer}>
+            <View style={[appStyles.smallPageContainer, {height: '100%', width: '100%', justifyContent: 'top'}]}>
             
             {/*<View style={appStyles.menuContainer}>*/}
               
