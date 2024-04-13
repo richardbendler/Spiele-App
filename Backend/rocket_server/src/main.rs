@@ -11,9 +11,10 @@ mod routes {
         pub mod many_questions;
         pub mod the_one;
     }
+    pub mod feedback;
 }
 
-use routes::games::*;
+use routes::{feedback, games::*};
 
 use rocket::serde::{json::Json, Deserialize, Serialize};
 use sqlx::{MySql, MySqlPool, Pool};
@@ -24,7 +25,10 @@ async fn rocket() -> _ {
     let pool = connect_to_database().await;
 
     rocket::build()
-        .mount("/", routes![index, send_json_test]) // root
+        .mount("/", routes![
+            index, 
+            send_json_test,
+            feedback::query])
         .mount(
             "/games",
             routes![

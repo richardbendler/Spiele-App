@@ -1,5 +1,5 @@
-import React, { useState, useContext, useCallback, useEffect } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground, Image, Dimensions } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import SettingsButton from './sublements/SettingsButton';
@@ -13,32 +13,7 @@ import { useFonts } from "expo-font";
 
 //HANDLE SQL REQUESTS
 const handleSqlRequest = async (sqlRequest) => {
-    const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
-    ret = '';
-    try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-        //https nutzt Port 443
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token,
-        },
-        body: JSON.stringify({ sqlRequest }),
-        });
-    
-        if (response.ok) {
-        const responseText = await response.text();
-        ret = JSON.parse(responseText);
-        } else {
-            console.log(response)
-            console.error('Fehler beim Senden des Texts.');
-        }
-    } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-    }
-    //console.log(ret);
-    return ret;
+    //TODO: remove this function and it's references. This was used for the old API to query data. It's not clear if the API calls in this file are actually required.
 };
 
 const handleTestAPI = async () => {
