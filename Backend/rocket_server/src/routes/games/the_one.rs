@@ -27,6 +27,7 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             bool_drink: entry.bool_drink,
             activation: entry.activation,
             author: String::new(),
+            popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
         };
         // extract content values from Option
