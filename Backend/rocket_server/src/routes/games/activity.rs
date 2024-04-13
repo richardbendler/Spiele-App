@@ -14,6 +14,7 @@ pub struct ActivityResultWithOptions {
     forbidden_words: Option<String>,
     category: Option<String>,
     fk_difficulty: i32,
+    popularity: i32,
     timestamp: OffsetDateTime
 }
 
@@ -24,6 +25,7 @@ pub struct ActivityResult {
     forbidden_words: String,
     category: String,
     fk_difficulty: i32,
+    popularity: i32,
     timestamp: i64
 }
 
@@ -50,6 +52,7 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             forbidden_words: String::new(),
             category: String::new(),
             fk_difficulty: entry.fk_difficulty,
+            popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
         };
         // extract word from Option

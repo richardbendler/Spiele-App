@@ -12,65 +12,66 @@ const saveToStorage = async (item, value) => {
 };
 
 //Database
-  //HANDLE SQL REQUESTS
-export const handleSqlRequestAndSafeToDisk = async (storageItem, setter, sqlRequest) => {
+export const handleSqlRequest = async (sqlRequest) => {
+    //TODO: this function is still required for HandleFeedBack.js. In the future a new route for user feedback needs to be implemented. Currently, this function does nothing.
+    };
+
+
+// new implementation for Rocket.rs Server
+export const getGames = async (storageItem, setter, route) => {
     const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
     
     try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-            method: 'POST',
+        const response = await fetch(`https://my-tournament.org:8443/games/${route}`, {
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token,
-            },
-            body: JSON.stringify({ sqlRequest }),
+                'api-key': token,
+            }
         });
 
         if (response.ok) {
-            const responseText = await response.text();
-            const ret = JSON.parse(responseText);
-            //console.log(ret);
-            saveToStorage(storageItem, ret)
+            let ret = await response.json();
+
+            //unwrap data from response
+            ret = ret.content;
+
+            saveToStorage(storageItem, ret);
             setter(ret);
         } else {
             console.log(response)
-            console.error('Fehler beim Senden des Texts.');
-            //alert("API nicht erreichbar! - Fehler beim Senden des Texts.")
+            console.error(`There was an error on route ${route} while trying to recieve data from the server.`);
         }
     } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-        //alert('Ein Fehler ist aufgetreten:', error);
-        //alert(error)
+        console.error(`There was an error on route ${route}: ${error}`);
     }
-    
 };
 
-export const handleSqlRequest = async (sqlRequest) => {
+
+export const postFeedback = async (table, question_id, feedback) => {
     const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
-    ret = '';
-    try {
-        //const response = await fetch('http://45.9.63.16:3000/api/sqlRequest', {
-        const response = await fetch('https://my-tournament.org:8443/api/sqlRequest', {
-        //https nutzt Port 443
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token,
-        },
-        body: JSON.stringify({ sqlRequest }),
-        });
     
+    console.log(`table: ${table}, question_id: ${question_id}, feedback: ${feedback}`);
+
+    try {
+        const response = await fetch("https://my-tournament.org:8443/feedback", {
+            method: 'POST',
+            headers: {
+                'api-key': token,
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                table,
+                question_id,
+                feedback
+            })
+        });
+
         if (response.ok) {
-        const responseText = await response.text();
-        ret = JSON.parse(responseText);
+            console.log("Successuflly sent feedback to server");
         } else {
-            console.log(response)
-            console.error('Fehler beim Senden des Texts.');
+            console.log("Feedback could not be sent to server");
         }
     } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
+        console.error(`There was an error while sending feedback to the server: ${error}`);
     }
-    //console.log(ret);
-    return ret;
-    };
+};
