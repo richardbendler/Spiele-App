@@ -10,8 +10,8 @@ import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sub
 import HandleFeedback from './sublements/HandleFeedBack';
 
 const PicoloGame = ({ route }) => {
-  const texts = shuffleArrayFisherYates(route.params.texts); // array of available questions
-
+  // array of available questions
+  const texts = shuffleArrayFisherYates(route.params.picoloData);
   // set current question to display, based on the index
   let index = 0;
   const [currentText, setCurrentText] = useState(texts[index].content);
@@ -37,7 +37,7 @@ const PicoloGame = ({ route }) => {
             <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(currentText) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={texts} textsIndex={index} table={'games_activity_evaluation'}/>
+        <HandleFeedback texts={texts} textsIndex={index} table={'game_klassiker_questions'}/>
           
         <InfoText header={"The One!"} rules={"Der klassischte aller Trinkspiel-Modi - und auch gleichzeitig der einfachste! \n \n Alles was ihr machen müsst, wird euch auf dem Bildschirm angezeigt."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>

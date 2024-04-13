@@ -29,6 +29,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             bool_drink: entry.bool_drink,
             activation: entry.activation,
             author: String::new(),
+            popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
         };
         // extract content values from Option
@@ -71,6 +72,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             bool_drink: entry.bool_drink,
             activation: entry.activation,
             author: String::new(),
+            popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
         };
         // extract content values from Option

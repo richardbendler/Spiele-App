@@ -22,6 +22,7 @@ pub struct ClassicGamesResultWithOptions {
     pub bool_drink: i32,
     pub activation: i32,
     pub author: Option<String>,
+    pub popularity: i32,
     pub timestamp: OffsetDateTime,
 }
 
@@ -36,6 +37,7 @@ pub struct ClassicGamesResult {
     pub bool_drink: i32,
     pub activation: i32,
     pub author: String,
+    pub popularity: i32,
     pub timestamp: i64,
 }
 
