@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
-import { handleSqlRequest } from './src/general';
-import { handleSqlRequestAndSafeToDisk } from './src/general';
+import {  getGames } from './src/general';
 
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
@@ -45,7 +43,6 @@ export default function App() {
       if(response){
         const ret = JSON.parse(response);
         setter(ret)
-        //console.log("loaded from disk: ", ret);
       }
     } catch (error) {
         console.error('Fehler beim Laden', error);
@@ -72,17 +69,19 @@ export default function App() {
   ////////////////////////////////////////////////////////
   
   //LOAD FROM API and SAFE TO DISK
-  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
+  const [texts_Picolo, setTexts_Picolo] = useState([]);
   const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
   const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
   const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    handleSqlRequestAndSafeToDisk("texts_Picolo", setTexts_Picolo, 'SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-    handleSqlRequestAndSafeToDisk("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-    handleSqlRequestAndSafeToDisk("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3')
-    handleSqlRequestAndSafeToDisk("manyQuestions", setManyQuestions, 'SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-    handleSqlRequestAndSafeToDisk("words", setWords, 'SELECT * FROM `game_activity_words`');
+    // new API routes
+    getGames("texts_Picolo", setTexts_Picolo, "theOne");
+    getGames("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
+    getGames("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
+    getGames("manyQuestions", setManyQuestions, "manyQuestions");
+    getGames("words", setWords, "activity")
+
   }, []);
 
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
@@ -90,15 +89,9 @@ export default function App() {
   //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
 
 
-  
-  
-
-
-
 
   //Für Menus
   const Stack = createStackNavigator();
-  
   
   //Globale Variablen aus Context
   const [settingsVisible, setSettingsVisible] = useState(false);
@@ -106,7 +99,6 @@ export default function App() {
   const [players, setPlayers] = useState([]);
 
   return (
-    
     <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible, players, setPlayers}}>
     <NavigationContainer>
       
@@ -124,12 +116,12 @@ export default function App() {
       <Stack.Screen 
           name="PicoloGame" 
           component={PicoloGame}
-          initialParams={{ texts: texts_Picolo }} 
+          initialParams={{ picoloData: texts_Picolo }} 
       />
       <Stack.Screen 
           name="ManyQuestionsGame" 
           component={ManyQuestionsGame}
-          initialParams={{ texts: manyQuestions }} 
+          initialParams={{ manyQuestionsData: manyQuestions }} 
       />
       <Stack.Screen name="Kingscup" component={Kingscup} />
       <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
@@ -148,7 +140,5 @@ export default function App() {
     </Stack.Navigator>
   </NavigationContainer>
 </VariablesContext.Provider>
-  
-  
   );
 }
