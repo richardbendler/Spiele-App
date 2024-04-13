@@ -33,7 +33,7 @@ const Activity = ({route }) => {
             <Question question={words && words.length > 0 ? replaceHashtagsWithoutDuplicates(words[wordsIndex].word) : ''}/>
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={words} textsIndex={wordsIndex} table={'games_activity_evaluation'}/>
+        <HandleFeedback texts={words} textsIndex={wordsIndex} table={'game_activity_words'}/>
 
         <InfoText header={"Activity!"} rules={"Ihr seid reihum nacheinander mit erklären dran. Wer dran ist, hat 30 Sekunden Zeit, so viele angezeigte Wörter zu erklären oder per Pantomime vorzuführen. Für jedes richtig erratene Wort darf die erklärende Person und die Person, die es gerade erraten hat, einen Schluck direkt verteilen. Have Fun!"}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
