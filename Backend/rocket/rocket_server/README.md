@@ -13,8 +13,10 @@ https://learn.microsoft.com/de-de/windows/wsl/install
 ## Optional: Language Support for Rust
 - Clone project inside of WSL
 - Open one subfolder only (rocket or Trinkspiel_RN)
+- install rust-analyzer extension
 - Below on the left you can normally see the language server -> Rust_Analyzer
 - Fore SQL-Language-Support important: `cargo sqlx prepare` after every database scheme change
+- If still old error: restart rust-analyzer (corner left below)
 
 ## Install (On deleopment PC - steps need to be done to develop - tested on Windows)
 - Install Rust (Standard Installation): `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh` (https://www.rust-lang.org/tools/install)
