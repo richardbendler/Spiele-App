@@ -29,8 +29,31 @@ import { VariablesContext } from './VariablesContext';
 import { enableScreens } from 'react-native-screens';
 enableScreens();
 
+//Import von db_backup
+import {db_backup_texts_Picolo} from './src/db_backup';
+import {db_backup_textsWahrheitSpinTheBottle} from './src/db_backup';
+import {db_backup_textsPflichtSpinTheBottle} from './src/db_backup';
+import {db_backup_manyQuestions} from './src/db_backup';
+import {db_backup_words} from './src/db_backup';
+
 
 export default function App() {
+  const [texts_Picolo, setTexts_Picolo] = useState([]);
+  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
+  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
+  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
+  const [words, setWords] = useState(["Platzhalterfrage"]);
+
+  ////////////////////////////////////////////////////////
+  /////////// Daten aus db_backup.js  //////////
+  ////////////////////////////////////////////////////////
+  useEffect(() => {
+    setTexts_Picolo(db_backup_texts_Picolo)
+    setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
+    setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
+    setManyQuestions(db_backup_manyQuestions)
+    setWords(db_backup_words)
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
@@ -69,11 +92,6 @@ export default function App() {
   ////////////////////////////////////////////////////////
   
   //LOAD FROM API and SAFE TO DISK
-  const [texts_Picolo, setTexts_Picolo] = useState([]);
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
-  const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     // new API routes
     getGameData("texts_Picolo", setTexts_Picolo, "theOne");
@@ -81,13 +99,11 @@ export default function App() {
     getGameData("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
     getGameData("manyQuestions", setManyQuestions, "manyQuestions");
     getGameData("words", setWords, "activity")
-
-  }, []);
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
 
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
   // -> Vielleicht auch einfach immer?
   //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
-
 
 
   //Für Menus
@@ -96,7 +112,7 @@ export default function App() {
   //Globale Variablen aus Context
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([]);  
 
   return (
     <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible, players, setPlayers}}>

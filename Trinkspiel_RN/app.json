@@ -29,7 +29,7 @@
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 22,
+      "versionCode": 23,
       "package": "com.felsbend.Trinkspiel_RN"
     },
     "web": {
