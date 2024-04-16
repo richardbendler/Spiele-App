@@ -14,7 +14,7 @@ pub struct Response<T> {
 }
 
 pub struct ClassicGamesResultWithOptions {
-    pub id: i32,
+    pub question_id: i32,
     pub fk_pool: i32,
     pub content: Option<String>,
     pub drunk_level: i32,
@@ -24,12 +24,17 @@ pub struct ClassicGamesResultWithOptions {
     pub author: Option<String>,
     pub popularity: i32,
     pub timestamp: OffsetDateTime,
+    pub pool_id: i32,
+    pub pool_fk_game: i32,
+    pub pool_name: Option<String>,
+    pub pool_comment: Option<String>,
+    pub pool_color: Option<String>,
 }
 
 // defines result from db query without Options
 #[derive(Serialize)]
 pub struct ClassicGamesResult {
-    pub id: i32,
+    pub question_id: i32,
     pub fk_pool: i32,
     pub content: String,
     pub drunk_level: i32,
@@ -39,6 +44,11 @@ pub struct ClassicGamesResult {
     pub author: String,
     pub popularity: i32,
     pub timestamp: i64,
+    pub pool_id: i32,
+    pub pool_fk_game: i32,
+    pub pool_name: String,
+    pub pool_comment: String,
+    pub pool_color: String,
 }
 
 
