@@ -70,6 +70,21 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             Some(x) => unwraped_entry.author = x.clone(),
             None => unwraped_entry.author = String::from(""),
         }
+        // extract pool_name from Option
+        match &entry.pool_name {
+            Some(x) => unwraped_entry.pool_name = x.clone(),
+            None => unwraped_entry.pool_name = String::from(""),
+        }
+        // extract pool_comment from Option
+        match &entry.pool_comment {
+            Some(x) => unwraped_entry.pool_comment = x.clone(),
+            None => unwraped_entry.pool_comment = String::from(""),
+        }
+        // extract pool_color from Option
+        match &entry.pool_color {
+            Some(x) => unwraped_entry.pool_color = x.clone(),
+            None => unwraped_entry.pool_color = String::from(""),
+        }
         // return unwraped values
         unwraped_entry
     })
