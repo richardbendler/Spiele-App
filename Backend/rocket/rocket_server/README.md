@@ -19,7 +19,7 @@ The Rocket server runs on the server as a service using `systemctl`. On rebootin
 - `sudo systemctl status rocket-server.service`: displays the status and log of the service
 - `sudo systemctl stop rocket-server.service`: stops the service
 - `sudo systemctl restart application.service`: restarts the service
-- TODO: Woran erkenne ich beim Entwickeln ob eine Serververbindung besteht?/Daten richtig empfangen werden? -> Gibt keine Fehlermeldung in der Konsole aktuell wenn Server gestoppt ist, wäre aber sehr praktisch
+- TODO: Woran erkenne ich beim Entwickeln ob eine Serververbindung besteht?/Daten richtig empfangen werden? -> Gibt keine Fehlermeldung in der Konsole aktuell wenn Server gestoppt ist, wäre aber sehr praktisch (bzw. Fehlermeldung kommt irgendwie erst nach so drei Minuten)
 
 ## From now on only relevant for server move
 
