@@ -16,15 +16,15 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
 
   return (
     <View>
-      <Text style={appStyles.title}>Enter Player Names</Text>
+      <Text style={appStyles.textHeader2}>Enter Player Names</Text>
       <TextInput
         placeholder="Enter a name"
         placeholderTextColor="white"
         value={currentName}
         onChangeText={text => setCurrentName(text)}
-        style={appStyles.input}
+        style={[appStyles.input, {marginVertical: 20}]}
       />
-      <TouchableOpacity onPress={handler} style={appStyles.chalkboardButton}>
+      <TouchableOpacity onPress={handler} style={[appStyles.chalkboardButton, {marginBottom: 30}]}>
         <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Add Player</Text>
       </TouchableOpacity>
     </View>
@@ -60,7 +60,8 @@ const AddPlayer = ({ navigation }) => {
         <View style={{ width: '70%' }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
 
-          <View style={{ height: 200, marginVertical: 20 }}>
+          <Text style={[appStyles.textHeader3, {marginVertical: 1}]}>Wer ist dabei:</Text>
+          <View style={{ height: 200, marginVertical: 1 }}>
             <FlatList
               data={players}
               renderItem={({ item }) =>
@@ -73,7 +74,7 @@ const AddPlayer = ({ navigation }) => {
 
 
         </View>
-        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButton, {}]}>
+        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButtonPrimaryColor, {}]}>
           <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
         </TouchableOpacity>
 
