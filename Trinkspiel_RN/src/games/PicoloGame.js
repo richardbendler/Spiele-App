@@ -16,6 +16,8 @@ const PicoloGame = ({ route }) => {
   let index = 0;
   const [currentText, setCurrentText] = useState(texts[index].content);
 
+  console.log("pool_color: ", texts[index].pool_id)
+
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const showNextQuestion = () => {
