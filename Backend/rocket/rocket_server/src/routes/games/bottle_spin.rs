@@ -12,7 +12,30 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,
-        "SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2"
+        "SELECT 
+            game_klassiker_questions.id AS question_id,
+            game_klassiker_questions.fk_pool AS fk_pool,
+            game_klassiker_questions.content AS content,
+            game_klassiker_questions.drunk_level AS drunk_level,
+            game_klassiker_questions.exposure_level AS exposure_level,
+            game_klassiker_questions.bool_drink AS bool_drink,
+            game_klassiker_questions.activation AS activation,
+            game_klassiker_questions.author AS author,
+            game_klassiker_questions.popularity AS popularity,
+            game_klassiker_questions.timestamp AS timestamp,
+            game_klassiker_pools.id AS pool_id,
+            game_klassiker_pools.fk_game AS pool_fk_game,
+            game_klassiker_pools.name AS pool_name,
+            game_klassiker_pools.comment AS pool_comment,
+            game_klassiker_pools.color AS pool_color
+        FROM 
+            `game_klassiker_questions` 
+        INNER JOIN 
+            `game_klassiker_pools` 
+        ON 
+            `game_klassiker_questions`.fk_pool=`game_klassiker_pools`.id
+        WHERE 
+            fk_pool = 2"
     )
     .fetch_all(unwraped_pool)
     .await
@@ -21,7 +44,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
     .map(|entry| {
         // create new QueryResult instance
         let mut unwraped_entry = ClassicGamesResult {
-            id: entry.id,
+            question_id: entry.question_id,
             fk_pool: entry.fk_pool,
             content: String::new(),
             drunk_level: entry.drunk_level,
@@ -31,6 +54,11 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             author: String::new(),
             popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
+            pool_id: entry.pool_id,
+            pool_fk_game: entry.pool_fk_game,
+            pool_name: String::new(),
+            pool_comment: String::new(),
+            pool_color: String::new(),
         };
         // extract content values from Option
         match &entry.content {
@@ -55,7 +83,30 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
     let unwraped_pool = pool.inner();
     let results: Vec<ClassicGamesResult> = sqlx::query_as!(
         ClassicGamesResultWithOptions,
-        "SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3"
+        "SELECT 
+            game_klassiker_questions.id AS question_id,
+            game_klassiker_questions.fk_pool AS fk_pool,
+            game_klassiker_questions.content AS content,
+            game_klassiker_questions.drunk_level AS drunk_level,
+            game_klassiker_questions.exposure_level AS exposure_level,
+            game_klassiker_questions.bool_drink AS bool_drink,
+            game_klassiker_questions.activation AS activation,
+            game_klassiker_questions.author AS author,
+            game_klassiker_questions.popularity AS popularity,
+            game_klassiker_questions.timestamp AS timestamp,
+            game_klassiker_pools.id AS pool_id,
+            game_klassiker_pools.fk_game AS pool_fk_game,
+            game_klassiker_pools.name AS pool_name,
+            game_klassiker_pools.comment AS pool_comment,
+            game_klassiker_pools.color AS pool_color
+        FROM 
+            `game_klassiker_questions` 
+        INNER JOIN 
+            `game_klassiker_pools` 
+        ON 
+            `game_klassiker_questions`.fk_pool=`game_klassiker_pools`.id
+        WHERE 
+            fk_pool = 3"
     )
     .fetch_all(unwraped_pool)
     .await
@@ -64,7 +115,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
     .map(|entry| {
         // create new QueryResult instance
         let mut unwraped_entry = ClassicGamesResult {
-            id: entry.id,
+            question_id: entry.question_id,
             fk_pool: entry.fk_pool,
             content: String::new(),
             drunk_level: entry.drunk_level,
@@ -74,6 +125,11 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             author: String::new(),
             popularity: entry.popularity,
             timestamp: entry.timestamp.unix_timestamp(),
+            pool_id: entry.pool_id,
+            pool_fk_game: entry.pool_fk_game,
+            pool_name: String::new(),
+            pool_comment: String::new(),
+            pool_color: String::new(),
         };
         // extract content values from Option
         match &entry.content {
