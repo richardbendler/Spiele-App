@@ -60,7 +60,7 @@ const AddPlayer = ({ navigation }) => {
         <View style={{ width: '70%' }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
 
-          <View style={{ height: 200 }}>
+          <View style={{ height: 200, marginVertical: 20 }}>
             <FlatList
               data={players}
               renderItem={({ item }) =>
@@ -84,3 +84,6 @@ const AddPlayer = ({ navigation }) => {
 };
 
 export default AddPlayer;
+
+
+
