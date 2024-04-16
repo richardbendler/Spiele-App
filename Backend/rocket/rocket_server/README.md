@@ -10,7 +10,13 @@ https://learn.microsoft.com/de-de/windows/wsl/install
 - After completition: In VSCode install WSL extension -> should be suggested when starting vscode
 - To start WSL just search for the program
 
-## Install (On deleopment PC - steps need to be done to develop)
+## Optional: Language Support for Rust
+- Clone project inside of WSL
+- Open one subfolder only (rocket or Trinkspiel_RN)
+- Below on the left you can normally see the language server -> Rust_Analyzer
+- Fore SQL-Language-Support important: `cargo sqlx prepare` after every database scheme change
+
+## Install (On deleopment PC - steps need to be done to develop - tested on Windows)
 - Install Rust (Standard Installation): `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh` (https://www.rust-lang.org/tools/install)
 `. "$HOME/.cargo/env"`
 `sudo apt-get update`
@@ -21,21 +27,9 @@ https://learn.microsoft.com/de-de/windows/wsl/install
 Then: In order to use the sqlx crate, you first need to install the sqlx-cli via `cargo install sqlx-cli`. After installing the tool, create a `.env` file in the `rocket_server` folder and add `DATABASE_URL=mysql://USER:PASSWORD@HOST/DATABASE` to the newly created file.
 Then, run `cargo sqlx prepare`. This will create a schema for the data in the database and allows modeling this data as a native Rust struct. 
 
-## Old (ignore for now)
-Install and download the build target specific architecture for linux server 
-`rustup toolchain install stable-x86_64-unknown-linux-musl`
-(`rustup toolchain list`)
-`rustup default stable-x86_64-unknown-linux-musl`
-`rustup target add x86_64-unknown-linux-gnu`
-
 ## Build the Server
 To build an executable run `cargo build` for development builds and `cargo build --release` for production builds.
 - TODO: Was von beiden benutze ich wann genau? Was ist der Unterschied im Output? - realease ist schneller 
-
-## Test on local machine
-Rocket.toml umbennen damit sie lokal nicht gefunden wird
-cd target/debug/
-./rocket_server
 
 ## Deploy the Build
 The Rocket server files are located in `/home/trinkspielapp/rocket_server`. 
@@ -48,7 +42,6 @@ The Rocket server runs on the server as a service using `systemctl`. On rebootin
 - `sudo systemctl status rocket-server.service`: displays the status and log of the service
 - `sudo systemctl stop rocket-server.service`: stops the service
 - `sudo systemctl restart application.service`: restarts the service
-- TODO: Woran erkenne ich beim Entwickeln ob eine Serververbindung besteht?/Daten richtig empfangen werden? -> Gibt keine Fehlermeldung in der Konsole aktuell wenn Server gestoppt ist, wäre aber sehr praktisch (bzw. Fehlermeldung kommt irgendwie erst nach so drei Minuten)
 
 ## From now on only relevant for server move
 
