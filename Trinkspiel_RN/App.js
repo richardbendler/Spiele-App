@@ -4,7 +4,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
-import {  getGames } from './src/general';
+import {  getGameData } from './src/general';
 
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
@@ -76,11 +76,11 @@ export default function App() {
   const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
     // new API routes
-    getGames("texts_Picolo", setTexts_Picolo, "theOne");
-    getGames("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
-    getGames("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
-    getGames("manyQuestions", setManyQuestions, "manyQuestions");
-    getGames("words", setWords, "activity")
+    getGameData("texts_Picolo", setTexts_Picolo, "theOne");
+    getGameData("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
+    getGameData("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
+    getGameData("manyQuestions", setManyQuestions, "manyQuestions");
+    getGameData("words", setWords, "activity")
 
   }, []);
 
