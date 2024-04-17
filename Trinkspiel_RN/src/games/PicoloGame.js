@@ -14,26 +14,35 @@ const PicoloGame = ({ route }) => {
   const texts = shuffleArrayFisherYates(route.params.picoloData);
   // set current question to display, based on the index
   let index = 0;
+  const [currentCategory, setCurrentCategory] = useState(texts[index].pool_name);
   const [currentText, setCurrentText] = useState(texts[index].content);
+  const [currentColor, setCurrentColor] = useState(texts[index].pool_color);
+
+  console.log("pool_color: ", texts[index].pool_name)
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const showNextQuestion = () => {
     try{
       index++;
+      setCurrentCategory(texts[index].pool_name);
       setCurrentText(texts[index].content);
+      setCurrentColor(texts[index].pool_color);
     }catch (error){
       // reset to first question, if error occurs
       index = 0;
+      setCurrentCategory(texts[index].pool_name);
       setCurrentText(texts[index].content);
+      setCurrentColor(texts[index].pool_color);
     }
   };
   
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-      <View style={appStyles.completeScreenGameContainer}>
+      <View style={[appStyles.completeScreenGameContainer, {backgroundColor: currentColor}]}>
         <View style={appStyles.gameContainer}>
           <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
+            <Text style={appStyles.textHeader2}>{currentCategory}!</Text>
             <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(currentText) : ''}/>
           </TouchableOpacity>
         </View>
