@@ -7,8 +7,12 @@ import Settings from './sublements/Settings';
 import NetInfo from "@react-native-community/netinfo";
 
 //Fonts
-import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
-import { Quicksand_300Light } from "@expo-google-fonts/quicksand";
+//Die Benennungen der Imports kann man mit Autocomplete herausfinden
+//Wichtig: Schriftarten müssen weiter unten noch in fontsLoaded hinzugefügt werden
+//import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
+import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
+//import { Quicksand_300Bold } from "@expo-google-fonts/quicksand";
+import { Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold } from "@expo-google-fonts/caveat";
 import { useFonts } from "expo-font";
 
 //HANDLE SQL REQUESTS
@@ -92,8 +96,8 @@ const StartMenu = ({ navigation }) => {
 
      
     const [fontsLoaded] = useFonts({
-        Raleway_200ExtraLight,
-        Quicksand_300Light,
+        Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold,
+        Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold
         });
         if (!fontsLoaded) {
         return <View style={{justifyContent:"center", alignItems:"center"}}>
@@ -126,6 +130,11 @@ const StartMenu = ({ navigation }) => {
                     {/* SCHILD */}
                     <View style={{position: 'absolute', top: '10%', width: '40%', height: '10%'}}>
                         <Image source={require('../../assets/images/bar/schild.png')} style={appStyles.bottleButton} />
+                    </View>
+
+                    {/* SCHRIFTZUG SUBTEXT */}
+                    <View style={{position: 'absolute', top: '6%', width: '100%'}}>
+                        <Text style={[{textAlign: 'center', color: 'black', fontFamily: 'Caveat_400Regular', fontSize: 20}]}>Die eine Trinkspielapp, die alle andern ersetzt!</Text>
                     </View>
 
 
