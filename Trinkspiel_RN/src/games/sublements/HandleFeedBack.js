@@ -33,7 +33,6 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
 
 
     const question_id = texts[textsIndex].question_id
-    console.log("text: ", texts[textsIndex], "; question_id: ", question_id)
     const question_content = texts[textsIndex].content
     
     postFeedback(table, question_id, feedback);
