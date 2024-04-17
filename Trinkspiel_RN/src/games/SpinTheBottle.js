@@ -129,6 +129,7 @@ const SpinTheBottle = ({route }) => {
           
           <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
         </View>
+        <View style={{height: '10%', justifyContent: 'center', alignItems: 'center'}}>
         {randomSelection==0?
           <></>
           :
@@ -137,7 +138,7 @@ const SpinTheBottle = ({route }) => {
             :
             <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
           }
-        
+        </View>
 
         <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
