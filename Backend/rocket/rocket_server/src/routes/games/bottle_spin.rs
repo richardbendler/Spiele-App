@@ -16,6 +16,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             game_klassiker_questions.id AS question_id,
             game_klassiker_questions.fk_pool AS fk_pool,
             game_klassiker_questions.content AS content,
+            game_klassiker_questions.content_english AS content_english,
             game_klassiker_questions.drunk_level AS drunk_level,
             game_klassiker_questions.exposure_level AS exposure_level,
             game_klassiker_questions.bool_drink AS bool_drink,
@@ -47,6 +48,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             question_id: entry.question_id,
             fk_pool: entry.fk_pool,
             content: String::new(),
+            content_english: String::new(),
             drunk_level: entry.drunk_level,
             exposure_level: entry.exposure_level,
             bool_drink: entry.bool_drink,
@@ -64,6 +66,11 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
         match &entry.content {
             Some(x) => unwraped_entry.content = x.clone(),
             None => unwraped_entry.content = String::from(""),
+        }
+        // extract content_english values from Option
+         match &entry.content_english {
+            Some(x) => unwraped_entry.content_english = x.clone(),
+            None => unwraped_entry.content_english = String::from(""),
         }
         // extract author from Option
         match &entry.author {
@@ -102,6 +109,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             game_klassiker_questions.id AS question_id,
             game_klassiker_questions.fk_pool AS fk_pool,
             game_klassiker_questions.content AS content,
+            game_klassiker_questions.content_english AS content_english,
             game_klassiker_questions.drunk_level AS drunk_level,
             game_klassiker_questions.exposure_level AS exposure_level,
             game_klassiker_questions.bool_drink AS bool_drink,
@@ -133,6 +141,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             question_id: entry.question_id,
             fk_pool: entry.fk_pool,
             content: String::new(),
+            content_english: String::new(),
             drunk_level: entry.drunk_level,
             exposure_level: entry.exposure_level,
             bool_drink: entry.bool_drink,
@@ -150,6 +159,11 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
         match &entry.content {
             Some(x) => unwraped_entry.content = x.clone(),
             None => unwraped_entry.content = String::from(""),
+        }
+        // extract content_english values from Option
+        match &entry.content_english {
+            Some(x) => unwraped_entry.content_english = x.clone(),
+            None => unwraped_entry.content_english = String::from(""),
         }
         // extract author from Option
         match &entry.author {
