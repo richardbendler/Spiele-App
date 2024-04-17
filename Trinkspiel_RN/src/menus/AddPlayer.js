@@ -15,17 +15,18 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
   };
 
   return (
-    <View>
-      <Text style={appStyles.title}>Enter Player Names</Text>
+    <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+      <Text style={appStyles.textHeader2}>Namen eingeben</Text>
+      <Text style={[appStyles.textNormal2, {width: '70%', textAlign: 'center'}]}>Bitte gib die Namen aller mitspielenden Personen ein!</Text>
       <TextInput
-        placeholder="Enter a name"
+        placeholder="Hier einen Namen eingeben"
         placeholderTextColor="white"
         value={currentName}
         onChangeText={text => setCurrentName(text)}
-        style={appStyles.input}
+        style={[appStyles.input, {marginVertical: 20}]}
       />
-      <TouchableOpacity onPress={handler} style={appStyles.chalkboardButton}>
-        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Add Player</Text>
+      <TouchableOpacity onPress={handler} style={[appStyles.chalkboardButton, {marginBottom: 30}]}>
+        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Hinzufügen</Text>
       </TouchableOpacity>
     </View>
   );
@@ -57,10 +58,14 @@ const AddPlayer = ({ navigation }) => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{ flex: 1 }} >
       <View style={appStyles.menuContainer}>
-        <View style={{ width: '70%' }}>
+        <View style={{ width: '70%', justifyContent: 'center', alignItems: 'center', }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
 
-          <View style={{ height: 200 }}>
+          
+          <Text style={[appStyles.textNormal2, {width: '100%', textAlign: 'center'}]}>In der Liste könnt ihr dann markieren, ob Personen Alkohol trinken oder nicht. Wer nicht trinkt, bekommt auch keine Aufgaben, wo es ums Trinken geht.</Text>
+          <Text style={[appStyles.textHeader4, {marginVertical: 1}]}>Wer ist dabei:</Text>
+          
+          <View style={{ height: 200, marginVertical: 1 }}>
             <FlatList
               data={players}
               renderItem={({ item }) =>
@@ -73,7 +78,7 @@ const AddPlayer = ({ navigation }) => {
 
 
         </View>
-        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButton, {}]}>
+        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButtonPrimaryColor, {}]}>
           <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
         </TouchableOpacity>
 
@@ -84,3 +89,6 @@ const AddPlayer = ({ navigation }) => {
 };
 
 export default AddPlayer;
+
+
+

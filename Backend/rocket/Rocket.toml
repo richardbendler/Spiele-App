@@ -1,0 +1,9 @@
+[default]
+address = "0.0.0.0"
+port = 8443
+log_level = "normal"
+
+
+[default.tls]
+key = "/etc/letsencrypt/live/my-tournament.org/privkey.pem"
+certs = "/etc/letsencrypt/live/my-tournament.org/cert.pem"

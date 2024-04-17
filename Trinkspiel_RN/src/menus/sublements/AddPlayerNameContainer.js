@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { appStyles } from '../../../styles';
 import { VariablesContext } from '../../../VariablesContext';
 
@@ -28,32 +28,60 @@ const NameContainer = ({ playerObject }) => {
 
     const [player, setPlayer] = useState(playerObject);
 
-
-
+    const TwoPartButton = ({ playerObject, togglePlayerDrinks }) => {
+        return (
+            <TouchableOpacity onPress={() => togglePlayerDrinks(playerObject)}>
+                <View style={styles.buttonContainer}>
+                    <View style={[styles.halfButton, {
+                        backgroundColor: playerObject.drinks ? 'green' : 'grey',
+                        opacity: playerObject.drinks ? 1 : 0.5
+                    }]}>
+                        <Text style={styles.buttonText}>Trinkt</Text>
+                    </View>
+                    <View style={[styles.halfButton, {
+                        backgroundColor: !playerObject.drinks ? 'red' : 'grey',
+                        opacity: !playerObject.drinks ? 1 : 0.5
+                    }]}>
+                        <Text style={styles.buttonText}>Trinkt nicht</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    };
+    
     return (
         <View style={appStyles.playerListText}>
             <Text style={{ color: 'white', paddingRight: '2%', width: '35%' }} ellipsizeMode='tail' numberOfLines={1}>{playerObject.name}</Text>
             <View style={{ width: '50%' }}>
-                <Button
-                    onPress={() => {
-                        setPlayer(!player.drinks);
-                        togglePlayerDrinks(playerObject);
-                    }}
-                    title={playerObject.drinks ? "Trinkt" : "Trinkt nicht"}
-                    color={playerObject.drinks ? 'green' : 'red'}
-                />
+                <TwoPartButton playerObject={player} togglePlayerDrinks={togglePlayerDrinks} />
             </View>
             <View style={{ paddingLeft: '2%' }}>
                 <Button
                     onPress={() => {
                         removePlayer(playerObject);
                     }}
-                    title={'-'}
+                    title={'✖'}
                     color={'red'}
                 />
             </View>
         </View>
     )
 };
+
+const styles = StyleSheet.create({
+    buttonContainer: {
+        flexDirection: 'row',
+    },
+    halfButton: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+    }
+});
+
 
 export default NameContainer;
