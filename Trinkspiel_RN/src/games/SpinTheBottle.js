@@ -4,9 +4,9 @@ import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, 
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
-import HandleFeedback from './sublements/HandleFeedBack';
 import InfoText from './sublements/InfoText';
 import { appStyles } from '../../styles';
+import HandleFeedback from './sublements/HandleFeedBack';
 
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({route }) => {
@@ -14,6 +14,8 @@ const SpinTheBottle = ({route }) => {
   const textsPflichtSpinTheBottle = shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle);
   
   const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger! (Tippen reicht auch)');
+  const [randomSelection, setRandomSelection] = useState(0); //Entscheidung ob Schlücke, Wahrheit oder Pflicht
+  const [rndIndex, setRndIndex] = useState(0); //Index für die zufällig gewählte Aussage aus einem der Pools
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
@@ -68,17 +70,23 @@ const SpinTheBottle = ({route }) => {
 
           // Zufällige Auswahl zwischen den drei Optionen treffen
           const randomSelection = Math.floor(Math.random() * 3);
+          setRandomSelection(randomSelection)
+
           let resultText = '';
           switch (randomSelection) {
             case 0:  // Schlucke! Option
               resultText = `${generateRandomSips()} Schlucke!`;
               break;
             case 1:  // Wahrheit! Option
-              randomTruth = textsWahrheitSpinTheBottle[Math.floor(Math.random() * textsWahrheitSpinTheBottle.length)].content
+              rnd = Math.floor(Math.random() * textsWahrheitSpinTheBottle.length)
+              randomTruth = textsWahrheitSpinTheBottle[rnd].content
+              setRndIndex(rnd)
               resultText = `Wahrheit! ${randomTruth}`;
               break;
             case 2:  // Pflicht! Option
-              randomDare= textsPflichtSpinTheBottle[Math.floor(Math.random() * textsPflichtSpinTheBottle.length)].content
+              rnd = Math.floor(Math.random() * textsPflichtSpinTheBottle.length)
+              randomDare= textsPflichtSpinTheBottle[rnd].content
+              setRndIndex(rnd)
               resultText = `Pflicht! ${randomDare}`;
               break;
           }
@@ -121,6 +129,15 @@ const SpinTheBottle = ({route }) => {
           
           <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
         </View>
+        {randomSelection==0?
+          <></>
+          :
+            randomSelection==1?
+              <HandleFeedback texts={textsWahrheitSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+            :
+            <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+          }
+        
 
         <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
