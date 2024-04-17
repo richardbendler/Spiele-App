@@ -15,17 +15,18 @@ const PlayerInput = React.memo(({ onAddPlayer }) => {
   };
 
   return (
-    <View>
-      <Text style={appStyles.textHeader2}>Enter Player Names</Text>
+    <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+      <Text style={appStyles.textHeader2}>Namen eingeben</Text>
+      <Text style={[appStyles.textNormal2, {width: '70%', textAlign: 'center'}]}>Bitte gib die Namen aller mitspielenden Personen ein!</Text>
       <TextInput
-        placeholder="Enter a name"
+        placeholder="Hier einen Namen eingeben"
         placeholderTextColor="white"
         value={currentName}
         onChangeText={text => setCurrentName(text)}
         style={[appStyles.input, {marginVertical: 20}]}
       />
       <TouchableOpacity onPress={handler} style={[appStyles.chalkboardButton, {marginBottom: 30}]}>
-        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Add Player</Text>
+        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Hinzufügen</Text>
       </TouchableOpacity>
     </View>
   );
@@ -57,7 +58,7 @@ const AddPlayer = ({ navigation }) => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{ flex: 1 }} >
       <View style={appStyles.menuContainer}>
-        <View style={{ width: '70%' }}>
+        <View style={{ width: '70%', justifyContent: 'center', alignItems: 'center', }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
 
           <Text style={[appStyles.textHeader3, {marginVertical: 1}]}>Wer ist dabei:</Text>
