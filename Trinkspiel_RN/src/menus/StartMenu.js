@@ -134,7 +134,7 @@ const StartMenu = ({ navigation }) => {
 
                     {/* SCHRIFTZUG SUBTEXT */}
                     <View style={{position: 'absolute', top: '6%', width: '100%'}}>
-                        <Text style={[{textAlign: 'center', color: 'black', fontFamily: 'Caveat_400Regular', fontSize: 20}]}>Die eine Trinkspielapp, die alle andern ersetzt!</Text>
+                        <Text style={[{textAlign: 'center', color: 'black', fontFamily: 'Caveat_400Regular', fontSize: 20}]}>Die eine Trinkspielapp, die alle anderen ersetzt!</Text>
                     </View>
 
 
