@@ -32,7 +32,8 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
     //zuerst die Id der Frage rausfinden:
 
 
-    const question_id = texts[textsIndex].id
+    const question_id = texts[textsIndex].question_id
+    console.log("text: ", texts[textsIndex], "; question_id: ", question_id)
     const question_content = texts[textsIndex].content
     
     postFeedback(table, question_id, feedback);
