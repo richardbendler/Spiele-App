@@ -8,6 +8,7 @@ const colorSchemeArray = [
 
 const font1 = "Quicksand_300Light";
 const font1_bold = "Quicksand_300Bold";
+const font2= "Caveat_400Regular";
 //const fontx = "Raleway_200ExtraLight";
 
 const colorChoice = 2;
