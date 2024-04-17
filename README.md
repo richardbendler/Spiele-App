@@ -76,6 +76,8 @@ npm install @react-native-async-storage/async-storage
 //Fonts:
 npx expo install @expo-google-fonts/quicksand expo-font
 npx expo install @expo-google-fonts/raleway expo-font
+npx expo install @expo-google-fonts/caveat expo-font
+
 
 //Sound:
 //npx expo install expo-av
