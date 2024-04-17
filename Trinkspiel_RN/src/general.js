@@ -18,7 +18,7 @@ export const handleSqlRequest = async (sqlRequest) => {
 
 
 // new implementation for Rocket.rs Server
-export const getGames = async (storageItem, setter, route) => {
+export const getGameData = async (storageItem, setter, route) => {
     const token = "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFwcCJ9LCJpYXQiOjE2OTExNzU2OTV9.TqiVCGJdiq8lgn9-akwwzoRLxR5KZhllRXr_yWQL9JE"; // Token generieren und hier einfügen
     
     try {
