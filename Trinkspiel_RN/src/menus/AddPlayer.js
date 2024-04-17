@@ -61,7 +61,10 @@ const AddPlayer = ({ navigation }) => {
         <View style={{ width: '70%', justifyContent: 'center', alignItems: 'center', }}>
           <PlayerInput onAddPlayer={handleAddPlayer} />
 
-          <Text style={[appStyles.textHeader3, {marginVertical: 1}]}>Wer ist dabei:</Text>
+          
+          <Text style={[appStyles.textNormal2, {width: '100%', textAlign: 'center'}]}>In der Liste könnt ihr dann markieren, ob Personen Alkohol trinken oder nicht. Wer nicht trinkt, bekommt auch keine Aufgaben, wo es ums Trinken geht.</Text>
+          <Text style={[appStyles.textHeader4, {marginVertical: 1}]}>Wer ist dabei:</Text>
+          
           <View style={{ height: 200, marginVertical: 1 }}>
             <FlatList
               data={players}
