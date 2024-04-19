@@ -61,7 +61,7 @@ function MainMenu({ navigation }) {
         pagingEnabled={false} // Optional, für ein "Seiten"-ähnliches Scrollen
         showsHorizontalScrollIndicator={true} // Versteckt die horizontale Scroll-Leiste
       >
-        <ImageBackground source={require("../../assets/images/bar/bar_background_without_bar.png")} 
+        <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
         style={{ height: windowHeight, width: backgroundImageWidth }}
         onLoad={handleImageLoad}
         >
@@ -81,12 +81,12 @@ function MainMenu({ navigation }) {
                 <View style={{ height: '100%', width: backgroundImageWidth, alignItems: 'center', justifyContent: 'center' }}>
 
                     <View style={{ position: 'absolute', left: '0%', top: '62%', alignItems: 'center', justifyContent: 'bottm' }}>
-                      <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
+                      <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('The One')} style={{position: 'absolute', left: '10%', top: '30%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('The One')} style={{position: 'absolute', left: '10%', top: '32%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
                       </View>
@@ -96,7 +96,7 @@ function MainMenu({ navigation }) {
                     </TouchableOpacity>
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '30%', top: '30%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '30%', top: '32%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
                       </View>
@@ -107,9 +107,9 @@ function MainMenu({ navigation }) {
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Schöneberg')} style={{position: 'absolute', left: '55%', top: '30%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Schöneberg')} style={{position: 'absolute', left: '55%', top: '36%', width: '17%', height: '26%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
+                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
                           <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
                         </View>
@@ -122,7 +122,7 @@ function MainMenu({ navigation }) {
                     
 
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '77%', top: '30%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '77%', top: '32%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
@@ -140,7 +140,7 @@ function MainMenu({ navigation }) {
                     
                     
                   <View style={{ position: 'absolute', left: '0%', top: '100%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
+                    <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
                   </View>
                     
 
@@ -148,7 +148,7 @@ function MainMenu({ navigation }) {
                   
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={{position: 'absolute', left: '3%', top: '68%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={{position: 'absolute', left: '3%', top: '70%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
                       </View>
@@ -158,7 +158,7 @@ function MainMenu({ navigation }) {
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '25%', top: '73%', width: '18%', height: '25%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '25%', top: '75%', width: '18%', height: '25%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/horse.png')} style={appStyles.bottleButton} />
                       </View>
@@ -173,7 +173,7 @@ function MainMenu({ navigation }) {
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('6by6')} style={{position: 'absolute', left: '50%', top: '68%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('6by6')} style={{position: 'absolute', left: '50%', top: '70%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_006.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
@@ -187,7 +187,7 @@ function MainMenu({ navigation }) {
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '73%', top: '68%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '73%', top: '70%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_007.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
@@ -265,7 +265,7 @@ function MainMenu({ navigation }) {
                         <Text style={appStyles.bottleText}>Getränkezähler</Text>
                       </View>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={appStyles.bottleButton} />
+                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
                           <Text style={[appStyles.bottleText,{fontSize: 9}]}>Bald verfügbar</Text>
                         </View>
