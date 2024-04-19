@@ -163,7 +163,7 @@ const StartMenu = ({ navigation }) => {
 
                     {/* REGAL 1 */}
                     <View style={{ position: 'absolute', top: '32%', alignItems: 'center', justifyContent: 'bottom' }}>
-                        <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
+                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
 
@@ -171,7 +171,7 @@ const StartMenu = ({ navigation }) => {
 
                     {/* REGAL 2 */}
                     <View style={{ position: 'absolute', top: '50%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottom' }}>
-                        <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
+                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>

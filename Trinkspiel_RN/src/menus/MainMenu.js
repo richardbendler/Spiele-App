@@ -81,7 +81,7 @@ function MainMenu({ navigation }) {
                 <View style={{ height: '100%', width: backgroundImageWidth, alignItems: 'center', justifyContent: 'center' }}>
 
                     <View style={{ position: 'absolute', left: '0%', top: '62%', alignItems: 'center', justifyContent: 'bottm' }}>
-                      <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
+                      <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
                     
@@ -140,7 +140,7 @@ function MainMenu({ navigation }) {
                     
                     
                   <View style={{ position: 'absolute', left: '0%', top: '100%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf2.png')} style={{width: backgroundImageWidth}}/>
+                    <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                   </View>
                     
 
