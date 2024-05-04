@@ -111,12 +111,21 @@ Passwort: _hat Richard_
 ### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12
 Wichtig: Schritt der Passworterstellung für root@localhost darf erst nach phpmyadmin-Installation durchgeführt werden weil die Installation sonst an dem Passwort scheitert!
+
 UFW, falls nicht vorhanden: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian
+sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann und von Code erreicht werden kann
+mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
+iadb.conf.d/50-server.cnf weil wir mariaDB haben
+wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+CREATE USER 'backenduser'@'%' IDENTIFIED BY 'passworthiereinfügen';
+GRANT ALL PRIVILEGES ON *.* TO 'backenduser'@'%' WITH GRANT OPTION;
+
 phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
 sudo systemctl restart apache2
 GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost'; FLUSH PRIVILEGES;
-(create db: https://mariadb.com/kb/en/create-database/)
+(create db: https://mariadb.com/kb/en/create-database/) 
+
 
 ### Produktionsumgebung
 _Das hier sollte vor der Production noch passieren: By default, a MariaDB installation has an anonymous user, allowing anyone to log into MariaDB without having to have a user account created for them.  This is intended only for testing, and to make the installation go a bit smoother.  You should remove them before moving into a production environment. Remove anonymous users? [Y/n] n ... skipping._
@@ -148,10 +157,7 @@ npm install express body-parser mysql2
 npm install jsonwebtoken
 sudo ufw allow 3000 #damit app den server anpingen kann -> http
 sudo ufw allow 3000 #damit app den server anpingen kann -> https
-sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann
-mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
-iadb.conf.d/50-server.cnf weil wir mariaDB haben
-wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+
 
 _________________________________________________________
 
