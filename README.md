@@ -110,7 +110,8 @@ Passwort: _hat Richard_
 
 ### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
 install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12
-create db: https://mariadb.com/kb/en/create-database/
+Wichtig: Schritt der Passworterstellung für root@localhost darf erst nach phpmyadmin-Installation durchgeführt werden weil die Installation sonst an dem Passwort scheitert!
+(create db: https://mariadb.com/kb/en/create-database/)
 phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
 sudo systemctl restart apache2
