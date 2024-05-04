@@ -121,6 +121,10 @@ CREATE USER 'backenduser'@'%' IDENTIFIED BY 'passworthiereinfügen';
 GRANT ALL PRIVILEGES ON *.* TO 'backenduser'@'%' WITH GRANT OPTION;
 VERALTET: wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
+User für Entwickler erstellen:
+CREATE USER 'flo'@'localhost' IDENTIFIED BY 'passworthiereinfügen';
+GRANT ALL PRIVILEGES ON TrinkspielDB.* TO 'flo'@'localhost' WITH GRANT OPTION;
+
 phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
 sudo systemctl restart apache2
