@@ -116,9 +116,10 @@ UFW, falls nicht vorhanden: https://www.digitalocean.com/community/tutorials/how
 sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann und von Code erreicht werden kann
 mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
 iadb.conf.d/50-server.cnf weil wir mariaDB haben
-wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
+
 CREATE USER 'backenduser'@'%' IDENTIFIED BY 'passworthiereinfügen';
 GRANT ALL PRIVILEGES ON *.* TO 'backenduser'@'%' WITH GRANT OPTION;
+VERALTET: wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
 phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
