@@ -131,6 +131,9 @@ sudo systemctl restart apache2
 GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost'; FLUSH PRIVILEGES;
 (create db: https://mariadb.com/kb/en/create-database/) 
 
+SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
+Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
+
 
 ### Produktionsumgebung
 _Das hier sollte vor der Production noch passieren: By default, a MariaDB installation has an anonymous user, allowing anyone to log into MariaDB without having to have a user account created for them.  This is intended only for testing, and to make the installation go a bit smoother.  You should remove them before moving into a production environment. Remove anonymous users? [Y/n] n ... skipping._
@@ -166,9 +169,7 @@ sudo ufw allow 3000 #damit app den server anpingen kann -> https
 
 _________________________________________________________
 
-## Domain
 
-Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. Dokumentation zur Einrichtung stehen in Trello.
 
 __________________________________________________
 
