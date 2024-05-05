@@ -133,6 +133,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost'; FLUSH PRIVILEGES;
 
 SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
 Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
+Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
 
 
 ### Produktionsumgebung
