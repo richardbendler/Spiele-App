@@ -136,7 +136,9 @@ Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der 
 Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
 Falls schon andere SSL-Zertifikate vorhanden sind:
 sudo certbot -d meinedomain.de --apache
-und https://www.digicert.com/kb/ssl-support/apache-multiple-ssl-certificates-using-sni.htm
+Dann c um letzten Schritt zu canceln
+und sudo nano /etc/apache2/sites-available/000-default-le-ssl.conf
+ungefähr so https://www.digicert.com/kb/ssl-support/apache-multiple-ssl-certificates-using-sni.htm
 und sudo systemctl restart apache2
 
 ### Produktionsumgebung
