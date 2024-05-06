@@ -110,7 +110,7 @@ const StartMenu = ({ navigation }) => {
 
   return (
     <View style={{alignItems: 'flex-start'}}>
-      <ImageBackground source={require("../../assets/images/bar/bar_background_without_bar.png")} 
+      <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
       style={{ height: windowHeight, width: backgroundImageWidth }}
       onLoad={handleImageLoad}
       >
@@ -139,11 +139,11 @@ const StartMenu = ({ navigation }) => {
 
 
                         {/* 🍾 FLASCHEN 🍾*/}
-                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '19%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '19%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '19%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '19%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '19%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '20%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '20%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '20%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '20%', width: '19%', height: '12%', }}/>
+                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '20%', width: '19%', height: '12%', }}/>
 
                         <Image source={require('../../assets/images/bottles/bottle_009.png')} style={{position: 'absolute', resizeMode: 'contain', left: '-7%', top: '38%', width: '19%', height: '12%', }}/>
                         <Image source={require('../../assets/images/bottles/bottle_007.png')} style={{position: 'absolute', resizeMode: 'contain', left: '14%', top: '38%', width: '19%', height: '12%', }}/>
@@ -162,7 +162,7 @@ const StartMenu = ({ navigation }) => {
 
 
                     {/* REGAL 1 */}
-                    <View style={{ position: 'absolute', top: '31%', alignItems: 'center', justifyContent: 'bottm' }}>
+                    <View style={{ position: 'absolute', top: '32%', alignItems: 'center', justifyContent: 'bottom' }}>
                         <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
@@ -170,7 +170,7 @@ const StartMenu = ({ navigation }) => {
 
 
                     {/* REGAL 2 */}
-                    <View style={{ position: 'absolute', top: '50%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
+                    <View style={{ position: 'absolute', top: '50%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottom' }}>
                         <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
