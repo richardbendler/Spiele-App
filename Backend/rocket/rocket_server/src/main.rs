@@ -64,7 +64,7 @@ fn send_json_test() -> Json<Message<'static>> {
 
 // example for connecting to the database
 async fn connect_to_database() -> Pool<MySql> {
-    let pool = MySqlPool::connect("mysql://phpmyadmin:1HD2h28Hd@45.9.63.16/TrinkspielDB").await;
+    let pool = MySqlPool::connect("mysql://backenduser:239wdjSjDEd21@45.9.63.16/TrinkspielDB").await;
     pool.expect("Server successfully connected to database")
 }
 
