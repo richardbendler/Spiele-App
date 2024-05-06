@@ -53,7 +53,7 @@ _Das hier sollte vor der Production noch passieren: By default, a MariaDB instal
 
 ### Datenbank
 - Install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12
-    - Wichtig: Schritt der Passworterstellung für root@localhost darf erst nach phpmyadmin-Installation durchgeführt werden weil die Installation sonst an dem Passwort scheitert!
+    - Wichtig: Schritt der Passworterstellung für root@localhost darf erst nach phpmyadmin-Installation durchgeführt werden weil die Installation sonst an dem Passwort scheitert! Ansonsten wieder in mysql einloggen und Passwort temporär deaktivieren mit SET PASSWORD FOR root@localhost=PASSWORD('');
 
 ### Firewall für Datenbank anpassen
 - UFW installieren, falls nicht vorhanden: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian
