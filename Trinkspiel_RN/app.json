@@ -7,7 +7,7 @@
     "icon": "./assets/images/logo/logo_weinglas.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/logo/logo_weinglas.png",
       "resizeMode": "contain",
       "backgroundColor": "#366350"
     },
