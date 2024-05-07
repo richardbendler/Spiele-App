@@ -35,6 +35,7 @@ sudo systemctl restart apache2
 mariadb -u root -p
 GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost'; FLUSH PRIVILEGES;
 (create db: https://mariadb.com/kb/en/create-database/) 
+Falls Passwort mal geändert werden muss: SET PASSWORD FOR 'phpmyadmin'@localhost = PASSWORD("");
 
 ### SSL-Zertifikat
 SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
