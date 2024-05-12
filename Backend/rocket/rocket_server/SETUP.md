@@ -33,13 +33,8 @@ sudo systemctl status rocket-server.service
 Logs: sudo journalctl -f -u rocket-server.service
  
 ## TLS Config
-Rocket searches for a `Rocket.toml` config file in it's root directory. There, you can define the following for adding a TLS (SSL) certificate to the server:
-
-```
-[default.tls]
-certs = "path/to/cert-chain.pem"
-key = "path/to/key.pem"
-```
+Rocket searches for a `Rocket.toml` config file in it's root directory. There, you can define the lines for adding a TLS (SSL) certificate to the server:
+UPDATE: This file is already created and located in the git under Backend/rocket/Rocket.toml
 For reference, see [this guide](https://rocket.rs/guide/v0.5/configuration//#configuration).
 
 ## Rust Compiler Target
