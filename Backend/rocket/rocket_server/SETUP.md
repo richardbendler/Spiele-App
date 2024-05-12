@@ -28,6 +28,7 @@ Then:
 sudo systemctl daemon-reload
 sudo systemctl enable rocket-server.service
 chmod +x rocket_server
+sudo ufw allow 8443
 sudo systemctl start rocket-server.service
 sudo systemctl status rocket-server.service
 Logs: sudo journalctl -f -u rocket-server.service
