@@ -31,7 +31,8 @@ Then: In order to use the sqlx crate, you first need to install the sqlx-cli via
 Then, run `cargo sqlx prepare`. This will create a schema for the data in the database and allows modeling this data as a native Rust struct. 
 
 ## Build the Server
-To build an executable run `cargo build` for development builds and `cargo build --release` for production builds.
+- Shift-Rightclick in \Trinkspielapp\Backend\rocket\rocket_server -> "Hier Linux-Shell öffnen"
+- To build an executable run `cargo build` for development builds and `cargo build --release` for production builds.
 - TODO: Was von beiden benutze ich wann genau? Was ist der Unterschied im Output? - realease ist schneller 
 
 ## Deploy the Build
