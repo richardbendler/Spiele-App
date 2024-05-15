@@ -7,7 +7,7 @@
     "icon": "./assets/images/logo/logo_weinglas.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/logo/logo_weinglas.png",
       "resizeMode": "contain",
       "backgroundColor": "#366350"
     },
@@ -29,7 +29,7 @@
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 31,
+      "versionCode": 32,
       "package": "com.felsbend.Trinkspiel_RN"
     },
     "web": {
