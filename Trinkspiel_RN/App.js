@@ -24,7 +24,8 @@ import HorseRace from './src/games/HorseRace';
 //Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from './VariablesContext';
 
-
+//Import von Hilfsfunktionen
+import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './src/games/sublements/AdjustParamShape';
 
 import { enableScreens } from 'react-native-screens';
 enableScreens();
@@ -137,7 +138,7 @@ export default function App() {
       <Stack.Screen 
           name="ManyQuestionsGame" 
           component={ManyQuestionsGame}
-          initialParams={{ manyQuestionsData: manyQuestions }} 
+          initialParams={{ manyQuestionsData: shuffleArrayFisherYates(manyQuestions) }} 
       />
       <Stack.Screen name="Kingscup" component={Kingscup} />
       <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
