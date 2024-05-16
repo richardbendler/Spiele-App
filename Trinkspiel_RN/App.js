@@ -49,11 +49,11 @@ export default function App() {
   /////////// Daten aus db_backup.js  //////////
   ////////////////////////////////////////////////////////
   useEffect(() => {
-    //setTexts_Picolo(db_backup_texts_Picolo)
-    //setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
-    //setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
-    //setManyQuestions(db_backup_manyQuestions)
-    //setWords(db_backup_words)
+    setTexts_Picolo(db_backup_texts_Picolo)
+    setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
+    setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
+    setManyQuestions(db_backup_manyQuestions)
+    setWords(db_backup_words)
   }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
 
   ////////////////////////////////////////////////////////
@@ -79,11 +79,11 @@ export default function App() {
   useEffect(() => {
     loadFromDisk(setDrinkTypes, "drinkTypes");
     //TODO: Wird hier nicht überschrieben falls DB-Anfrage zu lange dauert?
-    //loadFromDisk(setTexts_Picolo, "texts_Picolo");
-    //loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
-    //loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
-    //loadFromDisk(setManyQuestions, "manyQuestions");
-    //loadFromDisk(setWords, "words");
+    loadFromDisk(setTexts_Picolo, "texts_Picolo");
+    loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
+    loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
+    loadFromDisk(setManyQuestions, "manyQuestions");
+    loadFromDisk(setWords, "words");
   }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
 
 
