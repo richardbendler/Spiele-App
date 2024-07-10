@@ -39,7 +39,7 @@ Falls Passwort mal geändert werden muss: SET PASSWORD FOR 'phpmyadmin'@localhos
 
 ### SSL-Zertifikat
 SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
-Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
+Uns gehört aktuell die Domain blankiball.de. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
 Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
 Falls schon andere SSL-Zertifikate vorhanden sind:
 sudo certbot -d meinedomain.de --apache
