@@ -22,10 +22,10 @@ export const getGameData = async (storageItem, setter, route) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
     
     try {
-        const response = await fetch(`https://my-tournament.org:8443/games/${route}`, {
+        const response = await fetch(`https://blankiball.de:8443/games/${route}`, {
             method: 'GET',
             headers: {
-                'api-key': token,
+            //    'api-key': token,
             }
         });
 
@@ -53,7 +53,7 @@ export const postFeedback = async (table, question_id, feedback) => {
     console.log(`table: ${table}, question_id: ${question_id}, feedback: ${feedback}`);
 
     try {
-        const response = await fetch("https://my-tournament.org:8443/feedback", {
+        const response = await fetch("https://blankiball.de:8443/feedback", {
             method: 'POST',
             headers: {
                 'api-key': token,
