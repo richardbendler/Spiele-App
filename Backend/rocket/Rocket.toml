@@ -6,4 +6,4 @@ log_level = "normal"
 
 [default.tls]
 key = "/etc/letsencrypt/live/blankiball.de/privkey.pem"
-certs = "/etc/letsencrypt/live/blankiball.de/cert.pem"
+certs = "/etc/letsencrypt/live/blankiball.de/fullchain.pem"
