@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+//import axios from 'axios';
 
 const saveToStorage = async (item, value) => {
     try {
@@ -22,10 +23,26 @@ export const getGameData = async (storageItem, setter, route) => {
     const token = "Bearer "+"REDACTED_JWT"; // Token generieren und hier einfügen
     
     try {
+        /*axios.defaults.baseURL = 'https://blankiball.de:8443';
+
+        // Beispiel GET-Anfrage
+        axios.get('/games/bottleSpinTruth', {
+            headers: {
+                'api-key': 'Bearer <dein Token hier>'
+            }
+        })
+        .then(response => {
+            console.log('API response:', response.data);
+        })
+        .catch(error => {
+            console.error('API error:', error);
+        });*/
+
         const response = await fetch(`https://blankiball.de:8443/games/${route}`, {
             method: 'GET',
             headers: {
-            //    'api-key': token,
+                'api-key': token,
+                'Content-Type': "application/json"
             }
         });
 
