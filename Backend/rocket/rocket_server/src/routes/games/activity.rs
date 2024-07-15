@@ -12,6 +12,8 @@ pub struct ActivityResultWithOptions {
     id: i32,
     word: Option<String>,
     forbidden_words: Option<String>,
+    deletion: i32,
+    activation: i32,
     category: Option<String>,
     fk_difficulty: i32,
     popularity: i32,
@@ -23,6 +25,8 @@ pub struct ActivityResult {
     id: i32,
     word: String,
     forbidden_words: String,
+    deletion: i32,
+    activation: i32,
     category: String,
     fk_difficulty: i32,
     popularity: i32,
@@ -38,7 +42,7 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
     let unwraped_pool = pool.inner();
     let results: Vec<ActivityResult> = sqlx::query_as!(
         ActivityResultWithOptions,
-        "SELECT * FROM `game_activity_words`"
+        "SELECT * FROM `game_activity_words` WHERE deletion = 0 AND activation = 1"
     )
     .fetch_all(unwraped_pool)
     .await
@@ -50,6 +54,8 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             id: entry.id,
             word: String::new(),
             forbidden_words: String::new(),
+            deletion: entry.deletion,
+            activation: entry.activation,
             category: String::new(),
             fk_difficulty: entry.fk_difficulty,
             popularity: entry.popularity,
