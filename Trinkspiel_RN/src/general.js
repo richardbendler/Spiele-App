@@ -54,6 +54,7 @@ export const getGameData = async (storageItem, setter, route) => {
 
             saveToStorage(storageItem, ret);
             setter(ret);
+            console.log("API successfully got Data")
         } else {
             console.log(response)
             console.error(`There was an error on route ${route} while trying to recieve data from the server.`);
