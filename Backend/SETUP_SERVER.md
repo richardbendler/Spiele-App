@@ -32,10 +32,10 @@ Stattdessen:
 VERALTET: wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
 ### Datenbankuser für Entwickler*innen
-User für Entwickler erstellen:
-mariadb -u root -p
-CREATE USER 'flo'@'localhost' IDENTIFIED BY 'passworthiereinfügen';
-GRANT ALL PRIVILEGES ON TrinkspielDB.* TO 'flo'@'localhost' WITH GRANT OPTION;
+ - User für Entwickler erstellen:
+ - mariadb -u root -p
+ - CREATE USER 'flo'@'localhost' IDENTIFIED BY 'passworthiereinfügen';
+ - GRANT ALL PRIVILEGES ON TrinkspielDB.* TO 'flo'@'localhost' WITH GRANT OPTION;
 
 ### phpmyadmin (+Apache)
 phpmyadmin (+Apache) installieren: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
@@ -58,12 +58,12 @@ Jetzt das mariadb-root-Passwort und das von mysql ändern:
 
 
 ### SSL-Zertifikat
-SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
-Uns gehört aktuell die Domain blankiball.de. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
-Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
-und sudo nano /etc/apache2/sites-available/... -> an bestehenden Datein orientieren
-sudo a2ensite ...
-sudo systemctl restart apache2
-Falls schon andere SSL-Zertifikate vorhanden sind:
-sudo certbot -d meinedomain.de --apache
-ggf. bei Fehler, dass Zertifikat nicht existiert: in der ssl.conf auf ein anderes bestehendes Zertifikat einstellen (wird dann automatisch überschrieben)
+ - SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
+ - Uns gehört aktuell die Domain blankiball.de. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
+ - Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
+ - und sudo nano /etc/apache2/sites-available/... -> an bestehenden Datein orientieren
+ - sudo a2ensite ...
+ - sudo systemctl restart apache2
+ - Falls schon andere SSL-Zertifikate vorhanden sind:
+ - sudo certbot -d meinedomain.de --apache
+ - ggf. bei Fehler, dass Zertifikat nicht existiert: in der ssl.conf auf ein anderes bestehendes Zertifikat einstellen (wird dann automatisch überschrieben)
