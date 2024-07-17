@@ -41,14 +41,14 @@ GRANT ALL PRIVILEGES ON TrinkspielDB.* TO 'flo'@'localhost' WITH GRANT OPTION;
 phpmyadmin (+Apache) installieren: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
 
 problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
-    - Create a link in /var/www like this:
-    - sudo ln -s /usr/share/phpmyadmin /var/www/
-    - Note: since 14.04 you may want to use /var/www/html/ instead of /var/www/
-    - If that's not working for you, you need to include PHPMyAdmin inside apache configuration.
-    - sudo vim /etc/apache2/apache2.conf
-    - Then add the following line:
-    - Include /etc/phpmyadmin/apache.conf
-    - sudo systemctl restart apache2
+ - Create a link in /var/www like this:
+ - sudo ln -s /usr/share/phpmyadmin /var/www/
+ - Note: since 14.04 you may want to use /var/www/html/ instead of /var/www/
+ - If that's not working for you, you need to include PHPMyAdmin inside apache configuration.
+ - sudo vim /etc/apache2/apache2.conf
+ - Then add the following line:
+ - Include /etc/phpmyadmin/apache.conf
+ - sudo systemctl restart apache2
     
 Jetzt das mariadb-root-Passwort und das von mysql ändern:
  - ALTER USER root@localhost identified by 'myStr0nP@ssW0rd';
