@@ -29,7 +29,6 @@ Stattdessen:
  - flush privileges;
  - quit;
 
-
 VERALTET: wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
 
 ### Datenbankuser für Entwickler*innen
@@ -40,13 +39,17 @@ GRANT ALL PRIVILEGES ON TrinkspielDB.* TO 'flo'@'localhost' WITH GRANT OPTION;
 
 ### phpmyadmin (+Apache)
 phpmyadmin (+Apache) installieren: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
-problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
-sudo systemctl restart apache2
-mariadb -u root -p
-GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost'; FLUSH PRIVILEGES;
-(create db: https://mariadb.com/kb/en/create-database/) 
-Falls Passwort mal geändert werden muss: SET PASSWORD FOR 'phpmyadmin'@localhost = PASSWORD("");
 
+problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
+    - Create a link in /var/www like this:
+    - sudo ln -s /usr/share/phpmyadmin /var/www/
+    - Note: since 14.04 you may want to use /var/www/html/ instead of /var/www/
+    - If that's not working for you, you need to include PHPMyAdmin inside apache configuration.
+    - sudo vim /etc/apache2/apache2.conf
+    - Then add the following line:
+    - Include /etc/phpmyadmin/apache.conf
+    - sudo systemctl restart apache2
+    
 Jetzt das mariadb-root-Passwort und das von mysql ändern:
  - ALTER USER root@localhost identified by 'myStr0nP@ssW0rd';
  - ALTER USER mysql@localhost identified by 'myStr0nP@ssW0rd2';
@@ -58,9 +61,9 @@ Jetzt das mariadb-root-Passwort und das von mysql ändern:
 SSL auf Server installieren: https://certbot.eff.org/instructions?ws=apache&os=debianbuster
 Uns gehört aktuell die Domain blankiball.de. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. 
 Zertifikate werden unter /etc/letsencrypt/live/ abgelegt
+und sudo nano /etc/apache2/sites-available/... -> an bestehenden Datein orientieren
+sudo a2ensite ...
+sudo systemctl restart apache2
 Falls schon andere SSL-Zertifikate vorhanden sind:
 sudo certbot -d meinedomain.de --apache
-Dann c um letzten Schritt zu canceln
-und sudo nano /etc/apache2/sites-available/000-default-le-ssl.conf
-ungefähr so https://www.digicert.com/kb/ssl-support/apache-multiple-ssl-certificates-using-sni.htm
-und sudo systemctl restart apache2
+ggf. bei Fehler, dass Zertifikat nicht existiert: in der ssl.conf auf ein anderes bestehendes Zertifikat einstellen (wird dann automatisch überschrieben)
