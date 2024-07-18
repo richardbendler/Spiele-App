@@ -1,7 +1,7 @@
 Bitte denke dir 100 einzigartige Fragen für nachfolgendes Spiel aus. Bitte beachte dabei ganz genau die Spielbeschreibung und die Hinweise
 
-Spieltitel: „Wahrheit“
-Spielprinzip: Nacheinander werden Fragen an konkrete Personen gestellt. Die Fragen sollen interessant sein, aber nicht zu persönlich und nicht zu deep. Es soll in lockerer Atmosphäre (ggf. mit Alkohol) gespielt werden, also auch ein bisschen lustig sein.
+Spieltitel: "Regel"
+Spielprinzip: Du denkst dir Regeln aus, die das restliche Spiel gelten. Es sollen keine einmaligen Aufgaben sein, sondern wirklich etwas was länger gilt. Parallel werden weiter andere Spiele gespielt. Statt Namen zu nennen (Also "Person X" oder "Person Y") setze bitte einfach "#1" und "#2" ein. Es sollen Regeln gestellt werden, die in einer entspannten Runde erfüllbar sind, zum Beispiel "#1, du darfst ab jetzt nur noch auf englisch reden". Außerdem sollen die Regeln ohne Equipment außer ggf. einem Getränk gespielt werden können. Die Regeln sollen lustig sein, aber nicht zu peinlich. Die Regeln dürfen gerne auch teilweise Alkohol involvieren. Achte bei den Regeln darauf, dass sie auch nicht zu aufwändig sind.
 
 Achte bei der Formulierung darauf, möglichst geschlechterneutral zu formuleren. Also statt "Wer ist der mutigste?" lieber schreiben "Wer ist die mutigste Person?".
 
@@ -14,9 +14,8 @@ bool_drink: boolean der angibt, ob es bei der Frage/Aussage ums Trinken geht (1 
 
 Hier der SQL-Befehl, der befüllt werden soll:
 INSERT INTO game_klassiker_questions (fk_pool, content, content_english, drunk_level, exposure_level, bool_drink) VALUES
-(„2“, "Was war der seltsamste Ort, an dem du jemals eingeschlafen bist?“, „What was the weirdest place you ever fell asleep?“, "0", "5", "0"),
-(„2“, „Wenn du eine Superkraft haben könntest, welche würdest du wählen?“, „If you could have any superpower, what would it be?“, "0", "1", "0"),
-("2", "Wer aus der Runde hätte die besten Chancen, in einer Zombie-Apokalypse zu überleben?", "Who in the group would have the best chances of surviving a zombie apocalypse?", "0", "2", "0"),
+(„10“, "#1, du darfst ab jetzt nur noch auf englisch reden.“, „Who can tell the best joke?“, "0", "3", "0"),
+(„10“, "#1 und #2 müssen ab jetzt 3 Minuten lang Händchen halten.“, „Who can tell the best joke?“, "0", "10", "0"),
 … hier weiter befüllen …
 
 Bitte achte darauf, keine Fragen doppelt zu haben! Und bitte außerdem darauf, dass die Übersetzungen richtig sind und in der richtigen Zeile stehen.
