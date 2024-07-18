@@ -1,7 +1,7 @@
 Bitte denke dir 100 einzigartige Fragen für nachfolgendes Spiel aus. Bitte beachte dabei ganz genau die Spielbeschreibung und die Hinweise
 
-Spieltitel: „Wahrheit“
-Spielprinzip: Nacheinander werden Fragen an konkrete Personen gestellt. Die Fragen sollen interessant sein, aber nicht zu persönlich und nicht zu deep. Es soll in lockerer Atmosphäre (ggf. mit Alkohol) gespielt werden, also auch ein bisschen lustig sein.
+Spieltitel: "Ich hab noch nie"
+Spielprinzip: Es werden nacheinander Aussagen vorgelesen die mit "Ich hab noch nie..." oder "Ich bin noch nie... " anfangen. Wer diese Aktivität oder ähnliches schon gemacht hat, muss trinken. Die Aussagen sollen lustig sein, aber nicht zu peinlich. Es soll in lockerer Atmosphäre (ggf. mit Alkohol) gespielt werden, also auch ein bisschen lustig sein. Die Sachen sollen aber auch wirklich Leuten passieren und nicht komplett absurde Aktionen sein, aber trau dich ruhig trotzdem lustig zu sein. Man soll sich auch etwas kennenlernen dadurch.
 
 Achte bei der Formulierung darauf, möglichst geschlechterneutral zu formuleren. Also statt "Wer ist der mutigste?" lieber schreiben "Wer ist die mutigste Person?".
 
@@ -14,9 +14,8 @@ bool_drink: boolean der angibt, ob es bei der Frage/Aussage ums Trinken geht (1 
 
 Hier der SQL-Befehl, der befüllt werden soll:
 INSERT INTO game_klassiker_questions (fk_pool, content, content_english, drunk_level, exposure_level, bool_drink) VALUES
-(„2“, "Was war der seltsamste Ort, an dem du jemals eingeschlafen bist?“, „What was the weirdest place you ever fell asleep?“, "0", "5", "0"),
-(„2“, „Wenn du eine Superkraft haben könntest, welche würdest du wählen?“, „If you could have any superpower, what would it be?“, "0", "1", "0"),
-("2", "Wer aus der Runde hätte die besten Chancen, in einer Zombie-Apokalypse zu überleben?", "Who in the group would have the best chances of surviving a zombie apocalypse?", "0", "2", "0"),
+(„4“, "Ich bin noch nie betrunken einen Baum hochgeklettert“, „I have never climbed a tree while drunk.“, "4", "5", "0"),
 … hier weiter befüllen …
 
 Bitte achte darauf, keine Fragen doppelt zu haben! Und bitte außerdem darauf, dass die Übersetzungen richtig sind und in der richtigen Zeile stehen.
+
