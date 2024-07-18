@@ -14,7 +14,7 @@ bool_drink: boolean der angibt, ob es bei der Frage/Aussage ums Trinken geht (1 
 
 Hier der SQL-Befehl, der befüllt werden soll:
 INSERT INTO game_klassiker_questions (fk_pool, content, content_english, drunk_level, exposure_level, bool_drink) VALUES
-(„2“, Was war der seltsamste Ort, an dem du jemals eingeschlafen bist?“, „What was the weirdest place you ever fell asleep?“, "0", "5", "0"),
+(„2“, "Was war der seltsamste Ort, an dem du jemals eingeschlafen bist?“, „What was the weirdest place you ever fell asleep?“, "0", "5", "0"),
 („2“, „Wenn du eine Superkraft haben könntest, welche würdest du wählen?“, „If you could have any superpower, what would it be?“, "0", "1", "0"),
 ("2", "Wer aus der Runde hätte die besten Chancen, in einer Zombie-Apokalypse zu überleben?", "Who in the group would have the best chances of surviving a zombie apocalypse?", "0", "2", "0"),
 … hier weiter befüllen …
