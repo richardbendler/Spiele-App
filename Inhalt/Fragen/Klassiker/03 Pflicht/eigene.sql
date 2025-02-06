@@ -1,0 +1,2 @@
+INSERT INTO game_klassiker_questions (fk_pool, content, content_english, drunk_level, exposure_level, bool_drink) VALUES
+(„3“, "Nicht vorlesen: Starre so lange verwirrt auf das Handy, bis jemand dich darauf anspricht.“, „...“, "0", "5", "0");

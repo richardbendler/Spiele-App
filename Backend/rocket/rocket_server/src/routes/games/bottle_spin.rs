@@ -20,6 +20,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             game_klassiker_questions.drunk_level AS drunk_level,
             game_klassiker_questions.exposure_level AS exposure_level,
             game_klassiker_questions.bool_drink AS bool_drink,
+            game_klassiker_questions.deletion AS deletion,
             game_klassiker_questions.activation AS activation,
             game_klassiker_questions.author AS author,
             game_klassiker_questions.popularity AS popularity,
@@ -36,7 +37,9 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
         ON 
             `game_klassiker_questions`.fk_pool=`game_klassiker_pools`.id
         WHERE 
-            fk_pool = 2"
+            fk_pool = 2 
+            AND game_klassiker_questions.deletion = 0 
+            AND game_klassiker_questions.activation = 1"
     )
     .fetch_all(unwraped_pool)
     .await
@@ -52,6 +55,7 @@ pub async fn query_truth(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Re
             drunk_level: entry.drunk_level,
             exposure_level: entry.exposure_level,
             bool_drink: entry.bool_drink,
+            deletion: entry.deletion,
             activation: entry.activation,
             author: String::new(),
             popularity: entry.popularity,
@@ -113,6 +117,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             game_klassiker_questions.drunk_level AS drunk_level,
             game_klassiker_questions.exposure_level AS exposure_level,
             game_klassiker_questions.bool_drink AS bool_drink,
+            game_klassiker_questions.deletion AS deletion,
             game_klassiker_questions.activation AS activation,
             game_klassiker_questions.author AS author,
             game_klassiker_questions.popularity AS popularity,
@@ -129,7 +134,9 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
         ON 
             `game_klassiker_questions`.fk_pool=`game_klassiker_pools`.id
         WHERE 
-            fk_pool = 3"
+            fk_pool = 3
+            AND game_klassiker_questions.deletion = 0 
+            AND game_klassiker_questions.activation = 1"
     )
     .fetch_all(unwraped_pool)
     .await
@@ -145,6 +152,7 @@ pub async fn query_dare(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Res
             drunk_level: entry.drunk_level,
             exposure_level: entry.exposure_level,
             bool_drink: entry.bool_drink,
+            deletion: entry.deletion,
             activation: entry.activation,
             author: String::new(),
             popularity: entry.popularity,

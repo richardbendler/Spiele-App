@@ -1,5 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react';
 import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, ImageBackground, ScrollView, Alert } from 'react-native';
+import Slider from '@react-native-community/slider'; 
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import NameContainer from './sublements/AddPlayerNameContainer';
@@ -37,7 +38,14 @@ let player_id = 0;
 
 const AddPlayer = ({ navigation }) => {
   const { players, setPlayers } = useContext(VariablesContext);
-
+  const [drunkennessLevel, setDrunkennessLevel] = useState(5);
+  const [drunkennessLevelsAsText, setDrunkennessLevelsAsText] = useState(["Stock nüchtern", "Gerade angefangen zu trinken", "Erste Wirkung", "Leicht angetrunken", "Moderat angetrunken", "Doller angetrunken", "Ziemlich doll angetrunken", "Können kaum noch laufen", "Uiuiuiui", "Haat jmd nen E1mer??"]); //TODO:
+  const [desiredDrunkenness, setDesiredDrunkenness] = useState(5);
+  const [desiredDrunkennessLevelsAsText, setDesiredDrunkennessLevelsAsText] = useState(["Stock nüchtern", "Gerade angefangen zu trinken", "Erste Wirkung", "Leicht angetrunken", "Moderat angetrunken", "Doller angetrunken", "Ziemlich doll angetrunken", "Können kaum noch laufen", "Uiuiuiui", "Haat jmd nen E1mer??"]);
+  const [familiarityLevel, setFamiliarityLevel] = useState(5);
+  const [familiarityLevelsAsText, setFamiliarityLevelsAsText] = useState(["Heute kennengelernt", "...", "...", "...", "...", "...", "Kennen uns gut", "Kennen uns sehr gut", "Kennen uns lange", "Alte Bekannte"]);
+  
+  
   const handleAddPlayer = useCallback(
     (name) => {
       //check if array already has players
@@ -74,6 +82,52 @@ const AddPlayer = ({ navigation }) => {
               keyExtractor={(item, index) => index.toString()}
               style={appStyles.playerList}
             />
+          </View>
+
+          {/* Die Regler */}
+          <View style={{ width: '100%', marginTop: 20 }}>
+            <Text style={appStyles.textNormal2}>Wie betrunken seid ihr gerade?</Text>
+            <Slider
+              style={{width: '100%', height: 40}}
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              value={5}
+              onValueChange={setDrunkennessLevel}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#000000"
+            />
+            <Text style={appStyles.textNormal2}>Wert: {drunkennessLevelsAsText[drunkennessLevel-1]}</Text>
+          </View>
+
+          <View style={{ width: '100%', marginTop: 20 }}>
+            <Text style={appStyles.textNormal2}>Wie betrunken möchtet ihr werden?</Text>
+            <Slider
+              style={{width: '100%', height: 40}}
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              value={5}
+              onValueChange={setDesiredDrunkenness}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#000000"
+            />
+            <Text style={appStyles.textNormal2}>Wert: {desiredDrunkennessLevelsAsText[desiredDrunkenness-1]}</Text>
+          </View>
+
+          <View style={{ width: '100%', marginTop: 20 }}>
+            <Text style={appStyles.textNormal2}>Wie gut kennt ihr euch schon?</Text>
+            <Slider
+              style={{width: '100%', height: 40}}
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              value={5}
+              onValueChange={setFamiliarityLevel}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#000000"
+            />
+            <Text style={appStyles.textNormal2}>Wert: {familiarityLevelsAsText[familiarityLevel-1]}</Text>
           </View>
 
 
