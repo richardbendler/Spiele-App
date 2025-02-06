@@ -13,23 +13,32 @@ const PicoloGame = ({ route }) => {
   // array of available questions
   const texts = shuffleArrayFisherYates(route.params.picoloData);
   // set current question to display, based on the index
-  let index = 0;
-  const [currentCategory, setCurrentCategory] = useState(texts[index].pool_name);
-  const [currentText, setCurrentText] = useState(texts[index].content);
-  const [currentColor, setCurrentColor] = useState(texts[index].pool_color);
-
-  console.log("pool_color: ", texts[index].pool_name)
+  let index = -1;
+  const [currentCategory, setCurrentCategory] = useState("");
+  const [currentText, setCurrentText] = useState("");
+  const [currentColor, setCurrentColor] = useState("");
+  useEffect(() => {
+    showNextQuestion();
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const showNextQuestion = () => {
     try{
       index++;
+      console.log(texts[index].fk_pool)
+      if(texts[index].fk_pool==5){ //Kategorie
+        setCurrentText("Zählt der Reihe nach "+ texts[index].content + " auf. Wer nicht mehr weiter weiß oder einen Fehler macht, muss trinken.");
+      }else if(texts[index].fk_pool==2 || texts[index].fk_pool==3){ //Wahrheit oder Pflicht
+        setCurrentText("#! "+ texts[index].content);
+      }else{
+        setCurrentText(texts[index].content);
+      }
       setCurrentCategory(texts[index].pool_name);
-      setCurrentText(texts[index].content);
       setCurrentColor(texts[index].pool_color);
     }catch (error){
       // reset to first question, if error occurs
+      console.log("error");
       index = 0;
       setCurrentCategory(texts[index].pool_name);
       setCurrentText(texts[index].content);
