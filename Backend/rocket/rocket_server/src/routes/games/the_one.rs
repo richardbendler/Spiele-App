@@ -18,6 +18,7 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             game_klassiker_questions.drunk_level AS drunk_level,
             game_klassiker_questions.exposure_level AS exposure_level,
             game_klassiker_questions.bool_drink AS bool_drink,
+            game_klassiker_questions.deletion AS deletion,
             game_klassiker_questions.activation AS activation,
             game_klassiker_questions.author AS author,
             game_klassiker_questions.popularity AS popularity,
@@ -34,7 +35,9 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
         ON 
             `game_klassiker_questions`.fk_pool=`game_klassiker_pools`.id 
         WHERE 
-            NOT(fk_pool = 22)" // query for db
+            NOT(fk_pool = 22)
+            AND game_klassiker_questions.deletion = 0 
+            AND game_klassiker_questions.activation = 1" 
     )
     .fetch_all(unwraped_pool)
     .await
@@ -50,6 +53,7 @@ pub async fn query(pool: &State<Pool<MySql>>, _key: AppKey<'_>) -> Json<Response
             drunk_level: entry.drunk_level,
             exposure_level: entry.exposure_level,
             bool_drink: entry.bool_drink,
+            deletion: entry.deletion,
             activation: entry.activation,
             author: String::new(),
             popularity: entry.popularity,

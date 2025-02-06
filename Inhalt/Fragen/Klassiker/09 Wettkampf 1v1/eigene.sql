@@ -1,0 +1,2 @@
+INSERT INTO game_klassiker_questions (fk_pool, content, content_english, drunk_level, exposure_level, bool_drink) VALUES
+("5", "#1 gegen #2: Wer kann den längeren Spontanvortrag halten ohne Ähm zu sagen?", "#1 vs. #2: Who can give the longer impromptu speech without saying “um”?", "0", "1", "0"),
