@@ -21,6 +21,7 @@ pub struct ClassicGamesResultWithOptions {
     pub drunk_level: i32,
     pub exposure_level: i32,
     pub bool_drink: i32,
+    pub deletion: i32,
     pub activation: i32,
     pub author: Option<String>,
     pub popularity: i32,
@@ -42,6 +43,7 @@ pub struct ClassicGamesResult {
     pub drunk_level: i32,
     pub exposure_level: i32,
     pub bool_drink: i32,
+    pub deletion: i32,
     pub activation: i32,
     pub author: String,
     pub popularity: i32,
@@ -74,6 +76,9 @@ impl<'r> FromRequest<'r> for AppKey<'r> {
         }
 
         match req.headers().get_one("api-key") {
+            //Die beiden oberen Zeilen (+Auskommentieren der 3 anderen) deaktivieren die Überprüfung des tokens, sodass die API auch vom Browser aufgerufen werden kann
+            //Some(key) => Outcome::Success(AppKey(key)),
+            //None => Outcome::Success(AppKey("")), // Oder eine andere sinnvolle Standardeinstellung
             None => Outcome::Error((Status::BadRequest, AppKeyError::Missing)),
             Some(key) if is_valid(key) => Outcome::Success(AppKey(key)),
             Some(_) => Outcome::Error((Status::BadRequest, AppKeyError::Invalid))
