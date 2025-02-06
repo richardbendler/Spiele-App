@@ -80,8 +80,8 @@ app.get('/api/getUserData', async (req, res) => {
 
 
 const httpsOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/privkey.pem'), // Pfad zur privaten Schlüsseldatei
-    cert: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/cert.pem'), // Pfad zur Zertifikatsdatei
+    key: fs.readFileSync('/etc/letsencrypt/live/blankiball.de/privkey.pem'), // Pfad zur privaten Schlüsseldatei
+    cert: fs.readFileSync('/etc/letsencrypt/live/blankiball.de/cert.pem'), // Pfad zur Zertifikatsdatei
 };
 
 const server = https.createServer(httpsOptions, app);

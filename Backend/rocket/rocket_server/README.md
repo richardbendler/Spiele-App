@@ -45,5 +45,5 @@ The Rocket server runs on the server as a service using `systemctl`. On rebootin
 - `sudo systemctl start rocket-server.service`: starts the service for the Rocket server
 - `sudo systemctl status rocket-server.service`: displays the status and log of the service
 - `sudo systemctl stop rocket-server.service`: stops the service
-- `sudo systemctl restart application.service`: restarts the service
+- `sudo systemctl restart rocket-server.service`: restarts the service
 

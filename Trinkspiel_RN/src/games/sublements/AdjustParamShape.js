@@ -3,28 +3,28 @@ import { VariablesContext } from '../../../VariablesContext';
 
 
 export const replaceHashtagsWithoutDuplicates = (inputString) => {
-    try{
+  try{
       const { players } = useContext(VariablesContext);
       const playerNames = players.map(p => p.name); //array of player names
 
+      //inputString = inputString.charAt(0).toLowerCase() + inputString.slice(1);
 
       console.log(`Recieved Input: ${inputString}\n Player Names: ${playerNames}`)
 
       // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
       let availableNames = [...playerNames];
 
-      
-      return inputString.replace(/#[a-zA-Z0-9_]+/g, () => {
+      return inputString.replace(/#/g, () => {
           if (availableNames.length === 0) {
             // Wenn alle Namen verwendet wurden, setze die Liste zurück
             availableNames = [...playerNames];
           }
-      
           // Zufälligen Index aus den verfügbaren Namen auswählen
           const randomIndex = Math.floor(Math.random() * availableNames.length);
       
           // Wähle den Namen an diesem Index aus
           const name = availableNames[randomIndex];
+          console.log("name: "+name);
       
           // Entferne den ausgewählten Namen aus der Liste der verfügbaren Namen
           availableNames.splice(randomIndex, 1);
