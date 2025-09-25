@@ -46,7 +46,7 @@ export default function App() {
   const [words, setWords] = useState(["Platzhalterfrage"]);
 
   ////////////////////////////////////////////////////////
-  /////////// Daten aus db_backup.js  //////////
+  /////////// Daten aus db_backup.js  ////////////////////
   ////////////////////////////////////////////////////////
   useEffect(() => {
     setTexts_Picolo(db_backup_texts_Picolo)
