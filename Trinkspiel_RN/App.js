@@ -4,7 +4,12 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //Import der Datenbankvorlagen
-import {  getGameData } from './src/general';
+// import { getGameData } from './src/general'; // API_RESTORE_STEP: uncomment to fetch texts from the server again
+import { picoloSampleTexts } from './src/data/picoloTexts';
+import { spinTheBottleTruthTexts } from './src/data/spinTheBottleTruth';
+import { spinTheBottleDareTexts } from './src/data/spinTheBottleDare';
+import { manyQuestionsSampleTexts } from './src/data/manyQuestionsTexts';
+import { activitySampleWords } from './src/data/activityWords';
 
 //Import der Menüs
 import StartMenu from './src/menus/StartMenu';
@@ -31,23 +36,25 @@ import { enableScreens } from 'react-native-screens';
 enableScreens();
 
 //Import von db_backup
-import {db_backup_texts_Picolo} from './src/db_backup';
-import {db_backup_textsWahrheitSpinTheBottle} from './src/db_backup';
-import {db_backup_textsPflichtSpinTheBottle} from './src/db_backup';
-import {db_backup_manyQuestions} from './src/db_backup';
-import {db_backup_words} from './src/db_backup';
+// import {db_backup_texts_Picolo} from './src/db_backup'; // API_RESTORE_STEP: uncomment when switching back to API data
+// import {db_backup_textsWahrheitSpinTheBottle} from './src/db_backup';
+// import {db_backup_textsPflichtSpinTheBottle} from './src/db_backup';
+// import {db_backup_manyQuestions} from './src/db_backup';
+// import {db_backup_words} from './src/db_backup';
 
 
 export default function App() {
-  const [texts_Picolo, setTexts_Picolo] = useState([]);
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
-  const [words, setWords] = useState(["Platzhalterfrage"]);
+  const [texts_Picolo, setTexts_Picolo] = useState(() => [...picoloSampleTexts]); // LOCAL_TEXTS: seeded from hardcoded sample file
+  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(() => [...spinTheBottleTruthTexts]);
+  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(() => [...spinTheBottleDareTexts]);
+  const [manyQuestions, setManyQuestions] = useState(() => [...manyQuestionsSampleTexts]);
+  const [words, setWords] = useState(() => [...activitySampleWords]);
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus db_backup.js  ////////////////////
   ////////////////////////////////////////////////////////
+  // API_DISABLED: state is now seeded from ./src/data sample files while the API is offline.
+  /* API_RESTORE_STEP: Remove this comment block to hydrate state from db_backup when re-enabling the API.
   useEffect(() => {
     setTexts_Picolo(db_backup_texts_Picolo)
     setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
@@ -55,6 +62,7 @@ export default function App() {
     setManyQuestions(db_backup_manyQuestions)
     setWords(db_backup_words)
   }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  */
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
@@ -93,6 +101,8 @@ export default function App() {
   ////////////////////////////////////////////////////////
   
   //LOAD FROM API and SAFE TO DISK
+  // API_DISABLED: remote fetches are paused while local sample texts are active.
+  /* API_RESTORE_STEP: Remove this comment block to fetch texts from the API again.
   useEffect(() => {
     // new API routes
     getGameData("texts_Picolo", setTexts_Picolo, "theOne");
@@ -101,6 +111,7 @@ export default function App() {
     getGameData("manyQuestions", setManyQuestions, "manyQuestions");
     getGameData("words", setWords, "activity")
   }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  */
 
   //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
   // -> Vielleicht auch einfach immer?
@@ -114,9 +125,10 @@ export default function App() {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
   const [players, setPlayers] = useState([]);  
+  const [language, setLanguage] = useState('de');
 
   return (
-    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible, players, setPlayers}}>
+    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible, players, setPlayers, language, setLanguage}}>
     <NavigationContainer>
       
       <Stack.Navigator 

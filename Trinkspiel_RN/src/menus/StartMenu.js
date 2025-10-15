@@ -20,6 +20,8 @@ const handleSqlRequest = async (sqlRequest) => {
     //TODO: remove this function and it's references. This was used for the old API to query data. It's not clear if the API calls in this file are actually required.
 };
 
+// API_DISABLED: Remote test fetch disabled while the app serves local sample texts.
+/* API_RESTORE_STEP: Uncomment this helper to hit the test API again.
 const handleTestAPI = async () => {
     try {
         const response = await fetch('https://www.codeyourapp.de/tools/query.php?count=5&mode=0')
@@ -42,6 +44,7 @@ const handleTestAPI = async () => {
     }
 };
 
+*/
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
 
@@ -75,6 +78,8 @@ const StartMenu = ({ navigation }) => {
       }, []);
 
     //Zugriff Test-API
+    // API_DISABLED: skip the remote test endpoint while offline data is active.
+    /* API_RESTORE_STEP: Uncomment this block to fetch showcase data from the API again.
     const [ret, setRet] = useState(["Platzhalter"]);
     useEffect(() => {
         const fetchData = async () => {
@@ -84,6 +89,7 @@ const StartMenu = ({ navigation }) => {
     fetchData();
     }, []);
 
+    */
      //Activity
     const [words, setWords] = useState(["Platzhalterfrage"]);
     useEffect(() => {
