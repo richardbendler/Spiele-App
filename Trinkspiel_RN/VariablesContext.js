@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
-
-/* 
-players: {
-  id: int
-  name: String,
-  drinks: bool
-}
-*/
+import React from 'react';
 
 export const VariablesContext = React.createContext({
-  /*playerNames: [],
-  setPlayerNames: () => {},
-  drinkTypes: [], // Initialisieren mit leerem Array
+  settingsVisible: false,
+  setSettingsVisible: () => {},
+  infoVisible: false,
+  setInfoVisible: () => {},
+  drinkTypes: [],
   setDrinkTypes: () => {},
-  */
- players: [],
- setPlayers: () => {},
+  players: [],
+  setPlayers: () => {},
+  language: 'de',
+  setLanguage: () => {},
 });
-

@@ -11,6 +11,14 @@ Bitte gib immer abwechselnd einen der Fragetypen aus.
 
 Achte bei der Formulierung darauf, möglichst geschlechterneutral zu formuleren. Also statt "Wer ist der mutigste?" lieber schreiben "Wer ist die mutigste Person?".
 
+Bitte achte darauf, keine Fragen doppelt zu haben! Und bitte außerdem darauf, dass die Übersetzungen richtig sind und in der richtigen Zeile stehen.
+
+Bitte ergänze in der Datei auch bei jedem Text eine englische Übersetzung. Im Spiel baue bitte einen Schalter ein, der im Menü sichtbar ist, wo man zwischen englisch und deutsch switchen kann.
+
+
+
+ALT:
+
 Da die finale Liste als SQL-Befehl ausgeführt werden soll, um die Daten einer Datenbank hinzuzufügen, sollen die Daten in folgendem Format weiter befüllt werden. Dabei ist unbedingt darauf zu achten, die Klammern richtig zu setzen und die richtigen Anführungsstriche zu benutzen: Der String bzw. Integer sollen in doppelte Anführungsstriche und wenn im deutschen oder englischen Text Anführungsstriche benötigt werden, sollen einfache benutzt werden.
 
 Hier der SQL-Befehl, der befüllt werden soll:
@@ -19,6 +27,3 @@ INSERT INTO game_klassiker_questions (fk_pool, content, content_english) VALUES
 („22“, „Wer wird später am ehesten Millionär?“, „Who is most likely to become a millionaire?“),
 („22“, „Wer würde am ehesten eine Bank ausrauben?“, „Who would most likely rob a bank?“),
 … hier weiter befüllen …
-
-Bitte achte darauf, keine Fragen doppelt zu haben! Und bitte außerdem darauf, dass die Übersetzungen richtig sind und in der richtigen Zeile stehen.
-
