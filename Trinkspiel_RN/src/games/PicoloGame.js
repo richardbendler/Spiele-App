@@ -1,71 +1,110 @@
-// In einer Datei namens VorglühenGame.js
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground } from 'react-native';
+﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import { VariablesContext } from '../../VariablesContext';
+import { useTranslation } from '../i18n';
 
-import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
+import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
 
-const PicoloGame = ({ route }) => {
-  // array of available questions
-  const texts = shuffleArrayFisherYates(route.params.picoloData);
-  // set current question to display, based on the index
-  let index = -1;
-  const [currentCategory, setCurrentCategory] = useState("");
-  const [currentText, setCurrentText] = useState("");
-  const [currentColor, setCurrentColor] = useState("");
-  useEffect(() => {
-    showNextQuestion();
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+const buildDisplayText = (entry, language) => {
+  if (!entry) {
+    return '';
+  }
 
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const baseText = language === 'en' && entry.content_en ? entry.content_en : entry.content;
+
+  switch (entry.pool?.id) {
+    case 2:
+    case 3:
+      return `#! ${baseText}`;
+    case 5: {
+      const topic = typeof baseText === 'string' ? baseText.replace(/\.+$/, '') : '';
+      if (language === 'en') {
+        return 'Go around naming ' + topic + '. Whoever hesitates, repeats, or draws a blank drinks.';
+      }
+      return 'Zaehlt der Reihe nach ' + topic + ' auf. Wer nicht weiter weiss, wiederholt oder stolpert, muss trinken.';
+    }
+    default:
+      return baseText;
+  }
+};
+
+const PicoloGame = ({ route }) => {
+  const { t, language } = useTranslation();
+  const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts } = useContext(VariablesContext);
+
+  const rawPrompts = useMemo(() => {
+    const routeData = route.params?.theOneData;
+    if (Array.isArray(routeData) && routeData.length > 0) {
+      return [...routeData];
+    }
+    return Array.isArray(theOnePrompts) ? [...theOnePrompts] : [];
+  }, [route.params?.theOneData, theOnePrompts]);
+
+  const questions = useMemo(
+    () => buildTheOneDeck(rawPrompts, theOneSettings, { players }),
+    [rawPrompts, theOneSettings, players]
+  );
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [questions]);
+
+  const hasQuestions = questions.length > 0;
+  const currentQuestion = hasQuestions ? questions[currentIndex] : null;
+
+  const categoryLabel =
+    currentQuestion?.pool?.label?.[language] ?? currentQuestion?.pool?.label?.de ?? '';
+  const cardText = currentQuestion ? buildDisplayText(currentQuestion, language) : '';
+  const backgroundColor = currentQuestion?.pool?.color ?? '#2F4F4F';
 
   const showNextQuestion = () => {
-    try{
-      index++;
-      console.log(texts[index].fk_pool)
-      if(texts[index].fk_pool==5){ //Kategorie
-        setCurrentText("Zählt der Reihe nach "+ texts[index].content + " auf. Wer nicht mehr weiter weiß oder einen Fehler macht, muss trinken.");
-      }else if(texts[index].fk_pool==2 || texts[index].fk_pool==3){ //Wahrheit oder Pflicht
-        setCurrentText("#! "+ texts[index].content);
-      }else{
-        setCurrentText(texts[index].content);
-      }
-      setCurrentCategory(texts[index].pool_name);
-      setCurrentColor(texts[index].pool_color);
-    }catch (error){
-      // reset to first question, if error occurs
-      console.log("error");
-      index = 0;
-      setCurrentCategory(texts[index].pool_name);
-      setCurrentText(texts[index].content);
-      setCurrentColor(texts[index].pool_color);
+    if (!hasQuestions) {
+      return;
     }
+    setCurrentIndex((prev) => {
+      const next = prev + 1;
+      return next >= questions.length ? 0 : next;
+    });
   };
-  
+
+  const displayedText = replaceHashtagsWithoutDuplicates(cardText, {
+    requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
+  });
+
+  const infoText = t('theOne.info');
+  const noPromptMessage = t('theOne.noEligiblePrompt');
+
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-      <View style={[appStyles.completeScreenGameContainer, {backgroundColor: currentColor}]}>
+    <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
+      <View style={[appStyles.completeScreenGameContainer, { backgroundColor }]}>
         <View style={appStyles.gameContainer}>
-          <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
-            <Text style={appStyles.textHeader2}>{currentCategory}!</Text>
-            <Question question={texts && texts.length > 0 ? replaceHashtagsWithoutDuplicates(currentText) : ''}/>
+          <TouchableOpacity
+            onPress={showNextQuestion}
+            style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}
+          >
+            <Text style={appStyles.textHeader2}>{categoryLabel}</Text>
+            <Question question={hasQuestions ? displayedText : noPromptMessage} />
           </TouchableOpacity>
         </View>
-        <HandleFeedback texts={texts} textsIndex={index} table={'game_klassiker_questions'}/>
-          
-        <InfoText header={"The One!"} rules={"Der klassischte aller Trinkspiel-Modi - und auch gleichzeitig der einfachste! \n \n Alles was ihr machen müsst, wird euch auf dem Bildschirm angezeigt."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
-        </TouchableOpacity>
+        {hasQuestions ? (
+          <HandleFeedback texts={questions} textsIndex={currentIndex} table={'game_klassiker_questions'} />
+        ) : null}
 
+        <InfoText header={'The One!'} rules={infoText} />
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
 };
 
-
 export default PicoloGame;
+
+

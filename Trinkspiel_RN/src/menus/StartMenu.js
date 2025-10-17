@@ -1,14 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+﻿import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
 import SettingsButton from './sublements/SettingsButton';
 import Settings from './sublements/Settings';
+import { useTranslation } from '../i18n';
 import NetInfo from "@react-native-community/netinfo";
 
 //Fonts
 //Die Benennungen der Imports kann man mit Autocomplete herausfinden
-//Wichtig: Schriftarten müssen weiter unten noch in fontsLoaded hinzugefügt werden
+//Wichtig: Schriftarten mÃ¼ssen weiter unten noch in fontsLoaded hinzugefÃ¼gt werden
 //import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
 //import { Quicksand_300Bold } from "@expo-google-fonts/quicksand";
@@ -34,19 +35,22 @@ const handleTestAPI = async () => {
             })
             .catch(error => {
                 console.error('Fehler bei der Anfrage:', error);
-                throw error; // Fehler weiterwerfen, um ihn in der nächsthöheren Funktion zu behandeln
+                throw error; // Fehler weiterwerfen, um ihn in der nÃ¤chsthÃ¶heren Funktion zu behandeln
             });
 
-        return response; // Rückgabe der tatsächlichen Antwort
+        return response; // RÃ¼ckgabe der tatsÃ¤chlichen Antwort
     } catch (error) {
         console.error('Ein Fehler ist aufgetreten:', error);
-        throw error; // Fehler weiterwerfen, um ihn in der nächsthöheren Funktion zu behandeln
+        throw error; // Fehler weiterwerfen, um ihn in der nÃ¤chsthÃ¶heren Funktion zu behandeln
     }
 };
 
 */
 const StartMenu = ({ navigation }) => {
     const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
+    const { t } = useTranslation();
+    const startText = useMemo(() => t('startMenu'), [t]);
+    const commonText = useMemo(() => t('common'), [t]);
 
     const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
     const windowWidth = Dimensions.get('window').width;
@@ -58,7 +62,7 @@ const StartMenu = ({ navigation }) => {
         setBackgroundAspectRatio(aspectRatio);
       };
 
-    // Berechnen der Breite des Hintergrundbildes basierend auf dem Seitenverhältnis
+    // Berechnen der Breite des Hintergrundbildes basierend auf dem SeitenverhÃ¤ltnis
     const backgroundImageWidth = windowHeight * backgroundAspectRatio;
 
 
@@ -66,13 +70,13 @@ const StartMenu = ({ navigation }) => {
     //Test Internet Connection
     const [isConnected, setIsConnected] = useState(true);
     useEffect(() => {
-        // Überwache die Internetverbindung
+        // Ãœberwache die Internetverbindung
         const unsubscribe = NetInfo.addEventListener(state => {
           setIsConnected(state.isConnected);
         });
     
         return () => {
-          // Stelle sicher, dass du das Abonnement auflöst, um Speicherlecks zu vermeiden
+          // Stelle sicher, dass du das Abonnement auflÃ¶st, um Speicherlecks zu vermeiden
           unsubscribe();
         };
       }, []);
@@ -108,7 +112,7 @@ const StartMenu = ({ navigation }) => {
         if (!fontsLoaded) {
         return <View style={{justifyContent:"center", alignItems:"center"}}>
             <Image source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')} style={appStyles.bottleButton} />
-            <Text>Loading...</Text>
+            <Text>{commonText.loading}</Text>
         </View> ;
     }
 
@@ -122,15 +126,15 @@ const StartMenu = ({ navigation }) => {
       >
         <View style={{
             width: windowWidth,
-            height: windowHeight, // Stellt sicher, dass die Menü-Container die gleiche Breite wie das Hintergrundbild haben
+            height: windowHeight, // Stellt sicher, dass die MenÃ¼-Container die gleiche Breite wie das Hintergrundbild haben
             flexDirection: 'row',
-            justifyContent: 'center', // Anpassen nach Bedarf für die Platzierung der Menübuttons
-            alignItems: 'center', // Zentriert die Menübuttons vertikal
+            justifyContent: 'center', // Anpassen nach Bedarf fÃ¼r die Platzierung der MenÃ¼buttons
+            alignItems: 'center', // Zentriert die MenÃ¼buttons vertikal
         }}>
             <Settings/>
                                         
                     <Text>
-                        {isConnected ? '' : '🌍'} {/*  TODO: löschen/ersetzen */}
+                        {isConnected ? '' : 'ðŸŒ'} {/*  TODO: lÃ¶schen/ersetzen */}
                     </Text>
 
                     {/* SCHILD */}
@@ -144,7 +148,7 @@ const StartMenu = ({ navigation }) => {
                     </View>
 
 
-                        {/* 🍾 FLASCHEN 🍾*/}
+                        {/* ðŸ¾ FLASCHEN ðŸ¾*/}
                         <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '20%', width: '19%', height: '12%', }}/>
                         <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '20%', width: '19%', height: '12%', }}/>
                         <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '20%', width: '19%', height: '12%', }}/>
@@ -181,7 +185,7 @@ const StartMenu = ({ navigation }) => {
                     </View>
 
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
-                        <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
+                        <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
                     </TouchableOpacity>
 
                     {/*<Text>{words.slice(0,50)}</Text>
@@ -198,7 +202,7 @@ const StartMenu = ({ navigation }) => {
                 </View>
 
                 {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                    <Text style={appStyles.settingsButtonText}>⚙️</Text>
+                    <Text style={appStyles.settingsButtonText}>âš™ï¸</Text>
                 </TouchableOpacity>*/}
             
 
@@ -224,3 +228,4 @@ const styles = StyleSheet.create({
   });
 
 export default StartMenu;
+
