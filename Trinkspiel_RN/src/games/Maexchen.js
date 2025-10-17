@@ -1,11 +1,11 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+﻿import React, { useState, useContext, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Button, Image, Animated, StyleSheet, ImageBackground } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import { VariablesContext } from '../../VariablesContext';
 //import { Audio } from 'expo-av'; //TODO: wieder nutzen
 
-// Sie müssten die tatsächlichen Pfade zu Ihren Würfelbildern angeben.
+// Sie muessten die tatsaechlichen Pfade zu Ihren Wuerfelbildern angeben.
 const diceImages = {
   1: require('../../assets/images/würfel_1.png'),
   2: require('../../assets/images/würfel_2.png'),
@@ -66,15 +66,15 @@ const MaexchenGame = () => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',}}>
         <View style={{alignItems: 'center', height:'60%', width: '80%'}}>
-          <Text style={appStyles.textHeader1}>Mäxchen</Text>
+          <Text style={appStyles.textHeader1}>Maexchen</Text>
           {isDiceHidden && (
           <TouchableOpacity style={[appStyles.gameActionButton, {margin: 40}]} onPress={rollDice}>
-            <Text style={appStyles.gameActionButtonText}>Würfeln</Text>
+            <Text style={appStyles.gameActionButtonText}>Wuerfeln</Text>
           </TouchableOpacity>
           )}
 
           {!gameStarted && (
-            <Text style={[appStyles.textNormal1, {textAlign: 'center'}]}>{"Du möchtest die Regeln lesen? Dann klicke unten auf den Info-Button."}</Text>
+            <Text style={[appStyles.textNormal1, {textAlign: 'center'}]}>{"Du moechtest die Regeln lesen? Dann klicke unten auf den Info-Button."}</Text>
           )}
           
           {isDiceHidden && gameStarted &&
@@ -88,7 +88,7 @@ const MaexchenGame = () => {
           {!isDiceHidden && 
             <View>
               <TouchableOpacity style={[appStyles.gameActionButton, {margin: 40}]} onPress={hideDice}>
-                <Text style={appStyles.gameActionButtonText}>Würfel in Becher zurücklegen</Text>
+                <Text style={appStyles.gameActionButtonText}>Wuerfel in Becher zuruecklegen</Text>
               </TouchableOpacity>
             </View>
           }
@@ -102,7 +102,7 @@ const MaexchenGame = () => {
           
         </View>
 
-        <InfoText header={"Mäxchen!"} rules={"Würfelt der Reihe um so, dass nur ihr selbst das Ergebnis seht. Verdeckt anschließend euer Ergebnis und gebt das Handy zur nächsten Person weiter. Diese Person muss nun ein höheres Ergebnis würfeln. Sollte sie das nicht schaffen, muss sie ein höheres Ergebnis bluffen. \n\n Die beiden Würfelergebnisse werden immer aneinandergehängt mit der höheren Zahl am Anfang. Eine 4 und eine 5 würden also die Zahl 54 ergeben, eine 3 und eine 2 die 32. Pasches sind immer über den normalen Werten und das allerhöchste Ergebnis ist 21. \n\n Wenn man nun glaub, die vorherige Person blufft, kann man anzweifeln. Wer erfolgreich angezweifelt wird, muss trinken. Wer fälschlich anzweifelt, muss ebenfalls trinken."}/>
+        <InfoText header={"Maexchen!"} rules={"Wuerfelt der Reihe um so, dass nur ihr selbst das Ergebnis seht. Verdeckt anschliessend euer Ergebnis und gebt das Handy zur naechsten Person weiter. Diese Person muss nun ein hoeheres Ergebnis wuerfeln. Sollte sie das nicht schaffen, muss sie ein hoeheres Ergebnis bluffen. \n\n Die beiden Wuerfelergebnisse werden immer aneinandergehaengt mit der hoeheren Zahl am Anfang. Eine 4 und eine 5 wuerden also die Zahl 54 ergeben, eine 3 und eine 2 die 32. Pasches sind immer ueber den normalen Werten und das allerhoechste Ergebnis ist 21. \n\n Wenn man nun glaub, die vorherige Person blufft, kann man anzweifeln. Wer erfolgreich angezweifelt wird, muss trinken. Wer faelschlich anzweifelt, muss ebenfalls trinken."}/>
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
           <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     margin: 10,
-    elevation: 5, // fügt Schatten auf Android hinzu
-    shadowColor: '#000', // fügt Schatten auf iOS hinzu
+    elevation: 5, // fuegt Schatten auf Android hinzu
+    shadowColor: '#000', // fuegt Schatten auf iOS hinzu
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,

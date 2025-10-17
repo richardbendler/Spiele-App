@@ -153,6 +153,15 @@ const translations = {
         },
       },
     },
+    spinTheBottleGame: {
+      initialPrompt: 'Dreh die Flasche mit dem Finger! (Tippen reicht auch)',
+      infoHeader: 'Flaschendrehen!',
+      rules:
+        'Dreht die Flasche! (Tippen reicht auch.) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es...',
+      sipsLabel: 'Schlucke!',
+      truthLabel: 'Wahrheit!',
+      dareLabel: 'Pflicht!',
+    },
     manyQuestions: {
       end: 'Ihr seid am Ende der Fragen angekommen!',
       next: 'Nächste Aussage',
@@ -317,6 +326,15 @@ const translations = {
           description: 'Keep track of how many drinks everyone has had.',
         },
       },
+    },
+    spinTheBottleGame: {
+      initialPrompt: 'Spin the bottle with your finger! (Tapping works too)',
+      infoHeader: 'Spin the Bottle!',
+      rules:
+        'Spin the bottle! (Tapping works too.) Whoever it points to has to do the action that appears. That\'s all there is to it...',
+      sipsLabel: 'Sips!',
+      truthLabel: 'Truth!',
+      dareLabel: 'Dare!',
     },
     manyQuestions: {
       end: 'You have reached the end of the questions!',

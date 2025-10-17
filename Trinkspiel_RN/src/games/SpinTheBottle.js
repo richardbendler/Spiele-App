@@ -1,5 +1,5 @@
 // Import necessary React and React Native modules
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useMemo } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
@@ -7,18 +7,62 @@ import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYat
 import InfoText from './sublements/InfoText';
 import { appStyles } from '../../styles';
 import HandleFeedback from './sublements/HandleFeedBack';
+import { useTranslation } from '../i18n';
 
 // Main component for the Spin the Bottle game
-const SpinTheBottle = ({route }) => {
-  const textsWahrheitSpinTheBottle = shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle);
-  const textsPflichtSpinTheBottle = shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle);
-  
-  const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger! (Tippen reicht auch)');
-  const [randomSelection, setRandomSelection] = useState(0); //Entscheidung ob Schlücke, Wahrheit oder Pflicht
-  const [rndIndex, setRndIndex] = useState(0); //Index für die zufällig gewählte Aussage aus einem der Pools
+const SpinTheBottle = ({ route }) => {
+  const textsWahrheitSpinTheBottle = useMemo(
+    () => shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle),
+    [route.params.textsWahrheitSpinTheBottle]
+  );
+  const textsPflichtSpinTheBottle = useMemo(
+    () => shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle),
+    [route.params.textsPflichtSpinTheBottle]
+  );
 
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const [randomSelection, setRandomSelection] = useState(0); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
+  const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
+  const [outcome, setOutcome] = useState({ type: 'initial' });
 
+  const { infoVisible, setInfoVisible, language } = useContext(VariablesContext);
+  const { t } = useTranslation();
+  const copy = useMemo(() => {
+    const value = t('spinTheBottleGame');
+    return typeof value === 'object' && value !== null ? value : {};
+  }, [t]);
+
+  const displayedText = useMemo(() => {
+    switch (outcome.type) {
+      case 'initial':
+        return copy.initialPrompt ?? '';
+      case 'spinning':
+        return '';
+      case 'sips':
+        return `${outcome.count} ${copy.sipsLabel ?? ""}`.trim();
+      case 'truth': {
+        const entry = textsWahrheitSpinTheBottle[outcome.index];
+        if (!entry) {
+          return copy.truthLabel ?? '';
+        }
+        const textValue =
+          language === 'en' && entry.content_en ? entry.content_en : entry.content;
+        return `${copy.truthLabel ?? ""} ${textValue}`.trim();
+      }
+      case 'dare': {
+        const entry = textsPflichtSpinTheBottle[outcome.index];
+        if (!entry) {
+          return copy.dareLabel ?? '';
+        }
+        const textValue =
+          language === 'en' && entry.content_en ? entry.content_en : entry.content;
+        return `${copy.dareLabel ?? ""} ${textValue}`.trim();
+      }
+      default:
+        return '';
+    }
+  }, [outcome, copy, language, textsPflichtSpinTheBottle, textsWahrheitSpinTheBottle]);
+
+  const questionText = useMemo(() => deleteHashtags(displayedText || ''), [displayedText]);
   // Ref variable for the rotation value of the bottle, initialized with 0
   const rotationValue = useRef(new Animated.Value(0)).current;
   // Ref variable for the last rotation position, initialized with 0
@@ -45,7 +89,7 @@ const SpinTheBottle = ({route }) => {
       },
       // Function called on touch move (not used but could be useful for future enhancements)
       onPanResponderMove: Animated.event([null, { dx: rotationValue }], { useNativeDriver: false }),
-      // Funktion, die bei Freigabe der Berührung aufgerufen wird
+      // Funktion, die bei Freigabe der Beruehrung aufgerufen wird
       onPanResponderRelease: (e, { vx }) => {
         // Beenden der aktuellen Animation und Festlegen des Offsets
         rotationValue.stopAnimation((currentValue) => {
@@ -54,46 +98,43 @@ const SpinTheBottle = ({route }) => {
         rotationValue.setOffset(lastRotation.current);
         rotationValue.setValue(0);
       
-        setDisplayedText('');
+        setOutcome({ type: 'spinning' });
 
-        // Starten der neuen Animation mit einem zufälligen Endwert
+        // Starten der neuen Animation mit einem zufaelligen Endwert
         Animated.timing(rotationValue, {
-          toValue: Math.random() * 360 * 30,  // Zufälliger Endwert für die Animation, multipliziert mit 5
-          duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufällige Dauer zwischen 3 und 5 Sekunden
+          toValue: Math.random() * 360 * 30,  // Zufaelliger Endwert fuer die Animation, multipliziert mit 5
+          duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufaellige Dauer zwischen 3 und 5 Sekunden
           useNativeDriver: false,
         }).start(() => {
 
-          // Nach Abschluss der Animation: Aktualisieren von lastRotation und Zurücksetzen des Offsets und Werts
+          // Nach Abschluss der Animation: Aktualisieren von lastRotation und Zuruecksetzen des Offsets und Werts
           lastRotation.current += rotationValue._value;
           rotationValue.setOffset(lastRotation.current);
           rotationValue.setValue(0);
 
-          // Zufällige Auswahl zwischen den drei Optionen treffen
+          // Zufaellige Auswahl zwischen den drei Optionen treffen
           const randomSelection = Math.floor(Math.random() * 3);
-          setRandomSelection(randomSelection)
+          setRandomSelection(randomSelection);
 
-          let resultText = '';
           switch (randomSelection) {
-            case 0:  // Schlucke! Option
-              resultText = `${generateRandomSips()} Schlucke!`;
+            case 0: {  // Schlucke! Option
+              const sips = generateRandomSips();
+              setOutcome({ type: 'sips', count: sips });
               break;
-            case 1:  // Wahrheit! Option
-              rnd = Math.floor(Math.random() * textsWahrheitSpinTheBottle.length)
-              randomTruth = textsWahrheitSpinTheBottle[rnd].content
-              setRndIndex(rnd)
-              resultText = `Wahrheit! ${randomTruth}`;
+            }
+            case 1: {  // Wahrheit! Option
+              const truthIndex = Math.floor(Math.random() * textsWahrheitSpinTheBottle.length);
+              setRndIndex(truthIndex);
+              setOutcome({ type: 'truth', index: truthIndex });
               break;
-            case 2:  // Pflicht! Option
-              rnd = Math.floor(Math.random() * textsPflichtSpinTheBottle.length)
-              randomDare= textsPflichtSpinTheBottle[rnd].content
-              setRndIndex(rnd)
-              resultText = `Pflicht! ${randomDare}`;
+            }
+            case 2: {  // Pflicht! Option
+              const dareIndex = Math.floor(Math.random() * textsPflichtSpinTheBottle.length);
+              setRndIndex(dareIndex);
+              setOutcome({ type: 'dare', index: dareIndex });
               break;
+            }
           }
-
-          // Setzen und Anzeigen des generierten Ergebnistexts
-          // (Sie müssen den resultText in Ihrem State speichern und in Ihrer Render-Methode anzeigen)
-          setDisplayedText(resultText);  // Sie müssen eine geeignete State-Variable und Setter-Funktion hinzufügen
         });
       },
       
@@ -124,10 +165,8 @@ const SpinTheBottle = ({route }) => {
           </View>
           
           <View style={{height: '40%', justifyContent: 'center', alignItems: 'center',}}>
-            <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
+            <Question question={questionText} />
           </View>
-          
-          <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
         </View>
         <View style={{height: '10%', justifyContent: 'center', alignItems: 'center'}}>
         {randomSelection==0?
@@ -140,9 +179,9 @@ const SpinTheBottle = ({route }) => {
           }
         </View>
 
-        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
+        <InfoText header={copy.infoHeader ?? 'Spin the Bottle!'} rules={copy.rules ?? ''} />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
+          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
 
     </ImageBackground>
@@ -179,3 +218,6 @@ const styles = StyleSheet.create({
 });
 
 export default SpinTheBottle;
+
+
+
