@@ -1,6 +1,5 @@
-﻿import React, { useContext, useMemo } from "react";
-import { Button, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { appStyles } from "../../../styles";
+import React, { useContext, useMemo } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { VariablesContext } from "../../../VariablesContext";
 import { useTranslation } from "../../i18n";
 
@@ -12,102 +11,132 @@ const NameContainer = ({ playerObject }) => {
     () => ({
       drinks: t("nameContainer.drinks"),
       noDrinks: t("nameContainer.noDrinks"),
+      remove: t("nameContainer.remove"),
     }),
     [t]
   );
 
-  const togglePlayerDrinks = (player) => {
-    setPlayers((prevPlayerList) => {
-      const updatedPlayerList = [...prevPlayerList];
-      const index = updatedPlayerList.indexOf(player);
-      if (index >= 0) {
-        updatedPlayerList[index] = {
-          ...updatedPlayerList[index],
-          drinks: !updatedPlayerList[index].drinks,
-        };
-      }
-      return updatedPlayerList;
-    });
+  const setDrinkStatus = (player, drinks) => {
+    setPlayers((prev) => prev.map((entry) => (entry === player ? { ...entry, drinks } : entry)));
   };
 
   const removePlayer = (player) => {
-    const index = players.indexOf(player);
-    if (index > -1) {
-      const newPlayerList = [...players];
-      newPlayerList.splice(index, 1);
-      setPlayers(newPlayerList);
-    }
+    setPlayers((prev) => prev.filter((entry) => entry !== player));
   };
 
-  const TwoPartButton = ({ playerItem }) => (
-    <TouchableOpacity onPress={() => togglePlayerDrinks(playerItem)}>
-      <View style={styles.buttonContainer}>
-        <View
-          style={[
-            styles.halfButton,
-            {
-              backgroundColor: playerItem.drinks ? "green" : "grey",
-              opacity: playerItem.drinks ? 1 : 0.5,
-            },
-          ]}
-        >
-          <Text style={styles.buttonText}>{labels.drinks}</Text>
-        </View>
-        <View
-          style={[
-            styles.halfButton,
-            {
-              backgroundColor: !playerItem.drinks ? "red" : "grey",
-              opacity: !playerItem.drinks ? 1 : 0.5,
-            },
-          ]}
-        >
-          <Text style={styles.buttonText}>{labels.noDrinks}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-
   return (
-    <View style={appStyles.playerListText}>
-      <Text style={{ color: "white", paddingRight: "2%", width: "35%" }} ellipsizeMode="tail" numberOfLines={1}>
-        {playerObject.name}
-      </Text>
-      <View style={{ width: "50%" }}>
-        <TwoPartButton playerItem={playerObject} />
+    <View style={styles.card}>
+      <View style={styles.nameColumn}>
+        <Text style={styles.playerName} numberOfLines={1}>
+          {playerObject.name}
+        </Text>
+        <Text style={styles.playerStatus}>
+          {playerObject.drinks ? labels.drinks : labels.noDrinks}
+        </Text>
       </View>
-      <View style={{ paddingLeft: "2%" }}>
-        <Button
-          onPress={() => {
-            removePlayer(playerObject);
-          }}
-          title="✕"
-          color="red"
-        />
+
+      <View style={styles.toggleGroup}>
+        <TouchableOpacity
+          onPress={() => setDrinkStatus(playerObject, true)}
+          style={[styles.toggleButton, playerObject.drinks ? styles.toggleActive : styles.toggleInactive]}
+          activeOpacity={0.85}
+        >
+          <Text style={[styles.toggleText, playerObject.drinks ? styles.toggleTextActive : null]}>
+            {labels.drinks}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setDrinkStatus(playerObject, false)}
+          style={[styles.toggleButton, !playerObject.drinks ? styles.toggleActive : styles.toggleInactive]}
+          activeOpacity={0.85}
+        >
+          <Text style={[styles.toggleText, !playerObject.drinks ? styles.toggleTextActive : null]}>
+            {labels.noDrinks}
+          </Text>
+        </TouchableOpacity>
       </View>
+
+      <TouchableOpacity
+        onPress={() => removePlayer(playerObject)}
+        style={styles.removeButton}
+        activeOpacity={0.8}
+        accessibilityLabel={labels.remove}
+      >
+        <Text style={styles.removeButtonText}>x</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonContainer: {
+  card: {
     flexDirection: "row",
-  },
-  halfButton: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 6,
-    paddingHorizontal: 4,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    borderRadius: 18,
+    backgroundColor: "rgba(23, 27, 36, 0.85)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.06)",
+    marginBottom: 12,
   },
-  buttonText: {
-    color: "white",
-    fontSize: 14,
-    textAlign: "center",
+  nameColumn: {
+    flex: 1.3,
+    paddingRight: 12,
+  },
+  playerName: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontFamily: "Quicksand_300Bold",
+  },
+  playerStatus: {
+    marginTop: 2,
+    fontSize: 12,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Quicksand_300Light",
+  },
+  toggleGroup: {
+    flexDirection: "row",
+    width: 160,
+    borderRadius: 14,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    backgroundColor: "rgba(255,255,255,0.05)",
+  },
+  toggleButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+  toggleActive: {
+    backgroundColor: "#E5C185",
+  },
+  toggleInactive: {
+    backgroundColor: "transparent",
+  },
+  toggleText: {
+    fontSize: 11,
+    color: "rgba(255,255,255,0.65)",
+    fontFamily: "Quicksand_300Bold",
+  },
+  toggleTextActive: {
+    color: "#241D18",
+  },
+  removeButton: {
+    marginLeft: 12,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: "rgba(229,193,133,0.25)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  removeButtonText: {
+    color: "#E5C185",
+    fontSize: 20,
+    fontFamily: "Quicksand_300Bold",
+    lineHeight: 20,
   },
 });
 
 export default NameContainer;
-
-
-
