@@ -27,6 +27,7 @@ const navigationMap = {
   MaexchenGame: 'MaexchenGame',
   SpinTheBottle: 'SpinTheBottle',
   ManyQuestionsGame: 'ManyQuestionsGame',
+  HorseRace: 'HorseRace',
 };
 
 import { useTranslation } from '../i18n';

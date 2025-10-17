@@ -68,8 +68,8 @@ const App = () => {
     const height = field[0].length-1; //height of field
 
     for (let row = height; row>0; row--){ //Zeile
-      emptyRow = true;
-      isAlreadyRevealed = false;
+      let emptyRow = true;
+      let isAlreadyRevealed = false;
       for (let column = 1; column < 5; column++){ // Spalte
         if(field[column][row] != null){
           emptyRow = false;

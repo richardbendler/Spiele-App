@@ -1,57 +1,56 @@
-﻿import React, { useState, useContext, useCallback, useMemo } from 'react';
-import { Button, View, Text, TextInput, TouchableOpacity, FlatList, ImageBackground, Alert } from 'react-native';
-import Slider from '@react-native-community/slider';
-import { appStyles } from '../../styles';
-import { VariablesContext } from '../../VariablesContext';
-import NameContainer from './sublements/AddPlayerNameContainer';
-import { useTranslation } from '../i18n';
+import React, { useState, useContext, useCallback, useMemo } from "react";
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, Alert, ScrollView, StyleSheet } from "react-native";
+import Slider from "@react-native-community/slider";
+import { VariablesContext } from "../../VariablesContext";
+import NameContainer from "./sublements/AddPlayerNameContainer";
+import { useTranslation } from "../i18n";
 
 const mapScaleLabel = (scale, index) => {
   if (!Array.isArray(scale) || index < 0 || index >= scale.length) {
-    return '';
+    return "";
   }
   return scale[index];
 };
 
 const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
-  const [currentName, setCurrentName] = useState('');
+  const [currentName, setCurrentName] = useState("");
 
   const handler = () => {
     const trimmedName = currentName.trim();
-    if (trimmedName !== '') {
+    if (trimmedName !== "") {
       onAddPlayer(trimmedName);
-      setCurrentName('');
+      setCurrentName("");
     }
   };
 
   return (
-    <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={appStyles.textHeader2}>{copy.inputTitle}</Text>
-      <Text style={[appStyles.textNormal2, { width: '70%', textAlign: 'center' }]}>{copy.inputSubtitle}</Text>
+    <View style={styles.inputCard}>
+      <Text style={styles.sectionLabel}>{copy.inputTitle}</Text>
+      <Text style={styles.sectionHint}>{copy.inputSubtitle}</Text>
       <TextInput
         placeholder={copy.placeholder}
-        placeholderTextColor="white"
+        placeholderTextColor="rgba(255,255,255,0.6)"
         value={currentName}
         onChangeText={setCurrentName}
-        style={[appStyles.input, { marginVertical: 20 }]}
+        style={styles.nameInput}
+        returnKeyType="done"
       />
-      <TouchableOpacity onPress={handler} style={[appStyles.chalkboardButton, { marginBottom: 30 }]}>
-        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>{copy.addButton}</Text>
+      <TouchableOpacity onPress={handler} style={styles.primaryButton} activeOpacity={0.9}>
+        <Text style={styles.primaryButtonText}>{copy.addButton}</Text>
       </TouchableOpacity>
     </View>
   );
 });
 
-// for tracking different player ids
 let player_id = 0;
 
 const AddPlayer = ({ navigation }) => {
   const { players, setPlayers, theOneSettings, setTheOneSettings } = useContext(VariablesContext);
   const { t } = useTranslation();
 
-  const addPlayerText = useMemo(() => t('addPlayer'), [t]);
-  const drinkingScale = useMemo(() => t('scales.drunkenness'), [t]);
-  const familiarityScale = useMemo(() => t('scales.familiarity'), [t]);
+  const addPlayerText = useMemo(() => t("addPlayer"), [t]);
+  const drinkingScale = useMemo(() => t("scales.drunkenness"), [t]);
+  const familiarityScale = useMemo(() => t("scales.familiarity"), [t]);
 
   const playerInputCopy = useMemo(
     () => ({
@@ -68,7 +67,7 @@ const AddPlayer = ({ navigation }) => {
 
   const updateSetting = useCallback(
     (key, maxValue) => (value) => {
-      const upperBound = typeof maxValue === 'number' ? maxValue : sliderMaxIndex;
+      const upperBound = typeof maxValue === "number" ? maxValue : sliderMaxIndex;
       const clampedValue = Math.max(0, Math.min(upperBound, Math.round(value)));
       setTheOneSettings((prev) => ({ ...prev, [key]: clampedValue }));
     },
@@ -86,90 +85,247 @@ const AddPlayer = ({ navigation }) => {
 
   const startGame = () => {
     if (players.length >= 2) {
-      navigation.navigate('PicoloGame');
+      navigation.navigate("PicoloGame");
     } else {
       Alert.alert(addPlayerText.alertTitle, addPlayerText.alertMessage);
     }
   };
 
   return (
-    <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
-      <View style={appStyles.menuContainer}>
-        <View style={{ width: '70%', justifyContent: 'center', alignItems: 'center' }}>
-          <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
+      <View style={styles.overlay} />
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <Text style={styles.screenTitle}>Picolo Setup</Text>
+        <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
-          <Text style={[appStyles.textNormal2, { width: '100%', textAlign: 'center' }]}>
-            {addPlayerText.listHint}
-          </Text>
-          <Text style={[appStyles.textHeader4, { marginVertical: 1 }]}>{addPlayerText.listHeader}</Text>
+        <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
 
-          <View style={{ height: 200, marginVertical: 1 }}>
-            <FlatList
-              data={players}
-              renderItem={({ item }) => <NameContainer playerObject={item} />}
-              keyExtractor={(item) => (item.id != null ? String(item.id) : item.name)}
-              style={appStyles.playerList}
-            />
+        <View style={styles.playerListCard}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>{addPlayerText.listHeader}</Text>
+            <Text style={styles.cardCounter}>{players.length} / 12</Text>
           </View>
+          {players.length === 0 ? (
+            <View style={styles.emptyPlayerContainer}>
+              <Text style={styles.emptyPlayerText}>{addPlayerText.placeholder}</Text>
+            </View>
+          ) : (
+            players.map((player) => (
+              <NameContainer
+                key={player.id != null ? String(player.id) : player.name}
+                playerObject={player}
+              />
+            ))
+          )}
+        </View>
 
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>{addPlayerText.sliderCurrent}</Text>
+        <View style={styles.sliderCard}>
+          <Text style={styles.sliderTitle}>{t("addPlayer.sliderCurrent")}</Text>
+          <View style={styles.sliderRow}>
             <Slider
-              style={{ width: '100%', height: 40 }}
+              style={styles.slider}
               minimumValue={0}
               maximumValue={sliderMaxIndex}
               step={1}
               value={currentDrunkenness}
-              onValueChange={updateSetting('currentDrunkenness')}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
+              onValueChange={updateSetting("currentDrunkenness")}
+              minimumTrackTintColor="#E5C185"
+              maximumTrackTintColor="rgba(255,255,255,0.2)"
+              thumbTintColor="#E5C185"
             />
-            <Text style={appStyles.textNormal2}>
-              {addPlayerText.sliderCurrentLabel} {mapScaleLabel(drinkingScale, currentDrunkenness)}
+            <Text style={styles.sliderValue}>
+              {mapScaleLabel(drinkingScale, currentDrunkenness)}
             </Text>
           </View>
 
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>{addPlayerText.sliderDesired}</Text>
+          <Text style={styles.sliderTitle}>{t("addPlayer.sliderDesired")}</Text>
+          <View style={styles.sliderRow}>
             <Slider
-              style={{ width: '100%', height: 40 }}
+              style={styles.slider}
               minimumValue={0}
               maximumValue={sliderMaxIndex}
               step={1}
               value={desiredDrunkenness}
-              onValueChange={updateSetting('desiredDrunkenness')}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
+              onValueChange={updateSetting("desiredDrunkenness")}
+              minimumTrackTintColor="#E5C185"
+              maximumTrackTintColor="rgba(255,255,255,0.2)"
+              thumbTintColor="#E5C185"
             />
-            <Text style={appStyles.textNormal2}>
-              {addPlayerText.sliderDesiredLabel} {mapScaleLabel(drinkingScale, desiredDrunkenness)}
+            <Text style={styles.sliderValue}>
+              {mapScaleLabel(drinkingScale, desiredDrunkenness)}
             </Text>
           </View>
 
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>{addPlayerText.sliderFamiliarity}</Text>
+          <Text style={styles.sliderTitle}>{t("addPlayer.sliderFamiliarity")}</Text>
+          <View style={styles.sliderRow}>
             <Slider
-              style={{ width: '100%', height: 40 }}
+              style={styles.slider}
               minimumValue={0}
               maximumValue={Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0}
               step={1}
               value={familiarity}
-              onValueChange={updateSetting('familiarity', Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0)}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
+              onValueChange={updateSetting(
+                "familiarity",
+                Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0
+              )}
+              minimumTrackTintColor="#E5C185"
+              maximumTrackTintColor="rgba(255,255,255,0.2)"
+              thumbTintColor="#E5C185"
             />
-            <Text style={appStyles.textNormal2}>
-              {addPlayerText.sliderFamiliarityLabel} {mapScaleLabel(familiarityScale, familiarity)}
+            <Text style={styles.sliderValue}>
+              {mapScaleLabel(familiarityScale, familiarity)}
             </Text>
           </View>
         </View>
-        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButtonPrimaryColor]}>
-          <Text style={appStyles.chalkboardButtonText}>{addPlayerText.startButton}</Text>
+
+        <TouchableOpacity onPress={startGame} style={styles.startButton} activeOpacity={0.9}>
+          <Text style={styles.startButtonText}>{addPlayerText.startButton}</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </ImageBackground>
   );
 };
 
 export default AddPlayer;
 
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(8, 10, 14, 0.52)",
+  },
+  scrollContent: {
+    paddingHorizontal: 24,
+    paddingTop: 40,
+    paddingBottom: 80,
+  },
+  screenTitle: {
+    fontSize: 32,
+    fontFamily: "Quicksand_300Bold",
+    color: "white",
+    marginBottom: 6,
+  },
+  screenSubtitle: {
+    fontSize: 14,
+    fontFamily: "Quicksand_300Light",
+    color: "rgba(255,255,255,0.72)",
+    marginBottom: 24,
+  },
+  inputCard: {
+    backgroundColor: "rgba(19, 23, 32, 0.85)",
+    borderRadius: 22,
+    padding: 20,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+  },
+  sectionLabel: {
+    fontSize: 18,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  sectionHint: {
+    marginTop: 4,
+    fontSize: 13,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Quicksand_300Light",
+    lineHeight: 18,
+  },
+  nameInput: {
+    marginTop: 18,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  primaryButton: {
+    marginTop: 16,
+    backgroundColor: "#E5C185",
+    borderRadius: 14,
+    paddingVertical: 12,
+    alignItems: "center",
+  },
+  primaryButtonText: {
+    color: "#231C18",
+    fontSize: 16,
+    fontFamily: "Quicksand_300Bold",
+  },
+  playerListCard: {
+    backgroundColor: "rgba(12, 15, 21, 0.9)",
+    borderRadius: 22,
+    padding: 20,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+  },
+  cardHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  cardTitle: {
+    fontSize: 18,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  cardCounter: {
+    fontSize: 14,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Quicksand_300Light",
+  },
+  emptyPlayerContainer: {
+    paddingVertical: 32,
+  },
+  emptyPlayerText: {
+    textAlign: "center",
+    fontSize: 14,
+    fontFamily: "Quicksand_300Light",
+    color: "rgba(255,255,255,0.4)",
+  },
+  sliderCard: {
+    backgroundColor: "rgba(12, 15, 21, 0.9)",
+    borderRadius: 22,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+  },
+  sliderTitle: {
+    fontSize: 15,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 6,
+  },
+  sliderRow: {
+    marginTop: 6,
+    marginBottom: 12,
+  },
+  slider: {
+    width: "100%",
+    height: 42,
+  },
+  sliderValue: {
+    textAlign: "right",
+    fontSize: 12,
+    color: "rgba(229,193,133,0.85)",
+    fontFamily: "Quicksand_300Bold",
+  },
+  startButton: {
+    marginTop: 30,
+    backgroundColor: "#E5C185",
+    borderRadius: 18,
+    paddingVertical: 16,
+    alignItems: "center",
+  },
+  startButtonText: {
+    color: "#231C18",
+    fontSize: 18,
+    fontFamily: "Quicksand_300Bold",
+    letterSpacing: 1,
+  },
+});
