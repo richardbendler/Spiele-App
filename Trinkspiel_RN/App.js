@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 //Import der Datenbankvorlagen
 // import { getGameData } from './src/general'; // API_RESTORE_STEP: uncomment to fetch texts from the server again
-import { picoloSampleTexts } from './src/data/picoloTexts';
+import { theOneSamplePrompts } from './src/data/picoloTexts';
 import { spinTheBottleTruthTexts } from './src/data/spinTheBottleTruth';
 import { spinTheBottleDareTexts } from './src/data/spinTheBottleDare';
 import { manyQuestionsSampleTexts } from './src/data/manyQuestionsTexts';
@@ -44,11 +45,16 @@ enableScreens();
 
 
 export default function App() {
-  const [texts_Picolo, setTexts_Picolo] = useState(() => [...picoloSampleTexts]); // LOCAL_TEXTS: seeded from hardcoded sample file
+  const [theOnePrompts, setTheOnePrompts] = useState(() => [...theOneSamplePrompts]); // LOCAL_TEXTS: seeded from hardcoded sample file
   const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(() => [...spinTheBottleTruthTexts]);
   const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(() => [...spinTheBottleDareTexts]);
   const [manyQuestions, setManyQuestions] = useState(() => [...manyQuestionsSampleTexts]);
   const [words, setWords] = useState(() => [...activitySampleWords]);
+  const [theOneSettings, setTheOneSettings] = useState({
+    currentDrunkenness: 4,
+    desiredDrunkenness: 6,
+    familiarity: 5,
+  });
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus db_backup.js  ////////////////////
@@ -56,7 +62,7 @@ export default function App() {
   // API_DISABLED: state is now seeded from ./src/data sample files while the API is offline.
   /* API_RESTORE_STEP: Remove this comment block to hydrate state from db_backup when re-enabling the API.
   useEffect(() => {
-    setTexts_Picolo(db_backup_texts_Picolo)
+    setTheOnePrompts(db_backup_texts_Picolo)
     setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
     setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
     setManyQuestions(db_backup_manyQuestions)
@@ -87,7 +93,7 @@ export default function App() {
   useEffect(() => {
     loadFromDisk(setDrinkTypes, "drinkTypes");
     //TODO: Wird hier nicht überschrieben falls DB-Anfrage zu lange dauert?
-    loadFromDisk(setTexts_Picolo, "texts_Picolo");
+    loadFromDisk(setTheOnePrompts, "texts_Picolo");
     loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
     loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
     loadFromDisk(setManyQuestions, "manyQuestions");
@@ -105,7 +111,7 @@ export default function App() {
   /* API_RESTORE_STEP: Remove this comment block to fetch texts from the API again.
   useEffect(() => {
     // new API routes
-    getGameData("texts_Picolo", setTexts_Picolo, "theOne");
+    getGameData("texts_Picolo", setTheOnePrompts, "theOne");
     getGameData("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
     getGameData("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
     getGameData("manyQuestions", setManyQuestions, "manyQuestions");
@@ -128,46 +134,96 @@ export default function App() {
   const [language, setLanguage] = useState('de');
 
   return (
-    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible, players, setPlayers, language, setLanguage}}>
-    <NavigationContainer>
-      
-      <Stack.Navigator 
-        initialRouteName="StartMenu"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          headerShown: false,
-        }}
-      >
-      <Stack.Screen name="StartMenu" component={StartMenu} />
-      <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="AddPlayer" component={AddPlayer} />
-      
-      <Stack.Screen 
-          name="PicoloGame" 
-          component={PicoloGame}
-          initialParams={{ picoloData: texts_Picolo }} 
-      />
-      <Stack.Screen 
-          name="ManyQuestionsGame" 
-          component={ManyQuestionsGame}
-          initialParams={{ manyQuestionsData: shuffleArrayFisherYates(manyQuestions) }} 
-      />
-      <Stack.Screen name="Kingscup" component={Kingscup} />
-      <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-      <Stack.Screen 
-          name="Activity" 
-          component={Activity}
-          initialParams={{ words: words }} 
-      />
-      <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
-      <Stack.Screen 
-          name="SpinTheBottle" 
-          component={SpinTheBottle} 
-          initialParams={{textsWahrheitSpinTheBottle: textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle: textsPflichtSpinTheBottle}}
-      />
-      <Stack.Screen name="HorseRace" component={HorseRace} />
-    </Stack.Navigator>
-  </NavigationContainer>
-</VariablesContext.Provider>
+    <VariablesContext.Provider
+      value={{
+        settingsVisible,
+        setSettingsVisible,
+        drinkTypes,
+        setDrinkTypes,
+        infoVisible,
+        setInfoVisible,
+        players,
+        setPlayers,
+        language,
+        setLanguage,
+        theOneSettings,
+        setTheOneSettings,
+        theOnePrompts,
+        setTheOnePrompts,
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        <NavigationContainer>
+          
+          <Stack.Navigator 
+            initialRouteName="StartMenu"
+            screenOptions={{
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              headerShown: false,
+            }}
+          >
+          <Stack.Screen name="StartMenu" component={StartMenu} />
+          <Stack.Screen name="MainMenu" component={MainMenu} />
+          <Stack.Screen name="AddPlayer" component={AddPlayer} />
+          
+          <Stack.Screen 
+              name="PicoloGame" 
+              component={PicoloGame}
+              initialParams={{ theOneData: theOnePrompts }} 
+          />
+          <Stack.Screen 
+              name="ManyQuestionsGame" 
+              component={ManyQuestionsGame}
+              initialParams={{ manyQuestionsData: shuffleArrayFisherYates(manyQuestions) }} 
+          />
+          <Stack.Screen name="Kingscup" component={Kingscup} />
+          <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+          <Stack.Screen 
+              name="Activity" 
+              component={Activity}
+              initialParams={{ words: words }} 
+          />
+          <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
+          <Stack.Screen 
+              name="SpinTheBottle" 
+              component={SpinTheBottle} 
+              initialParams={{textsWahrheitSpinTheBottle: textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle: textsPflichtSpinTheBottle}}
+          />
+          <Stack.Screen name="HorseRace" component={HorseRace} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <LanguageToggle />
+      </View>
+    </VariablesContext.Provider>
   );
 }
+
+const LanguageToggle = () => {
+  const { language, setLanguage } = useContext(VariablesContext);
+  const toggleLanguage = () => setLanguage(prev => (prev === 'de' ? 'en' : 'de'));
+  return (
+    <TouchableOpacity style={languageStyles.toggle} onPress={toggleLanguage} activeOpacity={0.8}>
+      <Text style={languageStyles.toggleLabel}>{language === 'de' ? 'DE' : 'EN'}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const languageStyles = StyleSheet.create({
+  toggle: {
+    position: 'absolute',
+    bottom: 24,
+    right: 24,
+    backgroundColor: 'rgba(0,0,0,0.75)',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.6)',
+  },
+  toggleLabel: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14,
+    letterSpacing: 1,
+  },
+});

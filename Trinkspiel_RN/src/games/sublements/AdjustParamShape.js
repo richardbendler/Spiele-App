@@ -2,22 +2,37 @@ import React, { useContext } from 'react';
 import { VariablesContext } from '../../../VariablesContext';
 
 
-export const replaceHashtagsWithoutDuplicates = (inputString) => {
+export const replaceHashtagsWithoutDuplicates = (inputString, options = {}) => {
   try{
-      const { players } = useContext(VariablesContext);
-      const playerNames = players.map(p => p.name); //array of player names
+      const { players, language } = useContext(VariablesContext);
+      const requireDrinkingPlayers = Boolean(options.requireDrinkingPlayers);
+      const drinksOnly = players.filter(p => p.drinks);
+      const playerPool =
+        requireDrinkingPlayers && drinksOnly.length > 0
+          ? drinksOnly
+          : players.length > 0
+          ? players
+          : [];
+      const playerNames = playerPool.map(p => p.name); //array of player names
+      const fallbackNames = players.map(p => p.name);
 
       //inputString = inputString.charAt(0).toLowerCase() + inputString.slice(1);
 
       console.log(`Recieved Input: ${inputString}\n Player Names: ${playerNames}`)
 
       // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
-      let availableNames = [...playerNames];
+      const hasInitialPool = playerNames.length > 0;
+      let availableNames = hasInitialPool ? [...playerNames] : [...fallbackNames];
+
+      if (availableNames.length === 0) {
+        const fallbackLabel = language === 'en' ? 'player' : 'Spieler*in';
+        return inputString.replace(/#/g, fallbackLabel);
+      }
 
       return inputString.replace(/#/g, () => {
           if (availableNames.length === 0) {
             // Wenn alle Namen verwendet wurden, setze die Liste zurück
-            availableNames = [...playerNames];
+            availableNames = playerNames.length > 0 ? [...playerNames] : [...fallbackNames];
           }
           // Zufälligen Index aus den verfügbaren Namen auswählen
           const randomIndex = Math.floor(Math.random() * availableNames.length);

@@ -11,4 +11,12 @@ export const VariablesContext = React.createContext({
   setPlayers: () => {},
   language: 'de',
   setLanguage: () => {},
+  theOneSettings: {
+    currentDrunkenness: 4,
+    desiredDrunkenness: 6,
+    familiarity: 5,
+  },
+  setTheOneSettings: () => {},
+  theOnePrompts: [],
+  setTheOnePrompts: () => {},
 });

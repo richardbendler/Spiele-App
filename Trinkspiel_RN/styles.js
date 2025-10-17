@@ -159,7 +159,7 @@ const buttonStyles = StyleSheet.create({
     width: '100%', 
   },
 
-  bottleButtonBaldVerfügbarKasten: {
+  bottleButtonComingSoonBadge: {
     top: '10%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     height: '30%',
