@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,7 +12,7 @@ import { spinTheBottleDareTexts } from './src/data/spinTheBottleDare';
 import { manyQuestionsSampleTexts } from './src/data/manyQuestionsTexts';
 import { activitySampleWords } from './src/data/activityWords';
 
-//Import der Menüs
+//Import der Menus
 import StartMenu from './src/menus/StartMenu';
 import MainMenu from './src/menus/MainMenu';
 import AddPlayer from './src/menus/AddPlayer';
@@ -21,7 +21,7 @@ import AddPlayer from './src/menus/AddPlayer';
 import PicoloGame from './src/games/PicoloGame';
 import ManyQuestionsGame from './src/games/ManyQuestions';
 import Kingscup from './src/games/Kingscup';
-import MaexchenGame from './src/games/Mäxchen';
+import MaexchenGame from './src/games/Maexchen';
 import DrinkCounter from './src/games/DrinkCounter';
 import Activity from './src/games/Activity';
 import SpinTheBottle from './src/games/SpinTheBottle';
@@ -67,14 +67,14 @@ export default function App() {
     setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
     setManyQuestions(db_backup_manyQuestions)
     setWords(db_backup_words)
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
   */
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
   ////////////////////////////////////////////////////////
 
-  //Allgemeine Funktion zum Laden aus dem Gerätespeicher
+  //Allgemeine Funktion zum Laden aus dem Gerâ”œÃ±tespeicher
   const loadFromDisk = async (setter, item) => {
     try {
       const response = await AsyncStorage.getItem(item);
@@ -87,18 +87,18 @@ export default function App() {
     }
   }
 
-  //Relikt zum Löschen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
+  //Relikt zum Lâ”œÃ‚schen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
 
   const [drinkTypes, setDrinkTypes] = useState([]); 
   useEffect(() => {
     loadFromDisk(setDrinkTypes, "drinkTypes");
-    //TODO: Wird hier nicht überschrieben falls DB-Anfrage zu lange dauert?
+    //TODO: Wird hier nicht â”œâ•berschrieben falls DB-Anfrage zu lange dauert?
     loadFromDisk(setTheOnePrompts, "texts_Picolo");
     loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
     loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
     loadFromDisk(setManyQuestions, "manyQuestions");
     loadFromDisk(setWords, "words");
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
 
 
   
@@ -116,15 +116,15 @@ export default function App() {
     getGameData("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
     getGameData("manyQuestions", setManyQuestions, "manyQuestions");
     getGameData("words", setWords, "activity")
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgeführt wird
+  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
   */
 
-  //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerätespeicher holen
+  //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerâ”œÃ±tespeicher holen
   // -> Vielleicht auch einfach immer?
   //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
 
 
-  //Für Menus
+  //Fâ”œâ•r Menus
   const Stack = createStackNavigator();
   
   //Globale Variablen aus Context
@@ -132,6 +132,8 @@ export default function App() {
   const [infoVisible, setInfoVisible] = useState(false);
   const [players, setPlayers] = useState([]);  
   const [language, setLanguage] = useState('de');
+
+  const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
 
   return (
     <VariablesContext.Provider
@@ -174,7 +176,7 @@ export default function App() {
           <Stack.Screen 
               name="ManyQuestionsGame" 
               component={ManyQuestionsGame}
-              initialParams={{ manyQuestionsData: shuffleArrayFisherYates(manyQuestions) }} 
+              initialParams={{ manyQuestionsData: shuffledManyQuestions }} 
           />
           <Stack.Screen name="Kingscup" component={Kingscup} />
           <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
@@ -227,3 +229,4 @@ const languageStyles = StyleSheet.create({
     letterSpacing: 1,
   },
 });
+
