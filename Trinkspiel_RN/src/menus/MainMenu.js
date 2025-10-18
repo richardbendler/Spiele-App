@@ -14,6 +14,7 @@ const translationKeyMap = {
   SpinTheBottle: 'spinTheBottle',
   Top10: 'top10',
   ManyQuestionsGame: 'manyQuestions',
+  WerWuerde: 'whoWould',
   '6by6': 'sixBySix',
   Activity: 'activity',
   Getraenkezaehler: 'drinkCounter',
@@ -27,6 +28,7 @@ const navigationMap = {
   MaexchenGame: 'MaexchenGame',
   SpinTheBottle: 'SpinTheBottle',
   ManyQuestionsGame: 'ManyQuestionsGame',
+  WerWuerde: 'WhoWouldLikelyGame',
   Getraenkezaehler: 'DrinkCounter',
   HorseRace: 'HorseRace',
 };
@@ -306,6 +308,16 @@ function MainMenu({ navigation }) {
                         <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
                       </View>
                     </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => openModalWithGame('WerWuerde')} style={{position: 'absolute', left: '23%', top: '170%', width: '17%', height: '25%'}}>
+                      <View style={{ width: '100%', alignItems: 'center' }}>
+                        <Text style={[appStyles.bottleText, { fontSize: 10, color: '#E5C185', letterSpacing: 1 }]}>{newBadgeLabel}</Text>
+                        <Text style={appStyles.bottleText}>{gameDescriptions['WerWuerde'].title}</Text>
+                      </View>
+                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
+                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={appStyles.bottleButton} />
+                      </View>
+                    </TouchableOpacity>
                     
 
 
@@ -390,6 +402,7 @@ function MainMenu({ navigation }) {
 
 
 export default MainMenu;
+
 
 
 

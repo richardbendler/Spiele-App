@@ -27,6 +27,7 @@ const translations = {
       sliderFamiliarity: 'Wie gut kennt ihr euch schon?',
       sliderFamiliarityLabel: 'Vibe:',
       startButton: 'Spielen',
+      clearAll: 'Alle löschen',
       alertTitle: 'Zu wenig Spieler',
       alertMessage: 'Um dieses Spiel zu starten, braucht ihr mindestens zwei Personen.',
     },
@@ -72,6 +73,7 @@ const translations = {
     },
     startMenu: {
       playButton: 'Spielen',
+      disclaimer: 'Achtung: Alkohol ist erst ab 18 Jahren erlaubt. Trink verantwortungsvoll und kenn deine Grenzen.',
     },
     mainMenu: {
       modalTitle: 'Spiel starten',
@@ -168,6 +170,13 @@ const translations = {
       rules:
         'Eine Person startet und liest die Frage leise für sich. Danach gibt sie das Handy verdeckt an die Person weiter, auf die die Aussage am ehesten zutrifft. Die gewählte Person kann überlegen, ob die Aussage auf eine andere Person besser passt. Sobald eine Person akzeptiert oder zum zweiten Mal das Handy hat, muss sie vorlesen und trinken. Danach macht diese Person mit der nächsten Aussage weiter.',
     },
+    whoWould: {
+      info:
+        'Lest die Aussage laut vor. Zählt gemeinsam bis drei und zeigt gleichzeitig auf die Person, auf die sie am ehesten zutrifft. Wer die meisten Stimmen bekommt, trinkt – oder denkt sich eine kleine Aufgabe für die Runde aus. Wechselt reihum, wer vorliest.',
+      next: 'Nächste Aussage',
+      end: 'Ihr habt alle Aussagen durch!',
+      restart: 'Neue Runde mischen',
+    },
     feedback: {
       prompt: 'Wie findest du diese Frage?',
       positive: 'Danke für dein Feedback!',
@@ -201,6 +210,7 @@ const translations = {
       sliderFamiliarity: 'How well do you know each other?',
       sliderFamiliarityLabel: 'Vibe:',
       startButton: 'Start game',
+      clearAll: 'Clear all',
       alertTitle: 'Not enough players',
       alertMessage: 'You need at least two players to start this game.',
     },
@@ -246,6 +256,7 @@ const translations = {
     },
     startMenu: {
       playButton: 'Play',
+      disclaimer: 'Heads up: Alcohol is 18+. Drink responsibly and know your limits.',
     },
     mainMenu: {
       modalTitle: 'Start game',
@@ -342,6 +353,13 @@ const translations = {
       rules:
         'One person starts and reads the statement silently. Pass the phone face down to whoever it fits best. That person can redirect it if it fits someone else better. Once someone accepts or the phone returns to them, they read it aloud, drink, and draw the next statement.',
     },
+    whoWould: {
+      info:
+        'Read the prompt aloud. Count down from three and point at the person it fits best. Whoever gets the most votes drinks – or sets a fun mini challenge. Rotate who reads the next card.',
+      next: 'Next prompt',
+      end: 'You reached the end!',
+      restart: 'Shuffle again',
+    },
     feedback: {
       prompt: 'How do you like this question?',
       positive: 'Thanks for your feedback!',
@@ -387,3 +405,5 @@ export const useTranslation = () => {
 };
 
 export default translations;
+
+

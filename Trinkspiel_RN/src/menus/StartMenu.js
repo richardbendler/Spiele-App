@@ -187,6 +187,9 @@ const StartMenu = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
                         <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
                     </TouchableOpacity>
+                    {startText?.disclaimer ? (
+                        <Text style={styles.disclaimerText}>{startText.disclaimer}</Text>
+                    ) : null}
 
                     {/*<Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
@@ -224,6 +227,15 @@ const styles = StyleSheet.create({
       top: 0,
       width: '100%',
       height: '100%',
+    },
+    disclaimerText: {
+      marginTop: 16,
+      color: 'rgba(255,255,255,0.7)',
+      fontSize: 12,
+      lineHeight: 18,
+      textAlign: 'center',
+      paddingHorizontal: 24,
+      fontFamily: 'Quicksand_300Light',
     },
   });
 

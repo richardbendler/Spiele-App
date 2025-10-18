@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -53,10 +53,24 @@ const App = () => {
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [autoReveal, setAutoReveal] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   const restartGame = () => {
+
+  useEffect(() => {
+    if (!autoReveal || winner) {
+      return;
+    }
+    if (!deck || deck.length === 0) {
+      return;
+    }
+    const interval = setInterval(() => {
+      drawCard();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [autoReveal, deck, winner]);
     setDeck(createDeck());
     setField(initialField(deck));
     setDiscardPile([]);
@@ -140,6 +154,7 @@ const App = () => {
     const winningAce = topFields.find(card => card && card.value === 'A');
     if (winningAce) {
       setWinner(winningAce);
+      setAutoReveal(false);
     }
   };
 
@@ -218,8 +233,20 @@ const App = () => {
         
 
         <View style={styles.deckArea}>
-          <TouchableOpacity style={appStyles.gameActionButton} onPress={drawCard}>
+          <TouchableOpacity
+            style={[appStyles.gameActionButton, autoReveal ? styles.disabledButton : null]}
+            onPress={drawCard}
+            disabled={autoReveal}
+          >
             <Text style={appStyles.gameActionButtonText}>Aufdecken</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setAutoReveal((prev) => !prev)}
+            style={[styles.autoToggle, autoReveal ? styles.autoToggleActive : null]}
+          >
+            <Text style={styles.autoToggleText}>
+              {autoReveal ? 'Automatisch: EIN (3 Sekunden)' : 'Automatisch: AUS'}
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -301,6 +328,25 @@ const styles = StyleSheet.create({
     marginBottom: windowWidth * 0.01,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  disabledButton: {
+    opacity: 0.5,
+  },
+  autoToggle: {
+    marginTop: windowWidth * 0.02,
+    borderRadius: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  autoToggleActive: {
+    backgroundColor: 'rgba(229,193,133,0.3)',
+  },
+  autoToggleText: {
+    color: 'white',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    textAlign: 'center',
   },
   deck: {
     width: windowWidth * 0.3,
