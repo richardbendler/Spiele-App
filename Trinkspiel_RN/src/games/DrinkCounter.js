@@ -1,169 +1,1260 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ImageBackground } from 'react-native';
-import { VariablesContext } from '../../VariablesContext'; // Pfad zum VariablesContext anpassen
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import InfoText from './sublements/InfoText';
-import { appStyles } from '../../styles';
+﻿import React, { useContext, useMemo, useState, useCallback, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, TextInput, Modal } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { VariablesContext } from "../../VariablesContext";
+import InfoText from "./sublements/InfoText";
+import { appStyles } from "../../styles";
 
-/*function delay(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}*/
+const ALCOHOL_DENSITY = 0.789; // g/ml
+const METABOLISM_PER_HOUR = 0.015; // g/dL per hour
+const BODY_WATER = 0.68; // average distribution ratio
+const BODY_WEIGHT_KG = 75; // average adult weight
+
+const COLOR_PALETTE = ["#F5C26B", "#D26B6B", "#8BC6B9", "#A37ACC", "#F7A0AE", "#6CD0C7", "#F3CE8B"];
+const METABOLISM_PER_HOUR_PROMILLE = METABOLISM_PER_HOUR * 10;
+const TIMELINE_WINDOW_HOURS = 24;
+const TIMELINE_POINTS = 12;
+const EMOJI_REGEX = /\p{Extended_Pictographic}/u;
+
+const DEFAULT_ICON = "🥤";
+const ICON_BY_ID = {
+  "beer-500": "🍺",
+  "beer-330": "🍻",
+  "wine-150": "🍷",
+  "shot-40": "🥃",
+  "cocktail-250": "🍹",
+};
+
+const NAME_ICON_SUGGESTIONS = [
+  { pattern: /bier/i, icon: "🍺" },
+  { pattern: /wein|rose/i, icon: "🍷" },
+  { pattern: /shot|schnaps|whisky|whiskey|bourbon|vodka|rum/i, icon: "🥃" },
+  { pattern: /cocktail|spritz|mai tai|colada|mojito|martini/i, icon: "🍹" },
+  { pattern: /sekt|prosecco|champagner/i, icon: "🥂" },
+  { pattern: /biermix|radler|shandy/i, icon: "🍻" },
+  { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🥤" },
+];
+
+const formatDateKey = (value) => {
+  const date = new Date(value);
+  date.setHours(0, 0, 0, 0);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const getWeekdayLabel = (date) => {
+  return ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][date.getDay()];
+};
 
 const DrinkCounter = () => {
-    const { drinkTypes, setDrinkTypes } = useContext(VariablesContext);
-    //const [isLoading, setIsLoading] = useState(true); // Zustand zum Verwalten des Ladens
+  const { drinkCatalog, setDrinkCatalog, drinkLog, setDrinkLog, infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [manageExpanded, setManageExpanded] = useState(false);
+  const [form, setForm] = useState({ name: "", abv: "5", volume: "500", quick: true });
+  const [editRecent, setEditRecent] = useState(false);
 
-    const { infoVisible, setInfoVisible } = useContext(VariablesContext);
-
-    const saveDrinkTypesInStorage = async (newDrinkTypes) => {
-      try {
-          await AsyncStorage.setItem("drinkTypes", JSON.stringify(newDrinkTypes));
-          //console.log("drinkTypes gespeichert: ", newDrinkTypes);
-      } catch (error) {
-          console.error('Fehler beim Speichern der drinkTypes:', error);
+  const guessIconForName = useCallback((name) => {
+    if (!name) {
+      return DEFAULT_ICON;
+    }
+    for (const candidate of NAME_ICON_SUGGESTIONS) {
+      if (candidate.pattern.test(name)) {
+        return candidate.icon;
       }
+    }
+    const emojiCandidate = Array.from(name).find((char) => EMOJI_REGEX.test(char));
+    return emojiCandidate || DEFAULT_ICON;
+  }, []);
+
+  const resolveIcon = useCallback(
+    (drink) => {
+      if (!drink) {
+        return DEFAULT_ICON;
+      }
+      if (drink.icon) {
+        return drink.icon;
+      }
+      if (ICON_BY_ID[drink.id]) {
+        return ICON_BY_ID[drink.id];
+      }
+      return guessIconForName(drink.name);
+    },
+    [guessIconForName]
+  );
+
+  const persistCatalog = useCallback(
+    async (catalog) => {
+      setDrinkCatalog(catalog);
+      try {
+        await AsyncStorage.setItem("drinkCounter_catalog", JSON.stringify(catalog));
+      } catch (error) {
+        console.error("Fehler beim Speichern der Getränkeauswahl", error);
+      }
+    },
+    [setDrinkCatalog]
+  );
+
+  const persistLog = useCallback(
+    async (log) => {
+      setDrinkLog(log);
+      try {
+        await AsyncStorage.setItem("drinkCounter_log", JSON.stringify(log));
+      } catch (error) {
+        console.error("Fehler beim Speichern der Getränkeliste", error);
+      }
+    },
+    [setDrinkLog]
+  );
+
+  useEffect(() => {
+    let changed = false;
+    const normalized = drinkCatalog.map((entry, index) => {
+      const next = { ...entry };
+      const ensuredIcon = resolveIcon(entry);
+      if (next.icon !== ensuredIcon) {
+        next.icon = ensuredIcon;
+        changed = true;
+      }
+      if (!next.color) {
+        next.color = COLOR_PALETTE[index % COLOR_PALETTE.length];
+        changed = true;
+      }
+      if (typeof next.quick !== "boolean") {
+        next.quick = false;
+        changed = true;
+      }
+      if (typeof next.isHidden !== "boolean") {
+        next.isHidden = false;
+        changed = true;
+      }
+      if (next.id === "cocktail-250" && !next.isHidden && !next.quick) {
+        next.quick = true;
+        changed = true;
+      }
+      return next;
+    });
+
+    if (changed) {
+      persistCatalog(normalized);
+    }
+  }, [drinkCatalog, persistCatalog, resolveIcon]);
+
+  useEffect(() => {
+    if (!statsVisible && editRecent) {
+      setEditRecent(false);
+    }
+  }, [statsVisible, editRecent]);
+  const drinkCounts = useMemo(() => {
+    const counts = {};
+    drinkLog.forEach((entry) => {
+      counts[entry.drinkId] = (counts[entry.drinkId] || 0) + 1;
+    });
+    return counts;
+  }, [drinkLog]);
+
+  const quickDrinks = useMemo(() => drinkCatalog.filter((drink) => drink.quick && !drink.isHidden), [drinkCatalog]);
+  const sortedCatalog = useMemo(() => {
+    return [...drinkCatalog].sort((a, b) => {
+      if (a.isHidden === b.isHidden) {
+        return a.name.localeCompare(b.name);
+      }
+      return a.isHidden ? 1 : -1;
+    });
+  }, [drinkCatalog]);
+
+  const computePromilleAt = useCallback(
+    (timestampMs) => {
+      if (!drinkLog.length) {
+        return 0;
+      }
+      const weightGrams = BODY_WEIGHT_KG * 1000;
+      let total = 0;
+      drinkLog.forEach((entry) => {
+        const entryTime = new Date(entry.timestamp).getTime();
+        const hoursSince = (timestampMs - entryTime) / (1000 * 60 * 60);
+        if (hoursSince < 0) {
+          return;
+        }
+        const gramsOfAlcohol = entry.volumeMl * (entry.abv / 100) * ALCOHOL_DENSITY;
+        const rawBac = (gramsOfAlcohol / (BODY_WATER * weightGrams)) * 100;
+        const reduced = rawBac - METABOLISM_PER_HOUR * hoursSince;
+        if (reduced > 0) {
+          total += reduced;
+        }
+      });
+      return Math.max(total * 10, 0);
+    },
+    [drinkLog]
+  );
+
+  const calculatePromille = useCallback(() => computePromilleAt(Date.now()), [computePromilleAt]);
+
+  const estimatedPromille = useMemo(() => calculatePromille(), [calculatePromille]);
+
+  const totalAlcoholGrams = useMemo(() => {
+    return drinkLog.reduce((sum, entry) => sum + entry.volumeMl * (entry.abv / 100) * ALCOHOL_DENSITY, 0);
+  }, [drinkLog]);
+
+  const promilleTimeline = useMemo(() => {
+    if (drinkLog.length === 0) {
+      return [];
+    }
+    const sorted = [...drinkLog].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+    const now = Date.now();
+    const earliest = new Date(sorted[0].timestamp).getTime();
+    const windowStart = Math.max(earliest, now - TIMELINE_WINDOW_HOURS * 60 * 60 * 1000);
+    const duration = Math.max(now - windowStart, 60 * 60 * 1000);
+    const step = duration / TIMELINE_POINTS;
+
+    const points = [];
+    for (let i = 0; i <= TIMELINE_POINTS; i += 1) {
+      const time = Math.min(windowStart + step * i, now);
+      points.push({ time, value: computePromilleAt(time) });
+    }
+    return points;
+  }, [computePromilleAt, drinkLog]);
+
+  const timelineMax = useMemo(() => {
+    if (promilleTimeline.length === 0) {
+      return 0;
+    }
+    return promilleTimeline.reduce((maxValue, current) => Math.max(maxValue, current.value), 0);
+  }, [promilleTimeline]);
+
+  const timelineTrend = useMemo(() => {
+    if (promilleTimeline.length < 2) {
+      return 0;
+    }
+    const first = promilleTimeline[0];
+    const last = promilleTimeline[promilleTimeline.length - 1];
+    return last.value - first.value;
+  }, [promilleTimeline]);
+
+  const promillePeak = timelineMax;
+
+  const calendarData = useMemo(() => {
+    const buckets = new Map();
+    drinkLog.forEach((entry) => {
+      const key = formatDateKey(entry.timestamp);
+      const bucket = buckets.get(key) || { drinks: 0, grams: 0 };
+      bucket.drinks += 1;
+      bucket.grams += entry.volumeMl * (entry.abv / 100) * ALCOHOL_DENSITY;
+      buckets.set(key, bucket);
+    });
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = [];
+    for (let offset = 6; offset >= 0; offset -= 1) {
+      const day = new Date(today);
+      day.setDate(today.getDate() - offset);
+      const key = formatDateKey(day);
+      const bucket = buckets.get(key) || { drinks: 0, grams: 0 };
+      days.push({
+        key,
+        date: day,
+        drinks: bucket.drinks,
+        grams: bucket.grams,
+      });
+    }
+    return days;
+  }, [drinkLog]);
+
+  const drinkBreakdown = useMemo(() => {
+    const counts = {};
+    drinkLog.forEach((entry) => {
+      counts[entry.drinkId] = (counts[entry.drinkId] || 0) + 1;
+    });
+    return Object.entries(counts)
+      .map(([drinkId, count]) => {
+        const catalogEntry = drinkCatalog.find((drink) => drink.id === drinkId);
+        const fallback = catalogEntry || {
+          id: drinkId,
+          name: drinkLog.find((entry) => entry.drinkId === drinkId)?.name || "Unbekannt",
+          icon: drinkLog.find((entry) => entry.drinkId === drinkId)?.icon,
+        };
+        return {
+          id: drinkId,
+          name: fallback.name,
+          icon: resolveIcon({ ...fallback, id: drinkId }),
+          color: catalogEntry?.color || "#E5C185",
+          count,
+        };
+      })
+      .sort((a, b) => b.count - a.count);
+  }, [drinkCatalog, drinkLog, resolveIcon]);
+
+  const breakdownMax = drinkBreakdown.length ? drinkBreakdown[0].count : 1;
+
+  const averageIntervalMinutes = useMemo(() => {
+    if (drinkLog.length < 2) {
+      return null;
+    }
+    const sorted = [...drinkLog].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    let totalDiff = 0;
+    for (let index = 1; index < sorted.length; index += 1) {
+      const currentTime = new Date(sorted[index].timestamp).getTime();
+      const previousTime = new Date(sorted[index - 1].timestamp).getTime();
+      totalDiff += currentTime - previousTime;
+    }
+    return totalDiff / (sorted.length - 1) / (1000 * 60);
+  }, [drinkLog]);
+
+  const topDrink = drinkBreakdown[0] || null;
+
+  const todayStats = useMemo(() => {
+    const todayKey = formatDateKey(Date.now());
+    return calendarData.find((day) => day.key === todayKey) || { drinks: 0, grams: 0 };
+  }, [calendarData]);
+
+  const handleLogDrink = (drink) => {
+    const entry = {
+      id: `log-${Date.now()}`,
+      drinkId: drink.id,
+      name: drink.name,
+      abv: drink.abv,
+      volumeMl: drink.volumeMl,
+      timestamp: new Date().toISOString(),
+      icon: resolveIcon(drink),
+    };
+    persistLog([...drinkLog, entry]);
+  };
+
+  const handleAddDrink = () => {
+    const name = form.name.trim();
+    const abv = parseFloat(form.abv.replace(',', '.'));
+    const volume = parseFloat(form.volume.replace(',', '.'));
+
+    if (!name) {
+      return;
+    }
+    if (Number.isNaN(abv) || abv <= 0 || abv > 96) {
+      return;
+    }
+    if (Number.isNaN(volume) || volume <= 0 || volume > 2000) {
+      return;
+    }
+
+    const color = COLOR_PALETTE[drinkCatalog.length % COLOR_PALETTE.length];
+    const newDrink = {
+      id: `custom-${Date.now()}`,
+      name,
+      abv,
+      volumeMl: volume,
+      quick: form.quick,
+      isHidden: false,
+      color,
+      icon: guessIconForName(name),
     };
 
-    //console.log(drinkTypes)
-    
-    
-
-  // Speichern der drinkTypes, wenn sich diese ändern
-  //useEffect(() => {
-  //  saveDrinkTypesInStorage();
-  //}, [drinkTypes]); // Der Dependency-Array mit drinkTypes stellt sicher, dass dies ausgeführt wird, wenn sich drinkTypes ändert
-
-  
-
-    
-
-    
-    
-  const [inputValue, setInputValue] = useState('');
-  const addDrinkType = () => {
-    if (inputValue.trim() !== '') {
-      const newDrinkTypes = [...drinkTypes];
-      newDrinkTypes.push({ name: inputValue, count: 0 });
-      setDrinkTypes(newDrinkTypes);
-      saveDrinkTypesInStorage(newDrinkTypes);
-      setInputValue('');
-    }
-    
+    persistCatalog([...drinkCatalog, newDrink]);
+    setForm({ name: "", abv: "5", volume: "500", quick: true });
   };
 
-  const incrementCount = (index) => {
-    const newDrinkTypes = [...drinkTypes];
-    newDrinkTypes[index].count += 1;
-    setDrinkTypes(newDrinkTypes);
-    saveDrinkTypesInStorage(newDrinkTypes);
+  const toggleQuickAccess = (drink) => {
+    const updated = drinkCatalog.map((entry) =>
+      entry.id === drink.id ? { ...entry, quick: !entry.quick } : entry
+    );
+    persistCatalog(updated);
   };
 
-  const removeDrinkType = (index) => {
-    const updatedDrinkTypes = drinkTypes.filter((_, i) => i !== index);
-    setDrinkTypes(updatedDrinkTypes);
-    saveDrinkTypesInStorage(updatedDrinkTypes);
+  const toggleHidden = (drink) => {
+    const updated = drinkCatalog.map((entry) =>
+      entry.id === drink.id ? { ...entry, isHidden: !entry.isHidden, quick: entry.isHidden ? entry.quick : false } : entry
+    );
+    persistCatalog(updated);
+  };
+
+  const removeDrink = (drink) => {
+    const updatedCatalog = drinkCatalog.filter((entry) => entry.id !== drink.id);
+    persistCatalog(updatedCatalog);
+    persistLog(drinkLog.filter((entry) => entry.drinkId !== drink.id));
+  };
+
+  const handleRemoveLogEntry = useCallback(
+    (entryId) => {
+      const updated = drinkLog.filter((entry) => entry.id !== entryId);
+      persistLog(updated);
+      if (updated.length === 0) {
+        setEditRecent(false);
+      }
+    },
+    [drinkLog, persistLog, setEditRecent]
+  );
+
+  const formatTimeAgo = (timestamp) => {
+    const diffMs = Date.now() - new Date(timestamp).getTime();
+    const diffMinutes = Math.floor(diffMs / 60000);
+    if (diffMinutes < 1) return "gerade eben";
+    if (diffMinutes < 60) return `${diffMinutes} min`;
+    const diffHours = Math.floor(diffMinutes / 60);
+    if (diffHours < 24) return `${diffHours} h`;
+    const diffDays = Math.floor(diffHours / 24);
+    return `${diffDays} d`;
+  };
+
+  const formatTimeLabel = useCallback((timestamp) => {
+    const date = new Date(timestamp);
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${hours}:${minutes}`;
+  }, []);
+
+  const recentDrinks = useMemo(() => {
+    return [...drinkLog]
+      .slice(-5)
+      .reverse()
+      .map((entry) => {
+        const catalogEntry = drinkCatalog.find((drink) => drink.id === entry.drinkId);
+        const iconSource = catalogEntry || { id: entry.drinkId, name: entry.name, icon: entry.icon };
+        return {
+          ...entry,
+          icon: resolveIcon(iconSource),
+        };
+      });
+  }, [drinkCatalog, drinkLog, resolveIcon]);
+
+  const totalDrinks = drinkLog.length;
+  const closeStats = () => {
+    setStatsVisible(false);
+    setEditRecent(false);
   };
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
-      <View style={styles.container}>
-        <View style={{height: '85%', width: '90%'}}>
-          <ScrollView>
-            {drinkTypes.map((drinkType, index) => (
-              <View key={index} style={styles.drinkTypeContainer}>
-                <TouchableOpacity onPress={() => removeDrinkType(index)} style={styles.removeButton}>
-                  <Text style={styles.removeButtonText}>❌</Text>
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
+      <View style={styles.overlay} />
+      <TouchableOpacity onPress={() => setStatsVisible(true)} style={styles.statsFab} activeOpacity={0.9}>
+        <Text style={styles.statsFabLabel}>Statistiken</Text>
+      </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <View style={styles.headerRow}>
+          <View>
+            <Text style={styles.screenTitle}>Getraenkezaehler</Text>
+            <Text style={styles.screenSubtitle}>Behalte im Blick, was du heute getrunken hast.</Text>
+          </View>
+        </View>
+
+        <View style={styles.bacCard}>
+          <Text style={styles.bacLabel}>Geschaetzter Alkoholpegel</Text>
+          <Text style={styles.bacValue}>{estimatedPromille.toFixed(2)} Promille</Text>
+          <Text style={styles.bacHint}>
+            {estimatedPromille < 0.3
+              ? "Alles entspannt."
+              : estimatedPromille < 0.8
+              ? "Langsam merkt man den Pegel. Trink etwas Wasser."
+              : "Sehr hoch! Bitte mach eine Pause."}
+          </Text>
+          <Text style={styles.bacMeta}>Durchschnittlicher Abbau: ca. {METABOLISM_PER_HOUR_PROMILLE.toFixed(2)} Promille pro Stunde.</Text>
+        </View>
+
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Schnellauswahl</Text>
+          <Text style={styles.sectionDescription}>Tippe auf ein Getränk, um es zu protokollieren.</Text>
+        </View>
+        <View style={styles.quickGrid}>
+          {quickDrinks.length === 0 ? (
+            <Text style={styles.emptyQuickText}>Füge Getränke zur Schnellauswahl hinzu.</Text>
+          ) : (
+            quickDrinks.map((drink) => (
+              <TouchableOpacity
+                key={drink.id}
+                onPress={() => handleLogDrink(drink)}
+                style={[styles.quickTile, { backgroundColor: drink.color || "#3B3F51" }]}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.quickIcon}>{resolveIcon(drink)}</Text>
+                <Text style={styles.quickTitle}>{drink.name}</Text>
+                <Text style={styles.quickMeta}>{drink.abv}% · {drink.volumeMl} ml</Text>
+                <View style={styles.quickCountBadge}>
+                  <Text style={styles.quickCountText}>{drinkCounts[drink.id] || 0}</Text>
+                </View>
               </TouchableOpacity>
-                <Text style={styles.drinkTypeName}>{drinkType.name}</Text>
-                <View style={styles.counterContainer}>
-                  <Text style={styles.drinkTypeCount}>{drinkType.count}</Text>
-                  <TouchableOpacity onPress={() => incrementCount(index)} style={styles.button}>
-                    <Text style={styles.buttonText}>+</Text>
+            ))
+          )}
+        </View>
+
+        <TouchableOpacity
+          onPress={() => setManageExpanded((prev) => !prev)}
+          style={styles.manageToggle}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.manageToggleText}>
+            {manageExpanded ? "Verstecken" : "Getraenke verwalten"}
+          </Text>
+        </TouchableOpacity>
+
+        {manageExpanded && (
+          <View style={styles.manageCard}>
+            {sortedCatalog.map((drink) => (
+              <View key={drink.id} style={styles.manageRow}>
+                <View style={styles.manageIconPill}>
+                  <Text style={styles.manageIcon}>{resolveIcon(drink)}</Text>
+                </View>
+                <View style={styles.manageInfo}>
+                  <Text style={styles.manageName}>{drink.name}</Text>
+                  <Text style={styles.manageMeta}>{drink.abv}% · {drink.volumeMl} ml</Text>
+                </View>
+                <View style={styles.manageActions}>
+                  <TouchableOpacity
+                    onPress={() => toggleQuickAccess(drink)}
+                    style={[styles.actionChip, drink.quick ? styles.actionChipActive : null]}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={[styles.actionChipText, drink.quick ? styles.actionChipTextActive : null]}>
+                      {drink.quick ? "Anzeigen" : "Hinzufuegen"}
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => toggleHidden(drink)}
+                    style={[styles.actionChip, drink.isHidden ? styles.actionChipActive : null]}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={[styles.actionChipText, drink.isHidden ? styles.actionChipTextActive : null]}>
+                      {drink.isHidden ? "Versteckt" : "Verstecken"}
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => removeDrink(drink)}
+                    style={styles.removeChip}
+                    activeOpacity={0.8}
+                  >
+                    <Text style={styles.removeChipText}>Löschen</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             ))}
-          </ScrollView>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              value={inputValue}
-              onChangeText={text => setInputValue(text)}
-              placeholder="Getränketyp hinzufügen"
-            />
-            <TouchableOpacity onPress={addDrinkType} style={styles.addButton}>
-              <Text style={styles.buttonText}>Hinzufügen</Text>
+
+            <View style={styles.formDivider} />
+
+            <Text style={styles.sectionTitle}>Eigenes Getraenk anlegen</Text>
+            <View style={styles.formRow}>
+              <TextInput
+                style={styles.formInput}
+                placeholder="Name"
+                placeholderTextColor="rgba(255,255,255,0.4)"
+                value={form.name}
+                onChangeText={(value) => setForm((prev) => ({ ...prev, name: value }))}
+              />
+            </View>
+            <View style={styles.formRowTwoColumns}>
+              <TextInput
+                style={styles.formInputHalf}
+                placeholder="% Vol"
+                placeholderTextColor="rgba(255,255,255,0.4)"
+                keyboardType="numeric"
+                value={form.abv}
+                onChangeText={(value) => setForm((prev) => ({ ...prev, abv: value }))}
+              />
+              <TextInput
+                style={styles.formInputHalf}
+                placeholder="ml"
+                placeholderTextColor="rgba(255,255,255,0.4)"
+                keyboardType="numeric"
+                value={form.volume}
+                onChangeText={(value) => setForm((prev) => ({ ...prev, volume: value }))}
+              />
+            </View>
+            <View style={styles.formToggleRow}>
+              <TouchableOpacity
+                onPress={() => setForm((prev) => ({ ...prev, quick: !prev.quick }))}
+                style={[styles.actionChip, form.quick ? styles.actionChipActive : null]}
+                activeOpacity={0.85}
+              >
+                <Text style={[styles.actionChipText, form.quick ? styles.actionChipTextActive : null]}>
+                  {form.quick ? "Hinzufuegen" : "Nicht hinzufuegen"}
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity onPress={handleAddDrink} style={styles.addDrinkButton} activeOpacity={0.9}>
+              <Text style={styles.addDrinkButtonText}>Getraenk hinzufuegen</Text>
             </TouchableOpacity>
           </View>
+        )}
+      </ScrollView>
 
-          
+      <InfoText
+        header="Getraenkezaehler!"
+        rules={
+          "Tippe deine Lieblingsgetraenke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenuebersicht und Favoriten inklusive Promille-Trend."
+        }
+      />
+      <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+        <Text style={appStyles.infoButtonText}>ℹ</Text>
+      </TouchableOpacity>
+
+      <Modal visible={statsVisible} animationType="fade" transparent>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalCard}>
+            <ScrollView contentContainerStyle={styles.modalContent} showsVerticalScrollIndicator={false}>
+              <Text style={styles.modalTitle}>Statistiken</Text>
+
+            <View style={styles.summaryRow}>
+              <View style={styles.summaryCard}>
+                <Text style={styles.summaryLabel}>Heute</Text>
+                <Text style={styles.summaryValue}>{todayStats.drinks}</Text>
+                <Text style={styles.summaryHint}>{Math.round(todayStats.grams)} g Alkohol</Text>
+              </View>
+              <View style={styles.summaryCard}>
+                <Text style={styles.summaryLabel}>Aktueller Pegel</Text>
+                <Text style={styles.summaryValue}>{estimatedPromille.toFixed(2)}</Text>
+                <Text style={styles.summaryHint}>
+                  {timelineTrend > 0
+                    ? `Trend steigt (+${timelineTrend.toFixed(2)})`
+                    : timelineTrend < 0
+                    ? `Trend faellt (${timelineTrend.toFixed(2)})`
+                    : "Trend stabil"}
+                </Text>
+              </View>
+              <View style={styles.summaryCard}>
+                <Text style={styles.summaryLabel}>Beliebtester Drink</Text>
+                <Text style={styles.summaryValue}>{topDrink ? `${topDrink.icon} ${topDrink.name}` : "—"}</Text>
+                <Text style={styles.summaryHint}>{topDrink ? `${topDrink.count}x heute` : "Noch keine Daten"}</Text>
+              </View>
+            </View>
+            {recentDrinks.length > 0 && (
+              <TouchableOpacity
+                onPress={() => setEditRecent((prev) => !prev)}
+                style={[styles.editRecentButton, editRecent ? styles.editRecentButtonActive : null]}
+                activeOpacity={0.85}
+              >
+                <Text style={[styles.editRecentButtonLabel, editRecent ? styles.editRecentButtonLabelActive : null]}>
+                  {editRecent ? "Bearbeitung beenden" : "Letzte Getraenke bearbeiten"}
+                </Text>
+              </TouchableOpacity>
+            )}
+
+            <Text style={styles.modalSubtitle}>Promille-Verlauf (24h)</Text>
+            {promilleTimeline.length === 0 ? (
+              <Text style={styles.modalHint}>Noch keine Daten</Text>
+            ) : (
+              <View style={styles.timelineWrapper}>
+                <View style={styles.timelineChart}>
+                  {promilleTimeline.map((point, index) => {
+                    const normalizedHeight =
+                      timelineMax === 0 ? 0 : Math.max((point.value / timelineMax) * 100, point.value > 0 ? 6 : 2);
+                    return (
+                      <View key={`${point.time}-${index}`} style={styles.timelineBar}>
+                        <View style={[styles.timelineBarFill, { height: `${normalizedHeight}%` }]} />
+                      </View>
+                    );
+                  })}
+                </View>
+                <View style={styles.timelineLabels}>
+                  {promilleTimeline.map((point, index) => {
+                    const divisor = Math.max(Math.floor(promilleTimeline.length / 4), 1);
+                    if (index % divisor !== 0 && index !== promilleTimeline.length - 1) {
+                      return <View key={`spacer-${point.time}-${index}`} style={styles.timelineLabelSpacer} />;
+                    }
+                    return (
+                      <Text key={`${point.time}-${index}`} style={styles.timelineLabel}>
+                        {formatTimeLabel(point.time)}
+                      </Text>
+                    );
+                  })}
+                </View>
+                <Text style={styles.timelineHint}>
+                  Peak: {promillePeak.toFixed(2)} Promille - durchschnittlicher Abstand {averageIntervalMinutes ? `${Math.round(averageIntervalMinutes)} min` : "-"}
+                </Text>
+              </View>
+            )}
+
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Letzte 7 Tage</Text>
+            {calendarData.length === 0 ? (
+              <Text style={styles.modalHint}>Noch keine Daten</Text>
+            ) : (
+              <View style={styles.calendarRow}>
+                {calendarData.map((day) => (
+                  <View key={day.key} style={[styles.calendarCell, day.drinks > 0 ? styles.calendarCellActive : null]}>
+                    <Text style={styles.calendarDay}>{getWeekdayLabel(day.date)}</Text>
+                    <Text style={styles.calendarValue}>{day.drinks}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Beliebte Getraenke</Text>
+            {drinkBreakdown.length === 0 ? (
+              <Text style={styles.modalHint}>Noch keine Eintraege</Text>
+            ) : (
+              <View style={styles.breakdownList}>
+                {drinkBreakdown.slice(0, 5).map((item) => (
+                  <View key={item.id} style={styles.breakdownRow}>
+                    <View style={styles.breakdownLabel}>
+                      <Text style={styles.breakdownIcon}>{item.icon}</Text>
+                      <Text style={styles.breakdownName}>{item.name}</Text>
+                    </View>
+                    <View style={styles.breakdownBar}>
+                      <View
+                        style={[
+                          styles.breakdownBarFill,
+                          {
+                            width: `${Math.max((item.count / breakdownMax) * 100, 8)}%`,
+                            backgroundColor: item.color || "#E5C185",
+                          },
+                        ]}
+                      />
+                    </View>
+                    <Text style={styles.breakdownValue}>{item.count}x</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Letzte Eintraege</Text>
+            {recentDrinks.length === 0 ? (
+              <Text style={styles.modalHint}>Noch nichts protokolliert</Text>
+            ) : (
+              recentDrinks.map((entry) => (
+                <View key={entry.id} style={[styles.modalRow, styles.recentRow]}>
+                  <View style={styles.recentRowText}>
+                    <Text style={styles.modalRowLabel}>
+                      {entry.icon ? `${entry.icon} ` : ""}
+                      {entry.name}
+                    </Text>
+                    {editRecent && <Text style={styles.modalRowValueSecondary}>{formatTimeAgo(entry.timestamp)}</Text>}
+                  </View>
+                  {editRecent ? (
+                    <TouchableOpacity
+                      onPress={() => handleRemoveLogEntry(entry.id)}
+                      style={styles.recentRemoveButton}
+                      activeOpacity={0.85}
+                    >
+                      <Text style={styles.recentRemoveButtonText}>Entfernen</Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <Text style={styles.modalRowValue}>{formatTimeAgo(entry.timestamp)}</Text>
+                  )}
+                </View>
+              ))
+            )}
+
+            </ScrollView>
+            <TouchableOpacity onPress={closeStats} style={styles.closeModalButton} activeOpacity={0.85}>
+              <Text style={styles.closeModalButtonText}>Schliessen</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <InfoText header={"Getränkezähler!"} rules={"Du verlierst schnell den Überblick, wie viel du eigentlich so an einem Abend trinkst? Dann bist du hier genau richtig! \n\n Zähle ganz einfach verschiedenste Getränketypen mit und verliere nie wieder den Überblick."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
-        </TouchableOpacity>
-      </View>
+      </Modal>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center'
-    //backgroundColor: '#f3f3f3',
   },
-  drinkTypeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: 10,
-    padding: 15,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    elevation: 2,
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(10, 14, 22, 0.6)",
   },
-  drinkTypeName: {
-    fontSize: 16,
-    fontWeight: '500',
+  scrollContent: {
+    paddingHorizontal: 24,
+    paddingTop: 96,
+    paddingBottom: 120,
   },
-  counterContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  headerRow: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    marginBottom: 16,
   },
-  drinkTypeCount: {
-    fontSize: 16,
-    marginRight: 10,
+  screenTitle: {
+    fontSize: 30,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
   },
-  button: {
-    backgroundColor: '#7C83FD',
-    padding: 10,
-    borderRadius: 30,
+  screenSubtitle: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.65)",
+    marginTop: 4,
+    fontFamily: "Quicksand_300Light",
   },
-  buttonText: {
-    color: '#FFFFFF',
+  statsFab: {
+    position: "absolute",
+    top: 32,
+    right: 24,
+    backgroundColor: "rgba(255,255,255,0.12)",
+    borderRadius: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.2)",
+    zIndex: 2,
+  },
+  statsFabLabel: {
+    color: "white",
+    fontSize: 13,
+    fontFamily: "Quicksand_300Bold",
+    letterSpacing: 0.6,
+  },
+  bacCard: {
+    backgroundColor: "rgba(22, 27, 39, 0.85)",
+    borderRadius: 24,
+    padding: 18,
+    marginBottom: 28,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.06)",
+  },
+  bacLabel: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: 13,
+    fontFamily: "Quicksand_300Light",
+  },
+  bacValue: {
+    fontSize: 36,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 4,
+  },
+  bacHint: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 12,
+    marginTop: 8,
+    lineHeight: 18,
+  },
+  bacMeta: {
+    color: "rgba(255,255,255,0.45)",
+    fontSize: 11,
+    marginTop: 6,
+  },
+  sectionHeader: {
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    color: "white",
     fontSize: 18,
+    fontFamily: "Quicksand_300Bold",
   },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  sectionDescription: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: 13,
+    marginTop: 2,
+    fontFamily: "Quicksand_300Light",
+  },
+  quickGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+    marginBottom: 24,
+  },
+  quickTile: {
+    width: "48%",
+    borderRadius: 20,
+    padding: 16,
+    minHeight: 120,
+    position: "relative",
+    justifyContent: "flex-end",
+  },
+  quickIcon: {
+    fontSize: 36,
+    marginBottom: 12,
+  },
+  quickTitle: {
+    color: "#1B1B1F",
+    fontSize: 16,
+    fontFamily: "Quicksand_300Bold",
+  },
+  quickMeta: {
+    color: "rgba(27,27,31,0.65)",
+    fontSize: 12,
+    marginTop: 2,
+  },
+  quickCountBadge: {
+    position: "absolute",
+    top: 12,
+    right: 12,
+    backgroundColor: "rgba(27,27,31,0.18)",
+    borderRadius: 18,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+  },
+  quickCountText: {
+    color: "#1B1B1F",
+    fontFamily: "Quicksand_300Bold",
+  },
+  emptyQuickText: {
+    color: "rgba(255,255,255,0.5)",
+    fontFamily: "Quicksand_300Light",
+    fontSize: 13,
+  },
+  manageToggle: {
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    marginBottom: 16,
+  },
+  manageToggleText: {
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    fontSize: 13,
+  },
+  manageCard: {
+    backgroundColor: "rgba(18, 21, 31, 0.9)",
+    borderRadius: 22,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.06)",
+    marginBottom: 36,
+  },
+  manageRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+  manageIconPill: {
+    width: 46,
+    height: 46,
+    borderRadius: 14,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 14,
+  },
+  manageIcon: {
+    fontSize: 26,
+  },
+  manageInfo: {
+    flex: 1,
+  },
+  manageName: {
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    fontSize: 15,
+  },
+  manageMeta: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 12,
+    marginTop: 2,
+  },
+  manageActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  actionChip: {
+    borderRadius: 14,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    backgroundColor: "rgba(255,255,255,0.06)",
+  },
+  actionChipActive: {
+    backgroundColor: "#E5C185",
+  },
+  actionChipText: {
+    color: "rgba(255,255,255,0.65)",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Bold",
+  },
+  actionChipTextActive: {
+    color: "#221B15",
+  },
+  removeChip: {
+    borderRadius: 14,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    backgroundColor: "rgba(255,92,92,0.18)",
+  },
+  removeChipText: {
+    color: "#FF6A6A",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Bold",
+  },
+  formDivider: {
+    height: 1,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    marginVertical: 18,
+  },
+  formRow: {
+    flexDirection: "row",
+    gap: 12,
+    marginBottom: 12,
+  },
+  formRowTwoColumns: {
+    flexDirection: "row",
+    gap: 12,
+    marginBottom: 12,
+  },
+  formInput: {
+    flex: 1,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  formInputHalf: {
+    flex: 1,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  formToggleRow: {
+    flexDirection: "row",
+    marginBottom: 16,
+  },
+  addDrinkButton: {
+    backgroundColor: "#E5C185",
+    borderRadius: 18,
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  addDrinkButtonText: {
+    color: "#241D18",
+    fontSize: 15,
+    fontFamily: "Quicksand_300Bold",
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.55)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalCard: {
+    width: "88%",
+    maxHeight: "85%",
+    backgroundColor: "#191D28",
+    borderRadius: 24,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.06)",
+  },
+  modalTitle: {
+    fontSize: 22,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    marginBottom: 12,
+  },
+  modalContent: {
+    paddingBottom: 24,
+    gap: 12,
+  },
+  summaryRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+    marginBottom: 16,
+  },
+  summaryCard: {
+    flexGrow: 1,
+    flexBasis: "30%",
+    minWidth: 120,
+    backgroundColor: "rgba(255,255,255,0.06)",
+    borderRadius: 16,
+    padding: 14,
+  },
+  summaryLabel: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: 12,
+  },
+  summaryValue: {
+    color: "white",
+    fontSize: 20,
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 4,
+  },
+  summaryHint: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 11,
+    marginTop: 6,
+  },
+  editRecentButton: {
+    alignSelf: "flex-start",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.15)",
+    backgroundColor: "rgba(255,255,255,0.05)",
+  },
+  editRecentButtonActive: {
+    backgroundColor: "rgba(229,193,133,0.2)",
+    borderColor: "rgba(229,193,133,0.45)",
+  },
+  editRecentButtonLabel: {
+    color: "rgba(255,255,255,0.75)",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Bold",
+  },
+  editRecentButtonLabelActive: {
+    color: "#E5C185",
+  },
+  modalSubtitle: {
+    fontSize: 14,
+    color: "rgba(255,255,255,0.7)",
+    fontFamily: "Quicksand_300Bold",
     marginTop: 10,
   },
-  input: {
+  modalMetric: {
+    fontSize: 16,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 6,
+  },
+  modalHint: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 12,
+    marginTop: 6,
+  },
+  modalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 8,
+  },
+  modalRowLabel: {
+    color: "white",
+    fontSize: 13,
+  },
+  modalRowValue: {
+    color: "rgba(255,255,255,0.7)",
+    fontSize: 13,
+  },
+  modalRowValueSecondary: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 11,
+    marginTop: 4,
+  },
+  timelineWrapper: {
+    marginTop: 12,
+  },
+  timelineChart: {
+    height: 110,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    gap: 6,
+  },
+  timelineBar: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#000',
-    marginRight: 10,
-    padding: 10,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 10,
+    overflow: "hidden",
+    justifyContent: "flex-end",
+  },
+  timelineBarFill: {
+    backgroundColor: "#E5C185",
+    width: "100%",
     borderRadius: 10,
   },
-  addButton: {
-    backgroundColor: '#A5A5A5',
-    padding: 10,
-    borderRadius: 10,
+  timelineLabels: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 8,
+    alignItems: "center",
+  },
+  timelineLabel: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: 11,
+  },
+  timelineLabelSpacer: {
+    flex: 1,
+  },
+  timelineHint: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 11,
+    marginTop: 8,
+  },
+  calendarRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 8,
+    marginTop: 12,
+  },
+  calendarCell: {
+    flex: 1,
+    alignItems: "center",
+    paddingVertical: 10,
+    borderRadius: 12,
+    backgroundColor: "rgba(255,255,255,0.04)",
+  },
+  calendarCellActive: {
+    backgroundColor: "rgba(229,193,133,0.18)",
+  },
+  calendarDay: {
+    color: "rgba(255,255,255,0.7)",
+    fontSize: 12,
+  },
+  calendarValue: {
+    color: "white",
+    fontSize: 16,
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 4,
+  },
+  recentRow: {
+    alignItems: "center",
+  },
+  recentRowText: {
+    flex: 1,
+    marginRight: 12,
+  },
+  recentRemoveButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    backgroundColor: "rgba(255,92,92,0.18)",
+  },
+  recentRemoveButtonText: {
+    color: "#FF6A6A",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Bold",
+  },
+  breakdownList: {
+    marginTop: 12,
+    gap: 10,
+  },
+  breakdownRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  breakdownLabel: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  breakdownIcon: {
+    fontSize: 18,
+  },
+  breakdownName: {
+    color: "white",
+    fontSize: 13,
+    flexShrink: 1,
+  },
+  breakdownBar: {
+    flex: 2,
+    height: 8,
+    borderRadius: 6,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    overflow: "hidden",
+  },
+  breakdownBarFill: {
+    height: "100%",
+    borderRadius: 6,
+  },
+  breakdownValue: {
+    color: "rgba(255,255,255,0.7)",
+    fontSize: 12,
+    marginLeft: 8,
+  },
+  closeModalButton: {
+    marginTop: 24,
+    alignSelf: "flex-end",
+    backgroundColor: "#E5C185",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+  },
+  closeModalButtonText: {
+    color: "#231C18",
+    fontFamily: "Quicksand_300Bold",
+    fontSize: 14,
   },
 });
 

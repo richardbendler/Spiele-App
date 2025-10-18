@@ -95,7 +95,7 @@ const AddPlayer = ({ navigation }) => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
       <View style={styles.overlay} />
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.screenTitle}>Picolo Setup</Text>
+        <Text style={styles.screenTitle}>The One Setup</Text>
         <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
         <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />

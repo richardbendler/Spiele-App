@@ -27,13 +27,14 @@ const navigationMap = {
   MaexchenGame: 'MaexchenGame',
   SpinTheBottle: 'SpinTheBottle',
   ManyQuestionsGame: 'ManyQuestionsGame',
+  Getraenkezaehler: 'DrinkCounter',
   HorseRace: 'HorseRace',
 };
 
 import { useTranslation } from '../i18n';
 
 function MainMenu({ navigation }) {
-  const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
+  const { settingsVisible, setSettingsVisible, language } = useContext(VariablesContext);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [gameTitle, setGameTitle] = useState('');
@@ -44,6 +45,7 @@ function MainMenu({ navigation }) {
   const { t } = useTranslation();
 
   const commonCopy = useMemo(() => t('common'), [t]);
+  const newBadgeLabel = language === 'de' ? 'NEU' : 'NEW';
   const gamesCopy = useMemo(() => t('mainMenu.games'), [t]);
 
   const gameDescriptions = useMemo(() => {
@@ -297,13 +299,11 @@ function MainMenu({ navigation }) {
 
                     <TouchableOpacity onPress={() => openModalWithGame('Getraenkezaehler')} style={{position: 'absolute', left: '3%', top: '170%', width: '17%', height: '25%'}}>
                       <View style={{ width: '100%', alignItems: 'center' }}>
+                        <Text style={[appStyles.bottleText, { fontSize: 10, color: '#E5C185', letterSpacing: 1 }]}>{newBadgeLabel}</Text>
                         <Text style={appStyles.bottleText}>{gameDescriptions['Getraenkezaehler'].title}</Text>
                       </View>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-                          <Text style={[appStyles.bottleText,{fontSize: 9}]}>{commonCopy.comingSoon}</Text>
-                        </View>
                       </View>
                     </TouchableOpacity>
                     

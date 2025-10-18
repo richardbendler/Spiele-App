@@ -63,7 +63,7 @@ const translations = {
     },
     theOne: {
       info:
-        'Tippt auf die Karte, um die nächste Aufgabe zu sehen. Die Aufgaben passen sich eurem aktuellen Pegel, eurem Ziel für den Abend und eurem Vibe als Gruppe an. Führt die Aufgabe aus oder trinkt entsprechend und gebt das Handy weiter.',
+        'Bestimmt eine Moderatorin oder einen Moderator. Diese Person behaelt das Handy, liest jede Aufgabe vor und tippt auf Weiter. Die Karten passen sich wie gewohnt eurem Pegel, Ziel und Vibe an.',
       noEligiblePrompt:
         'Es gibt aktuell keine Aufgaben, die zu euren Einstellungen passen. Passt die Filter an oder fügt neue Aufgaben hinzu.',
     },
@@ -147,9 +147,9 @@ const translations = {
           description: 'Der Klassiker mit Karten auf der Stirn. Bald verfügbar.',
         },
         drinkCounter: {
-          title: 'Getränkezähler',
+          title: 'Getraenkezaehler',
           parameters: 'Praktisches Extra',
-          description: 'Behaltet den Überblick darüber, wer wie viele Drinks hatte.',
+          description: 'Behalte deinen eigenen Konsum im Blick, logge Drinks schnell und erhalte eine Promille-Schaetzung.',
         },
       },
     },
@@ -237,7 +237,7 @@ const translations = {
     },
     theOne: {
       info:
-        'Tap the card to reveal the next challenge. The prompts adapt to how tipsy you are now, how bold you want to get, and how well you all know each other. Follow the instruction or drink as indicated, then pass the phone along.',
+        'Choose one moderator who keeps the phone, reads each prompt aloud, and taps Next. The prompts still adapt to how tipsy you are, your target level, and how well you all know each other.',
       noEligiblePrompt:
         'No prompts match your current settings. Adjust the sliders or add more prompts.',
     },
@@ -323,7 +323,7 @@ const translations = {
         drinkCounter: {
           title: 'Drink Counter',
           parameters: 'Practical extra',
-          description: 'Keep track of how many drinks everyone has had.',
+          description: 'Stay on top of your own drinks, log them quickly and get a promille estimate.',
         },
       },
     },
