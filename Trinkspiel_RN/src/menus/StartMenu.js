@@ -185,11 +185,6 @@ const StartMenu = ({ navigation }) => {
                     </View>
 
                     <View style={styles.callToAction}>
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate('MainMenu')}
-                            style={[appStyles.chalkboardButton, styles.playButton]}>
-                            <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
-                        </TouchableOpacity>
                         {startText?.disclaimer ? (
                             <View style={styles.disclaimerWrapper}>
                                 <View style={styles.disclaimerBox}>
@@ -197,6 +192,11 @@ const StartMenu = ({ navigation }) => {
                                 </View>
                             </View>
                         ) : null}
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('MainMenu')}
+                            style={[appStyles.chalkboardButton, styles.playButton]}>
+                            <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
+                        </TouchableOpacity>
                     </View>
 
                     {/*<Text>{words.slice(0,50)}</Text>
@@ -276,8 +276,8 @@ const styles = StyleSheet.create({
     },
     disclaimerWrapper: {
       position: 'absolute',
-      bottom: '50%',
-      transform: [{ translateY: -24 }],
+      bottom: '60%',
+      transform: [{ translateY: -16 }],
       width: '100%',
       alignItems: 'center',
       paddingHorizontal: 24,

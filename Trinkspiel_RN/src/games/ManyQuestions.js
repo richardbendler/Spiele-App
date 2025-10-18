@@ -1,6 +1,5 @@
 ﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
-import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import { VariablesContext } from '../../VariablesContext';
@@ -8,6 +7,7 @@ import { VariablesContext } from '../../VariablesContext';
 import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
+import { manyQuestionsSampleTexts } from '../data/manyQuestionsTexts';
 
 const ManyQuestionsGame = ({ route }) => {
   const [gameEnded, setGameEnded] = useState(false);
@@ -24,7 +24,7 @@ const ManyQuestionsGame = ({ route }) => {
     if (Array.isArray(manyQuestionsContext) && manyQuestionsContext.length > 0) {
       return manyQuestionsContext;
     }
-    return [];
+    return manyQuestionsSampleTexts;
   }, [navigationData, manyQuestionsContext]);
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -70,8 +70,8 @@ const ManyQuestionsGame = ({ route }) => {
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
-          <View style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 }}>
-            <Question question={questionText} />
+          <View style={styles.questionArea}>
+            <Text style={styles.questionText}>{questionText || copy.end}</Text>
           </View>
           <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
             <Text style={appStyles.gameActionButtonText}>{copy.next}</Text>
@@ -105,6 +105,20 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
     textAlign: 'center',
+  },
+  questionArea: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 28,
+  },
+  questionText: {
+    textAlign: 'center',
+    fontSize: 24,
+    lineHeight: 32,
+    color: 'white',
+    fontFamily: 'Quicksand_300Bold',
   },
 });
 
