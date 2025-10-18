@@ -184,12 +184,20 @@ const StartMenu = ({ navigation }) => {
                         <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
                     </View>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.chalkboardButton}>
-                        <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
-                    </TouchableOpacity>
-                    {startText?.disclaimer ? (
-                        <Text style={styles.disclaimerText}>{startText.disclaimer}</Text>
-                    ) : null}
+                    <View style={styles.callToAction}>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('MainMenu')}
+                            style={[appStyles.chalkboardButton, styles.playButton]}>
+                            <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
+                        </TouchableOpacity>
+                        {startText?.disclaimer ? (
+                            <View style={styles.disclaimerWrapper}>
+                                <View style={styles.disclaimerBox}>
+                                    <Text style={styles.disclaimerText}>{startText.disclaimer}</Text>
+                                </View>
+                            </View>
+                        ) : null}
+                    </View>
 
                     {/*<Text>{words.slice(0,50)}</Text>
                     <Text>--------------------------</Text>
@@ -228,14 +236,52 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
     },
+    callToAction: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      pointerEvents: 'box-none',
+    },
+    disclaimerBox: {
+      backgroundColor: 'rgba(10, 14, 22, 0.85)',
+      borderRadius: 18,
+      paddingVertical: 14,
+      paddingHorizontal: 18,
+      borderWidth: 1,
+      borderColor: 'rgba(255,255,255,0.12)',
+      shadowColor: '#000',
+      shadowOpacity: 0.35,
+      shadowRadius: 12,
+      shadowOffset: { width: 0, height: 6 },
+      elevation: 6,
+      maxWidth: '85%',
+    },
     disclaimerText: {
-      marginTop: 16,
-      color: 'rgba(255,255,255,0.7)',
+      color: 'rgba(255,255,255,0.85)',
       fontSize: 12,
       lineHeight: 18,
       textAlign: 'center',
-      paddingHorizontal: 24,
       fontFamily: 'Quicksand_300Light',
+    },
+    playButton: {
+      position: 'absolute',
+      top: '50%',
+      transform: [{ translateY: -35 }],
+      alignSelf: 'center',
+      pointerEvents: 'auto',
+    },
+    disclaimerWrapper: {
+      position: 'absolute',
+      bottom: '50%',
+      transform: [{ translateY: -24 }],
+      width: '100%',
+      alignItems: 'center',
+      paddingHorizontal: 24,
+      pointerEvents: 'auto',
     },
   });
 

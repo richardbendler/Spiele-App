@@ -42,8 +42,11 @@ const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
   );
 });
 
-const AddPlayer = ({ navigation }) => {
+const AddPlayer = ({ navigation, route }) => {
   const { players, setPlayers, theOneSettings, setTheOneSettings } = useContext(VariablesContext);
+  const nextGameRoute = route?.params?.nextGame ?? "PicoloGame";
+  const forwardParams = route?.params?.forwardParams;
+  const showScales = route?.params?.showScales !== false;
   const { t } = useTranslation();
   const nextIdRef = useRef(0);
 
@@ -97,7 +100,7 @@ const AddPlayer = ({ navigation }) => {
 
   const startGame = () => {
     if (players.length >= 2) {
-      navigation.navigate("PicoloGame");
+      navigation.navigate(nextGameRoute, forwardParams);
     } else {
       Alert.alert(addPlayerText.alertTitle, addPlayerText.alertMessage);
     }
@@ -107,7 +110,7 @@ const AddPlayer = ({ navigation }) => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
       <View style={styles.overlay} />
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.screenTitle}>The One Setup</Text>
+        <Text style={styles.screenTitle}>{addPlayerText.screenTitle}</Text>
         <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
         <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
@@ -141,66 +144,65 @@ const AddPlayer = ({ navigation }) => {
           </TouchableOpacity>
         ) : null}
 
-        <View style={styles.sliderCard}>
-          <Text style={styles.sliderTitle}>{t("addPlayer.sliderCurrent")}</Text>
-          <View style={styles.sliderRow}>
-            <Slider
-              style={styles.slider}
-              minimumValue={0}
-              maximumValue={sliderMaxIndex}
-              step={1}
-              value={currentDrunkenness}
-              onValueChange={updateSetting("currentDrunkenness")}
-              minimumTrackTintColor="#E5C185"
-              maximumTrackTintColor="rgba(255,255,255,0.2)"
-              thumbTintColor="#E5C185"
-            />
-            <Text style={styles.sliderValue}>
-              {mapScaleLabel(drinkingScale, currentDrunkenness)}
-            </Text>
-          </View>
+        {showScales ? (
+          <View style={styles.sliderCard}>
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderCurrent}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={sliderMaxIndex}
+                step={1}
+                value={currentDrunkenness}
+                onValueChange={updateSetting("currentDrunkenness", sliderMaxIndex)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderCurrentLabel} {mapScaleLabel(drinkingScale, currentDrunkenness)}
+              </Text>
+            </View>
 
-          <Text style={styles.sliderTitle}>{t("addPlayer.sliderDesired")}</Text>
-          <View style={styles.sliderRow}>
-            <Slider
-              style={styles.slider}
-              minimumValue={0}
-              maximumValue={sliderMaxIndex}
-              step={1}
-              value={desiredDrunkenness}
-              onValueChange={updateSetting("desiredDrunkenness")}
-              minimumTrackTintColor="#E5C185"
-              maximumTrackTintColor="rgba(255,255,255,0.2)"
-              thumbTintColor="#E5C185"
-            />
-            <Text style={styles.sliderValue}>
-              {mapScaleLabel(drinkingScale, desiredDrunkenness)}
-            </Text>
-          </View>
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderDesired}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={sliderMaxIndex}
+                step={1}
+                value={desiredDrunkenness}
+                onValueChange={updateSetting("desiredDrunkenness", sliderMaxIndex)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderDesiredLabel} {mapScaleLabel(drinkingScale, desiredDrunkenness)}
+              </Text>
+            </View>
 
-          <Text style={styles.sliderTitle}>{t("addPlayer.sliderFamiliarity")}</Text>
-          <View style={styles.sliderRow}>
-            <Slider
-              style={styles.slider}
-              minimumValue={0}
-              maximumValue={Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0}
-              step={1}
-              value={familiarity}
-              onValueChange={updateSetting(
-                "familiarity",
-                Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0
-              )}
-              minimumTrackTintColor="#E5C185"
-              maximumTrackTintColor="rgba(255,255,255,0.2)"
-              thumbTintColor="#E5C185"
-            />
-            <Text style={styles.sliderValue}>
-              {mapScaleLabel(familiarityScale, familiarity)}
-            </Text>
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderFamiliarity}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0}
+                step={1}
+                value={familiarity}
+                onValueChange={updateSetting("familiarity", Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderFamiliarityLabel} {mapScaleLabel(familiarityScale, familiarity)}
+              </Text>
+            </View>
           </View>
-        </View>
+        ) : null}
 
-        <TouchableOpacity onPress={startGame} style={styles.startButton} activeOpacity={0.9}>
+        <TouchableOpacity onPress={startGame} style={[styles.startButton, !showScales && { marginTop: 16 }]} activeOpacity={0.9}>
           <Text style={styles.startButtonText}>{addPlayerText.startButton}</Text>
         </TouchableOpacity>
       </ScrollView>

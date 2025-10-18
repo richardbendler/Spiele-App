@@ -79,7 +79,7 @@ const ManyQuestionsGame = ({ route }) => {
         </View>
         <HandleFeedback texts={questions} textsIndex={questionIndex} table={'game_klassiker_questions'} />
 
-        <InfoText header={'1000 Questions!'} rules={copy.rules} />
+        <InfoText header={copy.infoTitle} rules={copy.rules} />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
