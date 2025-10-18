@@ -23,7 +23,7 @@ const kingscupCopyByLanguage = {
   de: {
     infoHeader: 'Kingscup!',
     rules:
-      'Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben.\n\nJetzt zieht ihr reihum nacheinander eine Karte. Führt die Aktion aus, die unten für die Karte angezeigt wird. Bei Königen wird der Kingscup zu einem Drittel mit dem eigenen Getränk gefüllt. Der vierte König muss austrinken – das Spiel ist vorbei! Optional: Aktiviert den Daumenkönig: Die Person mit dem letzten König darf jederzeit den Daumen auf den Tisch legen. Wer als Letzte*r reagiert, trinkt.',
+      'Vorbereitung: Besorgt euch ein leeres Glas. Ausserdem sollte jede spielende Person ein Getraenk haben.\n\nJetzt zieht ihr reihum nacheinander eine Karte. Fuehrt die Aktion aus, die unten fuer die Karte angezeigt wird. Bei Koenigen wird der Kingscup zu einem Drittel mit dem eigenen Getraenk gefuellt. Der vierte Koenig muss austrinken - das Spiel ist vorbei! Optional: Legt zusaetzlich einen Daumenkoenig fest: Die Person mit dem letzten Koenig darf jederzeit den Daumen auf den Tisch legen. Wer als Letzte*r reagiert, trinkt.',
     startPromptTitle: 'Tippe auf eine Karte, um zu starten!',
     startPromptSubtitle: 'Tippe oben links auf Info, um die Spielanleitung zu lesen.',
     fallbackTitle: 'Kingscup',
@@ -31,15 +31,11 @@ const kingscupCopyByLanguage = {
     winnerTitle: 'Spiel vorbei!',
     winnerDescription: 'Der letzte König wurde aufgedeckt. Die Person, die die Karte gezogen hat, muss nun den Kingscup austrinken.',
     restartLabel: 'Spiel neustarten',
-    thumbToggleOff: 'Daumenkönig aktivieren',
-    thumbToggleOn: 'Daumenkönig aktiv',
-    thumbWaiting: 'Der nächste König bestimmt den Daumenkönig.',
-    thumbActive: '{count}. König: Der Daumenkönig darf jederzeit den Daumen legen. Wer zuletzt reagiert, trinkt.',
   },
   en: {
     infoHeader: 'Kings Cup!',
     rules:
-      'Setup: Grab an empty glass and make sure everyone has a drink.\n\nTake turns drawing cards and carry out the action shown below. Each king fills one third of the Kings Cup with their own drink. Whoever draws the fourth king drinks the cup and the game ends! Optional: Enable Thumb King mode so the player who drew the last king can tap their thumb on the table at any time. The last person to follow drinks.',
+      'Setup: Grab an empty glass and make sure everyone has a drink.\n\nTake turns drawing cards and carry out the action shown below. Each king pours one third of their drink into the Kings Cup. Whoever draws the fourth king drinks the cup and the game ends! Optional: Crown a Thumb King as an extra rule: the player who drew the last king may drop their thumb onto the table at any time. The last person to copy drinks.',
     startPromptTitle: 'Tap a card to start!',
     startPromptSubtitle: 'Tap the info button in the top left to read the rules.',
     fallbackTitle: 'Kings Cup',
@@ -47,10 +43,6 @@ const kingscupCopyByLanguage = {
     winnerTitle: 'Game over!',
     winnerDescription: 'The final king was drawn. Whoever revealed it now drinks the Kings Cup.',
     restartLabel: 'Restart game',
-    thumbToggleOff: 'Enable Thumb King',
-    thumbToggleOn: 'Thumb King enabled',
-    thumbWaiting: 'Waiting for the next king to crown the Thumb King.',
-    thumbActive: 'King #{count}: The Thumb King may drop their thumb at any time. Last to follow drinks.',
   },
 };
 
@@ -67,7 +59,11 @@ const cardMeaningsSimpleByLanguage = {
     '10': { title: 'Ten - Kategorie!', description: 'Nenne eine Kategorie, dann geht es reihum weiter.' },
     'J': { title: 'Regel!', description: 'Bestimme eine neue Regel.' },
     'Q': { title: 'Questionmaster!', description: 'Niemand darf dir antworten, bis ein neuer Questionmaster gezogen wird.' },
-    'K': { title: 'Kingscup!', description: 'Fülle den Kingscup zu einem Drittel. Der vierte König trinkt ihn aus.' },
+    'K': {
+      title: 'Kingscup!',
+      description:
+        'Fuelle den Kingscup zu einem Drittel. Der vierte Koenig trinkt ihn aus. Optional: Legt zusaetzlich einen Daumenkoenig fest, der mit dem letzten Koenig den Daumen legen darf.',
+    },
     'A': { title: 'Wasserfall!', description: 'Startet einen Wasserfall - aufhören dürft ihr in Reihenfolge.' },
   },
   en: {
@@ -82,7 +78,11 @@ const cardMeaningsSimpleByLanguage = {
     '10': { title: 'Ten - Category!', description: 'Name a category; continue around until someone fails.' },
     'J': { title: 'Rule!', description: 'Make a new rule.' },
     'Q': { title: 'Questionmaster!', description: 'No one may answer your questions until a new one is drawn.' },
-    'K': { title: 'Kings Cup!', description: 'Fill the cup by one third. The fourth king drinks it and ends the game.' },
+    'K': {
+      title: 'Kings Cup!',
+      description:
+        'Fill the cup by one third. The fourth king drinks it and ends the game. Optional: Crown a Thumb King so the last king-drawer may tap their thumb at any moment.',
+    },
     'A': { title: 'Waterfall!', description: 'Start a waterfall - stop only when the person before you does.' },
   },
 };
@@ -102,9 +102,6 @@ const Kingscup = () => {
 
   const [cardMeaning, setCardMeaning] = useState([kingscupCopy.startPromptTitle, kingscupCopy.startPromptSubtitle]);
   const [kingCounter, setKingCounter] = useState(0);
-  const [thumbKingMode, setThumbKingMode] = useState(false);
-  const [thumbKingActive, setThumbKingActive] = useState(false);
-  const [thumbKingOrder, setThumbKingOrder] = useState(0);
   const celebrationAnim = useRef(new Animated.Value(0)).current;
   const celebrationScale = celebrationAnim.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1] });
   const celebrationOpacity = celebrationAnim.interpolate({ inputRange: [0, 1], outputRange: [0, 1] });
@@ -133,20 +130,6 @@ const Kingscup = () => {
       useNativeDriver: true,
     }).start();
   }, [finished, celebrationAnim]);
-
-  const toggleThumbMode = () => {
-    setThumbKingMode((prev) => {
-      const next = !prev;
-      if (!next) {
-        setThumbKingActive(false);
-        setThumbKingOrder(0);
-      } else if (kingCounter > 0 && kingCounter < 4) {
-        setThumbKingActive(true);
-        setThumbKingOrder(kingCounter);
-      }
-      return next;
-    });
-  };
 
   function createDeck() {
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
@@ -191,12 +174,7 @@ const Kingscup = () => {
     if (!wasRevealed && card.value === 'K') { //Nur wenn Karte noch nicht aufgedeckt ist
       const nextCount = kingCounter + 1;
       setKingCounter(nextCount);
-      if (thumbKingMode && nextCount < 4) {
-        setThumbKingActive(true);
-        setThumbKingOrder(nextCount);
-      }
       if (nextCount >= 4) {
-        setThumbKingActive(false);
         setFinished(true);
       }
     }
@@ -210,8 +188,6 @@ const Kingscup = () => {
     setCardMeaning([kingscupCopy.startPromptTitle, kingscupCopy.startPromptSubtitle]);
     setFinished(false);
     setKingCounter(0);
-    setThumbKingActive(false);
-    setThumbKingOrder(0);
   };
 
   if (finished) {
@@ -243,26 +219,6 @@ const Kingscup = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-
-        <View style={styles.thumbToggleRow}>
-          <TouchableOpacity
-            onPress={toggleThumbMode}
-            style={[styles.thumbToggle, thumbKingMode ? styles.thumbToggleActive : null]}
-          >
-            <Text style={[styles.thumbToggleText, thumbKingMode ? styles.thumbToggleTextActive : null]}>
-              {thumbKingMode ? kingscupCopy.thumbToggleOn : kingscupCopy.thumbToggleOff}
-            </Text>
-          </TouchableOpacity>
-          {thumbKingMode ? (
-            <View style={[styles.thumbBanner, thumbKingActive ? styles.thumbBannerActive : null]}>
-              <Text style={styles.thumbBannerText}>
-                {thumbKingActive
-                  ? kingscupCopy.thumbActive.replace('{count}', String(thumbKingOrder))
-                  : kingscupCopy.thumbWaiting}
-              </Text>
-            </View>
-          ) : null}
-        </View>
 
         <View style={styles.deck}>
           {deck.map((card, index) => {
@@ -334,47 +290,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  thumbToggleRow: {
-    width: '100%',
-    marginBottom: 12,
-  },
-  thumbToggle: {
-    alignSelf: 'flex-end',
-    paddingVertical: 6,
-    paddingHorizontal: 16,
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.25)',
-    backgroundColor: 'rgba(0,0,0,0.3)',
-  },
-  thumbToggleActive: {
-    borderColor: '#E5C185',
-    backgroundColor: 'rgba(229,193,133,0.25)',
-  },
-  thumbToggleText: {
-    color: 'rgba(255,255,255,0.75)',
-    fontSize: 12,
-    fontFamily: 'Quicksand_300Bold',
-  },
-  thumbToggleTextActive: {
-    color: '#E5C185',
-  },
-  thumbBanner: {
-    marginTop: 10,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: 16,
-    backgroundColor: 'rgba(0,0,0,0.35)',
-  },
-  thumbBannerActive: {
-    backgroundColor: 'rgba(229,193,133,0.28)',
-  },
-  thumbBannerText: {
-    color: 'rgba(255,255,255,0.7)',
-    fontSize: 12,
-    fontFamily: 'Quicksand_300Light',
-    textAlign: 'center',
   },
   cardContainer: {
     position: 'absolute',
@@ -454,6 +369,7 @@ const styles = StyleSheet.create({
 });
 
 export default Kingscup;
+
 
 
 

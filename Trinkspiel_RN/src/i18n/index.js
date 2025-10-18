@@ -152,12 +152,12 @@ const translations = {
           description: 'Der Klassiker mit Karten auf der Stirn. Bald verfügbar.',
         },
         partyBoard: {
-          title: 'Partybrett',
+          title: 'Bar-Odyssee',
           parameters: 'Trinklevel: 3/5\nKennenlernen: 2/5',
-          description: 'Wuerfelt euch ueber das Brett, sammelt Muenzen und Sterne und spielt Minispiele fuer die Zugreihenfolge.',
+          description: 'Reist durch die Bar-Odyssee, sammelt Muenzen und Sterne und entscheidet mit Minispielen die Reihenfolge.',
         },
         drinkCounter: {
-          title: 'Getraenkezaehler',
+          title: 'Getränkezähler',
           parameters: 'Praktisches Extra',
           description: 'Behalte deinen eigenen Konsum im Blick, logge Drinks schnell und erhalte eine Promille-Schaetzung.',
         },
@@ -185,7 +185,7 @@ const translations = {
       revealHint: 'Tippe auf die Karte, um sie aufzudecken.',
     },
     whoWould: {
-      infoTitle: 'Wer wuerde am ehesten?',
+      infoTitle: 'Wer würde am ehesten?',
       info:
         'Lest die Aussage laut vor. Zählt gemeinsam bis drei und zeigt gleichzeitig auf die Person, auf die sie am ehesten zutrifft. Wer die meisten Stimmen bekommt, trinkt – oder denkt sich eine kleine Aufgabe für die Runde aus. Wechselt reihum, wer vorliest.',
       next: 'Nächste Aussage',
@@ -350,9 +350,9 @@ const translations = {
           description: 'The classic card-on-the-forehead bluff. Coming soon.',
         },
         partyBoard: {
-          title: 'Party Board',
+          title: 'Bar Odyssey',
           parameters: 'Drink level: 3/5\nGetting to know each other: 2/5',
-          description: 'Roll across the board, collect coins and stars, and play mini games to decide the next turn order.',
+          description: 'Glide through the Bar Odyssey, collect coins and stars, and decide turn order with mini games.',
         },
         drinkCounter: {
           title: 'Drink Counter',

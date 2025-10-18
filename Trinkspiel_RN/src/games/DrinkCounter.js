@@ -17,6 +17,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { VariablesContext } from "../../VariablesContext";
 import InfoText from "./sublements/InfoText";
 import { appStyles } from "../../styles";
+import { useTranslation } from "../i18n";
 
 const ALCOHOL_DENSITY = 0.789; // g/ml
 const METABOLISM_PER_HOUR = 0.012; // g/dL per hour (~0.12 promille/h elimination)
@@ -54,43 +55,82 @@ const NAME_ICON_SUGGESTIONS = [
   { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🥤" },
 ];
 
-const PROMILLE_MESSAGE_BANDS = [
-  {
-    max: 0.2,
-    messages: [
-      "Glasklar unterwegs – Wasser dazu passt perfekt.",
-      "Noch nüchtern? Dann genieß den Überblick!",
-    ],
-  },
-  {
-    max: 0.5,
-    messages: [
-      "Leicht beschwingt – vielleicht kurz durchschnaufen?",
-      "Der Abend rollt langsam los. Schnapp dir einen Snack!",
-    ],
-  },
-  {
-    max: 0.8,
-    messages: [
-      "Jetzt gut hydratisiert bleiben, dann bleibt’s entspannt.",
-      "Laune top, Pegel steigt – Wasser nicht vergessen.",
-    ],
-  },
-  {
-    max: 1.2,
-    messages: [
-      "Ganz schön auf Tour! Mach mal kurz Pause und atme durch.",
-      "Zeit für eine Runde Wasser und frische Luft.",
-    ],
-  },
-  {
-    max: Infinity,
-    messages: [
-      "Achtung, sehr hoch! Couch, Wasser und Snacks sind jetzt deine Crew.",
-      "Alarmstufe Rot – gönn dir eine längere Pause und viel Wasser.",
-    ],
-  },
-];
+const PROMILLE_MESSAGE_BANDS = {
+  de: [
+    {
+      max: 0.2,
+      messages: [
+        "Glasklar unterwegs – Wasser dazu passt perfekt.",
+        "Noch nüchtern? Dann genieß den Überblick!",
+      ],
+    },
+    {
+      max: 0.5,
+      messages: [
+        "Leicht beschwingt – vielleicht kurz durchschnaufen?",
+        "Der Abend rollt langsam los. Schnapp dir einen Snack!",
+      ],
+    },
+    {
+      max: 0.8,
+      messages: [
+        "Jetzt gut hydratisiert bleiben, dann bleibt’s entspannt.",
+        "Laune top, Pegel steigt – Wasser nicht vergessen.",
+      ],
+    },
+    {
+      max: 1.2,
+      messages: [
+        "Ganz schön auf Tour! Mach mal kurz Pause und atme durch.",
+        "Zeit für eine Runde Wasser und frische Luft.",
+      ],
+    },
+    {
+      max: Infinity,
+      messages: [
+        "Achtung, sehr hoch! Couch, Wasser und Snacks sind jetzt deine Crew.",
+        "Alarmstufe Rot – gönn dir eine längere Pause und viel Wasser.",
+      ],
+    },
+  ],
+  en: [
+    {
+      max: 0.2,
+      messages: [
+        "Crystal clear – water on the side fits perfectly.",
+        "Still sober? Enjoy the overview!",
+      ],
+    },
+    {
+      max: 0.5,
+      messages: [
+        "Lightly buzzing – maybe take a short breather?",
+        "The night is just starting. Grab a snack!",
+      ],
+    },
+    {
+      max: 0.8,
+      messages: [
+        "Stay hydrated now to keep things relaxed.",
+        "Mood is great, buzz is rising – don't forget water.",
+      ],
+    },
+    {
+      max: 1.2,
+      messages: [
+        "Pretty far along! Take a short break and breathe.",
+        "Time for some water and fresh air.",
+      ],
+    },
+    {
+      max: Infinity,
+      messages: [
+        "Careful, that's high! Couch time with water and snacks.",
+        "Red alert – treat yourself to a longer break and lots of water.",
+      ],
+    },
+  ],
+};
 
 const formatDateKey = (value) => {
   const date = new Date(value);
@@ -101,12 +141,16 @@ const formatDateKey = (value) => {
   return `${year}-${month}-${day}`;
 };
 
-const getWeekdayLabel = (date) => {
-  return ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][date.getDay()];
+const getWeekdayLabel = (date, language) => {
+  const labels = language === "en" ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] : ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  return labels[date.getDay()];
 };
 
 const DrinkCounter = () => {
   const { drinkCatalog, setDrinkCatalog, drinkLog, setDrinkLog, infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { language } = useTranslation();
+  const translate = useCallback((deText, enText) => (language === "en" ? enText : deText), [language]);
+  const promilleBands = useMemo(() => PROMILLE_MESSAGE_BANDS[language] ?? PROMILLE_MESSAGE_BANDS.de, [language]);
   const [statsVisible, setStatsVisible] = useState(false);
   const [manageExpanded, setManageExpanded] = useState(false);
   const [form, setForm] = useState({ name: "", abv: "5", volume: "500", quick: true });
@@ -405,7 +449,7 @@ const DrinkCounter = () => {
         const catalogEntry = drinkCatalog.find((drink) => drink.id === drinkId);
         const fallback = catalogEntry || {
           id: drinkId,
-          name: drinkLog.find((entry) => entry.drinkId === drinkId)?.name || "Unbekannt",
+          name: drinkLog.find((entry) => entry.drinkId === drinkId)?.name || translate("Unbekannt", "Unknown"),
           icon: drinkLog.find((entry) => entry.drinkId === drinkId)?.icon,
         };
         return {
@@ -452,17 +496,15 @@ const DrinkCounter = () => {
 
   const bacHintMessage = useMemo(() => {
     if (estimatedPromille <= 0) {
-      return "Aktuell alles nüchtern – cheers mit Wasser!";
+      return translate("Aktuell alles nüchtern – cheers mit Wasser!", "All clear for now – cheers with water!");
     }
-    const band =
-      PROMILLE_MESSAGE_BANDS.find((entry) => estimatedPromille <= entry.max) ||
-      PROMILLE_MESSAGE_BANDS[PROMILLE_MESSAGE_BANDS.length - 1];
+    const band = promilleBands.find((entry) => estimatedPromille <= entry.max) || promilleBands[promilleBands.length - 1];
     if (!band || !band.messages || band.messages.length === 0) {
       return "";
     }
     const rotationIndex = Math.abs(Math.floor(now / 60000)) % band.messages.length;
     return band.messages[rotationIndex];
-  }, [estimatedPromille, now]);
+  }, [estimatedPromille, now, promilleBands, translate]);
 
   const rawPromille = bacSummary.totalRawPromille;
   const eliminatedPromille = bacSummary.totalEliminatedPromille;
@@ -554,12 +596,12 @@ const DrinkCounter = () => {
   const formatTimeAgo = (timestamp) => {
     const diffMs = Date.now() - new Date(timestamp).getTime();
     const diffMinutes = Math.floor(diffMs / 60000);
-    if (diffMinutes < 1) return "gerade eben";
-    if (diffMinutes < 60) return `${diffMinutes} min`;
+    if (diffMinutes < 1) return translate("gerade eben", "just now");
+    if (diffMinutes < 60) return `${diffMinutes} ${translate("Min.", "min")}`;
     const diffHours = Math.floor(diffMinutes / 60);
-    if (diffHours < 24) return `${diffHours} h`;
+    if (diffHours < 24) return `${diffHours} ${translate("Std.", "h")}`;
     const diffDays = Math.floor(diffHours / 24);
-    return `${diffDays} d`;
+    return `${diffDays} ${translate("Tg.", "d")}`;
   };
 
   const formatDuration = (durationMs) => {
@@ -567,18 +609,18 @@ const DrinkCounter = () => {
       return "-";
     }
     if (durationMs < 60 * 1000) {
-      return "unter 1 Min.";
+      return translate("unter 1 Min.", "under 1 min");
     }
     const totalMinutes = Math.floor(durationMs / 60000);
     if (totalMinutes < 60) {
-      return `${totalMinutes} Min.`;
+      return `${totalMinutes} ${translate("Min.", "min")}`;
     }
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     if (minutes === 0) {
-      return `${hours} Std.`;
+      return `${hours} ${translate("Std.", "h")}`;
     }
-    return `${hours} Std. ${minutes} Min.`;
+    return `${hours} ${translate("Std.", "h")} ${minutes} ${translate("Min.", "min")}`;
   };
 
   const formatTimeLabel = useCallback((timestamp) => {
@@ -606,13 +648,13 @@ const DrinkCounter = () => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
       <View style={styles.overlay} />
       <TouchableOpacity onPress={() => setStatsVisible(true)} style={styles.statsFab} activeOpacity={0.9}>
-        <Text style={styles.statsFabLabel}>Statistiken</Text>
+        <Text style={styles.statsFabLabel}>{translate("Statistiken", "Statistics")}</Text>
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.headerRow}>
           <View>
-            <Text style={styles.screenTitle}>Getränkezähler</Text>
-            <Text style={styles.screenSubtitle}>Behalte im Blick, was du heute getrunken hast.</Text>
+            <Text style={styles.screenTitle}>{translate("Getränkezähler", "Drink Counter")}</Text>
+            <Text style={styles.screenSubtitle}>{translate("Behalte im Blick, was du heute getrunken hast.", "Keep track of what you have had today.")}</Text>
           </View>
         </View>
 
@@ -622,33 +664,41 @@ const DrinkCounter = () => {
           style={[styles.bacCard, bacDetailsOpen ? styles.bacCardExpanded : null]}
         >
           <View style={styles.bacHeaderRow}>
-            <Text style={styles.bacLabel}>Geschätzter Alkoholpegel</Text>
-            <Text style={styles.bacToggleHint}>{bacDetailsOpen ? "Tippe, um Details zu schließen" : "Tippe für Details"}</Text>
+            <Text style={styles.bacLabel}>{translate("Geschätzter Alkoholpegel", "Estimated BAC")}</Text>
+            <Text style={styles.bacToggleHint}>
+              {bacDetailsOpen
+                ? translate("Tippe, um Details zu schließen", "Tap to hide details")
+                : translate("Tippe für Details", "Tap for details")}
+            </Text>
           </View>
           <View style={styles.bacValueRow}>
-            <Text style={styles.bacValue}>{`${estimatedPromille.toFixed(2)} \u2030`}</Text>
+            <Text style={styles.bacValue}>{`${estimatedPromille.toFixed(2)} ‰`}</Text>
             {projectedSoberTimestamp ? (
-              <Text style={styles.bacMeta}>≈ nüchtern in {formatDuration(projectedSoberDurationMs)}</Text>
+              <Text style={styles.bacMeta}>
+                {translate("≈ nüchtern in", "≈ sober in")} {formatDuration(projectedSoberDurationMs)}
+              </Text>
             ) : null}
           </View>
           <Text style={styles.bacHint}>{bacHintMessage}</Text>
           <Text style={styles.bacMeta}>
-            Durchschnittlicher Abbau: ca. {METABOLISM_PER_HOUR_PROMILLE.toFixed(2)} \u2030 pro Stunde.
+            {translate("Durchschnittlicher Abbau: ca.", "Average elimination rate: approx.")} {METABOLISM_PER_HOUR_PROMILLE.toFixed(2)} ‰ {translate("pro Stunde.", "per hour.")}
           </Text>
           {bacDetailsOpen ? (
             <View style={styles.bacDetails}>
               <View style={styles.bacDetailsRow}>
-                <Text style={styles.bacDetailsLabel}>Aufgenommen</Text>
-                <Text style={styles.bacDetailsValue}>{totalAlcoholGrams.toFixed(1)} g Alkohol</Text>
-              </View>
-              <View style={styles.bacDetailsRow}>
-                <Text style={styles.bacDetailsLabel}>Abgebaut</Text>
+                <Text style={styles.bacDetailsLabel}>{translate("Aufgenommen", "Consumed")}</Text>
                 <Text style={styles.bacDetailsValue}>
-                  {`${eliminatedPromille.toFixed(2)} \u2030`} ({eliminatedPercentage.toFixed(0)} %)
+                  {totalAlcoholGrams.toFixed(1)} {translate("g Alkohol", "g of alcohol")}
                 </Text>
               </View>
               <View style={styles.bacDetailsRow}>
-                <Text style={styles.bacDetailsLabel}>Letzter Drink</Text>
+                <Text style={styles.bacDetailsLabel}>{translate("Abgebaut", "Metabolised")}</Text>
+                <Text style={styles.bacDetailsValue}>
+                  {`${eliminatedPromille.toFixed(2)} ‰`} ({eliminatedPercentage.toFixed(0)} %)
+                </Text>
+              </View>
+              <View style={styles.bacDetailsRow}>
+                <Text style={styles.bacDetailsLabel}>{translate("Letzter Drink", "Last drink")}</Text>
                 <Text style={styles.bacDetailsValue}>
                   {lastDrinkTime
                     ? `${formatDuration(timeSinceLastDrink)} · ${formatTimeLabel(lastDrinkTime)}`
@@ -656,7 +706,7 @@ const DrinkCounter = () => {
                 </Text>
               </View>
               <View style={styles.bacDetailsRow}>
-                <Text style={styles.bacDetailsLabel}>Erster Drink</Text>
+                <Text style={styles.bacDetailsLabel}>{translate("Erster Drink", "First drink")}</Text>
                 <Text style={styles.bacDetailsValue}>
                   {firstDrinkTime
                     ? `${formatDuration(timeSinceFirstDrink)} · ${formatTimeLabel(firstDrinkTime)}`
@@ -668,15 +718,19 @@ const DrinkCounter = () => {
                   {recentPromilleEntries.map((entry) => {
                     const icon = entry.icon || resolveIcon({ id: entry.drinkId, name: entry.name });
                     const durationLabel = formatDuration(now - entry.timestamp);
-                    const durationText = durationLabel === "-" ? "-" : `vor ${durationLabel}`;
+                    const durationText =
+                      durationLabel === "-"
+                        ? "-"
+                        : language === "en"
+                        ? `${durationLabel} ${translate("vor", "ago")}`
+                        : `${translate("vor", "ago")} ${durationLabel}`;
                     return (
                       <View key={entry.id} style={styles.bacDetailsEntry}>
                         <Text style={styles.bacDetailsEntryIcon}>{icon}</Text>
                         <View style={styles.bacDetailsEntryText}>
                           <Text style={styles.bacDetailsEntryTitle}>{entry.name}</Text>
                           <Text style={styles.bacDetailsEntryMeta}>
-                            {durationText} | +{entry.rawPromille.toFixed(2)} \u2030 ->{" "}
-                            {entry.remainingPromille.toFixed(2)} \u2030
+                            {durationText} | +{entry.rawPromille.toFixed(2)} ‰ -> {entry.remainingPromille.toFixed(2)} ‰
                           </Text>
                         </View>
                       </View>
@@ -688,39 +742,13 @@ const DrinkCounter = () => {
           ) : null}
         </TouchableOpacity>
 
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Schnellauswahl</Text>
-          <Text style={styles.sectionDescription}>Tippe auf ein Getränk, um es zu protokollieren.</Text>
-        </View>
-        <View style={styles.quickGrid}>
-          {quickDrinks.length === 0 ? (
-            <Text style={styles.emptyQuickText}>Füge Getränke zur Schnellauswahl hinzu.</Text>
-          ) : (
-            quickDrinks.map((drink) => (
-              <TouchableOpacity
-                key={drink.id}
-                onPress={() => handleLogDrink(drink)}
-                style={[styles.quickTile, { backgroundColor: drink.color || "#3B3F51" }]}
-                activeOpacity={0.85}
-              >
-                <Text style={styles.quickIcon}>{resolveIcon(drink)}</Text>
-                <Text style={styles.quickTitle}>{drink.name}</Text>
-                <Text style={styles.quickMeta}>{drink.abv}% · {drink.volumeMl} ml</Text>
-                <View style={styles.quickCountBadge}>
-                  <Text style={styles.quickCountText}>{drinkCounts[drink.id] || 0}</Text>
-                </View>
-              </TouchableOpacity>
-            ))
-          )}
-        </View>
-
         <TouchableOpacity
           onPress={() => setManageExpanded((prev) => !prev)}
           style={styles.manageToggle}
           activeOpacity={0.8}
         >
           <Text style={styles.manageToggleText}>
-            {manageExpanded ? "Verstecken" : "Getränke verwalten"}
+            {manageExpanded ? translate('Verstecken', 'Hide') : translate('Getränke verwalten', 'Manage drinks')}
           </Text>
         </TouchableOpacity>
 
@@ -734,40 +762,40 @@ const DrinkCounter = () => {
                 <View style={styles.manageInfo}>
                   <Text style={styles.manageName}>{drink.name}</Text>
                   <Text style={styles.manageMeta}>{drink.abv}% · {drink.volumeMl} ml</Text>
-                </View>
-                <View style={styles.manageActions}>
-                  <TouchableOpacity
-                    onPress={() => toggleQuickAccess(drink)}
-                    style={[styles.actionChip, drink.quick ? styles.actionChipActive : null]}
-                    activeOpacity={0.85}
-                  >
-                    <Text style={[styles.actionChipText, drink.quick ? styles.actionChipTextActive : null]}>
-                      {drink.quick ? "Anzeigen" : "Hinzufügen"}
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => toggleHidden(drink)}
-                    style={[styles.actionChip, drink.isHidden ? styles.actionChipActive : null]}
-                    activeOpacity={0.85}
-                  >
-                    <Text style={[styles.actionChipText, drink.isHidden ? styles.actionChipTextActive : null]}>
-                      {drink.isHidden ? "Versteckt" : "Verstecken"}
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => removeDrink(drink)}
-                    style={styles.removeChip}
-                    activeOpacity={0.8}
-                  >
-                    <Text style={styles.removeChipText}>Löschen</Text>
-                  </TouchableOpacity>
+                  <View style={styles.manageActions}>
+                    <TouchableOpacity
+                      onPress={() => toggleQuickAccess(drink)}
+                      style={[styles.actionChip, drink.quick ? styles.actionChipActive : null]}
+                      activeOpacity={0.85}
+                    >
+                      <Text style={[styles.actionChipText, drink.quick ? styles.actionChipTextActive : null]}>
+                        {drink.quick ? translate("Anzeigen", "Show") : translate("Hinzufügen", "Add")}
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => toggleHidden(drink)}
+                      style={[styles.actionChip, drink.isHidden ? styles.actionChipActive : null]}
+                      activeOpacity={0.85}
+                    >
+                      <Text style={[styles.actionChipText, drink.isHidden ? styles.actionChipTextActive : null]}>
+                        {drink.isHidden ? translate("Versteckt", "Hidden") : translate("Verstecken", "Hide")}
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => removeDrink(drink)}
+                      style={styles.removeChip}
+                      activeOpacity={0.8}
+                    >
+                      <Text style={styles.removeChipText}>{translate("Löschen", "Delete")}</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             ))}
 
             <View style={styles.formDivider} />
 
-            <Text style={styles.sectionTitle}>Eigenes Getränk anlegen</Text>
+            <Text style={styles.sectionTitle}>{translate("Eigenes Getränk anlegen", "Create a custom drink")}</Text>
             <View style={styles.formRow}>
               <TextInput
                 style={styles.formInput}
@@ -802,59 +830,57 @@ const DrinkCounter = () => {
                 activeOpacity={0.85}
               >
                 <Text style={[styles.actionChipText, form.quick ? styles.actionChipTextActive : null]}>
-                  {form.quick ? "Hinzufügen" : "Nicht hinzufügen"}
+                  {form.quick ? translate("Hinzufügen", "Add") : translate("Nicht hinzufügen", "Do not add")}
                 </Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={handleAddDrink} style={styles.addDrinkButton} activeOpacity={0.9}>
-              <Text style={styles.addDrinkButtonText}>Getränk hinzufügen</Text>
+              <Text style={styles.addDrinkButtonText}>{translate("Getränk hinzufügen", "Add drink")}</Text>
             </TouchableOpacity>
           </View>
         )}
       </ScrollView>
 
       <InfoText
-        header="Getränkezähler!"
-        rules={
-          "Tippe deine Lieblingsgetränke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenübersicht und Favoriten inklusive Promille-Trend."
-        }
+        header={translate("Getränkezähler!", "Drink Counter!")}
+        rules={translate("Tippe deine Lieblingsgetränke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenübersicht und Favoriten inklusive Promille-Trend.", "Tap your favourite drinks in quick access to log them.\n\nManage default drinks, hide them or create your own. The stats show your timeline, weekly overview, favourites and the BAC trend.")}
       />
       <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
-        <Text style={appStyles.infoButtonText}>ℹ</Text>
+        <Text style={appStyles.infoButtonText}>?</Text>
       </TouchableOpacity>
 
       <Modal visible={statsVisible} animationType="fade" transparent onRequestClose={closeStats}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
             <ScrollView contentContainerStyle={styles.modalContent} showsVerticalScrollIndicator={false}>
-              <Text style={styles.modalTitle}>Statistiken</Text>
+              <Text style={styles.modalTitle}>{translate("Statistiken", "Statistics")}</Text>
 
             <View style={styles.summaryRow}>
               <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Heute</Text>
+                <Text style={styles.summaryLabel}>{translate("Heute", "Today")}</Text>
                 <Text style={styles.summaryValue}>{todayStats.drinks}</Text>
-                <Text style={styles.summaryHint}>{Math.round(todayStats.grams)} g Alkohol</Text>
+                <Text style={styles.summaryHint}>{Math.round(todayStats.grams)} {translate("g Alkohol", "g of alcohol")}</Text>
               </View>
               <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Aktueller Pegel</Text>
+                <Text style={styles.summaryLabel}>{translate("Aktueller Pegel", "Current BAC")}</Text>
                 <Text style={styles.summaryValue}>{estimatedPromille.toFixed(2)}</Text>
                 <Text style={styles.summaryHint}>
                   {timelineTrend > 0
-                    ? `Trend steigt (+${timelineTrend.toFixed(2)})`
+                    ? `${translate("Trend steigt", "Trend rising")} (+${timelineTrend.toFixed(2)})`
                     : timelineTrend < 0
-                    ? `Trend faellt (${timelineTrend.toFixed(2)})`
-                    : "Trend stabil"}
+                    ? `${translate("Trend faellt", "Trend falling")} (${timelineTrend.toFixed(2)})`
+                    : translate("Trend stabil", "Trend steady")}
                 </Text>
               </View>
               <View style={styles.summaryCard}>
-                <Text style={styles.summaryLabel}>Beliebtester Drink</Text>
+                <Text style={styles.summaryLabel}>{translate("Beliebtester Drink", "Most popular drink")}</Text>
                 <Text style={styles.summaryValue}>{topDrink ? `${topDrink.icon} ${topDrink.name}` : "—"}</Text>
-                <Text style={styles.summaryHint}>{topDrink ? `${topDrink.count}x heute` : "Noch keine Daten"}</Text>
+                <Text style={styles.summaryHint}>{topDrink ? `${topDrink.count}x ${translate("heute", "today")}` : translate("Noch keine Daten", "No data yet")}</Text>
               </View>
             </View>
-            <Text style={styles.modalSubtitle}>Promille-Verlauf (24h)</Text>
+            <Text style={styles.modalSubtitle}>{translate("Promille-Verlauf (24h)", "BAC trend (24h)")}</Text>
             {promilleTimeline.length === 0 ? (
-              <Text style={styles.modalHint}>Noch keine Daten</Text>
+              <Text style={styles.modalHint}>{translate("Noch keine Daten", "No data yet")}</Text>
             ) : (
               <View style={styles.timelineWrapper}>
                 <View style={styles.timelineChart}>
@@ -882,40 +908,28 @@ const DrinkCounter = () => {
                   })}
                 </View>
                 <Text style={styles.timelineHint}>
-                  Peak: {promillePeak.toFixed(2)} Promille - durchschnittlicher Abstand {averageIntervalMinutes ? `${Math.round(averageIntervalMinutes)} min` : "-"}
+                  {translate("Peak", "Peak")}: {promillePeak.toFixed(2)} {translate("Promille", "‰")} – {translate("durchschnittlicher Abstand", "avg. spacing")} {averageIntervalMinutes ? `${Math.round(averageIntervalMinutes)} ${translate("min", "min")}` : "-"}
                 </Text>
               </View>
             )}
 
-            {recentDrinks.length > 0 && (
-              <TouchableOpacity
-                onPress={() => setEditRecent((prev) => !prev)}
-                style={[styles.editRecentButton, editRecent ? styles.editRecentButtonActive : null]}
-                activeOpacity={0.85}
-              >
-                <Text style={[styles.editRecentButtonLabel, editRecent ? styles.editRecentButtonLabelActive : null]}>
-                  {editRecent ? "Bearbeitung beenden" : "Letzte Getränke bearbeiten"}
-                </Text>
-              </TouchableOpacity>
-            )}
-
-            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Letzte 7 Tage</Text>
+<Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Letzte 7 Tage", "Last 7 days")}</Text>
             {calendarData.length === 0 ? (
-              <Text style={styles.modalHint}>Noch keine Daten</Text>
+              <Text style={styles.modalHint}>{translate("Noch keine Daten", "No data yet")}</Text>
             ) : (
               <View style={styles.calendarRow}>
                 {calendarData.map((day) => (
                   <View key={day.key} style={[styles.calendarCell, day.drinks > 0 ? styles.calendarCellActive : null]}>
-                    <Text style={styles.calendarDay}>{getWeekdayLabel(day.date)}</Text>
+                    <Text style={styles.calendarDay}>{getWeekdayLabel(day.date, language)}</Text>
                     <Text style={styles.calendarValue}>{day.drinks}</Text>
                   </View>
                 ))}
               </View>
             )}
 
-            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Beliebte Getränke</Text>
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Beliebte Getränke", "Popular drinks")}</Text>
             {drinkBreakdown.length === 0 ? (
-              <Text style={styles.modalHint}>Noch keine Eintraege</Text>
+              <Text style={styles.modalHint}>{translate("Noch keine Eintraege", "No entries yet")}</Text>
             ) : (
               <View style={styles.breakdownList}>
                 {drinkBreakdown.slice(0, 5).map((item) => (
@@ -941,37 +955,50 @@ const DrinkCounter = () => {
               </View>
             )}
 
-            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Letzte Eintraege</Text>
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Letzte Eintraege", "Recent entries")}</Text>
             {recentDrinks.length === 0 ? (
-              <Text style={styles.modalHint}>Noch nichts protokolliert</Text>
+              <Text style={styles.modalHint}>{translate("Noch nichts protokolliert", "Nothing logged yet")}</Text>
             ) : (
-              recentDrinks.map((entry) => (
-                <View key={entry.id} style={[styles.modalRow, styles.recentRow]}>
-                  <View style={styles.recentRowText}>
-                    <Text style={styles.modalRowLabel}>
-                      {entry.icon ? `${entry.icon} ` : ""}
-                      {entry.name}
-                    </Text>
-                    {editRecent && <Text style={styles.modalRowValueSecondary}>{formatTimeAgo(entry.timestamp)}</Text>}
+              <>
+                <TouchableOpacity
+                  onPress={() => setEditRecent((prev) => !prev)}
+                  style={[styles.editRecentButton, editRecent ? styles.editRecentButtonActive : null]}
+                  activeOpacity={0.85}
+                >
+                  <Text style={[styles.editRecentButtonLabel, editRecent ? styles.editRecentButtonLabelActive : null]}>
+                    {editRecent
+                      ? translate("Bearbeitung beenden", "Finish editing")
+                      : translate("Letzte Getränke bearbeiten", "Edit recent drinks")}
+                  </Text>
+                </TouchableOpacity>
+                {recentDrinks.map((entry) => (
+                  <View key={entry.id} style={[styles.modalRow, styles.recentRow]}>
+                    <View style={styles.recentRowText}>
+                      <Text style={styles.modalRowLabel}>
+                        {entry.icon ? `${entry.icon} ` : ""}
+                        {entry.name}
+                      </Text>
+                      {editRecent && <Text style={styles.modalRowValueSecondary}>{formatTimeAgo(entry.timestamp)}</Text>}
+                    </View>
+                    {editRecent ? (
+                      <TouchableOpacity
+                        onPress={() => handleRemoveLogEntry(entry.id)}
+                        style={styles.recentRemoveButton}
+                        activeOpacity={0.85}
+                      >
+                        <Text style={styles.recentRemoveButtonText}>{translate("Entfernen", "Remove")}</Text>
+                      </TouchableOpacity>
+                    ) : (
+                      <Text style={styles.modalRowValue}>{formatTimeAgo(entry.timestamp)}</Text>
+                    )}
                   </View>
-                  {editRecent ? (
-                    <TouchableOpacity
-                      onPress={() => handleRemoveLogEntry(entry.id)}
-                      style={styles.recentRemoveButton}
-                      activeOpacity={0.85}
-                    >
-                      <Text style={styles.recentRemoveButtonText}>Entfernen</Text>
-                    </TouchableOpacity>
-                  ) : (
-                    <Text style={styles.modalRowValue}>{formatTimeAgo(entry.timestamp)}</Text>
-                  )}
-                </View>
-              ))
+                ))}
+              </>
             )}
 
             </ScrollView>
             <TouchableOpacity onPress={closeStats} style={styles.closeModalButton} activeOpacity={0.85}>
-              <Text style={styles.closeModalButtonText}>Schließen</Text>
+              <Text style={styles.closeModalButtonText}>{translate("Schließen", "Close")}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -1206,7 +1233,7 @@ const styles = StyleSheet.create({
   },
   manageRow: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     marginBottom: 14,
   },
   manageIconPill: {
@@ -1223,6 +1250,7 @@ const styles = StyleSheet.create({
   },
   manageInfo: {
     flex: 1,
+    gap: 6,
   },
   manageName: {
     color: "white",
@@ -1233,11 +1261,14 @@ const styles = StyleSheet.create({
     color: "rgba(255,255,255,0.55)",
     fontSize: 12,
     marginTop: 2,
+    marginBottom: 6,
   },
   manageActions: {
     flexDirection: "row",
-    alignItems: "center",
+    flexWrap: "wrap",
     gap: 8,
+    marginTop: 8,
+    alignItems: "center",
   },
   actionChip: {
     borderRadius: 14,
