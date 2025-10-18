@@ -1,55 +1,133 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+﻿import React, { useState, useEffect, useMemo, useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 //Import der Datenbankvorlagen
 // import { getGameData } from './src/general'; // API_RESTORE_STEP: uncomment to fetch texts from the server again
-import { theOneSamplePrompts } from './src/data/picoloTexts';
-import { spinTheBottleTruthTexts } from './src/data/spinTheBottleTruth';
-import { spinTheBottleDareTexts } from './src/data/spinTheBottleDare';
-import { manyQuestionsSampleTexts } from './src/data/manyQuestionsTexts';
-import { activitySampleWords } from './src/data/activityWords';
+import { theOneSamplePrompts } from "./src/data/picoloTexts";
+import { spinTheBottleTruthTexts } from "./src/data/spinTheBottleTruth";
+import { spinTheBottleDareTexts } from "./src/data/spinTheBottleDare";
+import { manyQuestionsSampleTexts } from "./src/data/manyQuestionsTexts";
+import { activitySampleWords } from "./src/data/activityWords";
 
 //Import der Menus
-import StartMenu from './src/menus/StartMenu';
-import MainMenu from './src/menus/MainMenu';
-import AddPlayer from './src/menus/AddPlayer';
+import StartMenu from "./src/menus/StartMenu";
+import MainMenu from "./src/menus/MainMenu";
+import AddPlayer from "./src/menus/AddPlayer";
 
 //Import der Spiele
-import PicoloGame from './src/games/PicoloGame';
-import ManyQuestionsGame from './src/games/ManyQuestions';
-import Kingscup from './src/games/Kingscup';
-import MaexchenGame from './src/games/Maexchen';
-import DrinkCounter from './src/games/DrinkCounter';
-import Activity from './src/games/Activity';
-import SpinTheBottle from './src/games/SpinTheBottle';
-import HorseRace from './src/games/HorseRace';
+import PicoloGame from "./src/games/PicoloGame";
+import ManyQuestionsGame from "./src/games/ManyQuestions";
+import Kingscup from "./src/games/Kingscup";
+import MaexchenGame from "./src/games/Maexchen";
+import DrinkCounter from "./src/games/DrinkCounter";
+import Activity from "./src/games/Activity";
+import SpinTheBottle from "./src/games/SpinTheBottle";
+import HorseRace from "./src/games/HorseRace";
 
 //Import des Contextes -> Verwaltet globale Variablen
-import { VariablesContext } from './VariablesContext';
+import { VariablesContext } from "./VariablesContext";
 
 //Import von Hilfsfunktionen
-import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './src/games/sublements/AdjustParamShape';
+import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
 
-import { enableScreens } from 'react-native-screens';
+import { enableScreens } from "react-native-screens";
 enableScreens();
 
-//Import von db_backup
-// import {db_backup_texts_Picolo} from './src/db_backup'; // API_RESTORE_STEP: uncomment when switching back to API data
-// import {db_backup_textsWahrheitSpinTheBottle} from './src/db_backup';
-// import {db_backup_textsPflichtSpinTheBottle} from './src/db_backup';
-// import {db_backup_manyQuestions} from './src/db_backup';
-// import {db_backup_words} from './src/db_backup';
+const DEFAULT_DRINK_CATALOG = [
+  {
+    id: "beer-500",
+    name: "Bier 0.5l",
+    abv: 5,
+    volumeMl: 500,
+    quick: true,
+    isHidden: false,
+    color: "#F5C26B",
+    icon: "🍺",
+  },
+  {
+    id: "beer-330",
+    name: "Bier 0.33l",
+    abv: 5,
+    volumeMl: 330,
+    quick: false,
+    isHidden: false,
+    color: "#F1B24A",
+    icon: "🍻",
+  },
+  {
+    id: "wine-150",
+    name: "Wein 0.15l",
+    abv: 12,
+    volumeMl: 150,
+    quick: true,
+    isHidden: false,
+    color: "#D26B6B",
+    icon: "🍷",
+  },
+  {
+    id: "shot-40",
+    name: "Shot 4cl",
+    abv: 40,
+    volumeMl: 40,
+    quick: true,
+    isHidden: false,
+    color: "#C97F5F",
+    icon: "🥃",
+  },
+  {
+    id: "cocktail-250",
+    name: "Cocktail 0.25l",
+    abv: 14,
+    volumeMl: 250,
+    quick: true,
+    isHidden: false,
+    color: "#8BC6B9",
+    icon: "🍹",
+  },
+];
 
+const ensureDrinkCatalogDefaults = (catalog) => {
+  const fallbackById = Object.fromEntries(DEFAULT_DRINK_CATALOG.map((item) => [item.id, item]));
+  return catalog.map((drink, index) => {
+    const fallback = fallbackById[drink.id];
+    const normalized = {
+      ...fallback,
+      ...drink,
+    };
+    if (fallback) {
+      normalized.icon = drink.icon || fallback.icon;
+      normalized.color = drink.color || fallback.color;
+    } else {
+      normalized.icon = drink.icon || "🥤";
+      normalized.color = drink.color || DEFAULT_DRINK_CATALOG[index % DEFAULT_DRINK_CATALOG.length]?.color || "#F5C26B";
+    }
+    normalized.quick =
+      typeof drink.quick === "boolean"
+        ? drink.quick
+        : fallback && typeof fallback.quick === "boolean"
+        ? fallback.quick
+        : false;
+    normalized.isHidden = typeof drink.isHidden === "boolean" ? drink.isHidden : false;
+
+    if (normalized.id === "cocktail-250" && !normalized.isHidden) {
+      normalized.quick = true;
+    }
+
+    return normalized;
+  });
+};
 
 export default function App() {
-  const [theOnePrompts, setTheOnePrompts] = useState(() => [...theOneSamplePrompts]); // LOCAL_TEXTS: seeded from hardcoded sample file
+  const [theOnePrompts, setTheOnePrompts] = useState(() => [...theOneSamplePrompts]);
   const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(() => [...spinTheBottleTruthTexts]);
   const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(() => [...spinTheBottleDareTexts]);
   const [manyQuestions, setManyQuestions] = useState(() => [...manyQuestionsSampleTexts]);
   const [words, setWords] = useState(() => [...activitySampleWords]);
+  const [drinkCatalog, setDrinkCatalog] = useState(DEFAULT_DRINK_CATALOG);
+  const [drinkLog, setDrinkLog] = useState([]);
   const [theOneSettings, setTheOneSettings] = useState({
     currentDrunkenness: 4,
     desiredDrunkenness: 6,
@@ -57,81 +135,56 @@ export default function App() {
   });
 
   ////////////////////////////////////////////////////////
-  /////////// Daten aus db_backup.js  ////////////////////
-  ////////////////////////////////////////////////////////
-  // API_DISABLED: state is now seeded from ./src/data sample files while the API is offline.
-  /* API_RESTORE_STEP: Remove this comment block to hydrate state from db_backup when re-enabling the API.
-  useEffect(() => {
-    setTheOnePrompts(db_backup_texts_Picolo)
-    setTextsWahrheitSpinTheBottle(db_backup_textsWahrheitSpinTheBottle)
-    setTextsPflichtSpinTheBottle(db_backup_textsPflichtSpinTheBottle)
-    setManyQuestions(db_backup_manyQuestions)
-    setWords(db_backup_words)
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
-  */
-
-  ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
   ////////////////////////////////////////////////////////
 
-  //Allgemeine Funktion zum Laden aus dem Gerâ”œÃ±tespeicher
   const loadFromDisk = async (setter, item) => {
     try {
       const response = await AsyncStorage.getItem(item);
-      if(response){
-        const ret = JSON.parse(response);
-        setter(ret)
+      if (response) {
+        setter(JSON.parse(response));
       }
     } catch (error) {
-        console.error('Fehler beim Laden', error);
+      console.error("Fehler beim Laden", error);
     }
-  }
+  };
 
-  //Relikt zum Lâ”œÃ‚schen der Items: AsyncStorage.setItem("drinkTypes", JSON.stringify([]));
-
-  const [drinkTypes, setDrinkTypes] = useState([]); 
   useEffect(() => {
-    loadFromDisk(setDrinkTypes, "drinkTypes");
-    //TODO: Wird hier nicht â”œâ•berschrieben falls DB-Anfrage zu lange dauert?
     loadFromDisk(setTheOnePrompts, "texts_Picolo");
     loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
     loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
     loadFromDisk(setManyQuestions, "manyQuestions");
     loadFromDisk(setWords, "words");
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
+  }, []);
 
-
-  
-  ////////////////////////////////////////////////////////
-  ///////////////////// SQL-ABFRAGEN  ////////////////////
-  ////////////////////////////////////////////////////////
-  
-  //LOAD FROM API and SAFE TO DISK
-  // API_DISABLED: remote fetches are paused while local sample texts are active.
-  /* API_RESTORE_STEP: Remove this comment block to fetch texts from the API again.
   useEffect(() => {
-    // new API routes
-    getGameData("texts_Picolo", setTheOnePrompts, "theOne");
-    getGameData("textsWahrheitSpinTheBottle", setTextsWahrheitSpinTheBottle, "bottleSpinTruth");
-    getGameData("textsPflichtSpinTheBottle", setTextsPflichtSpinTheBottle, "bottleSpinDare");
-    getGameData("manyQuestions", setManyQuestions, "manyQuestions");
-    getGameData("words", setWords, "activity")
-  }, []) // Das leere Dependency-Array stellt sicher, dass dies nur beim Mounten ausgefâ”œâ•hrt wird
-  */
+    const loadDrinkData = async () => {
+      try {
+        const catalogRaw = await AsyncStorage.getItem("drinkCounter_catalog");
+        const logRaw = await AsyncStorage.getItem("drinkCounter_log");
+        if (catalogRaw) {
+          const parsed = JSON.parse(catalogRaw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setDrinkCatalog(ensureDrinkCatalogDefaults(parsed));
+          } else {
+            setDrinkCatalog(DEFAULT_DRINK_CATALOG);
+          }
+        }
+        if (logRaw) {
+          setDrinkLog(JSON.parse(logRaw));
+        }
+      } catch (error) {
+        console.error("Fehler beim Laden der Getraenkedaten", error);
+      }
+    };
+    loadDrinkData();
+  }, []);
 
-  //TODO: Falls API nicht erreichbar: Daten aus lokalem Gerâ”œÃ±tespeicher holen
-  // -> Vielleicht auch einfach immer?
-  //TODO: Initial-Arrays im Code in extra Datei hinterlegen falls beim ersten Start kein Internet da ist
-
-
-  //Fâ”œâ•r Menus
   const Stack = createStackNavigator();
-  
-  //Globale Variablen aus Context
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
-  const [players, setPlayers] = useState([]);  
-  const [language, setLanguage] = useState('de');
+  const [players, setPlayers] = useState([]);
+  const [language, setLanguage] = useState("de");
 
   const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
 
@@ -140,10 +193,12 @@ export default function App() {
       value={{
         settingsVisible,
         setSettingsVisible,
-        drinkTypes,
-        setDrinkTypes,
         infoVisible,
         setInfoVisible,
+        drinkCatalog,
+        setDrinkCatalog,
+        drinkLog,
+        setDrinkLog,
         players,
         setPlayers,
         language,
@@ -152,49 +207,37 @@ export default function App() {
         setTheOneSettings,
         theOnePrompts,
         setTheOnePrompts,
+        manyQuestions,
+        setManyQuestions,
       }}
     >
       <View style={{ flex: 1 }}>
         <NavigationContainer>
-          
-          <Stack.Navigator 
+          <Stack.Navigator
             initialRouteName="StartMenu"
             screenOptions={{
               cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
               headerShown: false,
             }}
           >
-          <Stack.Screen name="StartMenu" component={StartMenu} />
-          <Stack.Screen name="MainMenu" component={MainMenu} />
-          <Stack.Screen name="AddPlayer" component={AddPlayer} />
-          
-          <Stack.Screen 
-              name="PicoloGame" 
-              component={PicoloGame}
-              initialParams={{ theOneData: theOnePrompts }} 
-          />
-          <Stack.Screen 
-              name="ManyQuestionsGame" 
-              component={ManyQuestionsGame}
-              initialParams={{ manyQuestionsData: shuffledManyQuestions }} 
-          />
-          <Stack.Screen name="Kingscup" component={Kingscup} />
-          <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-          <Stack.Screen 
-              name="Activity" 
-              component={Activity}
-              initialParams={{ words: words }} 
-          />
-          <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
-          <Stack.Screen 
-              name="SpinTheBottle" 
-              component={SpinTheBottle} 
-              initialParams={{textsWahrheitSpinTheBottle: textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle: textsPflichtSpinTheBottle}}
-          />
-          <Stack.Screen name="HorseRace" component={HorseRace} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <LanguageToggle />
+            <Stack.Screen name="StartMenu" component={StartMenu} />
+            <Stack.Screen name="MainMenu" component={MainMenu} />
+            <Stack.Screen name="AddPlayer" component={AddPlayer} />
+            <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: theOnePrompts }} />
+            <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
+            <Stack.Screen name="Kingscup" component={Kingscup} />
+            <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+            <Stack.Screen name="Activity" component={Activity} initialParams={{ words }} />
+            <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
+            <Stack.Screen
+              name="SpinTheBottle"
+              component={SpinTheBottle}
+              initialParams={{ textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle }}
+            />
+            <Stack.Screen name="HorseRace" component={HorseRace} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <LanguageToggle />
       </View>
     </VariablesContext.Provider>
   );
@@ -202,31 +245,30 @@ export default function App() {
 
 const LanguageToggle = () => {
   const { language, setLanguage } = useContext(VariablesContext);
-  const toggleLanguage = () => setLanguage(prev => (prev === 'de' ? 'en' : 'de'));
+  const toggleLanguage = () => setLanguage((prev) => (prev === "de" ? "en" : "de"));
   return (
     <TouchableOpacity style={languageStyles.toggle} onPress={toggleLanguage} activeOpacity={0.8}>
-      <Text style={languageStyles.toggleLabel}>{language === 'de' ? 'DE' : 'EN'}</Text>
+      <Text style={languageStyles.toggleLabel}>{language === "de" ? "DE" : "EN"}</Text>
     </TouchableOpacity>
   );
 };
 
 const languageStyles = StyleSheet.create({
   toggle: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 24,
     right: 24,
-    backgroundColor: 'rgba(0,0,0,0.75)',
+    backgroundColor: "rgba(0,0,0,0.75)",
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.6)',
+    borderColor: "rgba(255,255,255,0.6)",
   },
   toggleLabel: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 14,
     letterSpacing: 1,
   },
 });
-

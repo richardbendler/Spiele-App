@@ -77,6 +77,7 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
+  const nextButtonLabel = language === 'de' ? 'Moderator: Naechste Karte' : 'Moderator: Next card';
   const infoText = t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
 
@@ -84,13 +85,20 @@ const PicoloGame = ({ route }) => {
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={[appStyles.completeScreenGameContainer, { backgroundColor }]}>
         <View style={appStyles.gameContainer}>
-          <TouchableOpacity
-            onPress={showNextQuestion}
-            style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}
+          <View
+            style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 }}
           >
             <Text style={appStyles.textHeader2}>{categoryLabel}</Text>
             <Question question={hasQuestions ? displayedText : noPromptMessage} />
-          </TouchableOpacity>
+          </View>
+          {hasQuestions ? (
+            <TouchableOpacity
+              onPress={showNextQuestion}
+              style={[appStyles.gameActionButton, { marginTop: 16 }]}
+            >
+              <Text style={appStyles.gameActionButtonText}>{nextButtonLabel}</Text>
+            </TouchableOpacity>
+          ) : null}
         </View>
         {hasQuestions ? (
           <HandleFeedback texts={questions} textsIndex={currentIndex} table={'game_klassiker_questions'} />
