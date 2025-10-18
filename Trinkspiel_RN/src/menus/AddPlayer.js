@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback, useMemo } from "react";
+import React, { useState, useContext, useCallback, useMemo, useEffect, useRef } from "react";
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, Alert, ScrollView, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 import { VariablesContext } from "../../VariablesContext";
@@ -42,11 +42,18 @@ const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
   );
 });
 
-let player_id = 0;
-
 const AddPlayer = ({ navigation }) => {
   const { players, setPlayers, theOneSettings, setTheOneSettings } = useContext(VariablesContext);
   const { t } = useTranslation();
+  const nextIdRef = useRef(0);
+
+  useEffect(() => {
+    const highestId = players.reduce((max, player) =>
+      player?.id != null ? Math.max(max, Number(player.id)) : max,
+      -1
+    );
+    nextIdRef.current = highestId >= 0 ? highestId + 1 : 0;
+  }, [players]);
 
   const addPlayerText = useMemo(() => t("addPlayer"), [t]);
   const drinkingScale = useMemo(() => t("scales.drunkenness"), [t]);
@@ -76,12 +83,17 @@ const AddPlayer = ({ navigation }) => {
 
   const handleAddPlayer = useCallback(
     (name) => {
-      const nextId = player_id;
-      player_id += 1;
+      const nextId = nextIdRef.current;
+      nextIdRef.current += 1;
       setPlayers((prev) => [...prev, { id: nextId, name, drinks: true }]);
     },
     [setPlayers]
   );
+
+  const handleClearPlayers = useCallback(() => {
+    setPlayers([]);
+    nextIdRef.current = 0;
+  }, [setPlayers]);
 
   const startGame = () => {
     if (players.length >= 2) {
@@ -118,6 +130,16 @@ const AddPlayer = ({ navigation }) => {
             ))
           )}
         </View>
+
+        {players.length > 0 ? (
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={handleClearPlayers}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.clearButtonText}>{addPlayerText.clearAll}</Text>
+          </TouchableOpacity>
+        ) : null}
 
         <View style={styles.sliderCard}>
           <Text style={styles.sliderTitle}>{t("addPlayer.sliderCurrent")}</Text>
@@ -261,6 +283,21 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
+  },
+  clearButton: {
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.6)',
+  },
+  clearButtonText: {
+    color: '#E5C185',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    letterSpacing: 0.5,
   },
   cardHeader: {
     flexDirection: "row",

@@ -26,6 +26,7 @@ import DrinkCounter from "./src/games/DrinkCounter";
 import Activity from "./src/games/Activity";
 import SpinTheBottle from "./src/games/SpinTheBottle";
 import HorseRace from "./src/games/HorseRace";
+import WhoWouldLikelyGame from "./src/games/WhoWouldLikely";
 
 //Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from "./VariablesContext";
@@ -180,6 +181,34 @@ export default function App() {
     loadDrinkData();
   }, []);
 
+  useEffect(() => {
+    const loadStoredPlayers = async () => {
+      try {
+        const storedPlayers = await AsyncStorage.getItem('theOne_players');
+        if (storedPlayers) {
+          const parsed = JSON.parse(storedPlayers);
+          if (Array.isArray(parsed)) {
+            setPlayers(parsed);
+          }
+        }
+      } catch (error) {
+        console.error('Fehler beim Laden der Spielernamen', error);
+      }
+    };
+    loadStoredPlayers();
+  }, []);
+
+  useEffect(() => {
+    const persistPlayers = async () => {
+      try {
+        await AsyncStorage.setItem('theOne_players', JSON.stringify(players));
+      } catch (error) {
+        console.error('Fehler beim Speichern der Spielernamen', error);
+      }
+    };
+    persistPlayers();
+  }, [players]);
+
   const Stack = createStackNavigator();
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
@@ -225,6 +254,7 @@ export default function App() {
             <Stack.Screen name="AddPlayer" component={AddPlayer} />
             <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: theOnePrompts }} />
             <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
+            <Stack.Screen name="WhoWouldLikelyGame" component={WhoWouldLikelyGame} />
             <Stack.Screen name="Kingscup" component={Kingscup} />
             <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
             <Stack.Screen name="Activity" component={Activity} initialParams={{ words }} />

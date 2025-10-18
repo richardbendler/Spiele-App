@@ -1,5 +1,5 @@
-﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+﻿import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
+import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -50,6 +50,12 @@ const PicoloGame = ({ route }) => {
     [rawPrompts, theOneSettings, players]
   );
   const [currentIndex, setCurrentIndex] = useState(0);
+  const revealAnim = useRef(new Animated.Value(0)).current;
+  const [contentVisible, setContentVisible] = useState(false);
+
+  const targetRotation = revealAnim.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
+  const targetScale = revealAnim.interpolate({ inputRange: [0, 0.5, 1], outputRange: [0.6, 1.05, 1] });
+  const targetOpacity = revealAnim.interpolate({ inputRange: [0, 0.3, 1], outputRange: [0.2, 0.6, 1] });
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -57,6 +63,21 @@ const PicoloGame = ({ route }) => {
 
   const hasQuestions = questions.length > 0;
   const currentQuestion = hasQuestions ? questions[currentIndex] : null;
+  useEffect(() => {
+    if (!hasQuestions) {
+      setContentVisible(false);
+      return;
+    }
+    setContentVisible(false);
+    revealAnim.setValue(0);
+    Animated.timing(revealAnim, {
+      toValue: 1,
+      duration: 600,
+      easing: Easing.out(Easing.ease),
+      useNativeDriver: true,
+    }).start(() => setContentVisible(true));
+  }, [hasQuestions, currentIndex, revealAnim]);
+
 
   const categoryLabel =
     currentQuestion?.pool?.label?.[language] ?? currentQuestion?.pool?.label?.de ?? '';
@@ -80,6 +101,7 @@ const PicoloGame = ({ route }) => {
   const nextButtonLabel = language === 'de' ? 'Moderator: Naechste Karte' : 'Moderator: Next card';
   const infoText = t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
+  const revealHint = t('theOne.revealHint');
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -88,8 +110,26 @@ const PicoloGame = ({ route }) => {
           <View
             style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 }}
           >
-            <Text style={appStyles.textHeader2}>{categoryLabel}</Text>
-            <Question question={hasQuestions ? displayedText : noPromptMessage} />
+            <Animated.View
+              style={[
+                styles.categoryTarget,
+                {
+                  transform: [{ rotate: targetRotation }, { scale: targetScale }],
+                  opacity: targetOpacity,
+                },
+              ]}
+            >
+              <Text style={styles.categoryLabel}>{categoryLabel}</Text>
+            </Animated.View>
+            {hasQuestions ? (
+              contentVisible ? (
+                <Question question={displayedText} />
+              ) : (
+                <Text style={styles.revealHint}>{revealHint}</Text>
+              )
+            ) : (
+              <Text style={styles.revealHint}>{noPromptMessage}</Text>
+            )}
           </View>
           {hasQuestions ? (
             <TouchableOpacity
@@ -112,6 +152,36 @@ const PicoloGame = ({ route }) => {
     </ImageBackground>
   );
 };
+
+
+const styles = StyleSheet.create({
+  categoryTarget: {
+    width: 160,
+    height: 160,
+    borderRadius: 80,
+    borderWidth: 3,
+    borderColor: 'rgba(255,255,255,0.35)',
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  categoryLabel: {
+    color: 'white',
+    fontFamily: 'Quicksand_300Bold',
+    fontSize: 18,
+    textAlign: 'center',
+    paddingHorizontal: 12,
+  },
+  revealHint: {
+    marginTop: 16,
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 14,
+    fontFamily: 'Quicksand_300Light',
+    textAlign: 'center',
+    lineHeight: 20,
+  },
+});
 
 export default PicoloGame;
 

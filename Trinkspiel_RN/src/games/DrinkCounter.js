@@ -1,12 +1,25 @@
 ﻿import React, { useContext, useMemo, useState, useCallback, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, TextInput, Modal } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+  TextInput,
+  Modal,
+  BackHandler,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { VariablesContext } from "../../VariablesContext";
 import InfoText from "./sublements/InfoText";
 import { appStyles } from "../../styles";
 
 const ALCOHOL_DENSITY = 0.789; // g/ml
-const METABOLISM_PER_HOUR = 0.015; // g/dL per hour
+const METABOLISM_PER_HOUR = 0.012; // g/dL per hour (~0.12 promille/h elimination)
 const BODY_WATER = 0.68; // average distribution ratio
 const BODY_WEIGHT_KG = 75; // average adult weight
 
@@ -15,6 +28,12 @@ const METABOLISM_PER_HOUR_PROMILLE = METABOLISM_PER_HOUR * 10;
 const TIMELINE_WINDOW_HOURS = 24;
 const TIMELINE_POINTS = 12;
 const EMOJI_REGEX = /\p{Extended_Pictographic}/u;
+
+const isFabric = global?.nativeFabricUIManager != null;
+
+if (!isFabric && Platform.OS === "android" && typeof UIManager.setLayoutAnimationEnabledExperimental === "function") {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const DEFAULT_ICON = "🥤";
 const ICON_BY_ID = {
@@ -33,6 +52,44 @@ const NAME_ICON_SUGGESTIONS = [
   { pattern: /sekt|prosecco|champagner/i, icon: "🥂" },
   { pattern: /biermix|radler|shandy/i, icon: "🍻" },
   { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🥤" },
+];
+
+const PROMILLE_MESSAGE_BANDS = [
+  {
+    max: 0.2,
+    messages: [
+      "Glasklar unterwegs – Wasser dazu passt perfekt.",
+      "Noch nüchtern? Dann genieß den Überblick!",
+    ],
+  },
+  {
+    max: 0.5,
+    messages: [
+      "Leicht beschwingt – vielleicht kurz durchschnaufen?",
+      "Der Abend rollt langsam los. Schnapp dir einen Snack!",
+    ],
+  },
+  {
+    max: 0.8,
+    messages: [
+      "Jetzt gut hydratisiert bleiben, dann bleibt’s entspannt.",
+      "Laune top, Pegel steigt – Wasser nicht vergessen.",
+    ],
+  },
+  {
+    max: 1.2,
+    messages: [
+      "Ganz schön auf Tour! Mach mal kurz Pause und atme durch.",
+      "Zeit für eine Runde Wasser und frische Luft.",
+    ],
+  },
+  {
+    max: Infinity,
+    messages: [
+      "Achtung, sehr hoch! Couch, Wasser und Snacks sind jetzt deine Crew.",
+      "Alarmstufe Rot – gönn dir eine längere Pause und viel Wasser.",
+    ],
+  },
 ];
 
 const formatDateKey = (value) => {
@@ -54,6 +111,13 @@ const DrinkCounter = () => {
   const [manageExpanded, setManageExpanded] = useState(false);
   const [form, setForm] = useState({ name: "", abv: "5", volume: "500", quick: true });
   const [editRecent, setEditRecent] = useState(false);
+  const [bacDetailsOpen, setBacDetailsOpen] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
+  const closeStats = useCallback(() => {
+    setStatsVisible(false);
+    setEditRecent(false);
+    setBacDetailsOpen(false);
+  }, []);
 
   const guessIconForName = useCallback((name) => {
     if (!name) {
@@ -142,10 +206,34 @@ const DrinkCounter = () => {
   }, [drinkCatalog, persistCatalog, resolveIcon]);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(Date.now());
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (!statsVisible && editRecent) {
       setEditRecent(false);
     }
   }, [statsVisible, editRecent]);
+
+  useEffect(() => {
+    if (drinkLog.length === 0 && bacDetailsOpen) {
+      setBacDetailsOpen(false);
+    }
+  }, [drinkLog, bacDetailsOpen]);
+
+  useEffect(() => {
+    if (!statsVisible) {
+      return undefined;
+    }
+    const subscription = BackHandler.addEventListener("hardwareBackPress", () => {
+      closeStats();
+      return true;
+    });
+    return () => subscription.remove();
+  }, [statsVisible, closeStats]);
   const drinkCounts = useMemo(() => {
     const counts = {};
     drinkLog.forEach((entry) => {
@@ -164,57 +252,102 @@ const DrinkCounter = () => {
     });
   }, [drinkCatalog]);
 
-  const computePromilleAt = useCallback(
+  const calculatePromilleDetails = useCallback(
     (timestampMs) => {
+      const details = {
+        currentPromille: 0,
+        totalRawPromille: 0,
+        totalEliminatedPromille: 0,
+        entries: [],
+        timestamp: timestampMs,
+        firstDrinkTimestamp: null,
+        lastDrinkTimestamp: null,
+      };
+
       if (!drinkLog.length) {
-        return 0;
+        return details;
       }
+
       const weightGrams = BODY_WEIGHT_KG * 1000;
-      let total = 0;
+
       drinkLog.forEach((entry) => {
         const entryTime = new Date(entry.timestamp).getTime();
-        const hoursSince = (timestampMs - entryTime) / (1000 * 60 * 60);
-        if (hoursSince < 0) {
+        if (Number.isNaN(entryTime) || entryTime > timestampMs) {
           return;
         }
+        details.firstDrinkTimestamp =
+          details.firstDrinkTimestamp == null ? entryTime : Math.min(details.firstDrinkTimestamp, entryTime);
+        details.lastDrinkTimestamp =
+          details.lastDrinkTimestamp == null ? entryTime : Math.max(details.lastDrinkTimestamp, entryTime);
+
+        const hoursSince = Math.max((timestampMs - entryTime) / (1000 * 60 * 60), 0);
         const gramsOfAlcohol = entry.volumeMl * (entry.abv / 100) * ALCOHOL_DENSITY;
-        const rawBac = (gramsOfAlcohol / (BODY_WATER * weightGrams)) * 100;
-        const reduced = rawBac - METABOLISM_PER_HOUR * hoursSince;
-        if (reduced > 0) {
-          total += reduced;
-        }
+        const rawBac = (gramsOfAlcohol / (BODY_WATER * weightGrams)) * 100; // g/dL
+        const eliminationBac = Math.min(rawBac, hoursSince * METABOLISM_PER_HOUR);
+        const remainingBac = Math.max(rawBac - eliminationBac, 0);
+
+        const rawPromille = rawBac * 10;
+        const eliminatedPromille = eliminationBac * 10;
+        const remainingPromille = remainingBac * 10;
+
+        details.totalRawPromille += rawPromille;
+        details.totalEliminatedPromille += eliminatedPromille;
+        details.currentPromille += remainingPromille;
+
+        details.entries.push({
+          id: entry.id ?? `${entry.drinkId}-${entry.timestamp}`,
+          drinkId: entry.drinkId,
+          name: entry.name,
+          icon: entry.icon,
+          timestamp: entryTime,
+          hoursSince,
+          gramsOfAlcohol,
+          rawPromille,
+          eliminatedPromille,
+          remainingPromille,
+        });
       });
-      return Math.max(total * 10, 0);
+
+      details.entries.sort((a, b) => b.timestamp - a.timestamp);
+      return details;
     },
     [drinkLog]
   );
 
-  const calculatePromille = useCallback(() => computePromilleAt(Date.now()), [computePromilleAt]);
+  const computePromilleAt = useCallback(
+    (timestampMs) => calculatePromilleDetails(timestampMs).currentPromille,
+    [calculatePromilleDetails]
+  );
 
-  const estimatedPromille = useMemo(() => calculatePromille(), [calculatePromille]);
+  const bacSummary = useMemo(
+    () => calculatePromilleDetails(now),
+    [calculatePromilleDetails, now]
+  );
+
+  const estimatedPromille = bacSummary.currentPromille;
 
   const totalAlcoholGrams = useMemo(() => {
-    return drinkLog.reduce((sum, entry) => sum + entry.volumeMl * (entry.abv / 100) * ALCOHOL_DENSITY, 0);
-  }, [drinkLog]);
+    return bacSummary.entries.reduce((sum, entry) => sum + entry.gramsOfAlcohol, 0);
+  }, [bacSummary]);
 
   const promilleTimeline = useMemo(() => {
     if (drinkLog.length === 0) {
       return [];
     }
     const sorted = [...drinkLog].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-    const now = Date.now();
+    const currentTimestamp = now;
     const earliest = new Date(sorted[0].timestamp).getTime();
-    const windowStart = Math.max(earliest, now - TIMELINE_WINDOW_HOURS * 60 * 60 * 1000);
-    const duration = Math.max(now - windowStart, 60 * 60 * 1000);
+    const windowStart = Math.max(earliest, currentTimestamp - TIMELINE_WINDOW_HOURS * 60 * 60 * 1000);
+    const duration = Math.max(currentTimestamp - windowStart, 60 * 60 * 1000);
     const step = duration / TIMELINE_POINTS;
 
     const points = [];
     for (let i = 0; i <= TIMELINE_POINTS; i += 1) {
-      const time = Math.min(windowStart + step * i, now);
+      const time = Math.min(windowStart + step * i, currentTimestamp);
       points.push({ time, value: computePromilleAt(time) });
     }
     return points;
-  }, [computePromilleAt, drinkLog]);
+  }, [computePromilleAt, drinkLog, now]);
 
   const timelineMax = useMemo(() => {
     if (promilleTimeline.length === 0) {
@@ -309,6 +442,40 @@ const DrinkCounter = () => {
     return calendarData.find((day) => day.key === todayKey) || { drinks: 0, grams: 0 };
   }, [calendarData]);
 
+  const firstDrinkTime = bacSummary.firstDrinkTimestamp;
+  const lastDrinkTime = bacSummary.lastDrinkTimestamp;
+  const timeSinceFirstDrink = firstDrinkTime ? now - firstDrinkTime : null;
+  const timeSinceLastDrink = lastDrinkTime ? now - lastDrinkTime : null;
+  const projectedSoberDurationMs =
+    estimatedPromille > 0 ? (estimatedPromille / METABOLISM_PER_HOUR_PROMILLE) * 60 * 60 * 1000 : 0;
+  const projectedSoberTimestamp = projectedSoberDurationMs ? now + projectedSoberDurationMs : null;
+
+  const bacHintMessage = useMemo(() => {
+    if (estimatedPromille <= 0) {
+      return "Aktuell alles nüchtern – cheers mit Wasser!";
+    }
+    const band =
+      PROMILLE_MESSAGE_BANDS.find((entry) => estimatedPromille <= entry.max) ||
+      PROMILLE_MESSAGE_BANDS[PROMILLE_MESSAGE_BANDS.length - 1];
+    if (!band || !band.messages || band.messages.length === 0) {
+      return "";
+    }
+    const rotationIndex = Math.abs(Math.floor(now / 60000)) % band.messages.length;
+    return band.messages[rotationIndex];
+  }, [estimatedPromille, now]);
+
+  const rawPromille = bacSummary.totalRawPromille;
+  const eliminatedPromille = bacSummary.totalEliminatedPromille;
+  const remainingPromille = bacSummary.currentPromille;
+  const remainingPercentage = rawPromille > 0 ? (remainingPromille / rawPromille) * 100 : 0;
+  const eliminatedPercentage = rawPromille > 0 ? 100 - remainingPercentage : 0;
+  const recentPromilleEntries = useMemo(() => bacSummary.entries.slice(0, 3), [bacSummary]);
+
+  const toggleBacDetails = useCallback(() => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setBacDetailsOpen((prev) => !prev);
+  }, []);
+
   const handleLogDrink = (drink) => {
     const entry = {
       id: `log-${Date.now()}`,
@@ -395,6 +562,25 @@ const DrinkCounter = () => {
     return `${diffDays} d`;
   };
 
+  const formatDuration = (durationMs) => {
+    if (durationMs == null || durationMs < 0) {
+      return "-";
+    }
+    if (durationMs < 60 * 1000) {
+      return "unter 1 Min.";
+    }
+    const totalMinutes = Math.floor(durationMs / 60000);
+    if (totalMinutes < 60) {
+      return `${totalMinutes} Min.`;
+    }
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (minutes === 0) {
+      return `${hours} Std.`;
+    }
+    return `${hours} Std. ${minutes} Min.`;
+  };
+
   const formatTimeLabel = useCallback((timestamp) => {
     const date = new Date(timestamp);
     const hours = String(date.getHours()).padStart(2, "0");
@@ -416,12 +602,6 @@ const DrinkCounter = () => {
       });
   }, [drinkCatalog, drinkLog, resolveIcon]);
 
-  const totalDrinks = drinkLog.length;
-  const closeStats = () => {
-    setStatsVisible(false);
-    setEditRecent(false);
-  };
-
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
       <View style={styles.overlay} />
@@ -431,23 +611,82 @@ const DrinkCounter = () => {
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.headerRow}>
           <View>
-            <Text style={styles.screenTitle}>Getraenkezaehler</Text>
+            <Text style={styles.screenTitle}>Getränkezähler</Text>
             <Text style={styles.screenSubtitle}>Behalte im Blick, was du heute getrunken hast.</Text>
           </View>
         </View>
 
-        <View style={styles.bacCard}>
-          <Text style={styles.bacLabel}>Geschaetzter Alkoholpegel</Text>
-          <Text style={styles.bacValue}>{estimatedPromille.toFixed(2)} Promille</Text>
-          <Text style={styles.bacHint}>
-            {estimatedPromille < 0.3
-              ? "Alles entspannt."
-              : estimatedPromille < 0.8
-              ? "Langsam merkt man den Pegel. Trink etwas Wasser."
-              : "Sehr hoch! Bitte mach eine Pause."}
+        <TouchableOpacity
+          onPress={toggleBacDetails}
+          activeOpacity={0.9}
+          style={[styles.bacCard, bacDetailsOpen ? styles.bacCardExpanded : null]}
+        >
+          <View style={styles.bacHeaderRow}>
+            <Text style={styles.bacLabel}>Geschätzter Alkoholpegel</Text>
+            <Text style={styles.bacToggleHint}>{bacDetailsOpen ? "Tippe, um Details zu schließen" : "Tippe für Details"}</Text>
+          </View>
+          <View style={styles.bacValueRow}>
+            <Text style={styles.bacValue}>{`${estimatedPromille.toFixed(2)} \u2030`}</Text>
+            {projectedSoberTimestamp ? (
+              <Text style={styles.bacMeta}>≈ nüchtern in {formatDuration(projectedSoberDurationMs)}</Text>
+            ) : null}
+          </View>
+          <Text style={styles.bacHint}>{bacHintMessage}</Text>
+          <Text style={styles.bacMeta}>
+            Durchschnittlicher Abbau: ca. {METABOLISM_PER_HOUR_PROMILLE.toFixed(2)} \u2030 pro Stunde.
           </Text>
-          <Text style={styles.bacMeta}>Durchschnittlicher Abbau: ca. {METABOLISM_PER_HOUR_PROMILLE.toFixed(2)} Promille pro Stunde.</Text>
-        </View>
+          {bacDetailsOpen ? (
+            <View style={styles.bacDetails}>
+              <View style={styles.bacDetailsRow}>
+                <Text style={styles.bacDetailsLabel}>Aufgenommen</Text>
+                <Text style={styles.bacDetailsValue}>{totalAlcoholGrams.toFixed(1)} g Alkohol</Text>
+              </View>
+              <View style={styles.bacDetailsRow}>
+                <Text style={styles.bacDetailsLabel}>Abgebaut</Text>
+                <Text style={styles.bacDetailsValue}>
+                  {`${eliminatedPromille.toFixed(2)} \u2030`} ({eliminatedPercentage.toFixed(0)} %)
+                </Text>
+              </View>
+              <View style={styles.bacDetailsRow}>
+                <Text style={styles.bacDetailsLabel}>Letzter Drink</Text>
+                <Text style={styles.bacDetailsValue}>
+                  {lastDrinkTime
+                    ? `${formatDuration(timeSinceLastDrink)} · ${formatTimeLabel(lastDrinkTime)}`
+                    : "-"}
+                </Text>
+              </View>
+              <View style={styles.bacDetailsRow}>
+                <Text style={styles.bacDetailsLabel}>Erster Drink</Text>
+                <Text style={styles.bacDetailsValue}>
+                  {firstDrinkTime
+                    ? `${formatDuration(timeSinceFirstDrink)} · ${formatTimeLabel(firstDrinkTime)}`
+                    : "-"}
+                </Text>
+              </View>
+              {recentPromilleEntries.length > 0 ? (
+                <View style={styles.bacDetailsList}>
+                  {recentPromilleEntries.map((entry) => {
+                    const icon = entry.icon || resolveIcon({ id: entry.drinkId, name: entry.name });
+                    const durationLabel = formatDuration(now - entry.timestamp);
+                    const durationText = durationLabel === "-" ? "-" : `vor ${durationLabel}`;
+                    return (
+                      <View key={entry.id} style={styles.bacDetailsEntry}>
+                        <Text style={styles.bacDetailsEntryIcon}>{icon}</Text>
+                        <View style={styles.bacDetailsEntryText}>
+                          <Text style={styles.bacDetailsEntryTitle}>{entry.name}</Text>
+                          <Text style={styles.bacDetailsEntryMeta}>
+                            {durationText} | +{entry.rawPromille.toFixed(2)} \u2030 ->{" "}
+                            {entry.remainingPromille.toFixed(2)} \u2030
+                          </Text>
+                        </View>
+                      </View>
+                    );
+                  })}
+                </View>
+              ) : null}
+            </View>
+          ) : null}
+        </TouchableOpacity>
 
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Schnellauswahl</Text>
@@ -481,7 +720,7 @@ const DrinkCounter = () => {
           activeOpacity={0.8}
         >
           <Text style={styles.manageToggleText}>
-            {manageExpanded ? "Verstecken" : "Getraenke verwalten"}
+            {manageExpanded ? "Verstecken" : "Getränke verwalten"}
           </Text>
         </TouchableOpacity>
 
@@ -503,7 +742,7 @@ const DrinkCounter = () => {
                     activeOpacity={0.85}
                   >
                     <Text style={[styles.actionChipText, drink.quick ? styles.actionChipTextActive : null]}>
-                      {drink.quick ? "Anzeigen" : "Hinzufuegen"}
+                      {drink.quick ? "Anzeigen" : "Hinzufügen"}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -528,7 +767,7 @@ const DrinkCounter = () => {
 
             <View style={styles.formDivider} />
 
-            <Text style={styles.sectionTitle}>Eigenes Getraenk anlegen</Text>
+            <Text style={styles.sectionTitle}>Eigenes Getränk anlegen</Text>
             <View style={styles.formRow}>
               <TextInput
                 style={styles.formInput}
@@ -563,28 +802,28 @@ const DrinkCounter = () => {
                 activeOpacity={0.85}
               >
                 <Text style={[styles.actionChipText, form.quick ? styles.actionChipTextActive : null]}>
-                  {form.quick ? "Hinzufuegen" : "Nicht hinzufuegen"}
+                  {form.quick ? "Hinzufügen" : "Nicht hinzufügen"}
                 </Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={handleAddDrink} style={styles.addDrinkButton} activeOpacity={0.9}>
-              <Text style={styles.addDrinkButtonText}>Getraenk hinzufuegen</Text>
+              <Text style={styles.addDrinkButtonText}>Getränk hinzufügen</Text>
             </TouchableOpacity>
           </View>
         )}
       </ScrollView>
 
       <InfoText
-        header="Getraenkezaehler!"
+        header="Getränkezähler!"
         rules={
-          "Tippe deine Lieblingsgetraenke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenuebersicht und Favoriten inklusive Promille-Trend."
+          "Tippe deine Lieblingsgetränke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenübersicht und Favoriten inklusive Promille-Trend."
         }
       />
       <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
         <Text style={appStyles.infoButtonText}>ℹ</Text>
       </TouchableOpacity>
 
-      <Modal visible={statsVisible} animationType="fade" transparent>
+      <Modal visible={statsVisible} animationType="fade" transparent onRequestClose={closeStats}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
             <ScrollView contentContainerStyle={styles.modalContent} showsVerticalScrollIndicator={false}>
@@ -613,18 +852,6 @@ const DrinkCounter = () => {
                 <Text style={styles.summaryHint}>{topDrink ? `${topDrink.count}x heute` : "Noch keine Daten"}</Text>
               </View>
             </View>
-            {recentDrinks.length > 0 && (
-              <TouchableOpacity
-                onPress={() => setEditRecent((prev) => !prev)}
-                style={[styles.editRecentButton, editRecent ? styles.editRecentButtonActive : null]}
-                activeOpacity={0.85}
-              >
-                <Text style={[styles.editRecentButtonLabel, editRecent ? styles.editRecentButtonLabelActive : null]}>
-                  {editRecent ? "Bearbeitung beenden" : "Letzte Getraenke bearbeiten"}
-                </Text>
-              </TouchableOpacity>
-            )}
-
             <Text style={styles.modalSubtitle}>Promille-Verlauf (24h)</Text>
             {promilleTimeline.length === 0 ? (
               <Text style={styles.modalHint}>Noch keine Daten</Text>
@@ -660,6 +887,18 @@ const DrinkCounter = () => {
               </View>
             )}
 
+            {recentDrinks.length > 0 && (
+              <TouchableOpacity
+                onPress={() => setEditRecent((prev) => !prev)}
+                style={[styles.editRecentButton, editRecent ? styles.editRecentButtonActive : null]}
+                activeOpacity={0.85}
+              >
+                <Text style={[styles.editRecentButtonLabel, editRecent ? styles.editRecentButtonLabelActive : null]}>
+                  {editRecent ? "Bearbeitung beenden" : "Letzte Getränke bearbeiten"}
+                </Text>
+              </TouchableOpacity>
+            )}
+
             <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Letzte 7 Tage</Text>
             {calendarData.length === 0 ? (
               <Text style={styles.modalHint}>Noch keine Daten</Text>
@@ -674,7 +913,7 @@ const DrinkCounter = () => {
               </View>
             )}
 
-            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Beliebte Getraenke</Text>
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>Beliebte Getränke</Text>
             {drinkBreakdown.length === 0 ? (
               <Text style={styles.modalHint}>Noch keine Eintraege</Text>
             ) : (
@@ -732,7 +971,7 @@ const DrinkCounter = () => {
 
             </ScrollView>
             <TouchableOpacity onPress={closeStats} style={styles.closeModalButton} activeOpacity={0.85}>
-              <Text style={styles.closeModalButtonText}>Schliessen</Text>
+              <Text style={styles.closeModalButtonText}>Schließen</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -797,27 +1036,92 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.06)",
   },
+  bacCardExpanded: {
+    paddingBottom: 26,
+  },
+  bacHeaderRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   bacLabel: {
-    color: "rgba(255,255,255,0.6)",
+    color: "rgba(255,255,255,0.65)",
     fontSize: 13,
     fontFamily: "Quicksand_300Light",
+  },
+  bacToggleHint: {
+    color: "rgba(255,255,255,0.35)",
+    fontSize: 11,
+    fontFamily: "Quicksand_300Light",
+  },
+  bacValueRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    marginTop: 6,
   },
   bacValue: {
     fontSize: 36,
     color: "white",
     fontFamily: "Quicksand_300Bold",
-    marginTop: 4,
   },
   bacHint: {
-    color: "rgba(255,255,255,0.55)",
+    color: "rgba(255,255,255,0.6)",
     fontSize: 12,
-    marginTop: 8,
+    marginTop: 10,
     lineHeight: 18,
   },
   bacMeta: {
     color: "rgba(255,255,255,0.45)",
     fontSize: 11,
     marginTop: 6,
+  },
+  bacDetails: {
+    marginTop: 18,
+    borderTopWidth: 1,
+    borderTopColor: "rgba(255,255,255,0.08)",
+    paddingTop: 14,
+    gap: 12,
+  },
+  bacDetailsRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  bacDetailsLabel: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Light",
+  },
+  bacDetailsValue: {
+    color: "white",
+    fontSize: 12,
+    fontFamily: "Quicksand_300Bold",
+  },
+  bacDetailsList: {
+    marginTop: 4,
+    gap: 10,
+  },
+  bacDetailsEntry: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  bacDetailsEntryIcon: {
+    fontSize: 20,
+  },
+  bacDetailsEntryText: {
+    flex: 1,
+  },
+  bacDetailsEntryTitle: {
+    color: "white",
+    fontSize: 13,
+    fontFamily: "Quicksand_300Bold",
+  },
+  bacDetailsEntryMeta: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 11,
+    marginTop: 2,
   },
   sectionHeader: {
     marginBottom: 12,
