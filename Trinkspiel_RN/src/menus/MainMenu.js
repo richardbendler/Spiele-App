@@ -20,6 +20,7 @@ const translationKeyMap = {
   Getraenkezaehler: 'drinkCounter',
   HorseRace: 'horseRace',
   Kopfpoker: 'kopfpoker',
+  PartyBoardGame: 'partyBoard',
 };
 
 const navigationMap = {
@@ -31,6 +32,12 @@ const navigationMap = {
   WerWuerde: 'WhoWouldLikelyGame',
   Getraenkezaehler: 'DrinkCounter',
   HorseRace: 'HorseRace',
+  PartyBoardGame: 'AddPlayer',
+};
+
+const nextGameMap = {
+  'The One': { nextGame: 'PicoloGame', showScales: true },
+  PartyBoardGame: { nextGame: 'PartyBoardGame', showScales: false },
 };
 
 import { useTranslation } from '../i18n';
@@ -43,6 +50,7 @@ function MainMenu({ navigation }) {
   const [gameParameters, setGameParameters] = useState('');
   const [gameDescription, setGameDescription] = useState('');
   const [navigateAction, setNavigateAction] = useState('');
+  const [navigateParams, setNavigateParams] = useState(null);
 
   const { t } = useTranslation();
 
@@ -72,6 +80,8 @@ function MainMenu({ navigation }) {
     setGameParameters(game.parameters)
     setGameDescription(game.description);
     setNavigateAction(game.navigateTo);
+    const config = nextGameMap[gameKey];
+    setNavigateParams(config ? { ...config } : null);
     setModalVisible(true);
   };
 
@@ -87,14 +97,14 @@ function MainMenu({ navigation }) {
     setBackgroundAspectRatio(aspectRatio);
   };
 
-  // Berechnen der Breite des Hintergrundbildes basierend auf dem SeitenverhÃ¤ltnis
+  // Berechnen der Breite des Hintergrundbildes basierend auf dem Seitenverh+-ltnis
   const backgroundImageWidth = windowHeight * backgroundAspectRatio;
 
   return (
     <View style={{alignItems: 'flex-start'}}>
       <ScrollView
         horizontal={true}
-        pagingEnabled={false} // Optional, fÃ¼r ein "Seiten"-Ã¤hnliches Scrollen
+        pagingEnabled={false} // Optional, f+-+r ein "Seiten"-+-hnliches Scrollen
         showsHorizontalScrollIndicator={true} // Versteckt die horizontale Scroll-Leiste
       >
         <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
@@ -107,10 +117,10 @@ function MainMenu({ navigation }) {
             {/*<View style={appStyles.menuContainer}>*/}
               
               <View style={{
-                width: backgroundImageWidth, // Stellt sicher, dass die MenÃ¼-Container die gleiche Breite wie das Hintergrundbild haben
+                width: backgroundImageWidth, // Stellt sicher, dass die Men+-+-Container die gleiche Breite wie das Hintergrundbild haben
                 flexDirection: 'row',
-                justifyContent: 'space-around', // Anpassen nach Bedarf fÃ¼r die Platzierung der MenÃ¼buttons
-                alignItems: 'center', // Zentriert die MenÃ¼buttons vertikal
+                justifyContent: 'space-around', // Anpassen nach Bedarf f+-+r die Platzierung der Men+-+buttons
+                alignItems: 'center', // Zentriert die Men+-+buttons vertikal
               }}>
                 <Settings/>
 
@@ -245,47 +255,48 @@ function MainMenu({ navigation }) {
 
                     
 
-                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '10%', top: '106%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '0%', top: '106%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
                       </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['SpinTheBottle'].title}</Text>
-                      </View>
+                      <View style={{ width: '100%', alignItems: 'center' }}><Text style={appStyles.bottleText}>{gameDescriptions['SpinTheBottle'].title}</Text></View>
                     </TouchableOpacity>
 
-                    
 
-                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={{position: 'absolute', left: '34%', top: '106%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={{position: 'absolute', left: '20%', top: '106%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_010.png')} style={appStyles.bottleButton} />
                       </View>
                       <View style={{ width: '100%', alignItems: 'center' }}>
                         <Text style={appStyles.bottleText}>{gameDescriptions['MaexchenGame'].title}</Text>
-
                       </View>
                     </TouchableOpacity>
-                    
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '57%', top: '106%', width: '17%', height: '30%'}}>
+
+                    <TouchableOpacity onPress={() => openModalWithGame('PartyBoardGame')} style={{position: 'absolute', left: '40%', top: '106%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
+                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={appStyles.bottleButton} />
                       </View>
                       <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Kopfpoker'].title}</Text>
+                        <Text style={appStyles.bottleText}>{gameDescriptions['PartyBoardGame'].title}</Text>
                       </View>
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '79%', top: '106%', width: '17%', height: '30%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('WerWuerde')} style={{position: 'absolute', left: '60%', top: '106%', width: '17%', height: '30%'}}>
+                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
+                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={appStyles.bottleButton} />
+                      </View>
+                      <View style={{ width: '100%', alignItems: 'center' }}>
+                        <Text style={appStyles.bottleText}>{gameDescriptions['WerWuerde'].title}</Text>
+                      </View>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '80%', top: '106%', width: '17%', height: '30%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
                         <Image source={require('../../assets/images/bottles/bottle_008.png')} style={appStyles.bottleButton} />
                         <View style={appStyles.bottleButtonComingSoonBadge}>
-
                           <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
                         </View>
                       </View>
@@ -295,11 +306,10 @@ function MainMenu({ navigation }) {
                     </TouchableOpacity>
 
 
+{/* ------------------------------ EXTRA ------------------------------- */}
 
-                    {/* ------------------------------ EXTRA ------------------------------- */}
 
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Getraenkezaehler')} style={{position: 'absolute', left: '3%', top: '170%', width: '17%', height: '25%'}}>
+                    <TouchableOpacity onPress={() => openModalWithGame('Getraenkezaehler')} style={{position: 'absolute', left: '5%', top: '170%', width: '17%', height: '25%'}}>
                       <View style={{ width: '100%', alignItems: 'center' }}>
                         <Text style={[appStyles.bottleText, { fontSize: 10, color: '#E5C185', letterSpacing: 1 }]}>{newBadgeLabel}</Text>
                         <Text style={appStyles.bottleText}>{gameDescriptions['Getraenkezaehler'].title}</Text>
@@ -309,13 +319,15 @@ function MainMenu({ navigation }) {
                       </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => openModalWithGame('WerWuerde')} style={{position: 'absolute', left: '23%', top: '170%', width: '17%', height: '25%'}}>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={[appStyles.bottleText, { fontSize: 10, color: '#E5C185', letterSpacing: 1 }]}>{newBadgeLabel}</Text>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['WerWuerde'].title}</Text>
-                      </View>
+                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '60%', top: '170%', width: '17%', height: '25%'}}>
                       <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={appStyles.bottleButton} />
+                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={appStyles.bottleButton} />
+                        <View style={appStyles.bottleButtonComingSoonBadge}>
+                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
+                        </View>
+                      </View>
+                      <View style={{ width: '100%', alignItems: 'center' }}>
+                        <Text style={appStyles.bottleText}>{gameDescriptions['Kopfpoker'].title}</Text>
                       </View>
                     </TouchableOpacity>
                     
@@ -324,16 +336,20 @@ function MainMenu({ navigation }) {
                 </View>
 
 
-                {/* Modal fÃ¼r Spielbeschreibungen */}
+                {/* Modal f+-+r Spielbeschreibungen */}
                 <Modal
                   animationType="slide"
                   transparent={true}
                   visible={modalVisible}
                   onRequestClose={() => {
                     setModalVisible(!modalVisible);
+                    setNavigateParams(null);
                   }}
                 >
-                  <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                  <TouchableWithoutFeedback onPress={() => {
+                    setModalVisible(false);
+                    setNavigateParams(null);
+                  }}>
                     <View style={appStyles.modalOverlay}>
                       <TouchableWithoutFeedback onPress={() => {}}>
                         <View style={appStyles.modalView}>
@@ -348,7 +364,8 @@ function MainMenu({ navigation }) {
                               style={[appStyles.chalkboardButtonPrimaryColor]}
                               onPress={() => {
                                 setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction);
+                                navigation.navigate(navigateAction, navigateParams ?? undefined);
+                                setNavigateParams(null);
                               }}
                             >
                               <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>{commonCopy.startGame}</Text>
@@ -358,7 +375,8 @@ function MainMenu({ navigation }) {
                               style={[appStyles.chalkboardButtonGrey]}
                               onPress={() => {
                                 setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction);
+                                navigation.navigate(navigateAction, navigateParams ?? undefined);
+                                setNavigateParams(null);
                               }}
                               disabled={true}
                             >
@@ -369,7 +387,10 @@ function MainMenu({ navigation }) {
 
                           <TouchableOpacity
                             style={appStyles.closeButton}
-                            onPress={() => setModalVisible(false)}
+                            onPress={() => {
+                              setModalVisible(false);
+                              setNavigateParams(null);
+                            }}
                           >
                             <Text style={{color: 'white'}}>X</Text>
                           </TouchableOpacity>
@@ -386,7 +407,7 @@ function MainMenu({ navigation }) {
 
             {/*SettingsButton*/}
             {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                <Text style={appStyles.settingsButtonText}>âš™ï¸</Text>
+                <Text style={appStyles.settingsButtonText}>+++--</Text>
             </TouchableOpacity>*/}
           </View>
         </View>
@@ -402,6 +423,12 @@ function MainMenu({ navigation }) {
 
 
 export default MainMenu;
+
+
+
+
+
+
 
 
 

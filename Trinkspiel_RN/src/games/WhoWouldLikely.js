@@ -54,7 +54,7 @@ const WhoWouldLikelyGame = () => {
           </TouchableOpacity>
         </View>
 
-        <InfoText header="Wer würde am ehesten?" rules={copy.info} />
+        <InfoText header={copy.infoTitle} rules={copy.info} />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>

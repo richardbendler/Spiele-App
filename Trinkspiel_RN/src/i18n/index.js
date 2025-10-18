@@ -13,6 +13,7 @@ const translations = {
       players: 'Spieler*innen',
     },
     addPlayer: {
+      screenTitle: 'Spieler hinzufügen',
       inputTitle: 'Namen eingeben',
       inputSubtitle: 'Bitte gib die Namen aller Mitspielenden ein!',
       placeholder: 'Hier einen Namen eingeben',
@@ -63,10 +64,12 @@ const translations = {
       remove: 'Entfernen',
     },
     theOne: {
+      infoTitle: 'The One!',
       info:
         'Bestimmt eine Moderatorin oder einen Moderator. Diese Person behaelt das Handy, liest jede Aufgabe vor und tippt auf Weiter. Die Karten passen sich wie gewohnt eurem Pegel, Ziel und Vibe an.',
       noEligiblePrompt:
         'Es gibt aktuell keine Aufgaben, die zu euren Einstellungen passen. Passt die Filter an oder fügt neue Aufgaben hinzu.',
+      revealHint: 'Tippe, um die Karte aufzudecken.',
     },
     infoModal: {
       close: 'Schließen',
@@ -148,6 +151,11 @@ const translations = {
           parameters: 'Trinklevel: ★★☆☆☆ (2/5)\nKennenlernen: ★★☆☆☆ (2/5)',
           description: 'Der Klassiker mit Karten auf der Stirn. Bald verfügbar.',
         },
+        partyBoard: {
+          title: 'Partybrett',
+          parameters: 'Trinklevel: 3/5\nKennenlernen: 2/5',
+          description: 'Wuerfelt euch ueber das Brett, sammelt Muenzen und Sterne und spielt Minispiele fuer die Zugreihenfolge.',
+        },
         drinkCounter: {
           title: 'Getraenkezaehler',
           parameters: 'Praktisches Extra',
@@ -165,12 +173,19 @@ const translations = {
       dareLabel: 'Pflicht!',
     },
     manyQuestions: {
+      infoTitle: '1000 Fragen!',
       end: 'Ihr seid am Ende der Fragen angekommen!',
       next: 'Nächste Aussage',
       rules:
         'Eine Person startet und liest die Frage leise für sich. Danach gibt sie das Handy verdeckt an die Person weiter, auf die die Aussage am ehesten zutrifft. Die gewählte Person kann überlegen, ob die Aussage auf eine andere Person besser passt. Sobald eine Person akzeptiert oder zum zweiten Mal das Handy hat, muss sie vorlesen und trinken. Danach macht diese Person mit der nächsten Aussage weiter.',
     },
+    picoloGame: {
+      nextButton: 'Moderator: Naechste Karte',
+      infoTitle: 'The One!',
+      revealHint: 'Tippe auf die Karte, um sie aufzudecken.',
+    },
     whoWould: {
+      infoTitle: 'Wer wuerde am ehesten?',
       info:
         'Lest die Aussage laut vor. Zählt gemeinsam bis drei und zeigt gleichzeitig auf die Person, auf die sie am ehesten zutrifft. Wer die meisten Stimmen bekommt, trinkt – oder denkt sich eine kleine Aufgabe für die Runde aus. Wechselt reihum, wer vorliest.',
       next: 'Nächste Aussage',
@@ -196,6 +211,7 @@ const translations = {
       players: 'Players',
     },
     addPlayer: {
+      screenTitle: 'Add Players',
       inputTitle: 'Enter names',
       inputSubtitle: 'Please enter the names of everyone who is playing!',
       placeholder: 'Type a name',
@@ -246,10 +262,12 @@ const translations = {
       remove: 'Remove',
     },
     theOne: {
+      infoTitle: 'The One!',
       info:
         'Choose one moderator who keeps the phone, reads each prompt aloud, and taps Next. The prompts still adapt to how tipsy you are, your target level, and how well you all know each other.',
       noEligiblePrompt:
         'No prompts match your current settings. Adjust the sliders or add more prompts.',
+      revealHint: 'Tap to flip the next card.',
     },
     infoModal: {
       close: 'Close',
@@ -331,6 +349,11 @@ const translations = {
           parameters: 'Drink level: ★★☆☆☆ (2/5)\nGetting to know each other: ★★☆☆☆ (2/5)',
           description: 'The classic card-on-the-forehead bluff. Coming soon.',
         },
+        partyBoard: {
+          title: 'Party Board',
+          parameters: 'Drink level: 3/5\nGetting to know each other: 2/5',
+          description: 'Roll across the board, collect coins and stars, and play mini games to decide the next turn order.',
+        },
         drinkCounter: {
           title: 'Drink Counter',
           parameters: 'Practical extra',
@@ -348,12 +371,19 @@ const translations = {
       dareLabel: 'Dare!',
     },
     manyQuestions: {
+      infoTitle: '1000 Questions!',
       end: 'You have reached the end of the questions!',
       next: 'Next statement',
       rules:
         'One person starts and reads the statement silently. Pass the phone face down to whoever it fits best. That person can redirect it if it fits someone else better. Once someone accepts or the phone returns to them, they read it aloud, drink, and draw the next statement.',
     },
+    picoloGame: {
+      nextButton: 'Moderator: Next card',
+      infoTitle: 'The One!',
+      revealHint: 'Tap to reveal the card.',
+    },
     whoWould: {
+      infoTitle: 'Who Would Most Likely?',
       info:
         'Read the prompt aloud. Count down from three and point at the person it fits best. Whoever gets the most votes drinks – or sets a fun mini challenge. Rotate who reads the next card.',
       next: 'Next prompt',

@@ -36,6 +36,7 @@ const buildDisplayText = (entry, language) => {
 const PicoloGame = ({ route }) => {
   const { t, language } = useTranslation();
   const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts } = useContext(VariablesContext);
+  const copy = useMemo(() => t('picoloGame'), [t]);
 
   const rawPrompts = useMemo(() => {
     const routeData = route.params?.theOneData;
@@ -98,10 +99,10 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
-  const nextButtonLabel = language === 'de' ? 'Moderator: Naechste Karte' : 'Moderator: Next card';
-  const infoText = t('theOne.info');
+  const nextButtonLabel = copy?.nextButton ?? (language === 'de' ? 'Moderator: Naechste Karte' : 'Moderator: Next card');
+  const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
-  const revealHint = t('theOne.revealHint');
+  const revealHint = copy?.revealHint ?? t('theOne.revealHint');
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -144,7 +145,7 @@ const PicoloGame = ({ route }) => {
           <HandleFeedback texts={questions} textsIndex={currentIndex} table={'game_klassiker_questions'} />
         ) : null}
 
-        <InfoText header={'The One!'} rules={infoText} />
+        <InfoText header={copy?.infoTitle ?? 'The One!'} rules={infoText} />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>

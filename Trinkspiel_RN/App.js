@@ -27,6 +27,7 @@ import Activity from "./src/games/Activity";
 import SpinTheBottle from "./src/games/SpinTheBottle";
 import HorseRace from "./src/games/HorseRace";
 import WhoWouldLikelyGame from "./src/games/WhoWouldLikely";
+import PartyBoardGame from "./src/games/PartyBoardGame";
 
 //Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from "./VariablesContext";
@@ -265,6 +266,7 @@ export default function App() {
               initialParams={{ textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle }}
             />
             <Stack.Screen name="HorseRace" component={HorseRace} />
+            <Stack.Screen name="PartyBoardGame" component={PartyBoardGame} />
           </Stack.Navigator>
         </NavigationContainer>
         <LanguageToggle />

@@ -1,8 +1,9 @@
-﻿import React, { useState, useContext, useRef, useMemo } from 'react';
+﻿import React, { useState, useContext, useRef, useCallback, useMemo } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import { VariablesContext } from '../../VariablesContext';
+import { useTranslation } from '../i18n';
 
 const diceImages = {
   1: require('../../assets/images/wuerfel_1.png'),
@@ -13,39 +14,121 @@ const diceImages = {
   6: require('../../assets/images/wuerfel_6.png'),
 };
 
-const RANKING = [
-  { value: '21', label: 'Mäxchen' },
-  { value: '66', label: 'Pasch 6' },
-  { value: '55', label: 'Pasch 5' },
-  { value: '44', label: 'Pasch 4' },
-  { value: '33', label: 'Pasch 3' },
-  { value: '22', label: 'Pasch 2' },
-  { value: '11', label: 'Pasch 1' },
-  { value: '65', label: '' },
-  { value: '64', label: '' },
-  { value: '63', label: '' },
-  { value: '62', label: '' },
-  { value: '61', label: '' },
-  { value: '54', label: '' },
-  { value: '53', label: '' },
-  { value: '52', label: '' },
-  { value: '51', label: '' },
-  { value: '43', label: '' },
-  { value: '42', label: '' },
-  { value: '41', label: '' },
-  { value: '32', label: '' },
+const RANKING_VALUES = [
+  '21',
+  '66',
+  '55',
+  '44',
+  '33',
+  '22',
+  '11',
+  '65',
+  '64',
+  '63',
+  '62',
+  '61',
+  '54',
+  '53',
+  '52',
+  '51',
+  '43',
+  '42',
+  '41',
+  '32',
 ];
 
-const describeRoll = (first, second) => {
-  const high = Math.max(first, second);
-  const low = Math.min(first, second);
-  if (high === 2 && low === 1) {
-    return 'Mäxchen (21)';
+const HIDDEN_SYMBOL = '?';
+
+const buildCopy = (language) => {
+  if (language === 'en') {
+    return {
+      title: 'Mäxchen',
+      tagline: 'Bluff, trust, and call bluffs when you dare.',
+      phases: {
+        ready: {
+          headline: 'Ready to roll',
+          body: 'The active player rolls in secret and keeps the result hidden. Shield the screen so nobody peeks.',
+        },
+        showing: {
+          headline: 'Remember your result',
+          body: 'Your roll: {{combination}}. Decide what to announce, cover the dice, and pass the phone along.',
+        },
+        hidden: {
+          headline: 'Pass it on & bluff',
+          body: 'Announce a higher value than the one you heard. The next player can believe you and roll – or challenge.',
+        },
+        revealed: {
+          headline: 'Revealed!',
+          body: 'It was actually {{combination}}. Whoever guessed wrong drinks. Then start a fresh round.',
+        },
+      },
+      buttons: {
+        roll: 'Roll dice',
+        hide: 'Cover & pass on',
+        trust: 'I believe you – I roll',
+        reveal: 'Challenge & reveal',
+        restart: 'Start a new round',
+      },
+      combo: {
+        maexchen: 'Mäxchen (21)',
+        pair: 'Double {{value}}',
+      },
+      resultLabel: 'Your roll: {{value}}',
+      ranking: {
+        title: 'Ranking (high → low)',
+        maexchen: 'Mäxchen',
+        pair: 'Double {{value}}',
+        default: '',
+      },
+      infoTitle: 'Mäxchen!',
+      rules:
+        'Roll in turn while keeping the result to yourself. Cover the dice and pass the phone on. The next player must name a higher value than the one they heard – either because they beat it or by bluffing.\n\nDice results are read as two-digit numbers with the higher digit first. Doubles beat normal numbers. The highest result is Mäxchen (2 and 1). If you challenge and are right, you hand out a drink; if you are wrong, you drink instead.',
+    };
   }
-  if (high === low) {
-    return `Pasch ${high}${low}`;
-  }
-  return `${high}${low}`;
+
+  return {
+    title: 'Mäxchen',
+    tagline: 'Blufft, glaubt – und zweifelt, wenn ihr mutig seid.',
+    phases: {
+      ready: {
+        headline: 'Bereit zum Würfeln',
+        body: 'Die Person am Zug würfelt verdeckt und behält das Ergebnis für sich. Halte den Bildschirm bedeckt, damit niemand mitschaut.',
+      },
+      showing: {
+        headline: 'Ergebnis merken',
+        body: 'Dein Wurf: {{combination}}. Überlege, was du ansagst, verdecke die Würfel und gib das Handy weiter.',
+      },
+      hidden: {
+        headline: 'Weitergeben & bluffen',
+        body: 'Sag einen höheren Wert an als zuletzt gehört. Die nächste Person darf dir glauben und würfeln – oder dich anzweifeln.',
+      },
+      revealed: {
+        headline: 'Aufgedeckt!',
+        body: 'Es wurde tatsächlich {{combination}}. Wer falsch lag, trinkt. Startet dann eine neue Runde.',
+      },
+    },
+    buttons: {
+      roll: 'Würfeln',
+      hide: 'Verdecken & weitergeben',
+      trust: 'Ich glaube dir – ich würfle',
+      reveal: 'Anzweifeln & aufdecken',
+      restart: 'Neue Runde starten',
+    },
+    combo: {
+      maexchen: 'Mäxchen (21)',
+      pair: 'Pasch {{value}}',
+    },
+    resultLabel: 'Dein Wurf: {{value}}',
+    ranking: {
+      title: 'Rangfolge (hoch → niedrig)',
+      maexchen: 'Mäxchen',
+      pair: 'Pasch {{value}}',
+      default: '',
+    },
+    infoTitle: 'Mäxchen!',
+    rules:
+      'Würfelt reihum so, dass nur ihr selbst das Ergebnis seht. Verdeckt die Würfel und gebt das Handy weiter. Die nächste Person muss einen höheren Wert nennen, als sie gehört hat – entweder weil sie es schafft oder indem sie blufft.\n\nWürfelergebnisse werden immer zur zweistelligen Zahl mit der höheren Ziffer vorne. Pasche schlagen normale Zahlen. Das höchste Ergebnis ist Mäxchen (2 und 1). Wer anzweifelt und Recht hat, verteilt einen Schluck; wer sich irrt, trinkt selbst.',
+  };
 };
 
 const MaexchenGame = () => {
@@ -54,6 +137,8 @@ const MaexchenGame = () => {
   const [phase, setPhase] = useState('ready');
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { t, language } = useTranslation();
+  const copy = useMemo(() => buildCopy(language), [language]);
 
   const spin = useMemo(
     () =>
@@ -87,57 +172,60 @@ const MaexchenGame = () => {
     setPhase('ready');
   };
 
-  const combinationLabel = useMemo(() => describeRoll(diceOne, diceTwo), [diceOne, diceTwo]);
+  const getCombinationLabel = useCallback(
+    (first, second) => {
+      const high = Math.max(first, second);
+      const low = Math.min(first, second);
+      if (high === 2 && low === 1) {
+        return copy.combo.maexchen;
+      }
+      if (high === low) {
+        return copy.combo.pair.replace('{{value}}', String(high));
+      }
+      return `${high}${low}`;
+    },
+    [copy]
+  );
+
+  const combinationLabel = useMemo(
+    () => getCombinationLabel(diceOne, diceTwo),
+    [diceOne, diceTwo, getCombinationLabel]
+  );
 
   const phaseInfo = useMemo(() => {
-    switch (phase) {
-      case 'showing':
-        return {
-          headline: 'Ergebnis merken',
-          body: `Dein Wurf: ${combinationLabel}. Überlege, was du ansagst, verdecke die Würfel und gib das Handy weiter.`,
-        };
-      case 'hidden':
-        return {
-          headline: 'Weitergeben & bluffen',
-          body: 'Sag einen höheren Wert an als zuletzt gehört. Die nächste Person darf dir glauben und würfeln – oder dich anzweifeln.',
-        };
-      case 'revealed':
-        return {
-          headline: 'Aufgedeckt!',
-          body: `Es wurde tatsächlich ${combinationLabel}. Wer falsch lag, trinkt. Startet dann eine neue Runde.`,
-        };
-      default:
-        return {
-          headline: 'Bereit zum Würfeln',
-          body: 'Die Person am Zug würfelt verdeckt und behält das Ergebnis für sich. Halte den Bildschirm bedeckt, damit niemand mitschaut.',
-        };
-    }
-  }, [phase, combinationLabel]);
+    const templates = copy.phases;
+    const current = templates[phase] ?? templates.ready;
+    const replaceCombination = (text) => text.replace('{{combination}}', combinationLabel);
+    return {
+      headline: current.headline,
+      body: replaceCombination(current.body),
+    };
+  }, [copy, phase, combinationLabel]);
 
   const renderPrimaryButton = () => {
     switch (phase) {
       case 'ready':
         return (
           <TouchableOpacity onPress={rollDice} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>Würfeln</Text>
+            <Text style={appStyles.gameActionButtonText}>{copy.buttons.roll}</Text>
           </TouchableOpacity>
         );
       case 'showing':
         return (
           <TouchableOpacity onPress={hideDice} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>Verdecken & weitergeben</Text>
+            <Text style={appStyles.gameActionButtonText}>{copy.buttons.hide}</Text>
           </TouchableOpacity>
         );
       case 'hidden':
         return (
           <TouchableOpacity onPress={rollDice} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>Ich glaube dir – ich würfle</Text>
+            <Text style={appStyles.gameActionButtonText}>{copy.buttons.trust}</Text>
           </TouchableOpacity>
         );
       case 'revealed':
         return (
           <TouchableOpacity onPress={resetRound} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>Neue Runde starten</Text>
+            <Text style={appStyles.gameActionButtonText}>{copy.buttons.restart}</Text>
           </TouchableOpacity>
         );
       default:
@@ -151,19 +239,37 @@ const MaexchenGame = () => {
     }
     return (
       <TouchableOpacity onPress={revealDice} style={styles.secondaryButton}>
-        <Text style={styles.secondaryButtonText}>Anzweifeln & aufdecken</Text>
+        <Text style={styles.secondaryButtonText}>{copy.buttons.reveal}</Text>
       </TouchableOpacity>
     );
   };
 
   const showDiceFaces = phase !== 'hidden';
 
+  const resultText = useMemo(
+    () => copy.resultLabel.replace('{{value}}', combinationLabel),
+    [copy, combinationLabel]
+  );
+
+  const rankingLabel = useCallback(
+    (value) => {
+      if (value === '21') {
+        return copy.ranking.maexchen;
+      }
+      if (value[0] === value[1]) {
+        return copy.ranking.pair.replace('{{value}}', value[0]);
+      }
+      return copy.ranking.default;
+    },
+    [copy]
+  );
+
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.headerRow}>
-          <Text style={appStyles.textHeader1}>Mäxchen</Text>
-          <Text style={styles.subHeadline}>Blufft, glaubt – und zweifelt, wenn ihr mutig seid.</Text>
+          <Text style={appStyles.textHeader1}>{copy.title}</Text>
+          <Text style={styles.subHeadline}>{copy.tagline}</Text>
         </View>
 
         <View style={styles.phaseCard}>
@@ -175,17 +281,20 @@ const MaexchenGame = () => {
           {[diceOne, diceTwo].map((value, index) => (
             <View key={`dice-${index}`} style={[styles.diceSlot, !showDiceFaces && styles.diceSlotHidden]}>
               {showDiceFaces ? (
-                <Animated.Image style={[styles.diceImage, { transform: [{ rotate: spin }] }]} source={diceImages[value]} />
+                <Animated.Image
+                  style={[styles.diceImage, { transform: [{ rotate: spin }] }]}
+                  source={diceImages[value]}
+                />
               ) : (
-                <Text style={styles.hiddenMark}>?</Text>
+                <Text style={styles.hiddenMark}>{HIDDEN_SYMBOL}</Text>
               )}
             </View>
           ))}
         </View>
 
-        {phase === 'showing' || phase === 'revealed' ? (
-          <Text style={styles.resultLabel}>Dein Wurf: {combinationLabel}</Text>
-        ) : null}
+        {(phase === 'showing' || phase === 'revealed') && (
+          <Text style={styles.resultLabel}>{resultText}</Text>
+        )}
 
         <View style={styles.buttonColumn}>
           {renderPrimaryButton()}
@@ -193,25 +302,20 @@ const MaexchenGame = () => {
         </View>
 
         <View style={styles.rankingCard}>
-          <Text style={styles.rankingTitle}>Rangfolge (hoch → niedrig)</Text>
+          <Text style={styles.rankingTitle}>{copy.ranking.title}</Text>
           <View style={styles.rankingGrid}>
-            {RANKING.map((entry) => (
-              <View key={entry.value} style={styles.rankingItem}>
-                <Text style={styles.rankingValue}>{entry.value}</Text>
-                {entry.label ? <Text style={styles.rankingLabel}>{entry.label}</Text> : null}
+            {RANKING_VALUES.map((value) => (
+              <View key={value} style={styles.rankingItem}>
+                <Text style={styles.rankingValue}>{value}</Text>
+                {rankingLabel(value) ? <Text style={styles.rankingLabel}>{rankingLabel(value)}</Text> : null}
               </View>
             ))}
           </View>
         </View>
 
-        <InfoText
-          header={"Mäxchen!"}
-          rules={
-            'Würfelt reihum so, dass nur ihr selbst das Ergebnis seht. Verdeckt die Würfel und gebt das Handy weiter. Die nächste Person muss einen höheren Wert nennen, als sie gehört hat – entweder weil sie es schafft oder indem sie blufft.\n\nWürfelergebnisse werden immer zur zweistelligen Zahl mit der höheren Ziffer vorne. Pasche schlagen normale Zahlen. Das höchste Ergebnis ist Mäxchen (2 und 1). Wer anzweifelt und Recht hat, verteilt einen Schluck; wer sich irrt, trinkt selbst.'
-          }
-        />
+        <InfoText header={copy.infoTitle} rules={copy.rules} />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
+          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
       </ScrollView>
     </ImageBackground>
