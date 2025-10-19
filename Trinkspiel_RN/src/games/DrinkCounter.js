@@ -207,13 +207,14 @@ const DrinkCounter = () => {
   const persistLog = useCallback(
     async (log) => {
       setDrinkLog(log);
+      setNow(Date.now()); // ensure BAC calculations include the latest entries immediately
       try {
         await AsyncStorage.setItem("drinkCounter_log", JSON.stringify(log));
       } catch (error) {
         console.error("Fehler beim Speichern der Getränkeliste", error);
       }
     },
-    [setDrinkLog]
+    [setDrinkLog, setNow]
   );
 
   useEffect(() => {
