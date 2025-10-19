@@ -27,7 +27,9 @@ import Activity from "./src/games/Activity";
 import SpinTheBottle from "./src/games/SpinTheBottle";
 import HorseRace from "./src/games/HorseRace";
 import WhoWouldLikelyGame from "./src/games/WhoWouldLikely";
+import NeverHaveIEverGame from "./src/games/NeverHaveIEver";
 import PartyBoardGame from "./src/games/PartyBoardGame";
+import SixBySixGame from "./src/games/SixBySix";
 
 //Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from "./VariablesContext";
@@ -256,6 +258,7 @@ export default function App() {
             <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: theOnePrompts }} />
             <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
             <Stack.Screen name="WhoWouldLikelyGame" component={WhoWouldLikelyGame} />
+            <Stack.Screen name="NeverHaveIEverGame" component={NeverHaveIEverGame} />
             <Stack.Screen name="Kingscup" component={Kingscup} />
             <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
             <Stack.Screen name="Activity" component={Activity} initialParams={{ words }} />
@@ -266,6 +269,7 @@ export default function App() {
               initialParams={{ textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle }}
             />
             <Stack.Screen name="HorseRace" component={HorseRace} />
+            <Stack.Screen name="SixBySixGame" component={SixBySixGame} />
             <Stack.Screen name="PartyBoardGame" component={PartyBoardGame} />
           </Stack.Navigator>
         </NavigationContainer>
