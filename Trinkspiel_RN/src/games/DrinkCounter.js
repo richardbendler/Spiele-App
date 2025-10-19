@@ -742,6 +742,54 @@ const DrinkCounter = () => {
           ) : null}
         </TouchableOpacity>
 
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>{translate("Schnellauswahl", "Quick picks")}</Text>
+          <Text style={styles.sectionDescription}>
+            {translate(
+              "Tippe ein Getränk, um es sofort zu protokollieren.",
+              "Tap a drink to log it instantly."
+            )}
+          </Text>
+        </View>
+
+        {quickDrinks.length > 0 ? (
+          <View style={styles.quickGrid}>
+            {quickDrinks.map((drink) => {
+              const count = drinkCounts[drink.id] ?? 0;
+              const icon = resolveIcon(drink);
+              const backgroundColor = drink.color
+                ? `${drink.color}E6`.slice(0, 9)
+                : "rgba(229,193,133,0.9)";
+              return (
+                <TouchableOpacity
+                  key={drink.id}
+                  onPress={() => handleLogDrink(drink)}
+                  style={[styles.quickTile, { backgroundColor }]}
+                  activeOpacity={0.88}
+                >
+                  <Text style={styles.quickIcon}>{icon || "🍹"}</Text>
+                  <Text style={styles.quickTitle}>{drink.name}</Text>
+                  <Text style={styles.quickMeta}>
+                    {drink.abv}% | {drink.volumeMl} ml
+                  </Text>
+                  {count > 0 ? (
+                    <View style={styles.quickCountBadge}>
+                      <Text style={styles.quickCountText}>{`${count}x`}</Text>
+                    </View>
+                  ) : null}
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        ) : (
+          <Text style={styles.emptyQuickText}>
+            {translate(
+              "Keine Drinks in der Schnellauswahl - verwalte sie unten.",
+              "No quick drinks yet - manage them below."
+            )}
+          </Text>
+        )}
+
         <TouchableOpacity
           onPress={() => setManageExpanded((prev) => !prev)}
           style={styles.manageToggle}
