@@ -23,4 +23,6 @@ export const VariablesContext = React.createContext({
   setTheOnePrompts: () => {},
   manyQuestions: [],
   setManyQuestions: () => {},
+  tutorialEnabled: false,
+  setTutorialEnabled: () => {},
 });

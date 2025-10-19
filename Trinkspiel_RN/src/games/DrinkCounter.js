@@ -16,6 +16,8 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { VariablesContext } from "../../VariablesContext";
 import InfoText from "./sublements/InfoText";
+import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { appStyles } from "../../styles";
 import { useTranslation } from "../i18n";
 
@@ -39,7 +41,7 @@ if (!isFabric && Platform.OS === "android" && typeof UIManager.setLayoutAnimatio
 const DEFAULT_ICON = "🥤";
 const ICON_BY_ID = {
   "beer-500": "🍺",
-  "beer-330": "🍻",
+  "beer-330": "🍺",
   "wine-150": "🍷",
   "shot-40": "🥃",
   "cocktail-250": "🍹",
@@ -51,8 +53,8 @@ const NAME_ICON_SUGGESTIONS = [
   { pattern: /shot|schnaps|whisky|whiskey|bourbon|vodka|rum/i, icon: "🥃" },
   { pattern: /cocktail|spritz|mai tai|colada|mojito|martini/i, icon: "🍹" },
   { pattern: /sekt|prosecco|champagner/i, icon: "🥂" },
-  { pattern: /biermix|radler|shandy/i, icon: "🍻" },
-  { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🥤" },
+  { pattern: /biermix|radler|shandy/i, icon: "🍺" },
+  { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🚰" },
 ];
 
 const PROMILLE_MESSAGE_BANDS = {
@@ -147,7 +149,7 @@ const getWeekdayLabel = (date, language) => {
 };
 
 const DrinkCounter = () => {
-  const { drinkCatalog, setDrinkCatalog, drinkLog, setDrinkLog, infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { drinkCatalog, setDrinkCatalog, drinkLog, setDrinkLog, infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { language } = useTranslation();
   const translate = useCallback((deText, enText) => (language === "en" ? enText : deText), [language]);
   const promilleBands = useMemo(() => PROMILLE_MESSAGE_BANDS[language] ?? PROMILLE_MESSAGE_BANDS.de, [language]);
@@ -157,6 +159,8 @@ const DrinkCounter = () => {
   const [editRecent, setEditRecent] = useState(false);
   const [bacDetailsOpen, setBacDetailsOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const [tutorialStep, setTutorialStep] = useState(0);
+
   const closeStats = useCallback(() => {
     setStatsVisible(false);
     setEditRecent(false);
@@ -648,6 +652,7 @@ const DrinkCounter = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
       <View style={styles.overlay} />
+      <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}><Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text></TouchableOpacity>
       <TouchableOpacity onPress={() => setStatsVisible(true)} style={styles.statsFab} activeOpacity={0.9}>
         <Text style={styles.statsFabLabel}>{translate("Statistiken", "Statistics")}</Text>
       </TouchableOpacity>
@@ -676,7 +681,7 @@ const DrinkCounter = () => {
             <Text style={styles.bacValue}>{`${estimatedPromille.toFixed(2)} ‰`}</Text>
             {projectedSoberTimestamp ? (
               <Text style={styles.bacMeta}>
-                {translate("≈ nüchtern in", "≈ sober in")} {formatDuration(projectedSoberDurationMs)}
+                {translate("~ nüchtern in", "~ sober in")} {formatDuration(projectedSoberDurationMs)}
               </Text>
             ) : null}
           </View>
@@ -768,7 +773,7 @@ const DrinkCounter = () => {
                   style={[styles.quickTile, { backgroundColor }]}
                   activeOpacity={0.88}
                 >
-                  <Text style={styles.quickIcon}>{icon || "🍹"}</Text>
+                  <Text style={styles.quickIcon}>{icon || "??"}</Text>
                   <Text style={styles.quickTitle}>{drink.name}</Text>
                   <Text style={styles.quickMeta}>
                     {drink.abv}% | {drink.volumeMl} ml
@@ -894,9 +899,21 @@ const DrinkCounter = () => {
         header={translate("Getränkezähler!", "Drink Counter!")}
         rules={translate("Tippe deine Lieblingsgetränke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenübersicht und Favoriten inklusive Promille-Trend.", "Tap your favourite drinks in quick access to log them.\n\nManage default drinks, hide them or create your own. The stats show your timeline, weekly overview, favourites and the BAC trend.")}
       />
-      <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+      <InfoHint />
+      <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
         <Text style={appStyles.infoButtonText}>?</Text>
       </TouchableOpacity>
+      <TutorialOverlay
+        visible={tutorialEnabled}
+        steps={[
+          { text: translate('Schnellauswahl: Tippe, um sofort zu protokollieren.', 'Quick picks: tap to log instantly.'), placement: 'top' },
+          { text: translate('Öffne die Verwaltung, um eigene Getränke anzulegen.', 'Open manage drinks to add your own.'), placement: 'bottom' },
+          { text: translate('Statistiken zeigen Verlauf und Promille-Trend.', 'Stats show your timeline and BAC trend.'), placement: 'bottom' },
+        ]}
+        stepIndex={tutorialStep}
+        onNext={() => setTutorialStep((s) => (s + 1) % 3)}
+        onClose={() => setTutorialEnabled(false)}
+      />
 
       <Modal visible={statsVisible} animationType="fade" transparent onRequestClose={closeStats}>
         <View style={styles.modalOverlay}>
@@ -978,7 +995,7 @@ const DrinkCounter = () => {
 
             <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Beliebte Getränke", "Popular drinks")}</Text>
             {drinkBreakdown.length === 0 ? (
-              <Text style={styles.modalHint}>{translate("Noch keine Eintraege", "No entries yet")}</Text>
+              <Text style={styles.modalHint}>{translate("Noch keine Einträge", "No entries yet")}</Text>
             ) : (
               <View style={styles.breakdownList}>
                 {drinkBreakdown.slice(0, 5).map((item) => (
@@ -1004,7 +1021,7 @@ const DrinkCounter = () => {
               </View>
             )}
 
-            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Letzte Eintraege", "Recent entries")}</Text>
+            <Text style={[styles.modalSubtitle, { marginTop: 18 }]}>{translate("Letzte Einträge", "Recent entries")}</Text>
             {recentDrinks.length === 0 ? (
               <Text style={styles.modalHint}>{translate("Noch nichts protokolliert", "Nothing logged yet")}</Text>
             ) : (
@@ -1088,8 +1105,8 @@ const styles = StyleSheet.create({
   },
   statsFab: {
     position: "absolute",
-    top: 32,
-    right: 24,
+    top: 56,
+    alignSelf: "center",
     backgroundColor: "rgba(255,255,255,0.12)",
     borderRadius: 18,
     paddingVertical: 10,
@@ -1643,3 +1660,15 @@ const styles = StyleSheet.create({
 });
 
 export default DrinkCounter;
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
 import { appStyles } from '../../styles';
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
@@ -180,6 +181,7 @@ const SpinTheBottle = ({ route }) => {
         </View>
 
         <InfoText header={copy.infoHeader ?? 'Spin the Bottle!'} rules={copy.rules ?? ''} />
+        <InfoHint />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>

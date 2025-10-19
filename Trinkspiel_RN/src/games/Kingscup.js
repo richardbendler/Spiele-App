@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, ImageBackground, Animated } from 'react-native';
 import InfoText from './sublements/InfoText';
+import TutorialOverlay from './sublements/TutorialOverlay';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { appStyles } from '../../styles';
 import { useTranslation } from '../i18n';
@@ -23,7 +25,7 @@ const kingscupCopyByLanguage = {
   de: {
     infoHeader: 'Kingscup!',
     rules:
-      'Vorbereitung: Besorgt euch ein leeres Glas. Ausserdem sollte jede spielende Person ein Getraenk haben.\n\nJetzt zieht ihr reihum nacheinander eine Karte. Fuehrt die Aktion aus, die unten fuer die Karte angezeigt wird. Bei Koenigen wird der Kingscup zu einem Drittel mit dem eigenen Getraenk gefuellt. Der vierte Koenig muss austrinken - das Spiel ist vorbei! Optional: Legt zusaetzlich einen Daumenkoenig fest: Die Person mit dem letzten Koenig darf jederzeit den Daumen auf den Tisch legen. Wer als Letzte*r reagiert, trinkt.',
+      'Vorbereitung: Besorgt euch ein leeres Glas. Außerdem sollte jede spielende Person ein Getränk haben.\n\nZieht reihum nacheinander eine Karte und führt die unten angezeigte Aktion aus.\n\nKönige: Wählt GENAU EINE der beiden Varianten. ENTWEDER klassische Kingscup-Regel (jeder König füllt den Cup zu einem Drittel, der vierte trinkt ihn) ODER Daumenkönig: Die Person mit dem zuletzt gezogenen König darf jederzeit unauffällig den Daumen auf den Tisch legen. Wer dann als Letzte*r ebenfalls den Daumen legt, trinkt. Die Geste darf beliebig oft wiederholt werden, bis ein neuer König gezogen wird.',
     startPromptTitle: 'Tippe auf eine Karte, um zu starten!',
     startPromptSubtitle: 'Tippe oben links auf Info, um die Spielanleitung zu lesen.',
     fallbackTitle: 'Kingscup',
@@ -35,7 +37,7 @@ const kingscupCopyByLanguage = {
   en: {
     infoHeader: 'Kings Cup!',
     rules:
-      'Setup: Grab an empty glass and make sure everyone has a drink.\n\nTake turns drawing cards and carry out the action shown below. Each king pours one third of their drink into the Kings Cup. Whoever draws the fourth king drinks the cup and the game ends! Optional: Crown a Thumb King as an extra rule: the player who drew the last king may drop their thumb onto the table at any time. The last person to copy drinks.',
+      'Setup: Grab an empty glass and make sure everyone has a drink.\n\nTake turns drawing cards and carry out the action shown below.\n\nKings: Choose ONE mode. EITHER classic Kings Cup (each king pours one third into the cup; the fourth king drinks it) OR Thumb King: Whoever drew the latest king may quietly place their thumb on the table at any time. The last person to copy the gesture drinks. The thumb gesture may be triggered any number of times until a new king is drawn.',
     startPromptTitle: 'Tap a card to start!',
     startPromptSubtitle: 'Tap the info button in the top left to read the rules.',
     fallbackTitle: 'Kings Cup',
@@ -62,7 +64,7 @@ const cardMeaningsSimpleByLanguage = {
     'K': {
       title: 'Kingscup!',
       description:
-        'Fuelle den Kingscup zu einem Drittel. Der vierte Koenig trinkt ihn aus. Optional: Legt zusaetzlich einen Daumenkoenig fest, der mit dem letzten Koenig den Daumen legen darf.',
+        'Könige-Variante: Entweder klassische Regel (jeder König füllt 1/3, der vierte trinkt) ODER Daumenkönig (letzter König darf Daumen legen; wer als Letzte*r nachzieht, trinkt).',
     },
     'A': { title: 'Wasserfall!', description: 'Startet einen Wasserfall - aufhören dürft ihr in Reihenfolge.' },
   },
@@ -94,7 +96,8 @@ const Kingscup = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
-  const { infoVisible, setInfoVisible, language } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const { t } = useTranslation();
   const lang = language === 'en' ? 'en' : 'de';
   const kingscupCopy = kingscupCopyByLanguage[lang];
@@ -220,6 +223,10 @@ const Kingscup = () => {
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
 
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
+
         <View style={styles.deck}>
           {deck.map((card, index) => {
             const angle = (index / deck.length) * 360;
@@ -271,9 +278,21 @@ const Kingscup = () => {
         </View>
 
         <InfoText header={kingscupCopy.infoHeader} rules={kingscupCopy.rules} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20, opacity: 0.7}]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
+        <InfoHint />
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Tippe auf eine Karte im Kreis, um sie aufzudecken.' : 'Tap a card in the circle to reveal it.', placement: 'top' },
+            { text: language === 'de' ? 'Hier seht ihr die Bedeutung der gezogenen Karte.' : 'The meaning of the drawn card appears here.', placement: 'bottom' },
+            { text: language === 'de' ? 'Bei Königen: Klassisch ODER Daumenkönig – entscheide eine Variante.' : 'For kings: Choose classic OR thumb king.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => (s + 1) % 3)}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
       </ImageBackground>
   );

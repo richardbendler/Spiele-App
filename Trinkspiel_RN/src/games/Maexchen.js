@@ -2,6 +2,8 @@
 import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import TutorialOverlay from './sublements/TutorialOverlay';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
@@ -136,7 +138,8 @@ const MaexchenGame = () => {
   const [diceTwo, setDiceTwo] = useState(1);
   const [phase, setPhase] = useState('ready');
   const rotateAnim = useRef(new Animated.Value(0)).current;
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const { t, language } = useTranslation();
   const copy = useMemo(() => buildCopy(language), [language]);
 
@@ -267,6 +270,9 @@ const MaexchenGame = () => {
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
         <View style={styles.headerRow}>
           <Text style={appStyles.textHeader1}>{copy.title}</Text>
           <Text style={styles.subHeadline}>{copy.tagline}</Text>
@@ -292,9 +298,11 @@ const MaexchenGame = () => {
           ))}
         </View>
 
-        {(phase === 'showing' || phase === 'revealed') && (
-          <Text style={styles.resultLabel}>{resultText}</Text>
-        )}
+        <View style={styles.resultArea}>
+          {(phase === 'showing' || phase === 'revealed') ? (
+            <Text style={styles.resultLabel}>{resultText}</Text>
+          ) : null}
+        </View>
 
         <View style={styles.buttonColumn}>
           {renderPrimaryButton()}
@@ -314,10 +322,21 @@ const MaexchenGame = () => {
         </View>
 
         <InfoText header={copy.infoTitle} rules={copy.rules} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+        <InfoHint />
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
       </ScrollView>
+      <TutorialOverlay
+        visible={tutorialEnabled}
+        steps={[
+          { text: language === 'de' ? 'Würfeln und Ergebnis merken.' : 'Roll dice and remember the result.', placement: 'top' },
+          { text: language === 'de' ? 'Ansage machen, verdecken, weitergeben.' : 'Announce, cover, pass on.', placement: 'bottom' },
+        ]}
+        stepIndex={tutorialStep}
+        onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+        onClose={() => setTutorialEnabled(false)}
+      />
     </ImageBackground>
   );
 };
@@ -388,6 +407,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
+  resultArea: { minHeight: 22, justifyContent: 'center', alignItems: 'center' },
   resultLabel: {
     color: '#E5C185',
     fontSize: 20,
@@ -447,3 +467,4 @@ const styles = StyleSheet.create({
 });
 
 export default MaexchenGame;
+

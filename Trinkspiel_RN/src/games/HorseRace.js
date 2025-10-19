@@ -4,7 +4,9 @@ const windowHeight = Dimensions.get('window').height;
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { appStyles } from '../../styles';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 
 const createDeck = () => {
@@ -48,6 +50,8 @@ const initialField = (deck) => {
 };
 
 const App = () => {
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const [deck, setDeck] = useState(createDeck());
   const [field, setField] = useState(initialField(deck));
   const [discardPile, setDiscardPile] = useState([]);
@@ -56,8 +60,6 @@ const App = () => {
   const [autoReveal, setAutoReveal] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
-
-  const restartGame = () => {
 
   useEffect(() => {
     if (!autoReveal || winner) {
@@ -71,8 +73,11 @@ const App = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, [autoReveal, deck, winner]);
-    setDeck(createDeck());
-    setField(initialField(deck));
+
+  const restartGame = () => {
+    const newDeck = createDeck();
+    setDeck(newDeck);
+    setField(initialField(newDeck));
     setDiscardPile([]);
     setWinner(null);
   };
@@ -172,9 +177,11 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-      
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? 'Tutorial aus' : 'Tutorial an'}</Text>
+        </TouchableOpacity>
       <View style={styles.container}>
-
+        
         
         <View style={styles.field}>
            <View style={styles.column}>
@@ -257,6 +264,16 @@ const App = () => {
           )}
 
         
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: 'Setzt euren Tipp auf ein Pferd.', placement: 'top' },
+            { text: 'Startet das Rennen und feuert an.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s)=> (s+1)%2)}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
       {/*{gameStarted? (
       //Falls Game noch nicht gestartet:
@@ -304,7 +321,8 @@ const App = () => {
       }*/}
         
         <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
+        <InfoHint />
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { left: 20, bottom: 20 }]}>
           <Text style={appStyles.infoButtonText}>Regeln</Text>
         </TouchableOpacity>
 

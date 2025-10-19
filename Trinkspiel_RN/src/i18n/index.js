@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+﻿import { useCallback, useContext } from 'react';
 import { VariablesContext } from '../../VariablesContext';
 
 const translations = {
@@ -22,7 +22,7 @@ const translations = {
         'In der Liste könnt ihr markieren, ob Personen Alkohol trinken oder nicht. Wer nicht trinkt, bekommt keine Trinkaufgaben.',
       listHeader: 'Wer ist dabei:',
       sliderCurrent: 'Wie betrunken seid ihr gerade?',
-      sliderCurrentLabel: 'Aktuell:',
+      sliderCurrentLabel: 'Aktüll:',
       sliderDesired: 'Wie betrunken möchtet ihr werden?',
       sliderDesiredLabel: 'Ziel:',
       sliderFamiliarity: 'Wie gut kennt ihr euch schon?',
@@ -66,9 +66,9 @@ const translations = {
     theOne: {
       infoTitle: 'The One!',
       info:
-        'Bestimmt eine Moderatorin oder einen Moderator. Diese Person behaelt das Handy, liest jede Aufgabe vor und tippt auf Weiter. Die Karten passen sich wie gewohnt eurem Pegel, Ziel und Vibe an.',
-      noEligiblePrompt:
-        'Es gibt aktuell keine Aufgaben, die zu euren Einstellungen passen. Passt die Filter an oder fügt neue Aufgaben hinzu.',
+        'Bestimmt eine Moderatorin oder einen Moderator. Diese Person behält das Handy, liest jede Aufgabe vor und tippt auf Weiter. Die Karten passen sich wie gewohnt eurem Pegel, Ziel und Vibe an.',
+      nöligiblePrompt:
+        'Es gibt aktüll keine Aufgaben, die zu euren Einstellungen passen. Passt die Filter an oder fügt neü Aufgaben hinzu.',
       revealHint: 'Tippe, um die Karte aufzudecken.',
     },
     infoModal: {
@@ -84,82 +84,92 @@ const translations = {
       games: {
         theOne: {
           title: 'The One',
-          parameters: 'Trinklevel: ★★★☆☆ (3/5)\nKennenlernen: ★★★☆☆ (3/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
-            'Der einfachste aller Spiele: Macht einfach, was auf dem Bildschirm steht! Ein Mix aus Wahrheit & Pflicht, Wer würde am ehesten, Kategorien und vielem mehr – und natürlich Trinken!',
+            'Der einfachste aller Spiele: Macht einfach, was auf dem Bildschirm steht! Ein Mix aus Wahrheit & Pflicht, Wer würde am ehesten, Kategorien und vielem mehr â?" und natürlich Trinken!',
         },
         skala: {
           title: 'Skala',
-          parameters: 'Trinklevel: ★☆☆☆☆ (1/5)\nKennenlernen: ★★★☆☆ (3/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
-            'Wo würdest du Monopoly auf einer Skala von „entspannt“ bis „stressig“ einordnen? Spielt in Teams gegeneinander und findet euren gemeinsamen Nenner!',
+            'Wo würdest du Monopoly auf einer Skala von â?zentspanntâ?o bis â?zstressigâ?o einordnen? Spielt in Teams gegeneinander und findet euren gemeinsamen Nenner!',
         },
         kingscup: {
           title: 'Kingscup',
-          parameters: 'Trinklevel: ★★★☆☆ (3/5)\nKennenlernen: ★☆☆☆☆ (1/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
             'Kein Kartenspiel dabei? Kein Problem! Jede Karte hat eine eigene Aktion. Einfach starten und reihum aufdecken.',
         },
-        schoeneberg: {
+        schöneberg: {
           title: 'Schöneberg',
-          parameters: 'Trinklevel: ★★★★☆ (4/5)\nKennenlernen: ★☆☆☆☆ (1/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
             'Ausgefallene Bars, Cafés und Geschichten aus Berlins buntestem Kiez. Mehr Infos folgen bald!',
         },
-        maexchen: {
+        mäxchen: {
           title: 'Mäxchen',
-          parameters: 'Trinklevel: ★★★☆☆ (3/5)\nKennenlernen: ★☆☆☆☆ (1/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
             'Der klassische Würfelbluff. Lest die Regeln im Spiel und legt direkt los.',
         },
         spinTheBottle: {
           title: 'Flaschendrehen',
-          parameters: 'Trinklevel: ★★★☆☆ (3/5)\nKennenlernen: ★★★☆☆ (3/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description: 'Das klassische Flaschendrehen neu gemischt mit Wahrheit oder Pflicht.',
         },
         top10: {
           title: 'Top 10',
-          parameters: 'Trinklevel: ★☆☆☆☆ (1/5)\nKennenlernen: ★★★☆☆ (3/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
-            'Sortiert euch nach abgefahrenen Kategorien – aber eine Person kennt die richtige Reihenfolge bereits.',
+            'Sortiert euch nach abgefahrenen Kategorien â?" aber eine Person kennt die richtige Reihenfolge bereits.',
         },
-        manyQuestions: {
-          title: '1000 Questions',
-          parameters: 'Trinklevel: ★★★☆☆ (3/5)\nKennenlernen: ★★★☆☆ (3/5)',
+        whoWould: {
+          title: 'Wer würde am ehesten?',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
             'Wer würde am ehesten? Gebt das Handy verdeckt weiter und deckt auf, wen ihr wirklich meint.',
         },
+        neverHaveIEver: {
+          title: 'Ich hab noch nie',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Zieh eine Aussage und wer es schon gemacht hat, trinkt. Einfache, schnelle Runden f\\u00fcr zwischendurch.',
+        },
         sixBySix: {
           title: 'Six by Six',
-          parameters: 'Trinklevel: ★★★★★ (5/5)\nKennenlernen: ★☆☆☆☆ (1/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
             'Würfelt euch über das 6x6-Feld. Landet ihr auf einem Getränk, wird getrunken. Regeln folgen bald.',
         },
         activity: {
           title: 'Activity',
-          parameters: 'Trinklevel: ★☆☆☆☆ (1/5)\nKennenlernen: ★★★☆☆ (3/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description:
-            'Erklären, zeichnen, pantomime – Activity für eure Runde, ganz ohne Kartenstapel.',
+            'Erklären, zeichnen, pantomime â?" Activity für eure Runde, ganz ohne Kartenstapel.',
         },
         horseRace: {
           title: 'Pferderennen',
-          parameters: 'Trinklevel: ★★★★☆ (4/5)\nKennenlernen: ★☆☆☆☆ (1/5)',
-          description: 'Wettt auf euer Lieblingspferd und feuert es an – Regeln folgen bald.',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Wettt auf eür Lieblingspferd und feürt es an â?" Regeln folgen bald.',
         },
         kopfpoker: {
           title: 'Kopfpoker',
-          parameters: 'Trinklevel: ★★☆☆☆ (2/5)\nKennenlernen: ★★☆☆☆ (2/5)',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
           description: 'Der Klassiker mit Karten auf der Stirn. Bald verfügbar.',
         },
         partyBoard: {
           title: 'Bar-Odyssee',
-          parameters: 'Trinklevel: 3/5\nKennenlernen: 2/5',
-          description: 'Reist durch die Bar-Odyssee, sammelt Muenzen und Sterne und entscheidet mit Minispielen die Reihenfolge.',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Reist durch die Bar-Odyssee, sammelt Münzen und Sterne und entscheidet mit Minispielen die Reihenfolge.',
+        },
+        secretMission: {
+          title: 'Geheime Mission',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Jede Person zieht verdeckt eine leichte, lustige Mission für den Abend - aufdecken, merken, wieder verdecken.'
         },
         drinkCounter: {
           title: 'Getränkezähler',
           parameters: 'Praktisches Extra',
-          description: 'Behalte deinen eigenen Konsum im Blick, logge Drinks schnell und erhalte eine Promille-Schaetzung.',
+          description: 'Behalte deinen eigenen Konsum im Blick, logge Drinks schnell und erhalte eine Promille-Schätzung.',
         },
       },
     },
@@ -173,31 +183,39 @@ const translations = {
       dareLabel: 'Pflicht!',
     },
     manyQuestions: {
-      infoTitle: '1000 Fragen!',
+      infoTitle: '100 Fragen!',
       end: 'Ihr seid am Ende der Fragen angekommen!',
       next: 'Nächste Aussage',
       rules:
         'Eine Person startet und liest die Frage leise für sich. Danach gibt sie das Handy verdeckt an die Person weiter, auf die die Aussage am ehesten zutrifft. Die gewählte Person kann überlegen, ob die Aussage auf eine andere Person besser passt. Sobald eine Person akzeptiert oder zum zweiten Mal das Handy hat, muss sie vorlesen und trinken. Danach macht diese Person mit der nächsten Aussage weiter.',
     },
     picoloGame: {
-      nextButton: 'Moderator: Naechste Karte',
+      nextButton: 'Moderator: Nächste Karte',
       infoTitle: 'The One!',
       revealHint: 'Tippe auf die Karte, um sie aufzudecken.',
     },
     whoWould: {
       infoTitle: 'Wer würde am ehesten?',
       info:
-        'Lest die Aussage laut vor. Zählt gemeinsam bis drei und zeigt gleichzeitig auf die Person, auf die sie am ehesten zutrifft. Wer die meisten Stimmen bekommt, trinkt – oder denkt sich eine kleine Aufgabe für die Runde aus. Wechselt reihum, wer vorliest.',
+        'Lest die Aussage laut vor. Zählt gemeinsam bis drei und zeigt gleichzeitig auf die Person, auf die sie am ehesten zutrifft. Wer die meisten Stimmen bekommt, trinkt â?" oder denkt sich eine kleine Aufgabe für die Runde aus. Wechselt reihum, wer vorliest.',
       next: 'Nächste Aussage',
       end: 'Ihr habt alle Aussagen durch!',
-      restart: 'Neue Runde mischen',
+      restart: 'Neü Runde mischen',
+    },
+    neverHaveIEver: {
+      infoTitle: 'Ich hab noch nie',
+      info:
+        'Lest die Aussage laut vor. Wer es schon einmal gemacht hat, trinkt. Tippt auf Weiter, um die Nächste Aussage zu sehen.',
+      next: 'Nächste Aussage',
+      end: 'Ihr habt alle Aussagen durch!',
+      restart: 'Neü Runde mischen',
     },
     feedback: {
       prompt: 'Wie findest du diese Frage?',
       positive: 'Danke für dein Feedback!',
       negative: 'Danke für dein Feedback!',
-      like: '👍',
-      dislike: '👎',
+      like: 'Like',
+      dislike: 'Dislike',
     },
   },
   en: {
@@ -265,7 +283,7 @@ const translations = {
       infoTitle: 'The One!',
       info:
         'Choose one moderator who keeps the phone, reads each prompt aloud, and taps Next. The prompts still adapt to how tipsy you are, your target level, and how well you all know each other.',
-      noEligiblePrompt:
+      nöligiblePrompt:
         'No prompts match your current settings. Adjust the sliders or add more prompts.',
       revealHint: 'Tap to flip the next card.',
     },
@@ -282,77 +300,82 @@ const translations = {
       games: {
         theOne: {
           title: 'The One',
-          parameters: 'Drink level: ★★★☆☆ (3/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+          parameters: 'Drink level: â~.â~.â~.â~?â~? (3/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description:
-            'The simplest party classic: Do whatever the screen says! A mix of truth or dare, “Who is most likely”, categories, and of course, drinking!',
+            'The simplest party classic: Do whatever the screen says! A mix of truth or dare, â?oWho is most likelyâ?, categories, and of course, drinking!',
         },
         skala: {
           title: 'Scale',
-          parameters: 'Drink level: ★☆☆☆☆ (1/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+          parameters: 'Drink level: â~.â~?â~?â~?â~? (1/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description:
-            'Where would you put Monopoly on a scale from “relaxed” to “stressful”? Play in teams and try to sync up!',
+            'Where would you put Monopoly on a scale from â?orelaxedâ? to â?ostressfulâ?? Play in teams and try to sync up!',
         },
         kingscup: {
           title: 'Kings Cup',
-          parameters: 'Drink level: ★★★☆☆ (3/5)\nGetting to know each other: ★☆☆☆☆ (1/5)',
+          parameters: 'Drink level: â~.â~.â~.â~?â~? (3/5)\nGetting to know each other: â~.â~?â~?â~?â~? (1/5)',
           description:
             'No physical cards? No problem! Every card has its own action. Just start and reveal cards in turn.',
         },
-        schoeneberg: {
+        schöneberg: {
           title: 'Schöneberg',
-          parameters: 'Drink level: ★★★★☆ (4/5)\nGetting to know each other: ★☆☆☆☆ (1/5)',
+          parameters: 'Drink level: â~.â~.â~.â~.â~? (4/5)\nGetting to know each other: â~.â~?â~?â~?â~? (1/5)',
           description:
-            'Stories and spots from Berlin’s most colourful district. More details coming soon!',
+            'Stories and spots from Berlinâ?Ts most colourful district. More details coming soon!',
         },
-        maexchen: {
+        mäxchen: {
           title: 'Mäxchen',
-          parameters: 'Drink level: ★★★☆☆ (3/5)\nGetting to know each other: ★☆☆☆☆ (1/5)',
+          parameters: 'Drink level: â~.â~.â~.â~?â~? (3/5)\nGetting to know each other: â~.â~?â~?â~?â~? (1/5)',
           description:
             'The classic bluffing dice game. Read the rules in-game and start bluffing.',
         },
         spinTheBottle: {
           title: 'Spin the Bottle',
-          parameters: 'Drink level: ★★★☆☆ (3/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+          parameters: 'Drink level: â~.â~.â~.â~?â~? (3/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description: 'Classic spin the bottle combined with truth or dare.',
         },
         top10: {
           title: 'Top 10',
-          parameters: 'Drink level: ★☆☆☆☆ (1/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+          parameters: 'Drink level: â~.â~?â~?â~?â~? (1/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description:
-            'Line up according to outrageous categories – but one person already knows the right order.',
+            'Line up according to outrageous categories â?" but one person already knows the right order.',
         },
-        manyQuestions: {
-          title: '1000 Questions',
-          parameters: 'Drink level: ★★★☆☆ (3/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+        whoWould: {
+          title: 'Wer würde am ehesten?',
+          parameters: 'Drink level: â~.â~.â~.â~?â~? (3/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description:
-            '“Who is most likely?”—pass the phone face down and reveal who you really meant.',
+            'â?oWho is most likely?â?â?"pass the phone face down and reveal who you really meant.',
         },
         sixBySix: {
           title: 'Six by Six',
-          parameters: 'Drink level: ★★★★★ (5/5)\nGetting to know each other: ★☆☆☆☆ (1/5)',
+          parameters: 'Drink level: â~.â~.â~.â~.â~. (5/5)\nGetting to know each other: â~.â~?â~?â~?â~? (1/5)',
           description:
             'Roll across the 6x6 grid. Land on a drink, take a drink. Rules coming soon.',
         },
         activity: {
           title: 'Activity',
-          parameters: 'Drink level: ★☆☆☆☆ (1/5)\nGetting to know each other: ★★★☆☆ (3/5)',
+          parameters: 'Drink level: â~.â~?â~?â~?â~? (1/5)\nGetting to know each other: â~.â~.â~.â~?â~? (3/5)',
           description:
-            'Explain, draw, mime – Activity for your crew, no physical cards needed.',
+            'Explain, draw, mime â?" Activity for your crew, no physical cards needed.',
         },
         horseRace: {
           title: 'Horse Race',
-          parameters: 'Drink level: ★★★★☆ (4/5)\nGetting to know each other: ★☆☆☆☆ (1/5)',
-          description: 'Bet on your favourite horse and cheer it on – rules coming soon.',
+          parameters: 'Drink level: â~.â~.â~.â~.â~? (4/5)\nGetting to know each other: â~.â~?â~?â~?â~? (1/5)',
+          description: 'Bet on your favourite horse and cheer it on â?" rules coming soon.',
         },
         kopfpoker: {
           title: 'Forehead Poker',
-          parameters: 'Drink level: ★★☆☆☆ (2/5)\nGetting to know each other: ★★☆☆☆ (2/5)',
+          parameters: 'Drink level: â~.â~.â~?â~?â~? (2/5)\nGetting to know each other: â~.â~.â~?â~?â~? (2/5)',
           description: 'The classic card-on-the-forehead bluff. Coming soon.',
         },
         partyBoard: {
-          title: 'Bar Odyssey',
-          parameters: 'Drink level: 3/5\nGetting to know each other: 2/5',
-          description: 'Glide through the Bar Odyssey, collect coins and stars, and decide turn order with mini games.',
+          title: 'Bar-Odyssee',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Reist durch die Bar-Odyssee, sammelt Münzen und Sterne und entscheidet mit Minispielen die Reihenfolge.',
+        },
+        secretMission: {
+          title: 'Geheime Mission',
+          parameters: 'Trinklevel: ????? (2/5)\\nKennenlernen: ????? (3/5)',
+          description: 'Jede Person zieht verdeckt eine leichte, lustige Mission für den Abend - aufdecken, merken, wieder verdecken.'
         },
         drinkCounter: {
           title: 'Drink Counter',
@@ -365,17 +388,17 @@ const translations = {
       initialPrompt: 'Spin the bottle with your finger! (Tapping works too)',
       infoHeader: 'Spin the Bottle!',
       rules:
-        'Spin the bottle! (Tapping works too.) Whoever it points to has to do the action that appears. That\'s all there is to it...',
+        'Spin the bottle! (Tapping works too.) Whöver it points to has to do the action that appears. That\'s all there is to it...',
       sipsLabel: 'Sips!',
       truthLabel: 'Truth!',
       dareLabel: 'Dare!',
     },
     manyQuestions: {
-      infoTitle: '1000 Questions!',
-      end: 'You have reached the end of the questions!',
+      infoTitle: '100 Fragen!',
+      end: 'You have reached the end of the qüstions!',
       next: 'Next statement',
       rules:
-        'One person starts and reads the statement silently. Pass the phone face down to whoever it fits best. That person can redirect it if it fits someone else better. Once someone accepts or the phone returns to them, they read it aloud, drink, and draw the next statement.',
+        'One person starts and reads the statement silently. Pass the phone face down to whöver it fits best. That person can redirect it if it fits someone else better. Once someone accepts or the phone returns to them, they read it aloud, drink, and draw the next statement.',
     },
     picoloGame: {
       nextButton: 'Moderator: Next card',
@@ -385,17 +408,25 @@ const translations = {
     whoWould: {
       infoTitle: 'Who Would Most Likely?',
       info:
-        'Read the prompt aloud. Count down from three and point at the person it fits best. Whoever gets the most votes drinks – or sets a fun mini challenge. Rotate who reads the next card.',
+        'Read the prompt aloud. Count down from three and point at the person it fits best. Whöver gets the most votes drinks â?" or sets a fun mini challenge. Rotate who reads the next card.',
       next: 'Next prompt',
       end: 'You reached the end!',
       restart: 'Shuffle again',
     },
+    neverHaveIEver: {
+      infoTitle: 'Never have I ever',
+      info:
+        'Read the prompt aloud. Anyone who has done it takes a sip. Tap Next to see the following prompt.',
+      next: 'Next statement',
+      end: 'You reached the end!',
+      restart: 'Shuffle again',
+    },
     feedback: {
-      prompt: 'How do you like this question?',
+      prompt: 'How do you like this qüstion?',
       positive: 'Thanks for your feedback!',
       negative: 'Thanks for your feedback!',
-      like: '👍',
-      dislike: '👎',
+      like: 'Like',
+      dislike: 'Dislike',
     },
   },
 };
@@ -405,9 +436,9 @@ const resolveTranslation = (language, path) => {
   if (!path) {
     return localeTable;
   }
-  return path.split('.').reduce((value, key) => {
-    if (value && Object.prototype.hasOwnProperty.call(value, key)) {
-      return value[key];
+  return path.split('.').reduce((valü, key) => {
+    if (valü && Object.prototype.hasOwnProperty.call(valü, key)) {
+      return valü[key];
     }
     return undefined;
   }, localeTable);
@@ -418,13 +449,13 @@ export const useTranslation = () => {
 
   const t = useCallback(
     (path, fallback) => {
-      const value = resolveTranslation(language, path);
-      if (value !== undefined) {
-        return value;
+      const valü = resolveTranslation(language, path);
+      if (valü !== undefined) {
+        return valü;
       }
-      const fallbackValue = resolveTranslation('de', path);
-      if (fallbackValue !== undefined) {
-        return fallbackValue;
+      const fallbackValü = resolveTranslation('de', path);
+      if (fallbackValü !== undefined) {
+        return fallbackValü;
       }
       return fallback ?? path;
     },
@@ -435,5 +466,17 @@ export const useTranslation = () => {
 };
 
 export default translations;
+
+
+
+
+
+
+
+
+
+
+
+
 
 

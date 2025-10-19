@@ -13,6 +13,7 @@ const translationKeyMap = {
   Skala: 'skala',
   Kingscup: 'kingscup',
   Schoeneberg: 'schoeneberg',
+  'Geheime Mission': 'secretMission',
   MaexchenGame: 'maexchen',
   SpinTheBottle: 'spinTheBottle',
   Top10: 'top10',
@@ -35,59 +36,94 @@ const navigationMap = {
   ManyQuestionsGame: 'ManyQuestionsGame',
   WerWuerde: 'WhoWouldLikelyGame',
   IchHabNochNie: 'NeverHaveIEverGame',
+  Schoeneberg: 'Schoeneberg',
+  'Geheime Mission': 'SecretMission',
   '6by6': 'SixBySixGame',
   Getraenkezaehler: 'DrinkCounter',
   HorseRace: 'HorseRace',
   PartyBoardGame: 'AddPlayer',
 };
-
 const nextGameMap = {
+
   'The One': { nextGame: 'PicoloGame', showScales: true },
+
   PartyBoardGame: { nextGame: 'PartyBoardGame', showScales: false },
+
 };
+
+
 
 const GAME_STYLE_MAP = {
-  'The One': { icon: '🥇', accent: '#F5C26B' },
+  'The One': { icon: '🎯', accent: '#F5C26B' },
   Skala: { icon: '📊', accent: '#7AC1B2' },
   Kingscup: { icon: '👑', accent: '#B784D7' },
-  Schoeneberg: { icon: '🎶', accent: '#F08974' },
+  Schoeneberg: { icon: '🏙️', accent: '#F08974' },
   MaexchenGame: { icon: '🎲', accent: '#F3AE82' },
-  SpinTheBottle: { icon: '🌈', accent: '#6FC3C3' },
+  SpinTheBottle: { icon: '🍾', accent: '#6FC3C3' },
   Top10: { icon: '🔟', accent: '#EF8A9C' },
   ManyQuestionsGame: { icon: '❓', accent: '#C2E76E' },
-  WerWuerde: { icon: '🧐', accent: '#A5B4FF' },
-  '6by6': { icon: '🎯', accent: '#FFCF70' },
+    IchHabNochNie: { icon: '✋', accent: '#EF8A9C' },
+  WerWuerde: { icon: '🤔', accent: '#A5B4FF' },
+  '6by6': { icon: '🎲', accent: '#FFCF70' },
   Activity: { icon: '🎭', accent: '#FF9F7A' },
-  Getraenkezaehler: { icon: '🍻', accent: '#E5C185' },
-  HorseRace: { icon: '🏇', accent: '#88D4A3' },
+  Getraenkezaehler: { icon: '🥤', accent: '#E5C185' },
+  HorseRace: { icon: '🐎', accent: '#88D4A3' },
   Kopfpoker: { icon: '🃏', accent: '#CFA1E6' },
-  PartyBoardGame: { icon: '🎉', accent: '#FFD166' },
+  PartyBoardGame: { icon: '🎮', accent: '#FFD166' },
+  'Geheime Mission': { icon: '🕵️', accent: '#7AC1B2' },
 };
-const DEFAULT_CARD_STYLE = { icon: '🍹', accent: '#E5C185' };
+
+const DEFAULT_CARD_STYLE = { icon: '', accent: '#E5C185' };
+
+
 
 // Verhindert Wort-Splitting auf Android: bricht nur zwischen Wörtern
+
 const TitleNoWordBreak = ({ text, style }) => {
+
   const words = String(text || '').split(' ');
+
   return (
+
     <Text style={style}>
+
       {words.map((w, i) => (
+
         <Text key={i}>
+
           {w}
+
           {i < words.length - 1 ? ' ' : ''}
+
         </Text>
+
       ))}
+
     </Text>
+
   );
+
 };
 
+
+
 function MainMenu({ navigation }) {
+
   const { language } = useContext(VariablesContext);
+
   const { t } = useTranslation();
+
   const { width: windowWidth } = useWindowDimensions();
 
+
+
   const commonCopy = useMemo(() => t('common'), [t]);
+
   const gamesCopy = useMemo(() => t('mainMenu.games'), [t]);
+
   const newBadgeLabel = language === 'de' ? 'NEU' : 'NEW';
+
+
 
   const gridLayout = useMemo(() => {
     const horizontalPadding = 32; // ScrollView paddings combined
@@ -115,20 +151,68 @@ function MainMenu({ navigation }) {
     return { columns, cardWidth, gap, availableWidth };
   }, [windowWidth]);
   const isSingleColumnLayout = gridLayout.columns === 1;
+
   const cardGridDynamicStyle = {
+
     marginHorizontal: gridLayout.columns > 1 ? -(gridLayout.gap / 2) : 0,
+
     justifyContent:
+
       isSingleColumnLayout || gridLayout.cardWidth * gridLayout.columns + gridLayout.gap * (gridLayout.columns - 1) < gridLayout.availableWidth
+
         ? 'center'
+
         : 'flex-start',
+
   };
+
   const cardDynamicStyle = {
+
     width: gridLayout.cardWidth,
+
     marginHorizontal: gridLayout.columns > 1 ? gridLayout.gap / 2 : 0,
+
     alignSelf: isSingleColumnLayout ? 'center' : 'flex-start',
+
   };
+
   const footerDynamicStyle = isSingleColumnLayout ? styles.cardFooterRowFullWidth : null;
+
   const startChipDynamicStyle = isSingleColumnLayout ? styles.startChipFullWidth : null;
+
+
+
+  // Render parameter stars (Trinklevel/Kennenlernen) like the yellow stars at bottom
+  const renderParameterStars = (paramText, accentColor) => {
+    if (!paramText || typeof paramText !== 'string') return null;
+    // Try to extract "(x/5)" occurrences
+    const matches = Array.from(paramText.matchAll(/\((\d)\/5\)/g)).map((m) => Number(m[1]));
+    const labels = language === 'de' ? ['Trinklevel', 'Kennenlernen'] : ['Drink level', 'Getting to know'];
+    const rows = [];
+    const toStars = (n) => {
+      const full = Math.max(0, Math.min(5, Number(n) || 0));
+      return new Array(5).fill(0).map((_, i) => (
+        <Text key={i} style={i < full ? styles.star : styles.starDim}>*</Text>
+      ));
+    };
+    if (matches.length >= 2) {
+      rows.push(
+        <View key="row1" style={styles.paramRow}>
+          <Text style={styles.paramLabel}>{labels[0]}:</Text>
+          <View style={styles.paramStars}>{toStars(matches[0])}</View>
+        </View>,
+      );
+      rows.push(
+        <View key="row2" style={styles.paramRow}>
+          <Text style={styles.paramLabel}>{labels[1]}:</Text>
+          <View style={styles.paramStars}>{toStars(matches[1])}</View>
+        </View>,
+      );
+      return rows;
+    }
+    // Fallback: show raw text
+    return <Text style={styles.gameMeta}>{paramText}</Text>;
+  };
 
   const gameDescriptions = useMemo(() => {
     const entries = {};
@@ -141,6 +225,18 @@ function MainMenu({ navigation }) {
       };
     });
 
+    // Visible title overrides
+    if (entries.ManyQuestionsGame) { entries.ManyQuestionsGame.title = '100 Questions'; }
+    if (entries.MaexchenGame) { entries.MaexchenGame.title = 'Mäxchen'; }
+    if (entries.Schoeneberg) { entries.Schoeneberg.title = 'Schöneberg'; }
+
+    // Fallback descriptions
+    Object.keys(entries).forEach((k) => {
+      if (!entries[k].description) {
+        entries[k].description = language === 'de' ? 'Mehr Infos folgen bald.' : 'More info coming soon.';
+      }
+    });
+
     entries.WerWuerde = entries.WerWuerde ?? {};
     if (!entries.WerWuerde.title || entries.WerWuerde.title === 'WerWuerde') {
       entries.WerWuerde.title = language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten';
@@ -148,13 +244,13 @@ function MainMenu({ navigation }) {
     if (!entries.WerWuerde.parameters) {
       entries.WerWuerde.parameters =
         language === 'en'
-          ? 'Drink level: ★★☆☆☆ (2/5)\nGetting to know each other: ★★★★☆ (4/5)'
-          : 'Trinklevel: ★★☆☆☆ (2/5)\nKennenlernen: ★★★★☆ (4/5)';
+          ? 'Drink level: ★★☆☆☆ (2/5)\\nGetting to know each other: ★★★★☆ (4/5)'
+          : 'Trinklevel: ★★☆☆☆ (2/5)\\nKennenlernen: ★★★★☆ (4/5)';
     }
     if (!entries.WerWuerde.description) {
       entries.WerWuerde.description =
         language === 'en'
-          ? 'Count down, point together at whoever fits best, and whoever has the most fingers drinks.'
+          ? 'Count down, point together at whoever fits best. Most votes drink.'
           : 'Zählt gemeinsam bis drei und zeigt auf die Person, die am besten passt. Die meisten Stimmen trinken.';
     }
 
@@ -165,8 +261,8 @@ function MainMenu({ navigation }) {
     if (!entries['6by6'].parameters) {
       entries['6by6'].parameters =
         language === 'en'
-          ? 'Drink level: ★★★★★ (5/5)\nGetting to know each other: ★☆☆☆☆ (1/5)'
-          : 'Trinklevel: ★★★★★ (5/5)\nKennenlernen: ★☆☆☆☆ (1/5)';
+          ? 'Drink level: ★★★★★ (5/5)\\nGetting to know each other: ★☆☆☆☆ (1/5)'
+          : 'Trinklevel: ★★★★★ (5/5)\\nKennenlernen: ★☆☆☆☆ (1/5)';
     }
     if (!entries['6by6'].description) {
       entries['6by6'].description =
@@ -178,19 +274,28 @@ function MainMenu({ navigation }) {
     return entries;
   }, [gamesCopy, language]);
 
+
   const allGameCards = useMemo(() => {
     return Object.keys(translationKeyMap).map((legacyKey) => {
       const entry = gameDescriptions[legacyKey] ?? {};
       const style = GAME_STYLE_MAP[legacyKey] ?? DEFAULT_CARD_STYLE;
       const hasTarget = !!navigationMap[legacyKey];
       return {
+
         key: legacyKey,
+
         title: entry.title,
+
         parameters: entry.parameters,
+
         description: entry.description,
+
         isNew: legacyKey === 'Getraenkezaehler',
+
         isComingSoon: !hasTarget,
+
         icon: style.icon,
+
         accent: style.accent,
       };
     });
@@ -209,7 +314,9 @@ function MainMenu({ navigation }) {
   }, [allGameCards]);
 
   const [expandedKey, setExpandedKey] = useState(null);
+
   const toggleExpand = useCallback((key) => setExpandedKey((p) => (p === key ? null : key)), []);
+
   const startGame = useCallback((gameKey) => {
     const target = navigationMap[gameKey];
     if (!target) return;
@@ -230,7 +337,7 @@ function MainMenu({ navigation }) {
       ? language === 'de'
         ? 'Bald verfügbar'
         : 'Coming soon'
-      : commonCopy?.startGame ?? 'Start game';
+      : (commonCopy?.startGame ?? 'Start game');
 
     const cardContainerStyles = [
       styles.gameCard,
@@ -279,21 +386,16 @@ function MainMenu({ navigation }) {
               ) : null}
             </View>
           </View>
-          <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}>▾</Text>
+          <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}>{isExpanded ? 'v' : '>'}</Text>
         </TouchableOpacity>
 
-        {isExpanded && !!game.parameters ? <Text style={styles.gameMeta}>{game.parameters}</Text> : null}
-        {isExpanded && !!game.description ? <Text style={styles.gameDescription}>{game.description}</Text> : null}
-        {isExpanded ? (
-          <View style={styles.ratingRow} accessible accessibilityLabel={language === 'de' ? 'Bewertung' : 'Rating'}>
-            <Text style={styles.star}>★</Text>
-            <Text style={styles.star}>★</Text>
-            <Text style={styles.star}>★</Text>
-            <Text style={styles.star}>★</Text>
-            <Text style={styles.starDim}>★</Text>
-            <Text style={styles.ratingText}>4.0</Text>
+        {isExpanded && !!game.parameters ? (
+          <View style={styles.paramStarsContainer}>
+            {renderParameterStars(game.parameters, accentColor)}
           </View>
         ) : null}
+        {isExpanded && !!game.description ? <Text style={styles.gameDescription}>{game.description}</Text> : null}
+        {/* bottom rating row removed */}
 
         <View style={footerRowStyles}>
           {startButton}
@@ -302,12 +404,12 @@ function MainMenu({ navigation }) {
     );
   };
 
-  const headerTitle = language === 'de' ? 'Bar-Auswahl' : 'Bar lineup';
-  const headerSubtitle = language === 'de' ? 'Alle spielbaren Games zuerst. Kompakt - Details bei Klick.' : 'Playable games first. Compact - details on tap.';
+  const headerTitle = language === 'de' ? 'Spielauswahl' : 'Game Lineup';
+  const headerSubtitle = language === 'de' ? 'Tippe auf eine Karte f\u00fcr Details.' : 'Tap a card to see details.';
   const renderDrinkCounterShortcut = () => {
     if (!drinkCounterCard) return null;
     const accentColor = drinkCounterCard.accent;
-    const titleFallback = language === 'de' ? 'Getränkezähler' : 'Drink counter';
+    const titleFallback = language === 'de' ? 'Getr\u00e4nkez\u00e4hler' : 'Drink counter';
     const helperText = language === 'de' ? 'Runde tracken' : 'Track the round';
     const actionLabel = language === 'de' ? 'Öffnen' : 'Open';
     return (
@@ -351,15 +453,25 @@ function MainMenu({ navigation }) {
           )}
         </View>
       </ScrollView>
+
       <Settings />
+
     </ImageBackground>
+
   );
+
 }
 
+
+
 const styles = StyleSheet.create({
+
   background: { flex: 1 },
+
   overlay: { ...StyleSheet.absoluteFillObject },
+
   scrollContainer: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 96 },
+
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -456,7 +568,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderWidth: 1,
   },
-  cardIcon: { fontSize: 18 },
+  cardIcon: { fontSize: 22 },
   chevron: {
     color: 'rgba(255,255,255,0.9)',
     fontSize: 14,
@@ -483,12 +595,25 @@ const styles = StyleSheet.create({
   gameDescription: { color: 'rgba(255,255,255,0.92)', lineHeight: 15, fontSize: 11, fontFamily: 'Quicksand_300Light' },
   ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 },
   star: { color: '#FFD166', fontSize: 12 },
+
   starDim: { color: 'rgba(255,255,255,0.35)', fontSize: 12 },
+
   ratingText: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginLeft: 6, fontFamily: 'Quicksand_300Light' },
 
+  // Parameters stars layout
+  paramStarsContainer: { marginTop: 6, gap: 4 },
+  paramRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  paramLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 11, fontFamily: 'Quicksand_300Light' },
+  paramStars: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+
+
+
   cardFooterRow: {
+
     flexDirection: 'row',
+
     alignItems: 'center',
+
     justifyContent: 'space-between',
     marginTop: 10,
     gap: 6,
@@ -518,8 +643,38 @@ const styles = StyleSheet.create({
     color: '#231C18',
     textAlign: 'center',
   },
+
   startChipDisabled: { backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.24)' },
+
   startChipLabelDisabled: { color: 'rgba(255,255,255,0.55)' },
+
 });
 
+
+
 export default MainMenu;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
