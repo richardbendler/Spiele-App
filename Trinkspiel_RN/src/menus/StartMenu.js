@@ -1,289 +1,210 @@
 ﻿import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
-import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
-import SettingsButton from './sublements/SettingsButton';
-import Settings from './sublements/Settings';
 import { useTranslation } from '../i18n';
 import NetInfo from "@react-native-community/netinfo";
 
-//Fonts
-//Die Benennungen der Imports kann man mit Autocomplete herausfinden
-//Wichtig: Schriftarten mÃ¼ssen weiter unten noch in fontsLoaded hinzugefÃ¼gt werden
-//import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
+const USE_BAR_START_LAYOUT = true;
+const BAR_WELCOME_ACCENTS = ["#E5C185", "#F08974", "#7AC1B2"]; // bleibt
+
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
-//import { Quicksand_300Bold } from "@expo-google-fonts/quicksand";
 import { Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold } from "@expo-google-fonts/caveat";
 import { useFonts } from "expo-font";
 
-//HANDLE SQL REQUESTS
-const handleSqlRequest = async (sqlRequest) => {
-    //TODO: remove this function and it's references. This was used for the old API to query data. It's not clear if the API calls in this file are actually required.
-};
-
-// API_DISABLED: Remote test fetch disabled while the app serves local sample texts.
-/* API_RESTORE_STEP: Uncomment this helper to hit the test API again.
-const handleTestAPI = async () => {
-    try {
-        const response = await fetch('https://www.codeyourapp.de/tools/query.php?count=5&mode=0')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Fehler beim Senden des Texts.');
-                }
-                //console.log(response);
-                return response.text();
-            })
-            .catch(error => {
-                console.error('Fehler bei der Anfrage:', error);
-                throw error; // Fehler weiterwerfen, um ihn in der nÃ¤chsthÃ¶heren Funktion zu behandeln
-            });
-
-        return response; // RÃ¼ckgabe der tatsÃ¤chlichen Antwort
-    } catch (error) {
-        console.error('Ein Fehler ist aufgetreten:', error);
-        throw error; // Fehler weiterwerfen, um ihn in der nÃ¤chsthÃ¶heren Funktion zu behandeln
-    }
-};
-
-*/
 const StartMenu = ({ navigation }) => {
-    const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
-    const { t } = useTranslation();
-    const startText = useMemo(() => t('startMenu'), [t]);
-    const commonText = useMemo(() => t('common'), [t]);
+  const { language } = useContext(VariablesContext);
+  const { t } = useTranslation();
+  const startText = useMemo(() => t('startMenu'), [t]);
 
-    const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
-    const windowWidth = Dimensions.get('window').width;
-    const windowHeight = Dimensions.get('window').height;
+  const heroTitle = startText?.title ?? (language === 'de' ? 'Deine Trinkspielbar' : 'Your drink game bar');
+  const heroSubtitle = startText?.subtitle ?? (language === 'de' ? 'Starte mit einem Spiel, das zu eurer Runde passt.' : 'Kick things off with a game that matches your crew.');
+  const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
 
-    const handleImageLoad = (e) => {
-        const { width, height } = e.nativeEvent.source;
-        const aspectRatio = width / height;
-        setBackgroundAspectRatio(aspectRatio);
-      };
+  const featureCards = useMemo(() => [
+    {
+      key: 'mix',
+      title: language === 'de' ? 'Spielauswahl' : 'Game selection',
+      text: language === 'de' ? 'Von Klassikern wie Kingscup bis zu neuen Ideen - alles an einem Ort.' : 'From Kingscup classics to fresh ideas - all in one place.',
+    },
+    {
+      key: 'mood',
+      title: language === 'de' ? 'Stimmungsbarometer' : 'Set the vibe',
+      text: language === 'de' ? 'Kurze Beschreibungen helfen euch das passende Spiel sofort zu finden.' : 'Short descriptions help you pick the perfect game instantly.',
+    },
+    {
+      key: 'stats',
+      title: language === 'de' ? 'Log & Stats' : 'Log & stats',
+      text: language === 'de' ? 'Mit dem Drinkcounter behaltet ihr eure Runde immer im Blick.' : 'Track your session with the built-in drink counter.',
+    },
+  ], [language]);
 
-    // Berechnen der Breite des Hintergrundbildes basierend auf dem SeitenverhÃ¤ltnis
-    const backgroundImageWidth = windowHeight * backgroundAspectRatio;
+  const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100);
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
 
+  const handleImageLoad = (e) => {
+    const { width, height } = e.nativeEvent.source;
+    const aspectRatio = width / height;
+    setBackgroundAspectRatio(aspectRatio);
+  };
 
+  const backgroundImageWidth = windowHeight * backgroundAspectRatio;
 
-    //Test Internet Connection
-    const [isConnected, setIsConnected] = useState(true);
-    useEffect(() => {
-        // Ãœberwache die Internetverbindung
-        const unsubscribe = NetInfo.addEventListener(state => {
-          setIsConnected(state.isConnected);
-        });
-    
-        return () => {
-          // Stelle sicher, dass du das Abonnement auflÃ¶st, um Speicherlecks zu vermeiden
-          unsubscribe();
-        };
-      }, []);
+  const [isConnected, setIsConnected] = useState(true);
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsConnected(state.isConnected);
+    });
+    return () => unsubscribe();
+  }, []);
 
-    //Zugriff Test-API
-    // API_DISABLED: skip the remote test endpoint while offline data is active.
-    /* API_RESTORE_STEP: Uncomment this block to fetch showcase data from the API again.
-    const [ret, setRet] = useState(["Platzhalter"]);
-    useEffect(() => {
-        const fetchData = async () => {
-        const result = await handleTestAPI();
-        setRet(JSON.stringify(result));
-    };
-    fetchData();
-    }, []);
+  const [fontsLoaded] = useFonts({
+    Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold,
+    Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold
+  });
+  if (!fontsLoaded) {
+    return <View style={{justifyContent:'center', alignItems:'center'}}>
+      <Image source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')} style={{ width: 72, height: 72, resizeMode: 'contain' }} />
+      <Text>{t('common')?.loading ?? 'Loading'}</Text>
+    </View>;
+  }
 
-    */
-     //Activity
-    const [words, setWords] = useState(["Platzhalterfrage"]);
-    useEffect(() => {
-        const fetchData = async () => {
-        const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
-        setWords(JSON.stringify(result));
-    };
-    fetchData();
-    }, []);
-
-     
-    const [fontsLoaded] = useFonts({
-        Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold,
-        Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold
-        });
-        if (!fontsLoaded) {
-        return <View style={{justifyContent:"center", alignItems:"center"}}>
-            <Image source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')} style={appStyles.bottleButton} />
-            <Text>{commonText.loading}</Text>
-        </View> ;
-    }
-
-    
+  if (!USE_BAR_START_LAYOUT) {
+    return (
+      <View style={{alignItems: 'flex-start'}}>
+        <ImageBackground source={require("../../assets/images/bar/bar_background_filled.png")} 
+          style={{ height: windowHeight, width: backgroundImageWidth }}
+          onLoad={handleImageLoad}
+        >
+          {/* ... alte Bottle-Ansicht unverändert ... */}
+        </ImageBackground>
+      </View>
+    );
+  }
 
   return (
-    <View style={{alignItems: 'flex-start'}}>
-      <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
-      style={{ height: windowHeight, width: backgroundImageWidth }}
-      onLoad={handleImageLoad}
-      >
-        <View style={{
-            width: windowWidth,
-            height: windowHeight, // Stellt sicher, dass die MenÃ¼-Container die gleiche Breite wie das Hintergrundbild haben
-            flexDirection: 'row',
-            justifyContent: 'center', // Anpassen nach Bedarf fÃ¼r die Platzierung der MenÃ¼buttons
-            alignItems: 'center', // Zentriert die MenÃ¼buttons vertikal
-        }}>
-            <Settings/>
-                                        
-                    <Text>
-                        {isConnected ? '' : 'ðŸŒ'} {/*  TODO: lÃ¶schen/ersetzen */}
-                    </Text>
+    <ImageBackground
+      source={require("../../assets/images/bar/bar_background_filled.png")}
+      style={styles.barBackground}
+    >
+      <View style={styles.barOverlay} />
 
-                    {/* SCHILD */}
-                    <View style={{position: 'absolute', top: '10%', width: '40%', height: '10%'}}>
-                        <Image source={require('../../assets/images/bar/schild.png')} style={appStyles.bottleButton} />
-                    </View>
+      <View style={styles.barContent}>
+        <View style={styles.heroSection}>
+          <Image
+            source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')}
+            style={styles.heroLogo}
+          />
+          <View style={styles.heroTextBlock}>
+            <Text style={styles.heroLabel}>{language === 'de' ? 'Trinkspielbar' : 'Bar mode'}</Text>
+            <Text style={styles.heroTitle}>{heroTitle}</Text>
+            <Text style={styles.heroSubtitle}>{heroSubtitle}</Text>
+          </View>
+        </View>
 
-                    {/* SCHRIFTZUG SUBTEXT */}
-                    <View style={{position: 'absolute', top: '6%', width: '100%'}}>
-                        <Text style={[{textAlign: 'center', color: 'black', fontFamily: 'Caveat_400Regular', fontSize: 20}]}>Die eine Trinkspielapp, die alle anderen ersetzt!</Text>
-                    </View>
+        {/* TEXTPANELS: neutral, nicht wie Buttons */}
+        <View style={styles.featureGrid}>
+          {featureCards.map((feature, index) => (
+            <View key={feature.key} style={styles.featureRow}>
+              <View style={[styles.featureAccent, { backgroundColor: BAR_WELCOME_ACCENTS[index % BAR_WELCOME_ACCENTS.length] }]} />
+              <View style={styles.featurePanel}>
+                <Text style={styles.featureTitle}>{feature.title}</Text>
+                <Text style={styles.featureText}>{feature.text}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
 
+        {startText?.disclaimer ? (
+          <View style={styles.disclaimerPanel}>
+            <Text style={styles.disclaimerHeading}>
+              {language === 'de' ? 'Hinweis' : 'Heads-up'}
+            </Text>
+            <Text style={styles.disclaimerCopy}>{startText.disclaimer}</Text>
+          </View>
+        ) : null}
 
-                        {/* ðŸ¾ FLASCHEN ðŸ¾*/}
-                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={{position: 'absolute', resizeMode: 'contain', left: '3%', top: '20%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={{position: 'absolute', resizeMode: 'contain', left: '28%', top: '20%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '20%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={{position: 'absolute', resizeMode: 'contain', left: '67%', top: '20%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '20%', width: '19%', height: '12%', }}/>
+        {/* Primärer CTA bleibt klar als Button gestaltet */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('MainMenu')}
+          style={styles.startButtonNew}
+          activeOpacity={0.9}
+        >
+          <Text style={styles.startButtonNewLabel}>{playLabel}</Text>
+        </TouchableOpacity>
+      </View>
 
-                        <Image source={require('../../assets/images/bottles/bottle_009.png')} style={{position: 'absolute', resizeMode: 'contain', left: '-7%', top: '38%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={{position: 'absolute', resizeMode: 'contain', left: '14%', top: '38%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={{position: 'absolute', resizeMode: 'contain', left: '32%', top: '38%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '38%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={{position: 'absolute', resizeMode: 'contain', left: '66%', top: '38%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_013.png')} style={{position: 'absolute', resizeMode: 'contain', left: '88%', top: '38%', width: '19%', height: '12%', }}/>
-
-                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={{position: 'absolute', resizeMode: 'contain', left: '0%', top: '56%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={{position: 'absolute', resizeMode: 'contain', left: '27%', top: '56%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={{position: 'absolute', resizeMode: 'contain', left: '50%', top: '56%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={{position: 'absolute', resizeMode: 'contain', left: '70%', top: '56%', width: '19%', height: '12%', }}/>
-                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={{position: 'absolute', resizeMode: 'contain', left: '90%', top: '56%', width: '19%', height: '12%', }}/>
-
-                        
-
-
-                    {/* REGAL 1 */}
-                    <View style={{ position: 'absolute', top: '32%', alignItems: 'center', justifyContent: 'bottom' }}>
-                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                    </View>
-
-
-
-
-                    {/* REGAL 2 */}
-                    <View style={{ position: 'absolute', top: '50%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottom' }}>
-                        <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                    </View>
-
-                    <View style={styles.callToAction}>
-                        {startText?.disclaimer ? (
-                            <View style={styles.disclaimerWrapper}>
-                                <View style={styles.disclaimerBox}>
-                                    <Text style={styles.disclaimerText}>{startText.disclaimer}</Text>
-                                </View>
-                            </View>
-                        ) : null}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate('MainMenu')}
-                            style={[appStyles.chalkboardButton, styles.playButton]}>
-                            <Text style={appStyles.chalkboardButtonText}>{startText.playButton}</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/*<Text>{words.slice(0,50)}</Text>
-                    <Text>--------------------------</Text>
-                    <Text>{ret.slice(0,50)}</Text>*/}
-
-                    {/*<TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                        <Text style={appStyles.menuButtonText}>Custom Game</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={appStyles.menuButton}>
-                        <Text style={appStyles.menuButtonText}>Eigene Karten</Text>
-                    </TouchableOpacity>*/}
-
-                </View>
-
-                {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                    <Text style={appStyles.settingsButtonText}>âš™ï¸</Text>
-                </TouchableOpacity>*/}
-            
-
-        </ImageBackground>
-    </View>
+      <View style={styles.counter}>
+        <View style={styles.counterTop} />
+        <View style={styles.counterFront} />
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-    },
-    backgroundImage: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      width: '100%',
-      height: '100%',
-    },
-    callToAction: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-      pointerEvents: 'box-none',
-    },
-    disclaimerBox: {
-      backgroundColor: 'rgba(10, 14, 22, 0.85)',
-      borderRadius: 18,
-      paddingVertical: 14,
-      paddingHorizontal: 18,
-      borderWidth: 1,
-      borderColor: 'rgba(255,255,255,0.12)',
-      shadowColor: '#000',
-      shadowOpacity: 0.35,
-      shadowRadius: 12,
-      shadowOffset: { width: 0, height: 6 },
-      elevation: 6,
-      maxWidth: '85%',
-    },
-    disclaimerText: {
-      color: 'rgba(255,255,255,0.85)',
-      fontSize: 12,
-      lineHeight: 18,
-      textAlign: 'center',
-      fontFamily: 'Quicksand_300Light',
-    },
-    playButton: {
-      position: 'absolute',
-      top: '50%',
-      transform: [{ translateY: -35 }],
-      alignSelf: 'center',
-      pointerEvents: 'auto',
-    },
-    disclaimerWrapper: {
-      position: 'absolute',
-      bottom: '60%',
-      transform: [{ translateY: -16 }],
-      width: '100%',
-      alignItems: 'center',
-      paddingHorizontal: 24,
-      pointerEvents: 'auto',
-    },
-  });
+  barBackground: { flex: 1 },
+  barOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(10, 14, 22, 0.6)' },
+  barContent: { flex: 1, paddingHorizontal: 28, paddingTop: 90, paddingBottom: 160, justifyContent: 'space-between' },
+
+  heroSection: { flexDirection: 'row', alignItems: 'center', gap: 18 },
+  heroLogo: { width: 84, height: 84, resizeMode: 'contain' },
+  heroTextBlock: { flex: 1 },
+  heroLabel: { color: '#E5C185', fontFamily: 'Caveat_500Medium', fontSize: 24 },
+  heroTitle: { color: '#FFFFFF', fontSize: 32, fontFamily: 'Quicksand_700Bold' },
+  heroSubtitle: { color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 20, marginTop: 8, fontFamily: 'Quicksand_300Light' },
+
+  /** Panels statt Button-Look */
+  featureGrid: { marginTop: 36, gap: 12 },
+  featureRow: { flexDirection: 'row', alignItems: 'stretch' },
+  featureAccent: { width: 4, borderRadius: 4 },
+  featurePanel: {
+    flex: 1,
+    backgroundColor: 'rgba(24,19,15,0.55)', // transparenter Panel-Look
+    borderRadius: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    marginLeft: 10,
+    // WICHTIG: keine Border & kein Shadow -> kein Button-Eindruck
+    borderWidth: 0,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  featureTitle: { color: '#F5E9D7', fontSize: 15, fontFamily: 'Quicksand_300Bold' },
+  featureText: { color: 'rgba(255,255,255,0.78)', fontSize: 13, lineHeight: 19, marginTop: 4, fontFamily: 'Quicksand_300Light' },
+
+  disclaimerPanel: {
+    marginTop: 20,
+    backgroundColor: 'rgba(12,16,24,0.55)', // leichter als zuvor
+    borderRadius: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderWidth: 0,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  disclaimerHeading: { color: '#E5C185', fontSize: 12, fontFamily: 'Quicksand_300Bold', letterSpacing: 1, textTransform: 'uppercase' },
+  disclaimerCopy: { color: 'rgba(255,255,255,0.8)', fontSize: 12, lineHeight: 18, marginTop: 8, fontFamily: 'Quicksand_300Light' },
+
+  /** Primärer CTA (Button) bewusst deutlich */
+  startButtonNew: {
+    marginTop: 24,
+    alignSelf: 'center',
+    backgroundColor: '#E5C185',
+    borderRadius: 24,
+    paddingVertical: 14,
+    paddingHorizontal: 36,
+    shadowColor: '#000',
+    shadowOpacity: 0.35,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 6,
+  },
+  startButtonNewLabel: { color: '#231C18', fontSize: 16, fontFamily: 'Quicksand_300Bold', letterSpacing: 1 },
+
+  counter: { position: 'absolute', left: 0, right: 0, bottom: 0, alignItems: 'center', pointerEvents: 'none' },
+  counterTop: { width: '88%', height: 18, backgroundColor: 'rgba(53, 40, 32, 0.95)', borderTopLeftRadius: 18, borderTopRightRadius: 18, shadowColor: '#000', shadowOpacity: 0.35, shadowRadius: 14, shadowOffset: { width: 0, height: 4 }, elevation: 4 },
+  counterFront: { width: '100%', height: 80, backgroundColor: 'rgba(41, 30, 24, 0.92)' },
+});
 
 export default StartMenu;
-

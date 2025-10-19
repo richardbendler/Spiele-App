@@ -1,9 +1,12 @@
-import React, { useState, useContext, useCallback, useMemo } from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Modal, TouchableWithoutFeedback  } from 'react-native';
-import { appStyles } from '../../styles';
-import SettingsButton from './sublements/SettingsButton';
+﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Settings from './sublements/Settings';
+import { useTranslation } from '../i18n';
+
+/** --- Config --- */
+const CARD_BG = 'rgba(18,14,12,0.96)';
+const OVERLAY_SHADE = 'rgba(10,14,22,0.78)';
 
 const translationKeyMap = {
   'The One': 'theOne',
@@ -40,23 +43,47 @@ const nextGameMap = {
   PartyBoardGame: { nextGame: 'PartyBoardGame', showScales: false },
 };
 
-import { useTranslation } from '../i18n';
+const GAME_STYLE_MAP = {
+  'The One': { icon: '🥇', accent: '#F5C26B' },
+  Skala: { icon: '📊', accent: '#7AC1B2' },
+  Kingscup: { icon: '👑', accent: '#B784D7' },
+  Schoeneberg: { icon: '🎶', accent: '#F08974' },
+  MaexchenGame: { icon: '🎲', accent: '#F3AE82' },
+  SpinTheBottle: { icon: '🌈', accent: '#6FC3C3' },
+  Top10: { icon: '🔟', accent: '#EF8A9C' },
+  ManyQuestionsGame: { icon: '❓', accent: '#C2E76E' },
+  WerWuerde: { icon: '🧐', accent: '#A5B4FF' },
+  '6by6': { icon: '🎯', accent: '#FFCF70' },
+  Activity: { icon: '🎭', accent: '#FF9F7A' },
+  Getraenkezaehler: { icon: '🍻', accent: '#E5C185' },
+  HorseRace: { icon: '🏇', accent: '#88D4A3' },
+  Kopfpoker: { icon: '🃏', accent: '#CFA1E6' },
+  PartyBoardGame: { icon: '🎉', accent: '#FFD166' },
+};
+const DEFAULT_CARD_STYLE = { icon: '🍹', accent: '#E5C185' };
+
+// Verhindert Wort-Splitting auf Android: bricht nur zwischen Wörtern
+const TitleNoWordBreak = ({ text, style }) => {
+  const words = String(text || '').split(' ');
+  return (
+    <Text style={style}>
+      {words.map((w, i) => (
+        <Text key={i}>
+          {w}
+          {i < words.length - 1 ? ' ' : ''}
+        </Text>
+      ))}
+    </Text>
+  );
+};
 
 function MainMenu({ navigation }) {
-  const { settingsVisible, setSettingsVisible, language } = useContext(VariablesContext);
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const [gameTitle, setGameTitle] = useState('');
-  const [gameParameters, setGameParameters] = useState('');
-  const [gameDescription, setGameDescription] = useState('');
-  const [navigateAction, setNavigateAction] = useState('');
-  const [navigateParams, setNavigateParams] = useState(null);
-
+  const { language } = useContext(VariablesContext);
   const { t } = useTranslation();
 
   const commonCopy = useMemo(() => t('common'), [t]);
-  const newBadgeLabel = language === 'de' ? 'NEU' : 'NEW';
   const gamesCopy = useMemo(() => t('mainMenu.games'), [t]);
+  const newBadgeLabel = language === 'de' ? 'NEU' : 'NEW';
 
   const gameDescriptions = useMemo(() => {
     const entries = {};
@@ -66,371 +93,222 @@ function MainMenu({ navigation }) {
         title: copy.title ?? legacyKey,
         parameters: copy.parameters ?? '',
         description: copy.description ?? '',
-        navigateTo: navigationMap[legacyKey] ?? '',
       };
     });
     return entries;
   }, [gamesCopy]);
 
+  const gameCards = useMemo(() => {
+    return Object.keys(translationKeyMap).map((legacyKey) => {
+      const entry = gameDescriptions[legacyKey] ?? {};
+      const style = GAME_STYLE_MAP[legacyKey] ?? DEFAULT_CARD_STYLE;
+      const hasTarget = !!navigationMap[legacyKey];
+      return {
+        key: legacyKey,
+        title: entry.title,
+        parameters: entry.parameters,
+        description: entry.description,
+        isNew: legacyKey === 'Getraenkezaehler',
+        isComingSoon: !hasTarget,
+        icon: style.icon,
+        accent: style.accent,
+      };
+    });
+  }, [gameDescriptions]);
 
+  const [expandedKey, setExpandedKey] = useState(null);
+  const toggleExpand = useCallback((key) => setExpandedKey((p) => (p === key ? null : key)), []);
+  const startGame = useCallback((gameKey) => {
+    const target = navigationMap[gameKey];
+    if (!target) return;
+    const params = nextGameMap[gameKey];
+    navigation.navigate(target, params ?? undefined);
+  }, [navigation]);
 
-  const openModalWithGame = (gameKey) => {
-    const game = gameDescriptions[gameKey];
-    setGameTitle(game.title);
-    setGameParameters(game.parameters)
-    setGameDescription(game.description);
-    setNavigateAction(game.navigateTo);
-    const config = nextGameMap[gameKey];
-    setNavigateParams(config ? { ...config } : null);
-    setModalVisible(true);
-  };
-
-
-
-  const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-
-  const handleImageLoad = (e) => {
-    const { width, height } = e.nativeEvent.source;
-    const aspectRatio = width / height;
-    setBackgroundAspectRatio(aspectRatio);
-  };
-
-  // Berechnen der Breite des Hintergrundbildes basierend auf dem Seitenverh+-ltnis
-  const backgroundImageWidth = windowHeight * backgroundAspectRatio;
+  const headerTitle = language === 'de' ? 'Bar-Auswahl' : 'Bar lineup';
+  const headerSubtitle = language === 'de' ? 'Alle spielbaren Games zuerst. Kompakt – Details bei Klick.' : 'Playable games first. Compact – details on tap.';
 
   return (
-    <View style={{alignItems: 'flex-start'}}>
-      <ScrollView
-        horizontal={true}
-        pagingEnabled={false} // Optional, f+-+r ein "Seiten"-+-hnliches Scrollen
-        showsHorizontalScrollIndicator={true} // Versteckt die horizontale Scroll-Leiste
-      >
-        <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
-        style={{ height: windowHeight, width: backgroundImageWidth }}
-        onLoad={handleImageLoad}
-        >
-          <View style={appStyles.pageContainer}>
-            <View style={[appStyles.smallPageContainer, {height: '100%', width: '100%', justifyContent: 'top'}]}>
-            
-            {/*<View style={appStyles.menuContainer}>*/}
-              
-              <View style={{
-                width: backgroundImageWidth, // Stellt sicher, dass die Men+-+-Container die gleiche Breite wie das Hintergrundbild haben
-                flexDirection: 'row',
-                justifyContent: 'space-around', // Anpassen nach Bedarf f+-+r die Platzierung der Men+-+buttons
-                alignItems: 'center', // Zentriert die Men+-+buttons vertikal
-              }}>
-                <Settings/>
-
-                <View style={{ height: '100%', width: backgroundImageWidth, alignItems: 'center', justifyContent: 'center' }}>
-
-                    <View style={{ position: 'absolute', left: '0%', top: '62%', alignItems: 'center', justifyContent: 'bottm' }}>
-                      <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                    </View>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('The One')} style={{position: 'absolute', left: '6%', top: '32%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['The One'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '24%', top: '32%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['ManyQuestionsGame'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Schoeneberg')} style={{position: 'absolute', left: '50%', top: '36%', width: '15%', height: '26%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Schoeneberg'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '68%', top: '32%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Skala'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-                    
-
-                    
-                    
-                  <View style={{ position: 'absolute', left: '0%', top: '100%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                  </View>
-                    
-
-                  
-                  
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={{position: 'absolute', left: '6%', top: '70%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Kingscup'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '24%', top: '75%', width: '18%', height: '25%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/horse.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['HorseRace'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-                    
-
-                    
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('6by6')} style={{position: 'absolute', left: '54%', top: '70%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['6by6'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '74%', top: '70%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Activity'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                  
-
-
-                    
-                    {/* ------------------------------ THIRD LEVEL ------------------------------ */}
-
-                  
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '4%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}><Text style={appStyles.bottleText}>{gameDescriptions['SpinTheBottle'].title}</Text></View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={{position: 'absolute', left: '20%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['MaexchenGame'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('PartyBoardGame')} style={{position: 'absolute', left: '36%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_016.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['PartyBoardGame'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('WerWuerde')} style={{position: 'absolute', left: '52%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_015.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['WerWuerde'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '68%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Top10'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-{/* ------------------------------ EXTRA ------------------------------- */}
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Getraenkezaehler')} style={{position: 'absolute', left: '4%', top: '170%', width: '15%', height: '25%'}}>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={[appStyles.bottleText, { fontSize: 10, color: '#E5C185', letterSpacing: 1 }]}>{newBadgeLabel}</Text>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Getraenkezaehler'].title}</Text>
-                      </View>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
-                      </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '84%', top: '106%', width: '15%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonComingSoonBadge}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>{commonCopy.comingSoon}</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>{gameDescriptions['Kopfpoker'].title}</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-
-
-                </View>
-
-
-                {/* Modal f+-+r Spielbeschreibungen */}
-                <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modalVisible}
-                  onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                    setNavigateParams(null);
-                  }}
-                >
-                  <TouchableWithoutFeedback onPress={() => {
-                    setModalVisible(false);
-                    setNavigateParams(null);
-                  }}>
-                    <View style={appStyles.modalOverlay}>
-                      <TouchableWithoutFeedback onPress={() => {}}>
-                        <View style={appStyles.modalView}>
-
-                          <Text style={appStyles.modalTextTitle}>{gameTitle}</Text>
-
-                          <Text style={appStyles.modalTextParameters}>{gameParameters}</Text>
-                          <Text style={appStyles.modalText}>{gameDescription}</Text>
-                          
-                          {navigateAction !== '' ? (
-                            <TouchableOpacity
-                              style={[appStyles.chalkboardButtonPrimaryColor]}
-                              onPress={() => {
-                                setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction, navigateParams ?? undefined);
-                                setNavigateParams(null);
-                              }}
-                            >
-                              <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>{commonCopy.startGame}</Text>
-                            </TouchableOpacity>
-                          ) : (
-                            <TouchableOpacity
-                              style={[appStyles.chalkboardButtonGrey]}
-                              onPress={() => {
-                                setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction, navigateParams ?? undefined);
-                                setNavigateParams(null);
-                              }}
-                              disabled={true}
-                            >
-                              <Text style={[appStyles.chalkboardButtonText, {fontSize: 20, fontStyle: 'italic', color: 'white'}]}>{commonCopy.comingSoon}</Text>
-                            </TouchableOpacity>
-                            
-                          )}
-
-                          <TouchableOpacity
-                            style={appStyles.closeButton}
-                            onPress={() => {
-                              setModalVisible(false);
-                              setNavigateParams(null);
-                            }}
-                          >
-                            <Text style={{color: 'white'}}>X</Text>
-                          </TouchableOpacity>
-
-                        </View>
-                      </TouchableWithoutFeedback>
-                    </View>
-                  </TouchableWithoutFeedback>
-
-                </Modal>
-                
-              </View>  
-            {/*</View>*/}
-
-            {/*SettingsButton*/}
-            {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                <Text style={appStyles.settingsButtonText}>+++--</Text>
-            </TouchableOpacity>*/}
+    <ImageBackground source={require('../../assets/images/bar/bar_background_filled.png')} style={styles.background}>
+      <View style={[styles.overlay, { backgroundColor: OVERLAY_SHADE }]} />
+      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <View style={styles.titleGroup}>
+            <Text style={styles.headerTitle}>{headerTitle}</Text>
+            <Text style={styles.headerSubtitle}>{headerSubtitle}</Text>
           </View>
         </View>
-        </ImageBackground>
 
+        <View style={styles.cardGrid}>
+          {gameCards.map((game) => {
+            const isExpanded = expandedKey === game.key;
+            const StartChip = (
+              <View
+                style={[styles.startChip, game.isComingSoon ? styles.startChipDisabled : { backgroundColor: game.accent, borderColor: `${game.accent}AA` }]}
+              >
+                <Text style={[styles.startChipLabel, game.isComingSoon && styles.startChipLabelDisabled]}>
+                  {game.isComingSoon
+                    ? language === 'de'
+                      ? 'Bald verfügbar'
+                      : 'Coming soon'
+                    : commonCopy?.startGame ?? 'Start game'}
+                </Text>
+              </View>
+            );
+
+            return (
+              <View key={game.key} style={[styles.gameCard, { borderColor: `${game.accent}80`, shadowColor: `${game.accent}3D` }]}> 
+                <TouchableOpacity style={styles.cardTopRow} onPress={() => toggleExpand(game.key)} activeOpacity={0.9}>
+                  <View style={[styles.cardIconWrapperAbs, { backgroundColor: `${game.accent}26`, borderColor: `${game.accent}88` }]}>
+                    <Text style={styles.cardIcon}>{game.icon}</Text>
+                  </View>
+                  <Text style={[styles.chevronAbs, isExpanded && styles.chevronExpanded]}>▾</Text>
+                  {game.isNew ? (
+                    <View style={[styles.newBadgeAbs, { backgroundColor: `${game.accent}33`, borderColor: `${game.accent}80` }]}>
+                      <Text style={[styles.cardBadgeText, { color: game.accent }]}>{newBadgeLabel}</Text>
+                    </View>
+                  ) : null}
+                  <TitleNoWordBreak text={game.title} style={styles.gameTitleFull} />
+                </TouchableOpacity>
+
+                {isExpanded && !!game.parameters ? <Text style={styles.gameMeta}>{game.parameters}</Text> : null}
+                {isExpanded && !!game.description ? <Text style={styles.gameDescription}>{game.description}</Text> : null}
+                {isExpanded ? (
+                  <View style={styles.ratingRow} accessible accessibilityLabel={language === 'de' ? 'Bewertung' : 'Rating'}>
+                    <Text style={styles.star}>★</Text>
+                    <Text style={styles.star}>★</Text>
+                    <Text style={styles.star}>★</Text>
+                    <Text style={styles.star}>★</Text>
+                    <Text style={styles.starDim}>★</Text>
+                    <Text style={styles.ratingText}>4.0</Text>
+                  </View>
+                ) : null}
+
+                <View style={styles.cardFooterRow}>
+                  {!game.isComingSoon && (
+                    <TouchableOpacity onPress={() => startGame(game.key)} activeOpacity={0.88}>
+                      {StartChip}
+                    </TouchableOpacity>
+                  )}
+                  {game.isComingSoon && StartChip}
+                </View>
+              </View>
+            );
+          })}
+        </View>
       </ScrollView>
-    </View>
+      <Settings />
+    </ImageBackground>
   );
 }
 
+const styles = StyleSheet.create({
+  background: { flex: 1 },
+  overlay: { ...StyleSheet.absoluteFillObject },
+  scrollContainer: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 96 },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 },
+  titleGroup: { flex: 1, paddingRight: 12 },
+  headerTitle: { color: '#F5E9D7', fontSize: 24, fontFamily: 'Quicksand_700Bold' },
+  headerSubtitle: { color: 'rgba(245,233,215,0.75)', fontSize: 12, marginTop: 4, lineHeight: 18, fontFamily: 'Quicksand_300Light' },
 
+  cardGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' },
+  gameCard: {
+    width: '48%',
+    borderRadius: 18,
+    padding: 12,
+    borderWidth: 1,
+    backgroundColor: CARD_BG,
+    shadowOpacity: 0.28,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 6,
+    marginBottom: 14,
+  },
+  cardTopRow: {
+    position: 'relative',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 8,
+    paddingLeft: 44,
+    paddingRight: 28,
+  },
+  cardIconWrapperAbs: {
+    position: 'absolute',
+    left: 12,
+    top: 18,
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+  },
+  cardIcon: { fontSize: 20 },
+  chevronAbs: {
+    position: 'absolute',
+    right: 12,
+    top: 20,
+    color: 'rgba(255,255,255,0.9)',
+    fontSize: 14,
+    transform: [{ rotate: '0deg' }],
+  },
+  chevronExpanded: { transform: [{ rotate: '180deg' }] },
+  newBadgeAbs: {
+    position: 'absolute',
+    right: 12,
+    top: 36,
+    borderRadius: 10,
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    borderWidth: 1,
+    alignSelf: 'flex-end',
+  },
+  cardBadgeText: { fontSize: 9, fontFamily: 'Quicksand_300Bold', letterSpacing: 0.8 },
 
+  gameTitleFull: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontFamily: 'Quicksand_300Bold',
+    lineHeight: 20,
+    width: '100%',
+    minWidth: 0,
+    flexShrink: 1,
+    textBreakStrategy: 'simple',
+    android_hyphenationFrequency: 'none',
+    includeFontPadding: false,
+  },
 
+  gameMeta: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginBottom: 4, fontFamily: 'Quicksand_300Light' },
+  gameDescription: { color: 'rgba(255,255,255,0.92)', lineHeight: 16, fontSize: 11, fontFamily: 'Quicksand_300Light' },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 },
+  star: { color: '#FFD166', fontSize: 12 },
+  starDim: { color: 'rgba(255,255,255,0.35)', fontSize: 12 },
+  ratingText: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginLeft: 6, fontFamily: 'Quicksand_300Light' },
+
+  cardFooterRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginTop: 12,
+    gap: 8,
+  },
+  startChip: {
+    borderRadius: 15,
+    paddingVertical: 7,
+    paddingHorizontal: 12,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 96,
+  },
+  startChipLabel: {
+    fontFamily: 'Quicksand_300Bold',
+    fontSize: 12,
+    letterSpacing: 0.4,
+    color: '#231C18',
+  },
+  startChipDisabled: { backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.24)' },
+  startChipLabelDisabled: { color: 'rgba(255,255,255,0.55)' },
+});
 
 export default MainMenu;
-
-
-
-
-
-
-
-
-
-
-
