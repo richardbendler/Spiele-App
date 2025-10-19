@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground }
 import { VariablesContext } from "../../VariablesContext";
 import { appStyles } from "../../styles";
 import InfoText from "./sublements/InfoText";
+import InfoHint from './sublements/InfoHint';
 import { shuffleArrayFisherYates } from "./sublements/AdjustParamShape";
 
 const formatTemplate = (template, values = {}) => {
@@ -926,6 +927,7 @@ const PartyBoardGame = ({ navigation }) => {
       <OverlayPrompt overlay={overlay} onConfirm={confirmOverlay} language={language} />
 
       <InfoText header={copy.info.title} rules={copy.info.body} />
+      <InfoHint />
       <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
         <Text style={appStyles.infoButtonText}>{language === "en" ? "Rules" : "Regeln"}</Text>
       </TouchableOpacity>

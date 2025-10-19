@@ -26,10 +26,12 @@ import DrinkCounter from "./src/games/DrinkCounter";
 import Activity from "./src/games/Activity";
 import SpinTheBottle from "./src/games/SpinTheBottle";
 import HorseRace from "./src/games/HorseRace";
+import Schoeneberg from "./src/games/Schoeneberg";
 import WhoWouldLikelyGame from "./src/games/WhoWouldLikely";
 import NeverHaveIEverGame from "./src/games/NeverHaveIEver";
 import PartyBoardGame from "./src/games/PartyBoardGame";
 import SixBySixGame from "./src/games/SixBySix";
+import SecretMission from "./src/games/SecretMission";
 
 //Import des Contextes -> Verwaltet globale Variablen
 import { VariablesContext } from "./VariablesContext";
@@ -217,6 +219,7 @@ export default function App() {
   const [infoVisible, setInfoVisible] = useState(false);
   const [players, setPlayers] = useState([]);
   const [language, setLanguage] = useState("de");
+  const [tutorialEnabled, setTutorialEnabled] = useState(false);
 
   const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
 
@@ -241,6 +244,8 @@ export default function App() {
         setTheOnePrompts,
         manyQuestions,
         setManyQuestions,
+        tutorialEnabled,
+        setTutorialEnabled,
       }}
     >
       <View style={{ flex: 1 }}>
@@ -269,8 +274,10 @@ export default function App() {
               initialParams={{ textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle }}
             />
             <Stack.Screen name="HorseRace" component={HorseRace} />
+            <Stack.Screen name="Schoeneberg" component={Schoeneberg} />
             <Stack.Screen name="SixBySixGame" component={SixBySixGame} />
             <Stack.Screen name="PartyBoardGame" component={PartyBoardGame} />
+            <Stack.Screen name="SecretMission" component={SecretMission} />
           </Stack.Navigator>
         </NavigationContainer>
         <LanguageToggle />

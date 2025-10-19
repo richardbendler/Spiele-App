@@ -187,15 +187,20 @@ const buttonStyles = StyleSheet.create({
   //Game Info Button -> Zeigt Spielerklärungen an
   infoButton: {
     position: 'absolute',
-    left: 20,         // Abstand vom linken Rand des Containers
-    bottom: 20,       // Abstand vom unteren Rand des Containers
     backgroundColor: secondaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    //width: 50, // Breite des Buttons
-    height: 50, // Höhe des Buttons
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.4)',
+    shadowColor: '#000',
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    height: 50,
     alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
+    justifyContent: 'center',
   },
 
   //Restart Button von Winnerpage
@@ -464,4 +469,6 @@ export const appStyles = {
   ...backgroundStyles,
   ...modalStyles,
 }
+
+
 

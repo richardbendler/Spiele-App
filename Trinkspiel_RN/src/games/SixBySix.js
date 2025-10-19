@@ -14,10 +14,11 @@ import {
   StyleSheet,
   Animated,
   ScrollView,
-  Modal,
 } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
@@ -160,7 +161,7 @@ const useSixBySixCopy = (language, t) => {
 };
 
 const SixBySixGame = () => {
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { t, language } = useTranslation();
   const copy = useMemo(() => useSixBySixCopy(language, t), [language, t]);
 
@@ -169,17 +170,18 @@ const SixBySixGame = () => {
   const [diceTwo, setDiceTwo] = useState(1);
   const [activeCellId, setActiveCellId] = useState(null);
   const [lastResult, setLastResult] = useState(null);
-  const [hint, setHint] = useState({
-    title: copy.modal.startTitle,
-    body: copy.modal.startBody,
-  });
-  const [hintVisible, setHintVisible] = useState(true);
+  const [transientTip, setTransientTip] = useState(null);
+  const [hint, setHint] = useState(null);
+  const [hintVisible, setHintVisible] = useState(false);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const [rolling, setRolling] = useState(false);
 
   useEffect(() => {
-    setHint({ title: copy.modal.startTitle, body: copy.modal.startBody });
-    setHintVisible(true);
+    // no modal popup on load; tutorial is controlled via the tutorial button
+    setHint(null);
+    setHintVisible(false);
+    setTransientTip(null);
   }, [copy.modal.startBody, copy.modal.startTitle]);
 
   const spin = useMemo(
@@ -332,6 +334,7 @@ const SixBySixGame = () => {
         };
         setLastResult(nextResult);
         handleResolvedHint(nextResult);
+        setTransientTip(resolveResultMessage(nextResult));
       } else {
         setLastResult(null);
       }
@@ -366,7 +369,7 @@ const SixBySixGame = () => {
     setBoard(buildBoard());
     setActiveCellId(null);
     setLastResult(null);
-    showHint(copy.modal.startTitle, copy.modal.startBody);
+    // no modal on reset; keep flow clean
   }, [copy.modal.startBody, copy.modal.startTitle, showHint]);
 
   const boardRows = useMemo(() => {
@@ -382,6 +385,9 @@ const SixBySixGame = () => {
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={styles.overlay}>
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
             <Text style={styles.title}>{copy.title}</Text>
@@ -434,7 +440,15 @@ const SixBySixGame = () => {
                         cell.type === 'drink' ? (
                           <View style={styles.cardContent}>
                             <Text style={styles.cardValue}>{cell.value}</Text>
-                            <Text style={styles.cardLabel}>{formatDrinkText(cell.value)}</Text>
+                            <Text
+                              style={styles.cardLabel}
+                              numberOfLines={1}
+                              adjustsFontSizeToFit
+                              minimumFontScale={0.75}
+                              ellipsizeMode="tail"
+                            >
+                              {formatDrinkText(cell.value)}
+                            </Text>
                           </View>
                         ) : (
                           <Text style={styles.safeLabel}>{copy.safeShort}</Text>
@@ -448,9 +462,18 @@ const SixBySixGame = () => {
               </View>
             ))}
           </View>
+          {transientTip ? (
+            <View style={styles.transientTip}>
+              <Text style={styles.transientTipText}>{transientTip}</Text>
+              <TouchableOpacity onPress={() => setTransientTip(null)} style={styles.transientTipClose}>
+                <Text style={styles.transientTipCloseText}>×</Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
         </ScrollView>
 
         <InfoText header={copy.infoTitle} rules={copy.rules} />
+        <InfoHint />
         <TouchableOpacity
           onPress={() => setInfoVisible(true)}
           style={[appStyles.infoButton, styles.infoButton]}
@@ -458,26 +481,17 @@ const SixBySixGame = () => {
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
 
-        <Modal
-          transparent
-          visible={hintVisible && !!hint}
-          animationType="fade"
-          onRequestClose={() => setHintVisible(false)}
-        >
-          <View style={styles.hintBackdrop}>
-            <View style={styles.hintCard}>
-              <Text style={styles.hintTitle}>{hint?.title}</Text>
-              <Text style={styles.hintBody}>{hint?.body}</Text>
-              <TouchableOpacity
-                onPress={() => setHintVisible(false)}
-                style={styles.hintButton}
-                activeOpacity={0.85}
-              >
-                <Text style={styles.hintButtonLabel}>{copy.modal.button ?? 'OK'}</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Würfelt mit zwei Würfeln: 1. Zeile, 2. Spalte.' : 'Roll two dice: 1st row, 2nd column.', placement: 'top' },
+            { text: language === 'de' ? 'Deckt die Karte auf und befolgt die Aktion.' : 'Reveal the card and follow the action.', placement: 'bottom' },
+            { text: language === 'de' ? 'Rot = nochmal dran, Schwarz = weitergeben.' : 'Red = go again, Black = pass turn.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => (s + 1) % 3)}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
     </ImageBackground>
   );
@@ -645,45 +659,34 @@ const styles = StyleSheet.create({
     top: 24,
     left: 20,
   },
-  hintBackdrop: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 24,
-  },
-  hintCard: {
-    backgroundColor: 'rgba(24,24,24,0.92)',
-    borderRadius: 20,
-    paddingVertical: 24,
-    paddingHorizontal: 20,
-    gap: 14,
-    width: '100%',
-  },
-  hintTitle: {
-    color: 'white',
-    fontSize: 18,
-    fontFamily: 'Quicksand_300Bold',
-    textAlign: 'center',
-  },
-  hintBody: {
-    color: 'rgba(255,255,255,0.85)',
-    fontSize: 15,
-    lineHeight: 22,
-    fontFamily: 'Quicksand_300Light',
-    textAlign: 'center',
-  },
-  hintButton: {
-    alignSelf: 'center',
+  transientTip: {
+    position: 'absolute',
+    left: 20,
+    right: 20,
+    bottom: 24,
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    borderRadius: 14,
     paddingVertical: 10,
-    paddingHorizontal: 26,
-    borderRadius: 18,
-    backgroundColor: '#E5C185',
+    paddingHorizontal: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
-  hintButtonLabel: {
-    color: '#231C18',
-    fontFamily: 'Quicksand_300Bold',
-    fontSize: 15,
+  transientTipText: {
+    color: '#fff',
+    fontSize: 14,
+    lineHeight: 18,
+    flex: 1,
+    fontFamily: 'Quicksand_300Light',
+  },
+  transientTipClose: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+  },
+  transientTipCloseText: {
+    color: '#fff',
+    fontSize: 18,
+    lineHeight: 18,
   },
 });
 

@@ -1,14 +1,17 @@
-import React, { useMemo, useState, useContext } from 'react';
+﻿import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import TutorialOverlay from './sublements/TutorialOverlay';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 import { whoWouldMostLikelyQuestions } from '../data/whoWouldMostLikelyQuestions';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
 const WhoWouldLikelyGame = () => {
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const { t, language } = useTranslation();
 
   const copy = useMemo(() => t('whoWould'), [t]);
@@ -34,7 +37,7 @@ const WhoWouldLikelyGame = () => {
     }
   };
 
-  const buttonLabel = finished ? copy.restart : copy.next;
+  const buttonLabel = finished ? copy.restart : (language === 'de' ? 'Nächste Karte' : 'Next card');
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -54,10 +57,25 @@ const WhoWouldLikelyGame = () => {
           </TouchableOpacity>
         </View>
 
+          <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.gameActionButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
+
         <InfoText header={copy.infoTitle} rules={copy.info} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+        <InfoHint />
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Hier steht die aktuelle Aussage. Laut vorlesen, dann gemeinsam zeigen.' : 'This is the current prompt. Read it aloud, then point.' , placement: 'top' },
+            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
     </ImageBackground>
   );
@@ -94,4 +112,8 @@ const styles = StyleSheet.create({
 });
 
 export default WhoWouldLikelyGame;
+
+
+
+
 

@@ -1,7 +1,9 @@
-﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
+import React, { useState, useContext, useMemo, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { VariablesContext } from '../../VariablesContext';
 
 import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
@@ -12,7 +14,7 @@ import { manyQuestionsSampleTexts } from '../data/manyQuestionsTexts';
 const ManyQuestionsGame = ({ route }) => {
   const [gameEnded, setGameEnded] = useState(false);
 
-  const { infoVisible, setInfoVisible, language, manyQuestions: manyQuestionsContext } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, language, manyQuestions: manyQuestionsContext, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { t } = useTranslation();
   const copy = useMemo(() => t('manyQuestions'), [t]);
   const navigationData = route.params?.manyQuestionsData;
@@ -28,6 +30,7 @@ const ManyQuestionsGame = ({ route }) => {
   }, [navigationData, manyQuestionsContext]);
 
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [tutorialStep, setTutorialStep] = useState(0);
 
   useEffect(() => {
     setQuestionIndex(0);
@@ -70,19 +73,33 @@ const ManyQuestionsGame = ({ route }) => {
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
+          <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+            <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+          </TouchableOpacity>
           <View style={styles.questionArea}>
             <Text style={styles.questionText}>{questionText || copy.end}</Text>
           </View>
           <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>{copy.next}</Text>
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Nächste Karte' : 'Next card'}</Text>
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={questions} textsIndex={questionIndex} table={'game_klassiker_questions'} />
 
         <InfoText header={copy.infoTitle} rules={copy.rules} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
+        <InfoHint />
+        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Hier steht die Frage. Lest sie laut vor.' : 'This is the question. Read it aloud.', placement: 'top' },
+            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
     </ImageBackground>
   );
@@ -123,4 +140,7 @@ const styles = StyleSheet.create({
 });
 
 export default ManyQuestionsGame;
+
+
+
 

@@ -7,6 +7,8 @@ import { VariablesContext } from '../../VariablesContext';
 import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 import InfoText from './sublements/InfoText';
+import TutorialOverlay from './sublements/TutorialOverlay';
+import InfoHint from './sublements/InfoHint';
 
 const Activity = ({route }) => {
   const { words } = shuffleArrayFisherYates(route.params);
@@ -25,6 +27,8 @@ const Activity = ({route }) => {
     
   };
 
+  const { tutorialEnabled, setTutorialEnabled } = React.useContext(require('../../VariablesContext').VariablesContext);
+  const [tutorialStep, setTutorialStep] = React.useState(0);
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={appStyles.completeScreenGameContainer}>
@@ -35,7 +39,21 @@ const Activity = ({route }) => {
         </View>
         <HandleFeedback texts={words} textsIndex={wordsIndex} table={'game_activity_words'}/>
 
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? 'Tutorial aus' : 'Tutorial an'}</Text>
+        </TouchableOpacity>
         <InfoText header={"Activity!"} rules={"Ihr seid reihum nacheinander mit erklären dran. Wer dran ist, hat 30 Sekunden Zeit, so viele angezeigte Wörter zu erklären oder per Pantomime vorzuführen. Für jedes richtig erratene Wort darf die erklärende Person und die Person, die es gerade erraten hat, einen Schluck direkt verteilen. Have Fun!"}/>
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: 'Wort lesen und erklären oder pantomimisch darstellen.', placement: 'top' },
+            { text: 'Tippt unten auf weiter, sobald ihr bereit seid.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s)=> (s+1)%2)}
+          onClose={() => setTutorialEnabled(false)}
+        />
+        <InfoHint />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
           <Text style={appStyles.infoButtonText}>ℹ</Text>
         </TouchableOpacity>

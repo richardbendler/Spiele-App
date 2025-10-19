@@ -1,8 +1,9 @@
-ï»¿import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
@@ -99,7 +100,7 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
-  const nextButtonLabel = copy?.nextButton ?? (language === 'de' ? 'Moderator: Naechste Karte' : 'Moderator: Next card');
+  const nextButtonLabel = (language === 'de' ? 'Nächste Karte' : 'Next card');
   const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
   const revealHint = copy?.revealHint ?? t('theOne.revealHint');
@@ -146,6 +147,7 @@ const PicoloGame = ({ route }) => {
         ) : null}
 
         <InfoText header={copy?.infoTitle ?? 'The One!'} rules={infoText} />
+        <InfoHint />
         <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
           <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
         </TouchableOpacity>
@@ -185,5 +187,6 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
 
 

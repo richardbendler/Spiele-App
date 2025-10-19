@@ -145,7 +145,7 @@ const StartMenu = ({ navigation }) => {
 const styles = StyleSheet.create({
   barBackground: { flex: 1 },
   barOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(10, 14, 22, 0.6)' },
-  barContent: { flex: 1, paddingHorizontal: 28, paddingTop: 90, paddingBottom: 160, justifyContent: 'space-between' },
+  barContent: { flex: 1, paddingHorizontal: 28, paddingTop: 80, paddingBottom: 120, justifyContent: 'space-between' },
 
   heroSection: { flexDirection: 'row', alignItems: 'center', gap: 18 },
   heroLogo: { width: 84, height: 84, resizeMode: 'contain' },
@@ -188,19 +188,21 @@ const styles = StyleSheet.create({
 
   /** Primärer CTA (Button) bewusst deutlich */
   startButtonNew: {
-    marginTop: 24,
+    marginTop: 36,
     alignSelf: 'center',
     backgroundColor: '#E5C185',
-    borderRadius: 24,
-    paddingVertical: 14,
-    paddingHorizontal: 36,
+    borderRadius: 28,
+    paddingVertical: 16,
+    paddingHorizontal: 44,
     shadowColor: '#000',
-    shadowOpacity: 0.35,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
+    shadowOpacity: 0.4,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 7,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.18)'
   },
-  startButtonNewLabel: { color: '#231C18', fontSize: 16, fontFamily: 'Quicksand_300Bold', letterSpacing: 1 },
+  startButtonNewLabel: { color: '#231C18', fontSize: 18, fontFamily: 'Quicksand_700Bold', letterSpacing: 1 },
 
   counter: { position: 'absolute', left: 0, right: 0, bottom: 0, alignItems: 'center', pointerEvents: 'none' },
   counterTop: { width: '88%', height: 18, backgroundColor: 'rgba(53, 40, 32, 0.95)', borderTopLeftRadius: 18, borderTopRightRadius: 18, shadowColor: '#000', shadowOpacity: 0.35, shadowRadius: 14, shadowOffset: { width: 0, height: 4 }, elevation: 4 },
