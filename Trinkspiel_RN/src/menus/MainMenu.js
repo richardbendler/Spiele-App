@@ -180,6 +180,18 @@ function MainMenu({ navigation }) {
     if (entries.MaexchenGame) entries.MaexchenGame.title = 'Mäxchen';
     if (entries.Schoeneberg) entries.Schoeneberg.title = 'Schöneberg';
 
+    // Fix titles for specific games per language
+    if (entries.WerWuerde) {
+      entries.WerWuerde.title = language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten';
+    }
+    if (entries.IchHabNochNie) {
+      // Ensure spacing in German and proper English title in en
+      entries.IchHabNochNie.title = language === 'en' ? 'Never Have I Ever' : 'Ich hab noch nie';
+    }
+    if (entries['Geheime Mission']) {
+      entries['Geheime Mission'].title = language === 'en' ? 'Secret Mission' : 'Geheime Mission';
+    }
+
     // Defaults
     Object.keys(entries).forEach((k) => {
       if (!entries[k].description) entries[k].description = language === 'de' ? 'Mehr Infos folgen bald.' : 'More info coming soon.';
@@ -203,11 +215,28 @@ function MainMenu({ navigation }) {
         : 'Classic dice-bluff game. Read the rules in-game and start right away.';
     }
 
-    // Fix WhoWould fallback
-    entries.WerWuerde = entries.WerWuerde ?? {};
-    if (!entries.WerWuerde.title || entries.WerWuerde.title === 'WerWuerde') {
-      entries.WerWuerde.title = language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten';
+    // Ensure 100 Fragen (ManyQuestionsGame) has parameters and description
+    if (entries.ManyQuestionsGame) {
+      entries.ManyQuestionsGame.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (4/5)'
+        : 'Drink level: (2/5)\nGetting to know: (4/5)';
+      entries.ManyQuestionsGame.description = language === 'de'
+        ? '100 spannende Fragen: zeigt auf die passende Person oder diskutiert gemeinsam — perfekt zum Auflockern.'
+        : '100 engaging prompts: point to who fits best or discuss together — great for breaking the ice.';
     }
+
+    // Ensure Ich hab noch nie has parameters and description
+    if (entries.IchHabNochNie) {
+      entries.IchHabNochNie.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (3/5)'
+        : 'Drink level: (2/5)\nGetting to know: (3/5)';
+      entries.IchHabNochNie.description = language === 'de'
+        ? 'Zieh eine Aussage und wer es schon gemacht hat, trinkt. Kurze, lockere Runden für zwischendurch.'
+        : 'Draw a statement and everyone who has done it drinks. Quick, light rounds in between.';
+    }
+
+    // Ensure WhoWould fallback exists (defensive)
+    entries.WerWuerde = entries.WerWuerde ?? { title: language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten' };
     return entries;
   }, [gamesCopy, language]);
 
