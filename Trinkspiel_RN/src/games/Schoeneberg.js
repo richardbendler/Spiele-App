@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
+﻿import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Animated, Easing, ScrollView, Dimensions } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -8,7 +8,7 @@ import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
 const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-const SUITS = ['♣', '♦', '♥', '♠'];
+const SUITS = ['â™£', 'â™¦', 'â™¥', 'â™ '];
 const RANK_VALUE = Object.fromEntries(RANKS.map((r, i) => [r, i + 2]));
 
 const createDeck = () => {
@@ -78,7 +78,7 @@ const PlusPad = ({ accent, onPress, pulse, disabled }) => {
 };
 
 const CardView = ({ card }) => {
-  const isRed = card.suit === '♦' || card.suit === '♥';
+  const isRed = card.suit === 'â™¦' || card.suit === 'â™¥';
   return (
     <View style={styles.card}>
       <Text style={[styles.cardRank, isRed && { color: '#ff8080' }]}>{card.rank}</Text>
@@ -113,17 +113,18 @@ const Schoeneberg = () => {
   const [pending, setPending] = useState(null); // {rowIndex, side}
   const [streak, setStreak] = useState(0);
   const [toast, setToast] = useState(null); // {text}
+  const [wrongReveal, setWrongReveal] = useState(null); // {rowIndex, side, newCard}
   const accent = '#F08974';
 
   const labels = useMemo(() => {
     return {
-      infoHeader: copy.infoTitle || (language === 'de' ? 'Schöneberg' : 'Schöneberg'),
+      infoHeader: copy.infoTitle || (language === 'de' ? 'SchÃ¶neberg' : 'SchÃ¶neberg'),
       info:
         copy.rules ||
         (language === 'de'
-          ? 'Lege Karten links oder rechts an. Vor jedem Zug tippst du: höher, niedriger oder gleich im Vergleich zur Randkarte. Drei richtige in Folge – dann ist die nächste Person dran. Bei einem Fehler wird die komplette Reihe geleert; du trinkst so viele Schlücke wie Karten entfernt wurden. Danach wird eine neue Startkarte für die Reihe aufgedeckt.'
-          : 'Place a card on the left or right. Before drawing, guess higher, lower, or equal compared to the edge card. Three correct guesses in a row and it is the next player’s turn. On a mistake, the whole row is cleared; drink as many sips as cards removed. Then a new start card is revealed for that row.'),
-      higher: language === 'de' ? 'Höher' : 'Higher',
+          ? 'Lege Karten links oder rechts an. Vor jedem Zug tippst du: hÃ¶her, niedriger oder gleich im Vergleich zur Randkarte. Drei richtige in Folge â€“ dann ist die nÃ¤chste Person dran. Bei einem Fehler wird die komplette Reihe geleert; du trinkst so viele SchlÃ¼cke wie Karten entfernt wurden. Danach wird eine neue Startkarte fÃ¼r die Reihe aufgedeckt.'
+          : 'Place a card on the left or right. Before drawing, guess higher, lower, or equal compared to the edge card. Three correct guesses in a row and it is the next playerâ€™s turn. On a mistake, the whole row is cleared; drink as many sips as cards removed. Then a new start card is revealed for that row.'),
+      higher: language === 'de' ? 'HÃ¶her' : 'Higher',
       lower: language === 'de' ? 'Niedriger' : 'Lower',
       equal: language === 'de' ? 'Gleich' : 'Equal',
       streak: language === 'de' ? 'Richtig in Folge' : 'Correct in a row',
@@ -166,10 +167,10 @@ const Schoeneberg = () => {
     if (guess === 'lower') ok = cmp === -1;
     if (guess === 'equal') ok = cmp === 0;
 
-    setRows((prev) => {
-      const next = prev.map((r, i) => ({ ...r }));
-      const row = next[rowIndex];
-      if (ok) {
+    if (ok) {
+      setRows((prev) => {
+        const next = prev.map((r) => ({ ...r }));
+        const row = next[rowIndex];
         if (side === 'left' && row.nextLeft >= 0) {
           row.cards = [...row.cards, { card: newCard, slot: row.nextLeft }];
           row.nextLeft = row.nextLeft - 1;
@@ -178,7 +179,21 @@ const Schoeneberg = () => {
           row.nextRight = row.nextRight + 1;
         }
         return next;
-      }
+      });
+      setStreak((s) => Math.min(3, s + 1));
+    } else {
+      // Show the drawn card and wait for confirmation before clearing
+      const removed = currentRow.cards.length;
+      setWrongReveal({ rowIndex, side, newCard, removed });
+    }
+  };
+
+  const confirmWrong = () => {
+    if (!wrongReveal) return;
+    const { rowIndex } = wrongReveal;
+    setRows((prev) => {
+      const next = prev.map((r) => ({ ...r }));
+      const row = next[rowIndex];
       const removed = row.cards.length;
       setToast({ text: labels.wrong(removed) });
       setTimeout(() => setToast(null), 1800);
@@ -189,13 +204,19 @@ const Schoeneberg = () => {
       row.nextRight = CENTER + 1;
       return next;
     });
-
-    if (ok) setStreak((s) => Math.min(3, s + 1));
-    else setStreak(0);
+    setStreak(0);
+    setWrongReveal(null);
   };
 
   const requestGuess = (rowIndex, side) => {
     if (streak >= 3) return;
+    const row = rows[rowIndex];
+    if (!row) return;
+    const canLeft = row.nextLeft >= 0;
+    const canRight = row.nextRight < SLOTS;
+    if ((side === 'left' && !canLeft) || (side === 'right' && !canRight)) {
+      return;
+    }
     setPending({ rowIndex, side });
   };
 
@@ -221,7 +242,7 @@ const Schoeneberg = () => {
             <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
           </TouchableOpacity>
           <View style={styles.headerRow}>
-            <Text style={styles.headerTitle}>Schöneberg</Text>
+            <Text style={styles.headerTitle}>SchÃ¶neberg</Text>
             <View style={styles.streakPill}>
               <Text style={styles.streakText}>{labels.streak}: {streak}/3</Text>
             </View>
@@ -236,10 +257,16 @@ const Schoeneberg = () => {
             {rows.map((row, idx) => {
               const isPendingHere = pending && pending.rowIndex === idx;
               const targetSlot = isPendingHere ? (pending.side === 'left' ? row.nextLeft : row.nextRight) : null;
+              const canLeft = row.nextLeft >= 0;
+              const canRight = row.nextRight < SLOTS;
               return (
                 <View key={idx} style={styles.row}>
                   <View style={styles.side}>
-                    <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'left')} disabled={streak >= 3} />
+                    {canLeft ? (
+                      <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'left')} disabled={streak >= 3} />
+                    ) : (
+                      <View style={[styles.plusPad, { opacity: 0.2 }]} />
+                    )}
                   </View>
 
                   <View style={[styles.cardsStripFixed, { width: slotWidth * SLOTS, height: cardHeight + 8 }]}>
@@ -257,7 +284,11 @@ const Schoeneberg = () => {
                   </View>
 
                   <View style={styles.side}>
-                    <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'right')} disabled={streak >= 3} />
+                    {canRight ? (
+                      <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'right')} disabled={streak >= 3} />
+                    ) : (
+                      <View style={[styles.plusPad, { opacity: 0.2 }]} />
+                    )}
                   </View>
                 </View>
               );
@@ -276,6 +307,25 @@ const Schoeneberg = () => {
             </View>
           )}
 
+          {wrongReveal && (
+            <View style={styles.modalOverlay}>
+              <View style={[styles.modalBox, { paddingVertical: 12 }] }>
+                <Text style={styles.modalTitle}>{language === 'de' ? 'Falsch geraten!' : 'Wrong guess!'}</Text>
+                <View style={{ alignItems: 'center', marginTop: 6, marginBottom: 6 }}>
+                  <CardView card={wrongReveal.newCard} />
+                </View>
+                {typeof wrongReveal.removed === 'number' ? (
+                  <Text style={{ color: '#fff', marginBottom: 6, textAlign: 'center', fontFamily: 'Quicksand_300Bold' }}>
+                    {labels.wrong(wrongReveal.removed)}
+                  </Text>
+                ) : null}
+                <TouchableOpacity onPress={confirmWrong} style={styles.modalClose}>
+                  <Text style={{ color: '#fff' }}>{language === 'de' ? 'Weiter' : 'Continue'}</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+
           <InfoText header={labels.infoHeader} rules={labels.info} />
           <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
             <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
@@ -285,7 +335,7 @@ const Schoeneberg = () => {
             visible={tutorialEnabled}
             steps={[
               { text: language === 'de' ? 'Tippe auf + um deinen Tipp zu platzieren.' : 'Tap + to place your guess.', placement: 'top' },
-              { text: language === 'de' ? 'Wähle niedriger/gleich/höher und verfolge die Reihe.' : 'Pick lower/equal/higher and follow the row.', placement: 'bottom' },
+              { text: language === 'de' ? 'WÃ¤hle niedriger/gleich/hÃ¶her und verfolge die Reihe.' : 'Pick lower/equal/higher and follow the row.', placement: 'bottom' },
             ]}
             stepIndex={tutorialStep}
             onNext={() => setTutorialStep((s) => (s + 1) % 2)}
@@ -304,7 +354,7 @@ const Schoeneberg = () => {
 };
 
 const styles = StyleSheet.create({
-  headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 112, marginBottom: 8 },
+  headerRow: { flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 112, marginBottom: 8 },
   headerTitle: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 18 },
   streakPill: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.12)' },
   streakText: { color: '#fff', fontFamily: 'Quicksand_300Bold', fontSize: 12 },
@@ -312,7 +362,7 @@ const styles = StyleSheet.create({
   passButtonText: { color: '#201a17', fontFamily: 'Quicksand_700Bold' },
 
   rowsContainer: { paddingVertical: 8, gap: 12 },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   side: { width: 56, alignItems: 'center', justifyContent: 'center' },
   plusPad: { width: 52, height: 80, borderRadius: 12, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
   plusButton: { padding: 6 },
@@ -364,9 +414,45 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     fontFamily: 'Quicksand_700Bold',
   },
+  // Modal styles for guess and wrong-reveal overlays
+  modalOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingTop: 96,
+    paddingHorizontal: 20,
+  },
+  modalBox: {
+    width: '88%',
+    backgroundColor: 'rgba(24,24,24,0.92)',
+    borderRadius: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 14,
+    alignItems: 'center',
+    gap: 10,
+  },
+  modalTitle: {
+    color: '#fff',
+    fontSize: 16,
+    fontFamily: 'Quicksand_700Bold',
+    textAlign: 'center',
+  },
+  modalClose: {
+    marginTop: 8,
+    backgroundColor: 'rgba(240,137,116,0.95)',
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+  },
 });
 
 export default Schoeneberg;
+
 
 
 

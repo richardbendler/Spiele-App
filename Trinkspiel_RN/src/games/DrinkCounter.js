@@ -900,9 +900,7 @@ const DrinkCounter = () => {
         rules={translate("Tippe deine Lieblingsgetränke in der Schnellauswahl an, um sie zu protokollieren.\n\nVerwalte Standarddrinks, blende sie aus oder lege eigene an. Die Statistiken zeigen dir Verlauf, Wochenübersicht und Favoriten inklusive Promille-Trend.", "Tap your favourite drinks in quick access to log them.\n\nManage default drinks, hide them or create your own. The stats show your timeline, weekly overview, favourites and the BAC trend.")}
       />
       <InfoHint />
-      <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-        <Text style={appStyles.infoButtonText}>?</Text>
-      </TouchableOpacity>
+      {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
       <TutorialOverlay
         visible={tutorialEnabled}
         steps={[
@@ -911,7 +909,7 @@ const DrinkCounter = () => {
           { text: translate('Statistiken zeigen Verlauf und Promille-Trend.', 'Stats show your timeline and BAC trend.'), placement: 'bottom' },
         ]}
         stepIndex={tutorialStep}
-        onNext={() => setTutorialStep((s) => (s + 1) % 3)}
+        onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
         onClose={() => setTutorialEnabled(false)}
       />
 

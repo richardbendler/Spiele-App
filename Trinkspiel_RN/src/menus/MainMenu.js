@@ -226,7 +226,7 @@ function MainMenu({ navigation }) {
     });
 
     // Visible title overrides
-    if (entries.ManyQuestionsGame) { entries.ManyQuestionsGame.title = '100 Questions'; }
+    if (entries.ManyQuestionsGame) { entries.ManyQuestionsGame.title = language === 'de' ? '100 Fragen' : '100 Questions'; }
     if (entries.MaexchenGame) { entries.MaexchenGame.title = 'Mäxchen'; }
     if (entries.Schoeneberg) { entries.Schoeneberg.title = 'Schöneberg'; }
 
@@ -271,7 +271,7 @@ function MainMenu({ navigation }) {
           : 'Würfelt euch über das 6x6-Feld. Zahlenkarten zeigen Schlucke. Rot = nochmal dran, Schwarz = weitergeben.';
     }
 
-    return entries;
+    if(language==='en'){ if(entries['Geheime Mission']) entries['Geheime Mission'].title='Secret Mission'; if(entries.IchHabNochNie) entries.IchHabNochNie.title='Never Have I Ever'; } return entries;
   }, [gamesCopy, language]);
 
 
@@ -653,6 +653,8 @@ const styles = StyleSheet.create({
 
 
 export default MainMenu;
+
+
 
 
 

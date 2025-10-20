@@ -16,7 +16,7 @@ const StartMenu = ({ navigation }) => {
   const { t } = useTranslation();
   const startText = useMemo(() => t('startMenu'), [t]);
 
-  const heroTitle = startText?.title ?? (language === 'de' ? 'Deine Trinkspielbar' : 'Your drink game bar');
+  const heroTitle = '';
   const heroSubtitle = startText?.subtitle ?? (language === 'de' ? 'Starte mit einem Spiel, das zu eurer Runde passt.' : 'Kick things off with a game that matches your crew.');
   const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
 
@@ -97,23 +97,13 @@ const StartMenu = ({ navigation }) => {
           />
           <View style={styles.heroTextBlock}>
             <Text style={styles.heroLabel}>{language === 'de' ? 'Trinkspielbar' : 'Bar mode'}</Text>
-            <Text style={styles.heroTitle}>{heroTitle}</Text>
+            {heroTitle ? (<Text style={styles.heroTitle}>{heroTitle}</Text>) : null}
             <Text style={styles.heroSubtitle}>{heroSubtitle}</Text>
           </View>
         </View>
 
         {/* TEXTPANELS: neutral, nicht wie Buttons */}
-        <View style={styles.featureGrid}>
-          {featureCards.map((feature, index) => (
-            <View key={feature.key} style={styles.featureRow}>
-              <View style={[styles.featureAccent, { backgroundColor: BAR_WELCOME_ACCENTS[index % BAR_WELCOME_ACCENTS.length] }]} />
-              <View style={styles.featurePanel}>
-                <Text style={styles.featureTitle}>{feature.title}</Text>
-                <Text style={styles.featureText}>{feature.text}</Text>
-              </View>
-            </View>
-          ))}
-        </View>
+        {/* Feature panels entfernt laut Anforderung */}
 
         {startText?.disclaimer ? (
           <View style={styles.disclaimerPanel}>

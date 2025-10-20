@@ -278,9 +278,7 @@ const Kingscup = () => {
         </View>
 
         <InfoText header={kingscupCopy.infoHeader} rules={kingscupCopy.rules} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20, opacity: 0.7}]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
         <InfoHint />
         <TutorialOverlay
           visible={tutorialEnabled}
@@ -290,7 +288,7 @@ const Kingscup = () => {
             { text: language === 'de' ? 'Bei Königen: Klassisch ODER Daumenkönig – entscheide eine Variante.' : 'For kings: Choose classic OR thumb king.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
-          onNext={() => setTutorialStep((s) => (s + 1) % 3)}
+          onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
           onClose={() => setTutorialEnabled(false)}
         />
       </View>

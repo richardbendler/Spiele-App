@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useEffect } from 'react';
+﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -77,27 +77,29 @@ const ManyQuestionsGame = ({ route }) => {
             <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
           </TouchableOpacity>
           <View style={styles.questionArea}>
-            <Text style={styles.questionText}>{questionText || copy.end}</Text>
+            <Animated.View style={[styles.cardBox, { opacity: revealAnim, transform: [{ scale: revealAnim.interpolate({ inputRange: [0, 1], outputRange: [0.96, 1] }) }] }]}>
+              {contentVisible ? (
+                <Text style={styles.questionText}>{questionText || copy.end}</Text>
+              ) : null}
+            </Animated.View>
           </View>
           <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Nächste Karte' : 'Next card'}</Text>
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'NÃ¤chste Karte' : 'Next card'}</Text>
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={questions} textsIndex={questionIndex} table={'game_klassiker_questions'} />
 
         <InfoText header={copy.infoTitle} rules={copy.rules} />
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
             { text: language === 'de' ? 'Hier steht die Frage. Lest sie laut vor.' : 'This is the question. Read it aloud.', placement: 'top' },
-            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+            { text: language === 'de' ? 'Tippe hier fÃ¼r die nÃ¤chste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
-          onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+          onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
@@ -140,6 +142,8 @@ const styles = StyleSheet.create({
 });
 
 export default ManyQuestionsGame;
+
+
 
 
 

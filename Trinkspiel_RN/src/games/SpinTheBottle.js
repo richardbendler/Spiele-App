@@ -1,4 +1,4 @@
-// Import necessary React and React Native modules
+﻿// Import necessary React and React Native modules
 import React, { useState, useContext, useRef, useMemo } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
 });
 
 export default SpinTheBottle;
+
 
 
 

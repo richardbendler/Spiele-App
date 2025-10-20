@@ -168,7 +168,7 @@ const SecretMission = () => {
               { text: language === 'de' ? 'Verstecken und weitergeben – jede Person zieht ihre eigene Mission.' : 'Hide again and pass on – each player draws their own mission.', placement: 'top' },
             ]}
             stepIndex={tutorialStep}
-            onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+            onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
             onClose={() => setTutorialEnabled(false)}
           />
         </View>
@@ -197,5 +197,6 @@ const styles = StyleSheet.create({
 });
 
 export default SecretMission;
+
 
 
