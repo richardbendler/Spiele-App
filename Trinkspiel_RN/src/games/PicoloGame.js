@@ -4,6 +4,7 @@ import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
@@ -11,7 +12,7 @@ import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape'
 import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
 
-const buildDisplayText = (entry, language) => {
+const buildDisplayText = (entry, language, startingPlayer) => {
   if (!entry) {
     return '';
   }
@@ -25,9 +26,19 @@ const buildDisplayText = (entry, language) => {
     case 5: {
       const topic = typeof baseText === 'string' ? baseText.replace(/\.+$/, '') : '';
       if (language === 'en') {
-        return 'Go around naming ' + topic + '. Whoever hesitates, repeats, or draws a blank drinks.';
+        const starter = startingPlayer ? `Starting: ${startingPlayer}. ` : '';
+        return starter + 'Go around naming ' + topic + '. Whoever hesitates, repeats, or draws a blank drinks.';
       }
-      return 'Zaehlt der Reihe nach ' + topic + ' auf. Wer nicht weiter weiss, wiederholt oder stolpert, muss trinken.';
+      const starter = startingPlayer ? `Startet: ${startingPlayer}. ` : '';
+      return starter + 'Zaehlt der Reihe nach ' + topic + ' auf. Wer nicht weiter weiss, wiederholt oder stolpert, muss trinken.';
+    }
+    case 6: {
+      if (language === 'en') {
+        const starter = startingPlayer ? `Starting: ${startingPlayer}. ` : '';
+        return starter + baseText;
+      }
+      const starter = startingPlayer ? `Startet: ${startingPlayer}. ` : '';
+      return starter + baseText;
     }
     default:
       return baseText;
@@ -36,7 +47,8 @@ const buildDisplayText = (entry, language) => {
 
 const PicoloGame = ({ route }) => {
   const { t, language } = useTranslation();
-  const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const copy = useMemo(() => t('picoloGame'), [t]);
 
   const rawPrompts = useMemo(() => {
@@ -83,7 +95,19 @@ const PicoloGame = ({ route }) => {
 
   const categoryLabel =
     currentQuestion?.pool?.label?.[language] ?? currentQuestion?.pool?.label?.de ?? '';
-  const cardText = currentQuestion ? buildDisplayText(currentQuestion, language) : '';
+  // Determine a random starting player for round-robin style prompts (Category/Rhyme)
+  const startingPlayerName = useMemo(() => {
+    if (!currentQuestion || !Array.isArray(players) || players.length === 0) return null;
+    const poolId = currentQuestion?.pool?.id;
+    if (poolId !== 5 && poolId !== 6) return null;
+    const idx = Math.floor(Math.random() * players.length);
+    const candidate = players[idx];
+    return candidate && typeof candidate.name === 'string' && candidate.name.trim().length > 0
+      ? candidate.name
+      : null;
+  }, [currentIndex, players, currentQuestion?.pool?.id]);
+
+  const cardText = currentQuestion ? buildDisplayText(currentQuestion, language, startingPlayerName) : '';
   const backgroundColor = currentQuestion?.pool?.color ?? '#2F4F4F';
 
   const showNextQuestion = () => {
@@ -146,11 +170,21 @@ const PicoloGame = ({ route }) => {
           <HandleFeedback texts={questions} textsIndex={currentIndex} table={'game_klassiker_questions'} />
         ) : null}
 
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
         <InfoText header={copy?.infoTitle ?? 'The One!'} rules={infoText} />
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Bestimmt eine Moderation: Diese Person behält das Handy, liest vor und tippt weiter.' : 'Choose a moderator: They keep the phone, read aloud, and tap next.', placement: 'top' },
+            { text: language === 'de' ? 'Tippt unten auf Nächste Karte, um die nächste Aufgabe zu zeigen.' : 'Tap Next card to reveal the next prompt.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
     </ImageBackground>
   );

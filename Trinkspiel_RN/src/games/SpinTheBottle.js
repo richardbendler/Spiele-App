@@ -6,6 +6,7 @@ import Question from './sublements/Question';
 import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { appStyles } from '../../styles';
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
@@ -25,7 +26,8 @@ const SpinTheBottle = ({ route }) => {
   const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
   const [outcome, setOutcome] = useState({ type: 'initial' });
 
-  const { infoVisible, setInfoVisible, language } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const { t } = useTranslation();
   const copy = useMemo(() => {
     const value = t('spinTheBottleGame');
@@ -180,8 +182,21 @@ const SpinTheBottle = ({ route }) => {
           }
         </View>
 
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
         <InfoText header={copy.infoHeader ?? 'Spin the Bottle!'} rules={copy.rules ?? ''} />
         <InfoHint />
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Legt das Handy in die Mitte auf den Tisch. Dreht die Flasche mit dem Finger (Tippen reicht auch).' : 'Place the phone in the middle on the table. Spin the bottle with your finger (tapping works too).', placement: 'top' },
+            { text: language === 'de' ? 'Auf wen die Flasche zeigt, macht die angezeigte Aufgabe (Schlucke, Wahrheit oder Pflicht).' : 'Whoever it points to does the shown task (sips, truth, or dare).', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
         {/* Regelbutton ausgeblendet für Flaschendrehen */}
 
     </ImageBackground>

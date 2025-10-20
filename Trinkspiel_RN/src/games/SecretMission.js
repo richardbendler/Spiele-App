@@ -157,15 +157,12 @@ const SecretMission = () => {
           </View>
 
           <InfoText header={labels.infoHeader} rules={labels.info} />
-          <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-            <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-          </TouchableOpacity>
           <InfoHint />
           <TutorialOverlay
             visible={tutorialEnabled}
             steps={[
-              { text: language === 'de' ? 'Tippe auf Aufdecken, um deine Mission zu sehen.' : 'Tap Reveal to see your mission.', placement: 'bottom' },
-              { text: language === 'de' ? 'Verstecken und weitergeben – jede Person zieht ihre eigene Mission.' : 'Hide again and pass on – each player draws their own mission.', placement: 'top' },
+              { text: language === 'de' ? 'Jede Person bekommt eine geheime Mission fuer den Abend. Tippe auf Aufdecken, um deine zu sehen.' : 'Each player gets a secret mission for the evening. Tap Reveal to view yours.', placement: 'bottom' },
+              { text: language === 'de' ? 'Verdecke die Karte wieder und gib das Handy weiter. Erfuelle deine Mission irgendwann im Laufe des Abends.' : 'Hide the card again and pass the phone. Complete your mission at any time during the evening.', placement: 'top' },
             ]}
             stepIndex={tutorialStep}
             onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
