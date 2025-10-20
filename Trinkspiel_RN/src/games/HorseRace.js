@@ -271,7 +271,7 @@ const App = () => {
             { text: 'Startet das Rennen und feuert an.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
-          onNext={() => setTutorialStep((s)=> (s+1)%2)}
+          onNext={() => setTutorialStep((s)=> Math.min(1, s+1))}
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
@@ -322,9 +322,7 @@ const App = () => {
         
         <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { left: 20, bottom: 20 }]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
 
     </View>
     

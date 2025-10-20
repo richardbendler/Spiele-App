@@ -747,12 +747,29 @@ const PartyBoardGame = ({ navigation }) => {
   const activePlayerIndex = order[activeIndex] ?? 0;
   const activePlayerName = players[activePlayerIndex]?.name ?? `P${activePlayerIndex + 1}`;
 
+  const TYPE_ABBREV = {
+    start: '⭘',
+    bonus: 'B',
+    challenge: 'C',
+    drink: 'D',
+    shop: '$',
+    star: '★',
+    warp: '↗',
+    duel: '⚔',
+    lounge: '☕',
+    default: '•',
+  };
+
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <Text style={appStyles.textHeader1}>{copy.title}</Text>
-          <Text style={styles.subtitle}>{copy.subtitle}</Text>
+          <View style={styles.headerTips}>
+            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '🎯 Minispiel legt Reihenfolge fest' : '🎯 Mini game sets the order'}</Text></View>
+            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '🎲 Zieh vor, folge dem Feld' : '🎲 Move forward, follow the tile'}</Text></View>
+            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '⭐ 5 Münzen = 1 Stern' : '⭐ 5 coins = 1 star'}</Text></View>
+          </View>
         </View>
 
         <View style={styles.roundBadge}>
@@ -818,22 +835,29 @@ const PartyBoardGame = ({ navigation }) => {
                     space.description?.[language === "en" ? "en" : "de"] ?? typeLegend?.body ?? "";
                   const isActiveSpace = occupantIndices.includes(activePlayerIndex);
                   return (
-                    <View
+                    <TouchableOpacity
                       key={space.key}
                       style={[
                         styles.boardCell,
                         { backgroundColor: theme.backgroundColor, borderColor: theme.borderColor },
                         isActiveSpace ? styles.boardCellActive : null,
                       ]}
+                      activeOpacity={0.85}
+                      onPress={() => {
+                        setOverlay({
+                          title: typeTitle,
+                          subtitle: space.label[language === 'en' ? 'en' : 'de'],
+                          body: description,
+                          buttonLabel: language === 'en' ? 'OK' : 'OK',
+                        });
+                      }}
                     >
-                      <View style={styles.boardCellHeader}>
-                        <Text style={styles.boardIndex}>{String(space.index + 1).padStart(2, "0")}</Text>
-                        <Text numberOfLines={1} style={styles.boardLabel}>
-                          {space.label[language === "en" ? "en" : "de"]}
-                        </Text>
+                      <View style={styles.boardCellHeaderSmall}>
+                        <Text style={styles.boardIndex}>{String(space.index + 1).padStart(2, '0')}</Text>
                       </View>
-                      <Text style={styles.boardTypeBadge}>{typeTitle}</Text>
-                      {description ? <Text style={styles.boardDescription}>{description}</Text> : null}
+                      <View style={styles.boardSymbolWrap}>
+                        <Text style={styles.boardSymbol}>{TYPE_ABBREV[space.type] ?? TYPE_ABBREV.default}</Text>
+                      </View>
                       <View style={styles.boardOccupants}>
                         {occupantIndices.length === 0 ? (
                           <Text style={styles.boardEmptySlot}>-</Text>
@@ -850,7 +874,7 @@ const PartyBoardGame = ({ navigation }) => {
                           })
                         )}
                       </View>
-                    </View>
+                    </TouchableOpacity>
                   );
                 })}
               </View>
@@ -928,9 +952,7 @@ const PartyBoardGame = ({ navigation }) => {
 
       <InfoText header={copy.info.title} rules={copy.info.body} />
       <InfoHint />
-      <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20 }]}>
-        <Text style={appStyles.infoButtonText}>{language === "en" ? "Rules" : "Regeln"}</Text>
-      </TouchableOpacity>
+      {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
     </ImageBackground>
   );
 };
@@ -939,6 +961,25 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
     paddingBottom: 80,
+  },
+  headerTips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 6,
+  },
+  tipChip: {
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.18)'
+  },
+  tipText: {
+    color: '#F5E9D7',
+    fontSize: 12,
+    fontWeight: '600'
   },
   centeredContainer: {
     flex: 1,
@@ -1028,69 +1069,43 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   boardGrid: {
-    marginTop: 16,
+    marginTop: 12,
   },
   boardRow: {
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: 6,
   },
   boardCell: {
     flex: 1,
-    borderRadius: 18,
+    borderRadius: 12,
     borderWidth: 1,
-    padding: 12,
-    marginHorizontal: 4,
-    minHeight: 140,
+    padding: 6,
+    marginHorizontal: 3,
+    minHeight: 64,
   },
   boardCellEmpty: {
     flex: 1,
-    marginHorizontal: 4,
-    minHeight: 140,
+    marginHorizontal: 3,
+    minHeight: 64,
     opacity: 0,
     backgroundColor: "transparent",
   },
-  boardCellHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
+  boardCellHeaderSmall: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   boardIndex: {
     color: "rgba(255,255,255,0.5)",
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "600",
   },
-  boardLabel: {
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontWeight: "600",
-    marginLeft: 8,
-    flex: 1,
-  },
-  boardTypeBadge: {
-    marginTop: 10,
-    alignSelf: "flex-start",
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 12,
-    backgroundColor: "rgba(255,255,255,0.12)",
-    color: "#E5C185",
-    fontSize: 12,
-    fontWeight: "600",
-  },
-  boardDescription: {
-    marginTop: 8,
-    color: "rgba(255,255,255,0.7)",
-    fontSize: 12,
-    lineHeight: 18,
-  },
+  boardSymbolWrap: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  boardSymbol: { color: '#F6D58C', fontSize: 18, fontWeight: '800' },
   boardOccupants: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 12,
+    marginTop: 6,
   },
   boardEmptySlot: {
     color: "rgba(255,255,255,0.4)",
-    fontSize: 12,
+    fontSize: 10,
   },
   boardCellActive: {
     borderColor: "#F6D58C",

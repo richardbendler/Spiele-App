@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
+ï»¿import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
@@ -100,7 +100,7 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
-  const nextButtonLabel = (language === 'de' ? 'Nächste Karte' : 'Next card');
+  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton.replace('Nï¿½','N\u00E4') : copy.nextButton) : (language==='de' ? 'N\u00E4chste Karte' : 'Next card'));
   const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
   const revealHint = copy?.revealHint ?? t('theOne.revealHint');
@@ -187,6 +187,8 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
+
 
 
 

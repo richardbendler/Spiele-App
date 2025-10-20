@@ -50,13 +50,11 @@ const Activity = ({route }) => {
             { text: 'Tippt unten auf weiter, sobald ihr bereit seid.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
-          onNext={() => setTutorialStep((s)=> (s+1)%2)}
+          onNext={() => setTutorialStep((s)=> Math.min(1, s+1))}
           onClose={() => setTutorialEnabled(false)}
         />
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>ℹ</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
       </View>
     </ImageBackground>
   );

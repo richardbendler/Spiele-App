@@ -1,6 +1,7 @@
 ﻿import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
+import { Animated, Easing } from 'react-native';
 import InfoText from './sublements/InfoText';
 import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
@@ -19,9 +20,21 @@ const NeverHaveIEverGame = () => {
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
+  const revealAnim = React.useRef(new Animated.Value(0)).current;
+  const [contentVisible, setContentVisible] = useState(false);
 
   const currentCard = finished ? null : deck[index] ?? null;
   const statementText = currentCard ? (language === 'en' ? currentCard.content_en : currentCard.content) : '';
+
+  React.useEffect(() => {
+    if (finished) {
+      setContentVisible(false);
+      return;
+    }
+    setContentVisible(false);
+    revealAnim.setValue(0);
+    Animated.timing(revealAnim, { toValue: 1, duration: 350, easing: Easing.out(Easing.ease), useNativeDriver: true }).start(() => setContentVisible(true));
+  }, [index, finished, revealAnim]);
 
   const advance = () => {
     if (finished) {
@@ -54,7 +67,11 @@ const NeverHaveIEverGame = () => {
             </View>
           ) : (
             <View style={styles.statementWrapper}>
-              <Text style={styles.statementText}>{statementText}</Text>
+              <Animated.View style={[styles.cardBox, { opacity: revealAnim, transform: [{ scale: revealAnim.interpolate({ inputRange: [0, 1], outputRange: [0.96, 1] }) }] }]}>
+                {contentVisible ? (
+                  <Text style={styles.statementText}>{statementText}</Text>
+                ) : null}
+              </Animated.View>
             </View>
           )}
 
@@ -64,18 +81,17 @@ const NeverHaveIEverGame = () => {
         </View>
 
         <InfoText header={copy.infoTitle} rules={copy.info} />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
         <InfoHint />
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
             { text: language === 'de' ? 'Hier steht die aktuelle Aussage. Lest sie laut vor.' : 'This is the current statement. Read it aloud.', placement: 'top' },
             { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun — and don’t overdo it.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
-          onNext={() => setTutorialStep((s) => (s + 1) % 2)}
+          onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
@@ -98,6 +114,20 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
   },
+  cardBox: {
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    borderRadius: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    maxWidth: 720,
+  },
   finishedCard: {
     flex: 1,
     justifyContent: 'center',
@@ -114,6 +144,7 @@ const styles = StyleSheet.create({
 });
 
 export default NeverHaveIEverGame;
+
 
 
 

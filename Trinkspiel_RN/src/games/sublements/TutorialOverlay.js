@@ -6,6 +6,8 @@ const TutorialOverlay = ({ visible, steps = [], stepIndex = 0, onNext, onClose }
   const step = steps[Math.max(0, Math.min(stepIndex, steps.length - 1))] || {};
   const { text, placement = 'bottom', highlightStyle } = step;
   const containerStyle = [styles.overlay, placement === 'top' ? styles.top : styles.bottom];
+  const isLast = stepIndex >= steps.length - 1;
+  const nextLabel = isLast ? 'Start' : 'Weiter';
   return (
     <View pointerEvents="box-none" style={[StyleSheet.absoluteFill, { zIndex: 1000, elevation: 1000 }]}>
       {!!highlightStyle && <View pointerEvents="none" style={[styles.highlight, highlightStyle]} />}
@@ -16,8 +18,8 @@ const TutorialOverlay = ({ visible, steps = [], stepIndex = 0, onNext, onClose }
             <TouchableOpacity onPress={onClose} style={[styles.btn, styles.btnGhost]}>
               <Text style={styles.btnGhostText}>×</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={onNext} style={styles.btn}>
-              <Text style={styles.btnText}>Weiter</Text>
+            <TouchableOpacity onPress={() => { if (isLast) { onClose && onClose(); } else { onNext && onNext(); } }} style={styles.btn}>
+              <Text style={styles.btnText}>{nextLabel}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -27,10 +29,10 @@ const TutorialOverlay = ({ visible, steps = [], stepIndex = 0, onNext, onClose }
 };
 
 const styles = StyleSheet.create({
-  overlay: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 16 },
-  top: { top: 8, alignItems: 'center' },
-  bottom: { bottom: 24, alignItems: 'center' },
-  popup: { backgroundColor: 'rgba(0,0,0,0.8)', borderRadius: 12, padding: 12, maxWidth: 520 },
+  overlay: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 24 },
+  top: { top: 16, alignItems: 'center' },
+  bottom: { bottom: 32, alignItems: 'center' },
+  popup: { backgroundColor: 'rgba(0,0,0,0.85)', borderRadius: 14, padding: 14, maxWidth: 520, marginHorizontal: 10 },
   text: { color: 'white', fontSize: 14, lineHeight: 18, textAlign: 'center' },
   row: { flexDirection: 'row', justifyContent: 'flex-end', gap: 8, marginTop: 10 },
   btn: { backgroundColor: '#FFD166', borderRadius: 10, paddingVertical: 6, paddingHorizontal: 12 },

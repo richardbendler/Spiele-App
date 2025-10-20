@@ -323,9 +323,7 @@ const MaexchenGame = () => {
 
         <InfoText header={copy.infoTitle} rules={copy.rules} />
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
       </ScrollView>
       <TutorialOverlay
         visible={tutorialEnabled}
