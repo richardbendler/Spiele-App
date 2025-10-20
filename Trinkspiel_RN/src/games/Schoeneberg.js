@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Animated, Easing, ScrollView, Dimensions } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -8,7 +8,7 @@ import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
 const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-const SUITS = ['â™£', 'â™¦', 'â™¥', 'â™ '];
+const SUITS = ['♣', '♦', '♥', '♠'];
 const RANK_VALUE = Object.fromEntries(RANKS.map((r, i) => [r, i + 2]));
 
 const createDeck = () => {
@@ -78,7 +78,7 @@ const PlusPad = ({ accent, onPress, pulse, disabled }) => {
 };
 
 const CardView = ({ card }) => {
-  const isRed = card.suit === 'â™¦' || card.suit === 'â™¥';
+  const isRed = card.suit === '♦' || card.suit === '♥';
   return (
     <View style={styles.card}>
       <Text style={[styles.cardRank, isRed && { color: '#ff8080' }]}>{card.rank}</Text>
@@ -118,13 +118,13 @@ const Schoeneberg = () => {
 
   const labels = useMemo(() => {
     return {
-      infoHeader: copy.infoTitle || (language === 'de' ? 'SchÃ¶neberg' : 'SchÃ¶neberg'),
+      infoHeader: copy.infoTitle || (language === 'de' ? 'Schöneberg' : 'Schöneberg'),
       info:
         copy.rules ||
         (language === 'de'
-          ? 'Lege Karten links oder rechts an. Vor jedem Zug tippst du: hÃ¶her, niedriger oder gleich im Vergleich zur Randkarte. Drei richtige in Folge â€“ dann ist die nÃ¤chste Person dran. Bei einem Fehler wird die komplette Reihe geleert; du trinkst so viele SchlÃ¼cke wie Karten entfernt wurden. Danach wird eine neue Startkarte fÃ¼r die Reihe aufgedeckt.'
-          : 'Place a card on the left or right. Before drawing, guess higher, lower, or equal compared to the edge card. Three correct guesses in a row and it is the next playerâ€™s turn. On a mistake, the whole row is cleared; drink as many sips as cards removed. Then a new start card is revealed for that row.'),
-      higher: language === 'de' ? 'HÃ¶her' : 'Higher',
+          ? 'Lege Karten links oder rechts an. Vor jedem Zug tippst du: höher, niedriger oder gleich im Vergleich zur Randkarte. Drei richtige in Folge – dann ist die nächste Person dran. Bei einem Fehler wird die komplette Reihe geleert; du trinkst so viele Schlucke wie Karten entfernt wurden. Danach wird eine neue Startkarte für die Reihe aufgedeckt.'
+          : "Place a card on the left or right. Before drawing, guess higher, lower, or equal compared to the edge card. Three correct guesses in a row and then it is the next player's turn. On a mistake, the whole row is cleared; drink as many sips as cards removed. Then a new start card is revealed for that row."),
+      higher: language === 'de' ? 'Höher' : 'Higher',
       lower: language === 'de' ? 'Niedriger' : 'Lower',
       equal: language === 'de' ? 'Gleich' : 'Equal',
       streak: language === 'de' ? 'Richtig in Folge' : 'Correct in a row',
@@ -139,53 +139,37 @@ const Schoeneberg = () => {
       setDeck((d) => d.slice(0, -1));
       return c;
     }
-    // reshuffle from discard if empty
-    if (discard.length > 0) {
-      const newDeck = shuffle(discard);
-      setDiscard([]);
-      setDeck(newDeck.slice(0, -1));
-      return newDeck[newDeck.length - 1];
-    }
-    // last resort: rebuild
-    const fresh = shuffle(createDeck());
-    setDeck(fresh.slice(0, -1));
-    return fresh[fresh.length - 1];
+    return null;
   };
 
   const handleGuess = (rowIndex, side, guess) => {
     const currentRow = rows[rowIndex];
-    // find edge card based on slots
-    const filledSlots = currentRow.cards.map((c) => c.slot);
-    const minSlot = Math.min(...filledSlots);
-    const maxSlot = Math.max(...filledSlots);
-    const edge = side === 'left' ? currentRow.cards.find((c) => c.slot === minSlot) : currentRow.cards.find((c) => c.slot === maxSlot);
-    const baseCard = edge.card;
+    if (!currentRow) return;
+    const last = currentRow.cards[currentRow.cards.length - 1];
+    if (!last) return;
     const newCard = drawCard();
-    const cmp = compareRanks(newCard, baseCard);
-    let ok = false;
-    if (guess === 'higher') ok = cmp === 1;
-    if (guess === 'lower') ok = cmp === -1;
-    if (guess === 'equal') ok = cmp === 0;
-
-    if (ok) {
-      setRows((prev) => {
-        const next = prev.map((r) => ({ ...r }));
-        const row = next[rowIndex];
-        if (side === 'left' && row.nextLeft >= 0) {
-          row.cards = [...row.cards, { card: newCard, slot: row.nextLeft }];
-          row.nextLeft = row.nextLeft - 1;
-        } else if (side === 'right' && row.nextRight < SLOTS) {
-          row.cards = [...row.cards, { card: newCard, slot: row.nextRight }];
-          row.nextRight = row.nextRight + 1;
-        }
-        return next;
-      });
-      setStreak((s) => Math.min(3, s + 1));
+    if (!newCard) return;
+    const cmp = compareRanks(newCard, last.card);
+    const correct = (guess === 'lower' && cmp < 0) || (guess === 'equal' && cmp === 0) || (guess === 'higher' && cmp > 0);
+    if (correct) {
+      placeCard(rowIndex, side, newCard);
+      setStreak((s) => s + 1);
     } else {
-      // Show the drawn card and wait for confirmation before clearing
-      const removed = currentRow.cards.length;
-      setWrongReveal({ rowIndex, side, newCard, removed });
+      setWrongReveal({ rowIndex, side, newCard });
     }
+  };
+
+  const placeCard = (rowIndex, side, newCard) => {
+    setRows((prev) => {
+      const next = prev.map((r) => ({ ...r }));
+      const row = next[rowIndex];
+      if (!row) return prev;
+      const targetSlot = side === 'left' ? row.nextLeft : row.nextRight;
+      if (targetSlot < 0 || targetSlot >= SLOTS) return prev;
+      row.cards.push({ card: newCard, slot: targetSlot });
+      if (side === 'left') row.nextLeft -= 1; else row.nextRight += 1;
+      return next;
+    });
   };
 
   const confirmWrong = () => {
@@ -242,7 +226,7 @@ const Schoeneberg = () => {
             <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
           </TouchableOpacity>
           <View style={styles.headerRow}>
-            <Text style={styles.headerTitle}>SchÃ¶neberg</Text>
+            <Text style={styles.headerTitle}>Schöneberg</Text>
             <View style={styles.streakPill}>
               <Text style={styles.streakText}>{labels.streak}: {streak}/3</Text>
             </View>
@@ -335,7 +319,7 @@ const Schoeneberg = () => {
             visible={tutorialEnabled}
             steps={[
               { text: language === 'de' ? 'Tippe auf + um deinen Tipp zu platzieren.' : 'Tap + to place your guess.', placement: 'top' },
-              { text: language === 'de' ? 'WÃ¤hle niedriger/gleich/hÃ¶her und verfolge die Reihe.' : 'Pick lower/equal/higher and follow the row.', placement: 'bottom' },
+              { text: language === 'de' ? 'Wähle niedriger/gleich/höher und verfolge die Reihe.' : 'Pick lower/equal/higher and follow the row.', placement: 'bottom' },
             ]}
             stepIndex={tutorialStep}
             onNext={() => setTutorialStep((s) => (s + 1) % 2)}
@@ -452,8 +436,3 @@ const styles = StyleSheet.create({
 });
 
 export default Schoeneberg;
-
-
-
-
-

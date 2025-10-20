@@ -50,6 +50,9 @@ const SixBySixGame = () => {
   };
 
   const resolveResultMessage = (cell) => {
+  const FUN_TAILS = language === 'en'
+    ? ['Cheers!', 'Lucky you!', 'Uh oh!', 'Sip sip!', 'Your turn again!', 'Pass it on!']
+    : ['Prost!', 'Glück gehabt!', 'Upps!', 'Schluck schluck!', 'Du bist nochmal dran!', 'Weitergeben!'];
     const coord = `${cell.row}/${cell.col}`;
     const turnHint = cell.color === 'red' ? (language === 'en' ? 'Red: go again.' : 'Rot: Du bist nochmal dran.') : (language === 'en' ? 'Black: pass turn.' : 'Schwarz: weitergeben.');
     if (cell.type === 'drink') {
@@ -148,12 +151,12 @@ const SixBySixGame = () => {
 
 const styles = StyleSheet.create({
   overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.45)' },
-  scrollContent: { paddingHorizontal: 20, paddingTop: 70, paddingBottom: 120, gap: 20 },
+  scrollContent: { paddingHorizontal: 20, paddingTop: 120, paddingBottom: 100, gap: 20 },
   header: { alignItems: 'center', gap: 6 },
   title: { fontSize: 28, color: 'white', fontFamily: 'Quicksand_300Bold' },
   grid: { gap: 10 },
   gridRow: { flexDirection: 'row', gap: 10 },
-  cell: { flex: 1, aspectRatio: 1, borderRadius: 14, alignItems: 'center', justifyContent: 'center', position: 'relative', paddingHorizontal: 6, paddingVertical: 8 },
+  cell: { flex: 1, aspectRatio: 0.6, borderRadius: 14, alignItems: 'center', justifyContent: 'center', position: 'relative', paddingHorizontal: 10, paddingVertical: 16 },
   cellHidden: { backgroundColor: 'rgba(0,0,0,0.55)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' },
   cellRed: { backgroundColor: 'rgba(196, 45, 62, 0.85)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
   cellBlack: { backgroundColor: 'rgba(24,24,24,0.85)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
@@ -172,3 +175,7 @@ const styles = StyleSheet.create({
 });
 
 export default SixBySixGame;
+
+
+
+
