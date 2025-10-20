@@ -42,7 +42,10 @@ const DEFAULT_ICON = "\uD83E\uDD64";
 const ICON_BY_ID = { "beer-500": "\uD83C\uDF7A", "beer-330": "\uD83C\uDF7A", "radler-500": "\uD83C\uDF7A", "wine-150": "\uD83C\uDF77", "shot-40": "\uD83E\uDD43", "cocktail-250": "\uD83C\uDF79", "water-500": "\uD83D\uDCA7", "sekt-100": "\uD83E\uDD42", "gin-tonic-250": "\uD83C\uDF78", "cola-330": "\uD83E\uDD64", "energy-250": "\u26A1", "cider-330": "\uD83C\uDF4F", "weinschorle-300": "\uD83C\uDF77", "vodka-shot-20": "\uD83E\uDD43" };
 
 const NAME_ICON_SUGGESTIONS = [ { pattern: /bier/i, icon: '\uD83C\uDF7A' }, { pattern: /wein|rose|rosé/i, icon: '\uD83C\uDF77' }, { pattern: /shot|schnaps|whisky|whiskey|bourbon|vodka|rum/i, icon: '\uD83E\uDD43' }, { pattern: /cocktail|spritz|mai tai|colada|mojito|martini/i, icon: '\uD83C\uDF79' }, { pattern: /sekt|prosecco|champagner/i, icon: '\uD83E\uDD42' }, { pattern: /biermix|radler|shandy/i, icon: '\uD83C\uDF7A' }, { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: '\uD83D\uDCA7' } ];
-const EMOJI_CHOICES = ['\uD83C\uDF7A','\uD83C\uDF77','\uD83C\uDF79','\uD83E\uDD43','\uD83C\uDF78','\uD83E\uDD42','\uD83E\uDD64','\uD83D\uDCA7','\u26A1','\u2728','\u2615','\uD83C\uDF75','\uD83E\uDDC3','\uD83E\uDDC9','\uD83E\uDD5B','\uD83C\uDF4F','\uD83C\uDF6B','\uD83C\uDF6A'];
+const EMOJI_CHOICES = [
+  '\uD83C\uDF7A','\uD83C\uDF77','\uD83C\uDF79','\uD83E\uDD43','\uD83C\uDF78','\uD83E\uDD42','\uD83E\uDD64','\uD83D\uDCA7','\u26A1','\u2728','\u2615','\uD83C\uDF75','\uD83E\uDDC3','\uD83E\uDDC9','\uD83E\uDD5B','\uD83C\uDF4F','\uD83C\uDF6B','\uD83C\uDF6A',
+  '\uD83C\uDF76','\uD83C\uDF7E','\uD83C\uDF74','\uD83E\uDDC1','\uD83E\uDDC0','\uD83E\uDDC6','\uD83C\uDF7D','\uD83C\uDF64','\uD83C\uDF63','\uD83C\uDF5A','\uD83C\uDF4E','\uD83C\uDF52','\uD83C\uDF53','\uD83C\uDF6D','\uD83C\uDF82','\uD83C\uDF89','\uD83C\uDF8A','\uD83D\uDC7B','\uD83D\uDD25','\uD83D\uDD14'
+];
 
 const PROMILLE_MESSAGE_BANDS = {
   de: [
@@ -849,22 +852,32 @@ const DrinkCounter = () => {
               />
           </View>
           <View style={styles.formRowTwoColumns}>
-              <TextInput
-                style={styles.formInputHalf}
-                placeholder="% Vol"
-                placeholderTextColor="rgba(255,255,255,0.4)"
-                keyboardType="numeric"
-                value={form.abv}
-                onChangeText={(value) => setForm((prev) => ({ ...prev, abv: value }))}
-              />
-              <TextInput
-                style={styles.formInputHalf}
-                placeholder="ml"
-                placeholderTextColor="rgba(255,255,255,0.4)"
-                keyboardType="numeric"
-                value={form.volume}
-                onChangeText={(value) => setForm((prev) => ({ ...prev, volume: value }))}
-              />
+              <View style={styles.formFieldHalf}>
+                <Text style={styles.formLabel}>
+                  {translate('Alkoholgehalt in Prozent (% Vol)', 'Alcohol by volume (% Vol)')}
+                </Text>
+                <TextInput
+                  style={styles.formInputHalf}
+                  placeholder="% Vol"
+                  placeholderTextColor="rgba(255,255,255,0.4)"
+                  keyboardType="numeric"
+                  value={form.abv}
+                  onChangeText={(value) => setForm((prev) => ({ ...prev, abv: value }))}
+                />
+              </View>
+              <View style={styles.formFieldHalf}>
+                <Text style={styles.formLabel}>
+                  {translate('Getränkemenge in Milliliter (ml)', 'Volume in milliliters (ml)')}
+                </Text>
+                <TextInput
+                  style={styles.formInputHalf}
+                  placeholder="ml"
+                  placeholderTextColor="rgba(255,255,255,0.4)"
+                  keyboardType="numeric"
+                  value={form.volume}
+                  onChangeText={(value) => setForm((prev) => ({ ...prev, volume: value }))}
+                />
+              </View>
             </View>
             <Text style={[styles.sectionDescription, { marginTop: 8 }]}>
               {translate('Emoji auswählen (optional):', 'Pick an emoji (optional):')}
@@ -1226,14 +1239,14 @@ const styles = StyleSheet.create({
   emojiPickerRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
+    gap: 8,
     marginTop: 8,
     marginBottom: 6,
   },
   emojiChip: {
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
+    borderRadius: 10,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
     backgroundColor: "rgba(255,255,255,0.08)",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.12)",
@@ -1243,7 +1256,7 @@ const styles = StyleSheet.create({
     borderColor: "#E5C185",
   },
   emojiChar: {
-    fontSize: 22,
+    fontSize: 16,
   },
   quickGrid: {
     flexDirection: "row",
@@ -1391,8 +1404,19 @@ const styles = StyleSheet.create({
   },
   formRowTwoColumns: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 12,
     marginBottom: 12,
+  },
+  formFieldHalf: {
+    flexGrow: 1,
+    flexBasis: "48%",
+  },
+  formLabel: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: 11,
+    marginBottom: 6,
+    fontFamily: "Quicksand_300Light",
   },
   formInput: {
     flex: 1,
