@@ -1,5 +1,5 @@
 ﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Linking, Alert } from 'react-native';
 import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import Settings from './sublements/Settings';
@@ -322,8 +322,23 @@ function MainMenu({ navigation }) {
     const target = navigationMap[gameKey];
     if (!target) return;
     const params = nextGameMap[gameKey];
+
+    if (gameKey === 'PartyBoardGame' || gameKey === '6by6') {
+      const title = language === 'de' ? 'Beta-Hinweis' : 'Beta Notice';
+      const message = language === 'de'
+        ? 'Achtung: Dieses Spiel ist noch in Entwicklung und ist deswegen noch nicht perfekt ausgereift. Es kann Fehler enthalten und sich noch ändern. Möchtest du die Beta starten?'
+        : 'Heads up: This game is still in development and not fully polished yet. It may contain bugs and change over time. Do you want to start the beta?';
+      const cancelText = language === 'de' ? 'Abbrechen' : 'Cancel';
+      const continueText = language === 'de' ? 'Beta starten' : 'Start beta';
+      Alert.alert(title, message, [
+        { text: cancelText, style: 'cancel' },
+        { text: continueText, onPress: () => navigation.navigate(target, params ?? undefined) },
+      ]);
+      return;
+    }
+
     navigation.navigate(target, params ?? undefined);
-  }, [navigation]);
+  }, [navigation, language]);
 
   const renderGameCard = (game, options = {}) => {
     if (!game) return null;
@@ -339,6 +354,10 @@ function MainMenu({ navigation }) {
         ? 'Bald verfügbar'
         : 'Coming soon'
       : (commonCopy?.startGame ?? 'Start game');
+
+    const computedStartLabel = (!game.isComingSoon && (game.key === 'PartyBoardGame' || game.key === '6by6'))
+      ? (language === 'de' ? 'Beta starten' : 'Start beta')
+      : startLabel;
 
     const cardContainerStyles = [
       styles.gameCard,
@@ -363,11 +382,11 @@ function MainMenu({ navigation }) {
     const startChipLabelStyles = [styles.startChipLabel, game.isComingSoon && styles.startChipLabelDisabled].filter(Boolean);
     const startButton = game.isComingSoon ? (
       <View style={startChipStyles}>
-        <Text style={startChipLabelStyles}>{startLabel}</Text>
+        <Text style={startChipLabelStyles}>{computedStartLabel}</Text>
       </View>
     ) : (
       <TouchableOpacity style={startChipStyles} onPress={() => startGame(game.key)} activeOpacity={0.88}>
-        <Text style={startChipLabelStyles}>{startLabel}</Text>
+        <Text style={startChipLabelStyles}>{computedStartLabel}</Text>
       </TouchableOpacity>
     );
 
