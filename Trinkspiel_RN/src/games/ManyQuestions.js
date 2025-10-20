@@ -93,7 +93,7 @@ const ManyQuestionsGame = ({ route }) => {
             </Animated.View>
           </View>
           <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'NÃ¤chste Karte' : 'Next card'}</Text>
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Nächste Karte' : 'Next card'}</Text>
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={questions} textsIndex={questionIndex} table={'game_klassiker_questions'} />
@@ -105,7 +105,7 @@ const ManyQuestionsGame = ({ route }) => {
           visible={tutorialEnabled}
           steps={[
             { text: language === 'de' ? 'Hier steht die Frage. Lest sie laut vor.' : 'This is the question. Read it aloud.', placement: 'top' },
-            { text: language === 'de' ? 'Tippe hier fÃ¼r die nÃ¤chste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
@@ -147,14 +147,17 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
+    backgroundColor: 'transparent',
+    textShadowColor: 'transparent',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
+    includeFontPadding: false,
   },
   cardBox: {
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: 'rgba(0,0,0,0.45)',
     borderRadius: 16,
     paddingVertical: 18,
     paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -165,6 +168,13 @@ const styles = StyleSheet.create({
 });
 
 export default ManyQuestionsGame;
+
+
+
+
+
+
+
 
 
 

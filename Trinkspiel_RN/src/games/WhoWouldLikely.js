@@ -110,14 +110,17 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
+    backgroundColor: 'transparent',
+    textShadowColor: 'transparent',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
+    includeFontPadding: false,
   },
   cardBox: {
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: 'rgba(0,0,0,0.45)',
     borderRadius: 16,
     paddingVertical: 18,
     paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -141,6 +144,12 @@ const styles = StyleSheet.create({
 });
 
 export default WhoWouldLikelyGame;
+
+
+
+
+
+
 
 
 

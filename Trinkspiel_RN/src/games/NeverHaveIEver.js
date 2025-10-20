@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState, useContext } from 'react';
+﻿﻿import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
 import { Animated, Easing } from 'react-native';
@@ -91,7 +91,7 @@ const NeverHaveIEverGame = () => {
           steps={[
             { text: language === 'de' ? 'Hier steht die aktuelle Aussage. Lest sie laut vor.' : 'This is the current statement. Read it aloud.', placement: 'top' },
             { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
-            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun — and don’t overdo it.', placement: 'bottom' },
+            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun � and don�t overdo it.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
@@ -116,14 +116,17 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
+    backgroundColor: 'transparent',
+    textShadowColor: 'transparent',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
+    includeFontPadding: false,
   },
   cardBox: {
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: 'rgba(0,0,0,0.45)',
     borderRadius: 16,
     paddingVertical: 18,
     paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -143,10 +146,22 @@ const styles = StyleSheet.create({
     lineHeight: 34,
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
+    textShadowColor: 'transparent',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
   },
 });
 
 export default NeverHaveIEverGame;
+
+
+
+
+
+
+
+
+
 
 
 
