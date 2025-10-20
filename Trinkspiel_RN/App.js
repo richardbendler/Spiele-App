@@ -41,6 +41,7 @@ import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from "./src
 
 import { enableScreens } from "react-native-screens";
 enableScreens();
+import { askForRatingIfEligible } from "./src/utils/rating";
 
 const DEFAULT_DRINK_CATALOG = [
   {
@@ -223,6 +224,13 @@ export default function App() {
 
   const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
 
+  const navigationRef = React.useRef();
+  const routeNameRef = React.useRef();
+
+  const GAME_ROUTES = useMemo(() => new Set([
+    'PicoloGame','ManyQuestionsGame','WhoWouldLikelyGame','NeverHaveIEverGame','Kingscup','MaexchenGame','Activity','DrinkCounter','SpinTheBottle','HorseRace','Schoeneberg','SixBySixGame','PartyBoardGame','SecretMission'
+  ]), []);
+
   return (
     <VariablesContext.Provider
       value={{
@@ -249,7 +257,25 @@ export default function App() {
       }}
     >
       <View style={{ flex: 1 }}>
-        <NavigationContainer>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            try { routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name; } catch {}
+          }}
+          onStateChange={async () => {
+            try {
+              const previousRouteName = routeNameRef.current;
+              const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
+              if (previousRouteName && currentRouteName) {
+                // if returning from any game to MainMenu, ask for rating
+                if (currentRouteName === 'MainMenu' && GAME_ROUTES.has(previousRouteName)) {
+                  await askForRatingIfEligible(language);
+                }
+              }
+              routeNameRef.current = currentRouteName;
+            } catch {}
+          }}
+        >
           <Stack.Navigator
             initialRouteName="StartMenu"
             screenOptions={{

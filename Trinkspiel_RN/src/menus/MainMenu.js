@@ -1,5 +1,6 @@
 ﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions, Linking } from 'react-native';
+import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import Settings from './sublements/Settings';
 import { useTranslation } from '../i18n';
@@ -452,6 +453,17 @@ function MainMenu({ navigation }) {
             }),
           )}
         </View>
+        {/* Play Store rating CTA */}
+        <TouchableOpacity
+          onPress={() => Linking.openURL(PLAY_STORE_URL)}
+          style={styles.rateCta}
+          activeOpacity={0.88}
+        >
+          <Text style={styles.rateCtaStar}>★</Text>
+          <Text style={styles.rateCtaLabel}>
+            {language === 'de' ? 'Dir gefällt die App? Bewerte uns im Play Store' : 'Enjoy the app? Rate us on Play Store'}
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
 
       <Settings />
@@ -593,6 +605,27 @@ const styles = StyleSheet.create({
 
   gameMeta: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginBottom: 4, fontFamily: 'Quicksand_300Light' },
   gameDescription: { color: 'rgba(255,255,255,0.92)', lineHeight: 15, fontSize: 11, fontFamily: 'Quicksand_300Light' },
+  rateCta: {
+    alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 14,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.65)',
+    backgroundColor: 'rgba(24,19,15,0.48)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.22,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 4,
+  },
+  rateCtaStar: { color: '#E5C185', fontSize: 14, marginTop: -1 },
+  rateCtaLabel: { color: 'rgba(255,255,255,0.95)', fontSize: 13.5, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
   ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 2, marginTop: 8 },
   star: { color: '#FFD166', fontSize: 12 },
 

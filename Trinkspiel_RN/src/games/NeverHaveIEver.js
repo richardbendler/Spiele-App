@@ -7,6 +7,7 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
+import { askForRatingIfEligible } from '../utils/rating';
 import { neverHaveIEverStatements } from '../data/neverHaveIEverStatements';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
@@ -50,6 +51,8 @@ const NeverHaveIEverGame = () => {
     }
 
     setFinished(true);
+    // Nach Spielende ggf. Bewertungs-Popup anzeigen
+    askForRatingIfEligible(language);
   };
 
   const buttonLabel = finished ? copy.restart : (language === 'de' ? 'Nächste Karte' : 'Next card');
