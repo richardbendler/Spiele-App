@@ -182,9 +182,7 @@ const SpinTheBottle = ({ route }) => {
 
         <InfoText header={copy.infoHeader ?? 'Spin the Bottle!'} rules={copy.rules ?? ''} />
         <InfoHint />
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-        </TouchableOpacity>
+        {/* Regelbutton ausgeblendet für Flaschendrehen */}
 
     </ImageBackground>
   );

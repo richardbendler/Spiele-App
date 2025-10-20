@@ -17,8 +17,9 @@ const StartMenu = ({ navigation }) => {
   const { t } = useTranslation();
   const startText = useMemo(() => t('startMenu'), [t]);
 
-  const heroTitle = '';
-  const heroSubtitle = startText?.subtitle ?? (language === 'de' ? 'Starte mit einem Spiel, das zu eurer Runde passt.' : 'Kick things off with a game that matches your crew.');
+  // Titel/Subtitel gemäß Wunsch: "The One - Die Trinkspielbar"
+  const heroTitle = 'The One';
+  const heroSubtitle = language === 'de' ? 'Die Trinkspielbar' : 'The Drinking Game Bar';
   const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
 
   const featureCards = useMemo(() => [
@@ -97,7 +98,6 @@ const StartMenu = ({ navigation }) => {
             style={styles.heroLogo}
           />
           <View style={styles.heroTextBlock}>
-            <Text style={styles.heroLabel}>{language === 'de' ? 'Trinkspielbar' : 'Bar mode'}</Text>
             {heroTitle ? (<Text style={styles.heroTitle}>{heroTitle}</Text>) : null}
             <Text style={styles.heroSubtitle}>{heroSubtitle}</Text>
           </View>
@@ -147,14 +147,15 @@ const StartMenu = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   barBackground: { flex: 1 },
-  barOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(10, 14, 22, 0.6)' },
+  // Hintergrund weniger stark abdunkeln, damit das Bar-Bild besser sichtbar bleibt
+  barOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(10, 14, 22, 0.35)' },
   barContent: { flex: 1, paddingHorizontal: 28, paddingTop: 80, paddingBottom: 120, justifyContent: 'space-between' },
 
   heroSection: { flexDirection: 'row', alignItems: 'center', gap: 18 },
-  heroLogo: { width: 84, height: 84, resizeMode: 'contain' },
+  heroLogo: { width: 112, height: 112, resizeMode: 'contain' },
   heroTextBlock: { flex: 1 },
   heroLabel: { color: '#E5C185', fontFamily: 'Caveat_500Medium', fontSize: 24 },
-  heroTitle: { color: '#FFFFFF', fontSize: 32, fontFamily: 'Quicksand_700Bold' },
+  heroTitle: { color: '#FFFFFF', fontSize: 44, fontFamily: 'Caveat_700Bold' },
   heroSubtitle: { color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 20, marginTop: 8, fontFamily: 'Quicksand_300Light' },
 
   /** Panels statt Button-Look */
@@ -193,19 +194,20 @@ const styles = StyleSheet.create({
   startButtonNew: {
     marginTop: 36,
     alignSelf: 'center',
-    backgroundColor: '#E5C185',
+    backgroundColor: '#F2C77A',
     borderRadius: 28,
-    paddingVertical: 16,
-    paddingHorizontal: 44,
-    shadowColor: '#000',
-    shadowOpacity: 0.4,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 7,
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.18)'
+    paddingVertical: 18,
+    paddingHorizontal: 52,
+    // etwas mehr Leuchten, damit der Button heraussticht
+    shadowColor: '#F2C77A',
+    shadowOpacity: 0.6,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 10,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.20)'
   },
-  startButtonNewLabel: { color: '#231C18', fontSize: 18, fontFamily: 'Quicksand_700Bold', letterSpacing: 1 },
+  startButtonNewLabel: { color: '#231C18', fontSize: 20, fontFamily: 'Quicksand_700Bold', letterSpacing: 1.2 },
 
   rateButton: {
     marginTop: 18,

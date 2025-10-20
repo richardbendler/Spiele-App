@@ -574,10 +574,16 @@ const DrinkCounter = () => {
     persistCatalog(updated);
   };
 
-  const toggleHidden = (drink) => {
-    const updated = drinkCatalog.map((entry) =>
-      entry.id === drink.id ? { ...entry, isHidden: !entry.isHidden, quick: entry.isHidden ? entry.quick : false } : entry
-    );
+  const toggleVisibility = (drink) => {
+    const updated = drinkCatalog.map((entry) => {
+      if (entry.id !== drink.id) return entry;
+      const wasHidden = entry.isHidden;
+      return {
+        ...entry,
+        isHidden: !entry.isHidden,
+        quick: wasHidden ? true : entry.quick,
+      };
+    });
     persistCatalog(updated);
   };
 
@@ -818,21 +824,12 @@ const DrinkCounter = () => {
                   <Text style={styles.manageMeta}>{drink.abv}% · {drink.volumeMl} ml</Text>
                   <View style={styles.manageActions}>
                     <TouchableOpacity
-                      onPress={() => toggleQuickAccess(drink)}
-                      style={[styles.actionChip, drink.quick ? styles.actionChipActive : null]}
+                      onPress={() => toggleVisibility(drink)}
+                      style={[styles.actionChip, !drink.isHidden ? styles.actionChipActive : null]}
                       activeOpacity={0.85}
                     >
-                      <Text style={[styles.actionChipText, drink.quick ? styles.actionChipTextActive : null]}>
-                        {drink.quick ? translate("Anzeigen", "Show") : translate("Hinzufügen", "Add")}
-                      </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => toggleHidden(drink)}
-                      style={[styles.actionChip, drink.isHidden ? styles.actionChipActive : null]}
-                      activeOpacity={0.85}
-                    >
-                      <Text style={[styles.actionChipText, drink.isHidden ? styles.actionChipTextActive : null]}>
-                        {drink.isHidden ? translate("Versteckt", "Hidden") : translate("Verstecken", "Hide")}
+                      <Text style={[styles.actionChipText, !drink.isHidden ? styles.actionChipTextActive : null]}>
+                        {!drink.isHidden ? translate('Sichtbar', 'Visible') : translate('Versteckt', 'Hidden')}
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -840,7 +837,7 @@ const DrinkCounter = () => {
                       style={styles.removeChip}
                       activeOpacity={0.8}
                     >
-                      <Text style={styles.removeChipText}>{translate("Löschen", "Delete")}</Text>
+                      <Text style={styles.removeChipText}>{translate('Löschen', 'Delete')}</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -1236,15 +1233,15 @@ const styles = StyleSheet.create({
   },
   quickTile: {
     width: "48%",
-    borderRadius: 20,
-    padding: 16,
-    minHeight: 120,
+    borderRadius: 18,
+    padding: 12,
+    minHeight: 104,
     position: "relative",
     justifyContent: "flex-end",
   },
   quickIcon: {
-    fontSize: 36,
-    marginBottom: 12,
+    fontSize: 32,
+    marginBottom: 10,
   },
   quickTitle: {
     color: "#1B1B1F",
@@ -1658,6 +1655,8 @@ const styles = StyleSheet.create({
 });
 
 export default DrinkCounter;
+
+
 
 
 
