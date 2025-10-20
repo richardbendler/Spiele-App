@@ -1,5 +1,6 @@
 ﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import { Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
@@ -31,6 +32,8 @@ const ManyQuestionsGame = ({ route }) => {
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [tutorialStep, setTutorialStep] = useState(0);
+  const revealAnim = React.useRef(new Animated.Value(0)).current;
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
     setQuestionIndex(0);
@@ -58,6 +61,12 @@ const ManyQuestionsGame = ({ route }) => {
       setGameEnded(true);
     }
   };
+
+  useEffect(() => {
+    setContentVisible(false);
+    revealAnim.setValue(0);
+    Animated.timing(revealAnim, { toValue: 1, duration: 350, easing: Easing.out(Easing.ease), useNativeDriver: true }).start(() => setContentVisible(true));
+  }, [questionIndex, revealAnim]);
 
   if (gameEnded) {
     return (
@@ -138,6 +147,20 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: 'white',
     fontFamily: 'Quicksand_300Bold',
+  },
+  cardBox: {
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    borderRadius: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    maxWidth: 720,
   },
 });
 

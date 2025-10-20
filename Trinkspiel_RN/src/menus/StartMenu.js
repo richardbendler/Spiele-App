@@ -1,5 +1,6 @@
 ﻿import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground, Linking } from 'react-native';
+import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 import NetInfo from "@react-native-community/netinfo";
@@ -122,6 +123,18 @@ const StartMenu = ({ navigation }) => {
         >
           <Text style={styles.startButtonNewLabel}>{playLabel}</Text>
         </TouchableOpacity>
+
+        {/* Bewertung CTA */}
+        <TouchableOpacity
+          onPress={() => Linking.openURL(PLAY_STORE_URL)}
+          style={styles.rateButton}
+          activeOpacity={0.88}
+        >
+          <Text style={styles.rateButtonStar}>★</Text>
+          <Text style={styles.rateButtonLabel}>
+            {language === 'de' ? 'Dir gefällt die App? Bewerte uns im Play Store' : 'Enjoy the app? Rate us on Play Store'}
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.counter}>
@@ -193,6 +206,27 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.18)'
   },
   startButtonNewLabel: { color: '#231C18', fontSize: 18, fontFamily: 'Quicksand_700Bold', letterSpacing: 1 },
+
+  rateButton: {
+    marginTop: 18,
+    alignSelf: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.65)',
+    backgroundColor: 'rgba(24,19,15,0.48)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 5,
+  },
+  rateButtonStar: { color: '#E5C185', fontSize: 14, marginTop: -1 },
+  rateButtonLabel: { color: 'rgba(255,255,255,0.95)', fontSize: 13.5, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
 
   counter: { position: 'absolute', left: 0, right: 0, bottom: 0, alignItems: 'center', pointerEvents: 'none' },
   counterTop: { width: '88%', height: 18, backgroundColor: 'rgba(53, 40, 32, 0.95)', borderTopLeftRadius: 18, borderTopRightRadius: 18, shadowColor: '#000', shadowOpacity: 0.35, shadowRadius: 14, shadowOffset: { width: 0, height: 4 }, elevation: 4 },
