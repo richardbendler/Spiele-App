@@ -236,6 +236,31 @@ function MainMenu({ navigation }) {
         : 'Draw a statement and everyone who has done it drinks. Quick, light rounds in between.';
     }
 
+    // Normalize parameters for all remaining games
+    const makeParams = (d, k) => (
+      language === 'de'
+        ? `Trinklevel: (${d}/5)\nKennenlernen: (${k}/5)`
+        : `Drink level: (${d}/5)\nGetting to know: (${k}/5)`
+    );
+    const targetParams = {
+      'The One': [2, 3],
+      Kingscup: [3, 3],
+      SpinTheBottle: [2, 4],
+      HorseRace: [4, 2],
+      WerWuerde: [2, 4],
+      Schoeneberg: [2, 3],
+      'Geheime Mission': [1, 3],
+      '6by6': [5, 1],
+      PartyBoardGame: [3, 3],
+      Skala: [2, 4],
+      Activity: [1, 4],
+      Top10: [1, 4],
+      Kopfpoker: [2, 3],
+    };
+    Object.entries(targetParams).forEach(([k, [d, g]]) => {
+      if (entries[k]) entries[k].parameters = makeParams(d, g);
+    });
+
     // Ensure WhoWould fallback exists (defensive)
     entries.WerWuerde = entries.WerWuerde ?? { title: language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten' };
     return entries;
