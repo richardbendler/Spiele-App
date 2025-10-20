@@ -8,6 +8,7 @@ import {
   ScrollView,
   useWindowDimensions,
   Linking,
+  Alert,
 } from 'react-native';
 import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
@@ -287,11 +288,13 @@ function MainMenu({ navigation }) {
 
   const startGame = useCallback(
     (gameKey) => {
-      // Map AddPlayer wrappers to correct next route via nextGameMap if needed later
       const routeName = navigationMap[gameKey];
       if (!routeName) return;
+      if (gameKey === 'PartyBoardGame') {
+        navigation.navigate('AddPlayer', { nextGame: 'PartyBoardGame', showScales: false });
+        return;
+      }
       if (routeName === 'AddPlayer') {
-        // default to The One flow
         navigation.navigate('AddPlayer', { nextGame: 'PicoloGame', showScales: true });
       } else {
         navigation.navigate(routeName);
@@ -418,12 +421,32 @@ function MainMenu({ navigation }) {
                 <TouchableOpacity
                   style={[styles.startChip, startChipDynamicStyle, { backgroundColor: expandedGame.accent, borderColor: `${expandedGame.accent}AA` }]}
                   onPress={() => {
-                    startGame(expandedGame.key);
-                    setExpandedKey(null);
+                    const isBeta = expandedGame.key === '6by6' || expandedGame.key === 'PartyBoardGame';
+                    const proceed = () => {
+                      startGame(expandedGame.key);
+                      setExpandedKey(null);
+                    };
+                    if (isBeta) {
+                      const title = language === 'de' ? 'Beta-Hinweis' : 'Beta Notice';
+                      const message =
+                        language === 'de'
+                          ? 'Dieses Spiel ist noch in Entwicklung (Beta). Inhalte und Regeln sind noch nicht final und ergeben vielleicht noch nicht überall perfekt Sinn. Es kann zu Änderungen oder kleineren Problemen kommen.'
+                          : 'This game is still in development (beta). Content and rules are not final and may not fully make sense yet. Expect changes or minor issues.';
+                      Alert.alert(title, message, [
+                        { text: language === 'de' ? 'Abbrechen' : 'Cancel', style: 'cancel' },
+                        { text: language === 'de' ? 'Fortfahren' : 'Continue', onPress: proceed },
+                      ]);
+                    } else {
+                      proceed();
+                    }
                   }}
                   activeOpacity={0.88}
                 >
-                  <Text style={styles.startChipLabel}>{commonCopy.startGame}</Text>
+                  <Text style={styles.startChipLabel}>
+                    {(expandedGame.key === '6by6' || expandedGame.key === 'PartyBoardGame')
+                      ? (language === 'de' ? 'Beta starten' : 'Start Beta')
+                      : commonCopy.startGame}
+                  </Text>
                 </TouchableOpacity>
               )}
             </View>
