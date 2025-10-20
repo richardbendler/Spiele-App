@@ -21,6 +21,8 @@ const StartMenu = ({ navigation }) => {
   const heroTitle = 'The One';
   const heroSubtitle = language === 'de' ? 'Die Trinkspielbar' : 'The Drinking Game Bar';
   const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
+  const quickDrinkCounterLabel = language === 'de' ? 'Getränkezähler' : 'Drink counter';
+  const quickOpenLabel = language === 'de' ? 'Öffnen' : 'Open';
 
   const featureCards = useMemo(() => [
     {
@@ -124,6 +126,20 @@ const StartMenu = ({ navigation }) => {
           <Text style={styles.startButtonNewLabel}>{playLabel}</Text>
         </TouchableOpacity>
 
+        {/* Quicklink: Getränkezähler */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('DrinkCounter')}
+          style={styles.quickLink}
+          activeOpacity={0.9}
+        >
+          <View style={styles.quickLinkIcon}><Text style={styles.quickLinkIconText}>🥤</Text></View>
+          <View style={styles.quickLinkCopy}>
+            <Text style={styles.quickLinkTitle}>{quickDrinkCounterLabel}</Text>
+            <Text style={styles.quickLinkSubtitle}>{language === 'de' ? 'Schneller Zugriff' : 'Quick access'}</Text>
+          </View>
+          <View style={styles.quickLinkAction}><Text style={styles.quickLinkActionLabel}>{quickOpenLabel}</Text></View>
+        </TouchableOpacity>
+
         {/* Bewertung CTA */}
         <TouchableOpacity
           onPress={() => Linking.openURL(PLAY_STORE_URL)}
@@ -156,7 +172,8 @@ const styles = StyleSheet.create({
   heroTextBlock: { flex: 1 },
   heroLabel: { color: '#E5C185', fontFamily: 'Caveat_500Medium', fontSize: 24 },
   heroTitle: { color: '#FFFFFF', fontSize: 44, fontFamily: 'Caveat_700Bold' },
-  heroSubtitle: { color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 20, marginTop: 8, fontFamily: 'Quicksand_300Light' },
+  // Make subtitle a touch larger and with a nicer handwritten font
+  heroSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 18, lineHeight: 24, marginTop: 8, fontFamily: 'Caveat_500Medium' },
 
   /** Panels statt Button-Look */
   featureGrid: { marginTop: 36, gap: 12 },
@@ -229,6 +246,44 @@ const styles = StyleSheet.create({
   },
   rateButtonStar: { color: '#E5C185', fontSize: 14, marginTop: -1 },
   rateButtonLabel: { color: 'rgba(255,255,255,0.95)', fontSize: 13.5, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
+
+  // Quicklink styles (aligned with MainMenu shortcut look & feel)
+  quickLink: {
+    marginTop: 14,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.55)',
+    backgroundColor: 'rgba(229,193,133,0.12)'
+  },
+  quickLinkIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.65)',
+    backgroundColor: 'rgba(229,193,133,0.18)'
+  },
+  quickLinkIconText: { fontSize: 18 },
+  quickLinkCopy: { flex: 1, minWidth: 0 },
+  quickLinkTitle: { color: '#F5E9D7', fontSize: 14, fontFamily: 'Quicksand_700Bold' },
+  quickLinkSubtitle: { color: 'rgba(245,233,215,0.75)', fontSize: 11, marginTop: 2, fontFamily: 'Quicksand_300Light' },
+  quickLinkAction: {
+    borderRadius: 14,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    backgroundColor: '#E5C185',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  quickLinkActionLabel: { fontSize: 12, fontFamily: 'Quicksand_300Bold', color: '#231C18', letterSpacing: 0.4 },
 
   counter: { position: 'absolute', left: 0, right: 0, bottom: 0, alignItems: 'center', pointerEvents: 'none' },
   counterTop: { width: '88%', height: 18, backgroundColor: 'rgba(53, 40, 32, 0.95)', borderTopLeftRadius: 18, borderTopRightRadius: 18, shadowColor: '#000', shadowOpacity: 0.35, shadowRadius: 14, shadowOffset: { width: 0, height: 4 }, elevation: 4 },

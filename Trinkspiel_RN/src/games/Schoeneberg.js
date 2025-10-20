@@ -311,9 +311,6 @@ const Schoeneberg = () => {
           )}
 
           <InfoText header={labels.infoHeader} rules={labels.info} />
-          <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, { top: 20, left: 20, opacity: 0.7 }]}>
-            <Text style={appStyles.infoButtonText}>{t('common.rules')}</Text>
-          </TouchableOpacity>
           <InfoHint />
           <TutorialOverlay
             visible={tutorialEnabled}

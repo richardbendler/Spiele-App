@@ -38,24 +38,11 @@ if (!isFabric && Platform.OS === "android" && typeof UIManager.setLayoutAnimatio
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const DEFAULT_ICON = "🥤";
-const ICON_BY_ID = {
-  "beer-500": "🍺",
-  "beer-330": "🍺",
-  "wine-150": "🍷",
-  "shot-40": "🥃",
-  "cocktail-250": "🍹",
-};
+const DEFAULT_ICON = "\uD83E\uDD64";
+const ICON_BY_ID = { "beer-500": "\uD83C\uDF7A", "beer-330": "\uD83C\uDF7A", "radler-500": "\uD83C\uDF7A", "wine-150": "\uD83C\uDF77", "shot-40": "\uD83E\uDD43", "cocktail-250": "\uD83C\uDF79", "water-500": "\uD83D\uDCA7", "sekt-100": "\uD83E\uDD42", "gin-tonic-250": "\uD83C\uDF78", "cola-330": "\uD83E\uDD64", "energy-250": "\u26A1", "cider-330": "\uD83C\uDF4F", "weinschorle-300": "\uD83C\uDF77", "vodka-shot-20": "\uD83E\uDD43" };
 
-const NAME_ICON_SUGGESTIONS = [
-  { pattern: /bier/i, icon: "🍺" },
-  { pattern: /wein|rose/i, icon: "🍷" },
-  { pattern: /shot|schnaps|whisky|whiskey|bourbon|vodka|rum/i, icon: "🥃" },
-  { pattern: /cocktail|spritz|mai tai|colada|mojito|martini/i, icon: "🍹" },
-  { pattern: /sekt|prosecco|champagner/i, icon: "🥂" },
-  { pattern: /biermix|radler|shandy/i, icon: "🍺" },
-  { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: "🚰" },
-];
+const NAME_ICON_SUGGESTIONS = [ { pattern: /bier/i, icon: '\uD83C\uDF7A' }, { pattern: /wein|rose|rosé/i, icon: '\uD83C\uDF77' }, { pattern: /shot|schnaps|whisky|whiskey|bourbon|vodka|rum/i, icon: '\uD83E\uDD43' }, { pattern: /cocktail|spritz|mai tai|colada|mojito|martini/i, icon: '\uD83C\uDF79' }, { pattern: /sekt|prosecco|champagner/i, icon: '\uD83E\uDD42' }, { pattern: /biermix|radler|shandy/i, icon: '\uD83C\uDF7A' }, { pattern: /alkoholfrei|wasser|soft|saft|juice/i, icon: '\uD83D\uDCA7' } ];
+const EMOJI_CHOICES = ['\uD83C\uDF7A','\uD83C\uDF77','\uD83C\uDF79','\uD83E\uDD43','\uD83C\uDF78','\uD83E\uDD42','\uD83E\uDD64','\uD83D\uDCA7','\u26A1','\u2728','\u2615','\uD83C\uDF75','\uD83E\uDDC3','\uD83E\uDDC9','\uD83E\uDD5B','\uD83C\uDF4F','\uD83C\uDF6B','\uD83C\uDF6A'];
 
 const PROMILLE_MESSAGE_BANDS = {
   de: [
@@ -155,7 +142,7 @@ const DrinkCounter = () => {
   const promilleBands = useMemo(() => PROMILLE_MESSAGE_BANDS[language] ?? PROMILLE_MESSAGE_BANDS.de, [language]);
   const [statsVisible, setStatsVisible] = useState(false);
   const [manageExpanded, setManageExpanded] = useState(false);
-  const [form, setForm] = useState({ name: "", abv: "5", volume: "500", quick: true });
+  const [form, setForm] = useState({ name: "", abv: "5", volume: "500", quick: true, icon: "" });
   const [editRecent, setEditRecent] = useState(false);
   const [bacDetailsOpen, setBacDetailsOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
@@ -182,16 +169,18 @@ const DrinkCounter = () => {
 
   const resolveIcon = useCallback(
     (drink) => {
-      if (!drink) {
-        return DEFAULT_ICON;
-      }
-      if (drink.icon) {
+      if (!drink) return DEFAULT_ICON;
+      // If a valid emoji is already stored and not the old placeholder, keep it
+      if (drink.icon && drink.icon !== "??" && EMOJI_REGEX.test(drink.icon)) {
         return drink.icon;
       }
+      // Otherwise prefer a curated icon by id
       if (ICON_BY_ID[drink.id]) {
         return ICON_BY_ID[drink.id];
       }
-      return guessIconForName(drink.name);
+      // Fallback: guess from name or default
+      const guessed = guessIconForName(drink.name);
+      return guessed || DEFAULT_ICON;
     },
     [guessIconForName]
   );
@@ -552,19 +541,22 @@ const DrinkCounter = () => {
     }
 
     const color = COLOR_PALETTE[drinkCatalog.length % COLOR_PALETTE.length];
+    const providedIcon = (form.icon || '').trim();
+    const icon = EMOJI_REGEX.test(providedIcon) ? providedIcon : guessIconForName(name);
     const newDrink = {
       id: `custom-${Date.now()}`,
       name,
       abv,
       volumeMl: volume,
-      quick: form.quick,
+      // Always add new custom drinks to quick access
+      quick: true,
       isHidden: false,
       color,
-      icon: guessIconForName(name),
+      icon,
     };
 
     persistCatalog([...drinkCatalog, newDrink]);
-    setForm({ name: "", abv: "5", volume: "500", quick: true });
+    setForm({ name: "", abv: "5", volume: "500", quick: true, icon: "" });
   };
 
   const toggleQuickAccess = (drink) => {
@@ -855,8 +847,8 @@ const DrinkCounter = () => {
                 value={form.name}
                 onChangeText={(value) => setForm((prev) => ({ ...prev, name: value }))}
               />
-            </View>
-            <View style={styles.formRowTwoColumns}>
+          </View>
+          <View style={styles.formRowTwoColumns}>
               <TextInput
                 style={styles.formInputHalf}
                 placeholder="% Vol"
@@ -874,17 +866,22 @@ const DrinkCounter = () => {
                 onChangeText={(value) => setForm((prev) => ({ ...prev, volume: value }))}
               />
             </View>
-            <View style={styles.formToggleRow}>
-              <TouchableOpacity
-                onPress={() => setForm((prev) => ({ ...prev, quick: !prev.quick }))}
-                style={[styles.actionChip, form.quick ? styles.actionChipActive : null]}
-                activeOpacity={0.85}
-              >
-                <Text style={[styles.actionChipText, form.quick ? styles.actionChipTextActive : null]}>
-                  {form.quick ? translate("Hinzufügen", "Add") : translate("Nicht hinzufügen", "Do not add")}
-                </Text>
-              </TouchableOpacity>
+            <Text style={[styles.sectionDescription, { marginTop: 8 }]}>
+              {translate('Emoji auswählen (optional):', 'Pick an emoji (optional):')}
+            </Text>
+            <View style={styles.emojiPickerRow}>
+              {EMOJI_CHOICES.map((e) => (
+                <TouchableOpacity
+                  key={e}
+                  onPress={() => setForm((prev) => ({ ...prev, icon: prev.icon === e ? '' : e }))}
+                  style={[styles.emojiChip, form.icon === e ? styles.emojiChipActive : null]}
+                  activeOpacity={0.85}
+                >
+                  <Text style={styles.emojiChar}>{e}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
+            {/* Quick-Toggle entfernt: neue Getränke gehen automatisch in die Schnellauswahl */}
             <TouchableOpacity onPress={handleAddDrink} style={styles.addDrinkButton} activeOpacity={0.9}>
               <Text style={styles.addDrinkButtonText}>{translate("Getränk hinzufügen", "Add drink")}</Text>
             </TouchableOpacity>
@@ -1224,6 +1221,29 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 2,
     fontFamily: "Quicksand_300Light",
+  },
+  // Emoji picker row should wrap to use the width
+  emojiPickerRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    marginTop: 8,
+    marginBottom: 6,
+  },
+  emojiChip: {
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.12)",
+  },
+  emojiChipActive: {
+    backgroundColor: "#E5C185",
+    borderColor: "#E5C185",
+  },
+  emojiChar: {
+    fontSize: 22,
   },
   quickGrid: {
     flexDirection: "row",
@@ -1655,6 +1675,18 @@ const styles = StyleSheet.create({
 });
 
 export default DrinkCounter;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

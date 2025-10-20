@@ -62,7 +62,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: false,
     color: "#E8D56E",
-    icon: "??",
+    icon: "🍺",
   },
   {
     id: "water-500",
@@ -72,7 +72,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#88C9F9",
-    icon: "??",
+    icon: "💧",
   },
   {
     id: "sekt-100",
@@ -82,7 +82,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#F2E28A",
-    icon: "??",
+    icon: "🥂",
   },
   {
     id: "gin-tonic-250",
@@ -92,7 +92,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#B6E0CE",
-    icon: "??",
+    icon: "🍸",
   },
   {
     id: "cola-330",
@@ -102,7 +102,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#6B4C3B",
-    icon: "??",
+    icon: "🥤",
   },
   {
     id: "energy-250",
@@ -112,7 +112,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#E06C3A",
-    icon: "??",
+    icon: "⚡",
   },
   {
     id: "cider-330",
@@ -122,7 +122,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#C9D97E",
-    icon: "??",
+    icon: "🍏",
   },
   {
     id: "weinschorle-300",
@@ -132,7 +132,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#EAC77B",
-    icon: "??",
+    icon: "🍷",
   },
   {
     id: "vodka-shot-20",
@@ -142,7 +142,7 @@ const DEFAULT_DRINK_CATALOG = [
     quick: false,
     isHidden: true,
     color: "#C0E4F7",
-    icon: "??",
+    icon: "🥃",
   },
   {
     id: "beer-330",
@@ -186,28 +186,50 @@ const DEFAULT_DRINK_CATALOG = [
   },
 ];
 
-const ensureDrinkCatalogDefaults = (catalog) => {
-  const fallbackById = Object.fromEntries(DEFAULT_DRINK_CATALOG.map((item) => [item.id, item]));
-  return catalog.map((drink, index) => {
+const ensureDrinkCatalogDefaults = (storedCatalog) => {
+  const fallbackById = Object.fromEntries(
+    DEFAULT_DRINK_CATALOG.map((item) => [item.id, item])
+  );
+
+  const byId = new Set();
+  const merged = [];
+  (Array.isArray(storedCatalog) ? storedCatalog : []).forEach((drink) => {
+    if (!drink || !drink.id) return;
+    if (byId.has(drink.id)) return;
+    byId.add(drink.id);
+    merged.push(drink);
+  });
+
+  DEFAULT_DRINK_CATALOG.forEach((def) => {
+    if (!byId.has(def.id)) {
+      merged.push(def);
+      byId.add(def.id);
+    }
+  });
+
+  return merged.map((drink, index) => {
     const fallback = fallbackById[drink.id];
-    const normalized = {
-      ...fallback,
-      ...drink,
-    };
+    const normalized = { ...fallback, ...drink };
+
     if (fallback) {
       normalized.icon = drink.icon || fallback.icon;
       normalized.color = drink.color || fallback.color;
     } else {
-      normalized.icon = drink.icon || "🥤";
-      normalized.color = drink.color || DEFAULT_DRINK_CATALOG[index % DEFAULT_DRINK_CATALOG.length]?.color || "#F5C26B";
+      normalized.icon = drink.icon || "??";
+      normalized.color =
+        drink.color ||
+        DEFAULT_DRINK_CATALOG[index % DEFAULT_DRINK_CATALOG.length]?.color ||
+        "#F5C26B";
     }
+
     normalized.quick =
       typeof drink.quick === "boolean"
         ? drink.quick
         : fallback && typeof fallback.quick === "boolean"
         ? fallback.quick
         : false;
-    normalized.isHidden = typeof drink.isHidden === "boolean" ? drink.isHidden : false;
+    normalized.isHidden =
+      typeof drink.isHidden === "boolean" ? drink.isHidden : false;
 
     if (normalized.id === "cocktail-250" && !normalized.isHidden) {
       normalized.quick = true;
@@ -431,3 +453,5 @@ const languageStyles = StyleSheet.create({
     letterSpacing: 1,
   },
 });
+
+
