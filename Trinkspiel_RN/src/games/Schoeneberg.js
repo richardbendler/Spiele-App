@@ -381,6 +381,25 @@ const Schoeneberg = () => {
             })}
           </ScrollView>
 
+          {/* pass turn panel after 3 correct at bottom */}
+          {streak >= 3 ? (
+            <View style={styles.passPanelBottom}>
+              <View style={styles.instructionPanel}>
+                <Text style={styles.instructionTitle}>
+                  {language === 'de' ? 'Abgeben möglich' : 'You can pass'}
+                </Text>
+                <Text style={styles.instructionText}>
+                  {language === 'de'
+                    ? 'Du hast 3 richtige. Du darfst jetzt abgeben oder weitermachen. Für jede weitere richtige Karte darfst du 1 Schluck verteilen.'
+                    : 'You have 3 correct. You may pass now or continue. For each further correct card you can give 1 sip.'}
+                </Text>
+                <TouchableOpacity onPress={passTurn} style={styles.instructionButton}>
+                  <Text style={{ color: '#201a17', fontFamily: 'Quicksand_700Bold' }}>{labels.passTurn}</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : null}
+
           {/* Guess popup */}
           {pending ? (
             <View style={styles.modalOverlayBottom}>
@@ -548,6 +567,14 @@ const styles = StyleSheet.create({
     bottom: 24,
     alignItems: 'center',
     paddingHorizontal: 20,
+  },
+  passPanelBottom: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 24,
+    alignItems: 'center',
+    paddingHorizontal: 16,
   },
   modalBox: {
     width: '92%',
