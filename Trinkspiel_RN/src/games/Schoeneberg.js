@@ -62,7 +62,7 @@ const GuessSelector = ({ labels, onPick }) => {
   );
 };
 
-const PlusPad = ({ accent, onPress, pulse, disabled }) => {
+const PlusPad = ({ accent, onPress, pulse, disabled, height }) => {
   const scale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
@@ -93,7 +93,11 @@ const PlusPad = ({ accent, onPress, pulse, disabled }) => {
     </TouchableOpacity>
   );
 
-  const baseStyle = [styles.plusPad, { borderColor: `${accent}70`, backgroundColor: `${accent}18` }];
+  const baseStyle = [
+    styles.plusPad,
+    { height },
+    { borderColor: `${accent}70`, backgroundColor: `${accent}18` },
+  ];
 
   if (disabled) {
     return <View style={[...baseStyle, { opacity: 0.5 }]}>{content}</View>;
@@ -146,7 +150,7 @@ const Schoeneberg = () => {
 
   // Reserved top area height for popups
   const { height: screenHeight } = Dimensions.get('window');
-  const modalTopHeight = Math.max(180, Math.floor(screenHeight * 0.28));
+  const modalTopHeight = Math.max(120, Math.floor(screenHeight * 0.2));
 
   const labels = useMemo(() => {
     return {
@@ -296,9 +300,9 @@ const Schoeneberg = () => {
             </Text>
           </TouchableOpacity>
 
-          <View style={{ height: modalTopHeight }} />
+          
 
-          {/* overlayed header centered in the top gap */}
+          {/* overlayed header near the top */}
           <View style={[styles.topHeaderOverlay]}>
             <Text style={styles.topHeaderTitle}>
               {language === 'de' ? 'Schöneberg' : 'Schoeneberg'}
@@ -307,9 +311,7 @@ const Schoeneberg = () => {
               {labels.streak}: {streak}/3
             </Text>
           </View>
-
-          {/* reserve a slightly smaller top gap so content shifts up */}
-          <View style={{ height: 130 }} />
+          
 
           {/* rows */}
           <ScrollView contentContainerStyle={styles.rowsContainer}>
@@ -324,9 +326,15 @@ const Schoeneberg = () => {
                 <View key={idx} style={styles.row}>
                   <View style={styles.side}>
                     {canLeft ? (
-                      <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'left')} disabled={false} />
+                      <PlusPad
+                        accent={accent}
+                        pulse
+                        onPress={() => requestGuess(idx, 'left')}
+                        disabled={false}
+                        height={cardHeight}
+                      />
                     ) : (
-                      <View style={[styles.plusPad, { opacity: 0.2 }]} />
+                      <View style={[styles.plusPad, { height: cardHeight, opacity: 0.2 }]} />
                     )}
                   </View>
 
@@ -357,15 +365,68 @@ const Schoeneberg = () => {
 
                   <View style={styles.side}>
                     {canRight ? (
-                      <PlusPad accent={accent} pulse onPress={() => requestGuess(idx, 'right')} disabled={false} />
+                      <PlusPad
+                        accent={accent}
+                        pulse
+                        onPress={() => requestGuess(idx, 'right')}
+                        disabled={false}
+                        height={cardHeight}
+                      />
                     ) : (
-                      <View style={[styles.plusPad, { opacity: 0.2 }]} />
+                      <View style={[styles.plusPad, { height: cardHeight, opacity: 0.2 }]} />
                     )}
                   </View>
                 </View>
               );
             })}
           </ScrollView>
+
+          {/* Guess popup */}
+          {pending ? (
+            <View style={styles.modalOverlayBottom}>
+              <View style={styles.modalBox}>
+                <Text style={styles.modalTitle}>
+                  {language === 'de' ? 'Dein Tipp' : 'Your Guess'}
+                </Text>
+                <GuessSelector
+                  labels={labels}
+                  onPick={(g) => {
+                    const { rowIndex, side } = pending;
+                    setPending(null);
+                    handleGuess(rowIndex, side, g);
+                  }}
+                />
+                <TouchableOpacity onPress={() => setPending(null)} style={styles.instructionButton}>
+                  <Text style={{ color: '#201a17', fontFamily: 'Quicksand_700Bold' }}>
+                    {language === 'de' ? 'Abbrechen' : 'Cancel'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : null}
+
+          {/* Wrong reveal popup */}
+          {wrongReveal ? (
+            <View style={styles.modalOverlayBottom}>
+              <View style={styles.modalBox}>
+                <Text style={styles.modalTitle}>
+                  {labels.wrong(wrongReveal.removed)}
+                </Text>
+                <Text style={[styles.modalTitle, { fontSize: 14, opacity: 0.9 }]}>
+                  {language === 'de' ? 'Gezogene Karte:' : 'Drawn card:'}
+                </Text>
+                <View style={[styles.card, { width: 60, height: 90, borderRadius: 10 }]}>
+                  <Text style={[styles.cardRank]}>{wrongReveal.newCard.rank}</Text>
+                  <Text style={[styles.cardSuit]}>{wrongReveal.newCard.suit}</Text>
+                </View>
+                <TouchableOpacity onPress={confirmWrong} style={styles.modalClose}>
+                  <Text style={{ color: '#201a17', fontFamily: 'Quicksand_700Bold' }}>
+                    {language === 'de' ? 'Weiter' : 'Continue'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : null}
 
           <InfoText header={labels.infoHeader} rules={labels.info} />
           <InfoHint />
@@ -428,7 +489,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(240,137,116,0.9)',
   },
   passButtonText: { color: '#201a17', fontFamily: 'Quicksand_700Bold' },
-  rowsContainer: { paddingVertical: 8, gap: 10 },
+  rowsContainer: { paddingVertical: 8, paddingTop: 180, gap: 10 },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 },
   side: { width: 44, alignItems: 'center', justifyContent: 'center' },
   plusPad: { width: 40, height: 130, borderRadius: 10, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
@@ -480,6 +541,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  modalOverlayBottom: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 24,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
   modalBox: {
     width: '92%',
     backgroundColor: 'rgba(24,24,24,0.94)',
@@ -500,16 +569,16 @@ const styles = StyleSheet.create({
   // Top header overlay inside the reserved gap
   topHeaderOverlay: {
     position: 'absolute',
-    top: 30,
+    top: 56,
     left: 0,
     right: 0,
-    height: 130,
+    height: 120,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
   },
-  topHeaderTitle: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 26 },
-  topHeaderStreak: { color: '#fff', fontFamily: 'Quicksand_300Bold', fontSize: 16 },
+  topHeaderTitle: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 22 },
+  topHeaderStreak: { color: '#fff', fontFamily: 'Quicksand_300Bold', fontSize: 14 },
   instructionPanel: {
     marginTop: 6,
     paddingHorizontal: 10,
