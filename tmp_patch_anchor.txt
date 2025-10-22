@@ -1,5 +1,6 @@
-ï»¿import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
+import Slider from '@react-native-community/slider';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -47,7 +48,11 @@ const buildDisplayText = (entry, language, startingPlayer) => {
 
 const PicoloGame = ({ route }) => {
   const { t, language } = useTranslation();
-  const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, players, theOneSettings, setTheOneSettings, theOnePrompts, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const drinkingScale = useMemo(() => t('scales.drunkenness'), [t]);
+  const familiarityScale = useMemo(() => t('scales.familiarity'), [t]);
+  const addPlayerText = useMemo(() => t('addPlayer'), [t]);
+  const mapScaleLabel = (scale, index) => (Array.isArray(scale) && index >= 0 && index < scale.length ? scale[index] : '');
   const [tutorialStep, setTutorialStep] = useState(0);
   const copy = useMemo(() => t('picoloGame'), [t]);
 
@@ -124,15 +129,62 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
-  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton : copy.nextButton) : (language==='de' ? 'NÃ¤chste Karte' : 'Next card'));
+  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton : copy.nextButton) : (language==='de' ? 'Nächste Karte' : 'Next card'));
   const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
   const revealHint = copy?.revealHint ?? t('theOne.revealHint');
+  const sliderMaxIndex = Array.isArray(drinkingScale) ? drinkingScale.length - 1 : 0;
+
+  const updateSetting = useMemo(
+    () => (key, maxValue) => (value) => {
+      const upper = typeof maxValue === 'number' ? maxValue : sliderMaxIndex;
+      const clamped = Math.max(0, Math.min(upper, Math.round(value)));
+      setTheOneSettings((prev) => ({ ...prev, [key]: clamped }));
+    },
+    [setTheOneSettings, sliderMaxIndex]
+  );
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={[appStyles.completeScreenGameContainer, { backgroundColor }]}>
         <View style={appStyles.gameContainer}>
+          <View style={styles.inlineSliderCard}>
+            <Text style={styles.inlineSliderTitle}>{addPlayerText.sliderCurrent}</Text>
+            <View style={styles.inlineSliderRow}>
+              <Slider
+                style={styles.inlineSlider}
+                minimumValue={0}
+                maximumValue={sliderMaxIndex}
+                step={1}
+                value={theOneSettings.currentDrunkenness}
+                onValueChange={updateSetting('currentDrunkenness', sliderMaxIndex)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.inlineSliderValue}>
+                {addPlayerText.sliderCurrentLabel} {mapScaleLabel(drinkingScale, theOneSettings.currentDrunkenness)}
+              </Text>
+            </View>
+
+            <Text style={[styles.inlineSliderTitle, { marginTop: 8 }]}>{addPlayerText.sliderFamiliarity}</Text>
+            <View style={styles.inlineSliderRow}>
+              <Slider
+                style={styles.inlineSlider}
+                minimumValue={0}
+                maximumValue={Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0}
+                step={1}
+                value={theOneSettings.familiarity}
+                onValueChange={updateSetting('familiarity', Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.inlineSliderValue}>
+                {addPlayerText.sliderFamiliarityLabel} {mapScaleLabel(familiarityScale, theOneSettings.familiarity)}
+              </Text>
+            </View>
+          </View>
           <View
             style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 }}
           >
@@ -178,8 +230,8 @@ const PicoloGame = ({ route }) => {
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
-            { text: language === 'de' ? 'Bestimmt eine Moderation: Diese Person behÃ¤lt das Handy, liest vor und tippt weiter.' : 'Choose a moderator: They keep the phone, read aloud, and tap next.', placement: 'top' },
-            { text: language === 'de' ? 'Tippt unten auf NÃ¤chste Karte, um die nÃ¤chste Aufgabe zu zeigen.' : 'Tap Next card to reveal the next prompt.', placement: 'bottom' },
+            { text: language === 'de' ? 'Bestimmt eine Moderation: Diese Person behält das Handy, liest vor und tippt weiter.' : 'Choose a moderator: They keep the phone, read aloud, and tap next.', placement: 'top' },
+            { text: language === 'de' ? 'Tippt unten auf Nächste Karte, um die nächste Aufgabe zu zeigen.' : 'Tap Next card to reveal the next prompt.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
@@ -192,6 +244,32 @@ const PicoloGame = ({ route }) => {
 
 
 const styles = StyleSheet.create({
+  inlineSliderCard: {
+    width: '100%',
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 4,
+  },
+  inlineSliderTitle: {
+    color: 'rgba(255,255,255,0.9)',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+  },
+  inlineSliderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  inlineSlider: {
+    flex: 1,
+    marginRight: 8,
+  },
+  inlineSliderValue: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Light',
+    minWidth: 120,
+    textAlign: 'right',
+  },
   categoryTarget: {
     width: 160,
     height: 160,
@@ -221,6 +299,7 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
 
 
 

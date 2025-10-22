@@ -26,14 +26,22 @@ const NameContainer = ({ playerObject }) => {
 
   return (
     <View style={styles.card}>
-      <View style={styles.nameColumn}>
-        <Text style={styles.playerName} numberOfLines={1}>
+      <View style={styles.nameRow}>
+        <Text style={styles.playerName}>
           {playerObject.name}
         </Text>
-        <Text style={styles.playerStatus}>
-          {playerObject.drinks ? labels.drinks : labels.noDrinks}
-        </Text>
+        <TouchableOpacity
+          onPress={() => removePlayer(playerObject)}
+          style={styles.removeButton}
+          activeOpacity={0.8}
+          accessibilityLabel={labels.remove}
+        >
+          <Text style={styles.removeButtonText}>x</Text>
+        </TouchableOpacity>
       </View>
+      <Text style={styles.playerStatus}>
+        {playerObject.drinks ? labels.drinks : labels.noDrinks}
+      </Text>
 
       <View style={styles.toggleGroup}>
         <TouchableOpacity
@@ -55,23 +63,14 @@ const NameContainer = ({ playerObject }) => {
           </Text>
         </TouchableOpacity>
       </View>
-
-      <TouchableOpacity
-        onPress={() => removePlayer(playerObject)}
-        style={styles.removeButton}
-        activeOpacity={0.8}
-        accessibilityLabel={labels.remove}
-      >
-        <Text style={styles.removeButtonText}>x</Text>
-      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: "column",
+    alignItems: "stretch",
     paddingVertical: 14,
     paddingHorizontal: 18,
     borderRadius: 18,
@@ -80,29 +79,32 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255,255,255,0.06)",
     marginBottom: 12,
   },
-  nameColumn: {
-    flex: 1.3,
-    paddingRight: 12,
+  nameRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   playerName: {
     color: "#FFFFFF",
     fontSize: 16,
     fontFamily: "Quicksand_300Bold",
+    flexShrink: 1,
+    paddingRight: 8,
   },
   playerStatus: {
-    marginTop: 2,
+    marginTop: 6,
     fontSize: 12,
     color: "rgba(255,255,255,0.6)",
     fontFamily: "Quicksand_300Light",
   },
   toggleGroup: {
     flexDirection: "row",
-    width: 160,
+    width: '100%',
     borderRadius: 14,
     overflow: "hidden",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
     backgroundColor: "rgba(255,255,255,0.05)",
+    marginTop: 10,
   },
   toggleButton: {
     paddingVertical: 6,
@@ -124,18 +126,18 @@ const styles = StyleSheet.create({
   },
   removeButton: {
     marginLeft: 12,
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: "rgba(229,193,133,0.25)",
     alignItems: "center",
     justifyContent: "center",
   },
   removeButtonText: {
     color: "#E5C185",
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: "Quicksand_300Bold",
-    lineHeight: 20,
+    lineHeight: 18,
   },
 });
 

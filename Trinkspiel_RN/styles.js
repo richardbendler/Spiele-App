@@ -231,23 +231,30 @@ const modalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    // Maximal teiltransparentes Popup
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modalTextTitle: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
-    fontSize: 25,
+    fontSize: 34,
+    lineHeight: 40,
+    fontWeight: 'bold',
   },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
+    fontSize: 20,
+    lineHeight: 26,
   },
   modalTextParameters: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
+    fontSize: 18,
+    lineHeight: 24,
   },
   closeButton: {
     position: 'absolute',

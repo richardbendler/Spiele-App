@@ -16,6 +16,7 @@ import { activitySampleWords } from "./src/data/activityWords";
 import StartMenu from "./src/menus/StartMenu";
 import MainMenu from "./src/menus/MainMenu";
 import AddPlayer from "./src/menus/AddPlayer";
+import PreGameSettings from "./src/menus/PreGameSettings";
 
 //Import der Spiele
 import PicoloGame from "./src/games/PicoloGame";
@@ -398,6 +399,7 @@ export default function App() {
             <Stack.Screen name="StartMenu" component={StartMenu} />
             <Stack.Screen name="MainMenu" component={MainMenu} />
             <Stack.Screen name="AddPlayer" component={AddPlayer} />
+            <Stack.Screen name="PreGameSettings" component={PreGameSettings} />
             <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: theOnePrompts }} />
             <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
             <Stack.Screen name="WhoWouldLikelyGame" component={WhoWouldLikelyGame} />

@@ -1,4 +1,4 @@
-ï»¿ï»¿import React, { useMemo, useState, useContext } from 'react';
+?import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import { appStyles } from '../../styles';
 import { Animated, Easing } from 'react-native';
@@ -55,7 +55,7 @@ const NeverHaveIEverGame = () => {
     askForRatingIfEligible(language);
   };
 
-  const buttonLabel = finished ? copy.restart : (language === 'de' ? 'NÃ¤chste Karte' : 'Next card');
+  const buttonLabel = finished ? copy.restart : (language === 'de' ? 'Nächste Karte' : 'Next card');
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -90,8 +90,8 @@ const NeverHaveIEverGame = () => {
           visible={tutorialEnabled}
           steps={[
             { text: language === 'de' ? 'Hier steht die aktuelle Aussage. Lest sie laut vor.' : 'This is the current statement. Read it aloud.', placement: 'top' },
-            { text: language === 'de' ? 'Tippe hier fÃ¼r die nÃ¤chste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
-            { text: language === 'de' ? 'Viel SpaÃŸ und eskaliert nicht zu doll.' : 'Have fun â€” and do not overdo it.', placement: 'bottom' },
+            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun — and do not overdo it.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
 });
 
 export default NeverHaveIEverGame;
+
 
 
 

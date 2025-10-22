@@ -19,9 +19,9 @@ const InfoText = ({ header, rules }) => {
         <View style={appStyles.modalOverlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
             <View style={appStyles.modalView}>
-              <Text style={[appStyles.textHeader2, { marginBottom: 15 }]}>{header}</Text>
+              <Text style={[appStyles.modalTextTitle, { marginBottom: 15 }]}>{header}</Text>
 
-              <Text style={[appStyles.textNormal2, { marginBottom: 15 }]}>{rules}</Text>
+              <Text style={[appStyles.modalText, { marginBottom: 15 }]}>{rules}</Text>
 
               <TouchableOpacity style={appStyles.closeButton} onPress={() => setInfoVisible(false)}>
                 <Text style={{ color: 'white' }}>{t('common.close')}</Text>
