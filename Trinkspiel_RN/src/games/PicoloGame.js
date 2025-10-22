@@ -124,7 +124,7 @@ const PicoloGame = ({ route }) => {
     requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
   });
 
-  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton.replace('N�','N\u00E4') : copy.nextButton) : (language==='de' ? 'N\u00E4chste Karte' : 'Next card'));
+  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton : copy.nextButton) : (language==='de' ? 'Nächste Karte' : 'Next card'));
   const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
   const revealHint = copy?.revealHint ?? t('theOne.revealHint');
@@ -221,6 +221,7 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
 
 
 

@@ -91,7 +91,7 @@ const NeverHaveIEverGame = () => {
           steps={[
             { text: language === 'de' ? 'Hier steht die aktuelle Aussage. Lest sie laut vor.' : 'This is the current statement. Read it aloud.', placement: 'top' },
             { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
-            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun � and don�t overdo it.', placement: 'bottom' },
+            { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : 'Have fun — and do not overdo it.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(2, s + 1))}
@@ -153,6 +153,18 @@ const styles = StyleSheet.create({
 });
 
 export default NeverHaveIEverGame;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

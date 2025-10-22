@@ -82,6 +82,7 @@ const ManyQuestionsGame = ({ route }) => {
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
+          
           <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
             <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
           </TouchableOpacity>

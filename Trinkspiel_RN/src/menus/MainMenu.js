@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useCallback } from 'react';
+﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
@@ -56,26 +56,26 @@ const navigationMap = {
 };
 
 const GAME_STYLE_MAP = {
-  'The One': { icon: '🎴', accent: '#F5C26B' },
-  Skala: { icon: '📏', accent: '#7AC1B2' },
+  'The One': { icon: '✨', accent: '#F5C26B' },
+  Skala: { icon: '📊', accent: '#7AC1B2' },
   Kingscup: { icon: '👑', accent: '#B784D7' },
   Schoeneberg: { icon: '🏙️', accent: '#F08974' },
   MaexchenGame: { icon: '🎲', accent: '#F3AE82' },
-  SpinTheBottle: { icon: '🧴', accent: '#6FC3C3' },
+  SpinTheBottle: { icon: '🍾', accent: '#6FC3C3' },
   Top10: { icon: '🔟', accent: '#EF8A9C' },
   ManyQuestionsGame: { icon: '❓', accent: '#C2E76E' },
-  IchHabNochNie: { icon: '🚫', accent: '#EF8A9C' },
+  IchHabNochNie: { icon: '🙅', accent: '#EF8A9C' },
   WerWuerde: { icon: '👉', accent: '#A5B4FF' },
-  '6by6': { icon: '🧩', accent: '#FFCF70' },
+  '6by6': { icon: '🎯', accent: '#FFCF70' },
   Activity: { icon: '🎭', accent: '#FF9F7A' },
-  Getraenkezaehler: { icon: '🍺', accent: '#E5C185' },
-  HorseRace: { icon: '🏇', accent: '#88D4A3' },
-  Kopfpoker: { icon: '🃏', accent: '#CFA1E6' },
+  Getraenkezaehler: { icon: '🥤', accent: '#E5C185' },
+  HorseRace: { icon: '🐎', accent: '#88D4A3' },
+  Kopfpoker: { icon: '🧠', accent: '#CFA1E6' },
   PartyBoardGame: { icon: '⭐', accent: '#FFD166' },
   'Geheime Mission': { icon: '🕵️', accent: '#7AC1B2' },
 };
 
-const DEFAULT_CARD_STYLE = { icon: '🎮', accent: '#E5C185' };
+const DEFAULT_CARD_STYLE = { icon: 'ðŸŽ®', accent: '#E5C185' };
 
 const TitleNoWordBreak = ({ text, style }) => {
   const words = String(text || '').split(' ');
@@ -108,7 +108,7 @@ function MainMenu({ navigation }) {
     let columns = 1;
     if (windowWidth >= 1200) columns = 4;
     else if (windowWidth >= 900) columns = 3;
-    else if (windowWidth >= 360) columns = 2;
+    else if (windowWidth >= 360) columns = 2; // revert: phones use 2 columns
 
     const gap = columns > 1 ? 12 : 0;
     let cardWidth =
@@ -320,40 +320,47 @@ function MainMenu({ navigation }) {
         return;
       }
       if (routeName === 'AddPlayer') {
+        // Picolo: Spieler hinzufügen + Slider auf Vorschaltseite (AddPlayer)
         navigation.navigate('AddPlayer', { nextGame: 'PicoloGame', showScales: true });
-      } else {
-        navigation.navigate(routeName);
+        return;
       }
+      // Für Kartenspiele: Vorschaltseite mit nur Slidern
+      if (['ManyQuestionsGame', 'WhoWouldLikelyGame', 'NeverHaveIEverGame', 'SpinTheBottle'].includes(routeName)) {
+        navigation.navigate('PreGameSettings', { nextGame: routeName });
+        return;
+      }
+      navigation.navigate(routeName);
     },
     [navigation],
   );
 
   const renderGameCard = (game) => {
-    const accentColor = game.accent || DEFAULT_CARD_STYLE.accent;
-    const cardContainerStyles = [styles.gameCard, cardDynamicStyle, styles.gameCardCompact];
-    const cardTopRowStyles = [styles.cardTopRow, styles.cardTopRowCompact];
-    const cardIconWrapperStyles = [styles.cardIconWrapper, styles.cardIconWrapperCompact, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}88` }];
-    return (
-      <View key={game.key} style={cardContainerStyles}>
-        <TouchableOpacity style={cardTopRowStyles} onPress={() => toggleExpand(game.key)} activeOpacity={0.9}>
-          <View style={cardIconWrapperStyles}>
-            <Text style={styles.cardIcon}>{game.icon}</Text>
+  const accentColor = game.accent || DEFAULT_CARD_STYLE.accent;
+  const cardContainerStyles = [styles.gameCard, cardDynamicStyle, styles.gameCardCompact];
+  const cardTopRowStyles = [styles.cardTopRow, styles.cardTopRowCompact];
+  const cardIconWrapperStyles = [styles.cardIconWrapper, styles.cardIconWrapperCompact, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}88` }];
+  const dimStyle = game.isComingSoon ? styles.gameCardDim : null;
+  return (
+    <View key={game.key} style={[...cardContainerStyles, dimStyle]}>
+      <TouchableOpacity style={cardTopRowStyles} onPress={() => toggleExpand(game.key)} activeOpacity={0.9}>
+        <View style={cardIconWrapperStyles}>
+          <Text style={styles.cardIcon}>{game.icon}</Text>
+        </View>
+        <View style={styles.cardHeaderContent}>
+          <View style={styles.cardTitleRow}>
+            <TitleNoWordBreak text={game.title} style={styles.gameTitleFull} />
+            {game.isNew ? (
+              <View style={[styles.newBadge, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}80` }]}>
+                <Text style={[styles.cardBadgeText, { color: accentColor }]}>{newBadgeLabel}</Text>
+              </View>
+            ) : null}
           </View>
-          <View style={styles.cardHeaderContent}>
-            <View style={styles.cardTitleRow}>
-              <TitleNoWordBreak text={game.title} style={styles.gameTitleFull} />
-              {game.isNew ? (
-                <View style={[styles.newBadge, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}80` }]}>
-                  <Text style={[styles.cardBadgeText, { color: accentColor }]}>{newBadgeLabel}</Text>
-                </View>
-              ) : null}
-            </View>
-          </View>
-          <Text style={[styles.chevron]}>›</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+        </View>
+        <Text style={[styles.chevron]}>›</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
   const headerTitle = language === 'de' ? 'Spielauswahl' : 'Game Lineup';
   const headerSubtitle = language === 'de' ? 'Tippe auf eine Karte für Details.' : 'Tap a card to see details.';
@@ -421,7 +428,7 @@ function MainMenu({ navigation }) {
               </View>
               <View style={styles.cardHeaderContent}>
                 <View style={styles.cardTitleRow}>
-                  <TitleNoWordBreak text={expandedGame.title} style={styles.gameTitleFull} />
+                  <TitleNoWordBreak text={expandedGame.title} style={[styles.gameTitleFull, styles.expandedTitle]} />
                   {expandedGame.isNew ? (
                     <View style={[styles.newBadge, { backgroundColor: `${expandedGame.accent}26`, borderColor: `${expandedGame.accent}80` }]}>
                       <Text style={[styles.cardBadgeText, { color: expandedGame.accent }]}>{newBadgeLabel}</Text>
@@ -567,7 +574,7 @@ const styles = StyleSheet.create({
   },
 
   gameMeta: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginBottom: 4, fontFamily: 'Quicksand_300Light' },
-  gameDescription: { color: 'rgba(255,255,255,0.92)', lineHeight: 15, fontSize: 11, fontFamily: 'Quicksand_300Light', marginTop: 6 },
+  gameDescription: { color: 'rgba(255,255,255,0.95)', lineHeight: 20, fontSize: 14, fontFamily: 'Quicksand_300Light', marginTop: 10 },
 
   rateCta: {
     alignSelf: 'center',
@@ -590,13 +597,13 @@ const styles = StyleSheet.create({
   },
   rateCtaStar: { color: '#E5C185', fontSize: 14, marginTop: -1 },
   rateCtaLabel: { color: 'rgba(255,255,255,0.95)', fontSize: 13.5, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
-  star: { color: '#FFD166', fontSize: 12 },
-  starDim: { color: 'rgba(255,255,255,0.35)', fontSize: 12 },
-  ratingText: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginLeft: 6, fontFamily: 'Quicksand_300Light' },
+  star: { color: '#FFD166', fontSize: 14 },
+  starDim: { color: 'rgba(255,255,255,0.35)', fontSize: 14 },
+  ratingText: { color: 'rgba(255,255,255,0.75)', fontSize: 12, marginLeft: 6, fontFamily: 'Quicksand_300Light' },
 
   paramStarsContainer: { marginTop: 6, gap: 4 },
   paramRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  paramLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 11, fontFamily: 'Quicksand_300Light' },
+  paramLabel: { color: 'rgba(255,255,255,0.85)', fontSize: 13, fontFamily: 'Quicksand_300Bold' },
   paramStars: { flexDirection: 'row', alignItems: 'center', gap: 2 },
 
   cardFooterRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, gap: 6, alignSelf: 'stretch' },
@@ -608,20 +615,29 @@ const styles = StyleSheet.create({
   startChipLabelDisabled: { color: 'rgba(255,255,255,0.55)' },
 
   expandedOverlay: { ...StyleSheet.absoluteFillObject, zIndex: 999, justifyContent: 'center', alignItems: 'center' },
-  expandedBackdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.4)' },
+  expandedBackdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.6)' },
   expandedCard: {
-    position: 'absolute',
-    maxWidth: 420,
-    width: '88%',
-    borderRadius: 16,
-    borderWidth: 1,
-    padding: 14,
+    width: '90%',
+    maxWidth: 520,
+    borderRadius: 18,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
     backgroundColor: CARD_BG,
-    shadowOpacity: 0.35,
-    shadowRadius: 12,
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 14,
     shadowOffset: { width: 0, height: 8 },
-    elevation: 8,
+    elevation: 10,
   },
+  expandedTitle: { fontSize: 20, lineHeight: 24, fontFamily: 'Quicksand_700Bold' },
+    gameCardDim: { opacity: 0.55 },
 });
 
 export default MainMenu;
+
+
+
+
+
+

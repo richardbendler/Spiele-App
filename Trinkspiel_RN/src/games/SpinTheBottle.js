@@ -26,7 +26,7 @@ const SpinTheBottle = ({ route }) => {
   const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
   const [outcome, setOutcome] = useState({ type: 'initial' });
 
-  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled, theOneSettings } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t } = useTranslation();
   const copy = useMemo(() => {
@@ -115,8 +115,13 @@ const SpinTheBottle = ({ route }) => {
           rotationValue.setOffset(lastRotation.current);
           rotationValue.setValue(0);
 
-          // Zufaellige Auswahl zwischen den drei Optionen treffen
-          const randomSelection = Math.floor(Math.random() * 3);
+          // Auswahl zwischen Schlucke (0), Wahrheit (1), Pflicht (2) basierend auf "Touchy"-Level (re-uses familiarity)
+          const touchy = Math.max(0, Math.min(9, Number(theOneSettings?.familiarity ?? 5)));
+          const pDare = 0.2 + 0.06 * touchy; // 0.2 .. 0.74
+          const pTruth = 0.5 - 0.03 * touchy; // 0.5 .. 0.23
+          const pSips = Math.max(0.06, 1 - pDare - pTruth); // remainder, keep >= 0.06
+          const r = Math.random();
+          const randomSelection = r < pSips ? 0 : r < pSips + pTruth ? 1 : 2;
           setRandomSelection(randomSelection);
 
           switch (randomSelection) {
