@@ -67,7 +67,7 @@ const translations = {
       infoTitle: 'The One!',
       info:
         'Bestimmt eine Moderatorin oder einen Moderator. Diese Person behält das Handy, liest jede Aufgabe vor und tippt auf Weiter. Die Karten passen sich wie gewohnt eurem Pegel, Ziel und Vibe an.',
-      nöligiblePrompt:
+      noEligiblePrompt:
         'Es gibt aktüll keine Aufgaben, die zu euren Einstellungen passen. Passt die Filter an oder fügt neü Aufgaben hinzu.',
       revealHint: 'Tippe, um die Karte aufzudecken.',
     },
@@ -190,7 +190,7 @@ const translations = {
         'Eine Person startet und liest die Frage leise für sich. Danach gibt sie das Handy verdeckt an die Person weiter, auf die die Aussage am ehesten zutrifft. Die gewählte Person kann überlegen, ob die Aussage auf eine andere Person besser passt. Sobald eine Person akzeptiert oder zum zweiten Mal das Handy hat, muss sie vorlesen und trinken. Danach macht diese Person mit der nächsten Aussage weiter.',
     },
     picoloGame: {
-      nextButton: 'Moderator: Nächste Karte',
+      nextButton: 'Am Rad drehen',
       infoTitle: 'The One!',
       revealHint: 'Tippe auf die Karte, um sie aufzudecken.',
     },
@@ -283,7 +283,7 @@ const translations = {
       infoTitle: 'The One!',
       info:
         'Choose one moderator who keeps the phone, reads each prompt aloud, and taps Next. The prompts still adapt to how tipsy you are, your target level, and how well you all know each other.',
-      nöligiblePrompt:
+      noEligiblePrompt:
         'No prompts match your current settings. Adjust the sliders or add more prompts.',
       revealHint: 'Tap to flip the next card.',
     },
@@ -401,7 +401,7 @@ const translations = {
         'One person starts and reads the statement silently. Pass the phone face down to whöver it fits best. That person can redirect it if it fits someone else better. Once someone accepts or the phone returns to them, they read it aloud, drink, and draw the next statement.',
     },
     picoloGame: {
-      nextButton: 'Moderator: Next card',
+      nextButton: 'Spin the wheel',
       infoTitle: 'The One!',
       revealHint: 'Tap to reveal the card.',
     },
@@ -466,6 +466,7 @@ export const useTranslation = () => {
 };
 
 export default translations;
+
 
 
 

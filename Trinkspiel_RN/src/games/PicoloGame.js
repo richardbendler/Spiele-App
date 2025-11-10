@@ -1,5 +1,14 @@
-import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
+import React, { useState, useContext, useMemo, useEffect, useRef, useCallback } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  Animated,
+  Easing,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
@@ -10,6 +19,75 @@ import { useTranslation } from '../i18n';
 import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
 import PromptRenderer from './sublements/PromptRenderer';
+import {
+  CATEGORY_COLOR_PALETTE,
+  CATEGORY_COLOR_DEFS,
+  CATEGORY_KEY_SEQUENCE,
+  pickPaletteColor,
+  getCategoryColor,
+  getCategoryColorEntries,
+} from '../utils/categoryColors';
+
+const buildWheelPools = (rawPrompts = []) => {
+  const map = new Map();
+  rawPrompts.forEach((entry) => {
+    const pool = entry?.pool;
+    const key = pool?.key;
+    if (key && !map.has(key)) {
+      map.set(key, pool);
+    }
+  });
+  const poolColorMap = {};
+  const wheelPools = [];
+
+  CATEGORY_COLOR_DEFS.forEach((def) => {
+    const pool = map.get(def.key);
+    if (!pool) {
+      return;
+    }
+    const color = def.color;
+    const enrichedPool = { ...pool, color };
+    poolColorMap[def.key] = color;
+    wheelPools.push(enrichedPool);
+    map.set(def.key, enrichedPool);
+  });
+
+  const extraKeys = Array.from(map.keys()).filter(
+    (key) => !CATEGORY_KEY_SEQUENCE.includes(key)
+  );
+  extraKeys.forEach((key, index) => {
+    const pool = map.get(key);
+    if (!pool) {
+      return;
+    }
+    const color = getCategoryColor(key, index);
+    const enrichedPool = { ...pool, color };
+    poolColorMap[key] = color;
+    wheelPools.push(enrichedPool);
+    map.set(key, enrichedPool);
+  });
+
+  rawPrompts.forEach((entry) => {
+    const key = entry?.pool?.key;
+    if (key && poolColorMap[key] && entry?.pool) {
+      entry.pool = {
+        ...entry.pool,
+        color: poolColorMap[key],
+      };
+    }
+  });
+
+  return { wheelPools, poolColorMap };
+};
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const WHEEL_MIN_SIZE = 280;
+const WHEEL_MAX_SIZE = 380;
+const WHEEL_HORIZONTAL_MARGIN = 48;
+const WHEEL_SIZE = Math.max(
+  WHEEL_MIN_SIZE,
+  Math.min(WHEEL_MAX_SIZE, SCREEN_WIDTH - WHEEL_HORIZONTAL_MARGIN)
+);
 
 const buildDisplayText = (entry, language, startingPlayer) => {
   if (!entry) {
@@ -57,16 +135,7 @@ const PicoloGame = ({ route }) => {
     }
     return Array.isArray(theOnePrompts) ? [...theOnePrompts] : [];
   }, [route.params?.theOneData, theOnePrompts]);
-  const wheelPools = useMemo(() => {
-    const map = new Map();
-    rawPrompts.forEach((entry) => {
-      const poolKey = entry?.pool?.key;
-      if (poolKey && !map.has(poolKey) && entry?.pool) {
-        map.set(poolKey, entry.pool);
-      }
-    });
-    return Array.from(map.values());
-  }, [rawPrompts]);
+  const { wheelPools, poolColorMap } = useMemo(() => buildWheelPools(rawPrompts), [rawPrompts]);
   const questions = useMemo(
     () => buildTheOneDeck(rawPrompts, theOneSettings, { players }),
     [rawPrompts, theOneSettings, players]
@@ -74,6 +143,8 @@ const PicoloGame = ({ route }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const revealAnim = useRef(new Animated.Value(0)).current;
   const [contentVisible, setContentVisible] = useState(false);
+  const [wheelSpinning, setWheelSpinning] = useState(true);
+  const handleSpinComplete = useCallback(() => setWheelSpinning(false), []);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -81,24 +152,38 @@ const PicoloGame = ({ route }) => {
 
   const hasQuestions = questions.length > 0;
   const currentQuestion = hasQuestions ? questions[currentIndex] : null;
-  useEffect(() => {
-    if (!hasQuestions) {
+    useEffect(() => {
+      if (!hasQuestions || !currentPoolKey) {
+        setWheelSpinning(false);
+        return;
+      }
+      setWheelSpinning(true);
+    }, [hasQuestions, currentPoolKey]);
+
+    useEffect(() => {
+      if (!hasQuestions || wheelSpinning) {
+        setContentVisible(false);
+        return;
+      }
       setContentVisible(false);
-      return;
-    }
-    setContentVisible(false);
-    revealAnim.setValue(0);
-    Animated.timing(revealAnim, {
-      toValue: 1,
-      duration: 600,
-      easing: Easing.out(Easing.ease),
-      useNativeDriver: true,
-    }).start(() => setContentVisible(true));
-  }, [hasQuestions, currentIndex, revealAnim]);
+      revealAnim.setValue(0);
+      Animated.timing(revealAnim, {
+        toValue: 1,
+        duration: 600,
+        easing: Easing.out(Easing.ease),
+        useNativeDriver: true,
+      }).start(() => setContentVisible(true));
+    }, [hasQuestions, currentIndex, revealAnim, wheelSpinning]);
 
 
   const categoryLabel =
     currentQuestion?.pool?.label?.[language] ?? currentQuestion?.pool?.label?.de ?? '';
+  const displayCategoryLabel =
+    typeof categoryLabel === 'string' && categoryLabel.trim().length > 0
+      ? categoryLabel
+      : language === 'de'
+        ? 'Kategorie'
+        : 'Category';
   // Determine a random starting player for round-robin style prompts (Category/Rhyme)
   const startingPlayerName = useMemo(() => {
     if (!currentQuestion || !Array.isArray(players) || players.length === 0) return null;
@@ -112,7 +197,31 @@ const PicoloGame = ({ route }) => {
   }, [currentIndex, players, currentQuestion?.pool?.id]);
 
   const cardText = currentQuestion ? buildDisplayText(currentQuestion, language, startingPlayerName) : '';
-  const backgroundColor = currentQuestion?.pool?.color ?? '#2F4F4F';
+  const currentPoolKey = currentQuestion?.pool?.key;
+  const resolveBackgroundColor = () => {
+    if (!currentPoolKey) {
+      return (
+        currentQuestion?.pool?.color ||
+        (wheelPools.length > 0 ? wheelPools[0]?.color : null) ||
+        '#2F4F4F'
+      );
+    }
+    if (currentPoolKey && poolColorMap[currentPoolKey]) {
+      return poolColorMap[currentPoolKey];
+    }
+    if (currentQuestion?.pool?.color) {
+      return currentQuestion.pool.color;
+    }
+    const fallbackIndex = wheelPools.findIndex((entry) => entry?.key === currentPoolKey);
+    if (fallbackIndex >= 0) {
+      return wheelPools[fallbackIndex]?.color || pickPaletteColor(fallbackIndex);
+    }
+    if (wheelPools.length > 0) {
+      return wheelPools[0]?.color || pickPaletteColor(0);
+    }
+    return '#2F4F4F';
+  };
+  const backgroundColor = resolveBackgroundColor();
 
   const showNextQuestion = () => {
     if (!hasQuestions) {
@@ -126,11 +235,14 @@ const PicoloGame = ({ route }) => {
 
   const requireDrinkingPlayers = Boolean(currentQuestion?.metadata?.drinkInvolved);
 
-  const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton : copy.nextButton) : (language==='de' ? 'Nächste Karte' : 'Next card'));
+  const nextButtonLabel =
+    typeof copy?.nextButton === 'string'
+      ? copy.nextButton
+      : language === 'de'
+        ? 'Am Rad drehen'
+        : 'Spin the wheel';
   const infoText = copy?.rules ?? t('theOne.info');
   const noPromptMessage = t('theOne.noEligiblePrompt');
-  const revealHint = copy?.revealHint ?? t('theOne.revealHint');
-
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={[appStyles.completeScreenGameContainer, { backgroundColor }]}>
@@ -140,26 +252,32 @@ const PicoloGame = ({ route }) => {
               <View style={styles.wheelArea}>
                 <CategoryWheel
                   pools={wheelPools}
-                  currentPoolKey={currentQuestion?.pool?.key}
+                  poolColorMap={poolColorMap}
+                  currentPoolKey={currentPoolKey}
                   language={language}
+                  onSpinComplete={handleSpinComplete}
                 />
               </View>
-              <Text style={styles.categoryLabel}>{categoryLabel}</Text>
             </View>
             <View style={styles.cardSection}>
               {hasQuestions ? (
-                contentVisible ? (
-                  <PromptRenderer
-                    prompt={currentQuestion}
-                    language={language}
-                    players={players}
-                    settings={theOneSettings}
-                    defaultText={cardText}
-                    requireDrinkingPlayers={requireDrinkingPlayers}
-                  />
-                ) : (
-                  <Text style={styles.revealHint}>{revealHint}</Text>
-                )
+                <View style={styles.cardContent}>
+                  {!wheelSpinning && contentVisible ? (
+                    <Text style={styles.categoryHeading} numberOfLines={2} adjustsFontSizeToFit>
+                      {displayCategoryLabel}
+                    </Text>
+                  ) : null}
+                    {wheelSpinning ? null : contentVisible ? (
+                      <PromptRenderer
+                        prompt={currentQuestion}
+                        language={language}
+                        players={players}
+                        settings={theOneSettings}
+                        defaultText={cardText}
+                        requireDrinkingPlayers={requireDrinkingPlayers}
+                      />
+                    ) : null}
+                </View>
               ) : (
                 <Text style={styles.revealHint}>{noPromptMessage}</Text>
               )}
@@ -211,15 +329,17 @@ const PicoloGame = ({ route }) => {
 };
 
 
-const WHEEL_SIZE = 320;
-
-const CategoryWheel = ({ pools, currentPoolKey, language }) => {
+const CategoryWheel = ({ pools, poolColorMap, currentPoolKey, language, onSpinComplete }) => {
   const rotation = useRef(new Animated.Value(0)).current;
   const poolList = Array.isArray(pools) && pools.length > 0 ? pools : [];
   const segmentAngle = poolList.length > 0 ? 360 / poolList.length : 360;
+  const effectiveColorMap = poolColorMap || {};
 
   useEffect(() => {
     if (!poolList.length) {
+      if (typeof onSpinComplete === 'function') {
+        onSpinComplete();
+      }
       return;
     }
     const rawIndex = poolList.findIndex((entry) => entry?.key === currentPoolKey);
@@ -232,13 +352,17 @@ const CategoryWheel = ({ pools, currentPoolKey, language }) => {
       duration: 900 + extraSpins * 200,
       easing: Easing.out(Easing.cubic),
       useNativeDriver: true,
-    }).start();
-  }, [poolList, currentPoolKey, rotation, segmentAngle]);
+    }).start(() => {
+      if (typeof onSpinComplete === 'function') {
+        onSpinComplete();
+      }
+    });
+  }, [poolList, currentPoolKey, rotation, segmentAngle, onSpinComplete]);
 
   if (poolList.length === 0) {
     return (
       <View style={styles.wheelFallback}>
-        <Text style={styles.categoryLabel}>{language === 'de' ? 'Wird geladen...' : 'Loading...'}</Text>
+        <Text style={styles.wheelFallbackLabel}>{language === 'de' ? 'Wird geladen...' : 'Loading...'}</Text>
       </View>
     );
   }
@@ -248,8 +372,9 @@ const CategoryWheel = ({ pools, currentPoolKey, language }) => {
     outputRange: ['-7200deg', '7200deg'],
   });
 
-  const segmentNodes = poolList.map((pool, index) => {
-    const color = pool?.color || `hsla(${(index / poolList.length) * 360},65%,45%,0.85)`;
+    const segmentNodes = poolList.map((pool, index) => {
+      const color =
+        (pool?.key && effectiveColorMap[pool.key]) || pickPaletteColor(index);
     const rotationDeg = index * segmentAngle;
     return (
       <View
@@ -261,7 +386,7 @@ const CategoryWheel = ({ pools, currentPoolKey, language }) => {
     );
   });
 
-  const labelNodes = poolList.map((pool, index) => {
+    const labelNodes = poolList.map((pool, index) => {
     const label =
       pool?.label?.[language] || pool?.label?.de || pool?.label?.en || pool?.name || pool?.key || 'Pool';
     const midAngleDeg = index * segmentAngle + segmentAngle / 2;
@@ -296,7 +421,7 @@ const CategoryWheel = ({ pools, currentPoolKey, language }) => {
 
   return (
     <View style={styles.wheelWrapper}>
-      <Animated.View style={[styles.wheel, { transform: [{ rotate: animatedRotation }] }]}>
+        <Animated.View style={[styles.wheel, { transform: [{ rotate: animatedRotation }] }]}>
         {segmentNodes}
         <View style={styles.wheelCenter} />
       </Animated.View>
@@ -325,13 +450,27 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    minHeight: WHEEL_SIZE + 80,
+    minHeight: WHEEL_SIZE + 48,
   },
   cardSection: {
     flex: 1,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 8,
+  },
+  cardContent: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  categoryHeading: {
+    fontSize: 28,
+    color: '#FFFFFF',
+    fontFamily: 'Quicksand_300Bold',
+    textAlign: 'center',
+    marginBottom: 12,
+    letterSpacing: 0.5,
   },
   wheelArea: {
     width: '100%',
@@ -447,21 +586,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  revealHint: {
-    marginTop: 16,
-    color: 'rgba(255,255,255,0.7)',
-    fontSize: 14,
-    fontFamily: 'Quicksand_300Light',
-    textAlign: 'center',
-    lineHeight: 20,
-  },
-  categoryLabel: {
-    color: 'white',
+  wheelFallbackLabel: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 16,
     fontFamily: 'Quicksand_300Bold',
-    fontSize: 18,
     textAlign: 'center',
-    paddingHorizontal: 12,
-    marginBottom: 12,
   },
   revealHint: {
     marginTop: 16,
@@ -474,6 +603,7 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
 
 
 

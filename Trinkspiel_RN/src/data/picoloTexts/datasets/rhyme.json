@@ -1,404 +1,404 @@
 {
   "_meta": {
-    "description": "Reimen: Schlagfertige Wortketten für schnelle Zungen."
+    "description": "Reimen: Schlagfertige Wortketten fÃ¼r schnelle Zungen."
   },
   "poolKey": "rhyme",
   "items": [
     {
-      "de": "Reimrunde: Findet Reime auf �Haus� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Haus� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Hausï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"house\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Licht� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Licht� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Lichtï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"light\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Hand� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Hand� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Handï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"hand\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Zeit� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Zeit� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Zeitï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"time\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Meer� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Meer� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Meerï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"sea\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Tag� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Tag� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Tagï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"day\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Nacht� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Nacht� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Nachtï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"night\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Ball� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Ball� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Ballï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"ball\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Herz� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Herz� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Herzï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"heart\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Mond� � wer h�ngt, nippt einen Schluck.",
-      "en": "Reimrunde: Findet Reime auf �Mond� � wer h�ngt, nippt einen Schluck.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Mondï¿½ ï¿½ wer hï¿½ngt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"moon\" — whoever stalls takes a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Chaos� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Chaos� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Chaosï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"chaos\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Farbe� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Farbe� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Farbeï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"color\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Sommer� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Sommer� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Sommerï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"summer\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Feder� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Feder� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Federï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"feather\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Reise� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Reise� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Reiseï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"journey\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Regen� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Regen� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Regenï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"rain\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Feuer� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Feuer� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Feuerï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"fire\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Winter� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Winter� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Winterï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"winter\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Tempo� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Tempo� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Tempoï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"tempo\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Stra�e� � wer h�ngt, nimmt zwei Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Stra�e� � wer h�ngt, nimmt zwei Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Straï¿½eï¿½ ï¿½ wer hï¿½ngt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \"street\" — whoever stalls takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Turbine� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Turbine� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Turbineï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"turbine\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Rakete� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Rakete� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Raketeï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"rocket\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Leuchte� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Leuchte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Leuchteï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"lantern\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Szene� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Szene� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Szeneï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"scene\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Legende� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Legende� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Legendeï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"legend\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Kante� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Kante� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Kanteï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"edge\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Tinte� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Tinte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Tinteï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"ink\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Beute� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Beute� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Beuteï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"loot\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Flamme� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Flamme� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Flammeï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"flame\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Koffer� � wer h�ngt, muss drei Schlucke nehmen.",
-      "en": "Reimrunde: Findet Reime auf �Koffer� � wer h�ngt, muss drei Schlucke nehmen.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Kofferï¿½ ï¿½ wer hï¿½ngt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \"suitcase\" — whoever stalls has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Paradoxon� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Paradoxon� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Paradoxonï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"paradox\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Galaxie� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Galaxie� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Galaxieï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"galaxy\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Serotonin� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Serotonin� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Serotoninï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"serotonin\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Katapult� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Katapult� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Katapultï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"catapult\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Hybris� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Hybris� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Hybrisï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"hubris\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Kontinent� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Kontinent� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Kontinentï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"continent\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Satellit� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Satellit� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Satellitï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"satellite\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Karussell� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Karussell� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Karussellï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"carousel\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Horizont� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Horizont� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Horizontï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"horizon\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Mythos� � wer h�ngt, verteilt vier Schlucke.",
-      "en": "Reimrunde: Findet Reime auf �Mythos� � wer h�ngt, verteilt vier Schlucke.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Mythosï¿½ ï¿½ wer hï¿½ngt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \"myth\" — whoever stalls hands out four sips.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Melatonin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Melatonin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Melatoninï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"melatonin\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Revolution� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Revolution� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Revolutionï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"revolution\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Illusion� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Illusion� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Illusionï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"illusion\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Katastrophe� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Katastrophe� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Katastropheï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"catastrophe\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Dimension� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Dimension� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Dimensionï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"dimension\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Metronom� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Metronom� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Metronomï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"metronome\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Adrenalin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Adrenalin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Adrenalinï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"adrenaline\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Residuum� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Residuum� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Residuumï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"residue\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Polaroid� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Polaroid� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Polaroidï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"Polaroid\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Reimrunde: Findet Reime auf �Labyrinth� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
-      "en": "Reimrunde: Findet Reime auf �Labyrinth� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "de": "Reimrunde: Findet Reime auf ï¿½Labyrinthï¿½ ï¿½ wer hï¿½ngt, bestimmt, wer fï¿½nf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \"labyrinth\" — whoever stalls decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,

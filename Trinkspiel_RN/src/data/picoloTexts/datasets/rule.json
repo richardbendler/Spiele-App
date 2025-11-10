@@ -1,60 +1,60 @@
 {
   "_meta": {
-    "description": "Regel: Hausregeln und neue Mechaniken für die Runde."
+    "description": "Regel: Hausregeln und neue Mechaniken fÃ¼r die Runde."
   },
   "poolKey": "rule",
   "items": [
     {
-      "de": "Regel: Wer seinen Drink abstellt, muss �Cheers� sagen � sonst trinken.",
-      "en": "Regel: Wer seinen Drink abstellt, muss �Cheers� sagen � sonst trinken.",
+      "de": "Regel: Wer seinen Drink abstellt, muss ï¿½Cheersï¿½ sagen ï¿½ sonst trinken.",
+      "en": "Rule: If you put your drink down you have to say 'cheers' or you drink.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Bis auf Weiteres darf niemand das Wort �Prost� sagen. Wer es tut, trinkt.",
-      "en": "Regel: Bis auf Weiteres darf niemand das Wort �Prost� sagen. Wer es tut, trinkt.",
+      "de": "Regel: Bis auf Weiteres darf niemand das Wort ï¿½Prostï¿½ sagen. Wer es tut, trinkt.",
+      "en": "Rule: From now on nobody may say the word 'Prost'. Whoever does drinks.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Vor jedem neuen Prompt m�ssen alle einmal schnipsen. Wer es vergisst, nippt.",
-      "en": "Regel: Vor jedem neuen Prompt m�ssen alle einmal schnipsen. Wer es vergisst, nippt.",
+      "de": "Regel: Vor jedem neuen Prompt mï¿½ssen alle einmal schnipsen. Wer es vergisst, nippt.",
+      "en": "Rule: Before every new prompt everyone snaps once. Forget it and you sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Die Person links vom Host ist ab jetzt Echo und wiederholt jeden ersten Satzteil � vergisst sie es, trinkt sie.",
-      "en": "Regel: Die Person links vom Host ist ab jetzt Echo und wiederholt jeden ersten Satzteil � vergisst sie es, trinkt sie.",
+      "de": "Regel: Die Person links vom Host ist ab jetzt Echo und wiederholt jeden ersten Satzteil ï¿½ vergisst sie es, trinkt sie.",
+      "en": "Rule: The player to the host's left is now the echo and repeats every opening phrase — forget it and you drink.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Alle sprechen bis zur n�chsten Karte im Moderatorenton. Wer rausf�llt, trinkt.",
-      "en": "Regel: Alle sprechen bis zur n�chsten Karte im Moderatorenton. Wer rausf�llt, trinkt.",
+      "de": "Regel: Alle sprechen bis zur nï¿½chsten Karte im Moderatorenton. Wer rausfï¿½llt, trinkt.",
+      "en": "Rule: Speak in announcer voice until the next card. Drop out and you drink.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Wer �ich� sagt, trinkt zwei Schlucke.",
-      "en": "Regel: Wer �ich� sagt, trinkt zwei Schlucke.",
+      "de": "Regel: Wer ï¿½ichï¿½ sagt, trinkt zwei Schlucke.",
+      "en": "Rule: Anyone who says 'I' drinks two sips.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Ber�hrt jemand seine Haare, muss er oder sie trinken.",
-      "en": "Regel: Ber�hrt jemand seine Haare, muss er oder sie trinken.",
+      "de": "Regel: Berï¿½hrt jemand seine Haare, muss er oder sie trinken.",
+      "en": "Rule: If you touch your hair you drink.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
@@ -62,7 +62,7 @@
     },
     {
       "de": "Regel: Vor dem Trinken muss ein neuer Toast erfunden werden.",
-      "en": "Regel: Vor dem Trinken muss ein neuer Toast erfunden werden.",
+      "en": "Rule: Invent a new toast before every drink.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
@@ -70,23 +70,23 @@
     },
     {
       "de": "Regel: Die Sitzenbleiber*innen trinken jedes Mal, wenn jemand aufsteht.",
-      "en": "Regel: Die Sitzenbleiber*innen trinken jedes Mal, wenn jemand aufsteht.",
+      "en": "Rule: Anyone who stays seated drinks whenever someone stands up.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Wer lacht, zeigt auf jemanden � beide trinken.",
-      "en": "Regel: Wer lacht, zeigt auf jemanden � beide trinken.",
+      "de": "Regel: Wer lacht, zeigt auf jemanden ï¿½ beide trinken.",
+      "en": "Rule: If you laugh, point at someone — both drink.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: W�hle ein Tabuwort f�r Namen. Wer es benutzt, trinkt.",
-      "en": "Regel: W�hle ein Tabuwort f�r Namen. Wer es benutzt, trinkt.",
+      "de": "Regel: Wï¿½hle ein Tabuwort fï¿½r Namen. Wer es benutzt, trinkt.",
+      "en": "Rule: Pick a taboo word for names. Use it and you drink.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
@@ -94,7 +94,7 @@
     },
     {
       "de": "Regel: Jede*r bekommt einen neuen Namen. Alte Namen kosten drei Schlucke.",
-      "en": "Regel: Jede*r bekommt einen neuen Namen. Alte Namen kosten drei Schlucke.",
+      "en": "Rule: Everyone gets a new name. Using the old one costs three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
@@ -102,23 +102,23 @@
     },
     {
       "de": "Regel: Vor jedem Schluck musst du jemandem ein Kompliment machen.",
-      "en": "Regel: Vor jedem Schluck musst du jemandem ein Kompliment machen.",
+      "en": "Rule: Before every sip you must compliment someone.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Wer Fragen beantwortet, darf nur singen oder tanzen � sonst trinken.",
-      "en": "Regel: Wer Fragen beantwortet, darf nur singen oder tanzen � sonst trinken.",
+      "de": "Regel: Wer Fragen beantwortet, darf nur singen oder tanzen ï¿½ sonst trinken.",
+      "en": "Rule: When you answer questions you may only sing or dance — otherwise you drink.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Setzt einen imagin�ren Hut auf. Wer ihn fallen l�sst (aka vergisst), trinkt.",
-      "en": "Regel: Setzt einen imagin�ren Hut auf. Wer ihn fallen l�sst (aka vergisst), trinkt.",
+      "de": "Regel: Setzt einen imaginï¿½ren Hut auf. Wer ihn fallen lï¿½sst (aka vergisst), trinkt.",
+      "en": "Rule: Wear an imaginary hat. Drop it (aka forget) and you drink.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
@@ -126,79 +126,79 @@
     },
     {
       "de": "Regel: Jede*r muss jemanden mit einem neuen Kosenamen ansprechen.",
-      "en": "Regel: Jede*r muss jemanden mit einem neuen Kosenamen ansprechen.",
+      "en": "Rule: Address someone with a brand-new pet name.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Vor jedem Drink fl�stert ihr jemandem etwas Nettes ins Ohr.",
-      "en": "Regel: Vor jedem Drink fl�stert ihr jemandem etwas Nettes ins Ohr.",
+      "de": "Regel: Vor jedem Drink flï¿½stert ihr jemandem etwas Nettes ins Ohr.",
+      "en": "Rule: Before each drink whisper something nice into someone's ear.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Niemand darf �nein� sagen. Passiert es doch, trinkt die Person doppelt.",
-      "en": "Regel: Niemand darf �nein� sagen. Passiert es doch, trinkt die Person doppelt.",
+      "de": "Regel: Niemand darf ï¿½neinï¿½ sagen. Passiert es doch, trinkt die Person doppelt.",
+      "en": "Rule: Nobody may say 'no'. If it happens, they drink twice.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Jede Aussage muss mit �ehrlich gesagt� starten.",
-      "en": "Regel: Jede Aussage muss mit �ehrlich gesagt� starten.",
+      "de": "Regel: Jede Aussage muss mit ï¿½ehrlich gesagtï¿½ starten.",
+      "en": "Rule: Every sentence has to start with 'honestly'.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Wer sich selbst ber�hrt, w�hrend er oder sie lacht, trinkt.",
-      "en": "Regel: Wer sich selbst ber�hrt, w�hrend er oder sie lacht, trinkt.",
+      "de": "Regel: Wer sich selbst berï¿½hrt, wï¿½hrend er oder sie lacht, trinkt.",
+      "en": "Rule: Touching yourself while laughing makes you drink.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Vor jedem Drink musst du jemanden anstarren und �Dein Move� sagen.",
-      "en": "Regel: Vor jedem Drink musst du jemanden anstarren und �Dein Move� sagen.",
+      "de": "Regel: Vor jedem Drink musst du jemanden anstarren und ï¿½Dein Moveï¿½ sagen.",
+      "en": "Rule: Before every drink stare someone down and say 'your move'.",
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Niemand darf seine Beine schlie�en. Wer es doch tut, trinkt.",
-      "en": "Regel: Niemand darf seine Beine schlie�en. Wer es doch tut, trinkt.",
+      "de": "Regel: Niemand darf seine Beine schlieï¿½en. Wer es doch tut, trinkt.",
+      "en": "Rule: Nobody may close their legs. Do it and drink.",
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Jede*r spricht die n�chste Runde nur noch fl�sternd.",
-      "en": "Regel: Jede*r spricht die n�chste Runde nur noch fl�sternd.",
+      "de": "Regel: Jede*r spricht die nï¿½chste Runde nur noch flï¿½sternd.",
+      "en": "Rule: Everyone whispers for the next round.",
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Wer jemanden l�nger als drei Sekunden anschaut, muss ihm oder ihr etwas Pikantes zufl�stern oder trinken.",
-      "en": "Regel: Wer jemanden l�nger als drei Sekunden anschaut, muss ihm oder ihr etwas Pikantes zufl�stern oder trinken.",
+      "de": "Regel: Wer jemanden lï¿½nger als drei Sekunden anschaut, muss ihm oder ihr etwas Pikantes zuflï¿½stern oder trinken.",
+      "en": "Rule: Stare at someone longer than three seconds? Whisper something spicy to them or drink.",
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Regel: Alle S�tze enden mit ��heute Nacht.� � wer es vergisst, trinkt.",
-      "en": "Regel: Alle S�tze enden mit ��heute Nacht.� � wer es vergisst, trinkt.",
+      "de": "Regel: Alle Sï¿½tze enden mit ï¿½ï¿½heute Nacht.ï¿½ ï¿½ wer es vergisst, trinkt.",
+      "en": "Rule: Every sentence ends with '… tonight.' Forget it and you drink.",
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
