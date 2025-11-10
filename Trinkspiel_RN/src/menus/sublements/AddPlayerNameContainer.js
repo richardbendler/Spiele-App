@@ -26,39 +26,33 @@ const NameContainer = ({ playerObject }) => {
 
   return (
     <View style={styles.card}>
-      <View style={styles.nameRow}>
-        <Text style={styles.playerName}>
-          {playerObject.name}
-        </Text>
+      <View style={styles.topRow}>
+        <Text style={styles.playerName}>{playerObject.name}</Text>
         <TouchableOpacity
           onPress={() => removePlayer(playerObject)}
           style={styles.removeButton}
-          activeOpacity={0.8}
+          activeOpacity={0.85}
           accessibilityLabel={labels.remove}
         >
-          <Text style={styles.removeButtonText}>x</Text>
+          <Text style={styles.removeButtonText}>×</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.playerStatus}>
-        {playerObject.drinks ? labels.drinks : labels.noDrinks}
-      </Text>
-
       <View style={styles.toggleGroup}>
         <TouchableOpacity
           onPress={() => setDrinkStatus(playerObject, true)}
-          style={[styles.toggleButton, playerObject.drinks ? styles.toggleActive : styles.toggleInactive]}
-          activeOpacity={0.85}
+          style={[styles.toggleChip, playerObject.drinks ? styles.chipActive : null]}
+          activeOpacity={0.9}
         >
-          <Text style={[styles.toggleText, playerObject.drinks ? styles.toggleTextActive : null]}>
+          <Text style={[styles.toggleText, playerObject.drinks ? styles.chipTextActive : null]}>
             {labels.drinks}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setDrinkStatus(playerObject, false)}
-          style={[styles.toggleButton, !playerObject.drinks ? styles.toggleActive : styles.toggleInactive]}
-          activeOpacity={0.85}
+          style={[styles.toggleChip, !playerObject.drinks ? styles.chipActive : null]}
+          activeOpacity={0.9}
         >
-          <Text style={[styles.toggleText, !playerObject.drinks ? styles.toggleTextActive : null]}>
+          <Text style={[styles.toggleText, !playerObject.drinks ? styles.chipTextActive : null]}>
             {labels.noDrinks}
           </Text>
         </TouchableOpacity>
@@ -69,75 +63,64 @@ const NameContainer = ({ playerObject }) => {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: "column",
-    alignItems: "stretch",
-    paddingVertical: 14,
-    paddingHorizontal: 18,
-    borderRadius: 18,
-    backgroundColor: "rgba(23, 27, 36, 0.85)",
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.06)",
+    flexBasis: '48%',
     marginBottom: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 16,
+    backgroundColor: 'rgba(28,34,46,0.92)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.04)',
   },
-  nameRow: {
-    flexDirection: "row",
-    alignItems: "center",
+  topRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   playerName: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontFamily: "Quicksand_300Bold",
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontFamily: 'Quicksand_300Bold',
     flexShrink: 1,
-    paddingRight: 8,
+    paddingRight: 12,
   },
-  playerStatus: {
-    marginTop: 6,
-    fontSize: 12,
-    color: "rgba(255,255,255,0.6)",
-    fontFamily: "Quicksand_300Light",
+  removeButton: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: 'rgba(229,193,133,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  removeButtonText: {
+    color: '#E5C185',
+    fontSize: 16,
+    fontFamily: 'Quicksand_300Bold',
+    lineHeight: 16,
   },
   toggleGroup: {
-    flexDirection: "row",
-    width: '100%',
-    borderRadius: 14,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.08)",
-    backgroundColor: "rgba(255,255,255,0.05)",
+    flexDirection: 'row',
     marginTop: 10,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    padding: 4,
   },
-  toggleButton: {
+  toggleChip: {
+    flex: 1,
     paddingVertical: 6,
-    paddingHorizontal: 12,
+    borderRadius: 999,
+    alignItems: 'center',
   },
-  toggleActive: {
-    backgroundColor: "#E5C185",
-  },
-  toggleInactive: {
-    backgroundColor: "transparent",
+  chipActive: {
+    backgroundColor: '#E5C185',
   },
   toggleText: {
     fontSize: 11,
-    color: "rgba(255,255,255,0.65)",
-    fontFamily: "Quicksand_300Bold",
+    color: 'rgba(255,255,255,0.7)',
+    fontFamily: 'Quicksand_300Bold',
   },
-  toggleTextActive: {
-    color: "#241D18",
-  },
-  removeButton: {
-    marginLeft: 12,
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: "rgba(229,193,133,0.25)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  removeButtonText: {
-    color: "#E5C185",
-    fontSize: 18,
-    fontFamily: "Quicksand_300Bold",
-    lineHeight: 18,
+  chipTextActive: {
+    color: '#241D18',
   },
 });
 

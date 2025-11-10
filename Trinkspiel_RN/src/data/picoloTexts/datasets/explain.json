@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "description": "Erklären: Dinge beschreiben, nachmachen, deuten."
+  },
+  "poolKey": "explain",
+  "items": [
+    {
+      "de": "Erklären: Random Item",
+      "en": "Explain: random item",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 40,
+        "text": {
+          "de": "{{target}} erklärt ohne Tabuwörter einen Gegenstand aus dem Raum. Erratene Personen verteilen 2 Schlucke.",
+          "en": "{{target}} explains an object in the room without using taboo words. Guessers hand out 2 sips."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Worst Job",
+      "en": "Explain: worst job",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 35,
+        "text": {
+          "de": "{{target}} erklärt den schlimmsten Job der Welt – keine Gesten erlaubt.",
+          "en": "{{target}} explains the worst job in the world—no gestures allowed."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Dating-Phrase",
+      "en": "Explain: dating phrase",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 30,
+        "text": {
+          "de": "{{target}} erklärt einen typischen Dating-Begriff. Erratende Person verteilt 2 Schlucke.",
+          "en": "{{target}} explains a classic dating term. Correct guess hands out 2 sips."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Trend-Alarm",
+      "en": "Explain: trend alert",
+      "drunkLevel": 5,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 30,
+        "text": {
+          "de": "{{target}} erklärt einen aktuellen TikTok- oder Meme-Trend ohne Namen zu nennen.",
+          "en": "{{target}} describes a current TikTok or meme trend without naming it."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Chaos-Rezept",
+      "en": "Explain: chaos recipe",
+      "drunkLevel": 7,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 45,
+        "text": {
+          "de": "{{target}} beschreibt ein frei erfundenes Party-Rezept nur mit Soundeffekten und Gesten.",
+          "en": "{{target}} explains a made-up party recipe using only sounds and gestures."
+        }
+      },
+      "drinking": false
+    }
+  ]
+}

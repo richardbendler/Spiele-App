@@ -1,5 +1,5 @@
 ﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -15,7 +15,15 @@ import { manyQuestionsSampleTexts } from '../data/manyQuestionsTexts';
 const ManyQuestionsGame = ({ route }) => {
   const [gameEnded, setGameEnded] = useState(false);
 
-  const { infoVisible, setInfoVisible, language, manyQuestions: manyQuestionsContext, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const {
+    infoVisible,
+    setInfoVisible,
+    language,
+    players,
+    manyQuestions: manyQuestionsContext,
+    tutorialEnabled,
+    setTutorialEnabled,
+  } = useContext(VariablesContext);
   const { t } = useTranslation();
   const copy = useMemo(() => t('manyQuestions'), [t]);
   const navigationData = route.params?.manyQuestionsData;
@@ -46,7 +54,8 @@ const ManyQuestionsGame = ({ route }) => {
     ? replaceHashtagsWithoutDuplicates(
         language === 'en' && currentQuestion.content_en
           ? currentQuestion.content_en
-          : currentQuestion.content
+          : currentQuestion.content,
+        { players, language },
       )
     : '';
 
@@ -79,7 +88,7 @@ const ManyQuestionsGame = ({ route }) => {
   }
 
   return (
-    <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
+    <View style={styles.background}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
           
@@ -113,11 +122,15 @@ const ManyQuestionsGame = ({ route }) => {
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
   winnerScreen: {
     flex: 1,
     justifyContent: 'center',

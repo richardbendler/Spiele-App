@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "description": "Pantomime Teams Prompts"
+  },
+  "poolKey": "pantomime-teams",
+  "items": [
+    {
+      "de": "Team Charades: Festival",
+      "en": "Team charades: festival",
+      "drunkLevel": 6,
+      "tags": [
+        "teams",
+        "challenge"
+      ],
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt pantomimisch ein Festival dar. {{teamB}} hat 30 Sekunden zum Raten, dann tauschen.",
+          "en": "{{teamA}} acts out a festival. {{teamB}} has 30 seconds to guess, then swap."
+        },
+        "revealLabel": {
+          "de": "Pantomime anzeigen",
+          "en": "Show pantomime"
+        }
+      },
+      "gating": {
+        "requiresPlayers": 4
+      },
+      "drinking": false
+    },
+    {
+      "de": "Team Charades: Movie Mash",
+      "en": "Team charades: movie mash",
+      "drunkLevel": 6,
+      "tags": [
+        "teams"
+      ],
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} mixt zwei Filme pantomimisch, {{teamB}} errät.",
+          "en": "{{teamA}} mimes a mash-up of two movies, {{teamB}} guesses."
+        }
+      },
+      "gating": {
+        "requiresPlayers": 4
+      },
+      "drinking": false
+    },
+    {
+      "de": "Team Charades: Berufschaos",
+      "en": "Team charades: job chaos",
+      "drunkLevel": 6,
+      "tags": [
+        "teams"
+      ],
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "Ein Team stellt stumm einen absurden Beruf dar, das andere rät in 30 Sekunden.",
+          "en": "One team silently acts out an absurd job, the other guesses within 30 seconds."
+        }
+      },
+      "gating": {
+        "requiresPlayers": 4
+      },
+      "drinking": false
+    },
+    {
+      "de": "Team Charades: Urlaubspanne",
+      "en": "Team charades: vacation fail",
+      "drunkLevel": 5,
+      "tags": [
+        "teams"
+      ],
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine legendäre Urlaubspanne pantomimisch nach, {{teamB}} muss Ort und Fail erraten.",
+          "en": "{{teamA}} acts out an iconic vacation fail, {{teamB}} must guess location and mishap."
+        }
+      },
+      "gating": {
+        "requiresPlayers": 4
+      },
+      "drinking": false
+    },
+    {
+      "de": "Team Charades: Zukunfts-Gadget",
+      "en": "Team charades: future gadget",
+      "drunkLevel": 7,
+      "tags": [
+        "teams",
+        "challenge"
+      ],
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} erfindet pantomimisch ein Gadget aus dem Jahr 3000. {{teamB}} pitcht innerhalb von 30 Sekunden, was es kann.",
+          "en": "{{teamA}} pantomimes a gadget from the year 3000. {{teamB}} pitches within 30 seconds what it does."
+        }
+      },
+      "gating": {
+        "requiresPlayers": 4
+      },
+      "drinking": false
+    }
+  ]
+}

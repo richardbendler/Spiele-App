@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "description": "Timer Countdown Prompts"
+  },
+  "poolKey": "timer-countdown",
+  "items": [
+    {
+      "de": "Countdown: Turmbau",
+      "en": "Countdown: tower build",
+      "drunkLevel": 6,
+      "tags": [
+        "timer",
+        "challenge"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "durationSeconds": 30,
+        "text": {
+          "de": "Schafft ihr es, innerhalb von 30 Sekunden einen Turm aus Karten zu bauen?",
+          "en": "Can you stack a card tower in 30 seconds?"
+        },
+        "successText": {
+          "de": "Turm steht? Ihr verteilt 3 Schlucke!",
+          "en": "Tower stands? Hand out 3 sips!"
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Countdown: Meme-Nachstellung",
+      "en": "Countdown: meme reenactment",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "durationSeconds": 25,
+        "text": {
+          "de": "In 25 Sekunden ein ikonisches Meme nachstellen – die Runde muss es erraten.",
+          "en": "Recreate an iconic meme in 25 seconds—everyone else has to guess it."
+        },
+        "successText": {
+          "de": "Geschafft? Verteile 2 Schlucke.",
+          "en": "Nailed it? Hand out 2 sips."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Countdown: Emoji-Body",
+      "en": "Countdown: emoji body",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Formt als Team in 20 Sekunden ein Emoji mit euren Körpern.",
+          "en": "As a team, form an emoji with your bodies in 20 seconds."
+        },
+        "successText": {
+          "de": "Erkannt? Alle anderen trinken 2.",
+          "en": "If it’s guessed correctly, everyone else drinks 2 sips."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Countdown: Song Shuffle",
+      "en": "Countdown: song shuffle",
+      "drunkLevel": 5,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "durationSeconds": 20,
+        "text": {
+          "de": "In 20 Sekunden drei Songs anstimmen, ohne Titel zu nennen. Errät niemand alle, trinkt ihr.",
+          "en": "Start three songs within 20 seconds without naming them. If no one guesses all, you drink."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Countdown: Kompliment-Stafette",
+      "en": "Countdown: compliment relay",
+      "drunkLevel": 4,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "durationSeconds": 30,
+        "text": {
+          "de": "Schafft ihr 5 kreative Komplimente in 30 Sekunden, verteilt ihr 3 Schlucke.",
+          "en": "Deliver 5 creative compliments in 30 seconds to hand out 3 sips."
+        }
+      },
+      "drinking": false
+    }
+  ]
+}

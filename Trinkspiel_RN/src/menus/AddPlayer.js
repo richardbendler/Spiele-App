@@ -27,17 +27,21 @@ const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
     <View style={styles.inputCard}>
       <Text style={styles.sectionLabel}>{copy.inputTitle}</Text>
       <Text style={styles.sectionHint}>{copy.inputSubtitle}</Text>
-      <TextInput
-        placeholder={copy.placeholder}
-        placeholderTextColor="rgba(255,255,255,0.6)"
-        value={currentName}
-        onChangeText={setCurrentName}
-        style={styles.nameInput}
-        returnKeyType="done"
-      />
-      <TouchableOpacity onPress={handler} style={styles.primaryButton} activeOpacity={0.9}>
-        <Text style={styles.primaryButtonText}>{copy.addButton}</Text>
-      </TouchableOpacity>
+      <View style={styles.inputRow}>
+        <TextInput
+          placeholder={copy.placeholder}
+          placeholderTextColor="rgba(255,255,255,0.6)"
+          value={currentName}
+          onChangeText={setCurrentName}
+          style={styles.nameInput}
+          returnKeyType="done"
+          onSubmitEditing={handler}
+          blurOnSubmit={false}
+        />
+        <TouchableOpacity onPress={handler} style={styles.compactAddButton} activeOpacity={0.9}>
+          <Text style={styles.compactAddButtonText}>{copy.addButton}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 });
@@ -107,9 +111,12 @@ const AddPlayer = ({ navigation, route }) => {
   };
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={styles.background}>
-      <View style={styles.overlay} />
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+    <View style={styles.background}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
         <Text style={styles.screenTitle}>{addPlayerText.screenTitle}</Text>
         <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
@@ -125,12 +132,14 @@ const AddPlayer = ({ navigation, route }) => {
               <Text style={styles.emptyPlayerText}>{addPlayerText.placeholder}</Text>
             </View>
           ) : (
-            players.map((player) => (
-              <NameContainer
-                key={player.id != null ? String(player.id) : player.name}
-                playerObject={player}
-              />
-            ))
+            <View style={styles.playerGrid}>
+              {players.map((player) => (
+                <NameContainer
+                  key={player.id != null ? String(player.id) : player.name}
+                  playerObject={player}
+                />
+              ))}
+            </View>
           )}
         </View>
 
@@ -202,11 +211,15 @@ const AddPlayer = ({ navigation, route }) => {
           </View>
         ) : null}
 
-        <TouchableOpacity onPress={startGame} style={[styles.startButton, !showScales && { marginTop: 16 }]} activeOpacity={0.9}>
+        <TouchableOpacity
+          onPress={startGame}
+          style={[styles.startButton, !showScales && { marginTop: 16 }]}
+          activeOpacity={0.9}
+        >
           <Text style={styles.startButtonText}>{addPlayerText.startButton}</Text>
         </TouchableOpacity>
       </ScrollView>
-    </ImageBackground>
+    </View>
   );
 };
 
@@ -215,27 +228,29 @@ export default AddPlayer;
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(8, 10, 14, 0.52)",
+    backgroundColor: '#366350',
   },
   scrollContent: {
     paddingHorizontal: 24,
     paddingTop: 40,
     paddingBottom: 80,
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
   },
   screenTitle: {
     fontSize: 32,
     fontFamily: "Quicksand_300Bold",
     color: "white",
     marginBottom: 6,
+    flexWrap: 'wrap',
   },
   screenSubtitle: {
     fontSize: 14,
     fontFamily: "Quicksand_300Light",
     color: "rgba(255,255,255,0.72)",
     marginBottom: 24,
+    flexWrap: 'wrap',
   },
   inputCard: {
     backgroundColor: "rgba(19, 23, 32, 0.85)",
@@ -244,6 +259,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
+    width: '100%',
   },
   sectionLabel: {
     fontSize: 18,
@@ -257,26 +273,32 @@ const styles = StyleSheet.create({
     fontFamily: "Quicksand_300Light",
     lineHeight: 18,
   },
-  nameInput: {
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 18,
+  },
+  nameInput: {
     backgroundColor: "rgba(255,255,255,0.08)",
     borderRadius: 14,
     paddingHorizontal: 16,
     paddingVertical: 12,
+    flex: 1,
     color: "white",
     fontFamily: "Quicksand_300Bold",
   },
-  primaryButton: {
-    marginTop: 16,
-    backgroundColor: "#E5C185",
-    borderRadius: 14,
+  compactAddButton: {
+    marginLeft: 12,
+    paddingHorizontal: 18,
     paddingVertical: 12,
-    alignItems: "center",
+    borderRadius: 14,
+    backgroundColor: "#E5C185",
   },
-  primaryButtonText: {
-    color: "#231C18",
-    fontSize: 16,
+  compactAddButtonText: {
+    color: "#241D18",
+    fontSize: 14,
     fontFamily: "Quicksand_300Bold",
+    letterSpacing: 0.5,
   },
   playerListCard: {
     backgroundColor: "rgba(12, 15, 21, 0.9)",
@@ -285,6 +307,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
+    width: '100%',
   },
   clearButton: {
     alignSelf: 'flex-end',
@@ -326,6 +349,11 @@ const styles = StyleSheet.create({
     fontFamily: "Quicksand_300Light",
     color: "rgba(255,255,255,0.4)",
   },
+  playerGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
   sliderCard: {
     backgroundColor: "rgba(12, 15, 21, 0.9)",
     borderRadius: 22,
@@ -333,6 +361,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
+    width: '100%',
   },
   sliderTitle: {
     fontSize: 15,

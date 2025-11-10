@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "description": "Sonstiges: Freestyle-Aufgaben und Fun-Prompts."
+  },
+  "poolKey": "misc",
+  "items": [
+    {
+      "de": "Stellt euch in Reihenfolge der bunten Socken. Wer keine trägt, trinkt 2 Schlucke.",
+      "en": "Line up according to sock color. No colorful socks? Drink 2 sips.",
+      "drunkLevel": 4,
+      "drinking": true
+    },
+    {
+      "de": "Sync Clap: Alle klatschen gleichzeitig auf „3“. Wer daneben haut, trinkt.",
+      "en": "Sync clap: everyone claps exactly on “3”. Miss the beat and drink.",
+      "drunkLevel": 4,
+      "drinking": true
+    },
+    {
+      "de": "Die Runde bestimmt eine neue Begrüßung für den Rest des Abends. Wer sie vergisst, trinkt.",
+      "en": "The group invents a new greeting for the night. Forget it and you drink.",
+      "drunkLevel": 4,
+      "drinking": true
+    },
+    {
+      "de": "Erfindet einen kollektiven Jubelruf. Wer ihn nicht innerhalb von 3 Sekunden mitmacht, trinkt 1 Schluck.",
+      "en": "Create a collective cheer. Anyone who doesn’t join within 3 seconds drinks 1 sip.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle tippen gleichzeitig jemanden an. Wer zwei Hände abbekommt, erzählt eine Mini-Anekdote oder trinkt 2 Schlucke.",
+      "en": "Everyone taps someone at once. Whoever gets two taps shares a quick story or drinks 2 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

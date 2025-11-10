@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "description": "Beste verteilt Prompts"
+  },
+  "poolKey": "best-distributor",
+  "items": [
+    {
+      "de": "Wer die überzeugendste Fake-News mit Pokerface vorträgt, verteilt 3 Schlucke.",
+      "en": "Whoever delivers the most convincing fake news with a poker face hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Wer jetzt das beste Tiergeräusch liefert, verteilt 2 Schlucke.",
+      "en": "Whoever nails the best animal noise right now hands out 2 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Wer spontan den smoothesten Pickup-Line-Drop bringt, verteilt 3 Schlucke.",
+      "en": "Whoever drops the smoothest spontaneous pick-up line gets to hand out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Wer innerhalb von 10 Sekunden drei neue Spitznamen für die Runde erfindet, verteilt 2 Schlucke an verschiedene Personen.",
+      "en": "Whoever invents three new nicknames for the group within 10 seconds hands out 2 sips to different people.",
+      "drunkLevel": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Wer den spontan besten Mini-Toast auf den Abend hält, darf 4 Schlucke frei verteilen.",
+      "en": "Whoever delivers the best impromptu toast to the night gets to hand out 4 sips freely.",
+      "drunkLevel": 6,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

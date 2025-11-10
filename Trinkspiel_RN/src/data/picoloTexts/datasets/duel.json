@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "description": "Wettkampf 1v1: Direktes Battle zwischen zwei Personen."
+  },
+  "poolKey": "duel",
+  "items": [
+    {
+      "de": "1v1: Blickduell � wer zuerst lacht, trinkt einen Schluck.",
+      "en": "1v1: Blickduell � wer zuerst lacht, trinkt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Malt gleichzeitig ein Herz in die Luft. Das bessere Herz entscheidet, der andere nippt.",
+      "en": "1v1: Malt gleichzeitig ein Herz in die Luft. Das bessere Herz entscheidet, der andere nippt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: H�nde hinter den R�cken, pfeift nacheinander ein Lied. Wer nicht erraten wird, trinkt.",
+      "en": "1v1: H�nde hinter den R�cken, pfeift nacheinander ein Lied. Wer nicht erraten wird, trinkt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Nennt abwechselnd St�dte mit gleichem Anfangsbuchstaben � wer stockt, trinkt.",
+      "en": "1v1: Nennt abwechselnd St�dte mit gleichem Anfangsbuchstaben � wer stockt, trinkt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Hebt gleichzeitig einen Schuh. Wer z�gert, trinkt.",
+      "en": "1v1: Hebt gleichzeitig einen Schuh. Wer z�gert, trinkt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Plank-Duell � wer zuerst aufgibt, trinkt zwei Schlucke.",
+      "en": "1v1: Plank-Duell � wer zuerst aufgibt, trinkt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Wer schneller ein Emoji mit dem Finger auf den Tisch malt, gewinnt. Verlierer trinkt.",
+      "en": "1v1: Wer schneller ein Emoji mit dem Finger auf den Tisch malt, gewinnt. Verlierer trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Getr�nke ohne Alkohol � wer wiederholt, trinkt.",
+      "en": "1v1: Nennt abwechselnd Getr�nke ohne Alkohol � wer wiederholt, trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Impro-Sprint vorf�hren. Lauteste Reaktion gewinnt, andere Person trinkt.",
+      "en": "1v1: Impro-Sprint vorf�hren. Lauteste Reaktion gewinnt, andere Person trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Schnick-Schnack-Schnuck Best-of-3. Verlierer trinkt.",
+      "en": "1v1: Schnick-Schnack-Schnuck Best-of-3. Verlierer trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Wer schneller drei gemeinsame Insider aufz�hlt, gewinnt. Verlierer nimmt drei Schlucke.",
+      "en": "1v1: Wer schneller drei gemeinsame Insider aufz�hlt, gewinnt. Verlierer nimmt drei Schlucke.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Karaoke-Battle ohne Musik. Lauteste Runde entscheidet.",
+      "en": "1v1: Karaoke-Battle ohne Musik. Lauteste Runde entscheidet.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Haltet je einen Arm ausgestreckt � wer l�nger durchh�lt, verteilt drei Schlucke.",
+      "en": "1v1: Haltet je einen Arm ausgestreckt � wer l�nger durchh�lt, verteilt drei Schlucke.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Kosenamen � wer nichts mehr wei�, trinkt.",
+      "en": "1v1: Nennt abwechselnd Kosenamen � wer nichts mehr wei�, trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Erfindet eine Synchronbewegung. Schlechtere Performance trinkt.",
+      "en": "1v1: Erfindet eine Synchronbewegung. Schlechtere Performance trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Fl�ster-Challenge � fl�stert euch einen Flirt-Satz zu. Wer r�ter wird, trinkt.",
+      "en": "1v1: Fl�ster-Challenge � fl�stert euch einen Flirt-Satz zu. Wer r�ter wird, trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Halt deine Stirn an die der anderen Person. Wer wegzieht, trinkt drei Schlucke.",
+      "en": "1v1: Halt deine Stirn an die der anderen Person. Wer wegzieht, trinkt drei Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Impro-Kuss-Szene ohne echten Kuss. Schlechtere Acting-Note trinkt.",
+      "en": "1v1: Impro-Kuss-Szene ohne echten Kuss. Schlechtere Acting-Note trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Erz�hlt der Runde abwechselnd Geheimnisse �ber euer Sternzeichen � wer zuerst stoppt, trinkt.",
+      "en": "1v1: Erz�hlt der Runde abwechselnd Geheimnisse �ber euer Sternzeichen � wer zuerst stoppt, trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Nennt euren letzten Crush. Wer weniger Details verr�t, trinkt.",
+      "en": "1v1: Nennt euren letzten Crush. Wer weniger Details verr�t, trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Flirt-Lobeshymne � wer weniger �berzeugend Komplimente macht, trinkt vier Schlucke.",
+      "en": "1v1: Flirt-Lobeshymne � wer weniger �berzeugend Komplimente macht, trinkt vier Schlucke.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Beschreibt euren perfekten Kuss in 20 Sekunden. Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Beschreibt euren perfekten Kuss in 20 Sekunden. Publikum entscheidet, Verlierer trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Macht gegenseitig einen sexy Walk-Off. Der mutigere Walk gewinnt.",
+      "en": "1v1: Macht gegenseitig einen sexy Walk-Off. Der mutigere Walk gewinnt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Nennt intime Bucket-List-Punkte. Wer zuerst kneift, trinkt.",
+      "en": "1v1: Nennt intime Bucket-List-Punkte. Wer zuerst kneift, trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "1v1: Wahrheitsschlacht � beantwortet die gleiche pikante Frage. Unpers�nlichere Antwort trinkt.",
+      "en": "1v1: Wahrheitsschlacht � beantwortet die gleiche pikante Frage. Unpers�nlichere Antwort trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

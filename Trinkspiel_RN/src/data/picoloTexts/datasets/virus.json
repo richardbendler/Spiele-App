@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "description": "Virus: Langzeitregeln, die im Spiel bleiben."
+  },
+  "poolKey": "virus",
+  "items": [
+    {
+      "de": "Virus: Linkshänder",
+      "en": "Virus: left-handed",
+      "drunkLevel": 6,
+      "tags": [
+        "rule"
+      ],
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus aktiviert",
+          "en": "Virus activated"
+        },
+        "rule": {
+          "de": "Ab jetzt wird nur noch mit der linken Hand getrunken.",
+          "en": "From now on everyone drinks with their left hand only."
+        },
+        "penalty": {
+          "de": "Wer vergisst, trinkt 2 Schlucke.",
+          "en": "Forget it and drink 2 sips."
+        },
+        "durationHint": {
+          "de": "Gilt bis zum nächsten Virus.",
+          "en": "Stays active until the next virus."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Virus: Titelpflicht",
+      "en": "Virus: fancy titles",
+      "drunkLevel": 6,
+      "tags": [
+        "rule"
+      ],
+      "payload": {
+        "type": "virus",
+        "rule": {
+          "de": "Alle müssen sich vor dem Sprechen gegenseitig mit einem Adelstitel anreden.",
+          "en": "Everyone must address each other with a noble title before speaking."
+        },
+        "penalty": {
+          "de": "Vergessen = 1 Schluck.",
+          "en": "Forget it = drink 1 sip."
+        },
+        "durationHint": {
+          "de": "Bleibt aktiv bis zur nächsten Virus-Karte.",
+          "en": "Active until the next virus card."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Virus: Emoji-Pose",
+      "en": "Virus: emoji pose",
+      "drunkLevel": 6,
+      "tags": [
+        "rule"
+      ],
+      "payload": {
+        "type": "virus",
+        "rule": {
+          "de": "Vor jedem Schluck wird ein zufälliges Emoji mit der Hand dargestellt.",
+          "en": "Before every sip, act out a random emoji with your hand."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt doppelt.",
+          "en": "Forget it and drink double."
+        },
+        "durationHint": {
+          "de": "Gilt bis zum nächsten Virus.",
+          "en": "Active until the next virus."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Virus: Flüster-Intro",
+      "en": "Virus: whisper intro",
+      "drunkLevel": 5,
+      "tags": [
+        "rule"
+      ],
+      "payload": {
+        "type": "virus",
+        "rule": {
+          "de": "Bevor du redest, musst du den ersten Satz flüstern.",
+          "en": "Before you speak, whisper your first sentence."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt 2 Schlucke.",
+          "en": "Forget it and drink 2 sips."
+        },
+        "durationHint": {
+          "de": "Bleibt aktiv bis ein neuer Virus kommt.",
+          "en": "Active until another virus appears."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Virus: Cheers Loop",
+      "en": "Virus: cheers loop",
+      "drunkLevel": 7,
+      "tags": [
+        "rule"
+      ],
+      "payload": {
+        "type": "virus",
+        "rule": {
+          "de": "Vor jedem Drink muss eine zufällige Person “Zum Wohl, <Name>!” sagen.",
+          "en": "Before drinking, a random person must say “Cheers, <name>!”"
+        },
+        "penalty": {
+          "de": "Wer schluckt, ohne angesagt zu werden, trinkt nochmal.",
+          "en": "Drink without being called and you drink again."
+        },
+        "durationHint": {
+          "de": "Aktiv bis zum nächsten Virus.",
+          "en": "Stays until the next virus."
+        }
+      },
+      "drinking": false
+    }
+  ]
+}
