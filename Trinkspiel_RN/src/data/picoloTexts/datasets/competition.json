@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "description": "Wettkampf: Gruppen-Challenges für alle gleichzeitig."
+  },
+  "poolKey": "competition",
+  "items": [
+    {
+      "de": "Mini-Competition: Wer zuerst f�nf blaue Dinge im Raum aufz�hlt, gewinnt. Alle anderen nippen.",
+      "en": "Mini-Competition: Wer zuerst f�nf blaue Dinge im Raum aufz�hlt, gewinnt. Alle anderen nippen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Mini-Competition: Baut aus euren H�nden ein Herz. Sch�nstes Herz verteilt einen Schluck.",
+      "en": "Mini-Competition: Baut aus euren H�nden ein Herz. Sch�nstes Herz verteilt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Mini-Competition: Wer zuerst einen Reim auf den Namen des Hosts findet, darf zwei Schlucke verteilen.",
+      "en": "Mini-Competition: Wer zuerst einen Reim auf den Namen des Hosts findet, darf zwei Schlucke verteilen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Mini-Competition: Schnelles Pantomime � wer err�t, verteilt einen Schluck.",
+      "en": "Mini-Competition: Schnelles Pantomime � wer err�t, verteilt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Mini-Competition: Wer bei �Stein� am l�ngsten still sitzen bleibt, ist safe. Bewegte trinken.",
+      "en": "Mini-Competition: Wer bei �Stein� am l�ngsten still sitzen bleibt, ist safe. Bewegte trinken.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Challenge: Jeder tippt heimlich eine Zahl zwischen 1 und 20. Wer am weitesten weg ist, trinkt.",
+      "en": "Challenge: Jeder tippt heimlich eine Zahl zwischen 1 und 20. Wer am weitesten weg ist, trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Challenge: Wer in 30 Sekunden die meisten Songtitel nennt, gewinnt.",
+      "en": "Challenge: Wer in 30 Sekunden die meisten Songtitel nennt, gewinnt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Challenge: Alle legen ein Accessoire in die Mitte. Schnellste Zuordnung gewinnt.",
+      "en": "Challenge: Alle legen ein Accessoire in die Mitte. Schnellste Zuordnung gewinnt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Challenge: Macht ein Selfie mit der ganzen Runde. Wer den Timer versemmelt, trinkt.",
+      "en": "Challenge: Macht ein Selfie mit der ganzen Runde. Wer den Timer versemmelt, trinkt.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Challenge: Impro-Handschlag mit Person neben dir. Kreativster bestimmt drei Schlucke.",
+      "en": "Challenge: Impro-Handschlag mit Person neben dir. Kreativster bestimmt drei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Battle: Zwei Teams bauen in 60 Sekunden das h�chste Kartenhaus. Losing Team trinkt.",
+      "en": "Battle: Zwei Teams bauen in 60 Sekunden das h�chste Kartenhaus. Losing Team trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Battle: Wer kann das Alphabet r�ckw�rts fehlerfrei sagen? Verlierer trinken zwei Schlucke.",
+      "en": "Battle: Wer kann das Alphabet r�ckw�rts fehlerfrei sagen? Verlierer trinken zwei Schlucke.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Battle: Erfindet ein Motto f�r den Abend. Bestes Motto verteilt Schlucke.",
+      "en": "Battle: Erfindet ein Motto f�r den Abend. Bestes Motto verteilt Schlucke.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Battle: Macht einen Mini-Rap �ber die Runde. Schw�chster Part trinkt.",
+      "en": "Battle: Macht einen Mini-Rap �ber die Runde. Schw�chster Part trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Battle: Bildet zwei Seilschaften. Jede nennt Insider. Stillere Seite trinkt.",
+      "en": "Battle: Bildet zwei Seilschaften. Jede nennt Insider. Stillere Seite trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "High Stakes: Teilt euch in Paare. Wer den flirtigsten Blickkontakt h�lt, verteilt vier Schlucke.",
+      "en": "High Stakes: Teilt euch in Paare. Wer den flirtigsten Blickkontakt h�lt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "High Stakes: Macht eine Slow-Motion-Tanzbattle. Mutigere Performance gewinnt.",
+      "en": "High Stakes: Macht eine Slow-Motion-Tanzbattle. Mutigere Performance gewinnt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "High Stakes: Schreibt ein gewagtes Truth-or-Dare auf einen Zettel. Zieht und entscheidet, wer trinkt.",
+      "en": "High Stakes: Schreibt ein gewagtes Truth-or-Dare auf einen Zettel. Zieht und entscheidet, wer trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "High Stakes: Alle erz�hlen kurz ihre chaotischste Crush-Story. Langweiligste Truppe trinkt.",
+      "en": "High Stakes: Alle erz�hlen kurz ihre chaotischste Crush-Story. Langweiligste Truppe trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "High Stakes: W�hlt zwei F�rsprecher, die euch verkaufen. Unterlegenes Team trinkt.",
+      "en": "High Stakes: W�hlt zwei F�rsprecher, die euch verkaufen. Unterlegenes Team trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Spicy Match: Zwei Teams planen das wildeste Fantasie-Date. Publikum stimmt, Verlierer trinkt.",
+      "en": "Spicy Match: Zwei Teams planen das wildeste Fantasie-Date. Publikum stimmt, Verlierer trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Spicy Match: Wer kann den sexiesten Toast erfinden? Schw�chste Version trinkt.",
+      "en": "Spicy Match: Wer kann den sexiesten Toast erfinden? Schw�chste Version trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Spicy Match: Beschreibt reihum das hei�este Outfit, das ihr tragen w�rdet. Zaghafte trinken.",
+      "en": "Spicy Match: Beschreibt reihum das hei�este Outfit, das ihr tragen w�rdet. Zaghafte trinken.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Spicy Match: Macht eine Komplimente-Kette. Wer stockt, nimmt zwei Schlucke.",
+      "en": "Spicy Match: Macht eine Komplimente-Kette. Wer stockt, nimmt zwei Schlucke.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Spicy Match: Teams schreiben gegenseitig einen pikanten Fakt auf. Wer err�t, verteilt Schlucke.",
+      "en": "Spicy Match: Teams schreiben gegenseitig einen pikanten Fakt auf. Wer err�t, verteilt Schlucke.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

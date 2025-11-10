@@ -9,16 +9,47 @@ const normaliseSlider = (value) => {
   return clamp(value / 9, 0, 1);
 };
 
-const intensityFromSlider = (normalised) => 1 + normalised * 4;
+const sliderValue = (value, fallback) => {
+  if (typeof value !== 'number' || Number.isNaN(value)) {
+    return clamp(fallback, 0, 9);
+  }
+  return clamp(value, 0, 9);
+};
+
+const sliderToLevel10 = (value, fallbackLevel) => {
+  const scaled = Math.round((value / 9) * 10);
+  return clamp(scaled || fallbackLevel, 1, 10);
+};
+
+const derivePreferences = (settings = {}) => {
+  const currentSlider = sliderValue(settings.currentDrunkenness, 4);
+  const desiredSlider = sliderValue(settings.desiredDrunkenness, 6);
+  const familiaritySlider = sliderValue(settings.familiarity, 4);
+
+  const currentLevel = sliderToLevel10(currentSlider, 4);
+  const desiredLevel = sliderToLevel10(desiredSlider, 6);
+  const diffLevel = clamp(Math.abs(desiredSlider - currentSlider), 0, 9) + 1;
+  const familiarityPref = normaliseSlider(familiaritySlider);
+
+  return {
+    currentSlider,
+    desiredSlider,
+    familiaritySlider,
+    currentLevel,
+    desiredLevel,
+    diffLevel,
+    familiarityPref,
+  };
+};
 
 const toBucketKey = (prompt) => {
-  const intensity = typeof prompt?.metadata?.intensity === 'number' ? prompt.metadata.intensity : 0;
   const recommended =
     typeof prompt?.metadata?.recommendedDrunkLevel === 'number'
       ? prompt.metadata.recommendedDrunkLevel
-      : intensity;
-  const combined = Math.max(intensity, recommended);
-  return clamp(Math.round(combined) || 1, 1, 5);
+      : typeof prompt?.metadata?.intensity === 'number'
+        ? prompt.metadata.intensity * 2
+        : 5;
+  return clamp(Math.round(recommended) || 1, 1, 10);
 };
 
 const popMatching = (list, predicate) => {
@@ -33,23 +64,6 @@ const popMatching = (list, predicate) => {
     }
   }
   return null;
-};
-
-const popFromOverflow = (overflowPool, predicate, fallbackPredicate) => {
-  if (!Array.isArray(overflowPool) || overflowPool.length === 0) {
-    return null;
-  }
-  const candidate = popMatching(overflowPool, predicate);
-  if (candidate) {
-    return candidate;
-  }
-  if (typeof fallbackPredicate === 'function') {
-    const fallbackCandidate = popMatching(overflowPool, fallbackPredicate);
-    if (fallbackCandidate) {
-      return fallbackCandidate;
-    }
-  }
-  return overflowPool.pop() ?? null;
 };
 
 const pickTwoDistinct = (arr) => {
@@ -203,21 +217,97 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     return [];
   }
 
-  const current = normaliseSlider(settings?.currentDrunkenness ?? 4);
-  const desired = normaliseSlider(settings?.desiredDrunkenness ?? 6);
-  const familiarity = normaliseSlider(settings?.familiarity ?? 5);
+  const preferences = derivePreferences(settings);
+  const rawCurrentSlider = preferences.currentSlider;
+  const rawDesiredSlider = preferences.desiredSlider;
+  const rawFamiliaritySlider = preferences.familiaritySlider;
+  const familiarityPref = preferences.familiarityPref;
   const drinkingPlayers = Array.isArray(options.players)
     ? options.players.filter((player) => player?.drinks)
     : [];
+  const playerCount = Array.isArray(options.players) ? options.players.length : 0;
+  const RECENT_POOL_WINDOW = 3;
+  const usageToleranceSteps = [0, 1, 2];
+  const poolUsage = new Map();
+  const recentPools = [];
 
-  const startIntensity = clamp(Math.round(intensityFromSlider(current)), 1, 5);
-  const maxTarget = clamp(Math.round(intensityFromSlider(Math.max(current, desired))), 1, 5);
-  const familiarityCap = clamp(intensityFromSlider(familiarity) + 0.5, 1, 5);
-  const curveExponent = clamp(1.6 - desired * 0.8, 0.45, 1.8);
+  const getLowestUsage = () => {
+    if (poolUsage.size === 0) {
+      return 0;
+    }
+    let min = Infinity;
+    poolUsage.forEach((value) => {
+      if (value < min) {
+        min = value;
+      }
+    });
+    return min === Infinity ? 0 : min;
+  };
+
+  const isPoolRecent = (poolId) => {
+    if (!poolId) {
+      return false;
+    }
+    return recentPools.includes(poolId);
+  };
+
+  const recordPoolSelection = (poolId) => {
+    if (!poolId) {
+      return;
+    }
+    const next = (poolUsage.get(poolId) ?? 0) + 1;
+    poolUsage.set(poolId, next);
+    recentPools.unshift(poolId);
+    if (recentPools.length > RECENT_POOL_WINDOW) {
+      recentPools.pop();
+    }
+  };
+
+  const isPoolBalanced = (candidate, tolerance, allowRecent) => {
+    const poolId = candidate?.pool?.id ?? null;
+    if (!poolId) {
+      return true;
+    }
+    if (!allowRecent && isPoolRecent(poolId)) {
+      return false;
+    }
+    const usage = poolUsage.get(poolId) ?? 0;
+    const lowestUsage = getLowestUsage();
+    return usage <= lowestUsage + tolerance;
+  };
+
+  const popFairCandidate = (list, predicate, allowRecentFallback = true) => {
+    if (!Array.isArray(list) || list.length === 0) {
+      return null;
+    }
+    for (const tolerance of usageToleranceSteps) {
+      const candidate = popMatching(
+        list,
+        (entry) => predicate(entry) && isPoolBalanced(entry, tolerance, false),
+      );
+      if (candidate) {
+        return candidate;
+      }
+      if (allowRecentFallback) {
+        const relaxed = popMatching(
+          list,
+          (entry) => predicate(entry) && isPoolBalanced(entry, tolerance, true),
+        );
+        if (relaxed) {
+          return relaxed;
+        }
+      }
+    }
+    return null;
+  };
+
+  const currentLevel = preferences.currentLevel;
+  const desiredLevel = preferences.desiredLevel;
+  const drunkIntent = preferences.diffLevel;
 
   const buckets = new Map();
-  for (let key = 1; key <= 5; key += 1) {
-    buckets.set(key, []);
+  for (let level = 1; level <= 10; level += 1) {
+    buckets.set(level, []);
   }
 
   const overflowPool = [];
@@ -228,6 +318,40 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
 
     if (prompt?.metadata?.drinkInvolved && drinkingPlayers.length === 0) {
       return;
+    }
+
+    const gating = prompt?.metadata?.gating;
+    if (gating) {
+      if (typeof gating.desiredMin === 'number' && rawDesiredSlider < gating.desiredMin) {
+        return;
+      }
+      if (typeof gating.desiredMax === 'number' && rawDesiredSlider > gating.desiredMax) {
+        return;
+      }
+      if (typeof gating.currentMin === 'number' && rawCurrentSlider < gating.currentMin) {
+        return;
+      }
+      if (typeof gating.currentMax === 'number' && rawCurrentSlider > gating.currentMax) {
+        return;
+      }
+      if (typeof gating.familiarityMin === 'number' && rawFamiliaritySlider < gating.familiarityMin) {
+        return;
+      }
+      if (typeof gating.familiarityMax === 'number' && rawFamiliaritySlider > gating.familiarityMax) {
+        return;
+      }
+      if (typeof gating.requiresPlayers === 'number' && playerCount < gating.requiresPlayers) {
+        return;
+      }
+      if (gating.requireDrinkers && drinkingPlayers.length === 0) {
+        return;
+      }
+      if (typeof gating.rareChance === 'number') {
+        const chance = clamp(gating.rareChance, 0, 1);
+        if (Math.random() > chance) {
+          return;
+        }
+      }
     }
 
     const bucketKey = toBucketKey(prompt);
@@ -250,11 +374,14 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
 
   for (let index = 0; index < total; index += 1) {
     const progress = total > 1 ? index / (total - 1) : 0;
-    const effectiveFamiliarity = clamp(familiarity + progress * 0.5, 0, 1);
-    const rawIntensity =
-      startIntensity + (maxTarget - startIntensity) * Math.pow(progress, curveExponent);
-    const cappedIntensity = Math.min(rawIntensity, familiarityCap + progress * 0.5);
-    const desiredBucket = clamp(Math.round(cappedIntensity) || startIntensity, 1, 5);
+    const blendedLevel = currentLevel + (desiredLevel - currentLevel) * progress;
+    const targetLevel = clamp(
+      Math.round(drunkIntent * (1 - progress) + blendedLevel * progress),
+      1,
+      10,
+    );
+    const effectiveFamiliarity = clamp(familiarityPref + progress * 0.2, 0, 1);
+    const desiredBucket = clamp(targetLevel, 1, 10);
 
     const predicate = (prompt) => {
       const familiarityFloor =
@@ -265,19 +392,28 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     };
 
     const lastPoolId = deck.length > 0 ? deck[deck.length - 1]?.pool?.id ?? null : null;
-    const preferDifferentPool =
-      lastPoolId == null
-        ? predicate
-        : (candidate) => predicate(candidate) && candidate?.pool?.id !== lastPoolId;
+    const makeBucketPredicate = (respectLastPool) => (candidate) => {
+      if (!predicate(candidate)) {
+        return false;
+      }
+      if (respectLastPool && lastPoolId != null && candidate?.pool?.id === lastPoolId) {
+        return false;
+      }
+      return true;
+    };
 
+    let chosenFromBucket = false;
     const tryBucket = (bucketKey) => {
       const bucket = buckets.get(bucketKey);
       if (!bucket) {
         return null;
       }
-      let candidate = popMatching(bucket, preferDifferentPool);
+      let candidate = popFairCandidate(bucket, makeBucketPredicate(true));
       if (!candidate && lastPoolId != null) {
-        candidate = popMatching(bucket, predicate);
+        candidate = popFairCandidate(bucket, makeBucketPredicate(false));
+      }
+      if (candidate) {
+        chosenFromBucket = true;
       }
       return candidate;
     };
@@ -285,14 +421,14 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     let chosen = tryBucket(desiredBucket);
 
     if (!chosen) {
-      for (let offset = 1; offset < 5 && !chosen; offset += 1) {
+      for (let offset = 1; offset < 10 && !chosen; offset += 1) {
         const lower = desiredBucket - offset;
         if (lower >= 1) {
           chosen = tryBucket(lower);
         }
         if (!chosen) {
           const higher = desiredBucket + offset;
-          if (higher <= 5) {
+          if (higher <= 10) {
             chosen = tryBucket(higher);
           }
         }
@@ -300,8 +436,11 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     }
 
     if (!chosen) {
-      chosen = popFromOverflow(overflowPool, preferDifferentPool, predicate);
-    } else {
+      chosen = popFairCandidate(overflowPool, makeBucketPredicate(true));
+      if (!chosen) {
+        chosen = popFairCandidate(overflowPool, makeBucketPredicate(false));
+      }
+    } else if (chosenFromBucket) {
       const overflowIndex = overflowPool.indexOf(chosen);
       if (overflowIndex !== -1) {
         overflowPool.splice(overflowIndex, 1);
@@ -313,6 +452,7 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     }
 
     deck.push(chosen);
+    recordPoolSelection(chosen?.pool?.id ?? null);
   }
 
   // Enrich challenge/duel prompts with player names
@@ -325,13 +465,14 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     result.push(enriched[i]);
     if ((i + 1) % interval === 0) {
       const progress = enriched.length > 1 ? (i + 1) / (enriched.length - 1) : 0;
-      const current = normaliseSlider(settings?.currentDrunkenness ?? 4);
-      const desired = normaliseSlider(settings?.desiredDrunkenness ?? 6);
-      const startIntensity = clamp(Math.round(intensityFromSlider(current)), 1, 5);
-      const maxTarget = clamp(Math.round(intensityFromSlider(Math.max(current, desired))), 1, 5);
-      const curveExponent = clamp(1.6 - desired * 0.8, 0.45, 1.8);
-      const rawIntensity = startIntensity + (maxTarget - startIntensity) * Math.pow(progress, curveExponent);
-      const teamCard = makeTeamCard(options.players || [], language, rawIntensity);
+      const blendedLevel = currentLevel + (desiredLevel - currentLevel) * progress;
+      const targetLevel = clamp(
+        Math.round(drunkIntent * (1 - progress) + blendedLevel * progress),
+        1,
+        10,
+      );
+      const teamIntensity = clamp(Math.round(targetLevel / 2), 1, 5);
+      const teamCard = makeTeamCard(options.players || [], language, teamIntensity);
       if (teamCard) result.push(teamCard);
     }
   }

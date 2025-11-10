@@ -1,6 +1,5 @@
-﻿import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Animated, Easing, StyleSheet } from 'react-native';
-import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
@@ -8,9 +7,9 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 
-import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
 import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
+import PromptRenderer from './sublements/PromptRenderer';
 
 const buildDisplayText = (entry, language, startingPlayer) => {
   if (!entry) {
@@ -58,7 +57,16 @@ const PicoloGame = ({ route }) => {
     }
     return Array.isArray(theOnePrompts) ? [...theOnePrompts] : [];
   }, [route.params?.theOneData, theOnePrompts]);
-
+  const wheelPools = useMemo(() => {
+    const map = new Map();
+    rawPrompts.forEach((entry) => {
+      const poolKey = entry?.pool?.key;
+      if (poolKey && !map.has(poolKey) && entry?.pool) {
+        map.set(poolKey, entry.pool);
+      }
+    });
+    return Array.from(map.values());
+  }, [rawPrompts]);
   const questions = useMemo(
     () => buildTheOneDeck(rawPrompts, theOneSettings, { players }),
     [rawPrompts, theOneSettings, players]
@@ -66,10 +74,6 @@ const PicoloGame = ({ route }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const revealAnim = useRef(new Animated.Value(0)).current;
   const [contentVisible, setContentVisible] = useState(false);
-
-  const targetRotation = revealAnim.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
-  const targetScale = revealAnim.interpolate({ inputRange: [0, 0.5, 1], outputRange: [0.6, 1.05, 1] });
-  const targetOpacity = revealAnim.interpolate({ inputRange: [0, 0.3, 1], outputRange: [0.2, 0.6, 1] });
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -120,9 +124,7 @@ const PicoloGame = ({ route }) => {
     });
   };
 
-  const displayedText = replaceHashtagsWithoutDuplicates(cardText, {
-    requireDrinkingPlayers: Boolean(currentQuestion?.metadata?.drinkInvolved),
-  });
+  const requireDrinkingPlayers = Boolean(currentQuestion?.metadata?.drinkInvolved);
 
   const nextButtonLabel = (copy?.nextButton ? (language==='de' ? copy.nextButton : copy.nextButton) : (language==='de' ? 'Nächste Karte' : 'Next card'));
   const infoText = copy?.rules ?? t('theOne.info');
@@ -133,29 +135,35 @@ const PicoloGame = ({ route }) => {
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
       <View style={[appStyles.completeScreenGameContainer, { backgroundColor }]}>
         <View style={appStyles.gameContainer}>
-          <View
-            style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 }}
-          >
-            <Animated.View
-              style={[
-                styles.categoryTarget,
-                {
-                  transform: [{ rotate: targetRotation }, { scale: targetScale }],
-                  opacity: targetOpacity,
-                },
-              ]}
-            >
+          <View style={styles.screenStack}>
+            <View style={styles.wheelSection}>
+              <View style={styles.wheelArea}>
+                <CategoryWheel
+                  pools={wheelPools}
+                  currentPoolKey={currentQuestion?.pool?.key}
+                  language={language}
+                />
+              </View>
               <Text style={styles.categoryLabel}>{categoryLabel}</Text>
-            </Animated.View>
-            {hasQuestions ? (
-              contentVisible ? (
-                <Question question={displayedText} />
+            </View>
+            <View style={styles.cardSection}>
+              {hasQuestions ? (
+                contentVisible ? (
+                  <PromptRenderer
+                    prompt={currentQuestion}
+                    language={language}
+                    players={players}
+                    settings={theOneSettings}
+                    defaultText={cardText}
+                    requireDrinkingPlayers={requireDrinkingPlayers}
+                  />
+                ) : (
+                  <Text style={styles.revealHint}>{revealHint}</Text>
+                )
               ) : (
-                <Text style={styles.revealHint}>{revealHint}</Text>
-              )
-            ) : (
-              <Text style={styles.revealHint}>{noPromptMessage}</Text>
-            )}
+                <Text style={styles.revealHint}>{noPromptMessage}</Text>
+              )}
+            </View>
           </View>
           {hasQuestions ? (
             <TouchableOpacity
@@ -178,8 +186,20 @@ const PicoloGame = ({ route }) => {
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
-            { text: language === 'de' ? 'Bestimmt eine Moderation: Diese Person behält das Handy, liest vor und tippt weiter.' : 'Choose a moderator: They keep the phone, read aloud, and tap next.', placement: 'top' },
-            { text: language === 'de' ? 'Tippt unten auf Nächste Karte, um die nächste Aufgabe zu zeigen.' : 'Tap Next card to reveal the next prompt.', placement: 'bottom' },
+            {
+              text:
+                language === 'de'
+                  ? 'Bestimmt eine Moderation: Diese Person behält das Handy, liest vor und tippt weiter.'
+                  : 'Choose a moderator: They keep the phone, read aloud, and tap next.',
+              placement: 'top',
+            },
+            {
+              text:
+                language === 'de'
+                  ? 'Tippt unten auf „Nächste Karte“, um die nächste Aufgabe zu zeigen.'
+                  : 'Tap Next card to reveal the next prompt.',
+              placement: 'bottom',
+            },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
@@ -191,17 +211,249 @@ const PicoloGame = ({ route }) => {
 };
 
 
+const WHEEL_SIZE = 320;
+
+const CategoryWheel = ({ pools, currentPoolKey, language }) => {
+  const rotation = useRef(new Animated.Value(0)).current;
+  const poolList = Array.isArray(pools) && pools.length > 0 ? pools : [];
+  const segmentAngle = poolList.length > 0 ? 360 / poolList.length : 360;
+
+  useEffect(() => {
+    if (!poolList.length) {
+      return;
+    }
+    const rawIndex = poolList.findIndex((entry) => entry?.key === currentPoolKey);
+    const index = rawIndex >= 0 ? rawIndex : 0;
+    const baseAngle = index * segmentAngle + segmentAngle / 2;
+    const extraSpins = 2 + ((index + poolList.length) % 3);
+    const nextRotation = -(baseAngle + extraSpins * 360);
+    Animated.timing(rotation, {
+      toValue: nextRotation,
+      duration: 900 + extraSpins * 200,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start();
+  }, [poolList, currentPoolKey, rotation, segmentAngle]);
+
+  if (poolList.length === 0) {
+    return (
+      <View style={styles.wheelFallback}>
+        <Text style={styles.categoryLabel}>{language === 'de' ? 'Wird geladen...' : 'Loading...'}</Text>
+      </View>
+    );
+  }
+
+  const animatedRotation = rotation.interpolate({
+    inputRange: [-7200, 7200],
+    outputRange: ['-7200deg', '7200deg'],
+  });
+
+  const segmentNodes = poolList.map((pool, index) => {
+    const color = pool?.color || `hsla(${(index / poolList.length) * 360},65%,45%,0.85)`;
+    const rotationDeg = index * segmentAngle;
+    return (
+      <View
+        key={`segment-${pool?.key || index}`}
+        style={[styles.wheelSegment, { transform: [{ rotate: `${rotationDeg}deg` }] }]}
+      >
+        <View style={[styles.wheelSlice, { borderTopColor: color }]} />
+      </View>
+    );
+  });
+
+  const labelNodes = poolList.map((pool, index) => {
+    const label =
+      pool?.label?.[language] || pool?.label?.de || pool?.label?.en || pool?.name || pool?.key || 'Pool';
+    const midAngleDeg = index * segmentAngle + segmentAngle / 2;
+    const adjustedAngle = midAngleDeg - 90;
+    const radians = (adjustedAngle * Math.PI) / 180;
+    const radius = WHEEL_SIZE * 0.34;
+    const offsetX = Math.cos(radians) * radius;
+    const offsetY = Math.sin(radians) * radius;
+    const labelFontSize = Math.max(9.5, Math.min(16, 19 - poolList.length * 0.25));
+
+    return (
+      <View key={`label-${pool?.key || index}`} style={styles.wheelLabelWrapper} pointerEvents="none">
+        <Animated.View
+          style={[
+            styles.wheelLabelLine,
+            {
+              transform: [
+                { translateX: offsetX },
+                { translateY: offsetY },
+                { rotate: `${adjustedAngle}deg` },
+              ],
+            },
+          ]}
+        >
+          <Text style={[styles.wheelLabel, { fontSize: labelFontSize }]} numberOfLines={2} adjustsFontSizeToFit>
+            {label}
+          </Text>
+        </Animated.View>
+      </View>
+    );
+  });
+
+  return (
+    <View style={styles.wheelWrapper}>
+      <Animated.View style={[styles.wheel, { transform: [{ rotate: animatedRotation }] }]}>
+        {segmentNodes}
+        <View style={styles.wheelCenter} />
+      </Animated.View>
+      <Animated.View
+        style={[styles.wheelLabelsLayer, { transform: [{ rotate: animatedRotation }] }]}
+        pointerEvents="none"
+      >
+        {labelNodes}
+      </Animated.View>
+      <View style={styles.wheelPointer}>
+        <View style={styles.wheelPointerTip} />
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  categoryTarget: {
-    width: 160,
-    height: 160,
-    borderRadius: 80,
-    borderWidth: 3,
-    borderColor: 'rgba(255,255,255,0.35)',
+  screenStack: {
+    flex: 1,
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    alignItems: 'center',
+  },
+  wheelSection: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    minHeight: WHEEL_SIZE + 80,
+  },
+  cardSection: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wheelArea: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: WHEEL_SIZE + 30,
+    marginBottom: 8,
+    position: 'relative',
+  },
+  wheelWrapper: {
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+  },
+  wheel: {
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
+    borderRadius: WHEEL_SIZE / 2,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.15)',
+  },
+  wheelSegment: {
+    position: 'absolute',
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  wheelSlice: {
+    position: 'absolute',
+    width: 0,
+    height: 0,
+    borderTopWidth: WHEEL_SIZE / 2,
+    borderRightWidth: WHEEL_SIZE / 2,
+    borderLeftWidth: WHEEL_SIZE / 2,
+    borderRightColor: 'transparent',
+    borderLeftColor: 'transparent',
+    opacity: 0.9,
+  },
+  wheelLabelsLayer: {
+    position: 'absolute',
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
+    top: 0,
+    left: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wheelLabelWrapper: {
+    position: 'absolute',
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wheelLabelLine: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wheelLabel: {
+    width: WHEEL_SIZE * 0.44,
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    includeFontPadding: false,
+    textShadowColor: 'rgba(0,0,0,0.35)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  wheelCenter: {
+    width: WHEEL_SIZE * 0.28,
+    height: WHEEL_SIZE * 0.28,
+    borderRadius: (WHEEL_SIZE * 0.28) / 2,
     backgroundColor: 'rgba(0,0,0,0.35)',
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.35)',
+  },
+  wheelPointer: {
+    position: 'absolute',
+    top: -6,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 14,
+    borderRightWidth: 14,
+    borderBottomWidth: 22,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#fff',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOpacity: 0.45,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+  },
+  wheelPointerTip: {
+    position: 'absolute',
+    top: 8,
+    left: -8,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+  },
+  wheelFallback: {
+    width: WHEEL_SIZE,
+    height: WHEEL_SIZE,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 24,
+  },
+  revealHint: {
+    marginTop: 16,
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 14,
+    fontFamily: 'Quicksand_300Light',
+    textAlign: 'center',
+    lineHeight: 20,
   },
   categoryLabel: {
     color: 'white',
@@ -209,6 +461,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     paddingHorizontal: 12,
+    marginBottom: 12,
   },
   revealHint: {
     marginTop: 16,
@@ -221,6 +474,7 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
+
 
 
 

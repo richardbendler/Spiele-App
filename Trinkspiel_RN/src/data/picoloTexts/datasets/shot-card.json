@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "description": "Shot Karte Prompts"
+  },
+  "poolKey": "shot-card",
+  "items": [
+    {
+      "de": "Shot: Chaos-Duo",
+      "en": "Shot: chaos duo",
+      "drunkLevel": 8,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{targetList}} kippen jetzt je einen Shot für die beste Story des Abends.",
+          "en": "{{targetList}} each take a shot for telling the story of the night."
+        },
+        "target": {
+          "mode": "subset",
+          "countRange": [
+            1,
+            2
+          ],
+          "requireDrinker": true
+        }
+      },
+      "gating": {
+        "desiredMin": 6
+      },
+      "drinking": true
+    },
+    {
+      "de": "Shot: Matching Outfit",
+      "en": "Shot: matching outfit",
+      "drunkLevel": 8,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "Shot-Time für {{targetList}} – Outfit-Twins!",
+          "en": "Shot time for {{targetList}}—matching outfits!"
+        },
+        "target": {
+          "mode": "subset",
+          "countRange": [
+            1,
+            2
+          ],
+          "requireDrinker": true
+        }
+      },
+      "gating": {
+        "desiredMin": 6
+      },
+      "drinking": true
+    },
+    {
+      "de": "Shot: Overtime",
+      "en": "Shot: overtime",
+      "drunkLevel": 8,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{targetList}}, ihr schuldet der Runde einen Shot für euer Zuspätkommen.",
+          "en": "{{targetList}}, you owe the group a shot for showing up late."
+        },
+        "target": {
+          "mode": "subset",
+          "countRange": [
+            1,
+            2
+          ],
+          "requireDrinker": true
+        }
+      },
+      "gating": {
+        "desiredMin": 6
+      },
+      "drinking": true
+    },
+    {
+      "de": "Shot: Karaoke-Mut",
+      "en": "Shot: karaoke courage",
+      "drunkLevel": 7,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{targetList}} bekommen einen Shot, bevor sie die nächste Karaoke-Line übernehmen.",
+          "en": "{{targetList}} take a shot before leading the next karaoke line."
+        },
+        "target": {
+          "mode": "subset",
+          "countRange": [
+            1,
+            2
+          ],
+          "requireDrinker": true
+        }
+      },
+      "gating": {
+        "desiredMin": 5
+      },
+      "drinking": true
+    },
+    {
+      "de": "Shot: Blitz-Vote",
+      "en": "Shot: lightning vote",
+      "drunkLevel": 9,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "In 5 Sekunden zeigt auf zwei Personen. {{targetList}} trinken sofort einen Shot.",
+          "en": "Point at two people within 5 seconds. {{targetList}} take a shot immediately."
+        },
+        "target": {
+          "mode": "subset",
+          "countRange": [
+            1,
+            2
+          ],
+          "requireDrinker": true
+        }
+      },
+      "gating": {
+        "desiredMin": 7
+      },
+      "drinking": true
+    }
+  ]
+}

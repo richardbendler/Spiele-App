@@ -1,0 +1,408 @@
+{
+  "_meta": {
+    "description": "Reimen: Schlagfertige Wortketten für schnelle Zungen."
+  },
+  "poolKey": "rhyme",
+  "items": [
+    {
+      "de": "Reimrunde: Findet Reime auf �Haus� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Haus� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Licht� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Licht� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Hand� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Hand� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Zeit� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Zeit� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Meer� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Meer� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Tag� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Tag� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Nacht� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Nacht� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Ball� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Ball� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Herz� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Herz� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Mond� � wer h�ngt, nippt einen Schluck.",
+      "en": "Reimrunde: Findet Reime auf �Mond� � wer h�ngt, nippt einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Chaos� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Chaos� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Farbe� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Farbe� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Sommer� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Sommer� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Feder� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Feder� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Reise� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Reise� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Regen� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Regen� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Feuer� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Feuer� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Winter� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Winter� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Tempo� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Tempo� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Stra�e� � wer h�ngt, nimmt zwei Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Stra�e� � wer h�ngt, nimmt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Turbine� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Turbine� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Rakete� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Rakete� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Leuchte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Leuchte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Szene� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Szene� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Legende� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Legende� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Kante� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Kante� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Tinte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Tinte� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Beute� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Beute� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Flamme� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Flamme� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Koffer� � wer h�ngt, muss drei Schlucke nehmen.",
+      "en": "Reimrunde: Findet Reime auf �Koffer� � wer h�ngt, muss drei Schlucke nehmen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Paradoxon� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Paradoxon� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Galaxie� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Galaxie� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Serotonin� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Serotonin� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Katapult� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Katapult� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Hybris� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Hybris� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Kontinent� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Kontinent� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Satellit� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Satellit� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Karussell� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Karussell� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Horizont� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Horizont� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Mythos� � wer h�ngt, verteilt vier Schlucke.",
+      "en": "Reimrunde: Findet Reime auf �Mythos� � wer h�ngt, verteilt vier Schlucke.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Melatonin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Melatonin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Revolution� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Revolution� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Illusion� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Illusion� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Katastrophe� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Katastrophe� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Dimension� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Dimension� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Metronom� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Metronom� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Adrenalin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Adrenalin� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Residuum� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Residuum� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Polaroid� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Polaroid� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf �Labyrinth� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "en": "Reimrunde: Findet Reime auf �Labyrinth� � wer h�ngt, bestimmt, wer f�nf Schlucke nimmt.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

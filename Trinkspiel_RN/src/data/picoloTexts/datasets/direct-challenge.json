@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "description": "Herausforderung Prompts"
+  },
+  "poolKey": "direct-challenge",
+  "items": [
+    {
+      "de": "Herausforderung: Freeze Frame",
+      "en": "Challenge: freeze frame",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "Freeze, {{target}}! Halte 20 Sekunden lang die ikonischste Pose, die dir einfällt. Fail = 2 Schlucke.",
+          "en": "Freeze, {{target}}! Hold your most iconic pose for 20 seconds. Fail = drink 2 sips."
+        },
+        "target": {
+          "mode": "single"
+        }
+      },
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Remix",
+      "en": "Challenge: remix",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}}, rappe deinen Namen rückwärts über einen Beatbox-Loop der Runde. Missglückt? Trinke 2 Schlucke.",
+          "en": "{{target}}, rap your name backwards over the group’s beatbox loop. Mess it up? Drink 2 sips."
+        },
+        "target": {
+          "mode": "single"
+        }
+      },
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Emoji-Story",
+      "en": "Challenge: emoji story",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}}, erzähle eine dramatische Story nur mit Emoji-Pantomime. Alle anderen raten.",
+          "en": "{{target}}, tell a dramatic story only through emoji pantomime. Everyone else has to guess."
+        },
+        "target": {
+          "mode": "single"
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Herausforderung: Power-Playlist",
+      "en": "Challenge: power playlist",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}}, singe zwei Zeilen aus drei verschiedenen Genres. Jedes Stocken = 1 Schluck.",
+          "en": "{{target}}, sing two lines from three different genres. Every stumble = drink 1 sip."
+        },
+        "target": {
+          "mode": "single"
+        }
+      },
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Chaos-Block",
+      "en": "Challenge: chaos block",
+      "drunkLevel": 7,
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}}, baue aus allem auf dem Tisch einen Turm. Fällt er in 30 Sekunden, trink 3 Schlucke.",
+          "en": "{{target}}, build a tower from whatever is on the table. If it falls within 30 seconds, drink 3 sips."
+        },
+        "target": {
+          "mode": "single"
+        }
+      },
+      "drinking": true
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "description": "Wahrheit oder Pflicht Prompts"
+  },
+  "poolKey": "truth-dare-combo",
+  "items": [
+    {
+      "de": "Buttons: Crush oder Chaos",
+      "en": "Buttons: Crush or chaos",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it’s your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Wem im Raum hast du bereits eine eindeutig flirty Nachricht geschickt und warum?",
+          "en": "Truth: Who in this room have you sent an overly flirty message to, and why?"
+        },
+        "dare": {
+          "de": "Pflicht: Schicke deinem letzten Match eine spontane Sprachnachricht und spiel sie der Runde vor, sobald sie antworten.",
+          "en": "Dare: Send your latest match a spontaneous voice note and play their reply for the group."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttons: Screenshot-Roulette",
+      "en": "Buttons: Screenshot roulette",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, Wahrheit oder Pflicht? Entscheide schnell.",
+          "en": "{{target}}, truth or dare? Decide quickly."
+        },
+        "truth": {
+          "de": "Wahrheit: Zeig deinen chaotischsten Screenshot und erzähle die Story dazu.",
+          "en": "Truth: Show your messiest screenshot and tell the story behind it."
+        },
+        "dare": {
+          "de": "Pflicht: Lass die Runde eine Zeile diktieren und poste sie für 10 Minuten in deine Story.",
+          "en": "Dare: Let the group dictate a line and post it to your story for 10 minutes."
+        }
+      },
+      "drinking": true
+    },
+    {
+      "de": "Buttons: Erste Male",
+      "en": "Buttons: First times",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, pick your poison.",
+          "en": "{{target}}, pick your poison."
+        },
+        "truth": {
+          "de": "Wahrheit: Welches „erste Mal“ würdest du gern noch einmal erleben und was würdest du diesmal anders machen?",
+          "en": "Truth: Which “first time” would you relive and what would you change?"
+        },
+        "dare": {
+          "de": "Pflicht: Spiele dein erstes Date pantomimisch in 30 Sekunden nach – inklusive Soundeffekten.",
+          "en": "Dare: Reenact your first date in 30 seconds—sound effects included."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttons: Chaos-Playlist",
+      "en": "Buttons: chaos playlist",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, tippe deinen Vibe.",
+          "en": "{{target}}, tap your vibe."
+        },
+        "truth": {
+          "de": "Wahrheit: Welcher Song erinnert dich hier an jemanden und warum?",
+          "en": "Truth: Which song reminds you of someone in this room and why?"
+        },
+        "dare": {
+          "de": "Pflicht: Lass die Runde einen Song wählen und performe 15 Sekunden Lip-Sync.",
+          "en": "Dare: Let the group pick a song and lip-sync 15 seconds."
+        }
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttons: Spicy Roulette",
+      "en": "Buttons: spicy roulette",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, kein Zurück mehr.",
+          "en": "{{target}}, no turning back."
+        },
+        "truth": {
+          "de": "Wahrheit: Welches Risiko in Liebesdingen bereust du bis heute?",
+          "en": "Truth: What romantic risk do you still regret?"
+        },
+        "dare": {
+          "de": "Pflicht: Schick einer Person im Raum einen geheimen Prompt deiner Wahl (Text oder Emoji) und erzähle später, was passiert ist.",
+          "en": "Dare: Send someone in the room a secret prompt (text or emoji) and report later what happened."
+        }
+      },
+      "drinking": false
+    }
+  ]
+}

@@ -26,13 +26,11 @@ const menuStyles = StyleSheet.create({
     position: 'relative',
     alignItems: 'center',       // Horizontale Zentrierung
     justifyContent: 'center',   // Vertikale Zentrierung
-    //backgroundColor: primaryColor, 
   },
   flexiblePageContainer: {
     flex: 1,
     width: '100%',
     height: '100%',
-    //backgroundColor: primaryColor, 
   },
   //Bereich, der genutzt werden soll
   smallPageContainer: {
@@ -182,6 +180,13 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,  // Abgerundete Ecken
     padding: 10,  // Innenabstand
     margin: 10,  // Außenabstand
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.85)',
+    shadowColor: '#000',
+    shadowOpacity: 0.45,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 6,
+    elevation: 5,
   },
   
   //Game Info Button -> Zeigt Spielerklärungen an

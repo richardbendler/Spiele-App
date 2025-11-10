@@ -1,6 +1,6 @@
 // In einer Datei namens VorglühenGame.js
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
@@ -13,7 +13,7 @@ import InfoHint from './sublements/InfoHint';
 const Activity = ({route }) => {
   const { words } = shuffleArrayFisherYates(route.params);
 
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, players, language } = useContext(VariablesContext);
 
   const [wordsIndex, setWordsIndex] = useState(0);
   const showNextQuestion = () => {
@@ -30,11 +30,20 @@ const Activity = ({route }) => {
   const { tutorialEnabled, setTutorialEnabled } = React.useContext(require('../../VariablesContext').VariablesContext);
   const [tutorialStep, setTutorialStep] = React.useState(0);
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+    <View style={styles.background}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
           <TouchableOpacity onPress={showNextQuestion} style={{width: '100%', height: '100%',justifyContent: 'center',alignItems: 'center',}}>
-            <Question question={words && words.length > 0 ? replaceHashtagsWithoutDuplicates(words[wordsIndex].word) : ''}/>
+            <Question
+              question={
+                words && words.length > 0
+                  ? replaceHashtagsWithoutDuplicates(words[wordsIndex].word, {
+                      players,
+                      language,
+                    })
+                  : ''
+              }
+            />
           </TouchableOpacity>
         </View>
         <HandleFeedback texts={words} textsIndex={wordsIndex} table={'game_activity_words'}/>
@@ -56,9 +65,15 @@ const Activity = ({route }) => {
         <InfoHint />
         {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
 
 export default Activity;
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
+});

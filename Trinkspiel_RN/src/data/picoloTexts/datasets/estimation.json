@@ -1,0 +1,151 @@
+{
+  "_meta": {
+    "description": "Schätzen: Wer kommt einer Zahl am nächsten?"
+  },
+  "poolKey": "estimation",
+  "items": [
+    {
+      "de": "Schätzen: Apps",
+      "en": "Estimate: apps",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Apps nutzt eine Person durchschnittlich pro Tag?",
+              "en": "How many apps does the average person use per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 9. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: around 9. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Schätzen: Zeitreise",
+      "en": "Estimate: time travel",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Vor wie vielen Jahren kam das erste iPhone raus?",
+              "en": "How many years ago did the first iPhone launch?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "2007 – rechnet selbst! Näheste Antwort verteilt 2 Schlucke.",
+              "en": "2007—do the math! Closest guess hands out 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Schätzen: Drinks",
+      "en": "Estimate: drinks",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Liter Wasser sollte man angeblich pro Tag trinken?",
+              "en": "How many liters of water are you supposedly meant to drink per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Zwischen 2 und 3 Liter – wer näher liegt, verteilt 2 Schlucke.",
+              "en": "Between 2 and 3 liters—closest guess hands out 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": true
+    },
+    {
+      "de": "Schätzen: Streaming",
+      "en": "Estimate: streaming",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten Videoinhalte streamt eine Person in Deutschland durchschnittlich pro Tag?",
+              "en": "How many minutes of video does the average person in Germany stream per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Rund 70 Minuten. Nächstes Team verteilt 3 Schlucke.",
+              "en": "Roughly 70 minutes. Closest team hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal"
+            }
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Schätzen: Party-Playlist",
+      "en": "Estimate: party playlist",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten dauert ein durchschnittlicher Popsong aus den Charts aktuell?",
+              "en": "How many minutes does an average current pop hit last?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Etwa 3 Minuten 10 Sekunden. Wer näher dran ist, verteilt 2 Schlucke.",
+              "en": "Roughly 3 minutes 10 seconds. Closest guess hands out 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false
+    }
+  ]
+}

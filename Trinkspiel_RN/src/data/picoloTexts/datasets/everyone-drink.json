@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "description": "Alle die … Prompts"
+  },
+  "poolKey": "everyone-drink",
+  "items": [
+    {
+      "de": "Alle, die heute schon einen Screenshot verschickt haben, trinken 1 Schluck.",
+      "en": "Everyone who has sent a screenshot today drinks 1 sip.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon einmal eine Party ghosteten, trinken 2 Schlucke.",
+      "en": "Everyone who has ghosted a party before drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die lieber Sprachnachrichten als Texte schicken, trinken 1 Schluck.",
+      "en": "Everyone who prefers voice notes over texts drinks 1 sip.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die dieses Jahr schon ein neues Hobby ausprobiert haben, trinken 2 Schlucke.",
+      "en": "Everyone who tried a new hobby this year drinks 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die mehr als drei Streaming-Abos zahlen, trinken 2 Schlucke.",
+      "en": "Everyone paying for more than three streaming subscriptions drinks 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

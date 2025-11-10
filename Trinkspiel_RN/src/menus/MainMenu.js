@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ImageBackground,
   ScrollView,
   useWindowDimensions,
   Linking,
@@ -16,8 +15,6 @@ import Settings from './sublements/Settings';
 import { useTranslation } from '../i18n';
 
 const CARD_BG = 'rgba(18,14,12,0.96)';
-const OVERLAY_SHADE = 'rgba(10,14,22,0.78)';
-
 // Stable keys used across app
 const translationKeyMap = {
   'The One': 'theOne',
@@ -395,8 +392,7 @@ function MainMenu({ navigation }) {
   const expandedGame = expandedKey ? allGameCards.find((g) => g.key === expandedKey) : null;
 
   return (
-    <ImageBackground source={require('../../assets/images/bar/bar_background_filled.png')} style={styles.background}>
-      <View style={[styles.overlay, { backgroundColor: OVERLAY_SHADE }]} />
+    <View style={styles.background}>
       <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View style={styles.titleGroup}>
@@ -487,12 +483,12 @@ function MainMenu({ navigation }) {
       ) : null}
 
       <Settings />
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  background: { flex: 1 },
+  background: { flex: 1, backgroundColor: '#366350' },
   overlay: { ...StyleSheet.absoluteFillObject },
   scrollContainer: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 96 },
 

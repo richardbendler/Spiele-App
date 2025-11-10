@@ -1,0 +1,208 @@
+{
+  "_meta": {
+    "description": "Regel: Hausregeln und neue Mechaniken für die Runde."
+  },
+  "poolKey": "rule",
+  "items": [
+    {
+      "de": "Regel: Wer seinen Drink abstellt, muss �Cheers� sagen � sonst trinken.",
+      "en": "Regel: Wer seinen Drink abstellt, muss �Cheers� sagen � sonst trinken.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Bis auf Weiteres darf niemand das Wort �Prost� sagen. Wer es tut, trinkt.",
+      "en": "Regel: Bis auf Weiteres darf niemand das Wort �Prost� sagen. Wer es tut, trinkt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Vor jedem neuen Prompt m�ssen alle einmal schnipsen. Wer es vergisst, nippt.",
+      "en": "Regel: Vor jedem neuen Prompt m�ssen alle einmal schnipsen. Wer es vergisst, nippt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Die Person links vom Host ist ab jetzt Echo und wiederholt jeden ersten Satzteil � vergisst sie es, trinkt sie.",
+      "en": "Regel: Die Person links vom Host ist ab jetzt Echo und wiederholt jeden ersten Satzteil � vergisst sie es, trinkt sie.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Alle sprechen bis zur n�chsten Karte im Moderatorenton. Wer rausf�llt, trinkt.",
+      "en": "Regel: Alle sprechen bis zur n�chsten Karte im Moderatorenton. Wer rausf�llt, trinkt.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer �ich� sagt, trinkt zwei Schlucke.",
+      "en": "Regel: Wer �ich� sagt, trinkt zwei Schlucke.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Ber�hrt jemand seine Haare, muss er oder sie trinken.",
+      "en": "Regel: Ber�hrt jemand seine Haare, muss er oder sie trinken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Vor dem Trinken muss ein neuer Toast erfunden werden.",
+      "en": "Regel: Vor dem Trinken muss ein neuer Toast erfunden werden.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Die Sitzenbleiber*innen trinken jedes Mal, wenn jemand aufsteht.",
+      "en": "Regel: Die Sitzenbleiber*innen trinken jedes Mal, wenn jemand aufsteht.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer lacht, zeigt auf jemanden � beide trinken.",
+      "en": "Regel: Wer lacht, zeigt auf jemanden � beide trinken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: W�hle ein Tabuwort f�r Namen. Wer es benutzt, trinkt.",
+      "en": "Regel: W�hle ein Tabuwort f�r Namen. Wer es benutzt, trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Jede*r bekommt einen neuen Namen. Alte Namen kosten drei Schlucke.",
+      "en": "Regel: Jede*r bekommt einen neuen Namen. Alte Namen kosten drei Schlucke.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Vor jedem Schluck musst du jemandem ein Kompliment machen.",
+      "en": "Regel: Vor jedem Schluck musst du jemandem ein Kompliment machen.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer Fragen beantwortet, darf nur singen oder tanzen � sonst trinken.",
+      "en": "Regel: Wer Fragen beantwortet, darf nur singen oder tanzen � sonst trinken.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Setzt einen imagin�ren Hut auf. Wer ihn fallen l�sst (aka vergisst), trinkt.",
+      "en": "Regel: Setzt einen imagin�ren Hut auf. Wer ihn fallen l�sst (aka vergisst), trinkt.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Jede*r muss jemanden mit einem neuen Kosenamen ansprechen.",
+      "en": "Regel: Jede*r muss jemanden mit einem neuen Kosenamen ansprechen.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Vor jedem Drink fl�stert ihr jemandem etwas Nettes ins Ohr.",
+      "en": "Regel: Vor jedem Drink fl�stert ihr jemandem etwas Nettes ins Ohr.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Niemand darf �nein� sagen. Passiert es doch, trinkt die Person doppelt.",
+      "en": "Regel: Niemand darf �nein� sagen. Passiert es doch, trinkt die Person doppelt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Jede Aussage muss mit �ehrlich gesagt� starten.",
+      "en": "Regel: Jede Aussage muss mit �ehrlich gesagt� starten.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer sich selbst ber�hrt, w�hrend er oder sie lacht, trinkt.",
+      "en": "Regel: Wer sich selbst ber�hrt, w�hrend er oder sie lacht, trinkt.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Vor jedem Drink musst du jemanden anstarren und �Dein Move� sagen.",
+      "en": "Regel: Vor jedem Drink musst du jemanden anstarren und �Dein Move� sagen.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Niemand darf seine Beine schlie�en. Wer es doch tut, trinkt.",
+      "en": "Regel: Niemand darf seine Beine schlie�en. Wer es doch tut, trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Jede*r spricht die n�chste Runde nur noch fl�sternd.",
+      "en": "Regel: Jede*r spricht die n�chste Runde nur noch fl�sternd.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer jemanden l�nger als drei Sekunden anschaut, muss ihm oder ihr etwas Pikantes zufl�stern oder trinken.",
+      "en": "Regel: Wer jemanden l�nger als drei Sekunden anschaut, muss ihm oder ihr etwas Pikantes zufl�stern oder trinken.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Alle S�tze enden mit ��heute Nacht.� � wer es vergisst, trinkt.",
+      "en": "Regel: Alle S�tze enden mit ��heute Nacht.� � wer es vergisst, trinkt.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+{
+  "_meta": {
+    "description": "Buttern: Begriffe in unterschiedlichen Schwierigkeitsgraden runterrattern."
+  },
+  "poolKey": "buttern",
+  "items": [
+    {
+      "de": "Buttern: Nerd-Runden",
+      "en": "Butter round: nerd mode",
+      "drunkLevel": 6,
+      "tags": [
+        "challenge"
+      ],
+      "payload": {
+        "type": "buttern",
+        "rewardPerCorrect": 1,
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 3,
+            "label": {
+              "de": "Schwer: Legacy & Deep Cuts",
+              "en": "Hard: legacy & deep cuts"
+            },
+            "topics": [
+              {
+                "de": "Legacy-Programmiersprachen",
+                "en": "Legacy programming languages"
+              },
+              {
+                "de": "Tiefsee-Tiere",
+                "en": "Deep-sea animals"
+              },
+              {
+                "de": "Unbekannte Mythologien",
+                "en": "Obscure mythologies"
+              }
+            ]
+          },
+          {
+            "min": 4,
+            "max": 6,
+            "label": {
+              "de": "Medium: Geeky aber machbar",
+              "en": "Medium: geeky but doable"
+            },
+            "topics": [
+              {
+                "de": "Indie-Games",
+                "en": "Indie games"
+              },
+              {
+                "de": "Seltene Brettspiele",
+                "en": "Rare board games"
+              },
+              {
+                "de": "Produktivitäts-Apps",
+                "en": "Productivity apps"
+              }
+            ]
+          },
+          {
+            "min": 7,
+            "max": 9,
+            "label": {
+              "de": "Easy: Crowd Pleaser",
+              "en": "Easy: crowd pleaser"
+            },
+            "topics": [
+              {
+                "de": "Komfort-Essen",
+                "en": "Comfort foods"
+              },
+              {
+                "de": "Sommer-Hits",
+                "en": "Summer hits"
+              },
+              {
+                "de": "Netflix-Komödien",
+                "en": "Netflix comedies"
+              }
+            ]
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttern: Party-Themen",
+      "en": "Butter round: party themes",
+      "drunkLevel": 6,
+      "tags": [
+        "challenge"
+      ],
+      "payload": {
+        "type": "buttern",
+        "rewardPerCorrect": 2,
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 3,
+            "label": {
+              "de": "Schwer: Szene & Insider",
+              "en": "Hard: scene & insider picks"
+            },
+            "topics": [
+              {
+                "de": "Cocktail-Klassiker",
+                "en": "Classic cocktails"
+              },
+              {
+                "de": "Underrated Festivals",
+                "en": "Underrated festivals"
+              },
+              {
+                "de": "Afterhour-Hotspots",
+                "en": "After-hours hotspots"
+              }
+            ]
+          },
+          {
+            "min": 4,
+            "max": 6,
+            "label": {
+              "de": "Medium: Wochenend-Vibes",
+              "en": "Medium: weekend vibes"
+            },
+            "topics": [
+              {
+                "de": "Festival-Ausrüstung",
+                "en": "Festival gear"
+              },
+              {
+                "de": "Trinkspiele",
+                "en": "Drinking games"
+              },
+              {
+                "de": "Rückfahrt-Ausreden",
+                "en": "Excuses for leaving early"
+              }
+            ]
+          },
+          {
+            "min": 7,
+            "max": 9,
+            "label": {
+              "de": "Easy: Feierabend-Stuff",
+              "en": "Easy: after-work stuff"
+            },
+            "topics": [
+              {
+                "de": "Sommerdrinks",
+                "en": "Summer drinks"
+              },
+              {
+                "de": "Urlaubsorte",
+                "en": "Holiday destinations"
+              },
+              {
+                "de": "Late-Night-Snacks",
+                "en": "Late-night snacks"
+              }
+            ]
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttern: Popkultur",
+      "en": "Butter round: pop culture",
+      "drunkLevel": 6,
+      "tags": [
+        "challenge"
+      ],
+      "payload": {
+        "type": "buttern",
+        "rewardPerCorrect": 1,
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 3,
+            "label": {
+              "de": "Schwer: Deep References",
+              "en": "Hard: deep references"
+            },
+            "topics": [
+              {
+                "de": "Obskure Serien",
+                "en": "Obscure TV series"
+              },
+              {
+                "de": "Arthouse-Filme",
+                "en": "Arthouse movies"
+              },
+              {
+                "de": "Unverfilmte Bücher",
+                "en": "Books that were never adapted"
+              }
+            ]
+          },
+          {
+            "min": 4,
+            "max": 6,
+            "label": {
+              "de": "Medium: Pop Nerdiness",
+              "en": "Medium: pop nerdiness"
+            },
+            "topics": [
+              {
+                "de": "Plot Twists",
+                "en": "Plot twists"
+              },
+              {
+                "de": "Sitcom-Moms",
+                "en": "Sitcom moms"
+              },
+              {
+                "de": "Dance-Challenges",
+                "en": "Dance challenges"
+              }
+            ]
+          },
+          {
+            "min": 7,
+            "max": 9,
+            "label": {
+              "de": "Easy: Mainstream Love",
+              "en": "Easy: mainstream love"
+            },
+            "topics": [
+              {
+                "de": "Hits aus den 2000ern",
+                "en": "Hits from the 2000s"
+              },
+              {
+                "de": "Snack-Klassiker",
+                "en": "Snack classics"
+              },
+              {
+                "de": "Promi-Crushes",
+                "en": "Celebrity crushes"
+              }
+            ]
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttern: Reise-Träume",
+      "en": "Butter round: travel dreams",
+      "drunkLevel": 5,
+      "tags": [
+        "challenge"
+      ],
+      "payload": {
+        "type": "buttern",
+        "rewardPerCorrect": 1,
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 3,
+            "label": {
+              "de": "Schwer: Fernweh-Projekte",
+              "en": "Hard: wanderlust projects"
+            },
+            "topics": [
+              {
+                "de": "Ungewöhnliche Backpacking-Routen",
+                "en": "Unusual backpacking routes"
+              },
+              {
+                "de": "Extreme Roadtrips",
+                "en": "Extreme road trips"
+              },
+              {
+                "de": "Mythische Inseln",
+                "en": "Mythical islands"
+              }
+            ]
+          },
+          {
+            "min": 4,
+            "max": 6,
+            "label": {
+              "de": "Medium: Traumurlaube",
+              "en": "Medium: dream vacations"
+            },
+            "topics": [
+              {
+                "de": "Bucket-List-Städte",
+                "en": "Bucket list cities"
+              },
+              {
+                "de": "Naturspektakel",
+                "en": "Nature spectacles"
+              },
+              {
+                "de": "Legendäre Bahnreisen",
+                "en": "Legendary train rides"
+              }
+            ]
+          },
+          {
+            "min": 7,
+            "max": 9,
+            "label": {
+              "de": "Easy: Urlaubsgefühle",
+              "en": "Easy: vacation vibes"
+            },
+            "topics": [
+              {
+                "de": "Pool-Drinks",
+                "en": "Poolside drinks"
+              },
+              {
+                "de": "Souvenir-Klassiker",
+                "en": "Classic souvenirs"
+              },
+              {
+                "de": "Urlaubsplaylist-Songs",
+                "en": "Vacation playlist songs"
+              }
+            ]
+          }
+        ]
+      },
+      "drinking": false
+    },
+    {
+      "de": "Buttern: Chaos-WG",
+      "en": "Butter round: chaotic flat-share",
+      "drunkLevel": 7,
+      "tags": [
+        "challenge"
+      ],
+      "payload": {
+        "type": "buttern",
+        "rewardPerCorrect": 2,
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 3,
+            "label": {
+              "de": "Schwer: Worst-Case-Haushalt",
+              "en": "Hard: worst-case household"
+            },
+            "topics": [
+              {
+                "de": "Peinliche Kühlschrankfunde",
+                "en": "Embarrassing fridge finds"
+              },
+              {
+                "de": "Unlösbare Mitbewohner-Regeln",
+                "en": "Impossible roommate rules"
+              },
+              {
+                "de": "Improvisierte Putzgeräte",
+                "en": "Improvised cleaning gadgets"
+              }
+            ]
+          },
+          {
+            "min": 4,
+            "max": 6,
+            "label": {
+              "de": "Medium: WG-Alltag",
+              "en": "Medium: shared flat everyday life"
+            },
+            "topics": [
+              {
+                "de": "Unvergessliche Einweihungsfeiern",
+                "en": "Unforgettable housewarmings"
+              },
+              {
+                "de": "Netflix-Abende",
+                "en": "Netflix nights"
+              },
+              {
+                "de": "Küchen-Experimente",
+                "en": "Kitchen experiments"
+              }
+            ]
+          },
+          {
+            "min": 7,
+            "max": 9,
+            "label": {
+              "de": "Easy: Wohlfühl-Modus",
+              "en": "Easy: cozy mode"
+            },
+            "topics": [
+              {
+                "de": "Feelgood-Serien",
+                "en": "Feelgood shows"
+              },
+              {
+                "de": "Schnelle Komfortspeisen",
+                "en": "Quick comfort foods"
+              },
+              {
+                "de": "Sonntagsrituale",
+                "en": "Sunday rituals"
+              }
+            ]
+          }
+        ]
+      },
+      "drinking": false
+    }
+  ]
+}

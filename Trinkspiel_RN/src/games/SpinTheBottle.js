@@ -1,9 +1,9 @@
 ﻿// Import necessary React and React Native modules
 import React, { useState, useContext, useRef, useMemo } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
-import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { deleteHashtags, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
 import TutorialOverlay from './sublements/TutorialOverlay';
@@ -158,7 +158,7 @@ const SpinTheBottle = ({ route }) => {
   });
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+    <View style={styles.background}>
 
         <View style={{flex: 1, height:'100%'}}>
           <View style={{height: '20%', justifyContent: 'center', alignItems: 'center',}}></View>
@@ -204,13 +204,17 @@ const SpinTheBottle = ({ route }) => {
         />
         {/* Regelbutton ausgeblendet für Flaschendrehen */}
 
-    </ImageBackground>
+    </View>
   );
 };
 
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

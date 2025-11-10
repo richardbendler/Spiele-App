@@ -38,7 +38,7 @@ import SecretMission from "./src/games/SecretMission";
 import { VariablesContext } from "./VariablesContext";
 
 //Import von Hilfsfunktionen
-import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
+import { shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
 
 import { enableScreens } from "react-native-screens";
 enableScreens();
