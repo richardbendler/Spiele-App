@@ -5,400 +5,400 @@
   "poolKey": "category",
   "items": [
     {
-      "de": "Kategorie: Obstsorten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Obstsorten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Obstsorten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Fruit varieties — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Pastaformen � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Pastaformen � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Pastaformen — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Pasta shapes — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Haustiere � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Haustiere � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Haustiere — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Pets — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Kaffeespezialit�ten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Kaffeespezialit�ten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Kaffeespezialitäten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Coffee specialties — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Eissorten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Eissorten � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Eissorten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Ice cream flavors — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Feiertage � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Feiertage � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Feiertage — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Holidays — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Fr�hst�cksgerichte � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Fr�hst�cksgerichte � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Frühstücksgerichte — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Breakfast dishes — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Serien aus der Kindheit � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Serien aus der Kindheit � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Serien aus der Kindheit — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Childhood TV shows — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Emojis, die du zu oft benutzt � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Emojis, die du zu oft benutzt � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Emojis, die du zu oft benutzt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Emojis you overuse — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Brettspiele � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Kategorie: Brettspiele � wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "de": "Kategorie: Brettspiele — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Board games — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Songs mit St�dtenamen � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Songs mit St�dtenamen � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Songs mit Städtenamen — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Songs with city names — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Cocktails mit Rum � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Cocktails mit Rum � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Cocktails mit Rum — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Rum cocktails — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Marken aus deiner Kindheit � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Marken aus deiner Kindheit � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Marken aus deiner Kindheit — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Brands from your childhood — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Dinge, die glitzern � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Dinge, die glitzern � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Dinge, die glitzern — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Sparkly things — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Podcasts, die du weiterempfiehlst � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Podcasts, die du weiterempfiehlst � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Podcasts, die du weiterempfiehlst — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Podcasts you would recommend — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Essenswitze � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Essenswitze � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Essenswitze — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Food jokes — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Outdoor-Hobbys � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Outdoor-Hobbys � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Outdoor-Hobbys — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Outdoor hobbies — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Modetrends der 2000er � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Modetrends der 2000er � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Modetrends der 2000er — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: 2000s fashion trends — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Deutschsprachige Rapper*innen � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Deutschsprachige Rapper*innen � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Deutschsprachige Rapper*innen — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: German-speaking rappers — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Comedy-Formate � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
-      "en": "Kategorie: Comedy-Formate � wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "de": "Kategorie: Comedy-Formate — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
+      "en": "Category: Comedy formats — whoever hesitates or repeats takes two sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Filme mit Plot Twist � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Filme mit Plot Twist � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Filme mit Plot Twist — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Movies with plot twists — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Mythen und Legenden � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Mythen und Legenden � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Mythen und Legenden — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Myths and legends — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Bar-Spiele � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Bar-Spiele � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Bar-Spiele — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Bar games — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Produktivit�ts-Apps � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Produktivit�ts-Apps � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Produktivitäts-Apps — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Productivity apps — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Acts, die du live gesehen hast � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Acts, die du live gesehen hast � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Acts, die du live gesehen hast — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Acts you have seen live — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Food-Truck-Spezialit�ten � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Food-Truck-Spezialit�ten � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Food-Truck-Spezialitäten — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Food truck specialties — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Memes, die nie sterben � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Memes, die nie sterben � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Memes, die nie sterben — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Memes that never die — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: W�rter mit nur einer Silbe � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: W�rter mit nur einer Silbe � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Wörter mit nur einer Silbe — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: One-syllable words — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: TikTok-Trends, die dich nerven � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: TikTok-Trends, die dich nerven � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: TikTok-Trends, die dich nerven — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: TikTok trends that annoy you — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Improvisierte Trinkspiele � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
-      "en": "Kategorie: Improvisierte Trinkspiele � wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "de": "Kategorie: Improvisierte Trinkspiele — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
+      "en": "Category: Improvised drinking games — whoever hesitates or repeats has to take three sips.",
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Songs, die bei Dates verboten sind � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Songs, die bei Dates verboten sind � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Songs, die bei Dates verboten sind — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Songs that are banned on dates — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Guilty-Pleasure-Karaoke � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Guilty-Pleasure-Karaoke � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Guilty-Pleasure-Karaoke — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Guilty pleasure karaoke songs — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Haushaltsger�te, die niemand braucht � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Haushaltsger�te, die niemand braucht � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Haushaltsgeräte, die niemand braucht — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Household gadgets nobody needs — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Filme mit legend�ren Kuss-Szenen � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Filme mit legend�ren Kuss-Szenen � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Filme mit legendären Kuss-Szenen — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Movies with legendary kissing scenes — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Drinks mit mindestens drei Zutaten � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Drinks mit mindestens drei Zutaten � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Drinks mit mindestens drei Zutaten — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Drinks with at least three ingredients — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Nicknames f�r dubiose Chats � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Nicknames f�r dubiose Chats � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Nicknames für dubiose Chats — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Nicknames for sketchy chats — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Wahrheit-oder-Pflicht-Klassiker � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Wahrheit-oder-Pflicht-Klassiker � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Wahrheit-oder-Pflicht-Klassiker — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Truth-or-dare classics — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Festival-Fails � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Festival-Fails � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Festival-Fails — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Festival fails — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Peinliche Schulprojekte � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Peinliche Schulprojekte � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Peinliche Schulprojekte — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Embarrassing school projects — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Dating-App-Openers � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
-      "en": "Kategorie: Dating-App-Openers � wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "de": "Kategorie: Dating-App-Openers — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
+      "en": "Category: Dating app openers — whoever hesitates or repeats hands out four sips to anyone.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Orte f�r spontane K�sse � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Orte f�r spontane K�sse � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Orte für spontane Küsse — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Places for spontaneous kisses — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Synonyme f�r sexy � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Synonyme f�r sexy � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Synonyme für sexy — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Synonyms for sexy — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: S�tze, die du nur betrunken sagst � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: S�tze, die du nur betrunken sagst � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Sätze, die du nur betrunken sagst — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Sentences you only say when drunk — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Fantasien mit Promis � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Fantasien mit Promis � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Fantasien mit Promis — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Fantasies involving celebrities — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Vorlieben, die man nicht beim ersten Date droppt � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Vorlieben, die man nicht beim ersten Date droppt � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Vorlieben, die man nicht beim ersten Date droppt — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Preferences you should not drop on a first date — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Ber�hrungen, die G�nsehaut machen � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Ber�hrungen, die G�nsehaut machen � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Berührungen, die Gänsehaut machen — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Touches that give you goosebumps — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Songs f�r Striptease � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Songs f�r Striptease � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Songs für Striptease — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Songs for striptease — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: W�rter, die wie ein Fetisch klingen � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: W�rter, die wie ein Fetisch klingen � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Wörter, die wie ein Fetisch klingen — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Words that sound like a fetish — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Rollenspiele � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Rollenspiele � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Rollenspiele — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Role-play ideas — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
       "drinking": true
     },
     {
-      "de": "Kategorie: Flirtmoves, die verboten geh�ren � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
-      "en": "Kategorie: Flirtmoves, die verboten geh�ren � wer stockt oder etwas wiederholt, bestimmt, wer f�nf Schlucke nehmen muss.",
+      "de": "Kategorie: Flirtmoves, die verboten gehören — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
+      "en": "Category: Flirt moves that should be banned — whoever hesitates or repeats decides who has to take five sips.",
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,

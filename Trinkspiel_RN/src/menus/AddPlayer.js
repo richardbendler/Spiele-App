@@ -24,7 +24,7 @@ const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
   };
 
   return (
-    <View style={styles.inputCard}>
+    <View style={styles.playerInputSection}>
       <Text style={styles.sectionLabel}>{copy.inputTitle}</Text>
       <Text style={styles.sectionHint}>{copy.inputSubtitle}</Text>
       <View style={styles.inputRow}>
@@ -38,8 +38,8 @@ const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
           onSubmitEditing={handler}
           blurOnSubmit={false}
         />
-        <TouchableOpacity onPress={handler} style={styles.compactAddButton} activeOpacity={0.9}>
-          <Text style={styles.compactAddButtonText}>{copy.addButton}</Text>
+        <TouchableOpacity onPress={handler} style={styles.addPlayerButton} activeOpacity={0.9}>
+          <Text style={styles.addPlayerButtonText}>{copy.addButton}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -120,8 +120,6 @@ const AddPlayer = ({ navigation, route }) => {
         <Text style={styles.screenTitle}>{addPlayerText.screenTitle}</Text>
         <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
-        <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
-
         <View style={styles.playerListCard}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>{addPlayerText.listHeader}</Text>
@@ -141,6 +139,8 @@ const AddPlayer = ({ navigation, route }) => {
               ))}
             </View>
           )}
+          <View style={styles.cardDivider} />
+          <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
         </View>
 
         {players.length > 0 ? (
@@ -252,14 +252,8 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     flexWrap: 'wrap',
   },
-  inputCard: {
-    backgroundColor: "rgba(19, 23, 32, 0.85)",
-    borderRadius: 22,
-    padding: 20,
-    marginBottom: 24,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.08)",
-    width: '100%',
+  playerInputSection: {
+    paddingTop: 16,
   },
   sectionLabel: {
     fontSize: 18,
@@ -274,31 +268,33 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   inputRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    width: '100%',
     marginTop: 18,
+    flexDirection: 'column',
+    alignItems: 'stretch',
   },
   nameInput: {
     backgroundColor: "rgba(255,255,255,0.08)",
     borderRadius: 14,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    flex: 1,
+    width: '100%',
     color: "white",
     fontFamily: "Quicksand_300Bold",
+    minHeight: 48,
+    fontSize: 16,
   },
-  compactAddButton: {
-    marginLeft: 12,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
+  addPlayerButton: {
+    marginTop: 12,
+    paddingVertical: 14,
     borderRadius: 14,
     backgroundColor: "#E5C185",
+    alignItems: 'center',
   },
-  compactAddButtonText: {
+  addPlayerButtonText: {
     color: "#241D18",
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: "Quicksand_300Bold",
-    letterSpacing: 0.5,
   },
   playerListCard: {
     backgroundColor: "rgba(12, 15, 21, 0.9)",
@@ -308,6 +304,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
     width: '100%',
+  },
+  cardDivider: {
+    height: 1,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    marginTop: 24,
+    marginBottom: 12,
   },
   clearButton: {
     alignSelf: 'flex-end',
