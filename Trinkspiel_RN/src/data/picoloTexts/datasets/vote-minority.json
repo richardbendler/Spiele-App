@@ -85,6 +85,231 @@
       },
       "drinking": false,
       "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat heute am wenigsten aufs Handy geschaut? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer hat heute am wenigsten aufs Handy geschaut? Minority drinks 2 sips.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer kennt die meisten Serien-Intros? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer kennt die meisten Serien-Intros? Minority drinks 3 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer steht am fruehesten auf? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer steht am fruehesten auf? Minority drinks 4 sips.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer loescht staendig Fotos? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer loescht staendig Fotos? Minority drinks 2 sips.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat den verruecktesten Traum zuletzt gehabt? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer hat den verruecktesten Traum zuletzt gehabt? Minority drinks 3 sips.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer kauft die meisten Snacks? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer kauft die meisten Snacks? Minority drinks 4 sips.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer nutzt am meisten Notizen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer nutzt am meisten Notizen? Minority drinks 2 sips.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer schreibt die kuerzesten Nachrichten? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer schreibt die kuerzesten Nachrichten? Minority drinks 3 sips.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat die groessten Kopfhoerer? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer hat die groessten Kopfhoerer? Minority drinks 4 sips.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer haelt am laengsten durch ohne Social Media? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer haelt am laengsten durch ohne Social Media? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer verpasst am ehesten den Bus? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer verpasst am ehesten den Bus? Minority drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer bestellt am meisten Kaffee? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer bestellt am meisten Kaffee? Minority drinks 4 sips.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer vergisst Termine? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer vergisst Termine? Minority drinks 2 sips.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer plant alles durch? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer plant alles durch? Minority drinks 3 sips.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat den wildesten Klingelton? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer hat den wildesten Klingelton? Minority drinks 4 sips.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat den ordentlichsten Homescreen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer hat den ordentlichsten Homescreen? Minority drinks 2 sips.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat den chaotischsten Kalender? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer hat den chaotischsten Kalender? Minority drinks 3 sips.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer streamt die meisten Dokus? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer streamt die meisten Dokus? Minority drinks 4 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer lacht am lautesten? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer lacht am lautesten? Minority drinks 2 sips.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer ist zuerst auf dem Dancefloor? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer ist zuerst auf dem Dancefloor? Minority drinks 3 sips.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer meldet sich selten zurueck? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer meldet sich selten zurueck? Minority drinks 4 sips.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer hat die meisten Caps? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer hat die meisten Caps? Minority drinks 2 sips.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer widmet sich zuerst dem Abwasch? Minderheit trinkt 3 Schlucke.",
+      "en": "Vote: Wer widmet sich zuerst dem Abwasch? Minority drinks 3 sips.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer liest am meisten Nachrichten? Minderheit trinkt 4 Schlucke.",
+      "en": "Vote: Wer liest am meisten Nachrichten? Minority drinks 4 sips.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer kennt die besten Abkuerzungen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Wer kennt die besten Abkuerzungen? Minority drinks 2 sips.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

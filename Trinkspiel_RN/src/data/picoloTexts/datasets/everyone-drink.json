@@ -43,6 +43,231 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute bar gezahlt haben, trinken einen Schluck.",
+      "en": "Alle, die heute bar gezahlt haben, trinken einen Schluck.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die ein Meme gespeichert haben, trinken zwei Schlucke.",
+      "en": "Alle, die ein Meme gespeichert haben, trinken zwei Schlucke.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle mit Kopfhoerern in der Tasche trinken.",
+      "en": "Alle mit Kopfhoerern in der Tasche trinken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute einen Screenshot gemacht haben, trinken.",
+      "en": "Alle, die heute einen Screenshot gemacht haben, trinken.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle mit leerem Akku unter 30% trinken.",
+      "en": "Alle mit leerem Akku unter 30% trinken.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die einen Hund gesehen haben, trinken.",
+      "en": "Alle, die einen Hund gesehen haben, trinken.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute ein Selfie gemacht haben, trinken.",
+      "en": "Alle, die heute ein Selfie gemacht haben, trinken.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die zu spaet kamen, trinken.",
+      "en": "Alle, die zu spaet kamen, trinken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute eine Erinnerung weggesnoozt haben, trinken.",
+      "en": "Alle, die heute eine Erinnerung weggesnoozt haben, trinken.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die einen neuen Song entdeckt haben, trinken.",
+      "en": "Alle, die einen neuen Song entdeckt haben, trinken.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute Post geoeffnet haben, trinken.",
+      "en": "Alle, die heute Post geoeffnet haben, trinken.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle mit smartwatch trinken.",
+      "en": "Alle mit smartwatch trinken.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute einen Anruf ignoriert haben, trinken.",
+      "en": "Alle, die heute einen Anruf ignoriert haben, trinken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die schonmal auf dem Tisch getanzt haben, trinken.",
+      "en": "Alle, die schonmal auf dem Tisch getanzt haben, trinken.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute etwas bestellt haben, trinken.",
+      "en": "Alle, die heute etwas bestellt haben, trinken.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute ein Lob bekommen haben, trinken.",
+      "en": "Alle, die heute ein Lob bekommen haben, trinken.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die schon geghaehnt haben, trinken.",
+      "en": "Alle, die schon geghaehnt haben, trinken.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle mit bunten Socken trinken.",
+      "en": "Alle mit bunten Socken trinken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute draussen waren, trinken.",
+      "en": "Alle, die heute draussen waren, trinken.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die ihr Passwort veraendert haben, trinken.",
+      "en": "Alle, die ihr Passwort veraendert haben, trinken.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute eine Story gepostet haben, trinken.",
+      "en": "Alle, die heute eine Story gepostet haben, trinken.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute barfuss waren, trinken.",
+      "en": "Alle, die heute barfuss waren, trinken.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute Glitzer gesehen haben, trinken.",
+      "en": "Alle, die heute Glitzer gesehen haben, trinken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die ihr Ladekabel gesucht haben, trinken.",
+      "en": "Alle, die ihr Ladekabel gesucht haben, trinken.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle, die heute Kaffee verschuettet haben, trinken.",
+      "en": "Alle, die heute Kaffee verschuettet haben, trinken.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
