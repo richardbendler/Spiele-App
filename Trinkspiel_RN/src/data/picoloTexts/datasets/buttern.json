@@ -83,7 +83,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttern: Party-Themen",
@@ -164,7 +165,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttern: Popkultur",
@@ -245,7 +247,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttern: Reise-Träume",
@@ -326,7 +329,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttern: Chaos-WG",
@@ -407,7 +411,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

@@ -18,7 +18,8 @@
           "mode": "neighbor"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Nachbarschaftsduo: Geheimnis",
@@ -34,7 +35,8 @@
           "mode": "neighbor"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Nachbarschaftsduo: Story-Tag",
@@ -50,7 +52,8 @@
           "mode": "neighbor"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nachbarschaftsduo: Flüstertelefon",
@@ -66,7 +69,8 @@
           "mode": "neighbor"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nachbarschaftsduo: Impro-Remix",
@@ -82,7 +86,8 @@
           "mode": "neighbor"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

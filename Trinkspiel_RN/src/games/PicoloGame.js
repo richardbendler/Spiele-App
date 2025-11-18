@@ -26,15 +26,17 @@ import {
   pickPaletteColor,
   getCategoryColor,
   getCategoryColorEntries,
+  normalizeCategoryKey,
 } from '../utils/categoryColors';
+import { filterManualApproved } from '../utils/manualApproval';
 
 const buildWheelPools = (rawPrompts = []) => {
   const map = new Map();
   rawPrompts.forEach((entry) => {
     const pool = entry?.pool;
-    const key = pool?.key;
+    const key = normalizeCategoryKey(pool?.key);
     if (key && !map.has(key)) {
-      map.set(key, pool);
+      map.set(key, { ...pool, key });
     }
   });
   const poolColorMap = {};
@@ -68,10 +70,11 @@ const buildWheelPools = (rawPrompts = []) => {
   });
 
   rawPrompts.forEach((entry) => {
-    const key = entry?.pool?.key;
+    const key = normalizeCategoryKey(entry?.pool?.key);
     if (key && poolColorMap[key] && entry?.pool) {
       entry.pool = {
         ...entry.pool,
+        key,
         color: poolColorMap[key],
       };
     }
@@ -124,17 +127,29 @@ const buildDisplayText = (entry, language, startingPlayer) => {
 
 const PicoloGame = ({ route }) => {
   const { t, language } = useTranslation();
-  const { infoVisible, setInfoVisible, players, theOneSettings, theOnePrompts, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const {
+    infoVisible,
+    setInfoVisible,
+    players,
+    theOneSettings,
+    theOnePrompts,
+    approvedTheOnePrompts,
+    tutorialEnabled,
+    setTutorialEnabled,
+  } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const copy = useMemo(() => t('picoloGame'), [t]);
 
   const rawPrompts = useMemo(() => {
     const routeData = route.params?.theOneData;
     if (Array.isArray(routeData) && routeData.length > 0) {
-      return [...routeData];
+      return filterManualApproved(routeData);
     }
-    return Array.isArray(theOnePrompts) ? [...theOnePrompts] : [];
-  }, [route.params?.theOneData, theOnePrompts]);
+    if (Array.isArray(approvedTheOnePrompts) && approvedTheOnePrompts.length > 0) {
+      return [...approvedTheOnePrompts];
+    }
+    return filterManualApproved(theOnePrompts);
+  }, [route.params?.theOneData, theOnePrompts, approvedTheOnePrompts]);
   const { wheelPools, poolColorMap } = useMemo(() => buildWheelPools(rawPrompts), [rawPrompts]);
   const questions = useMemo(
     () => buildTheOneDeck(rawPrompts, theOneSettings, { players }),

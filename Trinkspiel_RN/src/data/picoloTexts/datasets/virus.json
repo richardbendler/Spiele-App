@@ -30,7 +30,8 @@
           "en": "Stays active until the next virus."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Virus: Titelpflicht",
@@ -54,7 +55,8 @@
           "en": "Active until the next virus card."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Virus: Emoji-Pose",
@@ -78,7 +80,8 @@
           "en": "Active until the next virus."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Virus: Flüster-Intro",
@@ -102,7 +105,8 @@
           "en": "Active until another virus appears."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Virus: Cheers Loop",
@@ -126,7 +130,8 @@
           "en": "Stays until the next virus."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

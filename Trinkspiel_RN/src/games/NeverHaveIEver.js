@@ -8,21 +8,27 @@ import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 import { askForRatingIfEligible } from '../utils/rating';
-import { neverHaveIEverStatements } from '../data/neverHaveIEverStatements';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
 const NeverHaveIEverGame = () => {
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled, neverHaveIEverPrompts } = useContext(VariablesContext);
   const { t, language } = useTranslation();
 
   const copy = useMemo(() => t('neverHaveIEver'), [t]);
 
-  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...neverHaveIEverStatements]));
+  const deckSource = useMemo(() => (Array.isArray(neverHaveIEverPrompts) ? neverHaveIEverPrompts : []), [neverHaveIEverPrompts]);
+  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...deckSource]));
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
   const revealAnim = React.useRef(new Animated.Value(0)).current;
   const [contentVisible, setContentVisible] = useState(false);
+
+  React.useEffect(() => {
+    setDeck(shuffleArrayFisherYates([...deckSource]));
+    setIndex(0);
+    setFinished(deckSource.length === 0);
+  }, [deckSource]);
 
   const currentCard = finished ? null : deck[index] ?? null;
   const statementText = currentCard ? (language === 'en' ? currentCard.content_en : currentCard.content) : '';
@@ -39,9 +45,9 @@ const NeverHaveIEverGame = () => {
 
   const advance = () => {
     if (finished) {
-      setDeck(shuffleArrayFisherYates([...neverHaveIEverStatements]));
+      setDeck(shuffleArrayFisherYates([...deckSource]));
       setIndex(0);
-      setFinished(false);
+      setFinished(deckSource.length === 0);
       return;
     }
 

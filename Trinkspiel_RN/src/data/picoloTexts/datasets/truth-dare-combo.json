@@ -27,7 +27,8 @@
           "en": "Dare: Send your latest match a spontaneous voice note and play their reply for the group."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttons: Screenshot-Roulette",
@@ -52,7 +53,8 @@
           "en": "Dare: Let the group dictate a line and post it to your story for 10 minutes."
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Buttons: Erste Male",
@@ -77,7 +79,8 @@
           "en": "Dare: Reenact your first date in 30 seconds—sound effects included."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttons: Chaos-Playlist",
@@ -102,7 +105,8 @@
           "en": "Dare: Let the group pick a song and lip-sync 15 seconds."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Buttons: Spicy Roulette",
@@ -127,7 +131,8 @@
           "en": "Dare: Send someone in the room a secret prompt (text or emoji) and report later what happened."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

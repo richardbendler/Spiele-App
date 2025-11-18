@@ -25,7 +25,8 @@
           "en": "Tower stands? Hand out 3 sips!"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Countdown: Meme-Nachstellung",
@@ -47,7 +48,8 @@
           "en": "Nailed it? Hand out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Countdown: Emoji-Body",
@@ -69,7 +71,8 @@
           "en": "If it’s guessed correctly, everyone else drinks 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Countdown: Song Shuffle",
@@ -87,7 +90,8 @@
           "en": "Start three songs within 20 seconds without naming them. If no one guesses all, you drink."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Countdown: Kompliment-Stafette",
@@ -105,7 +109,8 @@
           "en": "Deliver 5 creative compliments in 30 seconds to hand out 3 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }
