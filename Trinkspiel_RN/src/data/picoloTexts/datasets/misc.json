@@ -40,6 +40,2076 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus waehrend ein Timer laeuft.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus ohne zu sprechen.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus nur mit offener Hand.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus mit Ruecken an Ruecken.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus mit geschlossenen Augen.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus nur mit linken Haenden.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus als Superhelden-Variante.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus mit Pokerface.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose waehrend ein Timer laeuft.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose ohne zu sprechen.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose nur mit offener Hand.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose mit Ruecken an Ruecken.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose mit geschlossenen Augen.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose nur mit linken Haenden.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose als Superhelden-Variante.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose mit Pokerface.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten waehrend ein Timer laeuft.",
+      "en": "Erzaehlt eine Story in drei Worten waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten ohne zu sprechen.",
+      "en": "Erzaehlt eine Story in drei Worten ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten nur mit offener Hand.",
+      "en": "Erzaehlt eine Story in drei Worten nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten mit Ruecken an Ruecken.",
+      "en": "Erzaehlt eine Story in drei Worten mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten mit geschlossenen Augen.",
+      "en": "Erzaehlt eine Story in drei Worten mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten nur mit linken Haenden.",
+      "en": "Erzaehlt eine Story in drei Worten nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten als Superhelden-Variante.",
+      "en": "Erzaehlt eine Story in drei Worten als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten mit Pokerface.",
+      "en": "Erzaehlt eine Story in drei Worten mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze waehrend ein Timer laeuft.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze ohne zu sprechen.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze nur mit offener Hand.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze mit Ruecken an Ruecken.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze mit geschlossenen Augen.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze nur mit linken Haenden.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze als Superhelden-Variante.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze mit Pokerface.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein waehrend ein Timer laeuft.",
+      "en": "Legt ein 10-Sekunden-Standbild ein waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein ohne zu sprechen.",
+      "en": "Legt ein 10-Sekunden-Standbild ein ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein nur mit offener Hand.",
+      "en": "Legt ein 10-Sekunden-Standbild ein nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein mit Ruecken an Ruecken.",
+      "en": "Legt ein 10-Sekunden-Standbild ein mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein mit geschlossenen Augen.",
+      "en": "Legt ein 10-Sekunden-Standbild ein mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein nur mit linken Haenden.",
+      "en": "Legt ein 10-Sekunden-Standbild ein nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein als Superhelden-Variante.",
+      "en": "Legt ein 10-Sekunden-Standbild ein als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein mit Pokerface.",
+      "en": "Legt ein 10-Sekunden-Standbild ein mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy waehrend ein Timer laeuft.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy ohne zu sprechen.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy nur mit offener Hand.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit Ruecken an Ruecken.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit geschlossenen Augen.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy nur mit linken Haenden.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy als Superhelden-Variante.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit Pokerface.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch waehrend ein Timer laeuft.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch ohne zu sprechen.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch nur mit offener Hand.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch mit Ruecken an Ruecken.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch mit geschlossenen Augen.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch nur mit linken Haenden.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch als Superhelden-Variante.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch mit Pokerface.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden waehrend ein Timer laeuft.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden ohne zu sprechen.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden nur mit offener Hand.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden mit Ruecken an Ruecken.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden mit geschlossenen Augen.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden nur mit linken Haenden.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden als Superhelden-Variante.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden mit Pokerface.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang waehrend ein Timer laeuft.",
+      "en": "Startet einen leisen Gruppengesang waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang ohne zu sprechen.",
+      "en": "Startet einen leisen Gruppengesang ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang nur mit offener Hand.",
+      "en": "Startet einen leisen Gruppengesang nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang mit Ruecken an Ruecken.",
+      "en": "Startet einen leisen Gruppengesang mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang mit geschlossenen Augen.",
+      "en": "Startet einen leisen Gruppengesang mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang nur mit linken Haenden.",
+      "en": "Startet einen leisen Gruppengesang nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang als Superhelden-Variante.",
+      "en": "Startet einen leisen Gruppengesang als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang mit Pokerface.",
+      "en": "Startet einen leisen Gruppengesang mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat waehrend ein Timer laeuft.",
+      "en": "Tanzt alle im Sitzen zu einem Beat waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat ohne zu sprechen.",
+      "en": "Tanzt alle im Sitzen zu einem Beat ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat nur mit offener Hand.",
+      "en": "Tanzt alle im Sitzen zu einem Beat nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat mit Ruecken an Ruecken.",
+      "en": "Tanzt alle im Sitzen zu einem Beat mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat mit geschlossenen Augen.",
+      "en": "Tanzt alle im Sitzen zu einem Beat mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat nur mit linken Haenden.",
+      "en": "Tanzt alle im Sitzen zu einem Beat nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat als Superhelden-Variante.",
+      "en": "Tanzt alle im Sitzen zu einem Beat als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat mit Pokerface.",
+      "en": "Tanzt alle im Sitzen zu einem Beat mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar waehrend ein Timer laeuft.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar ohne zu sprechen.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar nur mit offener Hand.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar mit Ruecken an Ruecken.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar mit geschlossenen Augen.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar nur mit linken Haenden.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar als Superhelden-Variante.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar mit Pokerface.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung waehrend ein Timer laeuft.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung ohne zu sprechen.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung nur mit offener Hand.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung mit Ruecken an Ruecken.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung mit geschlossenen Augen.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung nur mit linken Haenden.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung als Superhelden-Variante.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung mit Pokerface.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn waehrend ein Timer laeuft.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn ohne zu sprechen.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn nur mit offener Hand.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit Ruecken an Ruecken.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit geschlossenen Augen.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn nur mit linken Haenden.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn als Superhelden-Variante.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit Pokerface.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger waehrend ein Timer laeuft.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger ohne zu sprechen.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger nur mit offener Hand.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger mit Ruecken an Ruecken.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger mit geschlossenen Augen.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger nur mit linken Haenden.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger als Superhelden-Variante.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger mit Pokerface.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte waehrend ein Timer laeuft.",
+      "en": "Spielt eine Runde Stille Post ohne Worte waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte ohne zu sprechen.",
+      "en": "Spielt eine Runde Stille Post ohne Worte ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte nur mit offener Hand.",
+      "en": "Spielt eine Runde Stille Post ohne Worte nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte mit Ruecken an Ruecken.",
+      "en": "Spielt eine Runde Stille Post ohne Worte mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte mit geschlossenen Augen.",
+      "en": "Spielt eine Runde Stille Post ohne Worte mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte nur mit linken Haenden.",
+      "en": "Spielt eine Runde Stille Post ohne Worte nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte als Superhelden-Variante.",
+      "en": "Spielt eine Runde Stille Post ohne Worte als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte mit Pokerface.",
+      "en": "Spielt eine Runde Stille Post ohne Worte mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern waehrend ein Timer laeuft.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern ohne zu sprechen.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern nur mit offener Hand.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit Ruecken an Ruecken.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit geschlossenen Augen.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern nur mit linken Haenden.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern als Superhelden-Variante.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit Pokerface.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft waehrend ein Timer laeuft.",
+      "en": "Zeichnet blind ein Logo in die Luft waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft ohne zu sprechen.",
+      "en": "Zeichnet blind ein Logo in die Luft ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft nur mit offener Hand.",
+      "en": "Zeichnet blind ein Logo in die Luft nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft mit Ruecken an Ruecken.",
+      "en": "Zeichnet blind ein Logo in die Luft mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft mit geschlossenen Augen.",
+      "en": "Zeichnet blind ein Logo in die Luft mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft nur mit linken Haenden.",
+      "en": "Zeichnet blind ein Logo in die Luft nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft als Superhelden-Variante.",
+      "en": "Zeichnet blind ein Logo in die Luft als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft mit Pokerface.",
+      "en": "Zeichnet blind ein Logo in die Luft mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen waehrend ein Timer laeuft.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen ohne zu sprechen.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen nur mit offener Hand.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit Ruecken an Ruecken.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit geschlossenen Augen.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen nur mit linken Haenden.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen als Superhelden-Variante.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit Pokerface.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain waehrend ein Timer laeuft.",
+      "en": "Findet einen spontanen Team-Refrain waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain ohne zu sprechen.",
+      "en": "Findet einen spontanen Team-Refrain ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain nur mit offener Hand.",
+      "en": "Findet einen spontanen Team-Refrain nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain mit Ruecken an Ruecken.",
+      "en": "Findet einen spontanen Team-Refrain mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain mit geschlossenen Augen.",
+      "en": "Findet einen spontanen Team-Refrain mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain nur mit linken Haenden.",
+      "en": "Findet einen spontanen Team-Refrain nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain als Superhelden-Variante.",
+      "en": "Findet einen spontanen Team-Refrain als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain mit Pokerface.",
+      "en": "Findet einen spontanen Team-Refrain mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich waehrend ein Timer laeuft.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich ohne zu sprechen.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich nur mit offener Hand.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit Ruecken an Ruecken.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit geschlossenen Augen.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich nur mit linken Haenden.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich als Superhelden-Variante.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit Pokerface.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus als Duett.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erfindet einen neuen High-Five und probiert ihn aus im Fluesterton.",
+      "en": "Erfindet einen neuen High-Five und probiert ihn aus im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose als Duett.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht ein Gruppenfoto in eurer lustigsten Pose im Fluesterton.",
+      "en": "Macht ein Gruppenfoto in eurer lustigsten Pose im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten als Duett.",
+      "en": "Erzaehlt eine Story in drei Worten als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Erzaehlt eine Story in drei Worten im Fluesterton.",
+      "en": "Erzaehlt eine Story in drei Worten im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze als Duett.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze als Duett.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tauscht fuer einen Prompt eure Plaetze im Fluesterton.",
+      "en": "Tauscht fuer einen Prompt eure Plaetze im Fluesterton.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein als Duett.",
+      "en": "Legt ein 10-Sekunden-Standbild ein als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Legt ein 10-Sekunden-Standbild ein im Fluesterton.",
+      "en": "Legt ein 10-Sekunden-Standbild ein im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy als Duett.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schreibt einen Insider-Witz als Hashtag auf euer Handy im Fluesterton.",
+      "en": "Schreibt einen Insider-Witz als Hashtag auf euer Handy im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch als Duett.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut einen Turm aus Dingen auf dem Tisch im Fluesterton.",
+      "en": "Baut einen Turm aus Dingen auf dem Tisch im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden als Duett.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden als Duett.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Mini-Meditation von 20 Sekunden im Fluesterton.",
+      "en": "Macht eine Mini-Meditation von 20 Sekunden im Fluesterton.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang als Duett.",
+      "en": "Startet einen leisen Gruppengesang als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet einen leisen Gruppengesang im Fluesterton.",
+      "en": "Startet einen leisen Gruppengesang im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat als Duett.",
+      "en": "Tanzt alle im Sitzen zu einem Beat als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tanzt alle im Sitzen zu einem Beat im Fluesterton.",
+      "en": "Tanzt alle im Sitzen zu einem Beat im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar als Duett.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Stellt einen Film in 8 Sekunden pantomimisch dar im Fluesterton.",
+      "en": "Stellt einen Film in 8 Sekunden pantomimisch dar im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung als Duett.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung als Duett.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt alle eure absurdeste Benachrichtigung im Fluesterton.",
+      "en": "Zeigt alle eure absurdeste Benachrichtigung im Fluesterton.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn als Duett.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn im Fluesterton.",
+      "en": "Pinnt einen Fun-Fact ueber euch an das Handy des Nachbarn im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger als Duett.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeigt den aeltesten Chat in eurem Messenger im Fluesterton.",
+      "en": "Zeigt den aeltesten Chat in eurem Messenger im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte als Duett.",
+      "en": "Spielt eine Runde Stille Post ohne Worte als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Spielt eine Runde Stille Post ohne Worte im Fluesterton.",
+      "en": "Spielt eine Runde Stille Post ohne Worte im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern als Duett.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern als Duett.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern im Fluesterton.",
+      "en": "Macht gemeinsam einen GIF-Regen mit euren Gesichtern im Fluesterton.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft als Duett.",
+      "en": "Zeichnet blind ein Logo in die Luft als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zeichnet blind ein Logo in die Luft im Fluesterton.",
+      "en": "Zeichnet blind ein Logo in die Luft im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen als Duett.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Tut so, als wuerdet ihr einen Podcast aufnehmen im Fluesterton.",
+      "en": "Tut so, als wuerdet ihr einen Podcast aufnehmen im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain als Duett.",
+      "en": "Findet einen spontanen Team-Refrain als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Findet einen spontanen Team-Refrain im Fluesterton.",
+      "en": "Findet einen spontanen Team-Refrain im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich als Duett.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich als Duett.",
+      "drunkLevel": 7,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich im Fluesterton.",
+      "en": "macht eine Sekunde lang alle eure Lieblings-Geraeusche zugleich im Fluesterton.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden waehrend ein Timer laeuft.",
+      "en": "erfindet ein Gruppenlogo mit Haenden waehrend ein Timer laeuft.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden ohne zu sprechen.",
+      "en": "erfindet ein Gruppenlogo mit Haenden ohne zu sprechen.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden nur mit offener Hand.",
+      "en": "erfindet ein Gruppenlogo mit Haenden nur mit offener Hand.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden mit Ruecken an Ruecken.",
+      "en": "erfindet ein Gruppenlogo mit Haenden mit Ruecken an Ruecken.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden mit geschlossenen Augen.",
+      "en": "erfindet ein Gruppenlogo mit Haenden mit geschlossenen Augen.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden nur mit linken Haenden.",
+      "en": "erfindet ein Gruppenlogo mit Haenden nur mit linken Haenden.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden als Superhelden-Variante.",
+      "en": "erfindet ein Gruppenlogo mit Haenden als Superhelden-Variante.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden mit Pokerface.",
+      "en": "erfindet ein Gruppenlogo mit Haenden mit Pokerface.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden als Duett.",
+      "en": "erfindet ein Gruppenlogo mit Haenden als Duett.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erfindet ein Gruppenlogo mit Haenden im Fluesterton.",
+      "en": "erfindet ein Gruppenlogo mit Haenden im Fluesterton.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch waehrend ein Timer laeuft.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch waehrend ein Timer laeuft.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch ohne zu sprechen.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch ohne zu sprechen.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch nur mit offener Hand.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch nur mit offener Hand.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch mit Ruecken an Ruecken.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch mit Ruecken an Ruecken.",
+      "drunkLevel": 6,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch mit geschlossenen Augen.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch mit geschlossenen Augen.",
+      "drunkLevel": 7,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch nur mit linken Haenden.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch nur mit linken Haenden.",
+      "drunkLevel": 8,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch als Superhelden-Variante.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch als Superhelden-Variante.",
+      "drunkLevel": 1,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch mit Pokerface.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch mit Pokerface.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch als Duett.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch als Duett.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "macht einen Vier-Takte-Beat mit dem Tisch im Fluesterton.",
+      "en": "macht einen Vier-Takte-Beat mit dem Tisch im Fluesterton.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft waehrend ein Timer laeuft.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft waehrend ein Timer laeuft.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft ohne zu sprechen.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft ohne zu sprechen.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft nur mit offener Hand.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft nur mit offener Hand.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft mit Ruecken an Ruecken.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft mit Ruecken an Ruecken.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft mit geschlossenen Augen.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft mit geschlossenen Augen.",
+      "drunkLevel": 1,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft nur mit linken Haenden.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft nur mit linken Haenden.",
+      "drunkLevel": 2,
+      "deepness": 4,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft als Superhelden-Variante.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft als Superhelden-Variante.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft mit Pokerface.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft mit Pokerface.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft als Duett.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft als Duett.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "erzählt eine Story nur mit Emojis in der Luft im Fluesterton.",
+      "en": "erzählt eine Story nur mit Emojis in der Luft im Fluesterton.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

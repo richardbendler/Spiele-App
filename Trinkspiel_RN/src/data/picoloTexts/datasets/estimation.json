@@ -151,6 +151,231 @@
       },
       "drinking": false,
       "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Push-Nachrichten pro Tag? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many push-nachrichten pro tag? Closest wins and hands out 3 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Lieder in eurer Top-Playlist? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many lieder in eurer top-playlist? Closest wins and hands out 4 sips.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele TikTok-Minuten heute? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many tiktok-minuten heute? Closest wins and hands out 5 sips.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Steps von gestern? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many steps von gestern? Closest wins and hands out 2 sips.",
+      "drunkLevel": 5,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Tabs im Browser? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many tabs im browser? Closest wins and hands out 3 sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Fotos im letzten Monat? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many fotos im letzten monat? Closest wins and hands out 4 sips.",
+      "drunkLevel": 7,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Sticker-Pakete in eurem Messenger? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many sticker-pakete in eurem messenger? Closest wins and hands out 5 sips.",
+      "drunkLevel": 8,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Meetings pro Woche? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many meetings pro woche? Closest wins and hands out 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele unbeantwortete Nachrichten? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many unbeantwortete nachrichten? Closest wins and hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Folgen in einer Staffel eurer Wahl? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many folgen in einer staffel eurer wahl? Closest wins and hands out 4 sips.",
+      "drunkLevel": 4,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Kalorien im letzten Snack? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many kalorien im letzten snack? Closest wins and hands out 5 sips.",
+      "drunkLevel": 5,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Laender, die ihr besucht habt? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many laender, die ihr besucht habt? Closest wins and hands out 2 sips.",
+      "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele E-Mails heute? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many e-mails heute? Closest wins and hands out 3 sips.",
+      "drunkLevel": 7,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Sprachmemos dieses Jahres? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many sprachmemos dieses jahres? Closest wins and hands out 4 sips.",
+      "drunkLevel": 8,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Podcast-Folgen gespeichert? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many podcast-folgen gespeichert? Closest wins and hands out 5 sips.",
+      "drunkLevel": 2,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Batteriezyklen eures Phones? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many batteriezyklen eures phones? Closest wins and hands out 2 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Streams in eurer Watchlist? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many streams in eurer watchlist? Closest wins and hands out 3 sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Abos, die ihr vergessen habt? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many abos, die ihr vergessen habt? Closest wins and hands out 4 sips.",
+      "drunkLevel": 5,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Sticker auf eurem Laptop? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many sticker auf eurem laptop? Closest wins and hands out 5 sips.",
+      "drunkLevel": 6,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Minuten, die ihr im Aufzug steht? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many minuten, die ihr im aufzug steht? Closest wins and hands out 2 sips.",
+      "drunkLevel": 7,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Kalendereintraege naechste Woche? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many kalendereintraege naechste woche? Closest wins and hands out 3 sips.",
+      "drunkLevel": 8,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Apps auf Seite eins? Wer am naechsten liegt, verteilt 4 Schlucke.",
+      "en": "Estimation: how many apps auf seite eins? Closest wins and hands out 4 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Ordner auf eurem Desktop? Wer am naechsten liegt, verteilt 5 Schlucke.",
+      "en": "Estimation: how many ordner auf eurem desktop? Closest wins and hands out 5 sips.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Drafts im Messenger? Wer am naechsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimation: how many drafts im messenger? Closest wins and hands out 2 sips.",
+      "drunkLevel": 4,
+      "deepness": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schaetzen: Wie viele Screenshots dieses Monats? Wer am naechsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimation: how many screenshots dieses monats? Closest wins and hands out 3 sips.",
+      "drunkLevel": 5,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

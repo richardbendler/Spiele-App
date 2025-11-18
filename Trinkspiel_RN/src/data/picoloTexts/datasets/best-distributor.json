@@ -5,41 +5,55 @@
   "poolKey": "best-distributor",
   "items": [
     {
-      "de": "Wer die überzeugendste Fake-News mit Pokerface vorträgt, verteilt 3 Schlucke.",
-      "en": "Whoever delivers the most convincing fake news with a poker face hands out 3 sips.",
-      "drunkLevel": 4,
+      "de": "Challenge: Bastelt in 30 Sekunden ein Papierfliegerchen. Wer am weitesten fliegt, verteilt 3 Schlucke.",
+      "en": "Challenge: fold a paper plane in 30 seconds. Farthest flight hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
       "drink": true,
       "drinking": true,
       "manual_approval": 0
     },
     {
-      "de": "Wer jetzt das beste Tiergeräusch liefert, verteilt 2 Schlucke.",
-      "en": "Whoever nails the best animal noise right now hands out 2 sips.",
-      "drunkLevel": 4,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Wer spontan den smoothesten Pickup-Line-Drop bringt, verteilt 3 Schlucke.",
-      "en": "Whoever drops the smoothest spontaneous pick-up line gets to hand out 3 sips.",
-      "drunkLevel": 4,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Wer innerhalb von 10 Sekunden drei neue Spitznamen für die Runde erfindet, verteilt 2 Schlucke an verschiedene Personen.",
-      "en": "Whoever invents three new nicknames for the group within 10 seconds hands out 2 sips to different people.",
+      "de": "Challenge: 15-Sekunden-Verkaufs-Pitch f\u00fcr einen zuf\u00e4lligen Gegenstand im Raum. \u00dcberzeugendste Person verteilt 4 Schlucke.",
+      "en": "Challenge: 15-second sales pitch for a random object in the room. Most convincing hands out 4 sips.",
       "drunkLevel": 5,
+      "deepness": 1,
       "drink": true,
       "drinking": true,
       "manual_approval": 0
     },
     {
-      "de": "Wer den spontan besten Mini-Toast auf den Abend hält, darf 4 Schlucke frei verteilen.",
-      "en": "Whoever delivers the best impromptu toast to the night gets to hand out 4 sips freely.",
+      "de": "Challenge: Mini-Dance-Freeze. Wer den smoothesten Freeze nach 10 Sekunden Drop hinlegt, verteilt 3 Schlucke.",
+      "en": "Challenge: mini dance freeze. Smoothest freeze after a 10-second drop hands out 3 sips.",
+      "drunkLevel": 4,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: 10-Sekunden-Beatklatsch. Wer den knackigsten Clap-Beat vormacht, verteilt 2 Schlucke an zwei Personen.",
+      "en": "Challenge: 10-second clap beat. Tightest beat hands out 2 sips to two people.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet einen 12-Wort-Reim \u00fcber die Runde. Bestes Reimfeuer verteilt 5 Schlucke.",
+      "en": "Challenge: craft a 12-word rhyme about the group. Best rhyme blast hands out 5 sips.",
       "drunkLevel": 6,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: 20-Sekunden-R\u00e4tsel erfinden. Wer das cleverste kurze R\u00e4tsel liefert, verteilt 3 Schlucke.",
+      "en": "Challenge: invent a 20-second riddle. Cleverest short riddle hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 2,
       "drink": true,
       "drinking": true,
       "manual_approval": 0
