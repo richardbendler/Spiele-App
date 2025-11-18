@@ -9,35 +9,40 @@
       "en": "Whoever howls like a werewolf the worst drinks 2 sips.",
       "drunkLevel": 4,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer die spontan gesummte Melodie nicht erkennt, trinkt 2 Schlucke.",
       "en": "Fail to guess the spontaneously hummed melody? Drink 2 sips.",
       "drunkLevel": 4,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer bei seiner 5-Sekunden-Story ins Stocken gerät, trinkt 3 Schlucke.",
       "en": "Stumble during your 5-second story? Drink 3 sips.",
       "drunkLevel": 4,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer den improvisierten Zungenbrecher nicht fehlerfrei schafft, trinkt 2 Schlucke.",
       "en": "Flub the improvised tongue twister and drink 2 sips.",
       "drunkLevel": 4,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer beim Luft-Gitarrensolo den Einsatz verpasst, trinkt 2 Schlucke.",
       "en": "Miss the timing on your air-guitar solo? Drink 2 sips.",
       "drunkLevel": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

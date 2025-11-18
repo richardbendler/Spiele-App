@@ -10,7 +10,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Malt gleichzeitig ein Herz in die Luft. Das bessere Herz entscheidet, der andere nippt.",
@@ -18,7 +19,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Hände hinter den Rücken, pfeift nacheinander ein Lied. Wer nicht erraten wird, trinkt.",
@@ -26,7 +28,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Nennt abwechselnd Städte mit gleichem Anfangsbuchstaben — wer stockt, trinkt.",
@@ -34,7 +37,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Hebt gleichzeitig einen Schuh. Wer zögert, trinkt.",
@@ -42,7 +46,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Plank-Duell — wer zuerst aufgibt, trinkt zwei Schlucke.",
@@ -50,7 +55,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Wer schneller ein Emoji mit dem Finger auf den Tisch malt, gewinnt. Verlierer trinkt.",
@@ -58,7 +64,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Nennt abwechselnd Getränke ohne Alkohol — wer wiederholt, trinkt.",
@@ -66,7 +73,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Impro-Sprint vorführen. Lauteste Reaktion gewinnt, andere Person trinkt.",
@@ -74,7 +82,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Schnick-Schnack-Schnuck Best-of-3. Verlierer trinkt.",
@@ -82,7 +91,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Wer schneller drei gemeinsame Insider aufzählt, gewinnt. Verlierer nimmt drei Schlucke.",
@@ -90,7 +100,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Karaoke-Battle ohne Musik. Lauteste Runde entscheidet.",
@@ -98,7 +109,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Haltet je einen Arm ausgestreckt — wer länger durchhält, verteilt drei Schlucke.",
@@ -106,7 +118,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Nennt abwechselnd Kosenamen — wer nichts mehr weiß, trinkt.",
@@ -114,7 +127,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Erfindet eine Synchronbewegung. Schlechtere Performance trinkt.",
@@ -122,7 +136,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Flüster-Challenge — flüstert euch einen Flirt-Satz zu. Wer röter wird, trinkt.",
@@ -130,7 +145,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Halt deine Stirn an die der anderen Person. Wer wegzieht, trinkt drei Schlucke.",
@@ -138,7 +154,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Impro-Kuss-Szene ohne echten Kuss. Schlechtere Acting-Note trinkt.",
@@ -146,7 +163,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Erzählt der Runde abwechselnd Geheimnisse über euer Sternzeichen — wer zuerst stoppt, trinkt.",
@@ -154,7 +172,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Nennt euren letzten Crush. Wer weniger Details verrät, trinkt.",
@@ -162,7 +181,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Flirt-Lobeshymne — wer weniger überzeugend Komplimente macht, trinkt vier Schlucke.",
@@ -170,7 +190,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Beschreibt euren perfekten Kuss in 20 Sekunden. Publikum entscheidet, Verlierer trinkt.",
@@ -178,7 +199,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Macht gegenseitig einen sexy Walk-Off. Der mutigere Walk gewinnt.",
@@ -186,7 +208,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Nennt intime Bucket-List-Punkte. Wer zuerst kneift, trinkt.",
@@ -194,7 +217,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "1v1: Wahrheitsschlacht — beantwortet die gleiche pikante Frage. Unpersönlichere Antwort trinkt.",
@@ -202,7 +226,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

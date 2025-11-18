@@ -10,7 +10,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Mini-Competition: Baut aus euren Händen ein Herz. Schönstes Herz verteilt einen Schluck.",
@@ -18,7 +19,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Mini-Competition: Wer zuerst einen Reim auf den Namen des Hosts findet, darf zwei Schlucke verteilen.",
@@ -26,7 +28,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Mini-Competition: Schnelles Pantomime — wer errät, verteilt einen Schluck.",
@@ -34,7 +37,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Mini-Competition: Wer bei „Stein“ am längsten still sitzen bleibt, ist safe. Bewegte trinken.",
@@ -42,7 +46,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Challenge: Jeder tippt heimlich eine Zahl zwischen 1 und 20. Wer am weitesten weg ist, trinkt.",
@@ -50,7 +55,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Challenge: Wer in 30 Sekunden die meisten Songtitel nennt, gewinnt.",
@@ -58,7 +64,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Challenge: Alle legen ein Accessoire in die Mitte. Schnellste Zuordnung gewinnt.",
@@ -66,7 +73,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Challenge: Macht ein Selfie mit der ganzen Runde. Wer den Timer versemmelt, trinkt.",
@@ -74,7 +82,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Challenge: Impro-Handschlag mit Person neben dir. Kreativster bestimmt drei Schlucke.",
@@ -82,7 +91,8 @@
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Battle: Zwei Teams bauen in 60 Sekunden das höchste Kartenhaus. Losing Team trinkt.",
@@ -90,7 +100,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Battle: Wer kann das Alphabet rückwärts fehlerfrei sagen? Verlierer trinken zwei Schlucke.",
@@ -98,7 +109,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Battle: Erfindet ein Motto für den Abend. Bestes Motto verteilt Schlucke.",
@@ -106,7 +118,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Battle: Macht einen Mini-Rap über die Runde. Schwächster Part trinkt.",
@@ -114,7 +127,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Battle: Bildet zwei Seilschaften. Jede nennt Insider. Stillere Seite trinkt.",
@@ -122,7 +136,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "High Stakes: Teilt euch in Paare. Wer den flirtigsten Blickkontakt hält, verteilt vier Schlucke.",
@@ -130,7 +145,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "High Stakes: Macht eine Slow-Motion-Tanzbattle. Mutigere Performance gewinnt.",
@@ -138,7 +154,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "High Stakes: Schreibt ein gewagtes Truth-or-Dare auf einen Zettel. Zieht und entscheidet, wer trinkt.",
@@ -146,7 +163,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "High Stakes: Alle erzählen kurz ihre chaotischste Crush-Story. Langweiligste Truppe trinkt.",
@@ -154,7 +172,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "High Stakes: Wählt zwei Fürsprecher, die euch verkaufen. Unterlegenes Team trinkt.",
@@ -162,7 +181,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Spicy Match: Zwei Teams planen das wildeste Fantasie-Date. Publikum stimmt, Verlierer trinkt.",
@@ -170,7 +190,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Spicy Match: Wer kann den sexiesten Toast erfinden? Schwächste Version trinkt.",
@@ -178,7 +199,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Spicy Match: Beschreibt reihum das heißeste Outfit, das ihr tragen würdet. Zaghafte trinken.",
@@ -186,7 +208,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Spicy Match: Macht eine Komplimente-Kette. Wer stockt, nimmt zwei Schlucke.",
@@ -194,7 +217,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Spicy Match: Teams schreiben gegenseitig einen pikanten Fakt auf. Wer errät, verteilt Schlucke.",
@@ -202,7 +226,8 @@
       "drunkLevel": 10,
       "deepness": 9,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

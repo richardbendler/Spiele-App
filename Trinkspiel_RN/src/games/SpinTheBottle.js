@@ -13,20 +13,49 @@ import { useTranslation } from '../i18n';
 
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({ route }) => {
+  const {
+    infoVisible,
+    setInfoVisible,
+    language,
+    tutorialEnabled,
+    setTutorialEnabled,
+    theOneSettings,
+    spinTheBottleTruths,
+    spinTheBottleDares,
+  } = useContext(VariablesContext);
+
+  const truthPool = useMemo(() => {
+    if (Array.isArray(spinTheBottleTruths) && spinTheBottleTruths.length > 0) {
+      return spinTheBottleTruths;
+    }
+    if (Array.isArray(route.params?.textsWahrheitSpinTheBottle)) {
+      return route.params.textsWahrheitSpinTheBottle;
+    }
+    return [];
+  }, [spinTheBottleTruths, route.params?.textsWahrheitSpinTheBottle]);
+
+  const darePool = useMemo(() => {
+    if (Array.isArray(spinTheBottleDares) && spinTheBottleDares.length > 0) {
+      return spinTheBottleDares;
+    }
+    if (Array.isArray(route.params?.textsPflichtSpinTheBottle)) {
+      return route.params.textsPflichtSpinTheBottle;
+    }
+    return [];
+  }, [spinTheBottleDares, route.params?.textsPflichtSpinTheBottle]);
+
   const textsWahrheitSpinTheBottle = useMemo(
-    () => shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle),
-    [route.params.textsWahrheitSpinTheBottle]
+    () => shuffleArrayFisherYates(truthPool),
+    [truthPool]
   );
   const textsPflichtSpinTheBottle = useMemo(
-    () => shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle),
-    [route.params.textsPflichtSpinTheBottle]
+    () => shuffleArrayFisherYates(darePool),
+    [darePool]
   );
 
-  const [randomSelection, setRandomSelection] = useState(0); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
+  const [randomSelection, setRandomSelection] = useState('initial'); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
   const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
   const [outcome, setOutcome] = useState({ type: 'initial' });
-
-  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled, theOneSettings } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t } = useTranslation();
   const copy = useMemo(() => {
@@ -120,27 +149,46 @@ const SpinTheBottle = ({ route }) => {
           const pDare = 0.2 + 0.06 * touchy; // 0.2 .. 0.74
           const pTruth = 0.5 - 0.03 * touchy; // 0.5 .. 0.23
           const pSips = Math.max(0.06, 1 - pDare - pTruth); // remainder, keep >= 0.06
-          const r = Math.random();
-          const randomSelection = r < pSips ? 0 : r < pSips + pTruth ? 1 : 2;
-          setRandomSelection(randomSelection);
 
-          switch (randomSelection) {
-            case 0: {  // Schlucke! Option
+          const weightedOptions = [
+            { type: 'sips', weight: pSips },
+            ...(textsWahrheitSpinTheBottle.length > 0 ? [{ type: 'truth', weight: Math.max(0.02, pTruth) }] : []),
+            ...(textsPflichtSpinTheBottle.length > 0 ? [{ type: 'dare', weight: Math.max(0.02, pDare) }] : []),
+          ];
+
+          const totalWeight = weightedOptions.reduce((sum, entry) => sum + entry.weight, 0);
+          let roll = Math.random() * (totalWeight || 1);
+          let selected = weightedOptions[0]?.type || 'sips';
+          for (const entry of weightedOptions) {
+            if (roll <= entry.weight) {
+              selected = entry.type;
+              break;
+            }
+            roll -= entry.weight;
+          }
+
+          setRandomSelection(selected);
+
+          switch (selected) {
+            case 'sips': {  // Schlucke! Option
               const sips = generateRandomSips();
               setOutcome({ type: 'sips', count: sips });
               break;
             }
-            case 1: {  // Wahrheit! Option
-              const truthIndex = Math.floor(Math.random() * textsWahrheitSpinTheBottle.length);
+            case 'truth': {  // Wahrheit! Option
+              const truthIndex = textsWahrheitSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsWahrheitSpinTheBottle.length) : 0;
               setRndIndex(truthIndex);
               setOutcome({ type: 'truth', index: truthIndex });
               break;
             }
-            case 2: {  // Pflicht! Option
-              const dareIndex = Math.floor(Math.random() * textsPflichtSpinTheBottle.length);
+            case 'dare': {  // Pflicht! Option
+              const dareIndex = textsPflichtSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsPflichtSpinTheBottle.length) : 0;
               setRndIndex(dareIndex);
               setOutcome({ type: 'dare', index: dareIndex });
               break;
+            }
+            default: {
+              setOutcome({ type: 'sips', count: generateRandomSips() });
             }
           }
         });
@@ -177,14 +225,11 @@ const SpinTheBottle = ({ route }) => {
           </View>
         </View>
         <View style={{height: '10%', justifyContent: 'center', alignItems: 'center'}}>
-        {randomSelection==0?
-          <></>
-          :
-            randomSelection==1?
-              <HandleFeedback texts={textsWahrheitSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
-            :
-            <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
-          }
+        {randomSelection === 'truth' ? (
+          <HandleFeedback texts={textsWahrheitSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+        ) : randomSelection === 'dare' ? (
+          <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+        ) : null}
         </View>
 
         <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>

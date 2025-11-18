@@ -24,7 +24,8 @@
           "en": "Each high-five lets you hand out 1 sip."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Counter: Air-Kicks",
@@ -42,7 +43,8 @@
           "en": "Count how many air kicks you manage. Every fifth kick hands out a sip."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Counter: Compliments",
@@ -60,7 +62,8 @@
           "en": "How many compliments can you give the group? Each solid line lets you hand out 1 sip."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Counter: Emoji-Gesichter",
@@ -78,7 +81,8 @@
           "en": "Cycle through as many facial expressions as possible. Every third emoji-face hands out 1 sip."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Counter: Story-Wörter",
@@ -100,7 +104,8 @@
           "en": "Hit 20 words and hand out 4 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

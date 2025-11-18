@@ -21,7 +21,8 @@
           "en": "{{target}} explains an object in the room without using taboo words. Guessers hand out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Erklären: Worst Job",
@@ -40,7 +41,8 @@
           "en": "{{target}} explains the worst job in the world—no gestures allowed."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Erklären: Dating-Phrase",
@@ -59,7 +61,8 @@
           "en": "{{target}} explains a classic dating term. Correct guess hands out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Erklären: Trend-Alarm",
@@ -78,7 +81,8 @@
           "en": "{{target}} describes a current TikTok or meme trend without naming it."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Erklären: Chaos-Rezept",
@@ -97,7 +101,8 @@
           "en": "{{target}} explains a made-up party recipe using only sounds and gestures."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

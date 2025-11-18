@@ -33,7 +33,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Quiz: Popkultur",
@@ -60,7 +61,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Quiz: Nostalgie",
@@ -87,7 +89,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Quiz: Future Tech",
@@ -114,7 +117,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Quiz: Snack-Wissen",
@@ -141,7 +145,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

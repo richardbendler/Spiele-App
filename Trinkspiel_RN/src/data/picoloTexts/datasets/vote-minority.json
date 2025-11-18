@@ -19,7 +19,8 @@
           "en": "Minority: 2 sips"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Abstimmung: Wer glaubt nicht an Horoskope?",
@@ -36,7 +37,8 @@
           "en": "Minority: 3 sips"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Abstimmung: Pizza mit Ananas?",
@@ -53,7 +55,8 @@
           "en": "Minority decides: drink or deal"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Abstimmung: Wer liest heimlich DMs im Bad?",
@@ -66,7 +69,8 @@
           "en": "Point on three who’s guilty. Minority drinks 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Abstimmung: Frühaufsteher vs. Nachtmenschen?",
@@ -79,7 +83,8 @@
           "en": "Split into two sides. Smaller side drinks 3 sips or hands them to the others."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

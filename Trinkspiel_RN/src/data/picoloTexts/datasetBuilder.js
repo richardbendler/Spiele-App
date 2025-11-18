@@ -27,6 +27,15 @@ const mapItemToPrompt = (item = {}) => {
   const drinkingFlag =
     typeof item.drinking === 'boolean' ? item.drinking : Boolean(item.drink);
 
+  const manualApprovalRaw =
+    typeof item.manuellFreigegeben === 'number'
+      ? item.manuellFreigegeben
+      : typeof item.manualApproved === 'number'
+        ? item.manualApproved
+        : typeof item.manual_approval === 'number'
+          ? item.manual_approval
+          : 0;
+
   const prompt = {
     content,
     content_en: english || content,
@@ -34,6 +43,7 @@ const mapItemToPrompt = (item = {}) => {
     drunk_level: drunkLevel,
     familiarityFloor: toFamiliarity(deepness),
     bool_drink: drinkingFlag ? 1 : 0,
+    manual_approval: manualApprovalRaw ? 1 : 0,
   };
 
   if (Array.isArray(item.tags) && item.tags.length > 0) {

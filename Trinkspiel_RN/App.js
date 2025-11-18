@@ -7,8 +7,6 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 //Import der Datenbankvorlagen
 // import { getGameData } from './src/general'; // API_RESTORE_STEP: uncomment to fetch texts from the server again
 import { theOneSamplePrompts } from "./src/data/picoloTexts";
-import { spinTheBottleTruthTexts } from "./src/data/spinTheBottleTruth";
-import { spinTheBottleDareTexts } from "./src/data/spinTheBottleDare";
 import { manyQuestionsSampleTexts } from "./src/data/manyQuestionsTexts";
 import { activitySampleWords } from "./src/data/activityWords";
 
@@ -39,6 +37,8 @@ import { VariablesContext } from "./VariablesContext";
 
 //Import von Hilfsfunktionen
 import { shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
+import { normalizeCategoryKey } from "./src/utils/categoryColors";
+import { filterManualApproved } from "./src/utils/manualApproval";
 
 import { enableScreens } from "react-native-screens";
 enableScreens();
@@ -240,10 +240,78 @@ const ensureDrinkCatalogDefaults = (storedCatalog) => {
   });
 };
 
+const filterByPoolKey = (prompts, poolKey) => {
+  if (!Array.isArray(prompts)) return [];
+  const normalizedTarget = normalizeCategoryKey(poolKey);
+  return filterManualApproved(prompts).filter(
+    (entry) => normalizeCategoryKey(entry?.pool?.key) === normalizedTarget
+  );
+};
+
+const buildTruthDarePoolsFromPrompts = (prompts = []) => {
+  const truth = [];
+  const dare = [];
+  filterManualApproved(prompts).forEach((entry) => {
+    const normalizedKey = normalizeCategoryKey(entry?.pool?.key);
+    if (normalizedKey === "truth") {
+      truth.push(entry);
+      return;
+    }
+    if (normalizedKey === "dare") {
+      dare.push(entry);
+      return;
+    }
+
+    const payload = entry?.metadata?.customPayload;
+    if (normalizedKey !== "truth-dare-combo" && payload?.type !== "truthOrDare") {
+      return;
+    }
+
+    const baseId =
+      typeof entry?.question_id === "number"
+        ? entry.question_id
+        : parseInt(entry?.question_id, 10);
+
+    const truthDe =
+      (typeof payload?.truth === "object" && payload.truth?.de) || payload?.truth || entry.content;
+    const truthEn =
+      (typeof payload?.truth === "object" && payload.truth?.en) ||
+      payload?.truth_en ||
+      truthDe ||
+      entry.content_en ||
+      entry.content;
+    const dareDe =
+      (typeof payload?.dare === "object" && payload.dare?.de) || payload?.dare || entry.content;
+    const dareEn =
+      (typeof payload?.dare === "object" && payload.dare?.en) ||
+      payload?.dare_en ||
+      dareDe ||
+      entry.content_en ||
+      entry.content;
+
+    if (truthDe) {
+      truth.push({
+        ...entry,
+        question_id: Number.isFinite(baseId) ? baseId * 10 + 1 : `${entry.question_id || "combo"}-T`,
+        content: truthDe,
+        content_en: truthEn || truthDe,
+      });
+    }
+    if (dareDe) {
+      dare.push({
+        ...entry,
+        question_id: Number.isFinite(baseId) ? baseId * 10 + 2 : `${entry.question_id || "combo"}-D`,
+        content: dareDe,
+        content_en: dareEn || dareDe,
+      });
+    }
+  });
+
+  return { truth, dare };
+};
+
 export default function App() {
   const [theOnePrompts, setTheOnePrompts] = useState(() => [...theOneSamplePrompts]);
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(() => [...spinTheBottleTruthTexts]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(() => [...spinTheBottleDareTexts]);
   const [manyQuestions, setManyQuestions] = useState(() => [...manyQuestionsSampleTexts]);
   const [words, setWords] = useState(() => [...activitySampleWords]);
   const [drinkCatalog, setDrinkCatalog] = useState(DEFAULT_DRINK_CATALOG);
@@ -253,6 +321,23 @@ export default function App() {
     desiredDrunkenness: 6,
     familiarity: 5,
   });
+
+  const approvedTheOnePrompts = useMemo(
+    () => filterManualApproved(theOnePrompts),
+    [theOnePrompts]
+  );
+  const mostLikelyPrompts = useMemo(
+    () => filterByPoolKey(theOnePrompts, "most-likely"),
+    [theOnePrompts]
+  );
+  const neverHaveIEverPrompts = useMemo(
+    () => filterByPoolKey(theOnePrompts, "never-have-i-ever"),
+    [theOnePrompts]
+  );
+  const { truth: spinTheBottleTruths, dare: spinTheBottleDares } = useMemo(
+    () => buildTruthDarePoolsFromPrompts(theOnePrompts),
+    [theOnePrompts]
+  );
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
@@ -271,8 +356,6 @@ export default function App() {
 
   useEffect(() => {
     loadFromDisk(setTheOnePrompts, "texts_Picolo");
-    loadFromDisk(setTextsWahrheitSpinTheBottle, "textsWahrheitSpinTheBottle");
-    loadFromDisk(setTextsPflichtSpinTheBottle, "textsPflichtSpinTheBottle");
     loadFromDisk(setManyQuestions, "manyQuestions");
     loadFromDisk(setWords, "words");
   }, []);
@@ -362,7 +445,12 @@ export default function App() {
         theOneSettings,
         setTheOneSettings,
         theOnePrompts,
+        approvedTheOnePrompts,
         setTheOnePrompts,
+        spinTheBottleTruths,
+        spinTheBottleDares,
+        mostLikelyPrompts,
+        neverHaveIEverPrompts,
         manyQuestions,
         setManyQuestions,
         tutorialEnabled,
@@ -400,7 +488,7 @@ export default function App() {
             <Stack.Screen name="MainMenu" component={MainMenu} />
             <Stack.Screen name="AddPlayer" component={AddPlayer} />
             <Stack.Screen name="PreGameSettings" component={PreGameSettings} />
-            <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: theOnePrompts }} />
+            <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: approvedTheOnePrompts }} />
             <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
             <Stack.Screen name="WhoWouldLikelyGame" component={WhoWouldLikelyGame} />
             <Stack.Screen name="NeverHaveIEverGame" component={NeverHaveIEverGame} />
@@ -411,7 +499,7 @@ export default function App() {
             <Stack.Screen
               name="SpinTheBottle"
               component={SpinTheBottle}
-              initialParams={{ textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle }}
+              initialParams={{ textsWahrheitSpinTheBottle: spinTheBottleTruths, textsPflichtSpinTheBottle: spinTheBottleDares }}
             />
             <Stack.Screen name="HorseRace" component={HorseRace} />
             <Stack.Screen name="Schoeneberg" component={Schoeneberg} />

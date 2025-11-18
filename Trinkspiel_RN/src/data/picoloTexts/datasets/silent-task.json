@@ -33,7 +33,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nicht vorlesen: Fake-Call",
@@ -60,7 +61,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nicht vorlesen: Freeze-Smirk",
@@ -91,7 +93,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nicht vorlesen: Geheim-Agent",
@@ -118,7 +121,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Nicht vorlesen: Emoji-Statue",
@@ -145,7 +149,8 @@
           }
         ]
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

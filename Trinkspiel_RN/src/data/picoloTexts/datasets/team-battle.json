@@ -26,7 +26,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Teamduell: Geräusche-Raten",
@@ -45,7 +46,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Teamduell: Speed-Quiz",
@@ -64,7 +66,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Teamduell: Meme-Pantomime",
@@ -84,7 +87,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Teamduell: Impro-Werbung",
@@ -103,7 +107,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

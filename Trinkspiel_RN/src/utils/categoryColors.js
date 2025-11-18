@@ -36,6 +36,32 @@ const CATEGORY_COLOR_DEFS = [
   { key: 'explain', color: '#3A86FF' },
 ];
 
+const LEGACY_KEY_ALIASES = {
+  truth: 'truth',
+  dare: 'dare',
+  truthOrDareCombo: 'truth-dare-combo',
+  neverHaveIEver: 'never-have-i-ever',
+  ffaBest: 'ffa-best',
+  ffaGiveUp: 'ffa-giveup',
+  voteMinority: 'vote-minority',
+  everyoneDrink: 'everyone-drink',
+  bestDistributor: 'best-distributor',
+  worstDrinker: 'worst-drinker',
+  mostLikely: 'most-likely',
+  directChallenge: 'direct-challenge',
+  silentTask: 'silent-task',
+  targetedDrink: 'targeted-drink',
+  shotCard: 'shot-card',
+  neighborAction: 'neighbor-action',
+  wordContinuation: 'word-chain',
+  timerCountdown: 'timer-countdown',
+  timerCounter: 'timer-counter',
+  teamBattle: 'team-battle',
+  pantomimeTeams: 'pantomime-teams',
+  pantomimeSolo: 'pantomime-solo',
+  fakeNews: 'fake-news',
+};
+
 const CATEGORY_COLOR_MAP = CATEGORY_COLOR_DEFS.reduce((acc, def) => {
   acc[def.key] = def.color;
   return acc;
@@ -65,6 +91,27 @@ const normalizeHexColor = (value) => {
   return trimmed.toUpperCase();
 };
 
+const normalizeCategoryKey = (key) => {
+  if (typeof key !== 'string') {
+    return null;
+  }
+  const trimmed = key.trim();
+  if (CATEGORY_COLOR_MAP[trimmed]) {
+    return trimmed;
+  }
+  const lower = trimmed.toLowerCase();
+  if (CATEGORY_COLOR_MAP[lower]) {
+    return lower;
+  }
+  if (LEGACY_KEY_ALIASES[trimmed]) {
+    return LEGACY_KEY_ALIASES[trimmed];
+  }
+  if (LEGACY_KEY_ALIASES[lower]) {
+    return LEGACY_KEY_ALIASES[lower];
+  }
+  return trimmed;
+};
+
 const pickPaletteColor = (index = 0) => {
   if (CATEGORY_COLOR_PALETTE.length === 0) {
     return '#2F4F4F';
@@ -74,7 +121,8 @@ const pickPaletteColor = (index = 0) => {
 };
 
 const getCategoryColor = (key, fallbackIndex = 0) => {
-  const color = CATEGORY_COLOR_MAP[key];
+  const normalizedKey = normalizeCategoryKey(key);
+  const color = normalizedKey ? CATEGORY_COLOR_MAP[normalizedKey] : null;
   if (color) {
     return color;
   }
@@ -88,6 +136,7 @@ export {
   CATEGORY_COLOR_MAP,
   CATEGORY_COLOR_PALETTE,
   CATEGORY_KEY_SEQUENCE,
+  normalizeCategoryKey,
   getCategoryColor,
   getCategoryColorEntries,
   normalizeHexColor,

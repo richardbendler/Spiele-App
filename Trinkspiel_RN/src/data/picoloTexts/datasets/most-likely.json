@@ -9,35 +9,40 @@
       "en": "Who is most likely to write a song about this group? That person drinks 2 sips.",
       "drunkLevel": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer würde am ehesten ein geheimes Doppelleben führen? Die Mehrheit bestimmt 2 Schlucke.",
       "en": "Who is most likely living a secret double life? Majority decides who drinks 2 sips.",
       "drunkLevel": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer würde am ehesten im Urlaub jemanden spontan heiraten? Genannte Person trinkt 3 Schlucke.",
       "en": "Who is most likely to spontaneously get married on vacation? Named person drinks 3 sips.",
       "drunkLevel": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer würde am ehesten einen Podcast starten und nach zwei Folgen vergessen? Person trinkt 2 Schlucke.",
       "en": "Who is most likely to start a podcast and forget about it after two episodes? That person drinks 2 sips.",
       "drunkLevel": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Wer würde am ehesten allen gegen Mitternacht Deep-Talk-Nachrichten schicken? Genannte Person trinkt 2 Schlucke.",
       "en": "Who is most likely to send everyone deep-talk texts at midnight? Named person drinks 2 sips.",
       "drunkLevel": 3,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

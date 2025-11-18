@@ -10,7 +10,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Pastaformen — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -18,7 +19,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Haustiere — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -26,7 +28,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Kaffeespezialitäten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -34,7 +37,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Eissorten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -42,7 +46,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Feiertage — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -50,7 +55,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Frühstücksgerichte — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -58,7 +64,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Serien aus der Kindheit — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -66,7 +73,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Emojis, die du zu oft benutzt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -74,7 +82,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Brettspiele — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
@@ -82,7 +91,8 @@
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Songs mit Städtenamen — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -90,7 +100,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Cocktails mit Rum — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -98,7 +109,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Marken aus deiner Kindheit — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -106,7 +118,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Dinge, die glitzern — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -114,7 +127,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Podcasts, die du weiterempfiehlst — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -122,7 +136,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Essenswitze — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -130,7 +145,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Outdoor-Hobbys — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -138,7 +154,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Modetrends der 2000er — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -146,7 +163,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Deutschsprachige Rapper*innen — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -154,7 +172,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Comedy-Formate — wer stockt oder etwas wiederholt, nimmt zwei Schlucke.",
@@ -162,7 +181,8 @@
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Filme mit Plot Twist — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -170,7 +190,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Mythen und Legenden — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -178,7 +199,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Bar-Spiele — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -186,7 +208,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Produktivitäts-Apps — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -194,7 +217,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Acts, die du live gesehen hast — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -202,7 +226,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Food-Truck-Spezialitäten — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -210,7 +235,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Memes, die nie sterben — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -218,7 +244,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Wörter mit nur einer Silbe — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -226,7 +253,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: TikTok-Trends, die dich nerven — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -234,7 +262,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Improvisierte Trinkspiele — wer stockt oder etwas wiederholt, muss drei Schlucke nehmen.",
@@ -242,7 +271,8 @@
       "drunkLevel": 6,
       "deepness": 5,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Songs, die bei Dates verboten sind — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -250,7 +280,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Guilty-Pleasure-Karaoke — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -258,7 +289,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Haushaltsgeräte, die niemand braucht — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -266,7 +298,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Filme mit legendären Kuss-Szenen — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -274,7 +307,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Drinks mit mindestens drei Zutaten — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -282,7 +316,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Nicknames für dubiose Chats — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -290,7 +325,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Wahrheit-oder-Pflicht-Klassiker — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -298,7 +334,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Festival-Fails — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -306,7 +343,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Peinliche Schulprojekte — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -314,7 +352,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Dating-App-Openers — wer stockt oder etwas wiederholt, verteilt vier Schlucke nach Wahl.",
@@ -322,7 +361,8 @@
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Orte für spontane Küsse — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -330,7 +370,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Synonyme für sexy — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -338,7 +379,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Sätze, die du nur betrunken sagst — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -346,7 +388,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Fantasien mit Promis — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -354,7 +397,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Vorlieben, die man nicht beim ersten Date droppt — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -362,7 +406,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Berührungen, die Gänsehaut machen — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -370,7 +415,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Songs für Striptease — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -378,7 +424,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Wörter, die wie ein Fetisch klingen — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -386,7 +433,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Rollenspiele — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -394,7 +442,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kategorie: Flirtmoves, die verboten gehören — wer stockt oder etwas wiederholt, bestimmt, wer fünf Schlucke nehmen muss.",
@@ -402,7 +451,8 @@
       "drunkLevel": 10,
       "deepness": 8,
       "drink": true,
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

@@ -22,7 +22,8 @@
           "en": "{{target}}, mime a superhero. If guessed, both you and the guesser hand out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Solo Mime: Alltagsfail",
@@ -41,7 +42,8 @@
           "en": "{{target}}, act out an everyday fail pantomime-style."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Solo Mime: Tierfusion",
@@ -60,7 +62,8 @@
           "en": "{{target}}, mime a mash-up of two animals. If guessed, hand out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Solo Mime: Party-DJ",
@@ -79,7 +82,8 @@
           "en": "{{target}}, pretend to DJ with ridiculous moves. Whoever guesses the song hands out 2 sips."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Solo Mime: Futuristischer Alltag",
@@ -99,7 +103,8 @@
           "en": "{{target}}, act out a daily routine from the year 2125 using only pantomime."
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

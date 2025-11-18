@@ -18,7 +18,8 @@
           "mode": "single"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Herausforderung: Remix",
@@ -34,7 +35,8 @@
           "mode": "single"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Herausforderung: Emoji-Story",
@@ -50,7 +52,8 @@
           "mode": "single"
         }
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Herausforderung: Power-Playlist",
@@ -66,7 +69,8 @@
           "mode": "single"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Herausforderung: Chaos-Block",
@@ -82,7 +86,8 @@
           "mode": "single"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

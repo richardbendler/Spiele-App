@@ -28,7 +28,8 @@
           "unit": "sip"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Glas halb voll",
@@ -54,7 +55,8 @@
           "unit": "sip"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Kalibrierung",
@@ -80,7 +82,8 @@
           "unit": "sip"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Mood Booster",
@@ -106,7 +109,8 @@
           "unit": "sip"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Story-Tax",
@@ -132,7 +136,8 @@
           "unit": "sip"
         }
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

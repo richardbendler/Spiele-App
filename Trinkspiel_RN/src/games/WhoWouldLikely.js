@@ -6,21 +6,27 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
-import { whoWouldMostLikelyQuestions } from '../data/whoWouldMostLikelyQuestions';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
 const WhoWouldLikelyGame = () => {
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled, mostLikelyPrompts } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t, language } = useTranslation();
 
   const copy = useMemo(() => t('whoWould'), [t]);
 
-  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...whoWouldMostLikelyQuestions]));
+  const deckSource = useMemo(() => (Array.isArray(mostLikelyPrompts) ? mostLikelyPrompts : []), [mostLikelyPrompts]);
+  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...deckSource]));
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const revealAnim = React.useRef(new Animated.Value(0)).current;
   const [contentVisible, setContentVisible] = useState(false);
+
+  React.useEffect(() => {
+    setDeck(shuffleArrayFisherYates([...deckSource]));
+    setIndex(0);
+    setFinished(deckSource.length === 0);
+  }, [deckSource]);
 
   const currentCard = finished ? null : deck[index] ?? null;
   const questionText = currentCard ? (language === 'en' ? currentCard.content_en : currentCard.content) : '';
@@ -37,9 +43,9 @@ const WhoWouldLikelyGame = () => {
 
   const advance = () => {
     if (finished) {
-      setDeck(shuffleArrayFisherYates([...whoWouldMostLikelyQuestions]));
+      setDeck(shuffleArrayFisherYates([...deckSource]));
       setIndex(0);
-      setFinished(false);
+      setFinished(deckSource.length === 0);
       return;
     }
     if (index < deck.length - 1) {

@@ -26,7 +26,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Team Charades: Movie Mash",
@@ -45,7 +46,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Team Charades: Berufschaos",
@@ -64,7 +66,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Team Charades: Urlaubspanne",
@@ -83,7 +86,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     },
     {
       "de": "Team Charades: Zukunfts-Gadget",
@@ -103,7 +107,8 @@
       "gating": {
         "requiresPlayers": 4
       },
-      "drinking": false
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

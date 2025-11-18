@@ -26,7 +26,8 @@
         "desiredMin": 7,
         "rareChance": 0.25
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Chug: Hype-Call",
@@ -50,7 +51,8 @@
         "desiredMin": 7,
         "rareChance": 0.2
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Chug: Doppel oder Nichts",
@@ -74,7 +76,8 @@
         "desiredMin": 7,
         "rareChance": 0.3
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Chug: Blitzduell",
@@ -98,7 +101,8 @@
         "desiredMin": 6,
         "rareChance": 0.35
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     },
     {
       "de": "Chug: Countdown",
@@ -122,7 +126,8 @@
         "desiredMin": 5,
         "rareChance": 0.4
       },
-      "drinking": true
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
