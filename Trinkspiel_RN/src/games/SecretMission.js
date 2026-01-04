@@ -137,7 +137,7 @@ const SecretMission = () => {
 
             {/* BACK (revealed) */}
             <Animated.View style={[StyleSheet.absoluteFill, styles.cardFace, { transform: [{ rotateY: spinBack }], opacity: backOpacity }]}> 
-              <View style={[styles.card, { backgroundColor: 'rgba(32,26,23,0.9)' }]}> 
+              <View style={styles.card}> 
                 <Text style={styles.missionText}>{missionText}</Text>
               </View>
             </Animated.View>
@@ -178,17 +178,17 @@ const styles = StyleSheet.create({
   cardWrapper: { width: '100%', alignItems: 'center', justifyContent: 'center', flex: 1 },
   cardFace: { backfaceVisibility: 'hidden', alignItems: 'center', justifyContent: 'center' },
   card: {
-    width: '88%',
-    minHeight: 220,
-    borderRadius: 18,
-    backgroundColor: 'rgba(245,233,215,0.94)',
+    width: '100%',
+    maxWidth: 720,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 18,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    backgroundColor: 'transparent',
   },
-  cardTitle: { color: '#201a17', fontFamily: 'Quicksand_700Bold', fontSize: 24, textAlign: 'center' },
-  hintText: { color: 'rgba(32,26,23,0.66)', fontFamily: 'Quicksand_300Light', fontSize: 14, marginTop: 10 },
-  endText: { color: '#201a17', fontFamily: 'Quicksand_700Bold', fontSize: 16, marginTop: 8, textAlign: 'center' },
+  cardTitle: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 24, textAlign: 'center' },
+  hintText: { color: 'rgba(255,255,255,0.8)', fontFamily: 'Quicksand_300Light', fontSize: 14, marginTop: 10, textAlign: 'center' },
+  endText: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 16, marginTop: 8, textAlign: 'center' },
   missionText: { color: '#F5E9D7', fontFamily: 'Quicksand_700Bold', fontSize: 20, lineHeight: 28, textAlign: 'center' },
   controls: { paddingVertical: 16 },
 });

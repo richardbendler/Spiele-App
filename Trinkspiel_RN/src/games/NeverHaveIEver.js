@@ -129,16 +129,9 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   cardBox: {
-    backgroundColor: 'rgba(0,0,0,0.45)',
-    borderRadius: 16,
-    paddingVertical: 18,
-    paddingHorizontal: 16,
-    shadowColor: '#000',
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 4,
+    width: '100%',
     maxWidth: 720,
+    alignItems: 'center',
   },
   finishedCard: {
     flex: 1,

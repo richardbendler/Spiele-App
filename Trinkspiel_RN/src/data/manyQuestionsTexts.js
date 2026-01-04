@@ -65,7 +65,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3011,
     question_type: "B",
-    content: "Wer probiert die meisten neün Rezepte aus?",
+    content: "Wer probiert die meisten neuen Rezepte aus?",
     content_en: "Who tries the most new recipes?",
   },
   {
@@ -155,7 +155,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3026,
     question_type: "B",
-    content: "Wer entdeckt die besten neün Bands?",
+    content: "Wer entdeckt die besten neuen Bands?",
     content_en: "Who discovers the best new bands?",
   },
   {
@@ -713,7 +713,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3119,
     question_type: "B",
-    content: "Wer testet die meisten neün Apps?",
+    content: "Wer testet die meisten neuen Apps?",
     content_en: "Who tests the most new apps?",
   },
   {
@@ -881,7 +881,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3147,
     question_type: "C",
-    content: "Wer würde am ehesten einen internationalen Freundeskreis aufbaün?",
+    content: "Wer würde am ehesten einen internationalen Freundeskreis aufbauen?",
     content_en: "Who would most likely build an international circle of friends?",
   },
   {
@@ -1055,7 +1055,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3176,
     question_type: "B",
-    content: "Wer trainiert täglich eine neü Sprache?",
+    content: "Wer trainiert täglich eine neue Sprache?",
     content_en: "Who trains a new language every day?",
   },
   {
@@ -1217,7 +1217,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3203,
     question_type: "B",
-    content: "Wer testet die neüsten Gadgets zürst?",
+    content: "Wer testet die neuesten Gadgets zuerst?",
     content_en: "Who tests the newest gadgets first?",
   },
   {
@@ -1235,7 +1235,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3206,
     question_type: "B",
-    content: "Wer übt regelmässig neü Tanzmoves?",
+    content: "Wer übt regelmässig neue Tanzmoves?",
     content_en: "Who practices new dance moves regularly?",
   },
   {
@@ -1277,7 +1277,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3213,
     question_type: "C",
-    content: "Wer würde am ehesten einen Buchclub aufbaün?",
+    content: "Wer würde am ehesten einen Buchclub aufbauen?",
     content_en: "Who would most likely start a book club?",
   },
   {
@@ -1619,7 +1619,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3270,
     question_type: "C",
-    content: "Wer würde am ehesten einen Freundeskreis in einer neün Stadt aufbaün?",
+    content: "Wer würde am ehesten einen Freundeskreis in einer neuen Stadt aufbauen?",
     content_en: "Who would most likely build a friend group in a new city?",
   },
   {
@@ -1703,7 +1703,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3284,
     question_type: "B",
-    content: "Wer stimmt am schnellsten auf neü Trends ein?",
+    content: "Wer stimmt am schnellsten auf neue Trends ein?",
     content_en: "Who adapts to new trends the fastest?",
   },
   {
@@ -1727,7 +1727,7 @@ export const manyQuestionsSampleTexts = [
   {
     question_id: 3288,
     question_type: "C",
-    content: "Wer würde am ehesten eine neü Sportart populär machen?",
+    content: "Wer würde am ehesten eine neue Sportart populär machen?",
     content_en: "Who would most likely popularize a new sport?",
   },
   {
