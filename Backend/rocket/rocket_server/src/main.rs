@@ -18,6 +18,7 @@ use routes::{feedback, games::*};
 
 use rocket::serde::{json::Json, Deserialize, Serialize};
 use sqlx::{MySql, MySqlPool, Pool};
+use std::env;
 
 // launch server
 #[launch]
@@ -64,7 +65,9 @@ fn send_json_test() -> Json<Message<'static>> {
 
 // example for connecting to the database
 async fn connect_to_database() -> Pool<MySql> {
-    let pool = MySqlPool::connect("mysql://backenduser:REDACTED_DB_PASSWORD@45.9.63.16/TrinkspielDB").await;
+    let database_url = env::var("DATABASE_URL")
+        .expect("Missing DATABASE_URL environment variable.");
+    let pool = MySqlPool::connect(&database_url).await;
     pool.expect("Server successfully connected to database")
 }
 
