@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "The One",
-    "slug": "Trinkspiel_RN",
+    "slug": "Game_RN",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo/logo_weinglas.png",
@@ -30,7 +30,7 @@
         "android.permission.INTERNET"
       ],
       "versionCode": 56,
-      "package": "com.felsbend.Trinkspiel_RN"
+      "package": "com.felsbend.Game_RN"
     },
     "web": {
       "favicon": "./assets/images/logo/favicon.png"
