@@ -1,47 +1,54 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
-import { VariablesContext } from '../../../VariablesContext';
+export const replaceHashtagsWithoutDuplicates = (inputString, options = {}) => {
+  try {
+    const text = typeof inputString === 'string' ? inputString : '';
+    if (!text) {
+      return '';
+    }
 
+    const allPlayers = Array.isArray(options.players) ? options.players : [];
+    const language = typeof options.language === 'string' ? options.language : 'de';
+    const requireDrinkingPlayers = Boolean(options.requireDrinkingPlayers);
 
-//const names = ["Alice", "Bob", "Charlie", "David"];
-export const replaceHashtagsWithoutDuplicates = (inputString) => {
-    const { playerNames, setPlayerNames } = useContext(VariablesContext);
+    const drinkersOnly = allPlayers.filter((player) => player?.drinks !== false);
+    const playerPool =
+      requireDrinkingPlayers && drinkersOnly.length > 0 ? drinkersOnly : allPlayers;
+    const playerNames = playerPool.map((player) => player?.name).filter(Boolean);
+    const fallbackNames = allPlayers.map((player) => player?.name).filter(Boolean);
 
-    // Kopie des Namensarrays erstellen, um Manipulationen vorzunehmen
-    let availableNames = [...playerNames];
+    const hasInitialPool = playerNames.length > 0;
+    let availableNames = hasInitialPool ? [...playerNames] : [...fallbackNames];
 
-    
-    return inputString.replace(/#[a-zA-Z0-9_]+/g, () => {
-        if (availableNames.length === 0) {
-          // Wenn alle Namen verwendet wurden, setze die Liste zurück
-          availableNames = [...playerNames];
-        }
-    
-        // Zufälligen Index aus den verfügbaren Namen auswählen
-        const randomIndex = Math.floor(Math.random() * availableNames.length);
-    
-        // Wähle den Namen an diesem Index aus
-        const name = availableNames[randomIndex];
-    
-        // Entferne den ausgewählten Namen aus der Liste der verfügbaren Namen
-        availableNames.splice(randomIndex, 1);
-    
-        // Ersetze das Hashtag durch den ausgewählten Namen
-        return name;
-      });
-}
+    if (availableNames.length === 0) {
+      const fallbackLabel = language === 'en' ? 'player' : 'Spieler*in';
+      return text.replace(/#/g, fallbackLabel);
+    }
+
+    return text.replace(/#/g, () => {
+      if (availableNames.length === 0) {
+        availableNames = playerNames.length > 0 ? [...playerNames] : [...fallbackNames];
+      }
+      const randomIndex = Math.floor(Math.random() * availableNames.length);
+      const name = availableNames[randomIndex];
+      availableNames.splice(randomIndex, 1);
+      return name;
+    });
+  } catch (error) {
+    console.log(error);
+    return typeof inputString === 'string' ? inputString : '';
+  }
+};
 
 export const deleteHashtags = (inputString) => {
-  return inputString.replace(/#[a-zA-Z0-9_], +/g, () => {
-      return "";
-    });
-}
+  return (inputString || '').replace(/#[a-zA-Z0-9_], +/g, () => {
+    return '';
+  });
+};
 
-//Sortiert ein Array zufällig neu
-export const shuffleArrayFisherYates =(array) => {
-    for (let i = array.length - 1; i > 0; i--) {
+export const shuffleArrayFisherYates = (array) => {
+  for (let i = array.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Elemente tauschen
-    }
-    return array;
-}
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+

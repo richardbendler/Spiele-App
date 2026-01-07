@@ -1,17 +1,33 @@
 import React from 'react';
 
-/* 
-playerNames: {
-  id: int
-  name: String,
-  drinks: bool
-}
-*/
-
 export const VariablesContext = React.createContext({
-  playerNames: [],
-  setPlayerNames: () => {},
-  drinkTypes: [], // Initialisieren mit leerem Array
-  setDrinkTypes: () => {},
+  settingsVisible: false,
+  setSettingsVisible: () => {},
+  infoVisible: false,
+  setInfoVisible: () => {},
+  drinkCatalog: [],
+  setDrinkCatalog: () => {},
+  drinkLog: [],
+  setDrinkLog: () => {},
+  players: [],
+  setPlayers: () => {},
+  language: 'de',
+  setLanguage: () => {},
+  theOneSettings: {
+    currentDrunkenness: 4,
+    desiredDrunkenness: 6,
+    familiarity: 5,
+  },
+  setTheOneSettings: () => {},
+  theOnePrompts: [],
+  approvedTheOnePrompts: [],
+  setTheOnePrompts: () => {},
+  spinTheBottleTruths: [],
+  spinTheBottleDares: [],
+  mostLikelyPrompts: [],
+  neverHaveIEverPrompts: [],
+  manyQuestions: [],
+  setManyQuestions: () => {},
+  tutorialEnabled: false,
+  setTutorialEnabled: () => {},
 });
-

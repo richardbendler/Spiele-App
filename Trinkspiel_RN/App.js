@@ -1,151 +1,547 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState, useEffect, useContext } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+﻿import React, { useState, useEffect, useMemo, useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 //Import der Datenbankvorlagen
-import { handleSqlRequest } from './src/general';
+// import { getGameData } from './src/general'; // API_RESTORE_STEP: uncomment to fetch texts from the server again
+import { theOneSamplePrompts } from "./src/data/picoloTexts";
+import { manyQuestionsSampleTexts } from "./src/data/manyQuestionsTexts";
+import { activitySampleWords } from "./src/data/activityWords";
 
-//Import der Menüs
-import StartMenu from './src/menus/StartMenu';
-import MainMenu from './src/menus/MainMenu';
-import KlassikerMenu from './src/menus/KlassikerMenu';
-import CardGamesMenu from './src/menus/CardGamesMenu';
-import MiniGamesMenu from './src/menus/MiniGamesMenu';
-import AddPlayer from './src/menus/AddPlayer';
+//Import der Menus
+import StartMenu from "./src/menus/StartMenu";
+import MainMenu from "./src/menus/MainMenu";
+import AddPlayer from "./src/menus/AddPlayer";
+import PreGameSettings from "./src/menus/PreGameSettings";
 
 //Import der Spiele
-import PicoloGame from './src/games/PicoloGame';
-import ManyQuestionsGame from './src/games/ManyQuestions';
-import Kingscup from './src/games/Kingscup';
-import MaexchenGame from './src/games/Mäxchen';
-import DrinkCounter from './src/games/DrinkCounter';
-import Activity from './src/games/Activity';
-import SpinTheBottle from './src/games/SpinTheBottle';
-import HorseRace from './src/games/HorseRace';
+import PicoloGame from "./src/games/PicoloGame";
+import ManyQuestionsGame from "./src/games/ManyQuestions";
+import Kingscup from "./src/games/Kingscup";
+import MaexchenGame from "./src/games/Maexchen";
+import DrinkCounter from "./src/games/DrinkCounter";
+import Activity from "./src/games/Activity";
+import SpinTheBottle from "./src/games/SpinTheBottle";
+import HorseRace from "./src/games/HorseRace";
+import Schoeneberg from "./src/games/Schoeneberg";
+import WhoWouldLikelyGame from "./src/games/WhoWouldLikely";
+import NeverHaveIEverGame from "./src/games/NeverHaveIEver";
+import PartyBoardGame from "./src/games/PartyBoardGame";
+import SixBySixGame from "./src/games/SixBySix";
+import SecretMission from "./src/games/SecretMission";
 
 //Import des Contextes -> Verwaltet globale Variablen
-import { VariablesContext } from './VariablesContext';
+import { VariablesContext } from "./VariablesContext";
 
+//Import von Hilfsfunktionen
+import { shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
+import { normalizeCategoryKey } from "./src/utils/categoryColors";
+import { filterManualApproved } from "./src/utils/manualApproval";
 
-
-import { enableScreens } from 'react-native-screens';
+import { enableScreens } from "react-native-screens";
 enableScreens();
+import { askForRatingIfEligible } from "./src/utils/rating";
 
+const DEFAULT_DRINK_CATALOG = [
+  {
+    id: "beer-500",
+    name: "Bier 0.5l",
+    abv: 5,
+    volumeMl: 500,
+    quick: true,
+    isHidden: false,
+    color: "#F5C26B",
+    icon: "🍺",
+  },
+  {
+    id: "radler-500",
+    name: "Radler 0.5l",
+    abv: 2.5,
+    volumeMl: 500,
+    quick: false,
+    isHidden: false,
+    color: "#E8D56E",
+    icon: "🍺",
+  },
+  {
+    id: "water-500",
+    name: "Wasser 0.5l",
+    abv: 0,
+    volumeMl: 500,
+    quick: false,
+    isHidden: true,
+    color: "#88C9F9",
+    icon: "💧",
+  },
+  {
+    id: "sekt-100",
+    name: "Sekt 0.1l",
+    abv: 11,
+    volumeMl: 100,
+    quick: false,
+    isHidden: true,
+    color: "#F2E28A",
+    icon: "🥂",
+  },
+  {
+    id: "gin-tonic-250",
+    name: "Gin Tonic 0.25l",
+    abv: 12,
+    volumeMl: 250,
+    quick: false,
+    isHidden: true,
+    color: "#B6E0CE",
+    icon: "🍸",
+  },
+  {
+    id: "cola-330",
+    name: "Cola 0.33l",
+    abv: 0,
+    volumeMl: 330,
+    quick: false,
+    isHidden: true,
+    color: "#6B4C3B",
+    icon: "🥤",
+  },
+  {
+    id: "energy-250",
+    name: "Energy 0.25l",
+    abv: 0,
+    volumeMl: 250,
+    quick: false,
+    isHidden: true,
+    color: "#E06C3A",
+    icon: "⚡",
+  },
+  {
+    id: "cider-330",
+    name: "Cider 0.33l",
+    abv: 5,
+    volumeMl: 330,
+    quick: false,
+    isHidden: true,
+    color: "#C9D97E",
+    icon: "🍏",
+  },
+  {
+    id: "weinschorle-300",
+    name: "Weinschorle 0.3l",
+    abv: 6,
+    volumeMl: 300,
+    quick: false,
+    isHidden: true,
+    color: "#EAC77B",
+    icon: "🍷",
+  },
+  {
+    id: "vodka-shot-20",
+    name: "Vodka 2cl",
+    abv: 40,
+    volumeMl: 20,
+    quick: false,
+    isHidden: true,
+    color: "#C0E4F7",
+    icon: "🥃",
+  },
+  {
+    id: "beer-330",
+    name: "Bier 0.33l",
+    abv: 5,
+    volumeMl: 330,
+    quick: false,
+    isHidden: false,
+    color: "#F1B24A",
+    icon: "🍻",
+  },
+  {
+    id: "wine-150",
+    name: "Wein 0.15l",
+    abv: 12,
+    volumeMl: 150,
+    quick: true,
+    isHidden: false,
+    color: "#D26B6B",
+    icon: "🍷",
+  },
+  {
+    id: "shot-40",
+    name: "Shot 4cl",
+    abv: 40,
+    volumeMl: 40,
+    quick: true,
+    isHidden: false,
+    color: "#C97F5F",
+    icon: "🥃",
+  },
+  {
+    id: "cocktail-250",
+    name: "Cocktail 0.25l",
+    abv: 14,
+    volumeMl: 250,
+    quick: true,
+    isHidden: false,
+    color: "#8BC6B9",
+    icon: "🍹",
+  },
+];
+
+const ensureDrinkCatalogDefaults = (storedCatalog) => {
+  const fallbackById = Object.fromEntries(
+    DEFAULT_DRINK_CATALOG.map((item) => [item.id, item])
+  );
+
+  const byId = new Set();
+  const merged = [];
+  (Array.isArray(storedCatalog) ? storedCatalog : []).forEach((drink) => {
+    if (!drink || !drink.id) return;
+    if (byId.has(drink.id)) return;
+    byId.add(drink.id);
+    merged.push(drink);
+  });
+
+  DEFAULT_DRINK_CATALOG.forEach((def) => {
+    if (!byId.has(def.id)) {
+      merged.push(def);
+      byId.add(def.id);
+    }
+  });
+
+  return merged.map((drink, index) => {
+    const fallback = fallbackById[drink.id];
+    const normalized = { ...fallback, ...drink };
+
+    if (fallback) {
+      normalized.icon = drink.icon || fallback.icon;
+      normalized.color = drink.color || fallback.color;
+    } else {
+      normalized.icon = drink.icon || "??";
+      normalized.color =
+        drink.color ||
+        DEFAULT_DRINK_CATALOG[index % DEFAULT_DRINK_CATALOG.length]?.color ||
+        "#F5C26B";
+    }
+
+    normalized.quick =
+      typeof drink.quick === "boolean"
+        ? drink.quick
+        : fallback && typeof fallback.quick === "boolean"
+        ? fallback.quick
+        : false;
+    normalized.isHidden =
+      typeof drink.isHidden === "boolean" ? drink.isHidden : false;
+
+    if (normalized.id === "cocktail-250" && !normalized.isHidden) {
+      normalized.quick = true;
+    }
+
+    return normalized;
+  });
+};
+
+const filterByPoolKey = (prompts, poolKey) => {
+  if (!Array.isArray(prompts)) return [];
+  const normalizedTarget = normalizeCategoryKey(poolKey);
+  return filterManualApproved(prompts).filter(
+    (entry) => normalizeCategoryKey(entry?.pool?.key) === normalizedTarget
+  );
+};
+
+const buildTruthDarePoolsFromPrompts = (prompts = []) => {
+  const truth = [];
+  const dare = [];
+  filterManualApproved(prompts).forEach((entry) => {
+    const normalizedKey = normalizeCategoryKey(entry?.pool?.key);
+    if (normalizedKey === "truth") {
+      truth.push(entry);
+      return;
+    }
+    if (normalizedKey === "dare") {
+      dare.push(entry);
+      return;
+    }
+
+    const payload = entry?.metadata?.customPayload;
+    if (normalizedKey !== "truth-dare-combo" && payload?.type !== "truthOrDare") {
+      return;
+    }
+
+    const baseId =
+      typeof entry?.question_id === "number"
+        ? entry.question_id
+        : parseInt(entry?.question_id, 10);
+
+    const truthDe =
+      (typeof payload?.truth === "object" && payload.truth?.de) || payload?.truth || entry.content;
+    const truthEn =
+      (typeof payload?.truth === "object" && payload.truth?.en) ||
+      payload?.truth_en ||
+      truthDe ||
+      entry.content_en ||
+      entry.content;
+    const dareDe =
+      (typeof payload?.dare === "object" && payload.dare?.de) || payload?.dare || entry.content;
+    const dareEn =
+      (typeof payload?.dare === "object" && payload.dare?.en) ||
+      payload?.dare_en ||
+      dareDe ||
+      entry.content_en ||
+      entry.content;
+
+    if (truthDe) {
+      truth.push({
+        ...entry,
+        question_id: Number.isFinite(baseId) ? baseId * 10 + 1 : `${entry.question_id || "combo"}-T`,
+        content: truthDe,
+        content_en: truthEn || truthDe,
+      });
+    }
+    if (dareDe) {
+      dare.push({
+        ...entry,
+        question_id: Number.isFinite(baseId) ? baseId * 10 + 2 : `${entry.question_id || "combo"}-D`,
+        content: dareDe,
+        content_en: dareEn || dareDe,
+      });
+    }
+  });
+
+  return { truth, dare };
+};
 
 export default function App() {
+  const [theOnePrompts, setTheOnePrompts] = useState(() => [...theOneSamplePrompts]);
+  const [manyQuestions, setManyQuestions] = useState(() => [...manyQuestionsSampleTexts]);
+  const [words, setWords] = useState(() => [...activitySampleWords]);
+  const [drinkCatalog, setDrinkCatalog] = useState(DEFAULT_DRINK_CATALOG);
+  const [drinkLog, setDrinkLog] = useState([]);
+  const [theOneSettings, setTheOneSettings] = useState({
+    currentDrunkenness: 4,
+    desiredDrunkenness: 6,
+    familiarity: 5,
+  });
+
+  const approvedTheOnePrompts = useMemo(
+    () => filterManualApproved(theOnePrompts),
+    [theOnePrompts]
+  );
+  const mostLikelyPrompts = useMemo(
+    () => filterByPoolKey(theOnePrompts, "most-likely"),
+    [theOnePrompts]
+  );
+  const neverHaveIEverPrompts = useMemo(
+    () => filterByPoolKey(theOnePrompts, "never-have-i-ever"),
+    [theOnePrompts]
+  );
+  const { truth: spinTheBottleTruths, dare: spinTheBottleDares } = useMemo(
+    () => buildTruthDarePoolsFromPrompts(theOnePrompts),
+    [theOnePrompts]
+  );
+
   ////////////////////////////////////////////////////////
-  ///////////////////// SQL-ABFRAGEN  ////////////////////
+  /////////// Daten aus lokalem Speicher holen  //////////
   ////////////////////////////////////////////////////////
 
-  //Klassiker: Vorglühen
-  const [texts_Picolo, setTexts_Picolo] = useState(["Platzhalterfrage"]);
-  useEffect(() => {
-    const fetchData = async () => {
-      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE NOT(fk_pool = 22)');
-      const result = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Wer zuerst seine Schuhe ausgezogen hat, darf 4 verteilen. Wenn ihr alle barfuß seid, dann wer zuerst Schuhe angezogen hat.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 20, "id": 14, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal von #2 geträumt? Erzähle es oder trink 4 Schlucke.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 15, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Ich habe noch nie: jemandem Nacktbilder von mir geschickt.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 4, "id": 16, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, schicke ein Bild mit einem Kussmund an die letzte Person, mit der du auf Whatsapp gechattet hast oder trink 5 Schlücke.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 17, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Was war dein peinlichstes Date?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 18, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#, Was ist das Albernste, was du je im Beisein deines Schwarms getan hast? ", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 19, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Versuche, eine Minute lang auf einem Bein zu stehen, ohne das Gleichgewicht zu verlieren.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 20, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Führe einen kurzen Breakdance oder einen anderen Tanzstil vor, den du dir ausdenkst.", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 21, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Wer würde am ehesten eine Bank ausrauben?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 21, "id": 22, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Wer ist immer der Betrunkenste?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 21, "id": 23, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Ich habe noch nie: wegen einem Traum geweint ", "drunk_level": 0, "exposure_level": 0, "fk_pool": 4, "id": 24, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "Ich habe noch nie: etwas geklaut ", "drunk_level": 0, "exposure_level": 0, "fk_pool": 4, "id": 25, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat eine Angst, die ihr Leben beeinflusst und sie bisher nicht überwunden hat?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 32, "timestamp": "2023-09-04T18:29:17.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat eine schlechte Angewohnheit, von der sie sich wünscht, sie loszuwerden?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 33, "timestamp": "2023-09-04T18:29:17.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat schon einmal eine große Lüge erzählt, um sich aus einer schwierigen Situation zu retten?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 34, "timestamp": "2023-09-04T18:29:17.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer kennt die besten Dad-Jokes?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 35, "timestamp": "2023-09-04T18:29:17.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist der witzigste im Raum?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 36, "timestamp": "2023-09-04T18:29:17.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person macht die besten Tagebucheinträge?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 37, "timestamp": "2023-09-04T18:31:55.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat eine peinliche Begegnung mit einem Prominenten gehabt und kann sie erzählen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 38, "timestamp": "2023-09-04T18:31:55.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat einen urkomischen Witz auf Lager, der immer für Lacher sorgt?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 39, "timestamp": "2023-09-04T18:31:55.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat die lustigsten Trinkspiele oder Partyspiele auf Lager?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 40, "timestamp": "2023-09-04T18:31:55.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat die lustigsten TikTok- oder Internet-Trends ausprobiert und dabei für Lacher gesorgt?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 41, "timestamp": "2023-09-04T18:31:55.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer hat den besten Sinn für Mode im Raum?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 42, "timestamp": "2023-09-04T18:34:25.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer macht die besten Fotos bei besonderen Anlässen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 43, "timestamp": "2023-09-04T18:34:25.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer könnte ein talentierter Schauspieler oder eine talentierte Schauspielerin sein?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 44, "timestamp": "2023-09-04T18:34:25.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist bekannt für seine oder ihre guten Schauspielkünste in der Gruppe?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 45, "timestamp": "2023-09-04T18:35:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist besonders kreativ, wenn es um ästhetische Dinge geht?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 46, "timestamp": "2023-09-04T18:35:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist bekannt für seine oder ihre guten Schauspielkünste in der Gruppe?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 47, "timestamp": "2023-09-04T18:35:31.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist besonders kreativ, wenn es um ästhetische Dinge geht?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 48, "timestamp": "2023-09-04T18:35:31.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer könnte am besten bei einem Pornodreh performen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 49, "timestamp": "2023-09-04T18:38:42.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer kommt immer, wirklich immer zu spät?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 50, "timestamp": "2023-09-04T18:38:42.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer war in seinem Leben schon einmal so verliebt, dass er/sie alles aufgegeben hätte, um mit dieser Person zusammen zu sein?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 51, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat ein Geheimnis, das bisher niemand in der Runde kennt?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 52, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat die witzigsten Tanzmoves und kann sie vorführen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 53, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer hat schon einmal eine peinliche Situation erlebt, die im Nachhinein lustig war?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 54, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat eine ausgefallene Talentshow-Einlage auf Lager?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 55, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Mit welcher Person würde ich gerne im Fahrstuhl stecken bleiben?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 56, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Welche Person hat die lustigsten Geschichten aus ihrer Kindheit zu erzählen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 57, "timestamp": "2023-09-04T18:41:45.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer würde am ehesten bei einer Verkleidungsparty in einem peinlichen Kostüm auftauchen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 58, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer würde in einer Zombie-Apokalypse als letztes überleben?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 59, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer hat den schrägsten Sinn für Humor und kann den besten Witz erzählen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 60, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer würde sich am meisten für eine Reality-TV-Show bewerben und warum?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 61, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer hat die lustigsten Anekdoten von unvergesslichen Missgeschicken zu erzählen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 62, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist der König oder die Königin des Wortspiels in der Gruppe?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 63, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer könnte am besten einen Stand-up-Comedy-Auftritt hinlegen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 64, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer hat die seltsamsten, aber unterhaltsamsten Essgewohnheiten?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 65, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer würde am ehesten eine peinliche Situation in der Öffentlichkeit überstehen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 66, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist der ultimative Spaßvogel in der Gruppe und kann immer für Lacher sorgen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 67, "timestamp": "2023-09-04T18:45:10.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer ist der Non-Alkoholiker?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 68, "timestamp": "2023-09-04T18:47:07.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer verträgt nicht mehr als 2 Bier?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 69, "timestamp": "2023-09-04T18:50:49.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird mal Reich?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 70, "timestamp": "2023-09-04T18:50:49.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird mal Bundeskanzler/in?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 71, "timestamp": "2023-09-04T18:50:49.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird mal Obdachlos?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 72, "timestamp": "2023-09-04T18:50:49.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird als erstes Papa/Mama?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 73, "timestamp": "2023-09-04T18:50:49.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird als nächstes einen Weltrekord brechen, und in welcher Disziplin?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 74, "timestamp": "2023-09-04T18:50:59.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird wahrscheinlich die besten Enkelkinder haben?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 75, "timestamp": "2023-09-04T18:50:59.000Z"}, {"author": null, "bool_drink": 0, "content": "Wer wird am ehesten ein geheimes Superhelden-Doppelleben führen?", "drunk_level": 0, "exposure_level": 0, "fk_pool": 3, "id": 76, "timestamp": "2023-09-04T18:50:59.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: meine Eltern belogen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 77, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: meinen Partner belogen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 78, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: auf die Klobrille gepinkelt", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 79, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: Fahrerflucht begangen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 80, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: jemand Nacktes beobachtet", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 81, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: alleine laut vor dem Spiegel gesungen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 82, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: besonders feige in einer Situation reagiert", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 83, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: einen Freund im Stich gelassen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 84, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: länger als drei Tage nicht geduscht", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 85, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: das Handy von jemand anders durchsucht", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 86, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: Nacktbilder verschickt", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 87, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: bei einem Autounfall gegafft", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 88, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: wegen einem Traum geweint", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 89, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: eine vergebene Person geküsst", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 90, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: einen Fake-Account gehabt", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 91, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: nach dem Kotzen geknutscht", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 92, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: „Ich liebe dich“ gesagt, obwohl es nicht stimmte", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 93, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: alleine betrunken", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 94, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: etwas geklaut", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 95, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: den eigenen Furz genüsslich gerochen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 96, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: ein Geheimnis ausgeplaudert", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 97, "timestamp": "2023-09-04T18:53:11.000Z"}, {"author": null, "bool_drink": 0, "content": "Ich habe noch nie: einen Popel gegessen", "drunk_level": 0, "exposure_level": 0, "fk_pool": 2, "id": 98, "timestamp": "2023-09-04T18:53:11.000Z"}]
-      setTexts_Picolo(result);
+  const loadFromDisk = async (setter, item) => {
+    try {
+      const response = await AsyncStorage.getItem(item);
+      if (response) {
+        setter(JSON.parse(response));
+      }
+    } catch (error) {
+      console.error("Fehler beim Laden", error);
+    }
   };
-  fetchData();
+
+  useEffect(() => {
+    loadFromDisk(setTheOnePrompts, "texts_Picolo");
+    loadFromDisk(setManyQuestions, "manyQuestions");
+    loadFromDisk(setWords, "words");
   }, []);
 
-  //Spin The Bottle
-  const [textsWahrheitSpinTheBottle, setTextsWahrheitSpinTheBottle] = useState(["Platzhalterfrage"]);
-  const [textsPflichtSpinTheBottle, setTextsPflichtSpinTheBottle] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    const fetchData = async () => {
-      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 2');
-      const result1 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
-      setTextsWahrheitSpinTheBottle(result1);
-
-      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 3');
-      const result2 = [{"author": "", "bool_drink": 1, "content": "Alle trinken, die schonmal betrunken einen Baum hochgeklettert sind.", "drunk_level": 3, "exposure_level": 0, "fk_pool": 16, "id": 12, "timestamp": "2023-08-07T16:43:34.000Z"}, {"author": "", "bool_drink": 1, "content": "#1, hast du schon einmal einen Filmriss gehabt?", "drunk_level": 4, "exposure_level": 0, "fk_pool": 2, "id": 13, "timestamp": "2023-08-07T16:43:34.000Z"}] 
-      setTextsPflichtSpinTheBottle(result2);
-  };
-  fetchData();
+    const loadDrinkData = async () => {
+      try {
+        const catalogRaw = await AsyncStorage.getItem("drinkCounter_catalog");
+        const logRaw = await AsyncStorage.getItem("drinkCounter_log");
+        if (catalogRaw) {
+          const parsed = JSON.parse(catalogRaw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setDrinkCatalog(ensureDrinkCatalogDefaults(parsed));
+          } else {
+            setDrinkCatalog(DEFAULT_DRINK_CATALOG);
+          }
+        }
+        if (logRaw) {
+          setDrinkLog(JSON.parse(logRaw));
+        }
+      } catch (error) {
+        console.error("Fehler beim Laden der Getraenkedaten", error);
+      }
+    };
+    loadDrinkData();
   }, []);
 
-  //100.000 Questions
-  const [manyQuestions, setManyQuestions] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    const fetchData = async () => {
-      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_klassiker_questions` WHERE fk_pool = 22');
-      const result = [{"author": null, "bool_drink": 1, "content": "Wer stürzt immer am schnellsten ab?", "drunk_level": 5, "exposure_level": 7, "fk_pool": 22, "id": 99, "timestamp": "2023-09-07T17:35:13.000Z"}]
-      setManyQuestions(result);
-  };
-  fetchData();
+    const loadStoredPlayers = async () => {
+      try {
+        const storedPlayers = await AsyncStorage.getItem('theOne_players');
+        if (storedPlayers) {
+          const parsed = JSON.parse(storedPlayers);
+          if (Array.isArray(parsed)) {
+            setPlayers(parsed);
+          }
+        }
+      } catch (error) {
+        console.error('Fehler beim Laden der Spielernamen', error);
+      }
+    };
+    loadStoredPlayers();
   }, []);
 
-  //Activity
-  const [words, setWords] = useState(["Platzhalterfrage"]);
   useEffect(() => {
-    const fetchData = async () => {
-      //TODO: const result = await handleSqlRequest('SELECT * FROM `game_activity_words`');
-      const result = [{"forbidden_words": "Sand, Meer, Sonne, Urlaub ", "id": 1, "timestamp": "2023-08-31T12:25:06.000Z", "word": "Strandurlaub"}, {"forbidden_words": "Braut, Ehe, Ring, Feier", "id": 2, "timestamp": "2023-08-31T12:25:21.000Z", "word": "Hochzeit"}, {"forbidden_words": "", "id": 3, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Pantomime"}, {"forbidden_words": "", "id": 4, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Schachweltmeister"}, {"forbidden_words": "", "id": 5, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Kuckucksuhr"}, {"forbidden_words": "", "id": 6, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Zeitmaschine"}, {"forbidden_words": "", "id": 7, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Taschendieb"}, {"forbidden_words": "", "id": 8, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Streetart-Künstler"}, {"forbidden_words": "", "id": 9, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Balletttänzerin"}, {"forbidden_words": "", "id": 10, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Quantencomputer"}, {"forbidden_words": "", "id": 11, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Alien-Invasion"}, {"forbidden_words": "", "id": 12, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Origami-Künstler"}, {"forbidden_words": "", "id": 13, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Teleskop"}, {"forbidden_words": "", "id": 14, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Chirurgische Operation"}, {"forbidden_words": "", "id": 15, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Schneemann bauen"}, {"forbidden_words": "", "id": 16, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Sushi zubereiten"}, {"forbidden_words": "", "id": 17, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Kung-Fu-Kampf"}, {"forbidden_words": "", "id": 18, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Heiratsantrag machen"}, {"forbidden_words": "", "id": 19, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Sandburg bauen"}, {"forbidden_words": "", "id": 20, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Boxen"}, {"forbidden_words": "", "id": 21, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Wasserski fahren"}, {"forbidden_words": "", "id": 22, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Zaubershow"}, {"forbidden_words": "", "id": 23, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Gähnen"}, {"forbidden_words": "", "id": 24, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Radfahren"}, {"forbidden_words": "", "id": 25, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Verstecken spielen"}, {"forbidden_words": "", "id": 26, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Fotokopieren"}, {"forbidden_words": "", "id": 27, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Schatzsuche"}, {"forbidden_words": "", "id": 28, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Eislaufen"}, {"forbidden_words": "", "id": 29, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Telefonbuch durchblättern"}, {"forbidden_words": "", "id": 30, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Mondlandung"}, {"forbidden_words": "", "id": 31, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Hochseilakrobatik"}, {"forbidden_words": "", "id": 32, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Zeitreisen mit einer Zeitmaschine"}, {"forbidden_words": "", "id": 33, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Prostituierte"}, {"forbidden_words": "", "id": 34, "timestamp": "2023-09-04T19:10:05.000Z", "word": "Milf"}]
-      setWords(result);
-  };
-  fetchData();
-  }, []);
+    const persistPlayers = async () => {
+      try {
+        await AsyncStorage.setItem('theOne_players', JSON.stringify(players));
+      } catch (error) {
+        console.error('Fehler beim Speichern der Spielernamen', error);
+      }
+    };
+    persistPlayers();
+  }, [players]);
 
-
-  //Für Menus
   const Stack = createStackNavigator();
-
-  
-  
-  //Globale Variablen aus Context
-  const [playerNames, setPlayerNames] = useState([]);
-  const [drinkTypes, setDrinkTypes] = useState([]); 
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
+  const [players, setPlayers] = useState([]);
+  const [language, setLanguage] = useState("de");
+  const [tutorialEnabled, setTutorialEnabled] = useState(false);
+
+  const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
+
+  const navigationRef = React.useRef();
+  const routeNameRef = React.useRef();
+
+  const GAME_ROUTES = useMemo(() => new Set([
+    'PicoloGame','ManyQuestionsGame','WhoWouldLikelyGame','NeverHaveIEverGame','Kingscup','MaexchenGame','Activity','DrinkCounter','SpinTheBottle','HorseRace','Schoeneberg','SixBySixGame','PartyBoardGame','SecretMission'
+  ]), []);
 
   return (
-    
-    <VariablesContext.Provider value={{ settingsVisible, setSettingsVisible, playerNames, setPlayerNames, drinkTypes, setDrinkTypes, infoVisible, setInfoVisible }}>
-    <NavigationContainer>
-      
-      <Stack.Navigator 
-        initialRouteName="StartMenu"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        }}
-      >
-      <Stack.Screen name="StartMenu" component={StartMenu} />
-      <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="KlassikerMenu" component={KlassikerMenu} />
-      <Stack.Screen name="CardGamesMenu" component={CardGamesMenu} />
-      <Stack.Screen name="MiniGamesMenu" component={MiniGamesMenu} />
-      <Stack.Screen name="AddPlayer" component={AddPlayer} />
-      
-      <Stack.Screen 
-          name="PicoloGame" 
-          component={PicoloGame}
-          initialParams={{ texts: texts_Picolo }} 
-      />
-      <Stack.Screen 
-          name="ManyQuestionsGame" 
-          component={ManyQuestionsGame}
-          initialParams={{ manyQuestions: manyQuestions }} 
-      />
-      <Stack.Screen name="Kingscup" component={Kingscup} />
-      <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-      <Stack.Screen 
-          name="Activity" 
-          component={Activity}
-          initialParams={{ words: words }} 
-      />
-      <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
-      <Stack.Screen 
-          name="SpinTheBottle" 
-          component={SpinTheBottle} 
-          initialParams={{textsWahrheitSpinTheBottle: textsWahrheitSpinTheBottle, textsPflichtSpinTheBottle: textsPflichtSpinTheBottle}}
-      />
-      <Stack.Screen name="HorseRace" component={HorseRace} />
-    </Stack.Navigator>
-  </NavigationContainer>
-</VariablesContext.Provider>
-  
-  
+    <VariablesContext.Provider
+      value={{
+        settingsVisible,
+        setSettingsVisible,
+        infoVisible,
+        setInfoVisible,
+        drinkCatalog,
+        setDrinkCatalog,
+        drinkLog,
+        setDrinkLog,
+        players,
+        setPlayers,
+        language,
+        setLanguage,
+        theOneSettings,
+        setTheOneSettings,
+        theOnePrompts,
+        approvedTheOnePrompts,
+        setTheOnePrompts,
+        spinTheBottleTruths,
+        spinTheBottleDares,
+        mostLikelyPrompts,
+        neverHaveIEverPrompts,
+        manyQuestions,
+        setManyQuestions,
+        tutorialEnabled,
+        setTutorialEnabled,
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            try { routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name; } catch {}
+          }}
+          onStateChange={async () => {
+            try {
+              const previousRouteName = routeNameRef.current;
+              const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
+              if (previousRouteName && currentRouteName) {
+                // if returning from any game to MainMenu, ask for rating
+                if (currentRouteName === 'MainMenu' && GAME_ROUTES.has(previousRouteName)) {
+                  await askForRatingIfEligible(language);
+                }
+              }
+              routeNameRef.current = currentRouteName;
+            } catch {}
+          }}
+        >
+          <Stack.Navigator
+            initialRouteName="StartMenu"
+            screenOptions={{
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="StartMenu" component={StartMenu} />
+            <Stack.Screen name="MainMenu" component={MainMenu} />
+            <Stack.Screen name="AddPlayer" component={AddPlayer} />
+            <Stack.Screen name="PreGameSettings" component={PreGameSettings} />
+            <Stack.Screen name="PicoloGame" component={PicoloGame} initialParams={{ theOneData: approvedTheOnePrompts }} />
+            <Stack.Screen name="ManyQuestionsGame" component={ManyQuestionsGame} initialParams={{ manyQuestionsData: shuffledManyQuestions }} />
+            <Stack.Screen name="WhoWouldLikelyGame" component={WhoWouldLikelyGame} />
+            <Stack.Screen name="NeverHaveIEverGame" component={NeverHaveIEverGame} />
+            <Stack.Screen name="Kingscup" component={Kingscup} />
+            <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
+            <Stack.Screen name="Activity" component={Activity} initialParams={{ words }} />
+            <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
+            <Stack.Screen
+              name="SpinTheBottle"
+              component={SpinTheBottle}
+              initialParams={{ textsWahrheitSpinTheBottle: spinTheBottleTruths, textsPflichtSpinTheBottle: spinTheBottleDares }}
+            />
+            <Stack.Screen name="HorseRace" component={HorseRace} />
+            <Stack.Screen name="Schoeneberg" component={Schoeneberg} />
+            <Stack.Screen name="SixBySixGame" component={SixBySixGame} />
+            <Stack.Screen name="PartyBoardGame" component={PartyBoardGame} />
+            <Stack.Screen name="SecretMission" component={SecretMission} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <LanguageToggle />
+      </View>
+    </VariablesContext.Provider>
   );
 }
+
+const LanguageToggle = () => {
+  const { language, setLanguage } = useContext(VariablesContext);
+  const toggleLanguage = () => setLanguage((prev) => (prev === "de" ? "en" : "de"));
+  return (
+    <TouchableOpacity style={languageStyles.toggle} onPress={toggleLanguage} activeOpacity={0.8}>
+      <Text style={languageStyles.toggleLabel}>{language === "de" ? "DE" : "EN"}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const languageStyles = StyleSheet.create({
+  toggle: {
+    position: "absolute",
+    bottom: 24,
+    right: 24,
+    backgroundColor: "rgba(0,0,0,0.75)",
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.6)",
+  },
+  toggleLabel: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 14,
+    letterSpacing: 1,
+  },
+});
+
 

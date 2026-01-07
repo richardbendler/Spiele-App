@@ -1,0 +1,156 @@
+{
+  "_meta": {
+    "description": "Nicht vorlesen Prompts"
+  },
+  "poolKey": "silent-task",
+  "items": [
+    {
+      "de": "Nicht vorlesen: Blick-Duell",
+      "en": "Do not read aloud: stare-down",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "mod",
+            "text": {
+              "de": "Nicht laut vorlesen! Tippe erst, wenn du bereit bist.",
+              "en": "Do not read this aloud. Tap when you’re ready."
+            },
+            "hidden": false
+          },
+          {
+            "id": "task",
+            "text": {
+              "de": "Starre verwirrt auf jemanden, bis die Person dich darauf anspricht. Diese Person trinkt 2 Schlucke.",
+              "en": "Stare confused at someone until they call you out. That person drinks 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Aufgabe anzeigen",
+              "en": "Show task"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Nicht vorlesen: Fake-Call",
+      "en": "Do not read aloud: fake call",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "mod",
+            "text": {
+              "de": "Nicht anteasern. Lies heimlich und tippe.",
+              "en": "No teasing. Read silently and tap."
+            },
+            "hidden": false
+          },
+          {
+            "id": "task",
+            "text": {
+              "de": "Schauspielere einen wichtigen Telefonanruf. Wer zuerst checkt, dass es fake ist, verteilt 2 Schlucke.",
+              "en": "Act out an urgent phone call. First person to call the bluff hands out 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Nicht vorlesen: Freeze-Smirk",
+      "en": "Do not read aloud: freeze smirk",
+      "drunkLevel": 6,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "mod",
+            "text": {
+              "de": "Nur lesen, nicht ansagen.",
+              "en": "Read only, do not announce."
+            },
+            "hidden": false
+          },
+          {
+            "id": "task",
+            "text": {
+              "de": "Laufe langsam im Raum herum und prüfe jeden Drink auf imaginäre Qualität. Wer dich stoppt, trinkt.",
+              "en": "Walk slowly around and “quality check” every drink like a snob. Whoever stops you drinks."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Was tun?",
+              "en": "What to do?"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Nicht vorlesen: Geheim-Agent",
+      "en": "Do not read aloud: secret agent",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "mod",
+            "text": {
+              "de": "Tu so, als würdest du jemanden unauffällig beschatten.",
+              "en": "Act like you’re tailing someone incognito."
+            },
+            "hidden": false
+          },
+          {
+            "id": "task",
+            "text": {
+              "de": "Positioniere dich immer wieder hinter einer Person, flüster \"Ziel im Blick\". Reagiert jemand, trinkt er.",
+              "en": "Constantly reposition behind someone whispering “target in sight.” Whoever reacts drinks."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Nicht vorlesen: Emoji-Statue",
+      "en": "Do not read aloud: emoji statue",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "mod",
+            "text": {
+              "de": "Nur lesen, dann handeln.",
+              "en": "Read silently, then act."
+            },
+            "hidden": false
+          },
+          {
+            "id": "task",
+            "text": {
+              "de": "Wähle drei Leute und forme ihre Gesichtsausdrücke wie Emojis. Wer lacht, trinkt 2 Schlucke.",
+              "en": "Pose three people’s faces like emojis. Anyone who breaks character drinks 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    }
+  ]
+}
