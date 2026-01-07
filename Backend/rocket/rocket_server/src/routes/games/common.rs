@@ -2,10 +2,12 @@ use rocket::time::OffsetDateTime;
 use serde::Serialize;
 use rocket::http::Status;
 use rocket::request::{Request, FromRequest, Outcome};
+use std::env;
 
-//TODO: change to proper autorization key later
-// app key for connecting to this server
-const APPKEY: &str = "Bearer REDACTED_JWT";
+// App key for connecting to this server (set via env var).
+fn app_key() -> Option<String> {
+    env::var("ROCKET_APP_KEY").ok()
+}
 
 // result send to to user
 #[derive(Serialize)]
@@ -72,7 +74,10 @@ impl<'r> FromRequest<'r> for AppKey<'r> {
     async fn from_request(req: &'r Request<'_>) -> Outcome<Self, Self::Error> {
         // check if key is correct
         fn is_valid(key: &str) -> bool {
-            key == APPKEY
+            match app_key() {
+                Some(expected) => key == expected,
+                None => false,
+            }
         }
 
         match req.headers().get_one("api-key") {

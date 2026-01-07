@@ -5,6 +5,15 @@ Ausnahmen:
 - Für alle Schritte, die das Backend betreffen, sind Informationen in der README im Ordner Backend festgehalten.
 
 
+## Lokale .env
+Fuer die lokale Entwicklung wird eine `.env` Datei benoetigt.
+
+1. `Trinkspiel_RN/.env.example` nach `Trinkspiel_RN/.env` kopieren.
+2. `EXPO_PUBLIC_API_TOKEN` setzen (Bearer Token ohne `Bearer`-Prefix).
+3. Optional: `EXPO_PUBLIC_API_BASE_URL` anpassen.
+
+Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` im Client verfuegbar gemacht.
+
 ## Datenbank
 
 ### Datenbank bearbeiten
