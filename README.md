@@ -1,6 +1,6 @@
-# Trinkspielapp
+# Game App
 
-Trinkspielapp is a multi-game party app built with React Native and a Rust-based backend. It bundles multiple classic and custom drinking games, supports curated question decks, and provides a scalable API layer for serving game content and collecting feedback.
+Game App is a multi-game party app built with React Native and a Rust-based backend. It bundles multiple classic and custom game modes, supports curated prompt decks, and provides a scalable API layer for serving game content and collecting feedback.
 
 This repository contains two main components:
 - `Trinkspiel_RN`: the React Native client (Expo) used to run the app on iOS/Android.
@@ -8,25 +8,24 @@ This repository contains two main components:
 
 ## Functional Overview
 - Multi-game hub with themed game modes and a modern UI flow.
-- Curated prompt pools and datasets for games like "Never Have I Ever", "Truth or Dare", "Most Likely", and more.
+- Curated prompt pools and datasets for conversational and party-style games.
 - Local data handling and caching for fast gameplay.
 - Server API support for fetching game content and submitting feedback.
 
 ## Tech Tree
 ```
-Trinkspielapp
-├─ Trinkspiel_RN (React Native / Expo)
-│  ├─ Games (UI + logic)
-│  ├─ Data (prompt pools, datasets)
-│  └─ i18n (multi-language copy)
-└─ Backend
-   ├─ rocket (Rust / Rocket / SQLx)
-   └─ js (Node.js / Express / MySQL) [legacy]
+Game App
+|-- Trinkspiel_RN (React Native / Expo)
+|   |-- Games (UI + logic)
+|   |-- Data (prompt pools, datasets)
+|   `-- i18n (multi-language copy)
+`-- Backend
+    |-- rocket (Rust / Rocket / SQLx)
+    `-- js (Node.js / Express / MySQL) [legacy]
 ```
 
 ## Architecture
-The client renders all game flows, manages player state, and loads prompts from curated datasets.  
-For dynamic content and feedback, the app can call the backend API. The Rust Rocket server exposes game routes and integrates with a MySQL database. A legacy Node.js backend exists for historical reference.
+The client renders all game flows, manages player state, and loads prompts from curated datasets. For dynamic content and feedback, the app can call the backend API. The Rust Rocket server exposes game routes and integrates with a MySQL database. A legacy Node.js backend exists for historical reference.
 
 ## Development Setup
 ### Prerequisites
@@ -49,9 +48,7 @@ Follow instructions in `Backend/rocket/rocket_server/README.md` for Rust + SQLx 
 - `Backend/rocket/rocket_server/src`: API routes and database access.
 
 ## Build & Release
-For Expo build steps, see `Trinkspiel_RN/README.md`.  
-For server deployment, see `Backend/rocket/rocket_server/README.md`.
+For Expo build steps, see `Trinkspiel_RN/README.md`. For server deployment, see `Backend/rocket/rocket_server/README.md`.
 
 ## Contribution Notes
-This is a personal project with a strong focus on UX and gameplay flow.  
-If you plan to extend it, keep changes incremental and avoid breaking existing game logic.
+This is a personal project with a strong focus on UX and gameplay flow. If you plan to extend it, keep changes incremental and avoid breaking existing game logic.
