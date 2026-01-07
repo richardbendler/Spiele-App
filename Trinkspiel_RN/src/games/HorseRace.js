@@ -1,0 +1,462 @@
+﻿import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+import React, { useState, useContext, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+import { appStyles } from '../../styles';
+import TutorialOverlay from './sublements/TutorialOverlay';
+import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
+import { VariablesContext } from '../../VariablesContext';
+import { useTranslation } from '../i18n';
+
+const createDeck = () => {
+  const suits = ['♦', '♥', '♠', '♣'];
+  const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  let deck = [];
+  for (let suit of suits) {
+    for (let value of values) {
+      deck.push({ suit, value });
+    }
+  }
+  return deck;
+};
+
+const initialField = (deck) => {
+  const height = 6; //height of field
+
+  let field = new Array(5).fill(0);
+  
+  //Die Karten am linken Seitenrand
+  field[0] = new Array(7).fill(null);
+  let deckCopy = [...deck];
+  for (let i = 1; i < 6; i++) {
+      let randomIndex = Math.floor(Math.random() * deckCopy.length);
+      let card = deckCopy[randomIndex];
+      deckCopy.splice(randomIndex, 1);  // Remove the card from the temporary deck
+      field[0][i] = { ...card, isHidden: true };
+  }
+
+  field[1] = new Array(7).fill(null);
+  field[2] = new Array(7).fill(null);
+  field[3] = new Array(7).fill(null);
+  field[4] = new Array(7).fill(null);
+
+  field[1][height] = { suit: '♦', value: 'A' };
+  field[2][height] = { suit: '♥', value: 'A' };
+  field[3][height] = { suit: '♠', value: 'A' };
+  field[4][height] = { suit: '♣', value: 'A' }; 
+
+  return field;
+};
+
+const App = () => {
+  const { language } = useTranslation();
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const [deck, setDeck] = useState(createDeck());
+  const [field, setField] = useState(initialField(deck));
+  const [discardPile, setDiscardPile] = useState([]);
+  const [winner, setWinner] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [autoReveal, setAutoReveal] = useState(false);
+
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+
+  useEffect(() => {
+    if (!autoReveal || winner) {
+      return;
+    }
+    if (!deck || deck.length === 0) {
+      return;
+    }
+    const interval = setInterval(() => {
+      drawCard();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [autoReveal, deck, winner]);
+
+  const restartGame = () => {
+    const newDeck = createDeck();
+    setDeck(newDeck);
+    setField(initialField(newDeck));
+    setDiscardPile([]);
+    setWinner(null);
+  };
+
+  // Funktion läuft alle Zeilen ab und checkt ob Seitenkarte aufgedeckt werden soll
+  const checkIfSideCardShouldBeDiscovered = () => {
+  const height = field[0].length - 1;
+
+  for (let row = height - 1; row > 0; row--) {
+    const sideCard = field[0][row];
+    if (!sideCard) continue;
+    if (sideCard.isHidden === false) continue;
+
+    let allAtOrPast = true;
+    for (let column = 1; column <= 4; column++) {
+      let aceIndex = -1;
+      for (let i = 0; i < field[column].length; i++) {
+        const c = field[column][i];
+        if (c && c.value === 'A') { aceIndex = i; break; }
+      }
+      if (aceIndex === -1 || aceIndex > row) { allAtOrPast = false; break; }
+    }
+
+    if (allAtOrPast) {
+      sideCard.isHidden = false;
+      moveAceUp(sideCard.suit, -1);
+    }
+    break;
+  }
+  }
+
+  const moveAceUp = (suit, direction) => { //directions: 1 for up, -1 for down
+    const newField = [...field];
+    let column = 5;
+    switch(suit){
+      case '♦':
+        column = 1;
+        break;
+      case '♥':
+        column = 2;
+        break;
+      case '♠':
+        column = 3;
+        break;
+      case '♣':
+        column = 4;
+        break;
+    }
+    for (let i = 0; i < newField[column].length; i++) {
+      if (newField[column][i] && newField[column][i].suit === suit && newField[column][i].value === 'A') {
+        if (!newField[column][i-direction]) { // Check if there is space above to move
+          newField[column][i-direction] = { ...newField[column][i] }; // Move the ace up
+          newField[column][i] = null; // Clear the current space
+        }
+        break; // Exit the loop once the ace is moved
+      }
+    }
+    setField(newField);
+  };  
+
+  //Funktion die beim Klicken des Aufdecken-Buttons ausgeführt wird
+  const drawCard = () => {
+    if (deck && deck.length === 0 || winner) return;
+    const randomIndex = Math.floor(Math.random() * deck.length);
+    const [drawnCard] = deck.splice(randomIndex, 1);
+    setDeck([...deck]);
+    setDiscardPile([drawnCard, ...discardPile]);
+    moveAceUp(drawnCard.suit, 1); //1 for direction up
+    checkIfSideCardShouldBeDiscovered();
+    checkWinner();
+  };
+
+  const checkWinner = () => {
+    const topFields = new Array(4).fill(null); //field.slice(0, 4);
+    topFields[0] = field[1][0];
+    topFields[1] = field[2][0];
+    topFields[2] = field[3][0];
+    topFields[3] = field[4][0];
+    const winningAce = topFields.find(card => card && card.value === 'A');
+    if (winningAce) {
+      setWinner(winningAce);
+      setAutoReveal(false);
+    }
+  };
+
+  if (winner) {
+    return (
+        <View style={styles.winnerScreen}>
+            <Text style={styles.winnerText}>{`Gewinner: ${winner.suit}A`}</Text>
+            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
+                <Text style={styles.buttonText}>Spiel neustarten</Text>
+            </TouchableOpacity>
+        </View>
+    );
+  }
+
+  return (
+    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
+      <View style={styles.container}>
+        
+        
+        <View style={styles.field}>
+           <View style={styles.column}>
+              {field[0].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && !card.isHidden && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                  {card && card.isHidden && <Image style={styles.cardBack} source={require('../../assets/images/icons/cards/card-back.png')} resizeMode="contain"/>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[1].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[2].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[3].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+            <View style={styles.column}>
+              {field[4].map((card, index) => {
+                // Skip the first element
+                if (index === 0) return null;
+                return(
+                <View key={index} style={card ? styles.card : styles.emptyCard}>
+                  {card && <Text style={styles.cardText}>{card.value + card.suit}</Text>}
+                </View>)
+              })}
+            </View>
+          </View>
+        
+        
+
+        <View style={styles.deckArea}>
+          <TouchableOpacity
+            style={[appStyles.gameActionButton, autoReveal ? styles.disabledButton : null]}
+            onPress={drawCard}
+            disabled={autoReveal}
+          >
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Aufdecken' : 'Reveal'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setAutoReveal((prev) => !prev)}
+            style={[styles.autoToggle, autoReveal ? styles.autoToggleActive : null]}
+          >
+            <Text style={styles.autoToggleText}>
+              {autoReveal ? (language === 'de' ? 'Automatisch: EIN (3 Sekunden)' : 'Auto: ON (3s)') : (language === 'de' ? 'Automatisch: AUS' : 'Auto: OFF')}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {discardPile.length > 0 && (
+            <View style={[styles.card, {position: 'absolute', right: '3%', bottom: '3%'}]}>
+              <Text style={styles.cardText}>{discardPile[0].value + discardPile[0].suit}</Text>
+            </View>
+          )}
+
+        
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: (language === 'de' ? 'Setzt euren Tipp auf ein Pferd.' : 'Place your bet on a horse.'), placement: 'top' },
+            { text: (language === 'de' ? 'Startet das Rennen und feuert an.' : 'Start the race and cheer.'), placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s)=> Math.min(1, s+1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
+      </View>
+      {/*{gameStarted? (
+      //Falls Game noch nicht gestartet:
+      pass
+      ):
+      
+      <View style={styles.container}>
+          <View style={{
+            height: '80%', 
+            width: '80%', 
+            alignItems: 'center',
+            justifyContent: 'center',
+            }}> 
+            <Text style={appStyles.textHeader2}>Pferderennen {"\n"}</Text>
+            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Vor Spielstart muss jede Person ein Ass auswählen und eine Anzahl X Schlücke auf das Ass setzen. Sobald das geschehen ist, könnt ihr das Spiel starten! {"\n"}</Text>
+            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Die ausführliche Anleitung findet ihr unter dem Info-Button.{"\n\n"}</Text>
+            
+            <View style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              width: windowWidth * 1,// * 360 / 100, // Adjusted width
+              justifyContent: 'center',
+            }}>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♦" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♥" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♠" + "A"}</Text>
+              </View>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{"♣" + "A"}</Text>
+              </View>
+            </View>
+            <Text>{"\n"}</Text>
+            
+
+            <TouchableOpacity style={appStyles.gameActionButton} onPress={() => setGameStarted(true)}>
+              <Text style={appStyles.gameActionButtonText}>Spiel starten</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      }*/}
+        
+        <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
+        <InfoHint />
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
+
+    </View>
+    
+    </ImageBackground>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: windowWidth * 0.05,
+  },
+  deckArea: {
+    height: '15%',
+    width: '100%',
+    //flexDirection: 'row',
+    marginBottom: windowWidth * 0.01,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  disabledButton: {
+    opacity: 0.5,
+  },
+  autoToggle: {
+    marginTop: windowWidth * 0.02,
+    borderRadius: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  autoToggleActive: {
+    backgroundColor: 'rgba(229,193,133,0.3)',
+  },
+  autoToggleText: {
+    color: 'white',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    textAlign: 'center',
+  },
+  deck: {
+    width: windowWidth * 0.3,
+    height: windowHeight * 0.115,
+    margin: windowWidth * 0.01,
+    backgroundColor: '#228B22',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    marginRight: windowWidth * 0.01,
+    borderRadius: 8,
+  },
+  deckText: {
+    fontSize: 15,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  field: {
+    height: '85%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: windowWidth * 1,// * 360 / 100, // Adjusted width
+    justifyContent: 'center',
+  },
+  column: {
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    width: windowWidth * 0.19,// * 360 / 100, // Adjusted width
+    justifyContent: 'center',
+  },
+  card: {
+    width: windowWidth * 0.17,
+    height: windowHeight * 0.115,
+    backgroundColor: 'white',
+    margin: windowWidth * 0.01,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 8,
+  },
+  cardBack: {
+    width: '100%',
+    height: '100%',
+  },
+  emptyCard: {
+    width: windowWidth * 0.17,
+    height: windowHeight * 0.115,
+    backgroundColor: '#D3D3D3',
+    margin: windowWidth * 0.01,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 8,
+  },
+  cardText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  winnerScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FAD02E',  // You can use a gradient or image
+  },
+  winnerText: {
+      fontSize: 40,
+      fontWeight: 'bold',
+      color: '#D84315',
+      marginBottom: 20,
+      textShadowColor: 'rgba(0, 0, 0, 0.75)',
+      textShadowOffset: { width: -1, height: 1 },
+      textShadowRadius: 10
+  },
+  restartButton: {
+      padding: 15,
+      borderRadius: 8,
+      backgroundColor: '#D84315',  // Use a color that stands out
+  },
+  buttonText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#FAD02E',
+  }
+});
+
+export default App;
+
+
+
+
+
+
+

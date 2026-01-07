@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "description": "Quiz: Fixe Fragen mit richtigen Antworten."
+  },
+  "poolKey": "quiz",
+  "items": [
+    {
+      "de": "Quiz: Weltwissen",
+      "en": "Quiz: world trivia",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "In welchem Land steht die Stadt Ushuaia?",
+              "en": "In which country is the city of Ushuaia located?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: Argentinien. Wer falsch lag, trinkt 2 Schlucke.",
+              "en": "Answer: Argentina. Wrong answers drink 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Antwort anzeigen",
+              "en": "Show answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Quiz: Popkultur",
+      "en": "Quiz: pop culture",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie heißt das Debütalbum von Billie Eilish?",
+              "en": "What is Billie Eilish’s debut album called?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "„When We All Fall Asleep, Where Do We Go?“. Falsche Antworten trinken.",
+              "en": "\"When We All Fall Asleep, Where Do We Go?\" Wrong answers drink."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Quiz: Nostalgie",
+      "en": "Quiz: nostalgia",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Welche Farbe hat Balu der Bär laut Original-Lied?",
+              "en": "Which color does Baloo the bear call himself in the original song?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "„Ich bin so blau wie die Tiefsee.“ Wer falsch lag, trinkt.",
+              "en": "\"I’m as blue as the deep blue sea.\" Wrong guess drinks."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Quiz: Future Tech",
+      "en": "Quiz: future tech",
+      "drunkLevel": 5,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie nennt man die VR-Technik, bei der reale Objekte mit digitalen Ebenen überlagert werden?",
+              "en": "What do you call the VR technique where real objects are overlaid with digital layers?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Mixed Reality. Falsch? Trink 2 Schlucke.",
+              "en": "Mixed reality. Wrong? Drink 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Quiz: Snack-Wissen",
+      "en": "Quiz: snack trivia",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Aus welchem Land stammen Mochi ursprünglich?",
+              "en": "Which country did mochi originate from?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Japan. Jede falsche Antwort nimmt 2 Schlucke.",
+              "en": "Japan. Every wrong answer drinks 2 sips."
+            },
+            "hidden": true
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    }
+  ]
+}
