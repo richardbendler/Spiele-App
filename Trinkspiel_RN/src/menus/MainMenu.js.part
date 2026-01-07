@@ -1,0 +1,66 @@
+      <View key={cardKey ?? game.key} style={cardContainerStyles}>
+        <TouchableOpacity style={cardTopRowStyles} onPress={() => toggleExpand(game.key)} activeOpacity={0.9}>
+          <View style={cardIconWrapperStyles}>
+            <Text style={styles.cardIcon}>{game.icon}</Text>
+          </View>
+          <View style={styles.cardHeaderContent}>
+            <View style={styles.cardTitleRow}>
+              <TitleNoWordBreak text={game.title} style={styles.gameTitleFull} />
+              {game.isNew ? (
+                <View style={[styles.newBadge, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}80` }]}>
+                  <Text style={[styles.cardBadgeText, { color: accentColor }]}>{newBadgeLabel}</Text>
+                </View>
+              ) : null}
+            </View>
+          </View>
+          <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}'><'/Text>
+        </TouchableOpacity>
+
+        {isExpanded && !!game.parameters ? <Text style={styles.gameMeta}>{game.parameters}</Text> : null}
+        {isExpanded && !!game.description ? <Text style={styles.gameDescription}>{game.description}</Text> : null}
+        {isExpanded ? (
+          <View style={styles.ratingRow} accessible accessibilityLabel={language === 'de' ? 'Bewertung' : 'Rating'}>
+            <Text style={styles.star}'><'/Text>
+            <Text style={styles.star}'><'/Text>
+            <Text style={styles.star}'><'/Text>
+            <Text style={styles.star}'><'/Text>
+            <Text style={styles.starDim}'><'/Text>
+            <Text style={styles.ratingText}>4.0</Text>
+          </View>
+        ) : null}
+
+        <View style={footerRowStyles}>
+          {startButton}
+        </View>
+      </View>
+    );
+  };
+
+  const headerTitle = language === 'de' ? 'Spielauswahl' : 'Game Lineup';
+  const headerSubtitle = language === 'de' ? 'Tippe auf eine Karte f\u00fcr Details.' : 'Tap a card to see details.';
+  const renderDrinkCounterShortcut = () => {
+    if (!drinkCounterCard) return null;
+    const accentColor = drinkCounterCard.accent;
+    const titleFallback = language === 'de' ? 'Getr\u00e4nkez\u00e4hler' : 'Drink counter';
+    const helperText = language === 'de' ? 'Runde tracken' : 'Track the round';
+    const actionLabel = language === 'de' ? '\\u00d6ffnen' : 'Open';
+    return (
+      <TouchableOpacity
+        key="drink-counter-shortcut"
+        style={[styles.drinkCounterShortcut, { borderColor: `${accentColor}55`, backgroundColor: `${accentColor}14` }]}
+        onPress={() => startGame('Getraenkezaehler')}
+        activeOpacity={0.88}
+      >
+        <View style={[styles.drinkCounterIconWrapper, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}70` }]}>
+          <Text style={styles.cardIcon}>{drinkCounterCard.icon}</Text>
+        </View>
+        <View style={styles.drinkCounterCopy}>
+          <Text style={styles.drinkCounterTitle}>{drinkCounterCard.title || titleFallback}</Text>
+          <Text style={styles.drinkCounterSubtitle}>{helperText}</Text>
+        </View>
+        <View style={[styles.drinkCounterAction, { backgroundColor: `${accentColor}F0` }]}>
+          <Text style={styles.drinkCounterActionLabel}>{actionLabel}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };

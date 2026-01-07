@@ -1,0 +1,458 @@
+{
+  "_meta": {
+    "description": "Reimen: Schlagfertige Wortketten für schnelle Zungen."
+  },
+  "poolKey": "rhyme",
+  "items": [
+    {
+      "de": "Reimrunde: Findet Reime auf \"Haus\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"house\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Licht\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"light\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Hand\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"hand\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Zeit\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"time\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Meer\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"sea\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Tag\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"day\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Nacht\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"night\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Ball\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"ball\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Herz\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"heart\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Mond\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \\\"moon\\\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Chaos\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"chaos\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Farbe\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"color\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Sommer\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"summer\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Feder\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"feather\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Reise\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"journey\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Regen\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"rain\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Feuer\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"fire\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Winter\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"winter\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Tempo\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"tempo\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Stra\"e\" – wer hängt, nimmt zwei Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"street\\\" — whoever stalls takes two sips.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Turbine\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"turbine\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Rakete\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"rocket\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Leuchte\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"lantern\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Szene\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"scene\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Legende\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"legend\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Kante\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"edge\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Tinte\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"ink\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Beute\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"loot\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Flamme\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"flame\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Koffer\" – wer hängt, muss drei Schlucke nehmen.",
+      "en": "Rhyme round: find rhymes for \\\"suitcase\\\" — whoever stalls has to take three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Paradoxon\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"paradox\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Galaxie\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"galaxy\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Serotonin\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"serotonin\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Katapult\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"catapult\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Hybris\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"hubris\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Kontinent\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"continent\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Satellit\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"satellite\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Karussell\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"carousel\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Horizont\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"horizon\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Mythos\" – wer hängt, verteilt vier Schlucke.",
+      "en": "Rhyme round: find rhymes for \\\"myth\\\" — whoever stalls hands out four sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Melatonin\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"melatonin\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Revolution\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"revolution\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Illusion\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"illusion\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Katastrophe\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"catastrophe\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Dimension\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"dimension\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Metronom\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"metronome\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Adrenalin\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"adrenaline\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Residuum\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"residue\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Polaroid\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"Polaroid\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Labyrinth\" – wer hängt, bestimmt, wer fünf Schlucke nimmt.",
+      "en": "Rhyme round: find rhymes for \\\"labyrinth\\\" — whoever stalls decides who has to take five sips.",
+      "drunkLevel": 10,
+      "deepness": 8,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}

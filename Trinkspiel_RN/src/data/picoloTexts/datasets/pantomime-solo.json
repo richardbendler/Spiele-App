@@ -1,0 +1,110 @@
+{
+  "_meta": {
+    "description": "Pantomime Solo Prompts"
+  },
+  "poolKey": "pantomime-solo",
+  "items": [
+    {
+      "de": "Solo Mime: Superheld",
+      "en": "Solo mime: superhero",
+      "drunkLevel": 6,
+      "tags": [
+        "timer",
+        "challenge"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 30,
+        "text": {
+          "de": "{{target}}, mime einen Superhelden. Wird er erraten, dürfen du und die erratende Person je 2 Schlucke verteilen.",
+          "en": "{{target}}, mime a superhero. If guessed, both you and the guesser hand out 2 sips."
+        }
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Solo Mime: Alltagsfail",
+      "en": "Solo mime: everyday fail",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 25,
+        "text": {
+          "de": "{{target}}, stell pantomimisch einen Alltags-Fail dar.",
+          "en": "{{target}}, act out an everyday fail pantomime-style."
+        }
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Solo Mime: Tierfusion",
+      "en": "Solo mime: animal fusion",
+      "drunkLevel": 6,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 20,
+        "text": {
+          "de": "{{target}}, kombiniere zwei Tiere pantomimisch. Wird es erraten, verteilst du 2 Schlucke.",
+          "en": "{{target}}, mime a mash-up of two animals. If guessed, hand out 2 sips."
+        }
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Solo Mime: Party-DJ",
+      "en": "Solo mime: party DJ",
+      "drunkLevel": 5,
+      "tags": [
+        "timer"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 25,
+        "text": {
+          "de": "{{target}}, tu so, als würdest du mit absurden Gesten DJ spielen. Wer den Song errät, verteilt 2 Schlucke.",
+          "en": "{{target}}, pretend to DJ with ridiculous moves. Whoever guesses the song hands out 2 sips."
+        }
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Solo Mime: Futuristischer Alltag",
+      "en": "Solo mime: futuristic routine",
+      "drunkLevel": 7,
+      "tags": [
+        "timer",
+        "challenge"
+      ],
+      "payload": {
+        "type": "timer",
+        "mode": "countdown",
+        "targetMode": "single",
+        "durationSeconds": 35,
+        "text": {
+          "de": "{{target}}, spiele eine Alltagsszene aus dem Jahr 2125 komplett pantomimisch.",
+          "en": "{{target}}, act out a daily routine from the year 2125 using only pantomime."
+        }
+      },
+      "drinking": false,
+      "manual_approval": 0
+    }
+  ]
+}

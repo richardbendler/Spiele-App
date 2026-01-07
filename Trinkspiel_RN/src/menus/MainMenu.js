@@ -1,357 +1,639 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Modal, TouchableWithoutFeedback  } from 'react-native';
-import { appStyles } from '../../styles';
-import SettingsButton from './sublements/SettingsButton';
+﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  useWindowDimensions,
+  Linking,
+  Alert,
+} from 'react-native';
+import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import Settings from './sublements/Settings';
+import { useTranslation } from '../i18n';
+
+const CARD_BG = 'rgba(18,14,12,0.96)';
+// Stable keys used across app
+const translationKeyMap = {
+  'The One': 'theOne',
+  Skala: 'skala',
+  Kingscup: 'kingscup',
+  Schoeneberg: 'schoeneberg',
+  'Geheime Mission': 'secretMission',
+  MaexchenGame: 'maexchen',
+  SpinTheBottle: 'spinTheBottle',
+  Top10: 'top10',
+  ManyQuestionsGame: 'manyQuestions',
+  WerWuerde: 'whoWould',
+  IchHabNochNie: 'neverHaveIEver',
+  '6by6': 'sixBySix',
+  Activity: 'activity',
+  Getraenkezaehler: 'drinkCounter',
+  HorseRace: 'horseRace',
+  Kopfpoker: 'kopfpoker',
+  PartyBoardGame: 'partyBoard',
+};
+
+const navigationMap = {
+  'The One': 'AddPlayer',
+  Kingscup: 'Kingscup',
+  MaexchenGame: 'MaexchenGame',
+  SpinTheBottle: 'SpinTheBottle',
+  ManyQuestionsGame: 'ManyQuestionsGame',
+  WerWuerde: 'WhoWouldLikelyGame',
+  IchHabNochNie: 'NeverHaveIEverGame',
+  Schoeneberg: 'Schoeneberg',
+  'Geheime Mission': 'SecretMission',
+  '6by6': 'SixBySixGame',
+  Getraenkezaehler: 'DrinkCounter',
+  HorseRace: 'HorseRace',
+  PartyBoardGame: 'AddPlayer',
+};
+
+const GAME_STYLE_MAP = {
+  'The One': { icon: '✨', accent: '#F5C26B' },
+  Skala: { icon: '📊', accent: '#7AC1B2' },
+  Kingscup: { icon: '👑', accent: '#B784D7' },
+  Schoeneberg: { icon: '🏙️', accent: '#F08974' },
+  MaexchenGame: { icon: '🎲', accent: '#F3AE82' },
+  SpinTheBottle: { icon: '🍾', accent: '#6FC3C3' },
+  Top10: { icon: '🔟', accent: '#EF8A9C' },
+  ManyQuestionsGame: { icon: '❓', accent: '#C2E76E' },
+  IchHabNochNie: { icon: '🙅', accent: '#EF8A9C' },
+  WerWuerde: { icon: '👉', accent: '#A5B4FF' },
+  '6by6': { icon: '🎯', accent: '#FFCF70' },
+  Activity: { icon: '🎭', accent: '#FF9F7A' },
+  Getraenkezaehler: { icon: '🥤', accent: '#E5C185' },
+  HorseRace: { icon: '🐎', accent: '#88D4A3' },
+  Kopfpoker: { icon: '🧠', accent: '#CFA1E6' },
+  PartyBoardGame: { icon: '⭐', accent: '#FFD166' },
+  'Geheime Mission': { icon: '🕵️', accent: '#7AC1B2' },
+};
+
+const DEFAULT_CARD_STYLE = { icon: 'ðŸŽ®', accent: '#E5C185' };
+
+const TitleNoWordBreak = ({ text, style }) => {
+  const words = String(text || '').split(' ');
+  return (
+    <Text style={style}>
+      {words.map((w, i) => (
+        <Text key={i}>
+          {w}
+          {i < words.length - 1 ? ' ' : ''}
+        </Text>
+      ))}
+    </Text>
+  );
+};
 
 function MainMenu({ navigation }) {
-  const { settingsVisible, setSettingsVisible } = useContext(VariablesContext);
+  const { language } = useContext(VariablesContext);
+  const { t } = useTranslation();
+  const { width: windowWidth } = useWindowDimensions();
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const [gameTitle, setGameTitle] = useState('');
-  const [gameParameters, setGameParameters] = useState('');
-  const [gameDescription, setGameDescription] = useState('');
-  const [navigateAction, setNavigateAction] = useState('');
+  const commonCopy = useMemo(() => t('common'), [t]);
+  const gamesCopy = useMemo(() => t('mainMenu.games'), [t]);
+  const newBadgeLabel = language === 'de' ? 'NEU' : 'NEW';
 
-  const gameDescriptions = {
-    'The One': { title: 'The One', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Der einfachste aller Spiele, bei dem ihr einfach nur tun müsst was auf dem Bildschirm steht! \n Ein Mix aus Wahrheit & Pflicht, Wer würde am ehesten, Kategorien und vielem mehr... und natürlich Trinken!', navigateTo: 'AddPlayer' },
-    'Skala': { title: 'Skala', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (1/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Wo würdest du Monopoly auf einer Skala von "entspannt" bis "stressig" einordnen? Bei diesem Spiel könnt ihr in Teams gegeneinander antreten um zu versuchen, euch auf einander einzupolen!', navigateTo: '' },
-    'Kingscup': { title: 'Kingscup', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Kein Kartenspiel dabei und ihr wollt trotzdem Kingscup spielen? Hier könnt ihr das tun. \n Jede Karte hat eine eigene Funktion, die beim Aufdecken ausgeführt werden muss. Hier könnt ihr ohne große Regeln einfach starten und reihum aufdecken.', navigateTo: 'Kingscup' },
-    'Schöneberg': { title: 'Schöneberg', parameters: 'Trinklevel: ⚪⚪⚪⚪⚫ (4/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Im unkonventionellen Schöneberg sprechen die Geschäfte und Cafés in der Motzstraße und um den Viktoria-Luise-Platz die große Gay-Community der Gegend an. Das riesige Kaufhaus des Westens, auch KaDeWe genannt, zieht anspruchsvolle Shoppende sowie Feinschmecker mit einer Feinkostabteilung an. Originelle Galerien, türkische Lokale und Lebensmittelgeschäfte sind in der Potsdamer Straße zu finden. Familien spazieren durch das weitläufige Schöneberger Südgelände, das sich auf der Anlage eines früheren Rangierbahnhofs befindet.', navigateTo: '' },
-    'MaexchenGame': { title: 'Mäxchen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Mäxchen ist ein klassisches Würfelspiel, das auf dem Prinzip von Lügen basiert. Die genauen Regeln könnt ihr nach Spielstart unter dem Regelbutton lesen.', navigateTo: 'MaexchenGame' },
-    'SpinTheBottle': { title: 'Flaschendrehen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Das klassische Flaschendrehen kombiniert mit Wahrheit oder Pflicht.', navigateTo: 'SpinTheBottle' },
-    'Top10': { title: 'Top 10', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (1/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Jede Person muss eine Antwort zu einer bestimmten Frage finden, die sich auf einer Skala (z.B. langweilige Trinkspiele bis spannende Trinkspiele) befindet. Eine Person hat aber eine andere Aufgabe: nämlich, alle anderen in die richtige Reihenfolge zu bringen.', navigateTo: '' },
-    'ManyQuestionsGame': { title: '1000 Questions', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚪⚪⚫⚫ (3/5)', description: 'Hier spielt ihr "Wer würde am ehesten", aber verdeckt! Das Handy wird verdeckt ohne vorzulesen (!) an die Person weitergegeben, auf die die Aussage eurer Meinung nach am ehsten zutrifft. Die genaueren Regeln könnt ihr im Spiel lesen.', navigateTo: 'ManyQuestionsGame' },
-    '6by6': { title: 'Six by Six', parameters: 'Trinklevel: ⚪⚪⚪⚪⚪ (5/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Achtung: Mathematik! Würfelt mit zwei (digitalen) Würfeln um die x- & y-Koordinate auf dem 6x6-Feld zu bestimmen. Befindet sich ein (virtuelles) Getränk auf der Karte, müsst ihr trinken! Die kompletten Regeln gibt es im Spiel.', navigateTo: '' },
-    'Activity': { title: 'Activity', parameters: 'Trinklevel: ⚪⚫⚫⚫⚫ (1/5) \n Kennenlernen: ⚪⚪⚫⚫⚫ (2/5)', description: 'Hier könnt ihr Activity spielen, also Scharade/Pantomime/Zeichnen!', navigateTo: '' },
-    'Getränkezähler': { title: 'Getränkezähler', parameters: '🍻🍻🍻', description: 'Du verlierst schnell mal den Überblick über deinen Alkoholkonosum? Hier ist die Lösung für dich! \n Tracke ganz einfach, wie viel du über den Abend hinweg oder auch auf das Jahr gerechnet, so zu dir nimmst.', navigateTo: '' },
-    'HorseRace': { title: 'Pferderennen', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5)', description: 'Glücksspiel ist natürlich eigentlich nicht cool... außer wenn es ums Trinken geht! Setzt eure Einsätze (Schlücke) auf eins der Pferde (Asse) und verteilt bei Gewinn eures Pferdes das Doppelte!', navigateTo: 'HorseRace' },
-    'Kopfpoker': { title: 'Kopfpoker', parameters: 'Trinklevel: ⚪⚪⚪⚫⚫ (3/5) \n Kennenlernen: ⚪⚫⚫⚫⚫ (1/5) \n 📱Jede spielende Person braucht hier die App', description: 'Jede Person hält sich ihr Handy an die Stirn, sodass die anderen die zufällig generierte Karte sehen können. Nun setzt ihr Schlucke darauf, ob ihr denkt, dass ihr unter den niedrigsten zwei Karten sein werdet! Genauer könnt ihr die Regeln im Spiel lesen.', navigateTo: '' },
+  const gridLayout = useMemo(() => {
+    const horizontalPadding = 32;
+    const availableWidth = Math.max(windowWidth - horizontalPadding, 0);
+    const maxCardWidth = windowWidth >= 1024 ? 320 : 260;
+
+    let columns = 1;
+    if (windowWidth >= 1200) columns = 4;
+    else if (windowWidth >= 900) columns = 3;
+    else if (windowWidth >= 360) columns = 2; // revert: phones use 2 columns
+
+    const gap = columns > 1 ? 12 : 0;
+    let cardWidth =
+      columns === 1 ? Math.min(availableWidth, maxCardWidth) : (availableWidth - gap * (columns - 1)) / columns;
+    cardWidth = Math.min(cardWidth, maxCardWidth) || maxCardWidth;
+    return { columns, cardWidth, gap, availableWidth };
+  }, [windowWidth]);
+  const isSingleColumnLayout = gridLayout.columns === 1;
+
+  const cardGridDynamicStyle = {
+    marginHorizontal: gridLayout.columns > 1 ? -(gridLayout.gap / 2) : 0,
+    justifyContent:
+      isSingleColumnLayout || gridLayout.cardWidth * gridLayout.columns + gridLayout.gap * (gridLayout.columns - 1) < gridLayout.availableWidth
+        ? 'center'
+        : 'flex-start',
   };
 
-  const openModalWithGame = (gameKey) => {
-    const game = gameDescriptions[gameKey];
-    setGameTitle(game.title);
-    setGameParameters(game.parameters)
-    setGameDescription(game.description);
-    setNavigateAction(game.navigateTo);
-    setModalVisible(true);
+  const cardDynamicStyle = {
+    width: gridLayout.cardWidth,
+    marginHorizontal: gridLayout.columns > 1 ? gridLayout.gap / 2 : 0,
+    alignSelf: isSingleColumnLayout ? 'center' : 'flex-start',
   };
 
+  const footerDynamicStyle = isSingleColumnLayout ? styles.cardFooterRowFullWidth : null;
+  const startChipDynamicStyle = isSingleColumnLayout ? styles.startChipFullWidth : null;
 
-
-  const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100); // Standardwert ist 1
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-
-  const handleImageLoad = (e) => {
-    const { width, height } = e.nativeEvent.source;
-    const aspectRatio = width / height;
-    setBackgroundAspectRatio(aspectRatio);
+  // Show stars based on (x/5) in the param string
+  const renderParameterStars = (paramText, accentColor) => {
+    if (!paramText || typeof paramText !== 'string') return null;
+    const matches = Array.from(paramText.matchAll(/\((\d)\/5\)/g)).map((m) => Number(m[1]));
+    const labels = language === 'de' ? ['Trinklevel', 'Kennenlernen'] : ['Drink level', 'Getting to know'];
+    const rows = [];
+    const toStars = (n) => {
+      const full = Math.max(0, Math.min(5, Number(n) || 0));
+      return new Array(5).fill(0).map((_, i) => (
+        <Text key={i} style={i < full ? styles.star : styles.starDim}>★</Text>
+      ));
+    };
+    if (matches.length >= 2) {
+      rows.push(
+        <View key="row1" style={styles.paramRow}>
+          <Text style={styles.paramLabel}>{labels[0]}:</Text>
+          <View style={styles.paramStars}>{toStars(matches[0])}</View>
+        </View>,
+      );
+      rows.push(
+        <View key="row2" style={styles.paramRow}>
+          <Text style={styles.paramLabel}>{labels[1]}:</Text>
+          <View style={styles.paramStars}>{toStars(matches[1])}</View>
+        </View>,
+      );
+      return rows;
+    }
+    return <Text style={styles.gameMeta}>{paramText}</Text>;
   };
 
-  // Berechnen der Breite des Hintergrundbildes basierend auf dem Seitenverhältnis
-  const backgroundImageWidth = windowHeight * backgroundAspectRatio;
+  // Localized titles/descriptions/parameters
+  const gameDescriptions = useMemo(() => {
+    const entries = {};
+    Object.entries(translationKeyMap).forEach(([legacyKey, translationKey]) => {
+      const copy = gamesCopy?.[translationKey] ?? {};
+      entries[legacyKey] = {
+        title: copy.title ?? legacyKey,
+        parameters: copy.parameters ?? '',
+        description: copy.description ?? '',
+      };
+    });
 
+    if (entries.ManyQuestionsGame) entries.ManyQuestionsGame.title = language === 'de' ? '100 Fragen' : '100 Questions';
+    if (entries.MaexchenGame) entries.MaexchenGame.title = 'Mäxchen';
+    if (entries.Schoeneberg) entries.Schoeneberg.title = 'Schöneberg';
+
+    // Fix titles for specific games per language
+    if (entries.WerWuerde) {
+      entries.WerWuerde.title = language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten';
+    }
+    if (entries.IchHabNochNie) {
+      // Ensure spacing in German and proper English title in en
+      entries.IchHabNochNie.title = language === 'en' ? 'Never Have I Ever' : 'Ich hab noch nie';
+    }
+    if (entries['Geheime Mission']) {
+      entries['Geheime Mission'].title = language === 'en' ? 'Secret Mission' : 'Geheime Mission';
+    }
+
+    // Defaults
+    Object.keys(entries).forEach((k) => {
+      if (!entries[k].description) entries[k].description = language === 'de' ? 'Mehr Infos folgen bald.' : 'More info coming soon.';
+    });
+
+    // Ensure Schöneberg + Mäxchen have parameters and useful desc
+    if (entries.Schoeneberg) {
+      entries.Schoeneberg.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (3/5)'
+        : 'Drink level: (2/5)\nGetting to know: (3/5)';
+      entries.Schoeneberg.description = language === 'de'
+        ? 'Ausgefallene Bars, Cafés und Geschichten aus Berlins buntestem Kiez.'
+        : "Quirky bars, cafés and stories from Berlin's most colorful district.";
+    }
+    if (entries.MaexchenGame) {
+      entries.MaexchenGame.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (2/5)'
+        : 'Drink level: (2/5)\nGetting to know: (2/5)';
+      entries.MaexchenGame.description = language === 'de'
+        ? 'Der klassische Würfelbluff. Lest die Regeln im Spiel und legt direkt los.'
+        : 'Classic dice-bluff game. Read the rules in-game and start right away.';
+    }
+
+    // Ensure 100 Fragen (ManyQuestionsGame) has parameters and description
+    if (entries.ManyQuestionsGame) {
+      entries.ManyQuestionsGame.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (4/5)'
+        : 'Drink level: (2/5)\nGetting to know: (4/5)';
+      entries.ManyQuestionsGame.description = language === 'de'
+        ? '100 spannende Fragen: zeigt auf die passende Person oder diskutiert gemeinsam — perfekt zum Auflockern.'
+        : '100 engaging prompts: point to who fits best or discuss together — great for breaking the ice.';
+    }
+
+    // Ensure Ich hab noch nie has parameters and description
+    if (entries.IchHabNochNie) {
+      entries.IchHabNochNie.parameters = language === 'de'
+        ? 'Trinklevel: (2/5)\nKennenlernen: (3/5)'
+        : 'Drink level: (2/5)\nGetting to know: (3/5)';
+      entries.IchHabNochNie.description = language === 'de'
+        ? 'Zieh eine Aussage und wer es schon gemacht hat, trinkt. Kurze, lockere Runden für zwischendurch.'
+        : 'Draw a statement and everyone who has done it drinks. Quick, light rounds in between.';
+    }
+
+    // Normalize parameters for all remaining games
+    const makeParams = (d, k) => (
+      language === 'de'
+        ? `Trinklevel: (${d}/5)\nKennenlernen: (${k}/5)`
+        : `Drink level: (${d}/5)\nGetting to know: (${k}/5)`
+    );
+    const targetParams = {
+      'The One': [2, 3],
+      Kingscup: [3, 3],
+      SpinTheBottle: [2, 4],
+      HorseRace: [4, 2],
+      WerWuerde: [2, 4],
+      Schoeneberg: [2, 3],
+      'Geheime Mission': [1, 3],
+      '6by6': [5, 1],
+      PartyBoardGame: [3, 3],
+      Skala: [2, 4],
+      Activity: [1, 4],
+      Top10: [1, 4],
+      Kopfpoker: [2, 3],
+    };
+    Object.entries(targetParams).forEach(([k, [d, g]]) => {
+      if (entries[k]) entries[k].parameters = makeParams(d, g);
+    });
+
+    // Ensure WhoWould fallback exists (defensive)
+    entries.WerWuerde = entries.WerWuerde ?? { title: language === 'en' ? 'Who Would Most Likely' : 'Wer würde am ehesten' };
+    return entries;
+  }, [gamesCopy, language]);
+
+  const allGameCards = useMemo(() => {
+    return Object.keys(translationKeyMap).map((legacyKey) => {
+      const entry = gameDescriptions[legacyKey] ?? {};
+      const style = GAME_STYLE_MAP[legacyKey] ?? DEFAULT_CARD_STYLE;
+      const hasTarget = !!navigationMap[legacyKey];
+      return {
+        key: legacyKey,
+        title: entry.title,
+        parameters: entry.parameters,
+        description: entry.description,
+        isNew: legacyKey === 'Getraenkezaehler',
+        isComingSoon: !hasTarget,
+        icon: style.icon,
+        accent: style.accent,
+      };
+    });
+  }, [gameDescriptions]);
+
+  const drinkCounterCard = useMemo(() => allGameCards.find((g) => g.key === 'Getraenkezaehler'), [allGameCards]);
+
+  // Requested custom order
+  const sortedGameCards = useMemo(() => {
+    const filtered = allGameCards.filter((g) => g.key !== 'Getraenkezaehler');
+    const desiredOrder = [
+      'The One',
+      'Kingscup',
+      'HorseRace',
+      'ManyQuestionsGame',
+      'WerWuerde',
+      'IchHabNochNie',
+      'SpinTheBottle',
+      'MaexchenGame',
+      'Schoeneberg',
+      'Geheime Mission',
+      '6by6',
+      'PartyBoardGame',
+    ];
+    const inOrder = desiredOrder.map((k) => filtered.find((g) => g.key === k)).filter(Boolean);
+    const remaining = filtered.filter((g) => !desiredOrder.includes(g.key));
+    return [...inOrder, ...remaining];
+  }, [allGameCards]);
+
+  const [expandedKey, setExpandedKey] = useState(null);
+  const toggleExpand = useCallback((key) => setExpandedKey((p) => (p === key ? null : key)), []);
+
+  const startGame = useCallback(
+    (gameKey) => {
+      const routeName = navigationMap[gameKey];
+      if (!routeName) return;
+      if (gameKey === 'PartyBoardGame') {
+        navigation.navigate('AddPlayer', { nextGame: 'PartyBoardGame', showScales: false });
+        return;
+      }
+      if (routeName === 'AddPlayer') {
+        // Picolo: Spieler hinzufügen + Slider auf Vorschaltseite (AddPlayer)
+        navigation.navigate('AddPlayer', { nextGame: 'PicoloGame', showScales: true });
+        return;
+      }
+      // Für Kartenspiele: Vorschaltseite mit nur Slidern
+      if (['ManyQuestionsGame', 'WhoWouldLikelyGame', 'NeverHaveIEverGame', 'SpinTheBottle'].includes(routeName)) {
+        navigation.navigate('PreGameSettings', { nextGame: routeName });
+        return;
+      }
+      navigation.navigate(routeName);
+    },
+    [navigation],
+  );
+
+  const renderGameCard = (game) => {
+  const accentColor = game.accent || DEFAULT_CARD_STYLE.accent;
+  const cardContainerStyles = [styles.gameCard, cardDynamicStyle, styles.gameCardCompact];
+  const cardTopRowStyles = [styles.cardTopRow, styles.cardTopRowCompact];
+  const cardIconWrapperStyles = [styles.cardIconWrapper, styles.cardIconWrapperCompact, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}88` }];
+  const dimStyle = game.isComingSoon ? styles.gameCardDim : null;
   return (
-    <View style={{alignItems: 'flex-start'}}>
-      <ScrollView
-        horizontal={true}
-        pagingEnabled={false} // Optional, für ein "Seiten"-ähnliches Scrollen
-        showsHorizontalScrollIndicator={true} // Versteckt die horizontale Scroll-Leiste
-      >
-        <ImageBackground source={require("../../assets/images/bar/bar_background.png")} 
-        style={{ height: windowHeight, width: backgroundImageWidth }}
-        onLoad={handleImageLoad}
-        >
-          <View style={appStyles.pageContainer}>
-            <View style={[appStyles.smallPageContainer, {height: '100%', width: '100%', justifyContent: 'top'}]}>
-            
-            {/*<View style={appStyles.menuContainer}>*/}
-              
-              <View style={{
-                width: backgroundImageWidth, // Stellt sicher, dass die Menü-Container die gleiche Breite wie das Hintergrundbild haben
-                flexDirection: 'row',
-                justifyContent: 'space-around', // Anpassen nach Bedarf für die Platzierung der Menübuttons
-                alignItems: 'center', // Zentriert die Menübuttons vertikal
-              }}>
-                <Settings/>
-
-                <View style={{ height: '100%', width: backgroundImageWidth, alignItems: 'center', justifyContent: 'center' }}>
-
-                    <View style={{ position: 'absolute', left: '0%', top: '62%', alignItems: 'center', justifyContent: 'bottm' }}>
-                      <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                    </View>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('The One')} style={{position: 'absolute', left: '10%', top: '32%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_001.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>The One</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('ManyQuestionsGame')} style={{position: 'absolute', left: '30%', top: '32%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_002.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>1000 {"\n"} Questions</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Schöneberg')} style={{position: 'absolute', left: '55%', top: '36%', width: '17%', height: '26%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_011.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Schöneberg</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Skala')} style={{position: 'absolute', left: '77%', top: '32%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_004.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Skala</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-                    
-
-                    
-                    
-                  <View style={{ position: 'absolute', left: '0%', top: '100%', width: '100%', height: '1%', alignItems: 'center', justifyContent: 'bottm' }}>
-                    <Image source={require('../../assets/images/bar/shelf.png')} style={{width: backgroundImageWidth}}/>
-                  </View>
-                    
-
-                  
-                  
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Kingscup')} style={{position: 'absolute', left: '3%', top: '70%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_005.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Kingscup</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('HorseRace')} style={{position: 'absolute', left: '25%', top: '75%', width: '18%', height: '25%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/horse.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Pferderennen</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-                    
-
-                    
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('6by6')} style={{position: 'absolute', left: '50%', top: '70%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_006.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>6 by 6</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Activity')} style={{position: 'absolute', left: '73%', top: '70%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_007.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Activity</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                  
-
-
-                    
-                    {/* ------------------------------ THIRD LEVEL ------------------------------ */}
-
-                  
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('SpinTheBottle')} style={{position: 'absolute', left: '10%', top: '106%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_003.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Flaschendrehen</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('MaexchenGame')} style={{position: 'absolute', left: '34%', top: '106%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_010.png')} style={appStyles.bottleButton} />
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Mäxchen</Text>
-                      </View>
-                    </TouchableOpacity>
-                    
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Kopfpoker')} style={{position: 'absolute', left: '57%', top: '106%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_012.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Kopfpoker</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Top10')} style={{position: 'absolute', left: '79%', top: '106%', width: '17%', height: '30%'}}>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_008.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 12}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Top 10</Text>
-                      </View>
-                    </TouchableOpacity>
-
-
-
-                    {/* ------------------------------ EXTRA ------------------------------- */}
-
-
-                    <TouchableOpacity onPress={() => openModalWithGame('Getränkezähler')} style={{position: 'absolute', left: '3%', top: '170%', width: '17%', height: '25%'}}>
-                      <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Text style={appStyles.bottleText}>Getränkezähler</Text>
-                      </View>
-                      <View style={{height:'100%', justifyContent: 'center', alignItems: 'center',}}>
-                        <Image source={require('../../assets/images/bottles/bottle_014.png')} style={appStyles.bottleButton} />
-                        <View style={appStyles.bottleButtonBaldVerfügbarKasten}>
-                          <Text style={[appStyles.bottleText,{fontSize: 9}]}>Bald verfügbar</Text>
-                        </View>
-                      </View>
-                    </TouchableOpacity>
-                    
-
-
-                </View>
-
-
-                {/* Modal für Spielbeschreibungen */}
-                <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modalVisible}
-                  onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                  }}
-                >
-                  <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-                    <View style={appStyles.modalOverlay}>
-                      <TouchableWithoutFeedback onPress={() => {}}>
-                        <View style={appStyles.modalView}>
-
-                          <Text style={appStyles.modalTextTitle}>{gameTitle}</Text>
-
-                          <Text style={appStyles.modalTextParameters}>{gameParameters}</Text>
-                          <Text style={appStyles.modalText}>{gameDescription}</Text>
-                          
-                          {navigateAction !== '' ? (
-                            <TouchableOpacity
-                              style={[appStyles.chalkboardButtonPrimaryColor]}
-                              onPress={() => {
-                                setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction);
-                              }}
-                            >
-                              <Text style={[appStyles.chalkboardButtonText, {fontSize: 20}]}>Spiel starten</Text>
-                            </TouchableOpacity>
-                          ) : (
-                            <TouchableOpacity
-                              style={[appStyles.chalkboardButtonGrey]}
-                              onPress={() => {
-                                setModalVisible(!modalVisible);
-                                navigation.navigate(navigateAction);
-                              }}
-                              disabled={true}
-                            >
-                              <Text style={[appStyles.chalkboardButtonText, {fontSize: 20, fontStyle: 'italic', color: 'white'}]}>Bald verfügbar</Text>
-                            </TouchableOpacity>
-                            
-                          )}
-
-                          <TouchableOpacity
-                            style={appStyles.closeButton}
-                            onPress={() => setModalVisible(false)}
-                          >
-                            <Text style={{color: 'white'}}>✖</Text>
-                          </TouchableOpacity>
-
-                        </View>
-                      </TouchableWithoutFeedback>
-                    </View>
-                  </TouchableWithoutFeedback>
-
-                </Modal>
-                
-              </View>  
-            {/*</View>*/}
-
-            {/*SettingsButton*/}
-            {/*<TouchableOpacity onPress={() => setSettingsVisible(true)} style={appStyles.settingsButton}>
-                <Text style={appStyles.settingsButtonText}>⚙️</Text>
-            </TouchableOpacity>*/}
+    <View key={game.key} style={[...cardContainerStyles, dimStyle]}>
+      <TouchableOpacity style={cardTopRowStyles} onPress={() => toggleExpand(game.key)} activeOpacity={0.9}>
+        <View style={cardIconWrapperStyles}>
+          <Text style={styles.cardIcon}>{game.icon}</Text>
+        </View>
+        <View style={styles.cardHeaderContent}>
+          <View style={styles.cardTitleRow}>
+            <TitleNoWordBreak text={game.title} style={styles.gameTitleFull} />
+            {game.isNew ? (
+              <View style={[styles.newBadge, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}80` }]}>
+                <Text style={[styles.cardBadgeText, { color: accentColor }]}>{newBadgeLabel}</Text>
+              </View>
+            ) : null}
           </View>
         </View>
-        </ImageBackground>
+        <Text style={[styles.chevron]}>›</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
+  const headerTitle = language === 'de' ? 'Spielauswahl' : 'Game Lineup';
+  const headerSubtitle = language === 'de' ? 'Tippe auf eine Karte für Details.' : 'Tap a card to see details.';
+
+  const renderDrinkCounterShortcut = () => {
+    if (!drinkCounterCard) return null;
+    const accentColor = drinkCounterCard.accent;
+    const titleFallback = language === 'de' ? 'Getränkezähler' : 'Drink counter';
+    const helperText = language === 'de' ? 'Runde tracken' : 'Track the round';
+    const actionLabel = language === 'de' ? 'Öffnen' : 'Open';
+    return (
+      <TouchableOpacity
+        key="drink-counter-shortcut"
+        style={[styles.drinkCounterShortcut, { borderColor: `${accentColor}55`, backgroundColor: `${accentColor}14` }]}
+        onPress={() => startGame('Getraenkezaehler')}
+        activeOpacity={0.88}
+      >
+        <View style={[styles.drinkCounterIconWrapper, { backgroundColor: `${accentColor}26`, borderColor: `${accentColor}70` }]}>
+          <Text style={styles.cardIcon}>{drinkCounterCard.icon}</Text>
+        </View>
+        <View style={styles.drinkCounterCopy}>
+          <Text style={styles.drinkCounterTitle}>{drinkCounterCard.title || titleFallback}</Text>
+          <Text style={styles.drinkCounterSubtitle}>{helperText}</Text>
+        </View>
+        <View style={[styles.drinkCounterAction, { backgroundColor: `${accentColor}F0` }]}>
+          <Text style={styles.drinkCounterActionLabel}>{actionLabel}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const expandedGame = expandedKey ? allGameCards.find((g) => g.key === expandedKey) : null;
+
+  return (
+    <View style={styles.background}>
+      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <View style={styles.titleGroup}>
+            <Text style={styles.headerTitle}>{headerTitle}</Text>
+            <Text style={styles.headerSubtitle}>{headerSubtitle}</Text>
+          </View>
+          {renderDrinkCounterShortcut()}
+        </View>
+
+        <View style={[styles.cardGrid, cardGridDynamicStyle]}>
+          {sortedGameCards.map((game) => renderGameCard(game))}
+        </View>
+
+        <TouchableOpacity onPress={() => Linking.openURL(PLAY_STORE_URL)} style={styles.rateCta} activeOpacity={0.88}>
+          <Text style={styles.rateCtaStar}>★</Text>
+          <Text style={styles.rateCtaLabel}>
+            {language === 'de' ? 'Dir gefällt die App? Bewerte uns im Play Store' : 'Enjoy the app? Rate us on Play Store'}
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
+
+      {expandedGame ? (
+        <View style={styles.expandedOverlay}>
+          <TouchableOpacity style={styles.expandedBackdrop} activeOpacity={1} onPress={() => setExpandedKey(null)} />
+          <View style={[styles.expandedCard, { borderColor: `${expandedGame.accent}40` }]}>
+            <View style={styles.cardTopRow}>
+              <View style={[styles.cardIconWrapper, { backgroundColor: `${expandedGame.accent}26`, borderColor: `${expandedGame.accent}88` }]}>
+                <Text style={styles.cardIcon}>{expandedGame.icon}</Text>
+              </View>
+              <View style={styles.cardHeaderContent}>
+                <View style={styles.cardTitleRow}>
+                  <TitleNoWordBreak text={expandedGame.title} style={[styles.gameTitleFull, styles.expandedTitle]} />
+                  {expandedGame.isNew ? (
+                    <View style={[styles.newBadge, { backgroundColor: `${expandedGame.accent}26`, borderColor: `${expandedGame.accent}80` }]}>
+                      <Text style={[styles.cardBadgeText, { color: expandedGame.accent }]}>{newBadgeLabel}</Text>
+                    </View>
+                  ) : null}
+                </View>
+              </View>
+            </View>
+            {!!expandedGame.parameters ? (
+              <View style={styles.paramStarsContainer}>{renderParameterStars(expandedGame.parameters, expandedGame.accent)}</View>
+            ) : null}
+            {!!expandedGame.description ? <Text style={styles.gameDescription}>{expandedGame.description}</Text> : null}
+
+            <View style={[styles.cardFooterRow, footerDynamicStyle]}>
+              {expandedGame.isComingSoon ? (
+                <View style={[styles.startChip, startChipDynamicStyle, styles.startChipDisabled]}>
+                  <Text style={[styles.startChipLabel, styles.startChipLabelDisabled]}>
+                    {language === 'de' ? 'Bald verfügbar' : 'Coming soon'}
+                  </Text>
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={[styles.startChip, startChipDynamicStyle, { backgroundColor: expandedGame.accent, borderColor: `${expandedGame.accent}AA` }]}
+                  onPress={() => {
+                    const isBeta = expandedGame.key === '6by6' || expandedGame.key === 'PartyBoardGame';
+                    const proceed = () => {
+                      startGame(expandedGame.key);
+                      setExpandedKey(null);
+                    };
+                    if (isBeta) {
+                      const title = language === 'de' ? 'Beta-Hinweis' : 'Beta Notice';
+                      const message =
+                        language === 'de'
+                          ? 'Dieses Spiel ist noch in Entwicklung (Beta). Inhalte und Regeln sind noch nicht final und ergeben vielleicht noch nicht überall perfekt Sinn. Es kann zu Änderungen oder kleineren Problemen kommen.'
+                          : 'This game is still in development (beta). Content and rules are not final and may not fully make sense yet. Expect changes or minor issues.';
+                      Alert.alert(title, message, [
+                        { text: language === 'de' ? 'Abbrechen' : 'Cancel', style: 'cancel' },
+                        { text: language === 'de' ? 'Fortfahren' : 'Continue', onPress: proceed },
+                      ]);
+                    } else {
+                      proceed();
+                    }
+                  }}
+                  activeOpacity={0.88}
+                >
+                  <Text style={styles.startChipLabel}>
+                    {(expandedGame.key === '6by6' || expandedGame.key === 'PartyBoardGame')
+                      ? (language === 'de' ? 'Beta starten' : 'Start Beta')
+                      : commonCopy.startGame}
+                  </Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+        </View>
+      ) : null}
+
+      <Settings />
     </View>
   );
 }
 
+const styles = StyleSheet.create({
+  background: { flex: 1, backgroundColor: '#366350' },
+  overlay: { ...StyleSheet.absoluteFillObject },
+  scrollContainer: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 96 },
 
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    marginBottom: 16,
+    rowGap: 16,
+  },
+  titleGroup: { flex: 1, paddingRight: 12 },
+  headerTitle: { color: '#F5E9D7', fontSize: 24, fontFamily: 'Quicksand_700Bold' },
+  headerSubtitle: { color: 'rgba(245,233,215,0.75)', fontSize: 12, marginTop: 4, lineHeight: 18, fontFamily: 'Quicksand_300Light' },
 
+  drinkCounterShortcut: {
+    flexShrink: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    gap: 12,
+  },
+  drinkCounterIconWrapper: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  drinkCounterCopy: { flex: 1, minWidth: 0 },
+  drinkCounterTitle: { color: '#F5E9D7', fontSize: 14, fontFamily: 'Quicksand_700Bold' },
+  drinkCounterSubtitle: { color: 'rgba(245,233,215,0.75)', fontSize: 11, marginTop: 2, fontFamily: 'Quicksand_300Light' },
+  drinkCounterAction: { borderRadius: 14, paddingVertical: 6, paddingHorizontal: 12, alignItems: 'center', justifyContent: 'center' },
+  drinkCounterActionLabel: { fontSize: 12, fontFamily: 'Quicksand_300Bold', color: '#231C18', letterSpacing: 0.4 },
 
+  cardGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start' },
+  gameCard: {
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    borderWidth: 1,
+    backgroundColor: CARD_BG,
+    shadowOpacity: 0.28,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 6,
+    marginBottom: 14,
+    flexShrink: 0,
+    borderColor: 'rgba(229,193,133,0.28)'
+  },
+  gameCardCompact: { paddingVertical: 10, paddingHorizontal: 10 },
+  gameCardExpanded: { paddingVertical: 14, paddingHorizontal: 14 },
+
+  cardTopRow: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4, paddingVertical: 4, marginBottom: 8 },
+  cardTopRowCompact: { paddingVertical: 2, marginBottom: 4 },
+  cardIconWrapper: { width: 36, height: 36, borderRadius: 12, alignItems: 'center', justifyContent: 'center', borderWidth: 1, marginRight: 10 },
+  cardIconWrapperCompact: { width: 32, height: 32, borderRadius: 10 },
+  cardHeaderContent: { flex: 1 },
+  cardTitleRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  newBadge: { borderRadius: 10, paddingVertical: 3, paddingHorizontal: 8, borderWidth: 1 },
+  cardIcon: { fontSize: 22 },
+  chevron: { color: 'rgba(255,255,255,0.9)', fontSize: 18, marginLeft: 12 },
+  cardBadgeText: { fontSize: 9, fontFamily: 'Quicksand_300Bold', letterSpacing: 0.8 },
+
+  gameTitleFull: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontFamily: 'Quicksand_300Bold',
+    lineHeight: 18,
+    flex: 1,
+    minWidth: 0,
+    flexShrink: 1,
+    textBreakStrategy: 'simple',
+    includeFontPadding: false,
+  },
+
+  gameMeta: { color: 'rgba(255,255,255,0.75)', fontSize: 11, marginBottom: 4, fontFamily: 'Quicksand_300Light' },
+  gameDescription: { color: 'rgba(255,255,255,0.95)', lineHeight: 20, fontSize: 14, fontFamily: 'Quicksand_300Light', marginTop: 10 },
+
+  rateCta: {
+    alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 14,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.65)',
+    backgroundColor: 'rgba(24,19,15,0.48)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.22,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 4,
+  },
+  rateCtaStar: { color: '#E5C185', fontSize: 14, marginTop: -1 },
+  rateCtaLabel: { color: 'rgba(255,255,255,0.95)', fontSize: 13.5, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
+  star: { color: '#FFD166', fontSize: 14 },
+  starDim: { color: 'rgba(255,255,255,0.35)', fontSize: 14 },
+  ratingText: { color: 'rgba(255,255,255,0.75)', fontSize: 12, marginLeft: 6, fontFamily: 'Quicksand_300Light' },
+
+  paramStarsContainer: { marginTop: 6, gap: 4 },
+  paramRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  paramLabel: { color: 'rgba(255,255,255,0.85)', fontSize: 13, fontFamily: 'Quicksand_300Bold' },
+  paramStars: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+
+  cardFooterRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, gap: 6, alignSelf: 'stretch' },
+  cardFooterRowFullWidth: { justifyContent: 'flex-start' },
+  startChip: { borderRadius: 14, paddingVertical: 7, paddingHorizontal: 12, borderWidth: 1, alignItems: 'center', justifyContent: 'center', minWidth: 96 },
+  startChipFullWidth: { alignSelf: 'stretch', width: '100%' },
+  startChipLabel: { fontFamily: 'Quicksand_300Bold', fontSize: 12.5, letterSpacing: 0.4, color: '#231C18', textAlign: 'center' },
+  startChipDisabled: { backgroundColor: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.24)' },
+  startChipLabelDisabled: { color: 'rgba(255,255,255,0.55)' },
+
+  expandedOverlay: { ...StyleSheet.absoluteFillObject, zIndex: 999, justifyContent: 'center', alignItems: 'center' },
+  expandedBackdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.6)' },
+  expandedCard: {
+    width: '90%',
+    maxWidth: 520,
+    borderRadius: 18,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    backgroundColor: CARD_BG,
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 10,
+  },
+  expandedTitle: { fontSize: 20, lineHeight: 24, fontFamily: 'Quicksand_700Bold' },
+    gameCardDim: { opacity: 0.55 },
+});
 
 export default MainMenu;
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "description": "Alle gegen alle – Gibt auf Prompts"
+  },
+  "poolKey": "ffa-giveup",
+  "items": [
+    {
+      "de": "Plank-Contest: Alle gehen sofort in die Plank. Wer zuerst absetzt, trinkt 3 Schlucke.",
+      "en": "Plank contest: everyone goes into a plank now. First person to drop drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Arme nach vorne strecken. Wer zuerst wackelt oder senkt, trinkt 2 Schlucke.",
+      "en": "Hold both arms out straight. First to wobble or lower them drinks 2 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer hält länger einen imaginären Flamingo-Stand? Erste Person, die den Boden berührt, trinkt 3 Schlucke.",
+      "en": "Who can hold an imaginary flamingo pose the longest? First foot that touches down drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Alle setzen sich ohne Stühle im Kreis auf die Knie anderer. Bricht der Kreis, trinken die Auslöser 2 Schlucke.",
+      "en": "Everyone forms a human chair circle. If the circle collapses, the people who triggered it drink 2 sips.",
+      "drunkLevel": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Finger-Sprint: Alle trommeln mit zwei Fingern auf dem Tisch. Erste Person, die stoppt, trinkt 2 Schlucke.",
+      "en": "Finger sprint: everyone drums two fingers on the table. First person to stop drinks 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}

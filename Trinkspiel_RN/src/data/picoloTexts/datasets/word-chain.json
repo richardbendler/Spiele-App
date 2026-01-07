@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "description": "Wort-Fortsetzung Prompts"
+  },
+  "poolKey": "word-chain",
+  "items": [
+    {
+      "de": "Startet ein Wort mit „Trink…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “drink…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Jemand beginnt mit einem Songtitel, die Runde erweitert ihn Wort für Wort. Fehlerhafte Ergänzung trinkt.",
+      "en": "Someone says the start of a song title, the group adds one word at a time. Wrong addition drinks.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Sagt reihum ein Wort zu einem gemeinsamen Zungenbrecher. Wer stolpert, trinkt.",
+      "en": "Go around adding one word to a tongue twister. If you stumble, you drink.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Beginnt mit \"Heute\" und erzählt Wort für Wort eine chaotische Party-Story. Wer lacht oder stottert, trinkt 2 Schlucke.",
+      "en": "Start with “Today” and build a chaotic party story one word at a time. Laugh or stutter and drink 2 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Macht eine Wortkette, bei der jedes neue Wort mit dem letzten Buchstaben des vorigen beginnt. Fail = 1 Schluck.",
+      "en": "Create a word chain where each word starts with the last letter of the previous one. Fail = drink 1 sip.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}

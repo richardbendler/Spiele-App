@@ -1,11 +1,14 @@
-import { Dimensions } from 'react-native';
+﻿import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { appStyles } from '../../styles';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
+import { useTranslation } from '../i18n';
 
 const createDeck = () => {
   const suits = ['♦', '♥', '♠', '♣'];
@@ -27,7 +30,7 @@ const initialField = (deck) => {
   //Die Karten am linken Seitenrand
   field[0] = new Array(7).fill(null);
   let deckCopy = [...deck];
-  for (let i = 1; i < 7; i++) {
+  for (let i = 1; i < 6; i++) {
       let randomIndex = Math.floor(Math.random() * deckCopy.length);
       let card = deckCopy[randomIndex];
       deckCopy.splice(randomIndex, 1);  // Remove the card from the temporary deck
@@ -48,46 +51,64 @@ const initialField = (deck) => {
 };
 
 const App = () => {
+  const { language } = useTranslation();
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const [deck, setDeck] = useState(createDeck());
   const [field, setField] = useState(initialField(deck));
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [autoReveal, setAutoReveal] = useState(false);
 
   const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
+  useEffect(() => {
+    if (!autoReveal || winner) {
+      return;
+    }
+    if (!deck || deck.length === 0) {
+      return;
+    }
+    const interval = setInterval(() => {
+      drawCard();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [autoReveal, deck, winner]);
+
   const restartGame = () => {
-    setDeck(createDeck());
-    setField(initialField(deck));
+    const newDeck = createDeck();
+    setDeck(newDeck);
+    setField(initialField(newDeck));
     setDiscardPile([]);
     setWinner(null);
   };
 
   // Funktion läuft alle Zeilen ab und checkt ob Seitenkarte aufgedeckt werden soll
   const checkIfSideCardShouldBeDiscovered = () => {
-    const height = field[0].length-1; //height of field
+  const height = field[0].length - 1;
 
-    for (let row = height; row>0; row--){ //Zeile
-      emptyRow = true;
-      isAlreadyRevealed = false;
-      for (let column = 1; column < 5; column++){ // Spalte
-        if(field[column][row] != null){
-          emptyRow = false;
-        }
-        if(field[0][row].isHidden == false){
-          isAlreadyRevealed = true;
-        }
+  for (let row = height - 1; row > 0; row--) {
+    const sideCard = field[0][row];
+    if (!sideCard) continue;
+    if (sideCard.isHidden === false) continue;
+
+    let allAtOrPast = true;
+    for (let column = 1; column <= 4; column++) {
+      let aceIndex = -1;
+      for (let i = 0; i < field[column].length; i++) {
+        const c = field[column][i];
+        if (c && c.value === 'A') { aceIndex = i; break; }
       }
-      if(emptyRow && !isAlreadyRevealed){
-        //Reveales the card
-        field[0][row].isHidden = false;
-        //Move the appropriate ace down
-        moveAceUp(field[0][row].suit, -1); //-1 for direction down
-      }
-      if(!emptyRow){
-        break;
-      }
+      if (aceIndex === -1 || aceIndex > row) { allAtOrPast = false; break; }
     }
+
+    if (allAtOrPast) {
+      sideCard.isHidden = false;
+      moveAceUp(sideCard.suit, -1);
+    }
+    break;
+  }
   }
 
   const moveAceUp = (suit, direction) => { //directions: 1 for up, -1 for down
@@ -140,6 +161,7 @@ const App = () => {
     const winningAce = topFields.find(card => card && card.value === 'A');
     if (winningAce) {
       setWinner(winningAce);
+      setAutoReveal(false);
     }
   };
 
@@ -157,9 +179,11 @@ const App = () => {
   return (
     <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
       <View style={styles.container}>
-      
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+        </TouchableOpacity>
       <View style={styles.container}>
-
+        
         
         <View style={styles.field}>
            <View style={styles.column}>
@@ -218,8 +242,20 @@ const App = () => {
         
 
         <View style={styles.deckArea}>
-          <TouchableOpacity style={appStyles.gameActionButton} onPress={drawCard}>
-            <Text style={appStyles.gameActionButtonText}>Aufdecken</Text>
+          <TouchableOpacity
+            style={[appStyles.gameActionButton, autoReveal ? styles.disabledButton : null]}
+            onPress={drawCard}
+            disabled={autoReveal}
+          >
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Aufdecken' : 'Reveal'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setAutoReveal((prev) => !prev)}
+            style={[styles.autoToggle, autoReveal ? styles.autoToggleActive : null]}
+          >
+            <Text style={styles.autoToggleText}>
+              {autoReveal ? (language === 'de' ? 'Automatisch: EIN (3 Sekunden)' : 'Auto: ON (3s)') : (language === 'de' ? 'Automatisch: AUS' : 'Auto: OFF')}
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -230,6 +266,16 @@ const App = () => {
           )}
 
         
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: (language === 'de' ? 'Setzt euren Tipp auf ein Pferd.' : 'Place your bet on a horse.'), placement: 'top' },
+            { text: (language === 'de' ? 'Startet das Rennen und feuert an.' : 'Start the race and cheer.'), placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s)=> Math.min(1, s+1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
       {/*{gameStarted? (
       //Falls Game noch nicht gestartet:
@@ -277,9 +323,8 @@ const App = () => {
       }*/}
         
         <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {}]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
-        </TouchableOpacity>
+        <InfoHint />
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
 
     </View>
     
@@ -301,6 +346,25 @@ const styles = StyleSheet.create({
     marginBottom: windowWidth * 0.01,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  disabledButton: {
+    opacity: 0.5,
+  },
+  autoToggle: {
+    marginTop: windowWidth * 0.02,
+    borderRadius: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  autoToggleActive: {
+    backgroundColor: 'rgba(229,193,133,0.3)',
+  },
+  autoToggleText: {
+    color: 'white',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    textAlign: 'center',
   },
   deck: {
     width: windowWidth * 0.3,
@@ -389,3 +453,10 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+
+
+
+
+
