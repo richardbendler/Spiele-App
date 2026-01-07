@@ -26,13 +26,11 @@ const menuStyles = StyleSheet.create({
     position: 'relative',
     alignItems: 'center',       // Horizontale Zentrierung
     justifyContent: 'center',   // Vertikale Zentrierung
-    //backgroundColor: primaryColor, 
   },
   flexiblePageContainer: {
     flex: 1,
     width: '100%',
     height: '100%',
-    //backgroundColor: primaryColor, 
   },
   //Bereich, der genutzt werden soll
   smallPageContainer: {
@@ -159,7 +157,7 @@ const buttonStyles = StyleSheet.create({
     width: '100%', 
   },
 
-  bottleButtonBaldVerfügbarKasten: {
+  bottleButtonComingSoonBadge: {
     top: '10%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     height: '30%',
@@ -182,20 +180,32 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,  // Abgerundete Ecken
     padding: 10,  // Innenabstand
     margin: 10,  // Außenabstand
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.85)',
+    shadowColor: '#000',
+    shadowOpacity: 0.45,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 6,
+    elevation: 5,
   },
   
   //Game Info Button -> Zeigt Spielerklärungen an
   infoButton: {
     position: 'absolute',
-    left: 20,         // Abstand vom linken Rand des Containers
-    bottom: 20,       // Abstand vom unteren Rand des Containers
     backgroundColor: secondaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    //width: 50, // Breite des Buttons
-    height: 50, // Höhe des Buttons
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.4)',
+    shadowColor: '#000',
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    height: 50,
     alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
+    justifyContent: 'center',
   },
 
   //Restart Button von Winnerpage
@@ -226,23 +236,30 @@ const modalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width: '80%', // Stellt sicher, dass das Modal nicht zu breit ist
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    // Maximal teiltransparentes Popup
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modalTextTitle: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
-    fontSize: 25,
+    fontSize: 34,
+    lineHeight: 40,
+    fontWeight: 'bold',
   },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
+    fontSize: 20,
+    lineHeight: 26,
   },
   modalTextParameters: {
     marginBottom: 15,
     textAlign: 'center',
     color: 'white', // Sanfte Textfarbe
+    fontSize: 18,
+    lineHeight: 24,
   },
   closeButton: {
     position: 'absolute',
@@ -464,4 +481,6 @@ export const appStyles = {
   ...backgroundStyles,
   ...modalStyles,
 }
+
+
 
