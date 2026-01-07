@@ -2,7 +2,7 @@ import { Alert, Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Play Store package matches android.package in app.json
-const ANDROID_PACKAGE = 'com.felsbend.Trinkspiel_RN';
+const ANDROID_PACKAGE = 'com.felsbend.Game_RN';
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE}`;
 
 const KEY_NEVER = 'rating.never';

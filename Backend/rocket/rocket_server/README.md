@@ -12,7 +12,7 @@ https://learn.microsoft.com/de-de/windows/wsl/install
 
 ## Optional: Language Support for Rust
 - Clone project inside of WSL
-- Open in vscode one subfolder only (rocket or Trinkspiel_RN)
+- Open in vscode one subfolder only (rocket or Game_RN)
 - attention to alert on the right below to open project in wsl
 - install rust-analyzer extension
 - Below on the left you can normally see the language server -> Rust_Analyzer
