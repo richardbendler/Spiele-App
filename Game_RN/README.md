@@ -8,7 +8,7 @@ Ausnahmen:
 ## Lokale .env
 Fuer die lokale Entwicklung wird eine `.env` Datei benoetigt.
 
-1. `Trinkspiel_RN/.env.example` nach `Trinkspiel_RN/.env` kopieren.
+1. `Game_RN/.env.example` nach `Game_RN/.env` kopieren.
 2. `EXPO_PUBLIC_API_TOKEN` setzen (Bearer Token ohne `Bearer`-Prefix).
 3. Optional: `EXPO_PUBLIC_API_BASE_URL` anpassen.
 
@@ -29,7 +29,7 @@ Name unserer DB: TrinkspielDB
 https://nodejs.org/en/download/ oder https://phoenixnap.com/kb/install-node-js-npm-on-windows (necessary tools mitinstallieren)
 
 ### In Powershell
-cd RN_Trinkspiel
+cd Game_RN
 npm install
 _(ggf: npm audit fix --force)_
 
