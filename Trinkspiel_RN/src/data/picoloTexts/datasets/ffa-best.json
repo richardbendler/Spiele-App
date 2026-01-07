@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "description": "Alle gegen alle – Beste Person Prompts"
+  },
+  "poolKey": "ffa-best",
+  "items": [
+    {
+      "de": "Wer pitcht die absurdeste Fake-Werbung für ein Getränk? Beste Person verteilt 3 Schlucke.",
+      "en": "Who can pitch the most absurd fake commercial for a drink? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Baut in 45 Sekunden eine Statue aus allem, was auf dem Tisch liegt. Stabilste Skulptur verteilt 4 Schlucke.",
+      "en": "Build a statue in 45 seconds using whatever is on the table. The most stable creation hands out 4 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Freestyle-Tanz zu einem zufälligen Song: Wer die wildeste TikTok-Choreo raushaut, verteilt 3 Schlucke.",
+      "en": "Freestyle dance to a random song—whoever drops the wildest TikTok routine hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer in 20 Sekunden den besten neuen Team-Namen inklusive Logo pantomimisch darstellt, verteilt 3 Schlucke.",
+      "en": "Whoever invents and pantomimes the best new team name plus logo in 20 seconds hands out 3 sips.",
+      "drunkLevel": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer den kreativsten Party-Lifehack präsentiert, darf 4 Schlucke an beliebige Leute vergeben.",
+      "en": "Whoever presents the most creative party life hack gets to hand out 4 sips to anyone.",
+      "drunkLevel": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}

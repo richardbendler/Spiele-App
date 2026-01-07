@@ -1,0 +1,233 @@
+{
+  "_meta": {
+    "description": "Wettkampf 1v1: Direktes Battle zwischen zwei Personen."
+  },
+  "poolKey": "duel",
+  "items": [
+    {
+      "de": "1v1: Blickduell — wer zuerst lacht, trinkt einen Schluck.",
+      "en": "1v1: Staring contest — the first to laugh drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Malt gleichzeitig ein Herz in die Luft. Das bessere Herz entscheidet, der andere nippt.",
+      "en": "1v1: Trace a heart in the air at the same time. Better heart wins, loser sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Hände hinter den Rücken, pfeift nacheinander ein Lied. Wer nicht erraten wird, trinkt.",
+      "en": "1v1: Hands behind your back, whistle turns. Whoever is not guessed drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Städte mit gleichem Anfangsbuchstaben — wer stockt, trinkt.",
+      "en": "1v1: Name cities with the same starting letter in turn — whoever stalls drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Hebt gleichzeitig einen Schuh. Wer zögert, trinkt.",
+      "en": "1v1: Lift a shoe at the same time. Anyone who hesitates drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Plank-Duell — wer zuerst aufgibt, trinkt zwei Schlucke.",
+      "en": "1v1: Plank duel — first to drop drinks two sips.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer schneller ein Emoji mit dem Finger auf den Tisch malt, gewinnt. Verlierer trinkt.",
+      "en": "1v1: Draw an emoji on the table with your finger. Faster artist wins, loser drinks.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Getränke ohne Alkohol — wer wiederholt, trinkt.",
+      "en": "1v1: Name non-alcoholic drinks in turn — repeats drink.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Impro-Sprint vorführen. Lauteste Reaktion gewinnt, andere Person trinkt.",
+      "en": "1v1: Perform an improvised sprint. Loudest reaction wins, other player drinks.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Schnick-Schnack-Schnuck Best-of-3. Verlierer trinkt.",
+      "en": "1v1: Rock-paper-scissors best of three. Loser drinks.",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer schneller drei gemeinsame Insider aufzählt, gewinnt. Verlierer nimmt drei Schlucke.",
+      "en": "1v1: List three shared inside jokes faster. Loser takes three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Karaoke-Battle ohne Musik. Lauteste Runde entscheidet.",
+      "en": "1v1: Karaoke battle without music. Loudest round wins.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Haltet je einen Arm ausgestreckt — wer länger durchhält, verteilt drei Schlucke.",
+      "en": "1v1: Hold an outstretched arm — whoever lasts longer hands out three sips.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Kosenamen — wer nichts mehr weiß, trinkt.",
+      "en": "1v1: Trade nicknames — whoever runs out of ideas drinks.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Erfindet eine Synchronbewegung. Schlechtere Performance trinkt.",
+      "en": "1v1: Invent a synchronized move. Weaker performance drinks.",
+      "drunkLevel": 6,
+      "deepness": 5,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Flüster-Challenge — flüstert euch einen Flirt-Satz zu. Wer röter wird, trinkt.",
+      "en": "1v1: Whisper a flirty line. Whoever blushes more drinks.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Halt deine Stirn an die der anderen Person. Wer wegzieht, trinkt drei Schlucke.",
+      "en": "1v1: Press your forehead against the other player. First to pull away drinks three sips.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Impro-Kuss-Szene ohne echten Kuss. Schlechtere Acting-Note trinkt.",
+      "en": "1v1: Improv kiss scene without a real kiss. Worse acting grade drinks.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Erzählt der Runde abwechselnd Geheimnisse über euer Sternzeichen — wer zuerst stoppt, trinkt.",
+      "en": "1v1: Share secrets about your star sign in turns — first to stop drinks.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt euren letzten Crush. Wer weniger Details verrät, trinkt.",
+      "en": "1v1: Name your last crush. Fewer details means you drink.",
+      "drunkLevel": 8,
+      "deepness": 7,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Flirt-Lobeshymne — wer weniger überzeugend Komplimente macht, trinkt vier Schlucke.",
+      "en": "1v1: Flirty praise battle — less convincing compliments drink four sips.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Beschreibt euren perfekten Kuss in 20 Sekunden. Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Describe your perfect kiss in 20 seconds. Crowd decides, loser drinks.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Macht gegenseitig einen sexy Walk-Off. Der mutigere Walk gewinnt.",
+      "en": "1v1: Do a sexy walk-off. Bolder walk wins.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt intime Bucket-List-Punkte. Wer zuerst kneift, trinkt.",
+      "en": "1v1: Name intimate bucket-list items. First to bail drinks.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wahrheitsschlacht — beantwortet die gleiche pikante Frage. Unpersönlichere Antwort trinkt.",
+      "en": "1v1: Truth duel — answer the same spicy question. More impersonal answer drinks.",
+      "drunkLevel": 10,
+      "deepness": 9,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}
