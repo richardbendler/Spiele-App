@@ -1,148 +1,401 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, ImageBackground, ScrollView, Alert } from 'react-native';
-import Slider from '@react-native-community/slider'; 
-import { appStyles } from '../../styles';
-import { VariablesContext } from '../../VariablesContext';
-import NameContainer from './sublements/AddPlayerNameContainer';
+import React, { useState, useContext, useCallback, useMemo, useEffect, useRef } from "react";
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, Alert, ScrollView, StyleSheet } from "react-native";
+import Slider from "@react-native-community/slider";
+import { VariablesContext } from "../../VariablesContext";
+import NameContainer from "./sublements/AddPlayerNameContainer";
+import { useTranslation } from "../i18n";
 
-const PlayerInput = React.memo(({ onAddPlayer }) => {
-  const [currentName, setCurrentName] = useState('');
+const mapScaleLabel = (scale, index) => {
+  if (!Array.isArray(scale) || index < 0 || index >= scale.length) {
+    return "";
+  }
+  return scale[index];
+};
+
+const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
+  const [currentName, setCurrentName] = useState("");
 
   const handler = () => {
-    if (currentName.trim() !== '') {
-      onAddPlayer(currentName);
-      setCurrentName('');
+    const trimmedName = currentName.trim();
+    if (trimmedName !== "") {
+      onAddPlayer(trimmedName);
+      setCurrentName("");
     }
   };
 
   return (
-    <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-      <Text style={appStyles.textHeader2}>Namen eingeben</Text>
-      <Text style={[appStyles.textNormal2, {width: '70%', textAlign: 'center'}]}>Bitte gib die Namen aller mitspielenden Personen ein!</Text>
-      <TextInput
-        placeholder="Hier einen Namen eingeben"
-        placeholderTextColor="white"
-        value={currentName}
-        onChangeText={text => setCurrentName(text)}
-        style={[appStyles.input, {marginVertical: 20}]}
-      />
-      <TouchableOpacity onPress={handler} style={[appStyles.chalkboardButton, {marginBottom: 30}]}>
-        <Text style={[appStyles.chalkboardButtonText, { fontSize: 20 }]}>Hinzufügen</Text>
-      </TouchableOpacity>
+    <View style={styles.playerInputSection}>
+      <Text style={styles.sectionLabel}>{copy.inputTitle}</Text>
+      <Text style={styles.sectionHint}>{copy.inputSubtitle}</Text>
+      <View style={styles.inputRow}>
+        <TextInput
+          placeholder={copy.placeholder}
+          placeholderTextColor="rgba(255,255,255,0.6)"
+          value={currentName}
+          onChangeText={setCurrentName}
+          style={styles.nameInput}
+          returnKeyType="done"
+          onSubmitEditing={handler}
+          blurOnSubmit={false}
+        />
+        <TouchableOpacity onPress={handler} style={styles.addPlayerButton} activeOpacity={0.9}>
+          <Text style={styles.addPlayerButtonText}>{copy.addButton}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 });
 
-//for tracking different player ids
-let player_id = 0;
+const AddPlayer = ({ navigation, route }) => {
+  const { players, setPlayers, theOneSettings, setTheOneSettings } = useContext(VariablesContext);
+  const nextGameRoute = route?.params?.nextGame ?? "PicoloGame";
+  const forwardParams = route?.params?.forwardParams;
+  const showScales = route?.params?.showScales !== false;
+  const { t } = useTranslation();
+  const nextIdRef = useRef(0);
 
-const AddPlayer = ({ navigation }) => {
-  const { players, setPlayers } = useContext(VariablesContext);
-  const [drunkennessLevel, setDrunkennessLevel] = useState(5);
-  const [drunkennessLevelsAsText, setDrunkennessLevelsAsText] = useState(["Stock nüchtern", "Gerade angefangen zu trinken", "Erste Wirkung", "Leicht angetrunken", "Moderat angetrunken", "Doller angetrunken", "Ziemlich doll angetrunken", "Können kaum noch laufen", "Uiuiuiui", "Haat jmd nen E1mer??"]); //TODO:
-  const [desiredDrunkenness, setDesiredDrunkenness] = useState(5);
-  const [desiredDrunkennessLevelsAsText, setDesiredDrunkennessLevelsAsText] = useState(["Stock nüchtern", "Gerade angefangen zu trinken", "Erste Wirkung", "Leicht angetrunken", "Moderat angetrunken", "Doller angetrunken", "Ziemlich doll angetrunken", "Können kaum noch laufen", "Uiuiuiui", "Haat jmd nen E1mer??"]);
-  const [familiarityLevel, setFamiliarityLevel] = useState(5);
-  const [familiarityLevelsAsText, setFamiliarityLevelsAsText] = useState(["Heute kennengelernt", "...", "...", "...", "...", "...", "Kennen uns gut", "Kennen uns sehr gut", "Kennen uns lange", "Alte Bekannte"]);
-  
-  
+  useEffect(() => {
+    const highestId = players.reduce((max, player) =>
+      player?.id != null ? Math.max(max, Number(player.id)) : max,
+      -1
+    );
+    nextIdRef.current = highestId >= 0 ? highestId + 1 : 0;
+  }, [players]);
+
+  const addPlayerText = useMemo(() => t("addPlayer"), [t]);
+  const drinkingScale = useMemo(() => t("scales.drunkenness"), [t]);
+  const familiarityScale = useMemo(() => t("scales.familiarity"), [t]);
+
+  const playerInputCopy = useMemo(
+    () => ({
+      inputTitle: addPlayerText.inputTitle,
+      inputSubtitle: addPlayerText.inputSubtitle,
+      placeholder: addPlayerText.placeholder,
+      addButton: addPlayerText.addButton,
+    }),
+    [addPlayerText]
+  );
+
+  const { currentDrunkenness, desiredDrunkenness, familiarity } = theOneSettings;
+  const sliderMaxIndex = Array.isArray(drinkingScale) ? drinkingScale.length - 1 : 0;
+
+  const updateSetting = useCallback(
+    (key, maxValue) => (value) => {
+      const upperBound = typeof maxValue === "number" ? maxValue : sliderMaxIndex;
+      const clampedValue = Math.max(0, Math.min(upperBound, Math.round(value)));
+      setTheOneSettings((prev) => ({ ...prev, [key]: clampedValue }));
+    },
+    [setTheOneSettings, sliderMaxIndex]
+  );
+
   const handleAddPlayer = useCallback(
     (name) => {
-      //check if array already has players
-      players != [] ? setPlayers([...players, {id: player_id, name, drinks: true}]) : setPlayers([{id: player_id, name, drinks: true}]);
-      player_id += 1;
+      const nextId = nextIdRef.current;
+      nextIdRef.current += 1;
+      setPlayers((prev) => [...prev, { id: nextId, name, drinks: true }]);
     },
-    [players]
+    [setPlayers]
   );
+
+  const handleClearPlayers = useCallback(() => {
+    setPlayers([]);
+    nextIdRef.current = 0;
+  }, [setPlayers]);
 
   const startGame = () => {
     if (players.length >= 2) {
-      navigation.navigate('PicoloGame');
+      navigation.navigate(nextGameRoute, forwardParams);
     } else {
-      Alert.alert("Zu wenig Spieler", "Um dieses Spiel zu starten werden mindestens zwei Spieler benötigt.")
+      Alert.alert(addPlayerText.alertTitle, addPlayerText.alertMessage);
     }
-  }
+  };
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{ flex: 1 }} >
-      <View style={appStyles.menuContainer}>
-        <View style={{ width: '70%', justifyContent: 'center', alignItems: 'center', }}>
-          <PlayerInput onAddPlayer={handleAddPlayer} />
+    <View style={styles.background}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.screenTitle}>{addPlayerText.screenTitle}</Text>
+        <Text style={styles.screenSubtitle}>{addPlayerText.listHint}</Text>
 
-          
-          <Text style={[appStyles.textNormal2, {width: '100%', textAlign: 'center'}]}>In der Liste könnt ihr dann markieren, ob Personen Alkohol trinken oder nicht. Wer nicht trinkt, bekommt auch keine Aufgaben, wo es ums Trinken geht.</Text>
-          <Text style={[appStyles.textHeader4, {marginVertical: 1}]}>Wer ist dabei:</Text>
-          
-          <View style={{ height: 200, marginVertical: 1 }}>
-            <FlatList
-              data={players}
-              renderItem={({ item }) =>
-                <NameContainer playerObject={item} />
-              }
-              keyExtractor={(item, index) => index.toString()}
-              style={appStyles.playerList}
-            />
+        <View style={styles.playerListCard}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>{addPlayerText.listHeader}</Text>
+            <Text style={styles.cardCounter}>{players.length} / 12</Text>
           </View>
-
-          {/* Die Regler */}
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>Wie betrunken seid ihr gerade?</Text>
-            <Slider
-              style={{width: '100%', height: 40}}
-              minimumValue={0}
-              maximumValue={10}
-              step={1}
-              value={5}
-              onValueChange={setDrunkennessLevel}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
-            />
-            <Text style={appStyles.textNormal2}>Wert: {drunkennessLevelsAsText[drunkennessLevel-1]}</Text>
-          </View>
-
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>Wie betrunken möchtet ihr werden?</Text>
-            <Slider
-              style={{width: '100%', height: 40}}
-              minimumValue={0}
-              maximumValue={10}
-              step={1}
-              value={5}
-              onValueChange={setDesiredDrunkenness}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
-            />
-            <Text style={appStyles.textNormal2}>Wert: {desiredDrunkennessLevelsAsText[desiredDrunkenness-1]}</Text>
-          </View>
-
-          <View style={{ width: '100%', marginTop: 20 }}>
-            <Text style={appStyles.textNormal2}>Wie gut kennt ihr euch schon?</Text>
-            <Slider
-              style={{width: '100%', height: 40}}
-              minimumValue={0}
-              maximumValue={10}
-              step={1}
-              value={5}
-              onValueChange={setFamiliarityLevel}
-              minimumTrackTintColor="#FFFFFF"
-              maximumTrackTintColor="#000000"
-            />
-            <Text style={appStyles.textNormal2}>Wert: {familiarityLevelsAsText[familiarityLevel-1]}</Text>
-          </View>
-
-
+          {players.length === 0 ? (
+            <View style={styles.emptyPlayerContainer}>
+              <Text style={styles.emptyPlayerText}>{addPlayerText.placeholder}</Text>
+            </View>
+          ) : (
+            <View style={styles.playerGrid}>
+              {players.map((player) => (
+                <NameContainer
+                  key={player.id != null ? String(player.id) : player.name}
+                  playerObject={player}
+                />
+              ))}
+            </View>
+          )}
+          <View style={styles.cardDivider} />
+          <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
         </View>
-        <TouchableOpacity onPress={startGame} style={[appStyles.chalkboardButtonPrimaryColor, {}]}>
-          <Text style={appStyles.chalkboardButtonText}>Spielen</Text>
+
+        {players.length > 0 ? (
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={handleClearPlayers}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.clearButtonText}>{addPlayerText.clearAll}</Text>
+          </TouchableOpacity>
+        ) : null}
+
+        {showScales ? (
+          <View style={styles.sliderCard}>
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderCurrent}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={sliderMaxIndex}
+                step={1}
+                value={currentDrunkenness}
+                onValueChange={updateSetting("currentDrunkenness", sliderMaxIndex)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderCurrentLabel} {mapScaleLabel(drinkingScale, currentDrunkenness)}
+              </Text>
+            </View>
+
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderDesired}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={sliderMaxIndex}
+                step={1}
+                value={desiredDrunkenness}
+                onValueChange={updateSetting("desiredDrunkenness", sliderMaxIndex)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderDesiredLabel} {mapScaleLabel(drinkingScale, desiredDrunkenness)}
+              </Text>
+            </View>
+
+            <Text style={styles.sliderTitle}>{addPlayerText.sliderFamiliarity}</Text>
+            <View style={styles.sliderRow}>
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0}
+                step={1}
+                value={familiarity}
+                onValueChange={updateSetting("familiarity", Array.isArray(familiarityScale) ? familiarityScale.length - 1 : 0)}
+                minimumTrackTintColor="#E5C185"
+                maximumTrackTintColor="rgba(255,255,255,0.2)"
+                thumbTintColor="#E5C185"
+              />
+              <Text style={styles.sliderValue}>
+                {addPlayerText.sliderFamiliarityLabel} {mapScaleLabel(familiarityScale, familiarity)}
+              </Text>
+            </View>
+          </View>
+        ) : null}
+
+        <TouchableOpacity
+          onPress={startGame}
+          style={[styles.startButton, !showScales && { marginTop: 16 }]}
+          activeOpacity={0.9}
+        >
+          <Text style={styles.startButtonText}>{addPlayerText.startButton}</Text>
         </TouchableOpacity>
-
-      </View>
-
-    </ImageBackground>
+      </ScrollView>
+    </View>
   );
 };
 
 export default AddPlayer;
 
-
-
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
+  scrollContent: {
+    paddingHorizontal: 24,
+    paddingTop: 40,
+    paddingBottom: 80,
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
+  },
+  screenTitle: {
+    fontSize: 32,
+    fontFamily: "Quicksand_300Bold",
+    color: "white",
+    marginBottom: 6,
+    flexWrap: 'wrap',
+  },
+  screenSubtitle: {
+    fontSize: 14,
+    fontFamily: "Quicksand_300Light",
+    color: "rgba(255,255,255,0.72)",
+    marginBottom: 24,
+    flexWrap: 'wrap',
+  },
+  playerInputSection: {
+    paddingTop: 16,
+  },
+  sectionLabel: {
+    fontSize: 18,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  sectionHint: {
+    marginTop: 4,
+    fontSize: 13,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Quicksand_300Light",
+    lineHeight: 18,
+  },
+  inputRow: {
+    width: '100%',
+    marginTop: 18,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+  },
+  nameInput: {
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    width: '100%',
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    minHeight: 48,
+    fontSize: 16,
+  },
+  addPlayerButton: {
+    marginTop: 12,
+    paddingVertical: 14,
+    borderRadius: 14,
+    backgroundColor: "#E5C185",
+    alignItems: 'center',
+  },
+  addPlayerButtonText: {
+    color: "#241D18",
+    fontSize: 15,
+    fontFamily: "Quicksand_300Bold",
+  },
+  playerListCard: {
+    backgroundColor: "rgba(12, 15, 21, 0.9)",
+    borderRadius: 22,
+    padding: 20,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    width: '100%',
+  },
+  cardDivider: {
+    height: 1,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    marginTop: 24,
+    marginBottom: 12,
+  },
+  clearButton: {
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.6)',
+  },
+  clearButtonText: {
+    color: '#E5C185',
+    fontSize: 12,
+    fontFamily: 'Quicksand_300Bold',
+    letterSpacing: 0.5,
+  },
+  cardHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  cardTitle: {
+    fontSize: 18,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+  },
+  cardCounter: {
+    fontSize: 14,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Quicksand_300Light",
+  },
+  emptyPlayerContainer: {
+    paddingVertical: 32,
+  },
+  emptyPlayerText: {
+    textAlign: "center",
+    fontSize: 14,
+    fontFamily: "Quicksand_300Light",
+    color: "rgba(255,255,255,0.4)",
+  },
+  playerGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  sliderCard: {
+    backgroundColor: "rgba(12, 15, 21, 0.9)",
+    borderRadius: 22,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    width: '100%',
+  },
+  sliderTitle: {
+    fontSize: 15,
+    color: "white",
+    fontFamily: "Quicksand_300Bold",
+    marginTop: 6,
+  },
+  sliderRow: {
+    marginTop: 6,
+    marginBottom: 12,
+  },
+  slider: {
+    width: "100%",
+    height: 42,
+  },
+  sliderValue: {
+    textAlign: "right",
+    fontSize: 12,
+    color: "rgba(229,193,133,0.85)",
+    fontFamily: "Quicksand_300Bold",
+  },
+  startButton: {
+    marginTop: 30,
+    backgroundColor: "#E5C185",
+    borderRadius: 18,
+    paddingVertical: 16,
+    alignItems: "center",
+  },
+  startButtonText: {
+    color: "#231C18",
+    fontSize: 18,
+    fontFamily: "Quicksand_300Bold",
+    letterSpacing: 1,
+  },
+});
