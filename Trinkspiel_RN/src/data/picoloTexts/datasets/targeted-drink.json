@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "description": "Person trinkt x Prompts"
+  },
+  "poolKey": "targeted-drink",
+  "items": [
+    {
+      "de": "Sip Sync",
+      "en": "Sip sync",
+      "drunkLevel": 4,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}} trinkt {{amountLabel}} für das lauteste Lachen eben.",
+          "en": "{{target}} drinks {{amountLabel}} for laughing the loudest just now."
+        },
+        "target": {
+          "mode": "single",
+          "requireDrinker": true
+        },
+        "drinkScaling": {
+          "sliderKey": "desired",
+          "min": 1,
+          "max": 4,
+          "unit": "sip"
+        }
+      },
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Glas halb voll",
+      "en": "Glass half full",
+      "drunkLevel": 4,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}}, {{amountLabel}} fürs Motivationsspeech gerade eben.",
+          "en": "{{target}}, {{amountLabel}} for that motivational speech earlier."
+        },
+        "target": {
+          "mode": "single",
+          "requireDrinker": true
+        },
+        "drinkScaling": {
+          "sliderKey": "desired",
+          "min": 2,
+          "max": 5,
+          "unit": "sip"
+        }
+      },
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kalibrierung",
+      "en": "Calibration sip",
+      "drunkLevel": 4,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}} kalibriert den Pegel mit {{amountLabel}}.",
+          "en": "{{target}} calibrates their buzz with {{amountLabel}}."
+        },
+        "target": {
+          "mode": "single",
+          "requireDrinker": true
+        },
+        "drinkScaling": {
+          "sliderKey": "desired",
+          "min": 1,
+          "max": 6,
+          "unit": "sip"
+        }
+      },
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mood Booster",
+      "en": "Mood booster",
+      "drunkLevel": 5,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}} hebt die Stimmung mit {{amountLabel}} für den nächsten Song.",
+          "en": "{{target}} boosts the vibe with {{amountLabel}} before the next track."
+        },
+        "target": {
+          "mode": "single",
+          "requireDrinker": true
+        },
+        "drinkScaling": {
+          "sliderKey": "delta",
+          "min": 2,
+          "max": 5,
+          "unit": "sip"
+        }
+      },
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Story-Tax",
+      "en": "Story tax",
+      "drunkLevel": 5,
+      "tags": [
+        "drink"
+      ],
+      "payload": {
+        "type": "targetedAction",
+        "template": {
+          "de": "{{target}} zahlt für die längste Story mit {{amountLabel}}.",
+          "en": "{{target}} pays for the longest story with {{amountLabel}}."
+        },
+        "target": {
+          "mode": "single",
+          "requireDrinker": true
+        },
+        "drinkScaling": {
+          "sliderKey": "desired",
+          "min": 1,
+          "max": 4,
+          "unit": "sip"
+        }
+      },
+      "drinking": true,
+      "manual_approval": 0
+    }
+  ]
+}

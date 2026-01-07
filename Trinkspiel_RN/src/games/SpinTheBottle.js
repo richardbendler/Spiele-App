@@ -1,22 +1,100 @@
-// Import necessary React and React Native modules
-import React, { useState, useContext, useRef } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder, ImageBackground } from 'react-native';
+﻿// Import necessary React and React Native modules
+import React, { useState, useContext, useRef, useMemo } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
-import { deleteHashtags, replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
-import HandleFeedback from './sublements/HandleFeedBack';
+import { deleteHashtags, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { appStyles } from '../../styles';
+import HandleFeedback from './sublements/HandleFeedBack';
+import { useTranslation } from '../i18n';
 
 // Main component for the Spin the Bottle game
-const SpinTheBottle = ({route }) => {
-  const textsWahrheitSpinTheBottle = shuffleArrayFisherYates(route.params.textsWahrheitSpinTheBottle);
-  const textsPflichtSpinTheBottle = shuffleArrayFisherYates(route.params.textsPflichtSpinTheBottle);
-  
-  const [displayedText, setDisplayedText] = useState('Dreh die Flasche mit dem Finger! (Tippen reicht auch)');
+const SpinTheBottle = ({ route }) => {
+  const {
+    infoVisible,
+    setInfoVisible,
+    language,
+    tutorialEnabled,
+    setTutorialEnabled,
+    theOneSettings,
+    spinTheBottleTruths,
+    spinTheBottleDares,
+  } = useContext(VariablesContext);
 
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const truthPool = useMemo(() => {
+    if (Array.isArray(spinTheBottleTruths) && spinTheBottleTruths.length > 0) {
+      return spinTheBottleTruths;
+    }
+    if (Array.isArray(route.params?.textsWahrheitSpinTheBottle)) {
+      return route.params.textsWahrheitSpinTheBottle;
+    }
+    return [];
+  }, [spinTheBottleTruths, route.params?.textsWahrheitSpinTheBottle]);
 
+  const darePool = useMemo(() => {
+    if (Array.isArray(spinTheBottleDares) && spinTheBottleDares.length > 0) {
+      return spinTheBottleDares;
+    }
+    if (Array.isArray(route.params?.textsPflichtSpinTheBottle)) {
+      return route.params.textsPflichtSpinTheBottle;
+    }
+    return [];
+  }, [spinTheBottleDares, route.params?.textsPflichtSpinTheBottle]);
+
+  const textsWahrheitSpinTheBottle = useMemo(
+    () => shuffleArrayFisherYates(truthPool),
+    [truthPool]
+  );
+  const textsPflichtSpinTheBottle = useMemo(
+    () => shuffleArrayFisherYates(darePool),
+    [darePool]
+  );
+
+  const [randomSelection, setRandomSelection] = useState('initial'); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
+  const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
+  const [outcome, setOutcome] = useState({ type: 'initial' });
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const { t } = useTranslation();
+  const copy = useMemo(() => {
+    const value = t('spinTheBottleGame');
+    return typeof value === 'object' && value !== null ? value : {};
+  }, [t]);
+
+  const displayedText = useMemo(() => {
+    switch (outcome.type) {
+      case 'initial':
+        return copy.initialPrompt ?? '';
+      case 'spinning':
+        return '';
+      case 'sips':
+        return `${outcome.count} ${copy.sipsLabel ?? ""}`.trim();
+      case 'truth': {
+        const entry = textsWahrheitSpinTheBottle[outcome.index];
+        if (!entry) {
+          return copy.truthLabel ?? '';
+        }
+        const textValue =
+          language === 'en' && entry.content_en ? entry.content_en : entry.content;
+        return `${copy.truthLabel ?? ""} ${textValue}`.trim();
+      }
+      case 'dare': {
+        const entry = textsPflichtSpinTheBottle[outcome.index];
+        if (!entry) {
+          return copy.dareLabel ?? '';
+        }
+        const textValue =
+          language === 'en' && entry.content_en ? entry.content_en : entry.content;
+        return `${copy.dareLabel ?? ""} ${textValue}`.trim();
+      }
+      default:
+        return '';
+    }
+  }, [outcome, copy, language, textsPflichtSpinTheBottle, textsWahrheitSpinTheBottle]);
+
+  const questionText = useMemo(() => deleteHashtags(displayedText || ''), [displayedText]);
   // Ref variable for the rotation value of the bottle, initialized with 0
   const rotationValue = useRef(new Animated.Value(0)).current;
   // Ref variable for the last rotation position, initialized with 0
@@ -43,7 +121,7 @@ const SpinTheBottle = ({route }) => {
       },
       // Function called on touch move (not used but could be useful for future enhancements)
       onPanResponderMove: Animated.event([null, { dx: rotationValue }], { useNativeDriver: false }),
-      // Funktion, die bei Freigabe der Berührung aufgerufen wird
+      // Funktion, die bei Freigabe der Beruehrung aufgerufen wird
       onPanResponderRelease: (e, { vx }) => {
         // Beenden der aktuellen Animation und Festlegen des Offsets
         rotationValue.stopAnimation((currentValue) => {
@@ -52,40 +130,67 @@ const SpinTheBottle = ({route }) => {
         rotationValue.setOffset(lastRotation.current);
         rotationValue.setValue(0);
       
-        setDisplayedText('');
+        setOutcome({ type: 'spinning' });
 
-        // Starten der neuen Animation mit einem zufälligen Endwert
+        // Starten der neuen Animation mit einem zufaelligen Endwert
         Animated.timing(rotationValue, {
-          toValue: Math.random() * 360 * 30,  // Zufälliger Endwert für die Animation, multipliziert mit 5
-          duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufällige Dauer zwischen 3 und 5 Sekunden
+          toValue: Math.random() * 360 * 30,  // Zufaelliger Endwert fuer die Animation, multipliziert mit 5
+          duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufaellige Dauer zwischen 3 und 5 Sekunden
           useNativeDriver: false,
         }).start(() => {
 
-          // Nach Abschluss der Animation: Aktualisieren von lastRotation und Zurücksetzen des Offsets und Werts
+          // Nach Abschluss der Animation: Aktualisieren von lastRotation und Zuruecksetzen des Offsets und Werts
           lastRotation.current += rotationValue._value;
           rotationValue.setOffset(lastRotation.current);
           rotationValue.setValue(0);
 
-          // Zufällige Auswahl zwischen den drei Optionen treffen
-          const randomSelection = Math.floor(Math.random() * 3);
-          let resultText = '';
-          switch (randomSelection) {
-            case 0:  // Schlucke! Option
-              resultText = `${generateRandomSips()} Schlucke!`;
+          // Auswahl zwischen Schlucke (0), Wahrheit (1), Pflicht (2) basierend auf "Touchy"-Level (re-uses familiarity)
+          const touchy = Math.max(0, Math.min(9, Number(theOneSettings?.familiarity ?? 5)));
+          const pDare = 0.2 + 0.06 * touchy; // 0.2 .. 0.74
+          const pTruth = 0.5 - 0.03 * touchy; // 0.5 .. 0.23
+          const pSips = Math.max(0.06, 1 - pDare - pTruth); // remainder, keep >= 0.06
+
+          const weightedOptions = [
+            { type: 'sips', weight: pSips },
+            ...(textsWahrheitSpinTheBottle.length > 0 ? [{ type: 'truth', weight: Math.max(0.02, pTruth) }] : []),
+            ...(textsPflichtSpinTheBottle.length > 0 ? [{ type: 'dare', weight: Math.max(0.02, pDare) }] : []),
+          ];
+
+          const totalWeight = weightedOptions.reduce((sum, entry) => sum + entry.weight, 0);
+          let roll = Math.random() * (totalWeight || 1);
+          let selected = weightedOptions[0]?.type || 'sips';
+          for (const entry of weightedOptions) {
+            if (roll <= entry.weight) {
+              selected = entry.type;
               break;
-            case 1:  // Wahrheit! Option
-              randomTruth = textsWahrheitSpinTheBottle[Math.floor(Math.random() * textsWahrheitSpinTheBottle.length)].content
-              resultText = `Wahrheit! ${randomTruth}`;
-              break;
-            case 2:  // Pflicht! Option
-              randomDare= textsPflichtSpinTheBottle[Math.floor(Math.random() * textsPflichtSpinTheBottle.length)].content
-              resultText = `Pflicht! ${randomDare}`;
-              break;
+            }
+            roll -= entry.weight;
           }
 
-          // Setzen und Anzeigen des generierten Ergebnistexts
-          // (Sie müssen den resultText in Ihrem State speichern und in Ihrer Render-Methode anzeigen)
-          setDisplayedText(resultText);  // Sie müssen eine geeignete State-Variable und Setter-Funktion hinzufügen
+          setRandomSelection(selected);
+
+          switch (selected) {
+            case 'sips': {  // Schlucke! Option
+              const sips = generateRandomSips();
+              setOutcome({ type: 'sips', count: sips });
+              break;
+            }
+            case 'truth': {  // Wahrheit! Option
+              const truthIndex = textsWahrheitSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsWahrheitSpinTheBottle.length) : 0;
+              setRndIndex(truthIndex);
+              setOutcome({ type: 'truth', index: truthIndex });
+              break;
+            }
+            case 'dare': {  // Pflicht! Option
+              const dareIndex = textsPflichtSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsPflichtSpinTheBottle.length) : 0;
+              setRndIndex(dareIndex);
+              setOutcome({ type: 'dare', index: dareIndex });
+              break;
+            }
+            default: {
+              setOutcome({ type: 'sips', count: generateRandomSips() });
+            }
+          }
         });
       },
       
@@ -101,7 +206,7 @@ const SpinTheBottle = ({route }) => {
   });
 
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+    <View style={styles.background}>
 
         <View style={{flex: 1, height:'100%'}}>
           <View style={{height: '20%', justifyContent: 'center', alignItems: 'center',}}></View>
@@ -116,24 +221,45 @@ const SpinTheBottle = ({route }) => {
           </View>
           
           <View style={{height: '40%', justifyContent: 'center', alignItems: 'center',}}>
-            <Question question={displayedText && displayedText.length > 0 ? deleteHashtags(displayedText) : ''}/>
+            <Question question={questionText} />
           </View>
-          
-          <View style={{height: '10%', justifyContent: 'center', alignItems: 'center',}}></View>
+        </View>
+        <View style={{height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+        {randomSelection === 'truth' ? (
+          <HandleFeedback texts={textsWahrheitSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+        ) : randomSelection === 'dare' ? (
+          <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+        ) : null}
         </View>
 
-        <InfoText header={"Flaschendrehen!"} rules={"Dreht die Flasche! (Tippen reicht auch) Auf wen die Flasche zeigt, muss die angezeigte Aktion ausführen. So einfach ist es..."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
+        <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
         </TouchableOpacity>
+        <InfoText header={copy.infoHeader ?? 'Spin the Bottle!'} rules={copy.rules ?? ''} />
+        <InfoHint />
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Legt das Handy in die Mitte auf den Tisch. Dreht die Flasche mit dem Finger (Tippen reicht auch).' : 'Place the phone in the middle on the table. Spin the bottle with your finger (tapping works too).', placement: 'top' },
+            { text: language === 'de' ? 'Auf wen die Flasche zeigt, macht die angezeigte Aufgabe (Schlucke, Wahrheit oder Pflicht).' : 'Whoever it points to does the shown task (sips, truth, or dare).', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
+        {/* Regelbutton ausgeblendet für Flaschendrehen */}
 
-    </ImageBackground>
+    </View>
   );
 };
 
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -161,3 +287,7 @@ const styles = StyleSheet.create({
 });
 
 export default SpinTheBottle;
+
+
+
+

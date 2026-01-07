@@ -6,18 +6,26 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise'); // Stelle sicher, dass du mysql2 installiert hast
 const { generateToken, verifyToken } = require('./auth'); // Pfad zur auth.js-Datei anpassen
 
+const requireEnv = (name) => {
+    const value = process.env[name];
+    if (!value) {
+        throw new Error(`Missing ${name} environment variable.`);
+    }
+    return value;
+};
+
 const app = express();
-const PORT = 8443;//8443;//process.env.PORT || 443;//3000;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8443;//8443;//process.env.PORT || 443;//3000;
 //443 -> https
 //3000 -> http
 
 
 // Verbindung zur Datenbank herstellen
 const db = mysql.createPool({
-    host: '45.9.63.16',
-    user: 'phpmyadmin',
-    password: 'REDACTED_DB_PASSWORD',
-    database: 'TrinkspielDB',
+    host: requireEnv('DB_HOST'),
+    user: requireEnv('DB_USER'),
+    password: requireEnv('DB_PASSWORD'),
+    database: requireEnv('DB_NAME'),
   });
 
 // Middleware
@@ -80,8 +88,8 @@ app.get('/api/getUserData', async (req, res) => {
 
 
 const httpsOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/privkey.pem'), // Pfad zur privaten Schlüsseldatei
-    cert: fs.readFileSync('/etc/letsencrypt/live/my-tournament.org/cert.pem'), // Pfad zur Zertifikatsdatei
+    key: fs.readFileSync(requireEnv('TLS_KEY_PATH')), // Pfad zur privaten Schlüsseldatei
+    cert: fs.readFileSync(requireEnv('TLS_CERT_PATH')), // Pfad zur Zertifikatsdatei
 };
 
 const server = https.createServer(httpsOptions, app);

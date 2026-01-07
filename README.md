@@ -1,175 +1,57 @@
 # Trinkspielapp
 
-## Lokal - Vorbereitungen:
-### Node.js und npm installieren: 
-https://phoenixnap.com/kb/install-node-js-npm-on-windows
+Trinkspielapp is a multi-game party app built with React Native and a Rust-based backend. It bundles multiple classic and custom drinking games, supports curated question decks, and provides a scalable API layer for serving game content and collecting feedback.
 
-### Powershell im RN_Trinkspiel-Ordner ausführen:
+This repository contains two main components:
+- `Trinkspiel_RN`: the React Native client (Expo) used to run the app on iOS/Android.
+- `Backend`: the server-side components (Rust Rocket + legacy Node.js).
 
-Falls noch nie programmiert wurde:
-nodejs installieren: https://nodejs.org/en/download/
-(necessary tools mitinstallieren)
+## Functional Overview
+- Multi-game hub with themed game modes and a modern UI flow.
+- Curated prompt pools and datasets for games like "Never Have I Ever", "Truth or Dare", "Most Likely", and more.
+- Local data handling and caching for fast gameplay.
+- Server API support for fetching game content and submitting feedback.
 
-danach:
-cd RN_Trinkspiel
-npm install
+## Tech Tree
+```
+Trinkspielapp
+├─ Trinkspiel_RN (React Native / Expo)
+│  ├─ Games (UI + logic)
+│  ├─ Data (prompt pools, datasets)
+│  └─ i18n (multi-language copy)
+└─ Backend
+   ├─ rocket (Rust / Rocket / SQLx)
+   └─ js (Node.js / Express / MySQL) [legacy]
+```
 
-_(npm audit fix --force)_
+## Architecture
+The client renders all game flows, manages player state, and loads prompts from curated datasets.  
+For dynamic content and feedback, the app can call the backend API. The Rust Rocket server exposes game routes and integrates with a MySQL database. A legacy Node.js backend exists for historical reference.
 
-__________________________________________________
+## Development Setup
+### Prerequisites
+- Node.js + npm
+- Expo CLI
+- (Optional) Rust toolchain for backend work
 
-## Lokal - Start:
-- cd RN_Trinkspiel
-- npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
+### Client (React Native)
+1. `cd Trinkspiel_RN`
+2. `npm install`
+3. `npm start`
 
-- ~~npm run android~~
-- ~~npm run ios # requires an iOS device or macOS for access to an iOS simulator~~
-- ~~npm run web~~
+### Backend (Rocket)
+Follow instructions in `Backend/rocket/rocket_server/README.md` for Rust + SQLx setup.
 
-__________________________________________________
+## Project Structure Highlights
+- `Trinkspiel_RN/src/games`: game screens and interaction logic.
+- `Trinkspiel_RN/src/data`: prompt pools and datasets.
+- `Trinkspiel_RN/src/i18n`: localization strings.
+- `Backend/rocket/rocket_server/src`: API routes and database access.
 
-## Expo Go auf dem Handy zum testen
-_(Falls Fehler kommt: Wrong Expo version: "expo update 47.0.0)_
-__________________________________________________
+## Build & Release
+For Expo build steps, see `Trinkspiel_RN/README.md`.  
+For server deployment, see `Backend/rocket/rocket_server/README.md`.
 
-## To test on pc:
-Android Studio: https://developer.android.com/studio
-
-_(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple Laptops selbst!)_
-
-__________________________________________________
-
-## Build
-
-Vorher: "versionCode" in app.json inkrementieren!
-eas build --platform android  
-
-(npm update)
-
-https://docs.expo.dev/build/setup/
-
-Diese Anleitung erstellt aber eine .aab-Datei
-
-Um apk zu bekommen https://play.google.com/console  nutzen und Projekt hochladen. Danach APK downloaden
-
-__________________________________________________
-
-### EAS installieren und einrichten (nur für Build relevant)
-https://docs.expo.dev/build/setup/
-
-### NPM-Geschichten (-> IST SCHON INSTALLIERT und muss nicht neu installiert werden)
-//Bereits installiert:
-
-npm install -g expo-cli
-
-npm install react-native
-npm install react-native-gesture-handler 
-npm install react-native-safe-area-context
-
-npm install @react-navigation/native
-npm install @react-navigation/stack
-
-npm install @react-native-community/netinfo
-
-npm install @react-native-async-storage/async-storage
-
-//Fonts:
-npx expo install @expo-google-fonts/quicksand expo-font
-npx expo install @expo-google-fonts/raleway expo-font
-
-//Sound:
-//npx expo install expo-av
-// -> Sorgt aktuell noch für Probleme: Google Play Console sagt beim Import: In deinem APK oder Android App Bundle werden Berechtigungen verwendet, für die eine Datenschutzerklärung erforderlich ist: android.permission.RECORD_AUDIO. Weitere Informationen
-
-//////////////////////////////////////////
-//Noch nicht:
-
-npm install react-native-sound
-
-npx expo install @react-native-async-storage/async-storage
-? npm install react-native-screens
-
-
-_(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
-
-__________________________________________________
-
-## Datenbank
-
-### Datenbank bearbeiten
-http://45.9.63.16/phpmyadmin/
-Benutzername: phpmyadmin
-Passwort: _hat Richard_
-Name unserer DB: TrinkspielDB
-
-### Datenbank verwalten
-ssh trinkspielapp@45.9.63.16
-Passwort: _hat Richard_
-
-### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
-install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12
-create db: https://mariadb.com/kb/en/create-database/
-phpmyadmin: https://kifarunix.com/install-phpmyadmin-on-debian-12/#prerequisites-install-php-my-admin-on-debian-12
-problem: https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
-sudo systemctl restart apache2
-
-### Produktionsumgebung
-_Das hier sollte vor der Production noch passieren: By default, a MariaDB installation has an anonymous user, allowing anyone to log into MariaDB without having to have a user account created for them.  This is intended only for testing, and to make the installation go a bit smoother.  You should remove them before moving into a production environment. Remove anonymous users? [Y/n] n ... skipping._
-
-_________________________________________________________
-
-## Backend
-
-Achtung: Backend läuft gerade durchgängig - dieser Part kann zum Testen ignoriert werden
-
-### Start - Entwicklungsumgebung
-cd Trinkspielapp_Backend
-sudo node server.js
-(sudo wegen https)
-
-### Start - Produktionsumgebung
-To run in background: Step 3 of https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-debian-9
-cd Trinkspielapp_Backend
-sudo pm2 start server.js
-sudo pm2 list
-sudo pm2 stop server
-(sudo wegen https)
-
-### Installationsschritte (wurden einmalig ausgeführt - nur für Serverumzug relevant)
-Auf Netcup-Server pushen
-Node und npm installieren: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-debian-10
-sudo apt install npm
-npm install express body-parser mysql2
-npm install jsonwebtoken
-sudo ufw allow 3000 #damit app den server anpingen kann -> http
-sudo ufw allow 3000 #damit app den server anpingen kann -> https
-sudo ufw allow 3306 #damit mysql server auf 3306 zuhören kann
-mysql auf port 3306 zuhören lassen: https://phoenixnap.com/kb/mysql-remote-connection aber mit sudo nano /etc/mysql/mar
-iadb.conf.d/50-server.cnf weil wir mariaDB haben
-wenn Host nicht allowed für mariaDB server ist: https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server
-
-_________________________________________________________
-
-## Domain
-
-Uns gehört aktuell die Domain my-tournament.org. Diese hat einen A-Record, der auf die IP des Servers weiterleitet und sie hat außerdem ein SSL-Zertifikat. Der Server hat auch eins. Dokumentation zur Einrichtung stehen in Trello.
-
-__________________________________________________
-
-### Using Expo Go
-
-› Press s │ switch to development build
-
-› Press a │ open Android
-
-› Press w │ open web
-
-› Press j │ open debugger
-
-› Press r │ reload app
-
-› Press m │ toggle menu
-
-› Press o │ open project code in your editor
-
-› Press ? │ show all commands
+## Contribution Notes
+This is a personal project with a strong focus on UX and gameplay flow.  
+If you plan to extend it, keep changes incremental and avoid breaking existing game logic.

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
-import { handleSqlRequest, postFeedback } from "../../general";
+// import { handleSqlRequest, postFeedback } from "../../general"; // API_RESTORE_STEP: uncomment to enable server feedback again
 
 const HandleFeedback = ({ texts, textsIndex, table }) => {
   //Für Feedback
@@ -32,10 +32,10 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
     //zuerst die Id der Frage rausfinden:
 
 
-    const question_id = texts[textsIndex].id
+    const question_id = texts[textsIndex].question_id
     const question_content = texts[textsIndex].content
     
-    postFeedback(table, question_id, feedback);
+    // API_DISABLED: postFeedback(table, question_id, feedback); // API_RESTORE_STEP: re-enable when server feedback should be sent
   }
 
   //check if user has voted

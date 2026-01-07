@@ -1,56 +1,190 @@
-// In einer Datei namens VorglühenGame.js
-import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, Button } from 'react-native';
-import Question from './sublements/Question';
+﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
+import InfoHint from './sublements/InfoHint';
+import TutorialOverlay from './sublements/TutorialOverlay';
 import { VariablesContext } from '../../VariablesContext';
 
-import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
+import { useTranslation } from '../i18n';
+import { manyQuestionsSampleTexts } from '../data/manyQuestionsTexts';
 
 const ManyQuestionsGame = ({ route }) => {
-  const [manyQuestions, setManyQuestions] = useState(shuffleArrayFisherYates(route.params.manyQuestionsData)) ;
+  const [gameEnded, setGameEnded] = useState(false);
 
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const {
+    infoVisible,
+    setInfoVisible,
+    language,
+    players,
+    manyQuestions: manyQuestionsContext,
+    tutorialEnabled,
+    setTutorialEnabled,
+  } = useContext(VariablesContext);
+  const { t } = useTranslation();
+  const copy = useMemo(() => t('manyQuestions'), [t]);
+  const navigationData = route.params?.manyQuestionsData;
+
+  const questions = useMemo(() => {
+    if (Array.isArray(navigationData) && navigationData.length > 0) {
+      return navigationData;
+    }
+    if (Array.isArray(manyQuestionsContext) && manyQuestionsContext.length > 0) {
+      return manyQuestionsContext;
+    }
+    return manyQuestionsSampleTexts;
+  }, [navigationData, manyQuestionsContext]);
 
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const revealAnim = React.useRef(new Animated.Value(0)).current;
+  const [contentVisible, setContentVisible] = useState(false);
+
+  useEffect(() => {
+    setQuestionIndex(0);
+    setGameEnded(false);
+  }, [questions]);
+
+  const currentQuestion = questions.length > 0 ? questions[questionIndex] : null;
+
+  const questionText = currentQuestion
+    ? replaceHashtagsWithoutDuplicates(
+        language === 'en' && currentQuestion.content_en
+          ? currentQuestion.content_en
+          : currentQuestion.content,
+        { players, language },
+      )
+    : '';
+
   const showNextQuestion = () => {
-    try{
-      if (questionIndex < manyQuestions.length - 1) {
-        setQuestionIndex(questionIndex + 1);
-      }
-    }catch (error){
-      setQuestionIndex(0);
+    if (!questions || questions.length === 0) {
+      return;
     }
-    
+
+    if (questionIndex < questions.length - 1) {
+      setQuestionIndex(questionIndex + 1);
+    } else {
+      setGameEnded(true);
+    }
   };
 
+  useEffect(() => {
+    setContentVisible(false);
+    revealAnim.setValue(0);
+    Animated.timing(revealAnim, { toValue: 1, duration: 350, easing: Easing.out(Easing.ease), useNativeDriver: true }).start(() => setContentVisible(true));
+  }, [questionIndex, revealAnim]);
+
+  if (gameEnded) {
+    return (
+      <View style={styles.winnerScreen}>
+        <View style={{ width: '90%' }}>
+          <Text style={styles.winnerText}>{copy.end}</Text>
+        </View>
+      </View>
+    );
+  }
+
   return (
-    <ImageBackground source={require("../../assets/images/bar/table.png")} style={{flex: 1}}>
+    <View style={styles.background}>
       <View style={appStyles.completeScreenGameContainer}>
         <View style={appStyles.gameContainer}>
-          <View style={{height: '90%'}}>
-            <View style={{width: '100%', height: '15%',justifyContent: 'center',alignItems: 'center',}}></View>
-            <View style={{width: '100%', height: '80%',justifyContent: 'center',alignItems: 'center',}}>
-              <Question question={manyQuestions && manyQuestions.length > 0 ? replaceHashtagsWithoutDuplicates(manyQuestions[questionIndex].content) : ''}/>
-            </View>
+          
+          <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
+            <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+          </TouchableOpacity>
+          <View style={styles.questionArea}>
+            <Animated.View style={[styles.cardBox, { opacity: revealAnim, transform: [{ scale: revealAnim.interpolate({ inputRange: [0, 1], outputRange: [0.96, 1] }) }] }]}>
+              {contentVisible ? (
+                <Text style={styles.questionText}>{questionText || copy.end}</Text>
+              ) : null}
+            </Animated.View>
           </View>
           <TouchableOpacity onPress={showNextQuestion} style={appStyles.gameActionButton}>
-            <Text style={appStyles.gameActionButtonText}>Nächste Aussage</Text>
+            <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Nächste Karte' : 'Next card'}</Text>
           </TouchableOpacity>
-          
         </View>
-        <HandleFeedback texts={manyQuestions} textsIndex={questionIndex} table={'game_klassiker_questions'}/>
+        <HandleFeedback texts={questions} textsIndex={questionIndex} table={'game_klassiker_questions'} />
 
-        <InfoText header={"1000 Questions!"} rules={"Eine Person startet und liest die Frage (leise für sich!). Dann gibt die Person das Handy verdeckt an die Person weiter, auf die die Aussage/Frage am ehesten aus der Runde zutrifft. \n\n Die gewählte Person kann dann wieder überlegen, ob die Aussage auf eine andere Person noch besser zutrifft. \n\n Sobald eine Person akzeptiert oder zum zweiten Mal das Handy hat, muss die Person vorlesen und trinken. Danach macht diese Person mit der nächsten Aussage weiter."}/>
-        <TouchableOpacity onPress={() => setInfoVisible(true)} style={[appStyles.infoButton, {top: 20, left: 20}]}>
-          <Text style={appStyles.infoButtonText}>Regeln</Text>
-        </TouchableOpacity>
+        <InfoText header={copy.infoTitle} rules={copy.rules} />
+        <InfoHint />
+        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
+        <TutorialOverlay
+          visible={tutorialEnabled}
+          steps={[
+            { text: language === 'de' ? 'Hier steht die Frage. Lest sie laut vor.' : 'This is the question. Read it aloud.', placement: 'top' },
+            { text: language === 'de' ? 'Tippe hier für die nächste Karte.' : 'Tap here for the next card.', placement: 'bottom' },
+          ]}
+          stepIndex={tutorialStep}
+          onNext={() => setTutorialStep((s) => Math.min(1, s + 1))}
+          onClose={() => setTutorialEnabled(false)}
+        />
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#366350',
+  },
+  winnerScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FAD02E',
+    alignContent: 'center',
+  },
+  winnerText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: '#D84315',
+    marginBottom: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
+    textAlign: 'center',
+  },
+  questionArea: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 28,
+  },
+  questionText: {
+    textAlign: 'center',
+    fontSize: 24,
+    lineHeight: 32,
+    color: 'white',
+    fontFamily: 'Quicksand_300Bold',
+    backgroundColor: 'transparent',
+    textShadowColor: 'transparent',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
+    includeFontPadding: false,
+  },
+  cardBox: {
+    width: '100%',
+    maxWidth: 720,
+    alignItems: 'center',
+  },
+});
 
 export default ManyQuestionsGame;
+
+
+
+
+
+
+
+
+
+
+
+
+
