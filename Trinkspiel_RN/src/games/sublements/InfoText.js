@@ -1,40 +1,37 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
 import { appStyles } from '../../../styles';
 import { VariablesContext } from '../../../VariablesContext';
+import { useTranslation } from '../../i18n';
 
-const InfoText = ({ navigation, header, rules}) => {
-    const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+const InfoText = ({ header, rules }) => {
+  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
+  const { t } = useTranslation();
 
-    return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={infoVisible}
-            onRequestClose={() => setSettingsVisible(false)}
-            >
-            <View style={{position: 'relative', alignItems: 'center', justifyContent: 'center',}}>
-                <View style={appStyles.settingsContainer} >
-                <ImageBackground source={require("../../../assets/images/bar/settings_tafel.png")} style={appStyles.imageBackgroundStyle} resizeMode="contain">
-                    
-                    <View style={{width:'65%', height:"90%", alignItems: 'center', justifyContent: 'center'}} >
-                        <Text style={appStyles.infoHeaderText}>{header}</Text>
-                        <Text> </Text>
+  return (
+    <Modal
+      animationType="slide"
+      transparent
+      visible={infoVisible}
+      onRequestClose={() => setInfoVisible(false)}
+    >
+      <TouchableWithoutFeedback onPress={() => setInfoVisible(false)}>
+        <View style={appStyles.modalOverlay}>
+          <TouchableWithoutFeedback onPress={() => {}}>
+            <View style={appStyles.modalView}>
+              <Text style={[appStyles.modalTextTitle, { marginBottom: 15 }]}>{header}</Text>
 
-                        <Text style={appStyles.infoText}>{rules}</Text>
+              <Text style={[appStyles.modalText, { marginBottom: 15 }]}>{rules}</Text>
 
-                        <TouchableOpacity onPress={() => setInfoVisible(false)} style={appStyles.settingsCloseButton}>
-                            <Text style={appStyles.settingsButtonText}>✖</Text>
-                        </TouchableOpacity>
-
-                    </View>
-                </ImageBackground>
-                </View>
+              <TouchableOpacity style={appStyles.closeButton} onPress={() => setInfoVisible(false)}>
+                <Text style={{ color: 'white' }}>{t('common.close')}</Text>
+              </TouchableOpacity>
             </View>
-            
-        </Modal>
-    );
-
+          </TouchableWithoutFeedback>
+        </View>
+      </TouchableWithoutFeedback>
+    </Modal>
+  );
 };
 
 export default InfoText;
