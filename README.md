@@ -25,7 +25,7 @@ Game App
 ```
 
 ## Architecture
-The client renders all game flows, manages player state, and loads prompts from curated datasets. For dynamic content and feedback, the app can call the backend API. The Rust Rocket server exposes game routes and integrates with a MySQL database. A legacy Node.js backend exists for historical reference.
+The client renders all game flows, manages player state, and loads prompts from curated local datasets. The Rust Rocket server exposes game routes and integrates with a MySQL database, and a legacy Node.js backend exists for historical reference — however, the client's calls to the backend API (`getGameData`/`postFeedback` in `Game_RN/src/general.js`) are currently disabled by design while the app is being polished for release. All game content is served from bundled local data until the backend is reconnected.
 
 ## Development Setup
 ### Prerequisites

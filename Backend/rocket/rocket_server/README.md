@@ -32,9 +32,10 @@ Also add `ROCKET_APP_KEY=...` (the same value the app uses as Bearer token).
 Then, run `cargo sqlx prepare`. This will create a schema for the data in the database and allows modeling this data as a native Rust struct. 
 
 ## Build the Server
-- Shift-Rightclick in \Trinkspielapp\Backend\rocket\rocket_server -> "Hier Linux-Shell öffnen"
+- Shift-Rightclick in \Spiele-App\Backend\rocket\rocket_server -> "Hier Linux-Shell öffnen"
 - To build an executable run `cargo build` for development builds and `cargo build --release` for production builds.
-- TODO: Was von beiden benutze ich wann genau? Was ist der Unterschied im Output? - realease ist schneller 
+- `cargo build` (debug): compiles fast, but produces a larger, unoptimized binary that runs slower. Use this for local development/iteration.
+- `cargo build --release`: compiles slower, but produces a smaller, optimized binary that runs significantly faster. Always use this for the binary that gets deployed to the server.
 
 ## Deploy the Build
 The Rocket server files are located in `/home/trinkspielapp/rocket_server`. 
