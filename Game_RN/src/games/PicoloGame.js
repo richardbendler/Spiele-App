@@ -20,12 +20,10 @@ import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
 import PromptRenderer from './sublements/PromptRenderer';
 import {
-  CATEGORY_COLOR_PALETTE,
   CATEGORY_COLOR_DEFS,
   CATEGORY_KEY_SEQUENCE,
   pickPaletteColor,
   getCategoryColor,
-  getCategoryColorEntries,
   normalizeCategoryKey,
 } from '../utils/categoryColors';
 import { filterManualApproved } from '../utils/manualApproval';
@@ -128,8 +126,6 @@ const buildDisplayText = (entry, language, startingPlayer) => {
 const PicoloGame = ({ route }) => {
   const { t, language } = useTranslation();
   const {
-    infoVisible,
-    setInfoVisible,
     players,
     theOneSettings,
     theOnePrompts,
@@ -167,29 +163,30 @@ const PicoloGame = ({ route }) => {
 
   const hasQuestions = questions.length > 0;
   const currentQuestion = hasQuestions ? questions[currentIndex] : null;
-    useEffect(() => {
-      if (!hasQuestions || !currentPoolKey) {
-        setWheelSpinning(false);
-        return;
-      }
-      setWheelSpinning(true);
-    }, [hasQuestions, currentPoolKey]);
+  const currentPoolKey = currentQuestion?.pool?.key;
 
-    useEffect(() => {
-      if (!hasQuestions || wheelSpinning) {
-        setContentVisible(false);
-        return;
-      }
+  useEffect(() => {
+    if (!hasQuestions || !currentPoolKey) {
+      setWheelSpinning(false);
+      return;
+    }
+    setWheelSpinning(true);
+  }, [hasQuestions, currentPoolKey]);
+
+  useEffect(() => {
+    if (!hasQuestions || wheelSpinning) {
       setContentVisible(false);
-      revealAnim.setValue(0);
-      Animated.timing(revealAnim, {
-        toValue: 1,
-        duration: 600,
-        easing: Easing.out(Easing.ease),
-        useNativeDriver: true,
-      }).start(() => setContentVisible(true));
-    }, [hasQuestions, currentIndex, revealAnim, wheelSpinning]);
-
+      return;
+    }
+    setContentVisible(false);
+    revealAnim.setValue(0);
+    Animated.timing(revealAnim, {
+      toValue: 1,
+      duration: 600,
+      easing: Easing.out(Easing.ease),
+      useNativeDriver: true,
+    }).start(() => setContentVisible(true));
+  }, [hasQuestions, currentIndex, revealAnim, wheelSpinning]);
 
   const categoryLabel =
     currentQuestion?.pool?.label?.[language] ?? currentQuestion?.pool?.label?.de ?? '';
@@ -212,7 +209,6 @@ const PicoloGame = ({ route }) => {
   }, [currentIndex, players, currentQuestion?.pool?.id]);
 
   const cardText = currentQuestion ? buildDisplayText(currentQuestion, language, startingPlayerName) : '';
-  const currentPoolKey = currentQuestion?.pool?.key;
   const resolveBackgroundColor = () => {
     if (!currentPoolKey) {
       return (
@@ -618,11 +614,3 @@ const styles = StyleSheet.create({
 });
 
 export default PicoloGame;
-
-
-
-
-
-
-
-
