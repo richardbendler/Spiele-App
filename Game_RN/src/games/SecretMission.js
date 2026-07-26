@@ -1,4 +1,4 @@
-﻿import React, { useContext, useMemo, useRef, useState } from 'react';
+import React, { useContext, useMemo, useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -18,7 +18,7 @@ const shuffle = (arr) => {
 };
 
 const SecretMission = () => {
-  const { setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { t, language } = useTranslation();
   const copy = useMemo(() => t('secretMission') || {}, [t]);
 
@@ -91,24 +91,10 @@ const SecretMission = () => {
     }, 160);
   };
 
-  const onNextHidden = () => {
-    if (finished) {
-      const reshuffled = shuffle([...secretMissions]);
-      setDeck(reshuffled);
-      setIndex(0);
-      setFinished(false);
-      setRevealed(false);
-      animateTo(0);
-      return;
-    }
-    const nextIndex = index + 1;
-    if (nextIndex >= deck.length) {
-      setFinished(true);
-      setRevealed(false);
-      animateTo(0);
-      return;
-    }
-    setIndex(nextIndex);
+  const restartGame = () => {
+    setDeck(shuffle([...secretMissions]));
+    setIndex(0);
+    setFinished(false);
     setRevealed(false);
     animateTo(0);
   };
@@ -145,7 +131,11 @@ const SecretMission = () => {
 
           {/* Controls */}
           <View style={styles.controls}>
-            {isHidden ? (
+            {finished ? (
+              <TouchableOpacity onPress={restartGame} style={[appStyles.gameActionButton, { paddingHorizontal: 24, paddingVertical: 12 }]}>
+                <Text style={appStyles.gameActionButtonText}>{language === 'de' ? 'Neu starten' : 'Restart'}</Text>
+              </TouchableOpacity>
+            ) : isHidden ? (
               <TouchableOpacity onPress={onReveal} style={[appStyles.gameActionButton, { paddingHorizontal: 24, paddingVertical: 12 }]}>
                 <Text style={appStyles.gameActionButtonText}>{labels.reveal}</Text>
               </TouchableOpacity>
@@ -194,6 +184,3 @@ const styles = StyleSheet.create({
 });
 
 export default SecretMission;
-
-
-
