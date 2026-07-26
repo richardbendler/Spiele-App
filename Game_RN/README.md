@@ -1,65 +1,87 @@
 # Game_RN – Client
-In dieser README wird alles erklärt, was man für das grundsätzliche Entwickeln an der App braucht. 
-Ausnahmen: 
-- Für alle Schritte, die den Serverumzug oder tiefergehende Umkonfiguration der App betreffen, sind Informationen in der SETUP.md festgehalten.
-- Für alle Schritte, die das Backend betreffen, sind Informationen in der README im Ordner Backend festgehalten.
 
+React Native / Expo App ("The One"). Diese README deckt den kompletten lokalen Entwickler-Alltag ab: Setup, lokales Testen, Linting und Builds.
 
-## Lokale .env
-Fuer die lokale Entwicklung wird eine `.env` Datei benoetigt.
+Nicht hier, sondern anderswo dokumentiert:
+- Einmalige Projekt-Migration (z.B. Umzug auf einen neuen Expo-Account): [SETUP.md](SETUP.md)
+- Alles rund um das Backend (Rust/Rocket + legacy Node.js): [../Backend](../Backend)
 
-1. `Game_RN/.env.example` nach `Game_RN/.env` kopieren.
-2. `EXPO_PUBLIC_API_TOKEN` setzen (Bearer Token ohne `Bearer`-Prefix).
-3. Optional: `EXPO_PUBLIC_API_BASE_URL` anpassen.
+> **Hinweis:** Die Backend-Anbindung des Clients ist aktuell bewusst deaktiviert (siehe `src/general.js`, `getGameData`/`postFeedback`). Alle Spiele laufen mit lokal gebündelten Daten aus `src/data`. Die `.env`-Variablen unten werden erst wieder relevant, sobald das Backend reaktiviert wird.
 
-Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` im Client verfuegbar gemacht.
+## Voraussetzungen
+- [Node.js](https://nodejs.org/en/download/) + npm
+- Ein Smartphone mit der **Expo Go**-App (schnellster Weg zum Testen, kein Emulator nötig) — oder:
+  - **Android:** [Android Studio](https://developer.android.com/studio) mit eingerichtetem Emulator
+  - **iOS:** nur auf macOS möglich, mit Xcode und iOS-Simulator
 
-## Datenbank
-
-### Datenbank bearbeiten
-Zugangsdaten (URL, Benutzername, Passwort) bei Richard erfragen bzw. im Passwortmanager nachsehen – nicht im Repo dokumentieren, da es öffentlich ist.
-Name unserer DB: TrinkspielDB
-
-
-## Der Code
-
-### Node.js und npm installieren: 
-https://nodejs.org/en/download/ oder https://phoenixnap.com/kb/install-node-js-npm-on-windows (necessary tools mitinstallieren)
-
-### In Powershell
+## Setup
+```powershell
 cd Game_RN
 npm install
-_(ggf: npm audit fix --force)_
+```
+`npm install` installiert alle Abhängigkeiten aus `package.json` und führt anschließend automatisch `patch-package` aus (siehe `postinstall`-Script). Bei sehr alten `node_modules`-Ständen kann `npm audit fix --force` nötig sein, danach `npm install` erneut ausführen.
 
-## Lokal - Start:
-- npm start # you can open iOS, Android, or web from here, or run them directly with the commands below.
+### Optional: lokale `.env`
+Nur relevant, sobald das Backend wieder angebunden wird:
+1. `.env.example` nach `.env` kopieren.
+2. `EXPO_PUBLIC_API_TOKEN` setzen (Bearer-Token, ohne `Bearer`-Prefix).
+3. Optional `EXPO_PUBLIC_API_BASE_URL` anpassen, falls der Server nicht unter der Standard-URL läuft.
 
-- ~~npm run android~~
-- ~~npm run ios # requires an iOS device or macOS for access to an iOS simulator~~
-- ~~npm run web~~
+Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` ins Client-Bundle übernommen — und landen damit auch für alle sichtbar in der gebauten App. Keine echten Geheimnisse dort hineinschreiben, die schützenswert sind.
 
-## Expo Go auf dem Handy zum testen
-_(Falls Fehler kommt: Wrong Expo version: "expo update 47.0.0)_
+## Lokal testen
+```powershell
+npm start
+```
+Startet den Metro-Bundler und zeigt einen QR-Code in der Konsole/im Browser-Tab. Von dort aus:
+- **Handy (empfohlen, am schnellsten):** Expo Go App öffnen und den QR-Code scannen. Handy und PC müssen im selben WLAN sein.
+- **Android-Emulator:** im laufenden `npm start` die Taste `a` drücken, oder direkt `npm run android` (Emulator muss vorher in Android Studio gestartet sein).
+- **iOS-Simulator (nur macOS):** Taste `i` drücken, oder `npm run ios`.
+- **Web:** Taste `w` drücken, oder `npm run web` (nützlich für schnelle UI-Checks, aber kein vollständiger Ersatz für den Test auf echten Geräten, da einige RN-Module sich im Web anders verhalten).
 
-## To test on pc:
-Android Studio: https://developer.android.com/studio
+Falls das Handy nicht im selben Netzwerk ist oder die WLAN-Verbindung blockiert wird (z.B. restriktives Firmen-/Uni-Netz):
+```powershell
+npm run local
+```
+Startet Expo im Tunnel-Modus (`expo start --tunnel`) — etwas langsamer, funktioniert aber unabhängig vom lokalen Netzwerk.
 
-_(Für Mac: XCode | Achtung! Testen für IoS klappt nur auf Iphones oder Apple Laptops selbst!)_
+**Versions-Mismatch in Expo Go:** Zeigt Expo Go beim Verbinden einen Fehler wegen unpassender SDK-Version, in den App-Store/Play-Store gehen und Expo Go auf die neueste Version aktualisieren (das Projekt nutzt aktuell Expo SDK 54, siehe `package.json`).
 
-## Build
-### EAS installieren und einrichten
-https://docs.expo.dev/build/setup/
-_(Zum Test "expo" ausführen -> Falls Fehler kommt: "Datei kann nicht geladen werden, da Ausführung von Scripts auf diesem System deaktiviert ist" -> Powershell als Admin ausführen -> "Set-ExecutionPolicy RemoteSigned" -> Ja)_
+## Linting
+```powershell
+npm run lint
+```
+Führt ESLint (`eslint-config-expo`) über den Client-Code aus. Vor größeren Commits ausführen; sollte 0 Fehler zeigen (Warnungen sind bekannter, dokumentierter Backlog).
+
+## Build (EAS)
+Für einen echten Installations-Build (statt nur lokalem Testen über Expo Go) wird [EAS](https://docs.expo.dev/build/setup/) verwendet.
+
+### Einmalig einrichten
+```powershell
+npm install -g eas-cli
+eas login
+```
+Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist"): PowerShell **als Administrator** öffnen und einmalig `Set-ExecutionPolicy RemoteSigned` ausführen (mit "Ja" bestätigen).
 
 ### Build erstellen
-Vorher: "versionCode" in app.json inkrementieren!
-eas build --platform android  
+1. `versionCode` in `app.json` (unter `expo.android.versionCode`) hochzählen — Play Store akzeptiert sonst keinen erneuten Upload.
+2. Build starten:
+   ```powershell
+   eas build --platform android
+   ```
+   Build-Profile (`development`, `preview`, `production`) sind in `eas.json` definiert; ohne `--profile`-Flag wird `production` verwendet.
+3. Das Ergebnis ist eine `.aab`-Datei (Android App Bundle), keine direkt installierbare `.apk`.
 
-(npm update)
+**Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen. Für iOS entsprechend `eas build --platform ios` (erfordert ein Apple-Developer-Konto).
 
-https://docs.expo.dev/build/setup/
+## Datenpflege-Skripte
+Unter `scripts/` liegen Node-Skripte zur Pflege der Picolo-Prompt-Datasets (`node scripts/<name>.js` ausführen):
+- `exportPicoloDatasets.js` – exportiert die rohen Prompt-Daten als JSON-Datasets.
+- `regeneratePoolFiles.js` – baut aus den JSON-Datasets wieder die `*Pool`-JS-Dateien.
+- `tagDrinkingPrompts.js` – markiert Prompts automatisch anhand von Schlüsselwörtern als trinkbezogen.
 
-Diese Anleitung erstellt aber eine .aab-Datei
+Diese werden nur bei Änderungen an den Prompt-Rohdaten benötigt, nicht für den normalen App-Betrieb.
 
-Um apk zu bekommen https://play.google.com/console nutzen und Projekt hochladen. Danach APK downloaden
-
+## Datenbank (Referenz, für spätere Backend-Anbindung)
+Zugangsdaten (URL, Benutzername, Passwort) bei Richard erfragen bzw. im Passwortmanager nachsehen – nicht im Repo dokumentieren, da es öffentlich ist.
+Name der DB: `TrinkspielDB`
