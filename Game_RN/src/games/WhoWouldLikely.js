@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState, useContext } from 'react';
+import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -9,7 +9,7 @@ import { useTranslation } from '../i18n';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
 const WhoWouldLikelyGame = () => {
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled, mostLikelyPrompts } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled, mostLikelyPrompts } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t, language } = useTranslation();
 
@@ -80,7 +80,7 @@ const WhoWouldLikelyGame = () => {
         </View>
 
           <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
-          <Text style={appStyles.gameActionButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
         </TouchableOpacity>
 
         <InfoText header={copy.infoTitle} rules={copy.info} />
@@ -143,18 +143,3 @@ const styles = StyleSheet.create({
 });
 
 export default WhoWouldLikelyGame;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

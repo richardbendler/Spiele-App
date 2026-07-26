@@ -51,4 +51,3 @@ export const shuffleArrayFisherYates = (array) => {
   }
   return array;
 };
-

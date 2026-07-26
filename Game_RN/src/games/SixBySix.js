@@ -1,4 +1,3 @@
-﻿
 import React, { useMemo, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
@@ -29,7 +28,7 @@ const buildBoard = () => {
 };
 
 const SixBySixGame = () => {
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { t, language } = useTranslation();
   const copy = useMemo(() => t('sixBySix') || { title: 'Six by Six', infoTitle: 'Six by Six', rules: '' }, [t]);
 
@@ -50,9 +49,6 @@ const SixBySixGame = () => {
   };
 
   const resolveResultMessage = (cell) => {
-  const FUN_TAILS = language === 'en'
-    ? ['Cheers!', 'Lucky you!', 'Uh oh!', 'Sip sip!', 'Your turn again!', 'Pass it on!']
-    : ['Prost!', 'Glück gehabt!', 'Upps!', 'Schluck schluck!', 'Du bist nochmal dran!', 'Weitergeben!'];
     const coord = `${cell.row}/${cell.col}`;
     const turnHint = cell.color === 'red' ? (language === 'en' ? 'Red: go again.' : 'Rot: Du bist nochmal dran.') : (language === 'en' ? 'Black: pass turn.' : 'Schwarz: weitergeben.');
     if (cell.type === 'drink') {
@@ -175,7 +171,3 @@ const styles = StyleSheet.create({
 });
 
 export default SixBySixGame;
-
-
-
-

@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useContext, useEffect } from 'react';
 import {
   View,
   Text,
@@ -105,18 +105,8 @@ const PlusPad = ({ accent, onPress, pulse, disabled, height }) => {
   return <Animated.View style={[...baseStyle, { transform: [{ scale }] }]}>{content}</Animated.View>;
 };
 
-const CardView = ({ card }) => {
-  const isRed = card.suit === '♦' || card.suit === '♥';
-  return (
-    <View style={styles.card}>
-      <Text style={[styles.cardRank, isRed && { color: '#ff8080' }]}>{card.rank}</Text>
-      <Text style={[styles.cardSuit, isRed && { color: '#ff8080' }]}>{card.suit}</Text>
-    </View>
-  );
-};
-
 const Schoeneberg = () => {
-  const { setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t, language } = useTranslation();
   const copy = useMemo(() => t('schoeneberg') || {}, [t]);
@@ -147,10 +137,6 @@ const Schoeneberg = () => {
   const [toast, setToast] = useState(null); // {text}
   const [wrongReveal, setWrongReveal] = useState(null); // {rowIndex, side, newCard, removed}
   const accent = '#F08974';
-
-  // Reserved top area height for popups
-  const { height: screenHeight } = Dimensions.get('window');
-  const modalTopHeight = Math.max(120, Math.floor(screenHeight * 0.2));
 
   const labels = useMemo(() => {
     return {
@@ -273,7 +259,6 @@ const Schoeneberg = () => {
   const availableCenterWidth = Math.max(0, screenWidth - horizontalPadding - 2 * sideWidth);
   const slotBaseWidth = 64; // make cards larger
   const slotWidth = Math.min(slotBaseWidth, Math.floor(availableCenterWidth / SLOTS) || slotBaseWidth);
-  const cardScale = slotWidth / slotBaseWidth;
   const cardWidth = Math.max(24, slotWidth - 4);
   const cardHeight = cardWidth * 1.5;
   const fontScale = cardWidth / 48; // 48 was original base width

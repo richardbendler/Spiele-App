@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback, useMemo, useEffect, useRef } from "react";
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, Alert, ScrollView, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 import { VariablesContext } from "../../VariablesContext";
 import NameContainer from "./sublements/AddPlayerNameContainer";
@@ -12,7 +12,7 @@ const mapScaleLabel = (scale, index) => {
   return scale[index];
 };
 
-const PlayerInput = React.memo(({ onAddPlayer, copy }) => {
+const PlayerInput = React.memo(function PlayerInput({ onAddPlayer, copy }) {
   const [currentName, setCurrentName] = useState("");
 
   const handler = () => {

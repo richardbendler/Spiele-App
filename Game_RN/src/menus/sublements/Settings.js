@@ -1,5 +1,5 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Modal, ImageBackground } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, TouchableOpacity, Modal, ImageBackground } from 'react-native';
 import { appStyles } from '../../../styles';
 import { VariablesContext } from '../../../VariablesContext';
 

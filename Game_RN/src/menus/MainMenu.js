@@ -1,4 +1,4 @@
-﻿import React, { useState, useContext, useMemo, useCallback } from 'react';
+import React, { useState, useContext, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
@@ -631,9 +631,3 @@ const styles = StyleSheet.create({
 });
 
 export default MainMenu;
-
-
-
-
-
-

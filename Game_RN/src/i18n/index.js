@@ -1,4 +1,4 @@
-﻿import { useCallback, useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { VariablesContext } from '../../VariablesContext';
 
 const translations = {
@@ -466,19 +466,3 @@ export const useTranslation = () => {
 };
 
 export default translations;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

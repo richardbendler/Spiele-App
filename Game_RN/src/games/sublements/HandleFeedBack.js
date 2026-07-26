@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 // import { handleSqlRequest, postFeedback } from "../../general"; // API_RESTORE_STEP: uncomment to enable server feedback again
 
@@ -10,7 +10,7 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
 
   function handleFeedback(feedback, table) {
     //Animation
-    setFeedbackText(feedback == 1 ? '👍 Danke für dein Feedback!' : '👎 Danke für dein Feedback!');
+    setFeedbackText(feedback === 1 ? '👍 Danke für dein Feedback!' : '👎 Danke für dein Feedback!');
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
@@ -28,14 +28,10 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
       setFeedbackText(null);
     });
 
-    //handle Feedback
-    //zuerst die Id der Frage rausfinden:
-
-
-    const question_id = texts[textsIndex].question_id
-    const question_content = texts[textsIndex].content
-    
-    // API_DISABLED: postFeedback(table, question_id, feedback); // API_RESTORE_STEP: re-enable when server feedback should be sent
+    // API_DISABLED: identify the question and send it to the server. API_RESTORE_STEP: re-enable when server feedback should be sent
+    // const question_id = texts[textsIndex].question_id;
+    // const question_content = texts[textsIndex].content;
+    // postFeedback(table, question_id, feedback);
   }
 
   //check if user has voted

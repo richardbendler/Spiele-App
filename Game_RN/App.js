@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -41,8 +41,8 @@ import { normalizeCategoryKey } from "./src/utils/categoryColors";
 import { filterManualApproved } from "./src/utils/manualApproval";
 
 import { enableScreens } from "react-native-screens";
-enableScreens();
 import { askForRatingIfEligible } from "./src/utils/rating";
+enableScreens();
 
 const DEFAULT_DRINK_CATALOG = [
   {
@@ -543,5 +543,3 @@ const languageStyles = StyleSheet.create({
     letterSpacing: 1,
   },
 });
-
-

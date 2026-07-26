@@ -1,12 +1,9 @@
-﻿import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions, ImageBackground, Linking } from 'react-native';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, Linking } from 'react-native';
 import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
-import NetInfo from "@react-native-community/netinfo";
-
-const USE_BAR_START_LAYOUT = true;
-const BAR_WELCOME_ACCENTS = ["#E5C185", "#F08974", "#7AC1B2"]; // bleibt
+import NetInfo from "@react-native-community/netinfo"; // bleibt
 
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
 import { Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold } from "@expo-google-fonts/caveat";
@@ -23,36 +20,6 @@ const StartMenu = ({ navigation }) => {
   const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
   const quickDrinkCounterLabel = language === 'de' ? 'Getränkezähler' : 'Drink counter';
   const quickOpenLabel = language === 'de' ? 'Öffnen' : 'Open';
-
-  const featureCards = useMemo(() => [
-    {
-      key: 'mix',
-      title: language === 'de' ? 'Spielauswahl' : 'Game selection',
-      text: language === 'de' ? 'Von Klassikern wie Kingscup bis zu neuen Ideen - alles an einem Ort.' : 'From Kingscup classics to fresh ideas - all in one place.',
-    },
-    {
-      key: 'mood',
-      title: language === 'de' ? 'Stimmungsbarometer' : 'Set the vibe',
-      text: language === 'de' ? 'Kurze Beschreibungen helfen euch das passende Spiel sofort zu finden.' : 'Short descriptions help you pick the perfect game instantly.',
-    },
-    {
-      key: 'stats',
-      title: language === 'de' ? 'Log & Stats' : 'Log & stats',
-      text: language === 'de' ? 'Mit dem Drinkcounter behaltet ihr eure Runde immer im Blick.' : 'Track your session with the built-in drink counter.',
-    },
-  ], [language]);
-
-  const [backgroundAspectRatio, setBackgroundAspectRatio] = useState(100);
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-
-  const handleImageLoad = (e) => {
-    const { width, height } = e.nativeEvent.source;
-    const aspectRatio = width / height;
-    setBackgroundAspectRatio(aspectRatio);
-  };
-
-  const backgroundImageWidth = windowHeight * backgroundAspectRatio;
 
   const [isConnected, setIsConnected] = useState(true);
   useEffect(() => {
@@ -71,19 +38,6 @@ const StartMenu = ({ navigation }) => {
       <Image source={require('../../assets/images/logo/adaptive_logo_weinglas_transparent.png')} style={{ width: 72, height: 72, resizeMode: 'contain' }} />
       <Text>{t('common')?.loading ?? 'Loading'}</Text>
     </View>;
-  }
-
-  if (!USE_BAR_START_LAYOUT) {
-    return (
-      <View style={{alignItems: 'flex-start'}}>
-        <ImageBackground source={require("../../assets/images/bar/bar_background_filled.png")} 
-          style={{ height: windowHeight, width: backgroundImageWidth }}
-          onLoad={handleImageLoad}
-        >
-          {/* ... alte Bottle-Ansicht unverändert ... */}
-        </ImageBackground>
-      </View>
-    );
   }
 
   return (

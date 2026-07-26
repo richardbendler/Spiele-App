@@ -346,7 +346,7 @@ const SPACE_THEMES = {
 const MINI_GAME_REWARDS = [3, 2, 1];
 
 const PartyBoardGame = ({ navigation }) => {
-  const { players, infoVisible, setInfoVisible, language } = useContext(VariablesContext);
+  const { players, language } = useContext(VariablesContext);
   const copy = useMemo(() => PARTY_BOARD_COPY[language === "en" ? "en" : "de"], [language]);
 
   const [positions, setPositions] = useState(() => players.map(() => 0));
@@ -1340,20 +1340,3 @@ function OverlayPrompt({ overlay, onConfirm, language }) {
 }
 
 export default PartyBoardGame;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

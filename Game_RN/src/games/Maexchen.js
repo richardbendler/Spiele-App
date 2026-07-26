@@ -1,4 +1,4 @@
-﻿import React, { useState, useContext, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useContext, useRef, useCallback, useMemo } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
@@ -138,9 +138,9 @@ const MaexchenGame = () => {
   const [diceTwo, setDiceTwo] = useState(1);
   const [phase, setPhase] = useState('ready');
   const rotateAnim = useRef(new Animated.Value(0)).current;
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
-  const { t, language } = useTranslation();
+  const { language } = useTranslation();
   const copy = useMemo(() => buildCopy(language), [language]);
 
   const spin = useMemo(
@@ -465,4 +465,3 @@ const styles = StyleSheet.create({
 });
 
 export default MaexchenGame;
-

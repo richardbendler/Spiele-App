@@ -226,7 +226,6 @@ const modalStyles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: '#F0F0F0', // Weiche, neutrale Hintergrundfarbe
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -279,7 +278,6 @@ const buttonTextStyles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     padding: 0,
-    fontWeight: 'bold',
     //textTransform: 'uppercase', //
   },
 
@@ -435,9 +433,8 @@ const fontStyles = StyleSheet.create({
     borderColor: '#ccc',
     paddingLeft: 8,
     paddingVertical: 8,
+    flexDirection: 'row',
     alignItems: 'center',
-    flexDirection: 'row', 
-    alignItems: 'center',    
   },
   playerlistContainer: {
     fontFamily: font1,
@@ -481,6 +478,3 @@ export const appStyles = {
   ...backgroundStyles,
   ...modalStyles,
 }
-
-
-

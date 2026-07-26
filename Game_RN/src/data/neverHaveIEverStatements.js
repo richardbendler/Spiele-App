@@ -300,4 +300,3 @@ export const neverHaveIEverStatements = [
     content_en: 'Never have I ever spilled a drink while dancing.',
   },
 ];
-
