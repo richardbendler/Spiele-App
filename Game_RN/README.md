@@ -1,4 +1,4 @@
-# Trinkspielapp
+# Game_RN – Client
 In dieser README wird alles erklärt, was man für das grundsätzliche Entwickeln an der App braucht. 
 Ausnahmen: 
 - Für alle Schritte, die den Serverumzug oder tiefergehende Umkonfiguration der App betreffen, sind Informationen in der SETUP.md festgehalten.
@@ -17,9 +17,7 @@ Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` im Client ve
 ## Datenbank
 
 ### Datenbank bearbeiten
-http://45.9.63.16/phpmyadmin/
-Benutzername: _hat Richard_
-Passwort: _hat Richard_
+Zugangsdaten (URL, Benutzername, Passwort) bei Richard erfragen bzw. im Passwortmanager nachsehen – nicht im Repo dokumentieren, da es öffentlich ist.
 Name unserer DB: TrinkspielDB
 
 

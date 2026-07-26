@@ -1,5 +1,5 @@
-# Trinkspielapp - SETUP
-Diese Datei enthält alle wichtigen Schritte für Projektsetup. Das ist nur bei Neukonfiguration relevant.
+# Game_RN - SETUP
+Diese Datei enthält alle wichtigen Schritte für Projektsetup. Das ist nur bei Neukonfiguration relevant (z.B. Migration in ein neues Expo-Projekt). Für den normalen Arbeitsalltag reicht `npm install`, da alle Packages bereits in `package.json` eingetragen sind – die folgende Liste ist ein historisches Protokoll der ursprünglichen Einrichtung.
 
 ## Projektsetup
 Die folgenden Schritte wurden einmalig bei Projektsetup ausgeführt und müssen nur bei Migration in ein neues Projekt erneut ausgeführt werden. Das kann z.B. nötig werden, wenn unsere gratis Expo-Lizenz an ein Limit kommt und wir zu einem neuen Expo-Account migrieren.
