@@ -24,4 +24,3 @@ export const secretMissions = [
   { id: 8023, de: 'Finde heraus, wer denselben Lieblingssnack hat wie du.', en: 'Find someone who shares your favorite snack.' },
   { id: 8024, de: 'Lobe die Musikauswahl oder frage nach dem DJ/der Playlist.', en: 'Compliment the music selection or ask about the DJ/playlist.' },
 ];
-

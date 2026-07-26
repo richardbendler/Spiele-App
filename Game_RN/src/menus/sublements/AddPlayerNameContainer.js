@@ -4,7 +4,7 @@ import { VariablesContext } from "../../../VariablesContext";
 import { useTranslation } from "../../i18n";
 
 const NameContainer = ({ playerObject }) => {
-  const { players, setPlayers } = useContext(VariablesContext);
+  const { setPlayers } = useContext(VariablesContext);
   const { t } = useTranslation();
 
   const labels = useMemo(

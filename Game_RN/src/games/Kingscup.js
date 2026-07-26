@@ -5,7 +5,6 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { appStyles } from '../../styles';
-import { useTranslation } from '../i18n';
 
 const { width, height } = Dimensions.get('window');
 const CARD_WIDTH = 50;
@@ -93,12 +92,10 @@ const Kingscup = () => {
   const [deck, setDeck] = useState(shuffleDeck(createDeck()));
   const [selectedCard, setSelectedCard] = useState(null);
 
-  const [gameStarted, setGameStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
-  const { infoVisible, setInfoVisible, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
+  const { language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
-  const { t } = useTranslation();
   const lang = language === 'en' ? 'en' : 'de';
   const kingscupCopy = kingscupCopyByLanguage[lang];
   const simpleMeanings = cardMeaningsSimpleByLanguage[lang];
@@ -157,7 +154,6 @@ const Kingscup = () => {
   }
 
   const revealCard = (index) => {
-    setGameStarted(true);
     const newDeck = [...deck];
     
     const wasRevealed = newDeck[index].revealed; //Zwischenspeichern für KingCounter unten
@@ -386,7 +382,3 @@ const styles = StyleSheet.create({
 });
 
 export default Kingscup;
-
-
-
-

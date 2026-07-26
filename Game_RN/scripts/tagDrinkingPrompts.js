@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 const datasetDir = path.join(__dirname, '../src/data/picoloTexts/datasets');

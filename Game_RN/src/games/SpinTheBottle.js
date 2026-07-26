@@ -1,4 +1,4 @@
-﻿// Import necessary React and React Native modules
+// Import necessary React and React Native modules
 import React, { useState, useContext, useRef, useMemo } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
@@ -14,8 +14,6 @@ import { useTranslation } from '../i18n';
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({ route }) => {
   const {
-    infoVisible,
-    setInfoVisible,
     language,
     tutorialEnabled,
     setTutorialEnabled,
@@ -253,7 +251,7 @@ const SpinTheBottle = ({ route }) => {
   );
 };
 
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   background: {
@@ -269,7 +267,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     position: 'absolute',
     top: height * 0.1,
-    color: '#333',
     fontWeight: 'bold',
     color: 'white',
   },
@@ -280,14 +277,9 @@ const styles = StyleSheet.create({
   hintText: {
     marginTop: 20,
     fontSize: 14,
-    color: '#333',
     fontWeight: 'bold',
     color: 'white',
   }
 });
 
 export default SpinTheBottle;
-
-
-
-

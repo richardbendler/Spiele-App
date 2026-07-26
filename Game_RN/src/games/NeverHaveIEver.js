@@ -1,7 +1,6 @@
-﻿﻿import React, { useMemo, useState, useContext } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import React, { useMemo, useState, useContext } from 'react';
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet ,Animated, Easing } from 'react-native';
 import { appStyles } from '../../styles';
-import { Animated, Easing } from 'react-native';
 import InfoText from './sublements/InfoText';
 import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
@@ -11,7 +10,7 @@ import { askForRatingIfEligible } from '../utils/rating';
 import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
 
 const NeverHaveIEverGame = () => {
-  const { infoVisible, setInfoVisible, tutorialEnabled, setTutorialEnabled, neverHaveIEverPrompts } = useContext(VariablesContext);
+  const { tutorialEnabled, setTutorialEnabled, neverHaveIEverPrompts } = useContext(VariablesContext);
   const { t, language } = useTranslation();
 
   const copy = useMemo(() => t('neverHaveIEver'), [t]);
@@ -152,28 +151,3 @@ const styles = StyleSheet.create({
 });
 
 export default NeverHaveIEverGame;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

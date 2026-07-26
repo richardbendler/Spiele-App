@@ -1,5 +1,3 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //import axios from 'axios';
 

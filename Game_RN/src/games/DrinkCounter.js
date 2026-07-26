@@ -5,12 +5,13 @@ import { VariablesContext } from '../../VariablesContext';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
 import TutorialOverlay from './sublements/TutorialOverlay';
-import { appStyles } from '../../styles';
 import { useTranslation } from '../i18n';
 
+// Grobe BAC-Schätzung nach der Widmark-Formel: Promille = (Alkoholmasse / (Körperwasseranteil * Körpergewicht)) - (Abbau über Zeit).
+// Nur ein Richtwert für die App, kein medizinisch verlässlicher Messwert.
 const ALCOHOL_DENSITY = 0.789; // g/ml
 const METABOLISM_PER_HOUR = 0.012; // g/dL per hour (~0.12 promille/h)
-const BODY_WATER = 0.68;
+const BODY_WATER = 0.68; // Widmark-Faktor r (Anteil Körperwasser am Gewicht, geschlechtsneutraler Mittelwert)
 const DEFAULT_WEIGHT = 75;
 const DEFAULT_ICON = "\uD83E\uDD64";
 const ICON_BY_ID = { "beer-500": "\uD83C\uDF7A", "beer-330": "\uD83C\uDF7A", "radler-500": "\uD83C\uDF7A", "wine-150": "\uD83C\uDF77", "shot-40": "\uD83E\uDD43", "cocktail-250": "\uD83C\uDF79", "water-500": "\uD83D\uDCA7", "sekt-100": "\uD83E\uDD42", "gin-tonic-250": "\uD83C\uDF78", "cola-330": "\uD83E\uDD64", "energy-250": "\u26A1", "cider-330": "\uD83C\uDF4F", "weinschorle-300": "\uD83C\uDF77", "vodka-shot-20": "\uD83E\uDD43" };

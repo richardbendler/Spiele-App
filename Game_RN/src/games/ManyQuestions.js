@@ -1,6 +1,6 @@
-﻿import React, { useState, useContext, useMemo, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Animated, Easing } from 'react-native';
+import React, { useState, useContext, useMemo, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet , Animated, Easing } from 'react-native';
+
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
@@ -16,8 +16,6 @@ const ManyQuestionsGame = ({ route }) => {
   const [gameEnded, setGameEnded] = useState(false);
 
   const {
-    infoVisible,
-    setInfoVisible,
     language,
     players,
     manyQuestions: manyQuestionsContext,
@@ -175,16 +173,3 @@ const styles = StyleSheet.create({
 });
 
 export default ManyQuestionsGame;
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
 const { rawTheOnePrompts } = require("../src/data/picoloTexts");
 const { poolMeta } = require("../src/data/picoloTexts/poolMeta");

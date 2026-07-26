@@ -1,14 +1,14 @@
-﻿import { Dimensions } from 'react-native';
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Dimensions , View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+
 import { appStyles } from '../../styles';
 import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const createDeck = () => {
   const suits = ['♦', '♥', '♠', '♣'];
@@ -58,10 +58,7 @@ const App = () => {
   const [field, setField] = useState(initialField(deck));
   const [discardPile, setDiscardPile] = useState([]);
   const [winner, setWinner] = useState(null);
-  const [gameStarted, setGameStarted] = useState(false);
   const [autoReveal, setAutoReveal] = useState(false);
-
-  const { infoVisible, setInfoVisible } = useContext(VariablesContext);
 
   useEffect(() => {
     if (!autoReveal || winner) {
@@ -277,51 +274,6 @@ const App = () => {
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
-      {/*{gameStarted? (
-      //Falls Game noch nicht gestartet:
-      pass
-      ):
-      
-      <View style={styles.container}>
-          <View style={{
-            height: '80%', 
-            width: '80%', 
-            alignItems: 'center',
-            justifyContent: 'center',
-            }}> 
-            <Text style={appStyles.textHeader2}>Pferderennen {"\n"}</Text>
-            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Vor Spielstart muss jede Person ein Ass auswählen und eine Anzahl X Schlücke auf das Ass setzen. Sobald das geschehen ist, könnt ihr das Spiel starten! {"\n"}</Text>
-            <Text style={[appStyles.textNormal2, {textAlign: 'center'}]}>Die ausführliche Anleitung findet ihr unter dem Info-Button.{"\n\n"}</Text>
-            
-            <View style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              width: windowWidth * 1,// * 360 / 100, // Adjusted width
-              justifyContent: 'center',
-            }}>
-              <View style={styles.card}>
-                <Text style={styles.cardText}>{"♦" + "A"}</Text>
-              </View>
-              <View style={styles.card}>
-                <Text style={styles.cardText}>{"♥" + "A"}</Text>
-              </View>
-              <View style={styles.card}>
-                <Text style={styles.cardText}>{"♠" + "A"}</Text>
-              </View>
-              <View style={styles.card}>
-                <Text style={styles.cardText}>{"♣" + "A"}</Text>
-              </View>
-            </View>
-            <Text>{"\n"}</Text>
-            
-
-            <TouchableOpacity style={appStyles.gameActionButton} onPress={() => setGameStarted(true)}>
-              <Text style={appStyles.gameActionButtonText}>Spiel starten</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      }*/}
-        
         <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
         <InfoHint />
         {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
@@ -375,7 +327,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 8,
     marginRight: windowWidth * 0.01,
-    borderRadius: 8,
   },
   deckText: {
     fontSize: 15,
@@ -453,10 +404,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-
-
-
-
-
-

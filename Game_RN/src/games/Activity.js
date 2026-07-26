@@ -1,5 +1,4 @@
-// In einer Datei namens VorglühenGame.js
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
@@ -13,7 +12,7 @@ import InfoHint from './sublements/InfoHint';
 const Activity = ({route }) => {
   const { words } = shuffleArrayFisherYates(route.params);
 
-  const { infoVisible, setInfoVisible, players, language } = useContext(VariablesContext);
+  const { players, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
 
   const [wordsIndex, setWordsIndex] = useState(0);
   const showNextQuestion = () => {
@@ -21,14 +20,13 @@ const Activity = ({route }) => {
       if (wordsIndex < words.length - 1) {
         setWordsIndex(wordsIndex + 1);
       }
-    }catch (error){
+    }catch{
         setWordsIndex(0);
     }
-    
+
   };
 
-  const { tutorialEnabled, setTutorialEnabled } = React.useContext(require('../../VariablesContext').VariablesContext);
-  const [tutorialStep, setTutorialStep] = React.useState(0);
+  const [tutorialStep, setTutorialStep] = useState(0);
   return (
     <View style={styles.background}>
       <View style={appStyles.completeScreenGameContainer}>

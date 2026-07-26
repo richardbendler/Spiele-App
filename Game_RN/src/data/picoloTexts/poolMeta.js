@@ -248,6 +248,3 @@ const poolMeta = {
 };
 
 module.exports = { poolMeta };
-
-
-
