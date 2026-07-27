@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useContext } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ImageBackground, StyleSheet, ScrollView } from 'react-native';
 import { appStyles } from '../../styles';
 import InfoText from './sublements/InfoText';
 import InfoHint from './sublements/InfoHint';
@@ -12,25 +12,77 @@ const COLUMNS = 6;
 const DRINK_CARD_COUNT = 12;
 const DRINK_VALUES = [1, 2, 3, 4, 5];
 
+const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+// Rot/Schwarz folgt der echten Kartenfarbe, nicht mehr einem unabhaengigen Zufallswert.
+const SUIT_COLOR = { Hearts: 'red', Diamonds: 'red', Clubs: 'black', Spades: 'black' };
+const SUIT_SYMBOL = { Hearts: '♥', Diamonds: '♦', Clubs: '♣', Spades: '♠' };
+const suitImages = {
+  Hearts: require('../../assets/images/icons/cards/Hearts.png'),
+  Diamonds: require('../../assets/images/icons/cards/Diamonds.png'),
+  Clubs: require('../../assets/images/icons/cards/Clubs.png'),
+  Spades: require('../../assets/images/icons/cards/Spades.png'),
+};
+
+const shuffle = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
 const buildBoard = () => {
-  const base = [];
+  const deck = [];
+  SUITS.forEach((suit) => RANKS.forEach((rank) => deck.push({ suit, rank })));
+  const dealt = shuffle(deck).slice(0, ROWS * COLUMNS);
+
+  const board = [];
+  let index = 0;
   for (let row = 1; row <= ROWS; row += 1) {
     for (let col = 1; col <= COLUMNS; col += 1) {
-      base.push({ id: `${row}-${col}`, row, col, revealed: false, type: 'empty', value: 0, color: Math.random() < 0.5 ? 'red' : 'black' });
+      const card = dealt[index];
+      index += 1;
+      board.push({
+        id: `${row}-${col}`,
+        row,
+        col,
+        revealed: false,
+        suit: card.suit,
+        rank: card.rank,
+        type: 'safe',
+        value: 0,
+      });
     }
   }
-  const shuffled = [...base].sort(() => Math.random() - 0.5);
-  shuffled.slice(0, DRINK_CARD_COUNT).forEach((cell) => {
-    cell.type = 'drink';
-    cell.value = DRINK_VALUES[Math.floor(Math.random() * DRINK_VALUES.length)];
-  });
-  return base;
+  shuffle(board)
+    .slice(0, DRINK_CARD_COUNT)
+    .forEach((cell) => {
+      const target = board.find((c) => c.id === cell.id);
+      target.type = 'drink';
+      target.value = DRINK_VALUES[Math.floor(Math.random() * DRINK_VALUES.length)];
+    });
+  return board;
+};
+
+const SIX_BY_SIX_COPY = {
+  de: {
+    infoTitle: 'Six by Six!',
+    rules:
+      'Vor euch liegt ein 6x6-Feld aus 36 verdeckten Spielkarten.\n\nReihum deckt jede Person eine beliebige Karte ihrer Wahl auf.\n\nIst es eine Trinkkarte, trinkt die aufdeckende Person die angezeigte Anzahl Schlucke. Ist die Karte "Frei", passiert nichts.\n\nDanach entscheidet die Kartenfarbe über den nächsten Zug: Bei Rot (Herz/Karo) ist dieselbe Person nochmal dran und deckt direkt die nächste Karte auf. Bei Schwarz (Kreuz/Pik) ist die nächste Person am Zug.\n\nSind alle 36 Karten aufgedeckt, mischt "Tisch neu mischen" ein frisches Feld.',
+  },
+  en: {
+    infoTitle: 'Six by Six!',
+    rules:
+      'A 6x6 field of 36 face-down playing cards lies in front of you.\n\nTake turns flipping any card of your choice.\n\nIf it is a drink card, the person who flipped it drinks the shown number of sips. If it says "Safe", nothing happens.\n\nThe card colour then decides the next turn: on Red (Hearts/Diamonds) the same person goes again and flips another card. On Black (Clubs/Spades) it is the next person\'s turn.\n\nOnce all 36 cards are revealed, tap "Reset grid" to shuffle a fresh field.',
+  },
 };
 
 const SixBySixGame = () => {
   const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
-  const { t, language } = useTranslation();
-  const copy = useMemo(() => t('sixBySix') || { title: 'Six by Six', infoTitle: 'Six by Six', rules: '' }, [t]);
+  const { language } = useTranslation();
+  const copy = useMemo(() => SIX_BY_SIX_COPY[language === 'en' ? 'en' : 'de'], [language]);
 
   const [board, setBoard] = useState(buildBoard());
   const [tutorialStep, setTutorialStep] = useState(0);
@@ -43,18 +95,33 @@ const SixBySixGame = () => {
     return rows;
   }, [board]);
 
+  const revealedCount = useMemo(() => board.filter((c) => c.revealed).length, [board]);
+
   const formatDrinkText = (value) => {
     if (language === 'en') return `${value} ${value === 1 ? 'sip' : 'sips'}`;
     return `${value} ${value === 1 ? 'Schluck' : 'Schlucke'}`;
   };
 
+  const formatRankLabel = (rank) => {
+    if (rank !== 'J' && rank !== 'Q' && rank !== 'K' && rank !== 'A') return rank;
+    const names = {
+      de: { J: 'Bube', Q: 'Dame', K: 'König', A: 'Ass' },
+      en: { J: 'Jack', Q: 'Queen', K: 'King', A: 'Ace' },
+    };
+    return names[language === 'en' ? 'en' : 'de'][rank];
+  };
+
   const resolveResultMessage = (cell) => {
     const coord = `${cell.row}/${cell.col}`;
-    const turnHint = cell.color === 'red' ? (language === 'en' ? 'Red: go again.' : 'Rot: Du bist nochmal dran.') : (language === 'en' ? 'Black: pass turn.' : 'Schwarz: weitergeben.');
-    if (cell.type === 'drink') {
-      return language === 'en' ? `${coord} – ${formatDrinkText(cell.value)} – ${turnHint}` : `${coord} – ${formatDrinkText(cell.value)} – ${turnHint}`;
-    }
-    return language === 'en' ? `${coord} – Safe – ${turnHint}` : `${coord} – Frei – ${turnHint}`;
+    const cardLabel = `${formatRankLabel(cell.rank)} ${SUIT_SYMBOL[cell.suit]}`;
+    const isRed = SUIT_COLOR[cell.suit] === 'red';
+    const turnHint = isRed
+      ? (language === 'en' ? 'Red: go again.' : 'Rot: Du bist nochmal dran.')
+      : (language === 'en' ? 'Black: pass the turn.' : 'Schwarz: weitergeben.');
+    const outcome = cell.type === 'drink'
+      ? formatDrinkText(cell.value)
+      : (language === 'en' ? 'Safe' : 'Frei');
+    return `${coord} · ${cardLabel} — ${outcome} — ${turnHint}`;
   };
 
   const revealCell = (row, col) => {
@@ -75,7 +142,10 @@ const SixBySixGame = () => {
         </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
-            <Text style={styles.title}>{copy.title || 'Six by Six'}</Text>
+            <Text style={styles.title}>Six by Six</Text>
+            <Text style={styles.subtitle}>
+              {language === 'en' ? `${revealedCount}/36 cards revealed` : `${revealedCount}/36 Karten aufgedeckt`}
+            </Text>
           </View>
 
           <View style={styles.grid}>
@@ -83,27 +153,37 @@ const SixBySixGame = () => {
               <View key={`row-${rowCells[0].row}`} style={styles.gridRow}>
                 {rowCells.map((cell) => {
                   const isActive = cell.id === activeCellId;
-                  const cellStyles = [styles.cell, !cell.revealed && styles.cellHidden, cell.revealed && (cell.color === 'red' ? styles.cellRed : styles.cellBlack), isActive && styles.cellActive];
+                  const isRed = SUIT_COLOR[cell.suit] === 'red';
                   return (
-                    <TouchableOpacity key={cell.id} style={cellStyles} activeOpacity={0.85}
+                    <TouchableOpacity
+                      key={cell.id}
+                      style={[styles.cell, isActive && styles.cellActive]}
+                      activeOpacity={0.85}
                       onPress={() => {
                         setActiveCellId(cell.id);
                         if (!cell.revealed) revealCell(cell.row, cell.col);
                         setTip(resolveResultMessage({ ...cell, revealed: true }));
                       }}
                     >
-                      <Text style={styles.coordinateText}>{`${cell.row}/${cell.col}`}</Text>
                       {cell.revealed ? (
-                        cell.type === 'drink' ? (
-                          <View style={styles.cardContent}>
-                            <Text style={styles.cardValue}>{cell.value}</Text>
-                            <Text style={styles.cardLabel}>{formatDrinkText(cell.value)}</Text>
-                          </View>
-                        ) : (
-                          <Text style={styles.safeLabel}>{language === 'en' ? 'Safe' : 'Frei'}</Text>
-                        )
+                        <View style={styles.cardFace}>
+                          <Text style={[styles.rankLabel, { color: isRed ? '#C4293E' : '#1B1B1F' }]}>{cell.rank}</Text>
+                          <Image style={styles.suitIcon} source={suitImages[cell.suit]} resizeMode="contain" />
+                          {cell.type === 'drink' ? (
+                            <View style={styles.drinkBadge}>
+                              <Text style={styles.drinkBadgeText}>+{cell.value}</Text>
+                            </View>
+                          ) : null}
+                        </View>
                       ) : (
-                        <Text style={styles.hiddenMark}>?</Text>
+                        <View style={styles.cardBackWrap}>
+                          <Image
+                            style={styles.cardBackImage}
+                            source={require('../../assets/images/icons/cards/card-back.png')}
+                            resizeMode="cover"
+                          />
+                          <Text style={styles.coordinateText}>{`${cell.row}/${cell.col}`}</Text>
+                        </View>
                       )}
                     </TouchableOpacity>
                   );
@@ -117,23 +197,23 @@ const SixBySixGame = () => {
               <Text style={styles.resetButtonText}>{language === 'en' ? 'Reset grid' : 'Tisch neu mischen'}</Text>
             </TouchableOpacity>
           </View>
-
-          {tip ? (
-            <View style={styles.transientTip}>
-              <Text style={styles.transientTipText}>{tip}</Text>
-            </View>
-          ) : null}
         </ScrollView>
 
-        <InfoText header={copy.infoTitle || 'Six by Six'} rules={copy.rules || ''} />
+        {tip ? (
+          <View style={styles.transientTip}>
+            <Text style={styles.transientTipText}>{tip}</Text>
+          </View>
+        ) : null}
+
+        <InfoText header={copy.infoTitle} rules={copy.rules} />
         <InfoHint />
 
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
-            { text: language === 'de' ? 'Tippt ein Feld eurer Wahl an.' : 'Tap any tile you like.', placement: 'top' },
-            { text: language === 'de' ? 'Ein Hinweis zeigt, was passiert.' : 'A hint shows what happens.', placement: 'bottom' },
-            { text: language === 'de' ? 'Rot = nochmal dran, Schwarz = weitergeben.' : 'Red = go again, Black = pass turn.', placement: 'bottom' },
+            { text: language === 'de' ? 'Tippt eine beliebige verdeckte Karte an.' : 'Tap any face-down card.', placement: 'top' },
+            { text: language === 'de' ? 'Ein Hinweis unten zeigt, was passiert ist.' : 'A hint at the bottom shows what happened.', placement: 'bottom' },
+            { text: language === 'de' ? 'Rot = nochmal dran, Schwarz = weitergeben.' : 'Red = go again, Black = pass the turn.', placement: 'bottom' },
             { text: language === 'de' ? 'Viel Spaß und eskaliert nicht zu doll.' : "Have fun — and don't overdo it.", placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
@@ -147,27 +227,83 @@ const SixBySixGame = () => {
 
 const styles = StyleSheet.create({
   overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.45)' },
-  scrollContent: { paddingHorizontal: 20, paddingTop: 120, paddingBottom: 100, gap: 20 },
-  header: { alignItems: 'center', gap: 6 },
-  title: { fontSize: 28, color: 'white', fontFamily: 'Quicksand_300Bold' },
-  grid: { gap: 10 },
-  gridRow: { flexDirection: 'row', gap: 10 },
-  cell: { flex: 1, aspectRatio: 0.6, borderRadius: 14, alignItems: 'center', justifyContent: 'center', position: 'relative', paddingHorizontal: 10, paddingVertical: 16 },
-  cellHidden: { backgroundColor: 'rgba(0,0,0,0.55)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' },
-  cellRed: { backgroundColor: 'rgba(196, 45, 62, 0.85)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
-  cellBlack: { backgroundColor: 'rgba(24,24,24,0.85)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  cellActive: { borderWidth: 2, borderColor: '#E5C185', shadowColor: '#E5C185', shadowOpacity: 0.4, shadowRadius: 6, shadowOffset: { width: 0, height: 0 }, elevation: 6 },
-  coordinateText: { position: 'absolute', top: 8, right: 8, color: 'rgba(255,255,255,0.65)', fontSize: 11, fontFamily: 'Quicksand_300Bold' },
-  hiddenMark: { fontSize: 32, color: 'rgba(255,255,255,0.4)', fontFamily: 'Quicksand_300Bold' },
-  cardContent: { alignItems: 'center', gap: 4 },
-  cardValue: { fontSize: 32, color: 'white', fontFamily: 'Quicksand_300Bold' },
-  cardLabel: { fontSize: 12, color: 'rgba(255,255,255,0.75)', fontFamily: 'Quicksand_300Light', textAlign: 'center' },
-  safeLabel: { fontSize: 16, color: 'rgba(255,255,255,0.85)', fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
-  actionsRow: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 14 },
+  scrollContent: { paddingHorizontal: 16, paddingTop: 110, paddingBottom: 100, gap: 16 },
+  header: { alignItems: 'center', gap: 4 },
+  title: { fontSize: 26, color: 'white', fontFamily: 'Quicksand_300Bold' },
+  subtitle: { fontSize: 12, color: 'rgba(255,255,255,0.6)', fontFamily: 'Quicksand_300Light' },
+  grid: { gap: 6 },
+  gridRow: { flexDirection: 'row', gap: 6 },
+  cell: {
+    flex: 1,
+    aspectRatio: 0.68,
+    borderRadius: 8,
+  },
+  cellActive: {
+    borderWidth: 2,
+    borderColor: '#E5C185',
+    shadowColor: '#E5C185',
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 6,
+  },
+  cardBackWrap: {
+    flex: 1,
+    borderRadius: 8,
+    overflow: 'hidden',
+    backgroundColor: '#1B1B1F',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  cardBackImage: { ...StyleSheet.absoluteFillObject },
+  coordinateText: {
+    color: 'rgba(255,255,255,0.55)',
+    fontSize: 8,
+    fontFamily: 'Quicksand_300Bold',
+    marginBottom: 3,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    paddingHorizontal: 3,
+    borderRadius: 3,
+  },
+  cardFace: {
+    flex: 1,
+    borderRadius: 8,
+    backgroundColor: '#F7F1E4',
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    paddingVertical: 4,
+  },
+  rankLabel: { fontSize: 15, fontFamily: 'Quicksand_700Bold' },
+  suitIcon: { width: '48%', height: '32%', marginTop: 2 },
+  drinkBadge: {
+    position: 'absolute',
+    top: 3,
+    right: 3,
+    backgroundColor: '#E5C185',
+    borderRadius: 8,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+  },
+  drinkBadgeText: { fontSize: 9, fontFamily: 'Quicksand_700Bold', color: '#231C18' },
+  actionsRow: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
   resetButton: { paddingHorizontal: 20, paddingVertical: 12, borderRadius: 16, borderWidth: 1, borderColor: 'rgba(229,193,133,0.7)', backgroundColor: 'rgba(9,9,9,0.4)' },
   resetButtonText: { color: '#E5C185', fontFamily: 'Quicksand_300Bold', fontSize: 15 },
-  transientTip: { position: 'absolute', left: 20, right: 20, bottom: 24, backgroundColor: 'rgba(0,0,0,0.8)', borderRadius: 14, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 },
-  transientTipText: { color: '#fff', fontSize: 14, lineHeight: 18, flex: 1, fontFamily: 'Quicksand_300Light' },
+  transientTip: {
+    position: 'absolute',
+    left: 20,
+    right: 20,
+    bottom: 24,
+    backgroundColor: 'rgba(0,0,0,0.85)',
+    borderRadius: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.4)',
+  },
+  transientTipText: { color: '#fff', fontSize: 14, lineHeight: 19, fontFamily: 'Quicksand_300Bold', textAlign: 'center' },
 });
 
 export default SixBySixGame;
