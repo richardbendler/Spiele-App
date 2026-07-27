@@ -372,4 +372,160 @@ export const spinTheBottleDareTexts = [
   // --- Batch 6: Intensity 5 ---
   { question_id: 14127, content: "Sag einer Person deiner Wahl leise ins Ohr, was du dir für den Rest der Nacht wünschst.", content_en: "Quietly whisper to someone of your choice what you wish for the rest of the night.", intensity: 5 },
   { question_id: 14128, content: "Frag die Runde offen: Wer hier hat schon mal insgeheim mit dir geflirtet, ohne dass du es bemerkt hast?", content_en: "Openly ask the group: who here has secretly flirted with you before without you noticing?", intensity: 5 },
+
+  // --- Batch 7: Intensity 1 ---
+  { question_id: 15101, content: "Erfinde ein Fantasiegetränk und beschreibe seine drei Zutaten.", content_en: "Invent a fantasy drink and describe its three ingredients.", intensity: 1 },
+  { question_id: 15102, content: "Halte eine 10-Sekunden-Ansage, als würdest du eine U-Bahn-Station ausrufen.", content_en: "Do a 10-second announcement as if calling out a subway station.", intensity: 1 },
+  { question_id: 15103, content: "Erfinde ein neues Wort für 'Feierabend' und benutze es in einem Satz.", content_en: "Invent a new word for 'quitting time' and use it in a sentence.", intensity: 1 },
+  { question_id: 15104, content: "Spiele eine 10-Sekunden-Szene, in der ein Roboter zum ersten Mal tanzt.", content_en: "Act out a 10-second scene of a robot dancing for the first time.", intensity: 1 },
+  { question_id: 15105, content: "Erfinde ein Maskottchen-Geräusch und stell es der Runde zweimal vor.", content_en: "Invent a mascot sound and demonstrate it to the group twice.", intensity: 1 },
+  { question_id: 15106, content: "Sprich die nächsten zwei Sätze wie ein Werbespot für Zahnpasta.", content_en: "Speak your next two sentences like a toothpaste commercial.", intensity: 1 },
+  { question_id: 15107, content: "Erfinde eine kurze Verschwörungstheorie über die Person, die zuletzt getrunken hat.", content_en: "Invent a short conspiracy theory about whoever drank last.", intensity: 1 },
+  { question_id: 15108, content: "Halte eine 10-Sekunden-Laudatio auf das schönste Möbelstück im Raum.", content_en: "Give a 10-second eulogy praising the nicest piece of furniture in the room.", intensity: 1 },
+  { question_id: 15109, content: "Mach für 10 Sekunden die überzeugendste Zeitlupen-Rennkommentar-Stimme.", content_en: "Do the most convincing slow-motion sports-commentary voice for 10 seconds.", intensity: 1 },
+  { question_id: 15110, content: "Erfinde einen Fantasienamen für den Rest des Abends und stell dich damit vor.", content_en: "Invent a fantasy name for the rest of the night and introduce yourself with it.", intensity: 1 },
+  { question_id: 15111, content: "Erzähl in 15 Sekunden die dramatischste Version davon, wie du hierher gekommen bist.", content_en: "Tell the most dramatic version of how you got here, in 15 seconds.", intensity: 1 },
+  { question_id: 15112, content: "Zeig der Runde deine beste Interpretation eines gelangweilten Roboters.", content_en: "Show the group your best interpretation of a bored robot.", intensity: 1 },
+
+  // --- Batch 7: Intensity 2 ---
+  { question_id: 15113, content: "Frag eine Person deiner Wahl nach ihrem Lieblingswort und benutze es die nächsten fünf Minuten selbst.", content_en: "Ask someone of your choice for their favorite word and use it yourself for the next five minutes.", intensity: 2 },
+  { question_id: 15114, content: "Erfinde mit einer Person deiner Wahl eine gemeinsame Erkennungsmelodie für die Gruppe.", content_en: "Invent a shared theme tune for the group with someone of your choice.", intensity: 2 },
+  { question_id: 15115, content: "Frag eine Person deiner Wahl, was ihr Lieblingsmoment aus der gemeinsamen Zeit war.", content_en: "Ask someone of your choice about their favorite moment from your time together.", intensity: 2 },
+  { question_id: 15116, content: "Mach mit einer Person deiner Wahl eine improvisierte Nachrichtensendung über den heutigen Abend.", content_en: "Improvise a news broadcast about tonight with someone of your choice.", intensity: 2 },
+  { question_id: 15117, content: "Frag eine Person deiner Wahl, welches Klischee über sie stimmt.", content_en: "Ask someone of your choice which cliché about them is actually true.", intensity: 2 },
+  { question_id: 15118, content: "Erfinde mit einer Person deiner Wahl einen Ehren-Applaus und führt ihn vor.", content_en: "Invent an honorary applause with someone of your choice and perform it.", intensity: 2 },
+  { question_id: 15119, content: "Frag eine Person deiner Wahl nach ihrem besten Rat für ein erfülltes Leben.", content_en: "Ask someone of your choice for their best advice for a fulfilling life.", intensity: 2 },
+
+  // --- Batch 7: Intensity 3 ---
+  { question_id: 15120, content: "Erzähl der Runde eine Sache, die du diese Woche über eine Person hier gelernt hast.", content_en: "Tell the group something you learned about someone here this week.", intensity: 3 },
+  { question_id: 15121, content: "Gesteh der Runde, welches Thema du am meisten meidest, wenn es hochkommt.", content_en: "Confess to the group which topic you avoid most when it comes up.", intensity: 3 },
+  { question_id: 15122, content: "Erzähl der Runde deine ehrliche Meinung zu einer Entscheidung, die du dieses Jahr getroffen hast.", content_en: "Share your honest opinion on a decision you made this year.", intensity: 3 },
+
+  // --- Batch 7: Intensity 4 ---
+  { question_id: 15123, content: "Sag einer Person deiner Wahl, welches Detail ihres Lachens dir gefällt.", content_en: "Tell someone of your choice which detail of their laugh you like.", intensity: 4 },
+  { question_id: 15124, content: "Frag eine Person deiner Wahl, was für sie ein perfekter erster Abend zu zweit wäre.", content_en: "Ask someone of your choice what a perfect first night together would look like for them.", intensity: 4 },
+
+  // --- Batch 7: Intensity 5 ---
+  { question_id: 15125, content: "Sag der Runde ehrlich, wer hier am meisten Anziehungskraft auf dich hat, ganz offen.", content_en: "Openly and honestly tell the group who here has the most pull on you.", intensity: 5 },
+
+  // --- Batch 8: Intensity 1 ---
+  { question_id: 16101, content: "Erfinde einen kurzen Werbespot für die beste Erfindung aller Zeiten - deine Wahl.", content_en: "Invent a short ad for the best invention of all time - your pick.", intensity: 1 },
+  { question_id: 16102, content: "Halte eine 10-Sekunden-Rede darüber, warum Socken unterschätzt werden.", content_en: "Give a 10-second speech on why socks are underrated.", intensity: 1 },
+  { question_id: 16103, content: "Spiele eine 10-Sekunden-Szene nach, in der du versuchst, leise eine Tür zu schließen.", content_en: "Act out a 10-second scene of trying to quietly close a door.", intensity: 1 },
+  { question_id: 16104, content: "Erfinde einen Begrüßungstanz für die Gruppe und führe ihn einmal auf.", content_en: "Invent a welcome dance for the group and perform it once.", intensity: 1 },
+  { question_id: 16105, content: "Mach 10 Sekunden lang die Stimme eines gelangweilten Museumsführers.", content_en: "Do a bored museum-tour-guide voice for 10 seconds.", intensity: 1 },
+  { question_id: 16106, content: "Erfinde eine kurze Gute-Nacht-Ansage für die Runde, als wärst du ein Flugkapitän.", content_en: "Invent a short good-night announcement for the group as if you were a flight captain.", intensity: 1 },
+  { question_id: 16107, content: "Erzähl in drei Sätzen, wie dein perfekter Superheldenname lauten würde und warum.", content_en: "Explain in three sentences what your perfect superhero name would be and why.", intensity: 1 },
+  { question_id: 16108, content: "Erfinde einen Trinkspruch nur aus Zahlen.", content_en: "Invent a toast made only of numbers.", intensity: 1 },
+  { question_id: 16109, content: "Zeig der Runde deine beste Zeitlupen-Reaktion auf eine gute Nachricht.", content_en: "Show the group your best slow-motion reaction to good news.", intensity: 1 },
+  { question_id: 16110, content: "Erfinde ein Fantasiewort für 'Kater' und erkläre seine Bedeutung.", content_en: "Invent a fantasy word for 'hangover' and explain its meaning.", intensity: 1 },
+
+  // --- Batch 8: Intensity 2 ---
+  { question_id: 16111, content: "Frag eine Person deiner Wahl, welches Wort sie am Handy autokorrigiert bekommt und hasst.", content_en: "Ask someone of your choice which word autocorrect always ruins for them.", intensity: 2 },
+  { question_id: 16112, content: "Erfinde mit einer Person deiner Wahl einen Spitznamen für die Gruppe heute Abend.", content_en: "Invent a nickname for the group tonight with someone of your choice.", intensity: 2 },
+  { question_id: 16113, content: "Frag eine Person deiner Wahl, welches Talent sie gerne in dieser Runde zeigen würde.", content_en: "Ask someone of your choice which talent they'd like to show off in this group.", intensity: 2 },
+  { question_id: 16114, content: "Mach mit einer Person deiner Wahl eine improvisierte Wettervorhersage für die Stimmung im Raum.", content_en: "Improvise a weather forecast for the room's mood with someone of your choice.", intensity: 2 },
+  { question_id: 16115, content: "Frag eine Person deiner Wahl nach ihrem Lieblingsmoment aus der heutigen Runde bisher.", content_en: "Ask someone of your choice their favorite moment from tonight so far.", intensity: 2 },
+  { question_id: 16116, content: "Erfinde mit einer Person deiner Wahl ein kurzes Lied über die Gruppe.", content_en: "Invent a short song about the group with someone of your choice.", intensity: 2 },
+
+  // --- Batch 8: Intensity 3 ---
+  { question_id: 16117, content: "Erzähl der Runde, was du dir für den nächsten Monat fest vorgenommen hast.", content_en: "Tell the group what you've firmly planned for next month.", intensity: 3 },
+  { question_id: 16118, content: "Gesteh der Runde eine Sache, die du gerne öfter sagen würdest, dich aber traust.", content_en: "Confess to the group something you wish you said more often but don't dare to.", intensity: 3 },
+
+  // --- Batch 8: Intensity 4 ---
+  { question_id: 16119, content: "Sag einer Person deiner Wahl, was dich an ihrer Energie am meisten anzieht.", content_en: "Tell someone of your choice what about their energy attracts you most.", intensity: 4 },
+  { question_id: 16120, content: "Frag eine Person deiner Wahl, ob sie sich an einen Moment erinnert, in dem sie an dich gedacht hat, ohne Grund.", content_en: "Ask someone of your choice if they recall a moment they thought of you for no reason.", intensity: 4 },
+
+  // --- Batch 8: Intensity 5 ---
+  { question_id: 16121, content: "Sag einer Person deiner Wahl, was du dir insgeheim für einen gemeinsamen Moment nach diesem Abend erhoffst.", content_en: "Tell someone of your choice what you secretly hope for in a shared moment after tonight.", intensity: 5 },
+
+  // --- Batch 9: Intensity 1 ---
+  { question_id: 17101, content: "Erfinde eine kurze Radiodurchsage über das Wetter im Raum gerade.", content_en: "Invent a short radio bulletin about the weather in the room right now.", intensity: 1 },
+  { question_id: 17102, content: "Spiele eine 10-Sekunden-Szene, in der ein Kuchen zum Leben erwacht.", content_en: "Act out a 10-second scene of a cake coming to life.", intensity: 1 },
+  { question_id: 17103, content: "Erfinde einen Werbeslogan für die Person rechts von dir.", content_en: "Invent an ad slogan for the person to your right.", intensity: 1 },
+  { question_id: 17104, content: "Halte eine 10-Sekunden-Dankesrede an das Sofa oder den Stuhl, auf dem du sitzt.", content_en: "Give a 10-second thank-you speech to the couch or chair you're sitting on.", intensity: 1 },
+  { question_id: 17105, content: "Mach für 10 Sekunden die Stimme eines aufgeregten Sportreporters bei einem Tischtennis-Ball.", content_en: "Do an excited sports-reporter voice for 10 seconds narrating a ping-pong ball.", intensity: 1 },
+  { question_id: 17106, content: "Erfinde ein Fantasiewort für 'Durst' und benutze es in einem Satz.", content_en: "Invent a fantasy word for 'thirst' and use it in a sentence.", intensity: 1 },
+  { question_id: 17107, content: "Zeig der Runde eine 10-Sekunden-Zeitlupe von dir, wie du eine Tür öffnest.", content_en: "Show the group a 10-second slow-motion sequence of you opening a door.", intensity: 1 },
+  { question_id: 17108, content: "Erfinde einen Namen für einen imaginären Feiertag heute und erkläre die Tradition.", content_en: "Invent a name for an imaginary holiday today and explain its tradition.", intensity: 1 },
+
+  // --- Batch 9: Intensity 2 ---
+  { question_id: 17109, content: "Frag eine Person deiner Wahl, welches Wort für sie 'Zuhause' am besten beschreibt.", content_en: "Ask someone of your choice which word best describes 'home' for them.", intensity: 2 },
+  { question_id: 17110, content: "Erfinde mit einer Person deiner Wahl einen kurzen Werbespot für die Runde heute Abend.", content_en: "Invent a short ad for the group tonight with someone of your choice.", intensity: 2 },
+  { question_id: 17111, content: "Frag eine Person deiner Wahl, was für sie der beste Teil an Freundschaft ist.", content_en: "Ask someone of your choice what the best part of friendship is for them.", intensity: 2 },
+  { question_id: 17112, content: "Mach mit einer Person deiner Wahl eine kurze Comedy-Routine über den heutigen Abend.", content_en: "Do a short comedy routine about tonight with someone of your choice.", intensity: 2 },
+
+  // --- Batch 9: Intensity 3 ---
+  { question_id: 17113, content: "Erzähl der Runde etwas, das du dieses Jahr über echte Freundschaft gelernt hast.", content_en: "Tell the group something you learned about real friendship this year.", intensity: 3 },
+  { question_id: 17114, content: "Zeig der Runde eine Erinnerung auf deinem Handy, auf die du besonders stolz bist.", content_en: "Show the group a memory on your phone you're especially proud of.", intensity: 3 },
+
+  // --- Batch 9: Intensity 4 ---
+  { question_id: 17115, content: "Sag einer Person deiner Wahl, was dich an ihrem Humor am meisten anzieht.", content_en: "Tell someone of your choice what about their humor attracts you most.", intensity: 4 },
+  { question_id: 17116, content: "Frag eine Person deiner Wahl, was ihr auffällt, wenn sie dich lange nicht gesehen hat.", content_en: "Ask someone of your choice what they notice first after not seeing you for a while.", intensity: 4 },
+
+  // --- Batch 9: Intensity 5 ---
+  { question_id: 17117, content: "Sag der Runde offen, welche Person hier dich heute Abend am meisten überrascht hat - und warum.", content_en: "Openly tell the group which person here surprised you most tonight - and why.", intensity: 5 },
+
+  // --- Batch 10: Intensity 1 ---
+  { question_id: 18101, content: "Erfinde einen kurzen Werbespot für den Rest des Abends.", content_en: "Invent a short ad for the rest of the night.", intensity: 1 },
+  { question_id: 18102, content: "Halte eine 10-Sekunden-Wettervorhersage für die Stimmung im Raum.", content_en: "Give a 10-second weather forecast for the mood in the room.", intensity: 1 },
+  { question_id: 18103, content: "Spiele eine 10-Sekunden-Szene, in der eine Pflanze zum ersten Mal spricht.", content_en: "Act out a 10-second scene of a plant speaking for the first time.", intensity: 1 },
+  { question_id: 18104, content: "Erfinde einen neuen Begrüßungsgruß, den die Runde ab jetzt benutzt.", content_en: "Invent a new greeting the group uses from now on.", intensity: 1 },
+  { question_id: 18105, content: "Mach 10 Sekunden lang die Stimme eines aufgeregten Kochshow-Moderators.", content_en: "Do an excited cooking-show-host voice for 10 seconds.", intensity: 1 },
+  { question_id: 18106, content: "Erfinde ein Fantasiewort für 'Vorfreude auf den nächsten Schluck'.", content_en: "Invent a fantasy word for 'anticipation of the next sip'.", intensity: 1 },
+  { question_id: 18107, content: "Zeig der Runde deine beste Interpretation von 'total überrascht'.", content_en: "Show the group your best interpretation of 'totally surprised'.", intensity: 1 },
+
+  // --- Batch 10: Intensity 2 ---
+  { question_id: 18108, content: "Frag eine Person deiner Wahl, welches Wort sie am liebsten öfter hören würde.", content_en: "Ask someone of your choice which word they wish they heard more often.", intensity: 2 },
+  { question_id: 18109, content: "Erfinde mit einer Person deiner Wahl einen kurzen Sketch über eine perfekte Verabredung.", content_en: "Create a short sketch about a perfect date with someone of your choice.", intensity: 2 },
+  { question_id: 18110, content: "Frag eine Person deiner Wahl, was für sie Glück in einem Satz bedeutet.", content_en: "Ask someone of your choice what happiness means to them in one sentence.", intensity: 2 },
+
+  // --- Batch 10: Intensity 3 ---
+  { question_id: 18111, content: "Erzähl der Runde etwas, das du dir für die Zukunft dieser Gruppe wünschst.", content_en: "Tell the group something you wish for this group's future.", intensity: 3 },
+
+  // --- Batch 10: Intensity 4 ---
+  { question_id: 18112, content: "Sag einer Person deiner Wahl, was du an ihrer Ausstrahlung besonders findest.", content_en: "Tell someone of your choice what you find special about their presence.", intensity: 4 },
+
+  // --- Batch 10: Intensity 5 ---
+  { question_id: 18113, content: "Sag der Runde ehrlich, mit wem hier du am liebsten den Abend allein ausklingen lassen würdest.", content_en: "Honestly tell the group who here you'd most like to end the night alone with.", intensity: 5 },
+
+  // --- Batch 11: Intensity 1 ---
+  { question_id: 19101, content: "Erfinde einen kurzen Werbespot für die beste Erfindung des Abends bisher.", content_en: "Invent a short ad for the best invention of the night so far.", intensity: 1 },
+  { question_id: 19102, content: "Halte eine 10-Sekunden-Rede darüber, warum dieser Abend legendär wird.", content_en: "Give a 10-second speech on why tonight is going to be legendary.", intensity: 1 },
+  { question_id: 19103, content: "Spiele eine 10-Sekunden-Szene, in der ein Glas zum ersten Mal spricht.", content_en: "Act out a 10-second scene of a glass speaking for the first time.", intensity: 1 },
+  { question_id: 19104, content: "Erfinde einen neuen Abschiedsgruß, den die Runde ab jetzt benutzt.", content_en: "Invent a new goodbye greeting the group uses from now on.", intensity: 1 },
+  { question_id: 19105, content: "Mach 10 Sekunden lang die Stimme eines aufgeregten Quizshow-Moderators.", content_en: "Do an excited game-show-host voice for 10 seconds.", intensity: 1 },
+  { question_id: 19106, content: "Erfinde ein Fantasiewort für 'perfekter Moment' und benutze es in einem Satz.", content_en: "Invent a fantasy word for 'perfect moment' and use it in a sentence.", intensity: 1 },
+
+  // --- Batch 11: Intensity 2 ---
+  { question_id: 19107, content: "Frag eine Person deiner Wahl, welches Wort für sie 'Abenteuer' am besten beschreibt.", content_en: "Ask someone of your choice which word best describes 'adventure' for them.", intensity: 2 },
+  { question_id: 19108, content: "Erfinde mit einer Person deiner Wahl einen kurzen Sketch über die perfekte Nacht.", content_en: "Create a short sketch about the perfect night with someone of your choice.", intensity: 2 },
+
+  // --- Batch 11: Intensity 3 ---
+  { question_id: 19109, content: "Erzähl der Runde etwas, das du dir für den Rest dieses Abends wünschst.", content_en: "Tell the group something you wish for the rest of tonight.", intensity: 3 },
+
+  // --- Batch 11: Intensity 4 ---
+  { question_id: 19110, content: "Sag einer Person deiner Wahl, was du dir von einem gemeinsamen Moment mit ihr erhoffst.", content_en: "Tell someone of your choice what you hope for from a shared moment with them.", intensity: 4 },
+
+  // --- Batch 11: Intensity 5 ---
+  { question_id: 19111, content: "Sag der Runde ehrlich, wer heute Nacht dein Favorit ist, ganz offen.", content_en: "Honestly and openly tell the group who your favorite is tonight.", intensity: 5 },
+
+  // --- Batch 12: gemischt ---
+  { question_id: 19301, content: "Erfinde ein neues Trinkspiel-Wort und erkläre seine Regel in einem Satz.", content_en: "Invent a new drinking-game word and explain its rule in one sentence.", intensity: 1 },
+  { question_id: 19302, content: "Halte eine 10-Sekunden-Rede über den besten Snack des Abends.", content_en: "Give a 10-second speech about the best snack of the night.", intensity: 1 },
+  { question_id: 19303, content: "Mach 10 Sekunden lang die Stimme eines Wetter-Moderators, der von einem Sturm im Glas berichtet.", content_en: "Do a 10-second weather-anchor voice reporting on a storm in a glass.", intensity: 1 },
+  { question_id: 19304, content: "Erfinde einen Spitznamen für den heutigen Abend und ruf ihn einmal laut.", content_en: "Invent a nickname for tonight and shout it out once.", intensity: 1 },
+  { question_id: 19305, content: "Frag eine Person deiner Wahl, was ihr Lieblingswort in dieser Runde ist.", content_en: "Ask someone of your choice their favorite word used in this group.", intensity: 2 },
+  { question_id: 19306, content: "Erfinde mit einer Person deiner Wahl ein Codewort für 'bester Moment des Abends'.", content_en: "Invent a code word with someone of your choice for 'best moment of the night'.", intensity: 2 },
+  { question_id: 19307, content: "Erzähl der Runde, was du dir für die nächste gemeinsame Runde wünschst.", content_en: "Tell the group what you wish for the next time you're all together.", intensity: 3 },
+  { question_id: 19308, content: "Sag einer Person deiner Wahl, was dich an ihrer Art, Geschichten zu erzählen, fasziniert.", content_en: "Tell someone of your choice what fascinates you about the way they tell stories.", intensity: 4 },
+  { question_id: 19309, content: "Sag der Runde ehrlich, welcher Moment heute Abend dir am nächsten ging.", content_en: "Honestly tell the group which moment tonight hit closest to home for you.", intensity: 5 },
+
+  // --- Batch 13: Auffuellung ---
+  { question_id: 19501, content: "Erfinde ein neues Wort für 'guter Schluck' und benutze es sofort.", content_en: "Invent a new word for 'good sip' and use it right away.", intensity: 1 },
+  { question_id: 19502, content: "Halte eine 10-Sekunden-Rede darüber, warum diese Runde besonders ist.", content_en: "Give a 10-second speech on why this group is special.", intensity: 1 },
+  { question_id: 19503, content: "Mach 10 Sekunden lang die Stimme eines begeisterten Sportkommentators für Kartenspiele.", content_en: "Do an enthusiastic sports-commentator voice for a card game, for 10 seconds.", intensity: 1 },
+  { question_id: 19504, content: "Frag eine Person deiner Wahl, was für sie 'ein guter Abend' bedeutet.", content_en: "Ask someone of your choice what 'a good night' means to them.", intensity: 2 },
+  { question_id: 19505, content: "Erzähl der Runde, was du dir für dich selbst nach diesem Abend wünschst.", content_en: "Tell the group what you wish for yourself after tonight.", intensity: 3 },
+  { question_id: 19506, content: "Sag einer Person deiner Wahl, was dich an ihrer Präsenz in dieser Runde beeindruckt.", content_en: "Tell someone of your choice what impresses you about their presence in this group.", intensity: 4 },
 ];
