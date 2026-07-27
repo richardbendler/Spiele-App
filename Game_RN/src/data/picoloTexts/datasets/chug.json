@@ -5,129 +5,44 @@
   "poolKey": "chug",
   "items": [
     {
-      "de": "Chug: Mutprobe",
-      "en": "Chug: daredevil",
-      "drunkLevel": 10,
-      "tags": [
-        "heavy"
-      ],
-      "payload": {
-        "type": "targetedAction",
-        "template": {
-          "de": "{{target}}, du wolltest Tempo. Exe dein Glas und kassiere Applaus.",
-          "en": "{{target}}, you asked for pace. Chug your drink and soak up the applause."
-        },
-        "target": {
-          "mode": "single",
-          "requireDrinker": true
-        }
-      },
-      "gating": {
-        "desiredMin": 7,
-        "rareChance": 0.25
-      },
-      "drinking": true,
-      "manual_approval": 0
+      "de": "Chug: Mutprobe — Trink deinen aktuellen Drink in drei großen Schlucken statt kleinen.",
+      "en": "Chug: dare edition — finish your current drink in three big gulps instead of small sips.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Chug: Hype-Call",
-      "en": "Chug: hype call",
-      "drunkLevel": 10,
-      "tags": [
-        "heavy"
-      ],
-      "payload": {
-        "type": "targetedAction",
-        "template": {
-          "de": "{{target}}, die Runde ruft „Exe!“ – du weißt, was zu tun ist.",
-          "en": "{{target}}, the group chants “Chug!”—you know what to do."
-        },
-        "target": {
-          "mode": "single",
-          "requireDrinker": true
-        }
-      },
-      "gating": {
-        "desiredMin": 7,
-        "rareChance": 0.2
-      },
-      "drinking": true,
-      "manual_approval": 0
+      "de": "Chug: Hype-Call — Die Runde zählt laut runter von 5, du trinkst bis 0 einen Schluck.",
+      "en": "Chug: hype call — the group counts down from 5 out loud, you drink one sip until it hits 0.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Chug: Doppel oder Nichts",
-      "en": "Chug: double or nothing",
-      "drunkLevel": 10,
-      "tags": [
-        "heavy"
-      ],
-      "payload": {
-        "type": "targetedAction",
-        "template": {
-          "de": "{{target}}, entscheide: Exe jetzt dein Glas oder gib 5 Schlucke weiter.",
-          "en": "{{target}}, choose: chug your drink now or hand out 5 sips."
-        },
-        "target": {
-          "mode": "single",
-          "requireDrinker": true
-        }
-      },
-      "gating": {
-        "desiredMin": 7,
-        "rareChance": 0.3
-      },
-      "drinking": true,
-      "manual_approval": 0
+      "de": "Chug: Doppel oder Nichts — Würfle (oder rate eine Zahl 1-6): bei einer geraden Zahl trinkst du doppelt, bei ungerade nichts.",
+      "en": "Chug: double or nothing — roll or guess a number 1-6: even means double sips, odd means none.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Chug: Blitzduell",
-      "en": "Chug: lightning duel",
-      "drunkLevel": 9,
-      "tags": [
-        "heavy"
-      ],
-      "payload": {
-        "type": "targetedAction",
-        "template": {
-          "de": "{{target}} wählt einen Gegner. Beide exen auf drei, Gewinnen heißt 4 Schlucke verteilen.",
-          "en": "{{target}} picks a rival. Both chug on three; winner hands out 4 sips."
-        },
-        "target": {
-          "mode": "single",
-          "requireDrinker": true
-        }
-      },
-      "gating": {
-        "desiredMin": 6,
-        "rareChance": 0.35
-      },
-      "drinking": true,
-      "manual_approval": 0
+      "de": "Chug: Blitzduell — Fordere jemanden heraus: wer sein Getränk zuerst abstellt, hat verloren und trinkt nochmal einen Schluck.",
+      "en": "Chug: quick duel — challenge someone: whoever sets their drink down first loses and drinks another sip.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Chug: Countdown",
-      "en": "Chug: countdown",
-      "drunkLevel": 8,
-      "tags": [
-        "heavy"
-      ],
-      "payload": {
-        "type": "targetedAction",
-        "template": {
-          "de": "Die Runde zählt rückwärts von 5. {{target}} muss das Glas leer haben, bevor alle bei 0 sind.",
-          "en": "The group counts down from 5. {{target}} has to finish before the room hits zero."
-        },
-        "target": {
-          "mode": "single",
-          "requireDrinker": true
-        }
-      },
-      "gating": {
-        "desiredMin": 5,
-        "rareChance": 0.4
-      },
-      "drinking": true,
-      "manual_approval": 0
+      "de": "Chug: Countdown — Trink im Rhythmus, den die Runde laut vorklatscht (mind. 3 Schlucke).",
+      "en": "Chug: countdown — drink to the rhythm the group claps out loud (at least 3 sips).",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

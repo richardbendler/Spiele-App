@@ -7,108 +7,77 @@
     {
       "de": "Teamduell: Emoji-Relay",
       "en": "Team duel: emoji relay",
-      "drunkLevel": 6,
-      "tags": [
-        "teams",
-        "challenge"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} vs {{teamB}}: Baut abwechselnd Emojis mit euren Körpern. Beste Umsetzung verteilt 4 Schlucke.",
-          "en": "{{teamA}} vs {{teamB}}: build emoji shapes with your bodies. Best interpretation hands out 4 sips."
-        },
-        "revealLabel": {
-          "de": "Challenge zeigen",
-          "en": "Show challenge"
+          "de": "{{teamA}} stellt nacheinander Emojis pantomimisch dar, {{teamB}} rät. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} mimes emojis one by one, {{teamB}} guesses. Losing team drinks 2 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Teamduell: Geräusche-Raten",
       "en": "Team duel: sound guessing",
-      "drunkLevel": 6,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} macht Geräusche, {{teamB}} rät Begriffe in 45 Sekunden – dann tauschen.",
-          "en": "{{teamA}} makes noises, {{teamB}} guesses words for 45 seconds—then swap roles."
+          "de": "{{teamA}} macht abwechselnd Geräusche, {{teamB}} rät, was gemeint ist. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} makes sounds in turn, {{teamB}} guesses what they mean. Losing team drinks 2 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Teamduell: Speed-Quiz",
       "en": "Team duel: speed quiz",
-      "drunkLevel": 6,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} stellt {{teamB}} drei Entweder-oder-Fragen in 30 Sekunden. Danach switch.",
-          "en": "{{teamA}} fires three either-or questions at {{teamB}} in 30 seconds. Then switch."
+          "de": "{{teamA}} gegen {{teamB}}: beantwortet abwechselnd schnelle Fragen. Team mit weniger richtigen Antworten trinkt 3 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: answer quick questions in turn. The team with fewer correct answers drinks 3 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Teamduell: Meme-Pantomime",
       "en": "Team duel: meme charades",
-      "drunkLevel": 5,
-      "tags": [
-        "teams",
-        "challenge"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} spielt drei bekannte Memes pantomimisch vor, {{teamB}} muss alle erraten, sonst trinken sie 3 Schlucke.",
-          "en": "{{teamA}} pantomimes three famous memes, {{teamB}} has to guess them or drink 3 sips."
+          "de": "{{teamA}} stellt ein Meme dar, {{teamB}} rät. Langsameres Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} acts out a meme, {{teamB}} guesses. Slower team drinks 2 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Teamduell: Impro-Werbung",
       "en": "Team duel: improv commercial",
-      "drunkLevel": 6,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} erfindet eine 30-Sekunden-Werbung für ein absurdes Produkt. {{teamB}} entscheidet, ob es gekauft wird. Verlierer trinken 3 Schlucke.",
-          "en": "{{teamA}} invents a 30-second ad for an absurd product. {{teamB}} decides if they’d buy it. Losers drink 3 sips."
+          "de": "{{teamA}} und {{teamB}} erfinden in 30 Sekunden je eine Werbung für dasselbe Fantasieprodukt. Die Runde wählt das schwächere Team, es trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} each invent a 30-second ad for the same made-up product. The group picks the weaker team, they drink 2 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     }
   ]
 }

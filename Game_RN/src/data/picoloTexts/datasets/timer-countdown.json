@@ -7,110 +7,102 @@
     {
       "de": "Countdown: Turmbau",
       "en": "Countdown: tower build",
-      "drunkLevel": 6,
-      "tags": [
-        "timer",
-        "challenge"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
-        "mode": "countdown",
-        "durationSeconds": 30,
+        "durationSeconds": 20,
         "text": {
-          "de": "Schafft ihr es, innerhalb von 30 Sekunden einen Turm aus Karten zu bauen?",
-          "en": "Can you stack a card tower in 30 seconds?"
+          "de": "Baut gemeinsam den höchsten Turm aus Gegenständen vom Tisch, bevor der Timer abläuft.",
+          "en": "Build the tallest tower from objects on the table together before the timer runs out."
         },
         "successText": {
-          "de": "Turm steht? Ihr verteilt 3 Schlucke!",
-          "en": "Tower stands? Hand out 3 sips!"
+          "de": "Zeit vorbei! Wer hat den stabilsten Turm?",
+          "en": "Time's up! Whose tower is the most stable?"
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Countdown: Meme-Nachstellung",
-      "en": "Countdown: meme reenactment",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "en": "Countdown: meme recreation",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
-        "mode": "countdown",
-        "durationSeconds": 25,
+        "durationSeconds": 20,
         "text": {
-          "de": "In 25 Sekunden ein ikonisches Meme nachstellen – die Runde muss es erraten.",
-          "en": "Recreate an iconic meme in 25 seconds—everyone else has to guess it."
+          "de": "Stellt ein bekanntes Meme nach, bevor der Timer abläuft. Runde rät welches.",
+          "en": "Recreate a famous meme before the timer runs out. Group guesses which one."
         },
         "successText": {
-          "de": "Geschafft? Verteile 2 Schlucke.",
-          "en": "Nailed it? Hand out 2 sips."
+          "de": "Zeit vorbei! Wer errät das Meme?",
+          "en": "Time's up! Who can guess the meme?"
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Countdown: Emoji-Body",
       "en": "Countdown: emoji body",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
-        "mode": "countdown",
-        "durationSeconds": 20,
+        "durationSeconds": 15,
         "text": {
-          "de": "Formt als Team in 20 Sekunden ein Emoji mit euren Körpern.",
-          "en": "As a team, form an emoji with your bodies in 20 seconds."
+          "de": "Formt mit euren Körpern ein Emoji, bevor der Timer abläuft. Runde rät welches.",
+          "en": "Form an emoji with your bodies before the timer runs out. Group guesses which one."
         },
         "successText": {
-          "de": "Erkannt? Alle anderen trinken 2.",
-          "en": "If it’s guessed correctly, everyone else drinks 2 sips."
+          "de": "Zeit vorbei!",
+          "en": "Time's up!"
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Countdown: Song Shuffle",
       "en": "Countdown: song shuffle",
-      "drunkLevel": 5,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
-        "mode": "countdown",
-        "durationSeconds": 20,
+        "durationSeconds": 15,
         "text": {
-          "de": "In 20 Sekunden drei Songs anstimmen, ohne Titel zu nennen. Errät niemand alle, trinkt ihr.",
-          "en": "Start three songs within 20 seconds without naming them. If no one guesses all, you drink."
+          "de": "Nennt so viele Songtitel wie möglich mit dem Wort \"Liebe\" darin, bevor der Timer abläuft.",
+          "en": "Name as many song titles as possible containing the word \"love\" before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei!",
+          "en": "Time's up!"
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Countdown: Kompliment-Stafette",
       "en": "Countdown: compliment relay",
-      "drunkLevel": 4,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
-        "mode": "countdown",
-        "durationSeconds": 30,
+        "durationSeconds": 20,
         "text": {
-          "de": "Schafft ihr 5 kreative Komplimente in 30 Sekunden, verteilt ihr 3 Schlucke.",
-          "en": "Deliver 5 creative compliments in 30 seconds to hand out 3 sips."
+          "de": "Gebt euch reihum so viele echte Komplimente wie möglich, bevor der Timer abläuft.",
+          "en": "Give each other as many genuine compliments as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Schönes Gefühl, oder?",
+          "en": "Time's up! Nice feeling, right?"
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     }
   ]
 }

@@ -5,106 +5,44 @@
   "poolKey": "pantomime-solo",
   "items": [
     {
-      "de": "Solo Mime: Superheld",
-      "en": "Solo mime: superhero",
-      "drunkLevel": 6,
-      "tags": [
-        "timer",
-        "challenge"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 30,
-        "text": {
-          "de": "{{target}}, mime einen Superhelden. Wird er erraten, dürfen du und die erratende Person je 2 Schlucke verteilen.",
-          "en": "{{target}}, mime a superhero. If guessed, both you and the guesser hand out 2 sips."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Solo Mime: Superheld — Stelle 15 Sekunden lang pantomimisch einen erfundenen Superhelden samt Superkraft dar, Runde rät.",
+      "en": "Solo mime: superhero — mime a made-up superhero and their power for 15 seconds, group guesses.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Solo Mime: Alltagsfail",
-      "en": "Solo mime: everyday fail",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 25,
-        "text": {
-          "de": "{{target}}, stell pantomimisch einen Alltags-Fail dar.",
-          "en": "{{target}}, act out an everyday fail pantomime-style."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Solo Mime: Alltagsfail — Stelle pantomimisch ein alltägliches Missgeschick dar, Runde rät was passiert ist.",
+      "en": "Solo mime: everyday fail — mime an everyday mishap, group guesses what happened.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Solo Mime: Tierfusion",
-      "en": "Solo mime: animal fusion",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 20,
-        "text": {
-          "de": "{{target}}, kombiniere zwei Tiere pantomimisch. Wird es erraten, verteilst du 2 Schlucke.",
-          "en": "{{target}}, mime a mash-up of two animals. If guessed, hand out 2 sips."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Solo Mime: Tierfusion — Stelle pantomimisch ein Fantasietier aus zwei echten Tieren dar, Runde rät beide Tiere.",
+      "en": "Solo mime: animal fusion — mime a fantasy animal combining two real animals, group guesses both.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Solo Mime: Party-DJ",
-      "en": "Solo mime: party DJ",
-      "drunkLevel": 5,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 25,
-        "text": {
-          "de": "{{target}}, tu so, als würdest du mit absurden Gesten DJ spielen. Wer den Song errät, verteilt 2 Schlucke.",
-          "en": "{{target}}, pretend to DJ with ridiculous moves. Whoever guesses the song hands out 2 sips."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Solo Mime: Party-DJ — Stelle 15 Sekunden lang pantomimisch einen übertriebenen Party-DJ dar.",
+      "en": "Solo mime: party DJ — mime an over-the-top party DJ for 15 seconds.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Solo Mime: Futuristischer Alltag",
-      "en": "Solo mime: futuristic routine",
-      "drunkLevel": 7,
-      "tags": [
-        "timer",
-        "challenge"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 35,
-        "text": {
-          "de": "{{target}}, spiele eine Alltagsszene aus dem Jahr 2125 komplett pantomimisch.",
-          "en": "{{target}}, act out a daily routine from the year 2125 using only pantomime."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Solo Mime: Futuristischer Alltag — Stelle pantomimisch eine ganz normale Alltagstätigkeit dar, aber wie im Jahr 2150.",
+      "en": "Solo mime: futuristic routine — mime a completely normal daily task, but as if it were the year 2150.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

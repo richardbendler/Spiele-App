@@ -7,108 +7,77 @@
     {
       "de": "Team Charades: Festival",
       "en": "Team charades: festival",
-      "drunkLevel": 6,
-      "tags": [
-        "teams",
-        "challenge"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} stellt pantomimisch ein Festival dar. {{teamB}} hat 30 Sekunden zum Raten, dann tauschen.",
-          "en": "{{teamA}} acts out a festival. {{teamB}} has 30 seconds to guess, then swap."
-        },
-        "revealLabel": {
-          "de": "Pantomime anzeigen",
-          "en": "Show pantomime"
+          "de": "{{teamA}} stellt reihum Festival-Situationen dar, {{teamB}} rät. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} mimes festival situations in turn, {{teamB}} guesses. Losing team drinks 2 sips."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Team Charades: Movie Mash",
       "en": "Team charades: movie mash",
-      "drunkLevel": 6,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} mixt zwei Filme pantomimisch, {{teamB}} errät.",
-          "en": "{{teamA}} mimes a mash-up of two movies, {{teamB}} guesses."
+          "de": "{{teamA}} stellt zwei Filmtitel als eine verrückte Mischung dar, {{teamB}} rät beide.",
+          "en": "{{teamA}} mimes two movie titles combined into one scene, {{teamB}} guesses both."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Team Charades: Berufschaos",
       "en": "Team charades: job chaos",
-      "drunkLevel": 6,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "Ein Team stellt stumm einen absurden Beruf dar, das andere rät in 30 Sekunden.",
-          "en": "One team silently acts out an absurd job, the other guesses within 30 seconds."
+          "de": "{{teamA}} stellt einen Beruf dar, der komplett schiefläuft, {{teamB}} rät den Beruf.",
+          "en": "{{teamA}} mimes a job going completely wrong, {{teamB}} guesses the profession."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Team Charades: Urlaubspanne",
       "en": "Team charades: vacation fail",
-      "drunkLevel": 5,
-      "tags": [
-        "teams"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} stellt eine legendäre Urlaubspanne pantomimisch nach, {{teamB}} muss Ort und Fail erraten.",
-          "en": "{{teamA}} acts out an iconic vacation fail, {{teamB}} must guess location and mishap."
+          "de": "{{teamA}} stellt eine Urlaubskatastrophe dar, {{teamB}} rät, was passiert ist.",
+          "en": "{{teamA}} mimes a vacation disaster, {{teamB}} guesses what happened."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Team Charades: Zukunfts-Gadget",
       "en": "Team charades: future gadget",
-      "drunkLevel": 7,
-      "tags": [
-        "teams",
-        "challenge"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "teamChallenge",
         "challengeText": {
-          "de": "{{teamA}} erfindet pantomimisch ein Gadget aus dem Jahr 3000. {{teamB}} pitcht innerhalb von 30 Sekunden, was es kann.",
-          "en": "{{teamA}} pantomimes a gadget from the year 3000. {{teamB}} pitches within 30 seconds what it does."
+          "de": "{{teamA}} stellt ein erfundenes Zukunfts-Gerät und seine Nutzung dar, {{teamB}} rät die Funktion.",
+          "en": "{{teamA}} mimes a made-up future device and its use, {{teamB}} guesses its function."
         }
-      },
-      "gating": {
-        "requiresPlayers": 4
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     }
   ]
 }

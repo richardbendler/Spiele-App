@@ -5,152 +5,44 @@
   "poolKey": "fake-news",
   "items": [
     {
-      "de": "Fake News: Katzen",
-      "en": "Fake news: cats",
-      "drunkLevel": 6,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "claim",
-            "text": {
-              "de": "Behauptung: Katzen können süß nicht schmecken.",
-              "en": "Claim: cats cannot taste sweetness."
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Wahr – ihnen fehlt der Rezeptor. Wer „Fake“ rief, trinkt 2 Schlucke.",
-              "en": "True—they lack the receptor. Anyone who said “fake” drinks 2 sips."
-            },
-            "hidden": true,
-            "revealLabel": {
-              "de": "Auflösung",
-              "en": "Reveal"
-            }
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Fake News: Katzen — Erfinde in 15 Sekunden eine absurde Falschmeldung über Katzen und verkünde sie wie im Nachrichtenstudio.",
+      "en": "Fake News: cats — in 15 seconds invent an absurd fake headline about cats and deliver it like a news anchor.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Fake News: Mond",
-      "en": "Fake news: moon",
-      "drunkLevel": 6,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "claim",
-            "text": {
-              "de": "Behauptung: Auf dem Mond wächst mittlerweile Bierhefe.",
-              "en": "Claim: beer yeast is now growing on the moon."
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Fake! Wer „wahr“ sagte, trinkt 3 Schlucke.",
-              "en": "Fake! Anyone who said “true” drinks 3 sips."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Fake News: Mond — Erfinde eine absurde Falschmeldung über den Mond und verkünde sie überzeugend.",
+      "en": "Fake News: the moon — invent an absurd fake headline about the moon and deliver it convincingly.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Fake News: Selfies",
-      "en": "Fake news: selfies",
-      "drunkLevel": 6,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "claim",
-            "text": {
-              "de": "Behauptung: Das Wort „Selfie“ war 2013 Wort des Jahres.",
-              "en": "Claim: “Selfie” was word of the year in 2013."
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Wahr (in Australien). Wer daneben lag, trinkt.",
-              "en": "True (in Australia). Wrong guesses drink."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Fake News: Selfies — Erfinde eine absurde Falschmeldung über Selfies und verkünde sie der Runde.",
+      "en": "Fake News: selfies — invent an absurd fake headline about selfies and announce it to the group.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Fake News: Espresso",
-      "en": "Fake news: espresso",
-      "drunkLevel": 5,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "claim",
-            "text": {
-              "de": "Behauptung: Espresso enthält weniger Koffein als Filterkaffee.",
-              "en": "Claim: espresso contains less caffeine than filter coffee."
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Wahr pro Portion. Wer \"Fake\" rief, trinkt 2 Schlucke.",
-              "en": "True per serving. Anyone who yelled “fake” drinks 2 sips."
-            },
-            "hidden": true,
-            "revealLabel": {
-              "de": "Check",
-              "en": "Check"
-            }
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Fake News: Espresso — Erfinde eine absurde Falschmeldung über Kaffee und verkünde sie dramatisch.",
+      "en": "Fake News: espresso — invent an absurd fake headline about coffee and deliver it dramatically.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Fake News: Pflanzen",
-      "en": "Fake news: plants",
-      "drunkLevel": 5,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "claim",
-            "text": {
-              "de": "Behauptung: Zimmerpflanzen wachsen schneller, wenn man mit ihnen spricht.",
-              "en": "Claim: houseplants grow faster when you talk to them."
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Nicht bewiesen, aber Musik hilft. Wer auf \"wahr\" setzte, trinkt 2 Schlucke.",
-              "en": "Not proven, though music helps. Everyone who picked “true” drinks 2 sips."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Fake News: Pflanzen — Erfinde eine absurde Falschmeldung über Zimmerpflanzen und verkünde sie der Runde.",
+      "en": "Fake News: houseplants — invent an absurd fake headline about houseplants and announce it to the group.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }
