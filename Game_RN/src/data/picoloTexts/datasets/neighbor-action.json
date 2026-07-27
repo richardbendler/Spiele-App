@@ -6,88 +6,93 @@
   "items": [
     {
       "de": "Nachbarschaftsduo: Spiegeln",
-      "en": "Neighbor duo: mirror move",
-      "drunkLevel": 4,
+      "en": "Neighbor duo: mirror",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "Links von {{anchor}} sitzt {{left}}: ihr macht eine 5-Sekunden-Mirroring-Choreo. Verpatzer trinken 2 Schlucke.",
-          "en": "{{left}} sits to the left of {{anchor}}: mirror each other for 5 seconds. Mess up and both drink 2 sips."
-        },
         "target": {
           "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{left}} ahmt 10 Sekunden lang jede Bewegung von {{anchor}} nach.",
+          "en": "{{left}} mimics every move of {{anchor}} for 10 seconds."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Nachbarschaftsduo: Geheimnis",
-      "en": "Neighbor duo: secret handshake",
-      "drunkLevel": 4,
+      "en": "Neighbor duo: secret",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{right}} rechts von {{anchor}} muss eine geheime Handshake-Variante mit {{anchor}} erfinden. Scheitern = trinken.",
-          "en": "{{right}}, sitting to the right of {{anchor}}, must invent a secret handshake with them. Fail = drink."
-        },
         "target": {
           "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} flüstert {{right}} ein harmloses Geheimnis zu.",
+          "en": "{{anchor}} whispers {{right}} a harmless secret."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Nachbarschaftsduo: Story-Tag",
       "en": "Neighbor duo: story tag",
-      "drunkLevel": 4,
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{left}} und {{right}} erzählen abwechselnd eine improvisierte Story über {{anchor}}.",
-          "en": "{{left}} and {{right}} take turns telling an improvised story about {{anchor}}."
-        },
         "target": {
           "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} erzählen abwechselnd Satz für Satz eine Geschichte.",
+          "en": "{{anchor}} and {{right}} take turns building a story sentence by sentence."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Nachbarschaftsduo: Flüstertelefon",
-      "en": "Neighbor duo: whisper telephone",
-      "drunkLevel": 3,
+      "en": "Neighbor duo: telephone game",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{left}} muss {{anchor}} in 15 Sekunden eine Life-Hack-Weisheit ins Ohr flüstern, die {{right}} laut wiederholt.",
-          "en": "{{left}} whispers a life-hack wisdom to {{anchor}} within 15 seconds, {{right}} repeats it out loud."
-        },
         "target": {
           "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} flüstert {{left}} einen Satz zu, der einmal um die Runde weitergegeben wird.",
+          "en": "{{anchor}} whispers a sentence to {{left}} to pass around the group."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Nachbarschaftsduo: Impro-Remix",
-      "en": "Neighbor duo: improv remix",
-      "drunkLevel": 5,
+      "en": "Neighbor duo: impro remix",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{anchor}}, gib deinem linken Nachbarn ein Wort. {{left}} rappt eine Zeile, {{right}} macht Beatbox dazu. Patzer trinken 2 Schlucke.",
-          "en": "{{anchor}} gives the left neighbor a word. {{left}} raps a line, {{right}} beatboxes. Mistakes drink 2 sips."
-        },
         "target": {
           "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} improvisieren eine 10-Sekunden-Werbung für ein Fantasieprodukt.",
+          "en": "{{anchor}} and {{right}} improvise a 10-second commercial for a made-up product."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     }
   ]
 }

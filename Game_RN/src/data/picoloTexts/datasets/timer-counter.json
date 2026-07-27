@@ -7,105 +7,107 @@
     {
       "de": "Counter: High-Fives",
       "en": "Counter: high-fives",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
+        "durationSeconds": 15,
         "mode": "counter",
-        "durationSeconds": 20,
         "text": {
-          "de": "Wie viele High-Fives schafft ihr in 20 Sekunden?",
-          "en": "How many high-fives can you land in 20 seconds?"
+          "de": "Wie viele High-Fives schafft die Runde, bevor der Timer abläuft? Tippt bei jedem High-Five auf +1.",
+          "en": "How many high-fives can the group land before the timer runs out? Tap +1 for each one."
         },
         "counterHint": {
-          "de": "Jeder High-Five = 1 Schluck verteilen.",
-          "en": "Each high-five lets you hand out 1 sip."
+          "de": "Jedes High-Five zählt.",
+          "en": "Every high-five counts."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Counter: Air-Kicks",
       "en": "Counter: air kicks",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
+        "durationSeconds": 10,
         "mode": "counter",
-        "durationSeconds": 25,
         "text": {
-          "de": "Zählt, wie viele Air-Kicks ihr schafft. Jeder fünfte gibt einen Schluck.",
-          "en": "Count how many air kicks you manage. Every fifth kick hands out a sip."
+          "de": "Wie viele Luft-Kicks schafft eine Person, bevor der Timer abläuft?",
+          "en": "How many air kicks can one person land before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Kick zählt.",
+          "en": "Every kick counts."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Counter: Compliments",
       "en": "Counter: compliments",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
+        "durationSeconds": 20,
         "mode": "counter",
-        "durationSeconds": 30,
         "text": {
-          "de": "Wie viele Komplimente könnt ihr der Runde geben? Für jede gelandete Line verteilt ihr 1 Schluck.",
-          "en": "How many compliments can you give the group? Each solid line lets you hand out 1 sip."
+          "de": "Wie viele echte Komplimente könnt ihr euch geben, bevor der Timer abläuft?",
+          "en": "How many genuine compliments can you give each other before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jedes Kompliment zählt.",
+          "en": "Every compliment counts."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Counter: Emoji-Gesichter",
       "en": "Counter: emoji faces",
-      "drunkLevel": 5,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
+        "durationSeconds": 15,
         "mode": "counter",
-        "durationSeconds": 25,
         "text": {
-          "de": "Wechselt so viele Gesichtsausdrücke wie möglich. Jeder dritte Emoji-Face = 1 Schluck verschenken.",
-          "en": "Cycle through as many facial expressions as possible. Every third emoji-face hands out 1 sip."
+          "de": "Wie viele verschiedene Emoji-Gesichter kann eine Person nachmachen, bevor der Timer abläuft?",
+          "en": "How many different emoji faces can one person make before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jedes neue Gesicht zählt.",
+          "en": "Every new face counts."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Counter: Story-Wörter",
       "en": "Counter: story words",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
       "payload": {
         "type": "timer",
+        "durationSeconds": 20,
         "mode": "counter",
-        "durationSeconds": 30,
         "text": {
-          "de": "Erzählt gemeinsam eine Story, bei der jeder nur ein Wort hinzufügen darf. Zählt die Wörter!",
-          "en": "Tell a story together adding only one word each. Count the words!"
+          "de": "Wie viele Wörter kann die Gruppe zu einer gemeinsamen Geschichte beitragen, bevor der Timer abläuft?",
+          "en": "How many words can the group add to a shared story before the timer runs out?"
         },
         "counterHint": {
-          "de": "Ab 20 Wörtern verteilt ihr 4 Schlucke.",
-          "en": "Hit 20 words and hand out 4 sips."
+          "de": "Jedes Wort zählt.",
+          "en": "Every word counts."
         }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      }
     }
   ]
 }

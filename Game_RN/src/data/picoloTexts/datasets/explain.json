@@ -5,104 +5,44 @@
   "poolKey": "explain",
   "items": [
     {
-      "de": "Erklären: Random Item",
-      "en": "Explain: random item",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 40,
-        "text": {
-          "de": "{{target}} erklärt ohne Tabuwörter einen Gegenstand aus dem Raum. Erratene Personen verteilen 2 Schlucke.",
-          "en": "{{target}} explains an object in the room without using taboo words. Guessers hand out 2 sips."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Erklären: Random Item — Erkläre einen zufälligen Gegenstand in Reichweite, als wäre er außerirdische Technologie.",
+      "en": "Explain: random item — explain a random object within reach as if it were alien technology.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Erklären: Worst Job",
-      "en": "Explain: worst job",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 35,
-        "text": {
-          "de": "{{target}} erklärt den schlimmsten Job der Welt – keine Gesten erlaubt.",
-          "en": "{{target}} explains the worst job in the world—no gestures allowed."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Erklären: Worst Job — Erkläre den schlimmsten denkbaren Job, den du dir vorstellen kannst, in 20 Sekunden.",
+      "en": "Explain: worst job — describe the worst possible job you can imagine in 20 seconds.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Erklären: Dating-Phrase",
-      "en": "Explain: dating phrase",
-      "drunkLevel": 6,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 30,
-        "text": {
-          "de": "{{target}} erklärt einen typischen Dating-Begriff. Erratende Person verteilt 2 Schlucke.",
-          "en": "{{target}} explains a classic dating term. Correct guess hands out 2 sips."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Erklären: Dating-Phrase — Erkläre einer außerirdischen Person, was eine typische Dating-App-Nachricht bedeutet.",
+      "en": "Explain: dating phrase — explain to an alien what a typical dating-app message actually means.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Erklären: Trend-Alarm",
-      "en": "Explain: trend alert",
-      "drunkLevel": 5,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 30,
-        "text": {
-          "de": "{{target}} erklärt einen aktuellen TikTok- oder Meme-Trend ohne Namen zu nennen.",
-          "en": "{{target}} describes a current TikTok or meme trend without naming it."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Erklären: Trend-Alarm — Erkläre einen aktuellen Internet-Trend jemandem, der seit 10 Jahren offline ist.",
+      "en": "Explain: trend alert — explain a current internet trend to someone who has been offline for 10 years.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Erklären: Chaos-Rezept",
-      "en": "Explain: chaos recipe",
-      "drunkLevel": 7,
-      "tags": [
-        "timer"
-      ],
-      "payload": {
-        "type": "timer",
-        "mode": "countdown",
-        "targetMode": "single",
-        "durationSeconds": 45,
-        "text": {
-          "de": "{{target}} beschreibt ein frei erfundenes Party-Rezept nur mit Soundeffekten und Gesten.",
-          "en": "{{target}} explains a made-up party recipe using only sounds and gestures."
-        }
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Erklären: Chaos-Rezept — Erkläre ein Rezept für ein Gericht, das aus drei zufällig genannten Zutaten der Runde besteht.",
+      "en": "Explain: chaos recipe — explain a recipe for a dish made from three random ingredients called out by the group.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

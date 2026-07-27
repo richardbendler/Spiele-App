@@ -5,148 +5,44 @@
   "poolKey": "quiz",
   "items": [
     {
-      "de": "Quiz: Weltwissen",
-      "en": "Quiz: world trivia",
-      "drunkLevel": 4,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "question",
-            "text": {
-              "de": "In welchem Land steht die Stadt Ushuaia?",
-              "en": "In which country is the city of Ushuaia located?"
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Antwort: Argentinien. Wer falsch lag, trinkt 2 Schlucke.",
-              "en": "Answer: Argentina. Wrong answers drink 2 sips."
-            },
-            "hidden": true,
-            "revealLabel": {
-              "de": "Antwort anzeigen",
-              "en": "Show answer"
-            }
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Quiz: Weltwissen — Welcher Ozean ist der größte der Erde? (Antwort: Pazifik) Wer falsch liegt, trinkt.",
+      "en": "Quiz: world knowledge — which is the largest ocean on Earth? (Answer: Pacific) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Quiz: Popkultur",
-      "en": "Quiz: pop culture",
-      "drunkLevel": 4,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "question",
-            "text": {
-              "de": "Wie heißt das Debütalbum von Billie Eilish?",
-              "en": "What is Billie Eilish’s debut album called?"
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "„When We All Fall Asleep, Where Do We Go?“. Falsche Antworten trinken.",
-              "en": "\"When We All Fall Asleep, Where Do We Go?\" Wrong answers drink."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Quiz: Popkultur — In welcher Stadt spielt \"Friends\" hauptsächlich? (Antwort: New York) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — in which city is \"Friends\" mainly set? (Answer: New York) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Quiz: Nostalgie",
-      "en": "Quiz: nostalgia",
-      "drunkLevel": 4,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "question",
-            "text": {
-              "de": "Welche Farbe hat Balu der Bär laut Original-Lied?",
-              "en": "Which color does Baloo the bear call himself in the original song?"
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "„Ich bin so blau wie die Tiefsee.“ Wer falsch lag, trinkt.",
-              "en": "\"I’m as blue as the deep blue sea.\" Wrong guess drinks."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Quiz: Nostalgie — Welches Jahrzehnt brachte den ersten iPod hervor? (Antwort: 2000er) Wer falsch liegt, trinkt.",
+      "en": "Quiz: nostalgia — which decade brought us the first iPod? (Answer: the 2000s) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Quiz: Future Tech",
-      "en": "Quiz: future tech",
-      "drunkLevel": 5,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "question",
-            "text": {
-              "de": "Wie nennt man die VR-Technik, bei der reale Objekte mit digitalen Ebenen überlagert werden?",
-              "en": "What do you call the VR technique where real objects are overlaid with digital layers?"
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Mixed Reality. Falsch? Trink 2 Schlucke.",
-              "en": "Mixed reality. Wrong? Drink 2 sips."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Quiz: Future Tech — Wie heißt das Konzept, bei dem Computer aus menschlichen Denkmustern lernen? (Antwort: Machine Learning / KI) Wer falsch liegt, trinkt.",
+      "en": "Quiz: future tech — what is it called when computers learn from human thought patterns? (Answer: machine learning / AI) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     },
     {
-      "de": "Quiz: Snack-Wissen",
-      "en": "Quiz: snack trivia",
-      "drunkLevel": 4,
-      "payload": {
-        "type": "hiddenReveal",
-        "sections": [
-          {
-            "id": "question",
-            "text": {
-              "de": "Aus welchem Land stammen Mochi ursprünglich?",
-              "en": "Which country did mochi originate from?"
-            },
-            "hidden": false
-          },
-          {
-            "id": "answer",
-            "text": {
-              "de": "Japan. Jede falsche Antwort nimmt 2 Schlucke.",
-              "en": "Japan. Every wrong answer drinks 2 sips."
-            },
-            "hidden": true
-          }
-        ]
-      },
-      "drinking": false,
-      "manual_approval": 0
+      "de": "Quiz: Snack-Wissen — Aus welchem Land kommt ursprünglich die Pizza Margherita? (Antwort: Italien) Wer falsch liegt, trinkt.",
+      "en": "Quiz: snack knowledge — which country does the Margherita pizza originally come from? (Answer: Italy) Wrong guess drinks.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

@@ -7,137 +7,110 @@
     {
       "de": "Sip Sync",
       "en": "Sip sync",
-      "drunkLevel": 4,
-      "tags": [
-        "drink"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{target}} trinkt {{amountLabel}} für das lauteste Lachen eben.",
-          "en": "{{target}} drinks {{amountLabel}} for laughing the loudest just now."
-        },
         "target": {
-          "mode": "single",
-          "requireDrinker": true
+          "mode": "single"
         },
-        "drinkScaling": {
-          "sliderKey": "desired",
-          "min": 1,
-          "max": 4,
-          "unit": "sip"
+        "template": {
+          "de": "{{target}} muss jetzt zeitgleich mit dir trinken.",
+          "en": "{{target}} has to drink at the exact same time as you now."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Glas halb voll",
       "en": "Glass half full",
-      "drunkLevel": 4,
-      "tags": [
-        "drink"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{target}}, {{amountLabel}} fürs Motivationsspeech gerade eben.",
-          "en": "{{target}}, {{amountLabel}} for that motivational speech earlier."
-        },
         "target": {
-          "mode": "single",
-          "requireDrinker": true
+          "mode": "single"
         },
-        "drinkScaling": {
-          "sliderKey": "desired",
-          "min": 2,
-          "max": 5,
-          "unit": "sip"
+        "template": {
+          "de": "{{target}} hat das vollste Glas und trinkt 2 Schlucke.",
+          "en": "{{target}} has the fullest glass and drinks 2 sips."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Kalibrierung",
-      "en": "Calibration sip",
-      "drunkLevel": 4,
-      "tags": [
-        "drink"
-      ],
+      "en": "Calibration",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{target}} kalibriert den Pegel mit {{amountLabel}}.",
-          "en": "{{target}} calibrates their buzz with {{amountLabel}}."
-        },
         "target": {
-          "mode": "single",
-          "requireDrinker": true
+          "mode": "single"
         },
-        "drinkScaling": {
-          "sliderKey": "desired",
-          "min": 1,
-          "max": 6,
-          "unit": "sip"
+        "template": {
+          "de": "{{target}} hat zuletzt nachgefüllt und trinkt einen Schluck.",
+          "en": "{{target}} last refilled their glass and drinks one sip."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Mood Booster",
       "en": "Mood booster",
-      "drunkLevel": 5,
-      "tags": [
-        "drink"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{target}} hebt die Stimmung mit {{amountLabel}} für den nächsten Song.",
-          "en": "{{target}} boosts the vibe with {{amountLabel}} before the next track."
-        },
         "target": {
-          "mode": "single",
-          "requireDrinker": true
+          "mode": "single"
         },
-        "drinkScaling": {
-          "sliderKey": "delta",
-          "min": 2,
-          "max": 5,
-          "unit": "sip"
+        "template": {
+          "de": "{{target}} hat gerade die beste Laune und darf 2 Schlucke verteilen.",
+          "en": "{{target}} seems to be in the best mood right now and gets to hand out 2 sips."
         }
-      },
-      "drinking": true,
-      "manual_approval": 0
+      }
     },
     {
       "de": "Story-Tax",
       "en": "Story tax",
-      "drunkLevel": 5,
-      "tags": [
-        "drink"
-      ],
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
       "payload": {
         "type": "targetedAction",
-        "template": {
-          "de": "{{target}} zahlt für die längste Story mit {{amountLabel}}.",
-          "en": "{{target}} pays for the longest story with {{amountLabel}}."
-        },
         "target": {
-          "mode": "single",
-          "requireDrinker": true
+          "mode": "single"
         },
-        "drinkScaling": {
-          "sliderKey": "desired",
-          "min": 1,
-          "max": 4,
-          "unit": "sip"
+        "template": {
+          "de": "{{target}} hat zuletzt eine Geschichte erzählt und zahlt eine Schluck-Steuer.",
+          "en": "{{target}} told the last story and pays a one-sip storytelling tax."
         }
-      },
+      }
+    },
+    {
+      "de": "Handy-Steuer",
+      "en": "Phone tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
       "drinking": true,
-      "manual_approval": 0
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hatte zuletzt das Handy in der Hand und trinkt 2 Schlucke.",
+          "en": "{{target}} last had their phone in hand and drinks 2 sips."
+        }
+      }
     }
   ]
 }
