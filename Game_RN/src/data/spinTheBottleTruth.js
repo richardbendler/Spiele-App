@@ -479,4 +479,232 @@ export const spinTheBottleTruthTexts = [
   // --- Batch 6: Intensity 5 ---
   { question_id: 14038, content: "Was wäre deine ehrliche Antwort auf die Frage 'Hättest du Interesse an mir', direkt von jemandem hier gefragt?", content_en: "What would your honest answer be to 'Would you be interested in me', asked directly by someone here?", intensity: 5 },
   { question_id: 14039, content: "Welche Person hier hat schon mal in einem Traum eine Hauptrolle gespielt, die dich überrascht hat?", content_en: "Who here has played a surprising lead role in one of your dreams?", intensity: 5 },
+
+  // --- Batch 7: Intensity 1 ---
+  { question_id: 15001, content: "Welches Wort löst bei dir sofort Fernweh aus?", content_en: "Which word instantly gives you wanderlust?", intensity: 1 },
+  { question_id: 15002, content: "Was ist deine liebste Kombination aus Film und Snack?", content_en: "What is your favorite movie-and-snack combo?", intensity: 1 },
+  { question_id: 15003, content: "Welche App-Benachrichtigung freut dich immer, egal wie oft sie kommt?", content_en: "Which app notification always makes you happy, no matter how often it appears?", intensity: 1 },
+  { question_id: 15004, content: "Was ist dein liebstes Wort für 'gemütlich'?", content_en: "What is your favorite word for 'cozy'?", intensity: 1 },
+  { question_id: 15005, content: "Welches Getränk trinkst du garantiert bei jedem Restaurantbesuch?", content_en: "Which drink do you order guaranteed at every restaurant visit?", intensity: 1 },
+  { question_id: 15006, content: "Was ist deine liebste Zutat für den perfekten Salat?", content_en: "What is your favorite ingredient for the perfect salad?", intensity: 1 },
+  { question_id: 15007, content: "Welche Serie könntest du in einer Nacht durchschauen, ohne müde zu werden?", content_en: "Which show could you binge in one night without getting tired?", intensity: 1 },
+  { question_id: 15008, content: "Was ist dein liebstes Wort, wenn du überrascht bist?", content_en: "What is your go-to word when you're surprised?", intensity: 1 },
+  { question_id: 15009, content: "Welche Jahreszeit riecht für dich am besten?", content_en: "Which season smells best to you?", intensity: 1 },
+  { question_id: 15010, content: "Was ist deine liebste App-Funktion, die kaum jemand kennt?", content_en: "What is your favorite app feature that hardly anyone knows about?", intensity: 1 },
+  { question_id: 15011, content: "Welches Wort verwechselst du manchmal mit einem ähnlichen?", content_en: "Which word do you sometimes mix up with a similar one?", intensity: 1 },
+  { question_id: 15012, content: "Was ist dein liebstes Wort, um Zustimmung auszudrücken?", content_en: "What is your favorite word to express agreement?", intensity: 1 },
+  { question_id: 15013, content: "Welche Süßigkeit teilst du niemals freiwillig?", content_en: "Which candy do you never share voluntarily?", intensity: 1 },
+  { question_id: 15014, content: "Was ist deine liebste Ausrede, um ein Zimmer nicht aufzuräumen?", content_en: "What is your favorite excuse to not clean your room?", intensity: 1 },
+  { question_id: 15015, content: "Welches Wort klingt in deiner Muttersprache am schönsten?", content_en: "Which word sounds most beautiful in your native language?", intensity: 1 },
+  { question_id: 15016, content: "Was ist dein liebstes Wetter, um spazieren zu gehen?", content_en: "What is your favorite weather for a walk?", intensity: 1 },
+  { question_id: 15017, content: "Welche App hast du zuletzt jemandem empfohlen?", content_en: "Which app did you most recently recommend to someone?", intensity: 1 },
+  { question_id: 15018, content: "Was ist deine liebste Zutat, die ein Gericht sofort besser macht?", content_en: "What is your favorite ingredient that instantly makes a dish better?", intensity: 1 },
+
+  // --- Batch 7: Intensity 2 ---
+  { question_id: 15019, content: "Welche Person hat dir mal eine Tür geöffnet, die du sonst nie gefunden hättest?", content_en: "Who once opened a door for you that you would never have found otherwise?", intensity: 2 },
+  { question_id: 15020, content: "Was war dein größter Erfolg, der komplett unterschätzt wurde?", content_en: "What was your biggest achievement that got completely underrated?", intensity: 2 },
+  { question_id: 15021, content: "Welche Angewohnheit hast du dir zugelegt, seit du erwachsen bist?", content_en: "Which habit have you picked up since becoming an adult?", intensity: 2 },
+  { question_id: 15022, content: "Was war dein peinlichster Moment bei einem ersten Eindruck?", content_en: "What was your most embarrassing moment making a first impression?", intensity: 2 },
+  { question_id: 15023, content: "Welche Person hat dich mal mit einer einzigen Frage komplett überrumpelt?", content_en: "Who once completely caught you off guard with a single question?", intensity: 2 },
+  { question_id: 15024, content: "Was war dein größter 'Kleiner Moment, große Wirkung'-Erlebnis?", content_en: "What was your biggest 'small moment, big impact' experience?", intensity: 2 },
+  { question_id: 15025, content: "Welche Serie oder welchen Podcast hast du komplett verschlungen, ohne es geplant zu haben?", content_en: "Which show or podcast did you devour completely without planning to?", intensity: 2 },
+  { question_id: 15026, content: "Was war das Ungewöhnlichste, das du je bei einer Familienfeier erlebt hast?", content_en: "What was the strangest thing you have experienced at a family gathering?", intensity: 2 },
+  { question_id: 15027, content: "Welche Person hat dich mal in einem Streit überraschend versöhnlich gestimmt?", content_en: "Who once made you surprisingly conciliatory during an argument?", intensity: 2 },
+  { question_id: 15028, content: "Was war dein größter Reinfall, als du versucht hast, jemandem zu helfen?", content_en: "What was your biggest fail trying to help someone?", intensity: 2 },
+  { question_id: 15029, content: "Welche Kleinigkeit an dir würde dich als Kind heute überraschen?", content_en: "Which small thing about you today would surprise your childhood self?", intensity: 2 },
+  { question_id: 15030, content: "Was war das Lustigste, das du je auf einer Reise erlebt hast?", content_en: "What was the funniest thing you have experienced on a trip?", intensity: 2 },
+
+  // --- Batch 7: Intensity 3 ---
+  { question_id: 15031, content: "Was war deine größte Erkenntnis über Fehler, die du gemacht hast?", content_en: "What was your biggest realization about mistakes you've made?", intensity: 3 },
+  { question_id: 15032, content: "Welche Person hättest du gerne früher besser verstanden?", content_en: "Which person do you wish you had understood better earlier?", intensity: 3 },
+  { question_id: 15033, content: "Was war dein größtes 'zurück auf die Beine kommen'-Erlebnis?", content_en: "What was your biggest 'getting back on your feet' experience?", intensity: 3 },
+  { question_id: 15034, content: "Welche Entscheidung hast du getroffen, die dich unabhängiger gemacht hat?", content_en: "Which decision have you made that made you more independent?", intensity: 3 },
+  { question_id: 15035, content: "Was war der Moment, in dem du erkannt hast, was dir wirklich wichtig ist?", content_en: "What was the moment you realized what really matters to you?", intensity: 3 },
+  { question_id: 15036, content: "Welche Grenze hast du dieses Jahr zum ersten Mal klar gesetzt?", content_en: "Which boundary did you set clearly for the first time this year?", intensity: 3 },
+  { question_id: 15037, content: "Was war dein größter Moment der Dankbarkeit gegenüber einer bestimmten Person?", content_en: "What was your biggest moment of gratitude toward a specific person?", intensity: 3 },
+  { question_id: 15038, content: "Welche Angst hast du in den letzten Jahren losgelassen?", content_en: "Which fear have you let go of in recent years?", intensity: 3 },
+
+  // --- Batch 7: Intensity 4 ---
+  { question_id: 15039, content: "Was war dein deutlichstes Anzeichen von Verliebtheit, das andere vor dir bemerkt haben?", content_en: "What was the clearest sign of being in love that others noticed before you did?", intensity: 4 },
+  { question_id: 15040, content: "Welche Person hier findest du in Gesprächen am spannendsten?", content_en: "Who here do you find most fascinating to talk to?", intensity: 4 },
+  { question_id: 15041, content: "Was war dein bester Moment voller Selbstvertrauen beim Flirten?", content_en: "What was your most confident moment while flirting?", intensity: 4 },
+  { question_id: 15042, content: "Welche Person hier hat dich schon mal mit einem Kompliment sprachlos gemacht?", content_en: "Who here has left you speechless with a compliment before?", intensity: 4 },
+  { question_id: 15043, content: "Was war die romantischste Kleinigkeit, die du je bekommen hast?", content_en: "What was the most romantic small gesture you have ever received?", intensity: 4 },
+
+  // --- Batch 7: Intensity 5 ---
+  { question_id: 15044, content: "Was wäre deine ehrliche Antwort, wenn jemand hier heute Nacht an deine Tür klopfen würde?", content_en: "What would your honest answer be if someone here knocked on your door tonight?", intensity: 5 },
+  { question_id: 15045, content: "Welche Person hier würdest du am ehesten in einem romantischen Roman als Hauptfigur besetzen?", content_en: "Who here would you cast as the lead in a romance novel?", intensity: 5 },
+  { question_id: 15046, content: "Was ist die gewagteste Verabredung, die du dir mit jemandem hier vorstellen könntest?", content_en: "What is the boldest date you could imagine with someone here?", intensity: 5 },
+
+  // --- Batch 8: Intensity 1 ---
+  { question_id: 16001, content: "Welche Kleinigkeit bringt dich garantiert zum Schmunzeln, egal wie dein Tag war?", content_en: "Which small thing always makes you smile, no matter how your day went?", intensity: 1 },
+  { question_id: 16002, content: "Was ist dein liebstes Wort, um Zustimmung mit Nachdruck auszudrücken?", content_en: "What is your go-to word to express enthusiastic agreement?", intensity: 1 },
+  { question_id: 16003, content: "Welche App-Kategorie hast du am häufigsten auf deinem Homescreen?", content_en: "Which app category do you have most often on your home screen?", intensity: 1 },
+  { question_id: 16004, content: "Was ist dein liebstes Frühstücksgetränk?", content_en: "What is your favorite breakfast drink?", intensity: 1 },
+  { question_id: 16005, content: "Welches Wort aus deiner Kindheit benutzt du heute noch?", content_en: "Which word from your childhood do you still use today?", intensity: 1 },
+  { question_id: 16006, content: "Was ist deine liebste Ausrede, um ein Gespräch zu beenden?", content_en: "What is your favorite excuse to end a conversation?", intensity: 1 },
+  { question_id: 16007, content: "Welche Farbe würdest du deinem aktuellen Lebensgefühl geben?", content_en: "Which color would you give your current mood in life?", intensity: 1 },
+  { question_id: 16008, content: "Was ist dein liebstes Wort, wenn dir etwas richtig gut schmeckt?", content_en: "What is your go-to word when something tastes really good?", intensity: 1 },
+  { question_id: 16009, content: "Welches Gericht würdest du niemals selbst kochen, aber immer bestellen?", content_en: "Which dish would you never cook yourself but always order?", intensity: 1 },
+  { question_id: 16010, content: "Was ist deine liebste Kleinigkeit an einem Wochenende ohne Plan?", content_en: "What is your favorite small thing about an unplanned weekend?", intensity: 1 },
+  { question_id: 16011, content: "Welche Serie oder welchen Film hast du komplett auswendig gelernt, ohne es zu wollen?", content_en: "Which show or movie have you memorized completely without meaning to?", intensity: 1 },
+  { question_id: 16012, content: "Was ist dein liebstes Wort für 'entspannt'?", content_en: "What is your go-to word for 'relaxed'?", intensity: 1 },
+  { question_id: 16013, content: "Welche Kleinigkeit im Alltag würdest du niemals ändern wollen?", content_en: "Which small everyday thing would you never want to change?", intensity: 1 },
+  { question_id: 16014, content: "Was ist deine liebste App, um Zeit zu verschwenden, ohne Reue?", content_en: "What is your favorite app to waste time on, no regrets?", intensity: 1 },
+  { question_id: 16015, content: "Welches Wort verwendest du, um 'schlecht' auf eine lustige Art zu sagen?", content_en: "Which word do you use to say 'bad' in a funny way?", intensity: 1 },
+
+  // --- Batch 8: Intensity 2 ---
+  { question_id: 16016, content: "Welche Person hat dir mal geholfen, ohne dass du es zu schätzen wusstest, bis später?", content_en: "Who helped you once without you appreciating it until later?", intensity: 2 },
+  { question_id: 16017, content: "Was war dein größter Fehlgriff bei der Wahl eines Geschenks für dich selbst?", content_en: "What was your biggest miss picking a gift for yourself?", intensity: 2 },
+  { question_id: 16018, content: "Welche Angewohnheit deiner besten Freundin oder deines besten Freundes hast du übernommen?", content_en: "Which habit of your best friend have you adopted?", intensity: 2 },
+  { question_id: 16019, content: "Was war das Peinlichste, das du je bei einem Videocall erlebt hast?", content_en: "What was the most embarrassing thing that happened to you during a video call?", intensity: 2 },
+  { question_id: 16020, content: "Welche Person hat dich mal mit einer Geste komplett überrascht?", content_en: "Who once completely surprised you with a gesture?", intensity: 2 },
+  { question_id: 16021, content: "Was war dein größter Zufallstreffer bei einer wichtigen Entscheidung?", content_en: "What was your biggest lucky guess on an important decision?", intensity: 2 },
+  { question_id: 16022, content: "Welche Serie hast du angefangen, nur weil jemand sie dir aufgedrängt hat, und dann geliebt?", content_en: "Which show did you start only because someone pushed you into it, and ended up loving?", intensity: 2 },
+  { question_id: 16023, content: "Was war dein größter Reinfall beim Versuch, spontan zu sein?", content_en: "What was your biggest fail trying to be spontaneous?", intensity: 2 },
+  { question_id: 16024, content: "Welche kleine Marotte gibst du erst jetzt zum ersten Mal zu?", content_en: "Which small quirk are you admitting for the first time right now?", intensity: 2 },
+  { question_id: 16025, content: "Was war das Verrückteste, das du für einen guten Zweck getan hast?", content_en: "What was the craziest thing you have done for a good cause?", intensity: 2 },
+
+  // --- Batch 8: Intensity 3 ---
+  { question_id: 16026, content: "Was war dein größter Moment der Erleichterung dieses Jahr?", content_en: "What was your biggest moment of relief this year?", intensity: 3 },
+  { question_id: 16027, content: "Welche Person hat dir gezeigt, dass Verletzlichkeit auch eine Stärke sein kann?", content_en: "Who has shown you that vulnerability can also be a strength?", intensity: 3 },
+  { question_id: 16028, content: "Was war deine größte Erkenntnis darüber, was du wirklich brauchst, um glücklich zu sein?", content_en: "What was your biggest realization about what you truly need to be happy?", intensity: 3 },
+  { question_id: 16029, content: "Welche Beziehung in deinem Leben brauchte den meisten Mut, um sie zu beenden oder zu retten?", content_en: "Which relationship in your life took the most courage to end or to save?", intensity: 3 },
+  { question_id: 16030, content: "Was war dein ehrlichster Moment gegenüber einer Person, die dir wichtig ist?", content_en: "What was your most honest moment with someone who matters to you?", intensity: 3 },
+  { question_id: 16031, content: "Welche Sache über dich selbst musstest du erst durch andere erkennen?", content_en: "What about yourself did you only recognize through others?", intensity: 3 },
+
+  // --- Batch 8: Intensity 4 ---
+  { question_id: 16032, content: "Was war der Moment, in dem eine Person hier dich zum ersten Mal wirklich beeindruckt hat?", content_en: "What was the moment someone here first genuinely impressed you?", intensity: 4 },
+  { question_id: 16033, content: "Welche Person hier hat den interessantesten Blick, wenn du ehrlich bist?", content_en: "Who here has the most interesting eyes, if you're honest?", intensity: 4 },
+  { question_id: 16034, content: "Was war deine größte Überwindung, um jemandem deine Gefühle zu zeigen?", content_en: "What was your biggest act of courage to show someone your feelings?", intensity: 4 },
+  { question_id: 16035, content: "Welche Person hier würdest du am ehesten vermissen, wenn sie einen Abend fehlen würde?", content_en: "Who here would you miss most if they were absent for a night?", intensity: 4 },
+
+  // --- Batch 8: Intensity 5 ---
+  { question_id: 16036, content: "Was wäre dein ehrlichstes Geständnis, wenn heute Abend niemand sich erinnern würde?", content_en: "What would be your most honest confession if nobody remembered tonight?", intensity: 5 },
+  { question_id: 16037, content: "Welche Person hier würde bei einem Rückblick auf diesen Abend in deiner Erinnerung am meisten bleiben?", content_en: "Who here would stick in your memory most looking back on tonight?", intensity: 5 },
+
+  // --- Batch 9: Intensity 1 ---
+  { question_id: 17001, content: "Welches Wort sagst du automatisch, wenn du etwas fallen lässt?", content_en: "Which word do you automatically say when you drop something?", intensity: 1 },
+  { question_id: 17002, content: "Was ist deine liebste Sache, die du an einem Regentag drinnen machst?", content_en: "What is your favorite thing to do indoors on a rainy day?", intensity: 1 },
+  { question_id: 17003, content: "Welche App checkst du als Letztes, bevor du einschläfst?", content_en: "Which app do you check last before falling asleep?", intensity: 1 },
+  { question_id: 17004, content: "Was ist dein liebstes Wort, das du oft in Nachrichten benutzt, aber nie laut sagst?", content_en: "What is a word you often use in texts but rarely say out loud?", intensity: 1 },
+  { question_id: 17005, content: "Welches Gericht würdest du an deinem Geburtstag immer bestellen?", content_en: "Which dish would you always order on your birthday?", intensity: 1 },
+  { question_id: 17006, content: "Was ist deine liebste Erinnerung an ein Familienessen?", content_en: "What is your favorite memory of a family meal?", intensity: 1 },
+  { question_id: 17007, content: "Welche Kleinigkeit lässt dich sofort an den Sommer denken?", content_en: "Which small thing instantly makes you think of summer?", intensity: 1 },
+  { question_id: 17008, content: "Was ist dein liebstes Wort für 'super' in deinem Sprachgebrauch?", content_en: "What is your go-to word for 'awesome' in your vocabulary?", intensity: 1 },
+  { question_id: 17009, content: "Welche App-Erinnerung nervt dich am meisten am Morgen?", content_en: "Which app reminder annoys you most in the morning?", intensity: 1 },
+  { question_id: 17010, content: "Was ist deine liebste Kleinigkeit an einem perfekten Kaffee?", content_en: "What is your favorite small detail of the perfect coffee?", intensity: 1 },
+  { question_id: 17011, content: "Welches Wort tippst du am Handy am schnellsten?", content_en: "Which word do you type fastest on your phone?", intensity: 1 },
+  { question_id: 17012, content: "Was ist deine liebste Ausrede, um noch einen Nachtisch zu bestellen?", content_en: "What is your favorite excuse to order dessert anyway?", intensity: 1 },
+
+  // --- Batch 9: Intensity 2 ---
+  { question_id: 17013, content: "Welche Person hat dir mal beigebracht, gelassener zu sein, ohne es zu merken?", content_en: "Who once taught you to be more relaxed without realizing it?", intensity: 2 },
+  { question_id: 17014, content: "Was war dein größter Reinfall bei einem Streich, den du selbst geplant hattest?", content_en: "What was your biggest fail with a prank you planned yourself?", intensity: 2 },
+  { question_id: 17015, content: "Welche Angewohnheit hast du dir angewöhnt, seit du in dieser Gruppe bist?", content_en: "Which habit did you pick up since joining this group?", intensity: 2 },
+  { question_id: 17016, content: "Was war das Peinlichste, das dir bei einem Vorstellungsgespräch für einen Job passiert ist, den du wolltest?", content_en: "What was the most embarrassing thing that happened during an interview for a job you wanted?", intensity: 2 },
+  { question_id: 17017, content: "Welche Person hat dich mal mit ihrer Ehrlichkeit überrumpelt?", content_en: "Who has once caught you off guard with their honesty?", intensity: 2 },
+  { question_id: 17018, content: "Was war dein größter Glückstreffer bei einem spontanen Kauf?", content_en: "What was your biggest lucky find with a spontaneous purchase?", intensity: 2 },
+  { question_id: 17019, content: "Welche Serie oder welches Buch hat dich zum Nachdenken über dein eigenes Leben gebracht?", content_en: "Which show or book made you reflect on your own life?", intensity: 2 },
+  { question_id: 17020, content: "Was war dein größtes Missgeschick beim Versuch, einen Trend mitzumachen?", content_en: "What was your biggest mishap trying to follow a trend?", intensity: 2 },
+
+  // --- Batch 9: Intensity 3 ---
+  { question_id: 17021, content: "Was war deine größte Erkenntnis über die Bedeutung von Ehrlichkeit in Beziehungen?", content_en: "What was your biggest realization about the importance of honesty in relationships?", intensity: 3 },
+  { question_id: 17022, content: "Welche Person hat dir mal gezeigt, wie man richtig verzeiht?", content_en: "Who once showed you how to truly forgive?", intensity: 3 },
+  { question_id: 17023, content: "Was war dein größter Moment von 'Ich schaff das schon'?", content_en: "What was your biggest 'I've got this' moment?", intensity: 3 },
+  { question_id: 17024, content: "Welche Entscheidung hast du getroffen, obwohl sie dir Angst gemacht hat?", content_en: "Which decision did you make even though it scared you?", intensity: 3 },
+  { question_id: 17025, content: "Was war der Moment, in dem du gemerkt hast, dass du jemandem fehlst?", content_en: "What was the moment you realized someone missed you?", intensity: 3 },
+
+  // --- Batch 9: Intensity 4 ---
+  { question_id: 17026, content: "Was war dein subtilstes Zeichen von Interesse an jemandem, das niemand bemerkt hat?", content_en: "What was your most subtle sign of interest in someone that nobody noticed?", intensity: 4 },
+  { question_id: 17027, content: "Welche Person hier hat die Stimme, die dich am meisten beruhigt?", content_en: "Who here has the voice that calms you most?", intensity: 4 },
+  { question_id: 17028, content: "Was war dein größter Moment von Nervosität in Gegenwart einer Person hier?", content_en: "What was your biggest moment of nervousness in the presence of someone here?", intensity: 4 },
+
+  // --- Batch 9: Intensity 5 ---
+  { question_id: 17029, content: "Was ist die ehrlichste Antwort, wenn dich jemand hier fragen würde, ob du noch Gefühle für eine Ex-Person hast?", content_en: "What is your most honest answer if someone here asked whether you still have feelings for an ex?", intensity: 5 },
+  { question_id: 17030, content: "Welche Person hier hätte am ehesten das Zeug dazu, dein Herz komplett durcheinanderzubringen?", content_en: "Who here would most likely have what it takes to completely scramble your feelings?", intensity: 5 },
+
+  // --- Batch 10: Intensity 1 ---
+  { question_id: 18001, content: "Welches Wort sagst du automatisch, wenn dir etwas gelingt?", content_en: "Which word do you automatically say when you succeed at something?", intensity: 1 },
+  { question_id: 18002, content: "Was ist deine liebste Kombination aus Wetter und Getränk?", content_en: "What is your favorite weather-and-drink combination?", intensity: 1 },
+  { question_id: 18003, content: "Welche App würdest du niemals jemandem zeigen, aus reiner Verlegenheit?", content_en: "Which app would you never show anyone, out of pure embarrassment?", intensity: 1 },
+  { question_id: 18004, content: "Was ist dein liebstes Wort, das du für Essen benutzt, das dir schmeckt?", content_en: "What is your go-to word for food you enjoy?", intensity: 1 },
+  { question_id: 18005, content: "Welche Kleinigkeit an einem Ort macht ihn für dich sofort gemütlich?", content_en: "Which small detail instantly makes a place feel cozy to you?", intensity: 1 },
+  { question_id: 18006, content: "Was ist deine liebste Ausrede, um noch ein bisschen wach zu bleiben?", content_en: "What is your favorite excuse to stay up a little longer?", intensity: 1 },
+  { question_id: 18007, content: "Welches Wort in einer Fremdsprache klingt für dich am schönsten?", content_en: "Which word in a foreign language sounds most beautiful to you?", intensity: 1 },
+  { question_id: 18008, content: "Was ist dein liebstes Wetter zum Musik hören?", content_en: "What is your favorite weather for listening to music?", intensity: 1 },
+  { question_id: 18009, content: "Welche App-Erinnerung stellst du dir absichtlich zu früh?", content_en: "Which app reminder do you deliberately set too early?", intensity: 1 },
+  { question_id: 18010, content: "Was ist deine liebste Kleinigkeit an einem selbstgemachten Essen?", content_en: "What is your favorite small detail of a homemade meal?", intensity: 1 },
+
+  // --- Batch 10: Intensity 2 ---
+  { question_id: 18011, content: "Welche Person hat dich mal überraschend gut eingeschätzt, obwohl ihr euch kaum kanntet?", content_en: "Who once judged you surprisingly well even though you barely knew each other?", intensity: 2 },
+  { question_id: 18012, content: "Was war dein größter Reinfall bei einem Versuch, jemanden zu beeindrucken?", content_en: "What was your biggest fail trying to impress someone?", intensity: 2 },
+  { question_id: 18013, content: "Welche Angewohnheit hast du dir zugelegt, seit du in dieser Stadt/diesem Ort lebst?", content_en: "Which habit have you picked up since living in your current city or town?", intensity: 2 },
+  { question_id: 18014, content: "Was war das Lustigste, das dir bei einem wichtigen Termin passiert ist?", content_en: "What was the funniest thing that happened to you during an important appointment?", intensity: 2 },
+  { question_id: 18015, content: "Welche Person hat dich mal mit einer kleinen Geste den ganzen Tag glücklich gemacht?", content_en: "Who has made your whole day with just one small gesture?", intensity: 2 },
+
+  // --- Batch 10: Intensity 3 ---
+  { question_id: 18016, content: "Was war deine größte Erkenntnis über Geduld in diesem Jahr?", content_en: "What was your biggest realization about patience this year?", intensity: 3 },
+  { question_id: 18017, content: "Welche Person hat dir mal gezeigt, dass Schwäche zeigen okay ist?", content_en: "Who once showed you it's okay to show weakness?", intensity: 3 },
+  { question_id: 18018, content: "Was war dein größter Moment von Mut, den niemand sonst bemerkt hat?", content_en: "What was your biggest moment of courage that nobody else noticed?", intensity: 3 },
+
+  // --- Batch 10: Intensity 4 ---
+  { question_id: 18019, content: "Was war dein deutlichstes Anzeichen von Nervosität rund um eine Person hier?", content_en: "What was your clearest sign of nervousness around someone here?", intensity: 4 },
+  { question_id: 18020, content: "Welche Person hier hat die Präsenz, die einen Raum sofort verändert?", content_en: "Who here has the presence that instantly changes a room?", intensity: 4 },
+
+  // --- Batch 10: Intensity 5 ---
+  { question_id: 18021, content: "Was wäre deine ehrlichste Reaktion, wenn dich jemand hier jetzt küssen würde?", content_en: "What would your most honest reaction be if someone here kissed you right now?", intensity: 5 },
+
+  // --- Batch 11: Intensity 1 ---
+  { question_id: 19001, content: "Welches Wort verwendest du, um 'ok, gut genug' auszudrücken?", content_en: "Which word do you use to express 'ok, good enough'?", intensity: 1 },
+  { question_id: 19002, content: "Was ist deine liebste Ausrede, um ein Spiel früher zu verlassen?", content_en: "What is your favorite excuse to leave a game early?", intensity: 1 },
+  { question_id: 19003, content: "Welche App-Kategorie hast du am wenigsten auf dem Handy?", content_en: "Which app category do you have the least of on your phone?", intensity: 1 },
+  { question_id: 19004, content: "Was ist dein liebstes Wort, um Genervtheit auf eine lustige Art auszudrücken?", content_en: "What is your favorite word to express annoyance in a funny way?", intensity: 1 },
+  { question_id: 19005, content: "Welches Getränk verbindest du am meisten mit gutem Wetter?", content_en: "Which drink do you associate most with good weather?", intensity: 1 },
+  { question_id: 19006, content: "Was ist deine liebste Kleinigkeit an einem spontanen Treffen mit Freunden?", content_en: "What is your favorite small thing about a spontaneous meetup with friends?", intensity: 1 },
+  { question_id: 19007, content: "Welches Wort aus dieser Runde würdest du gerne öfter hören?", content_en: "Which word from this group would you like to hear more often?", intensity: 1 },
+  { question_id: 19008, content: "Was ist dein liebstes Wort, um 'genau richtig' zu beschreiben?", content_en: "What is your go-to word for 'just right'?", intensity: 1 },
+
+  // --- Batch 11: Intensity 2 ---
+  { question_id: 19009, content: "Welche Person hat dich mal mit ihrer Geduld beeindruckt?", content_en: "Who has once impressed you with their patience?", intensity: 2 },
+  { question_id: 19010, content: "Was war dein größter Reinfall bei einem Versuch, cool zu bleiben in einer stressigen Situation?", content_en: "What was your biggest fail trying to stay cool in a stressful situation?", intensity: 2 },
+  { question_id: 19011, content: "Welche Angewohnheit hast du dir zugelegt, seit du diese Gruppe kennst?", content_en: "Which habit have you picked up since knowing this group?", intensity: 2 },
+  { question_id: 19012, content: "Was war das Lustigste, das dir bei einem wichtigen Anruf passiert ist?", content_en: "What was the funniest thing that happened to you during an important call?", intensity: 2 },
+  { question_id: 19013, content: "Welche Person aus dieser Runde überrascht dich am meisten, je öfter du sie triffst?", content_en: "Who in this group surprises you the most, the more you get to know them?", intensity: 2 },
+
+  // --- Batch 11: Intensity 3 ---
+  { question_id: 19014, content: "Was war deine größte Erkenntnis über Vertrauen in dieser Gruppe?", content_en: "What was your biggest realization about trust within this group?", intensity: 3 },
+  { question_id: 19015, content: "Welche Person hier hat dir gezeigt, dass echte Freundschaft keine Erklärung braucht?", content_en: "Who here has shown you that real friendship needs no explanation?", intensity: 3 },
+
+  // --- Batch 11: Intensity 4 ---
+  { question_id: 19016, content: "Was war der subtilste Moment von Chemie zwischen dir und jemandem hier?", content_en: "What was the subtlest moment of chemistry between you and someone here?", intensity: 4 },
+  { question_id: 19017, content: "Welche Person hier hat dich schon mal mit einem Blick sprachlos gemacht?", content_en: "Who here has left you speechless with just a look before?", intensity: 4 },
+
+  // --- Batch 11: Intensity 5 ---
+  { question_id: 19018, content: "Was wäre deine ehrlichste Antwort, würde dich die Runde fragen, wer hier dein Favorit für heute Nacht ist?", content_en: "What would your most honest answer be if the group asked who your favorite here is for tonight?", intensity: 5 },
+
+  // --- Batch 12: gemischt ---
+  { question_id: 19201, content: "Welches Wort beschreibt deine aktuelle Laune am treffendsten?", content_en: "Which word best describes your current mood?", intensity: 1 },
+  { question_id: 19202, content: "Was ist deine liebste Kleinigkeit an einem guten Gespräch?", content_en: "What is your favorite small detail of a good conversation?", intensity: 1 },
+  { question_id: 19203, content: "Welche App hast du diesen Monat zum ersten Mal geöffnet?", content_en: "Which app did you open for the first time this month?", intensity: 1 },
+  { question_id: 19204, content: "Was ist dein liebstes Wort, um Vorfreude auszudrücken?", content_en: "What is your go-to word to express anticipation?", intensity: 1 },
+  { question_id: 19205, content: "Welche Person hat dich diese Woche zum Lachen gebracht, ohne es zu versuchen?", content_en: "Who made you laugh this week without even trying?", intensity: 2 },
+  { question_id: 19206, content: "Was war dein größter Moment von 'einfach machen statt zu zweifeln'?", content_en: "What was your biggest 'just do it, don't doubt it' moment?", intensity: 2 },
+  { question_id: 19207, content: "Welche Angewohnheit von dir würde die Runde am wenigsten erwarten?", content_en: "Which habit of yours would this group least expect?", intensity: 2 },
+  { question_id: 19208, content: "Was war deine größte Erkenntnis darüber, wie du mit Kritik umgehst?", content_en: "What was your biggest realization about how you handle criticism?", intensity: 3 },
+  { question_id: 19209, content: "Welche Person hier hat dir geholfen, mutiger zu werden?", content_en: "Who here has helped you become more courageous?", intensity: 3 },
+  { question_id: 19210, content: "Was war dein deutlichstes Gefühl von Vorfreude auf ein Treffen mit jemandem hier?", content_en: "What was your clearest feeling of anticipation before meeting someone here?", intensity: 4 },
+  { question_id: 19211, content: "Welche Person hier würdest du am ehesten überraschend anrufen, mitten in der Nacht?", content_en: "Who here would you most likely call unexpectedly in the middle of the night?", intensity: 4 },
+  { question_id: 19212, content: "Was ist die ehrlichste Sache, die du heute Nacht noch zugeben würdest, bevor der Abend endet?", content_en: "What is the most honest thing you'd still admit tonight before the night ends?", intensity: 5 },
+
+  // --- Batch 13: Auffuellung ---
+  { question_id: 19401, content: "Welches Wort sagst du, wenn du kurz nachdenken musst?", content_en: "Which word do you say when you need a moment to think?", intensity: 1 },
+  { question_id: 19402, content: "Was ist dein liebstes Getränk, um einen Abend einzuläuten?", content_en: "What is your favorite drink to kick off an evening?", intensity: 1 },
+  { question_id: 19403, content: "Welche App-Erinnerung hast du dir für heute gestellt?", content_en: "Which app reminder did you set for today?", intensity: 1 },
+  { question_id: 19404, content: "Was ist deine liebste Kleinigkeit an einem lauten Lachen in der Runde?", content_en: "What is your favorite small thing about loud laughter in the group?", intensity: 1 },
+  { question_id: 19405, content: "Welches Wort verwendest du, wenn dir etwas richtig peinlich ist?", content_en: "Which word do you use when something is truly embarrassing?", intensity: 2 },
+  { question_id: 19406, content: "Was war der Moment, in dem du gemerkt hast, dass diese Runde dir wichtig geworden ist?", content_en: "What was the moment you realized this group had become important to you?", intensity: 2 },
+  { question_id: 19407, content: "Welche Person hier hat dich schon mal mit ihrer Großzügigkeit überrascht?", content_en: "Who here has surprised you with their generosity before?", intensity: 2 },
+  { question_id: 19408, content: "Was war deine größte Erkenntnis darüber, was echte Verbundenheit ausmacht?", content_en: "What was your biggest realization about what real connection is made of?", intensity: 3 },
+  { question_id: 19409, content: "Welche Person hier hat dir gezeigt, dass man auch ohne viele Worte verstanden werden kann?", content_en: "Who here has shown you that you can be understood without many words?", intensity: 3 },
+  { question_id: 19410, content: "Was war dein deutlichstes Gefühl von Geborgenheit rund um jemanden hier?", content_en: "What was your clearest feeling of being safe around someone here?", intensity: 4 },
 ];
