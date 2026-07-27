@@ -252,16 +252,38 @@ const Schoeneberg = () => {
 
   const passTurn = () => setStreak(0);
 
-  // Responsive sizes based on screen width
+  // Karten haben immer eine feste, komfortable Groesse. Nur der Abstand zwischen ihnen
+  // schrumpft (mit leichter Ueberlappung), falls eine Reihe mehr Karten enthaelt, als
+  // ohne Ueberlappung in die verfuegbare Breite passen wuerden - statt vorab fix Platz
+  // fuer alle 9 moeglichen Slots zu reservieren (was Karten winzig machte, selbst wenn
+  // eine Reihe nur 1-2 Karten hat).
   const { width: screenWidth } = Dimensions.get('window');
-  const sideWidth = 44; // make side pads narrower
-  const horizontalPadding = 32; // approximate container padding/margins
-  const availableCenterWidth = Math.max(0, screenWidth - horizontalPadding - 2 * sideWidth);
-  const slotBaseWidth = 64; // make cards larger
-  const slotWidth = Math.min(slotBaseWidth, Math.floor(availableCenterWidth / SLOTS) || slotBaseWidth);
-  const cardWidth = Math.max(24, slotWidth - 4);
-  const cardHeight = cardWidth * 1.5;
-  const fontScale = cardWidth / 48; // 48 was original base width
+  const sideWidth = 48;
+  const horizontalPadding = 32; // ungefaehres Container-Padding
+  const stripWidth = Math.max(0, screenWidth - horizontalPadding - 2 * sideWidth);
+  const cardWidth = 70;
+  const cardHeight = Math.round(cardWidth * 1.4);
+  const fontScale = cardWidth / 48; // 48 war die urspruengliche Basisbreite
+  const cardGap = 8;
+  const minVisibleFraction = 0.55; // nie mehr als 45% einer Karte verdecken
+
+  const computeRowLayout = (row, pendingSlot) => {
+    const slotsInUse = row.cards.map((c) => c.slot);
+    if (pendingSlot !== null && pendingSlot >= 0 && pendingSlot < SLOTS) {
+      slotsInUse.push(pendingSlot);
+    }
+    const usedMin = slotsInUse.length ? Math.min(...slotsInUse) : CENTER;
+    const usedMax = slotsInUse.length ? Math.max(...slotsInUse) : CENTER;
+    const rangeCount = usedMax - usedMin + 1;
+    const idealStep = cardWidth + cardGap;
+    const minStep = cardWidth * minVisibleFraction;
+    const fittingStep = stripWidth / rangeCount;
+    const step = Math.max(minStep, Math.min(idealStep, fittingStep));
+    const groupWidth = (rangeCount - 1) * step + cardWidth;
+    const contentWidth = Math.max(stripWidth, groupWidth);
+    const offsetX = Math.max(0, (stripWidth - groupWidth) / 2);
+    return { usedMin, step, contentWidth, offsetX };
+  };
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -306,6 +328,7 @@ const Schoeneberg = () => {
                 isPendingHere ? (pending.side === 'left' ? row.nextLeft : row.nextRight) : null;
               const canLeft = row.nextLeft >= 0;
               const canRight = row.nextRight < SLOTS;
+              const { usedMin, step, contentWidth, offsetX } = computeRowLayout(row, targetSlot);
 
               return (
                 <View key={idx} style={styles.row}>
@@ -323,29 +346,38 @@ const Schoeneberg = () => {
                     )}
                   </View>
 
-                  <View
-                    style={[styles.cardsStripFixed, { width: slotWidth * SLOTS, height: cardHeight + 8 }]}
-                  >
-                    {targetSlot !== null && targetSlot >= 0 && targetSlot < SLOTS ? (
-                      <View
-                        style={[
-                          styles.targetSlot,
-                          { left: targetSlot * slotWidth, width: slotWidth, height: cardHeight },
-                        ]}
-                      />
-                    ) : null}
+                  <View style={[styles.cardsStripOuter, { width: stripWidth, height: cardHeight + 8 }]}>
+                    <ScrollView
+                      horizontal
+                      style={{ width: stripWidth, height: cardHeight + 8 }}
+                      showsHorizontalScrollIndicator={false}
+                      scrollEnabled={contentWidth > stripWidth}
+                      contentContainerStyle={{ width: contentWidth, height: cardHeight + 8 }}
+                    >
+                      {targetSlot !== null && targetSlot >= 0 && targetSlot < SLOTS ? (
+                        <View
+                          style={[
+                            styles.targetSlot,
+                            { left: offsetX + (targetSlot - usedMin) * step, width: cardWidth, height: cardHeight },
+                          ]}
+                        />
+                      ) : null}
 
-                    {row.cards.map((c, i) => (
-                      <View
-                        key={i}
-                        style={[styles.cardFixed, { left: c.slot * slotWidth, width: slotWidth, alignItems: 'center' }]}
-                      >
-                        <View style={[styles.card, { width: cardWidth, height: cardHeight, borderRadius: 10 * fontScale }]}>
-                          <Text style={[styles.cardRank, { fontSize: 16 * fontScale }]}>{c.card.rank}</Text>
-                          <Text style={[styles.cardSuit, { fontSize: 14 * fontScale }]}>{c.card.suit}</Text>
+                      {row.cards.map((c, i) => (
+                        <View
+                          key={i}
+                          style={[
+                            styles.cardFixed,
+                            { left: offsetX + (c.slot - usedMin) * step, width: cardWidth, zIndex: i + 1 },
+                          ]}
+                        >
+                          <View style={[styles.card, { width: cardWidth, height: cardHeight, borderRadius: 10 * fontScale }]}>
+                            <Text style={[styles.cardRank, { fontSize: 20 * fontScale }]}>{c.card.rank}</Text>
+                            <Text style={[styles.cardSuit, { fontSize: 18 * fontScale }]}>{c.card.suit}</Text>
+                          </View>
                         </View>
-                      </View>
-                    ))}
+                      ))}
+                    </ScrollView>
                   </View>
 
                   <View style={styles.side}>
@@ -499,8 +531,7 @@ const styles = StyleSheet.create({
   plusPad: { width: 40, height: 130, borderRadius: 10, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
   plusButton: { padding: 4 },
   plusIcon: { fontSize: 20, fontWeight: '600' },
-  cardsStrip: { alignItems: 'center', paddingHorizontal: 4, gap: 6 },
-  cardsStripFixed: { position: 'relative', alignSelf: 'center' },
+  cardsStripOuter: { alignSelf: 'center' },
   cardFixed: { position: 'absolute', top: 0 },
   targetSlot: { position: 'absolute', top: 0, borderRadius: 10, borderWidth: 2, borderColor: 'rgba(240,137,116,0.8)' },
   card: {
@@ -510,7 +541,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.9)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 4,
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
   },
   cardRank: { fontSize: 16, color: '#222', fontFamily: 'Quicksand_700Bold' },
   cardSuit: { fontSize: 14, color: '#222', marginTop: 2, fontFamily: 'Quicksand_300Bold' },
