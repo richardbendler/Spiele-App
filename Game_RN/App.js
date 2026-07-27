@@ -9,6 +9,8 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { theOneSamplePrompts } from "./src/data/picoloTexts";
 import { manyQuestionsSampleTexts } from "./src/data/manyQuestionsTexts";
 import { activitySampleWords } from "./src/data/activityWords";
+import { spinTheBottleTruthTexts } from "./src/data/spinTheBottleTruth";
+import { spinTheBottleDareTexts } from "./src/data/spinTheBottleDare";
 
 //Import der Menus
 import StartMenu from "./src/menus/StartMenu";
@@ -38,7 +40,6 @@ import { VariablesContext } from "./VariablesContext";
 //Import von Hilfsfunktionen
 import { shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
 import { normalizeCategoryKey } from "./src/utils/categoryColors";
-import { filterManualApproved } from "./src/utils/manualApproval";
 
 import { enableScreens } from "react-native-screens";
 import { askForRatingIfEligible } from "./src/utils/rating";
@@ -243,71 +244,9 @@ const ensureDrinkCatalogDefaults = (storedCatalog) => {
 const filterByPoolKey = (prompts, poolKey) => {
   if (!Array.isArray(prompts)) return [];
   const normalizedTarget = normalizeCategoryKey(poolKey);
-  return filterManualApproved(prompts).filter(
+  return prompts.filter(
     (entry) => normalizeCategoryKey(entry?.pool?.key) === normalizedTarget
   );
-};
-
-const buildTruthDarePoolsFromPrompts = (prompts = []) => {
-  const truth = [];
-  const dare = [];
-  filterManualApproved(prompts).forEach((entry) => {
-    const normalizedKey = normalizeCategoryKey(entry?.pool?.key);
-    if (normalizedKey === "truth") {
-      truth.push(entry);
-      return;
-    }
-    if (normalizedKey === "dare") {
-      dare.push(entry);
-      return;
-    }
-
-    const payload = entry?.metadata?.customPayload;
-    if (normalizedKey !== "truth-dare-combo" && payload?.type !== "truthOrDare") {
-      return;
-    }
-
-    const baseId =
-      typeof entry?.question_id === "number"
-        ? entry.question_id
-        : parseInt(entry?.question_id, 10);
-
-    const truthDe =
-      (typeof payload?.truth === "object" && payload.truth?.de) || payload?.truth || entry.content;
-    const truthEn =
-      (typeof payload?.truth === "object" && payload.truth?.en) ||
-      payload?.truth_en ||
-      truthDe ||
-      entry.content_en ||
-      entry.content;
-    const dareDe =
-      (typeof payload?.dare === "object" && payload.dare?.de) || payload?.dare || entry.content;
-    const dareEn =
-      (typeof payload?.dare === "object" && payload.dare?.en) ||
-      payload?.dare_en ||
-      dareDe ||
-      entry.content_en ||
-      entry.content;
-
-    if (truthDe) {
-      truth.push({
-        ...entry,
-        question_id: Number.isFinite(baseId) ? baseId * 10 + 1 : `${entry.question_id || "combo"}-T`,
-        content: truthDe,
-        content_en: truthEn || truthDe,
-      });
-    }
-    if (dareDe) {
-      dare.push({
-        ...entry,
-        question_id: Number.isFinite(baseId) ? baseId * 10 + 2 : `${entry.question_id || "combo"}-D`,
-        content: dareDe,
-        content_en: dareEn || dareDe,
-      });
-    }
-  });
-
-  return { truth, dare };
 };
 
 export default function App() {
@@ -322,8 +261,12 @@ export default function App() {
     familiarity: 5,
   });
 
+  // manual_approval ist im gebuendelten Content durchgaengig 0 (kein Kurations-Workflow setzt es
+  // je auf 1), weshalb ein Filtern darauf hier den kompletten Prompt-Pool leerraeumen wuerde -
+  // sowohl fuer "The One" als auch fuer Flaschendrehen. Bis es eine echte Content-Moderation gibt,
+  // gilt gebuendelter Content als freigegeben.
   const approvedTheOnePrompts = useMemo(
-    () => filterManualApproved(theOnePrompts),
+    () => (Array.isArray(theOnePrompts) ? theOnePrompts : []),
     [theOnePrompts]
   );
   const mostLikelyPrompts = useMemo(
@@ -334,10 +277,9 @@ export default function App() {
     () => filterByPoolKey(theOnePrompts, "never-have-i-ever"),
     [theOnePrompts]
   );
-  const { truth: spinTheBottleTruths, dare: spinTheBottleDares } = useMemo(
-    () => buildTruthDarePoolsFromPrompts(theOnePrompts),
-    [theOnePrompts]
-  );
+  // Dediziertes Truth/Dare-Set fuer Flaschendrehen (unabhaengig vom "The One"-Prompt-Pool).
+  const spinTheBottleTruths = spinTheBottleTruthTexts;
+  const spinTheBottleDares = spinTheBottleDareTexts;
 
   ////////////////////////////////////////////////////////
   /////////// Daten aus lokalem Speicher holen  //////////
