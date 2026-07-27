@@ -281,6 +281,150 @@
       "deepness": 2,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Zahl zwischen 1 und 10 — bei Übereinstimmung applaudiert die Runde.",
+      "en": "Everyone names a number between 1 and 10 — if there's a match, the group applauds.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut gemeinsam einen Turm aus allem, was gerade auf dem Tisch liegt.",
+      "en": "Build a tower together from everything currently on the table.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ihre aktuelle Lieblingsserie, Runde stimmt für die beste ab.",
+      "en": "Everyone names their current favorite show, group votes for the best.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam eine Wettervorhersage für morgen, komplett übertrieben.",
+      "en": "Invent a completely over-the-top weather forecast for tomorrow, together.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt ihre Handyhülle und erzählt kurz, warum sie diese gewählt hat.",
+      "en": "Everyone shows their phone case and briefly explains why they chose it.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde einigt sich auf ein gemeinsames Gruppenfoto-Pose-Konzept und macht es sofort.",
+      "en": "The group agrees on a pose concept and takes the photo right away.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Fähigkeit, die sie gerne von der Person rechts hätte.",
+      "en": "Everyone names a skill they wish they had from the person to their right.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut aus Fingern gemeinsam eine Uhrzeit nach, die die Runde vorgibt.",
+      "en": "Use your fingers to form a time the group calls out, together.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ein Gericht, das sie noch nie gekocht hat, aber gerne würde.",
+      "en": "Everyone names a dish they've never cooked but would like to.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde erfindet gemeinsam einen Toast für einen komplett erfundenen Anlass.",
+      "en": "The group invents a toast for a completely made-up occasion.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt in 5 Sekunden ihre beste Yoga-Pose.",
+      "en": "Everyone shows their best yoga pose in 5 seconds.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam einen Namen für einen imaginären Cocktail und beschreibt ihn.",
+      "en": "Invent a name for an imaginary cocktail together and describe it.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt das letzte Emoji, das sie verschickt hat.",
+      "en": "Everyone names the last emoji they sent.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde stellt sich in einer Reihe nach Länge des Vornamens auf, ohne zu sprechen.",
+      "en": "The group lines up by length of first name, without talking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Sache, die sie diese Woche zum ersten Mal probiert hat.",
+      "en": "Everyone names something they tried for the first time this week.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut gemeinsam eine Pyramide aus Händen, ohne zu sprechen.",
+      "en": "Build a hand pyramid together, without talking.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde einigt sich in 10 Sekunden auf das beste Wort des Abends bisher.",
+      "en": "The group agrees within 10 seconds on the best word of the night so far.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt ihre Wach-Werde-Pose vom heutigen Morgen nach.",
+      "en": "Everyone re-enacts their wake-up pose from this morning.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

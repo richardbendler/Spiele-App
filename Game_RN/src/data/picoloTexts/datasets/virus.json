@@ -118,6 +118,121 @@
           "en": "Last person drinks an extra sip."
         }
       }
+    },
+    {
+      "de": "Virus: Flüsterstimme",
+      "en": "Virus: whisper voice",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Flüsterstimme",
+          "en": "Virus: whisper voice"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: alle sprechen nur noch im Flüsterton.",
+          "en": "Until the next card: everyone speaks only in a whisper."
+        },
+        "penalty": {
+          "de": "Wer normal spricht, trinkt.",
+          "en": "Whoever talks normally drinks."
+        }
+      }
+    },
+    {
+      "de": "Virus: Reim-Pflicht",
+      "en": "Virus: rhyme requirement",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Reim-Pflicht",
+          "en": "Virus: rhyme requirement"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: jeder Satz muss sich reimen.",
+          "en": "Until the next card: every sentence must rhyme."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
+    },
+    {
+      "de": "Virus: Stehplatz",
+      "en": "Virus: standing only",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Stehplatz",
+          "en": "Virus: standing only"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: wer trinkt, muss dabei stehen.",
+          "en": "Until the next card: anyone drinking must stand up first."
+        },
+        "penalty": {
+          "de": "Wer sitzen bleibt, trinkt einen Extraschluck.",
+          "en": "Stay seated and drink an extra sip."
+        }
+      }
+    },
+    {
+      "de": "Virus: Namenspflicht",
+      "en": "Virus: name requirement",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Namenspflicht",
+          "en": "Virus: name requirement"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: wer jemanden anspricht, muss dessen Namen zweimal sagen.",
+          "en": "Until the next card: addressing someone requires saying their name twice."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
+    },
+    {
+      "de": "Virus: Spiegel-Geste",
+      "en": "Virus: mirror gesture",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Spiegel-Geste",
+          "en": "Virus: mirror gesture"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: kopiert die Geste der Person, die zuletzt getrunken hat.",
+          "en": "Until the next card: copy the gesture of whoever last took a drink."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
     }
   ]
 }

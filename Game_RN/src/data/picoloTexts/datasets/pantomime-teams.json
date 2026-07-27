@@ -78,6 +78,81 @@
           "en": "{{teamA}} mimes a made-up future device and its use, {{teamB}} guesses its function."
         }
       }
+    },
+    {
+      "de": "Team Charades: Serien-Marathon",
+      "en": "Team charades: show binge",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine bekannte Serie dar, {{teamB}} rät den Titel.",
+          "en": "{{teamA}} mimes a well-known show, {{teamB}} guesses the title."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Sportmoment",
+      "en": "Team charades: sports moment",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt einen dramatischen Sportmoment dar, {{teamB}} rät die Sportart.",
+          "en": "{{teamA}} mimes a dramatic sports moment, {{teamB}} guesses the sport."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Alltagschaos",
+      "en": "Team charades: everyday chaos",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt einen Alltagsmoment dar, der komplett aus dem Ruder läuft, {{teamB}} rät, was es ist.",
+          "en": "{{teamA}} mimes an everyday moment spiraling out of control, {{teamB}} guesses what it is."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Promi-Rätsel",
+      "en": "Team charades: celebrity guess",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine berühmte Person dar, {{teamB}} rät, wer es ist.",
+          "en": "{{teamA}} mimes a famous person, {{teamB}} guesses who it is."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Tier-Alltag",
+      "en": "Team charades: animal routine",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt den Alltag eines Tieres dar, {{teamB}} rät welches Tier.",
+          "en": "{{teamA}} mimes an animal's daily routine, {{teamB}} guesses which animal."
+        }
+      }
     }
   ]
 }

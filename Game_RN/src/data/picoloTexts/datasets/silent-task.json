@@ -51,6 +51,54 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte die Arme verschränkt, egal was passiert.",
+      "en": "Don't read aloud: keep your arms crossed until the next card, no matter what happens.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Wiederhole bis zur nächsten Karte den letzten Satz jeder Person leise nach.",
+      "en": "Don't read aloud: quietly repeat the last sentence everyone says until the next card.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte ein Bein leicht angehoben, wann immer du sprichst.",
+      "en": "Don't read aloud: keep one leg slightly raised whenever you speak until the next card.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Zwinkere bis zur nächsten Karte jedem zu, der deinen Namen sagt.",
+      "en": "Don't read aloud: wink at anyone who says your name until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte deine Hand auf dem Herzen, wenn du zustimmst.",
+      "en": "Don't read aloud: hold your hand over your heart whenever you agree with something until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Tippe bis zur nächsten Karte dreimal auf den Tisch, bevor du trinkst.",
+      "en": "Don't read aloud: tap the table three times before drinking, until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

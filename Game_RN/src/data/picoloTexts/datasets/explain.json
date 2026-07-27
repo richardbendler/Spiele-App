@@ -43,6 +43,46 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Erklären: Türklinke — Erkläre eine Türklinke, als wärst du ein Alien, das sie zum ersten Mal sieht.",
+      "en": "Explain: door handle — explain a door handle as if you were an alien seeing it for the first time.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Handy — Erkläre ein Handy einem imaginären Publikum aus dem Mittelalter.",
+      "en": "Explain: phone — explain a phone to an imaginary audience from medieval times.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Getränk — Erkläre dein Getränk, als wäre es ein Zaubertrank mit besonderen Kräften.",
+      "en": "Explain: drink — explain your drink as if it were a magic potion with special powers.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Sitzmöbel — Erkläre einen Stuhl im Raum, als wäre er ein Kunstwerk in einem Museum.",
+      "en": "Explain: chair — explain a chair in the room as if it were an artwork in a museum.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Uhr — Erkläre eine Uhr, als hättest du gerade das Konzept von Zeit entdeckt.",
+      "en": "Explain: clock — explain a clock as if you just discovered the concept of time.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

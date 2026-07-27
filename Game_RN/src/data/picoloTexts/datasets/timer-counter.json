@@ -108,6 +108,111 @@
           "en": "Every word counts."
         }
       }
+    },
+    {
+      "de": "Counter: Klatscher",
+      "en": "Counter: claps",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 10,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Klatscher schafft die Runde gemeinsam, bevor der Timer abläuft?",
+          "en": "How many claps can the group land together before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Klatscher zählt.",
+          "en": "Every clap counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Reime",
+      "en": "Counter: rhymes",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Reime auf ein Wort eurer Wahl findet ihr, bevor der Timer abläuft?",
+          "en": "How many rhymes for a word of your choice can you find before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Reim zählt.",
+          "en": "Every rhyme counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Umarmungen",
+      "en": "Counter: hugs",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele verschiedene Umarmungen könnt ihr euch geben, bevor der Timer abläuft?",
+          "en": "How many different hugs can you give each other before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jede Umarmung zählt.",
+          "en": "Every hug counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Zungenbrecher",
+      "en": "Counter: tongue twisters",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie oft schafft eine Person einen Zungenbrecher fehlerfrei, bevor der Timer abläuft?",
+          "en": "How many times can one person say a tongue twister flawlessly before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder fehlerfreie Versuch zählt.",
+          "en": "Every flawless attempt counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Fun Facts",
+      "en": "Counter: fun facts",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Fun Facts kann die Runde zusammentragen, bevor der Timer abläuft?",
+          "en": "How many fun facts can the group come up with before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Fun Fact zählt.",
+          "en": "Every fun fact counts."
+        }
+      }
     }
   ]
 }

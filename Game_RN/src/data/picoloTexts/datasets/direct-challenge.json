@@ -59,6 +59,62 @@
       "deepness": 2,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Herausforderung: Wortduell — Fordere jemanden heraus, abwechselnd Wörter zu einem Thema zu nennen. Wer stockt, trinkt.",
+      "en": "Challenge: word duel — challenge someone to alternate naming words on a topic. Whoever stalls drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Augen zu — Fordere jemanden heraus, 10 Sekunden mit geschlossenen Augen zu balancieren. Wer wackelt zuerst, trinkt.",
+      "en": "Challenge: eyes closed — challenge someone to balance for 10 seconds with eyes closed. First to wobble drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Grimassen-Battle — Fordere jemanden zu einem Grimassen-Duell heraus. Wer zuerst lacht, trinkt.",
+      "en": "Challenge: face-off — challenge someone to a face-pulling duel. First to laugh drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Reimschlacht — Fordere jemanden heraus, abwechselnd Reime zu bilden. Wer zuerst stockt, trinkt.",
+      "en": "Challenge: rhyme battle — challenge someone to alternate rhymes. Whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Stiller Blick — Fordere jemanden zu einem Blickduell heraus. Wer zuerst blinzelt, trinkt.",
+      "en": "Challenge: silent stare — challenge someone to a staring contest. First to blink drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Balance-Akt — Fordere jemanden heraus, ein Glas auf dem Kopf zu balancieren. Wer es zuerst fallen lässt, trinkt.",
+      "en": "Challenge: balance act — challenge someone to balance a glass on their head. Whoever drops it first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Rhythmus-Duell — Fordere jemanden heraus, abwechselnd einen Rhythmus fortzuführen. Wer den Takt verliert, trinkt.",
+      "en": "Challenge: rhythm duel — challenge someone to keep a beat going in turn. Whoever loses the rhythm drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

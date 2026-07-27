@@ -163,6 +163,102 @@
       "deepness": 1,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Alle, die heute schon einen Kaffee getrunken haben, trinken 1 Schluck.",
+      "en": "Everyone who has had coffee today drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal ein Konzert alleine besucht haben, trinken 2 Schlucke.",
+      "en": "Everyone who has been to a concert alone drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle mit mehr als zwei Geschwistern trinken 1 Schluck.",
+      "en": "Everyone with more than two siblings drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal ihr Zimmer für ein Foto extra aufgeräumt haben, trinken 1 Schluck.",
+      "en": "Everyone who has tidied their room just for a photo drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal jemanden mit dem falschen Namen angesprochen haben, trinken 2 Schlucke.",
+      "en": "Everyone who has called someone by the wrong name drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die heute schon Musik laut aufgedreht haben, trinken 1 Schluck.",
+      "en": "Everyone who has turned up music loud today drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal einen Film wegen zu großer Angst abgebrochen haben, trinken 2 Schlucke.",
+      "en": "Everyone who has stopped watching a movie because it was too scary drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle mit einem ungelesenen Buch im Regal seit über einem Jahr trinken 1 Schluck.",
+      "en": "Everyone with an unread book on their shelf for over a year drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal versehentlich ein privates Foto in eine falsche Gruppe geschickt haben, trinken 2 Schlucke.",
+      "en": "Everyone who has accidentally sent a private photo to the wrong group chat drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die heute schon draußen waren, trinken 1 Schluck.",
+      "en": "Everyone who has been outside today drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal aus Versehen im falschen Stockwerk aus dem Aufzug gestiegen sind, trinken 2 Schlucke.",
+      "en": "Everyone who has gotten off the elevator on the wrong floor by mistake drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle mit einer ungenutzten Mitgliedschaft (Fitnessstudio o.Ä.) trinken 2 Schlucke.",
+      "en": "Everyone with an unused membership (gym or similar) drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

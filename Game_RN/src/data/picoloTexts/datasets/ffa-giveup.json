@@ -43,6 +43,38 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Stillstand-Contest: Alle bleiben regungslos stehen. Wer sich zuerst bewegt, trinkt 3 Schlucke.",
+      "en": "Freeze contest: everyone stands motionless. First to move drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ernst-Contest: Alle versuchen, nicht zu lachen. Wer zuerst lacht, trinkt 3 Schlucke.",
+      "en": "Serious-face contest: everyone tries not to laugh. First to laugh drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Blinzel-Contest: Alle starren sich an, ohne zu blinzeln. Wer zuerst blinzelt, trinkt 3 Schlucke.",
+      "en": "Staring contest: everyone stares without blinking. First to blink drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Atem-Contest: Alle halten die Luft an. Wer zuerst aufgibt, trinkt 3 Schlucke.",
+      "en": "Breath-holding contest: everyone holds their breath. First to give up drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

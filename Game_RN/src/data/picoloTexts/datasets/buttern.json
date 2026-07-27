@@ -235,6 +235,238 @@
         ],
         "rewardPerCorrect": 1
       }
+    },
+    {
+      "de": "Buttern: Sport-Fans",
+      "en": "Buttern: Sports Fans",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Sport-Fans",
+              "en": "Sports Fans"
+            },
+            "topics": [
+              "Derbytag",
+              "Trikot-Tausch",
+              "Stadion-Gesang",
+              "Nachspielzeit",
+              "Elfmeterschießen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Musik-Festival",
+      "en": "Buttern: Music Festival",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Musik-Festival",
+              "en": "Music Festival"
+            },
+            "topics": [
+              "Hauptbühne",
+              "Camping-Chaos",
+              "Merch-Stand",
+              "Vorprogramm",
+              "Zugabe"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Home Office",
+      "en": "Buttern: Home Office",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Home Office",
+              "en": "Home Office"
+            },
+            "topics": [
+              "Kamera-aus-Moment",
+              "Kaffeepause",
+              "Stumm-geschaltet",
+              "Bildschirm-Freigabe",
+              "Feierabend-Klick"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Dating-App",
+      "en": "Buttern: Dating App",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Dating-App",
+              "en": "Dating App"
+            },
+            "topics": [
+              "Match",
+              "Erstes-Date-Angst",
+              "Ghosting",
+              "Profilbild-Wahl",
+              "Bio-Spruch"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Fitness-Studio",
+      "en": "Buttern: Gym Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Fitness-Studio",
+              "en": "Gym Life"
+            },
+            "topics": [
+              "Muskelkater",
+              "Neujahrsvorsatz",
+              "Spiegel-Selfie",
+              "Cheat-Day",
+              "Bankdrücken"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Kindheitserinnerungen",
+      "en": "Buttern: Childhood Memories",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Kindheitserinnerungen",
+              "en": "Childhood Memories"
+            },
+            "topics": [
+              "Schulhof-Spiel",
+              "Pausenbrot",
+              "Klassenfahrt",
+              "Sandkasten",
+              "Sommerferien"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Online-Shopping",
+      "en": "Buttern: Online Shopping",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Online-Shopping",
+              "en": "Online Shopping"
+            },
+            "topics": [
+              "Warenkorb-Vergessen",
+              "Retoure",
+              "Rabattcode",
+              "Lieferverzug",
+              "Impulskauf"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Haustier-Leben",
+      "en": "Buttern: Pet Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Haustier-Leben",
+              "en": "Pet Life"
+            },
+            "topics": [
+              "Tierarztbesuch",
+              "Gassi-Runde",
+              "Katzenklo",
+              "Leckerli",
+              "Kuschelzeit"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
     }
   ]
 }
