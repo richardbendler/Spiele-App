@@ -111,6 +111,150 @@
           "en": "{{target}} last had their phone in hand and drinks 2 sips."
         }
       }
+    },
+    {
+      "de": "Playlist-Boss",
+      "en": "Playlist boss",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt Musik ausgesucht und trinkt einen Schluck.",
+          "en": "{{target}} last picked the music and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Später-dran",
+      "en": "Running late",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} ist heute als Letztes angekommen und trinkt 2 Schlucke.",
+          "en": "{{target}} arrived last today and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Foto-Ziel",
+      "en": "Photo target",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} war auf dem letzten Gruppenfoto und darf einen Schluck verteilen.",
+          "en": "{{target}} was in the last group photo and gets to hand out a sip."
+        }
+      }
+    },
+    {
+      "de": "Wetter-Wette",
+      "en": "Weather bet",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} schätzt das Wetter für morgen. Liegt die Person falsch, trinkt sie 2 Schlucke.",
+          "en": "{{target}} guesses tomorrow's weather. If wrong, they drink 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Schuh-Check",
+      "en": "Shoe check",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat die auffälligsten Schuhe im Raum und trinkt einen Schluck.",
+          "en": "{{target}} has the most eye-catching shoes in the room and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Zuletzt-Gelacht",
+      "en": "Last to laugh",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt am lautesten gelacht und trinkt 2 Schlucke.",
+          "en": "{{target}} laughed loudest most recently and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Sitz-Steuer",
+      "en": "Seat tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} sitzt am nächsten zur Tür und trinkt einen Schluck.",
+          "en": "{{target}} sits closest to the door and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Wortführer-Steuer",
+      "en": "Talker's tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat in den letzten 5 Minuten am meisten geredet und trinkt 2 Schlucke.",
+          "en": "{{target}} has talked the most in the last 5 minutes and drinks 2 sips."
+        }
+      }
     }
   ]
 }

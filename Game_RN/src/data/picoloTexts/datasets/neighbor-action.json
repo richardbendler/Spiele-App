@@ -93,6 +93,114 @@
           "en": "{{anchor}} and {{right}} improvise a 10-second commercial for a made-up product."
         }
       }
+    },
+    {
+      "de": "Nachbarschaftsduo: Kompliment-Duell",
+      "en": "Neighbor duo: compliment duel",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} machen sich abwechselnd Komplimente, bis einer nichts mehr einfällt.",
+          "en": "{{anchor}} and {{right}} take turns giving compliments until one runs out of ideas."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Synchron-Sprung",
+      "en": "Neighbor duo: sync jump",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{left}} springen dreimal gleichzeitig, ohne sich abzusprechen.",
+          "en": "{{anchor}} and {{left}} jump three times simultaneously without coordinating beforehand."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Wortkette",
+      "en": "Neighbor duo: word chain",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} bilden abwechselnd eine Wortkette, bis jemand stockt.",
+          "en": "{{anchor}} and {{right}} build a word chain in turn until someone stalls."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Rücken-an-Rücken",
+      "en": "Neighbor duo: back to back",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{left}} setzen sich Rücken an Rücken und beschreiben abwechselnd ihren Tag.",
+          "en": "{{anchor}} and {{left}} sit back to back and describe their day in turn."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Gemeinsamer Toast",
+      "en": "Neighbor duo: shared toast",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} erfinden gemeinsam einen kurzen Trinkspruch und stoßen an.",
+          "en": "{{anchor}} and {{right}} invent a short toast together and clink glasses."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Blick-Battle",
+      "en": "Neighbor duo: staring battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{left}} schauen sich 10 Sekunden in die Augen, ohne zu lachen.",
+          "en": "{{anchor}} and {{left}} hold eye contact for 10 seconds without laughing."
+        }
+      }
     }
   ]
 }

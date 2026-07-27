@@ -78,6 +78,81 @@
           "en": "{{teamA}} and {{teamB}} each invent a 30-second ad for the same made-up product. The group picks the weaker team, they drink 2 sips."
         }
       }
+    },
+    {
+      "de": "Teamduell: Reim-Battle",
+      "en": "Team duel: rhyme battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: abwechselnd Reime auf ein Wort finden, bis ein Team stockt. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: alternate finding rhymes for a word until one team stalls. Losing team drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Stille Post",
+      "en": "Team duel: telephone game",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} spielen je eine Runde Stille Post. Team mit dem schlechteren Ergebnis trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} each play a round of telephone game. The team with the worse result drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Schätz-Battle",
+      "en": "Team duel: guess battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: schätzt abwechselnd Zahlen zu einer Frage der Runde. Weiter entferntes Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: alternate guessing numbers for a group question. The team further off drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Tanz-Battle",
+      "en": "Team duel: dance battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} zeigen je eine 10-Sekunden-Choreografie. Die Runde wählt das schwächere Team, es trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} each perform a 10-second dance routine. The group picks the weaker team, they drink 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Schlagfertigkeit",
+      "en": "Team duel: quick wit",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: liefert abwechselnd schlagfertige Antworten auf eine Frage der Runde. Langsameres Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: alternate quick-witted answers to a group question. Slower team drinks 2 sips."
+        }
+      }
     }
   ]
 }

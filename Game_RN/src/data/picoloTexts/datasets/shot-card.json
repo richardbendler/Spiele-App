@@ -43,6 +43,38 @@
       "deepness": 2,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Shot: Blindwahl — Lass jemand anderen entscheiden, wann du deinen Shot nimmst.",
+      "en": "Shot: blind choice — let someone else decide when you take your shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Wortpaar — Nenne zwei Wörter, die sich reimen, bevor du den Shot nimmst.",
+      "en": "Shot: word pair — say two rhyming words before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Ansage — Halte eine 5-Sekunden-Ansage, bevor du den Shot nimmst.",
+      "en": "Shot: announcement — give a 5-second speech before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Rundenrunde — Alle, die möchten, nehmen den Shot gemeinsam mit dir.",
+      "en": "Shot: group round — anyone who wants to joins you in taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

@@ -43,6 +43,46 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Solo Mime: Roboter-Kellner — Stelle 15 Sekunden lang einen Roboter dar, der Getränke serviert, Runde rät.",
+      "en": "Solo mime: robot waiter — mime a robot serving drinks for 15 seconds, group guesses.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Verlorener Tourist — Stelle 15 Sekunden lang eine verlorene Touristin oder einen verlorenen Touristen dar, Runde rät den Ort.",
+      "en": "Solo mime: lost tourist — mime a lost tourist for 15 seconds, group guesses the location.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Geheimagent — Stelle 15 Sekunden lang einen Geheimagenten im Einsatz dar, Runde rät die Mission.",
+      "en": "Solo mime: secret agent — mime a secret agent on a mission for 15 seconds, group guesses the mission.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Wettervorhersage — Stelle 15 Sekunden lang eine Wettervorhersage pantomimisch dar, Runde rät das Wetter.",
+      "en": "Solo mime: weather forecast — mime a weather forecast for 15 seconds, group guesses the weather.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Berühmtheit — Stelle 15 Sekunden lang eine berühmte Person dar, Runde rät wer.",
+      "en": "Solo mime: celebrity — mime a famous person for 15 seconds, group guesses who.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

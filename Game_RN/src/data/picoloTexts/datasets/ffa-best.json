@@ -43,6 +43,38 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet die beste Ausrede für ein imaginäres Zuspätkommen? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best excuse for an imaginary late arrival? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer stellt die überzeugendste Filmtrailer-Stimme vor? Beste Person verteilt 3 Schlucke.",
+      "en": "Who does the most convincing movie-trailer voice? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet den besten Fantasienamen für sich selbst? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best fantasy name for themselves? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer hält die überzeugendste 20-Sekunden-Motivationsrede? Beste Person verteilt 3 Schlucke.",
+      "en": "Who gives the most convincing 20-second motivational speech? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

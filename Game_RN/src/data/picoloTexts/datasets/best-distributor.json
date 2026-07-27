@@ -14,7 +14,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Challenge: 15-Sekunden-Verkaufs-Pitch f\u00fcr einen zuf\u00e4lligen Gegenstand im Raum. \u00dcberzeugendste Person verteilt 4 Schlucke.",
+      "de": "Challenge: 15-Sekunden-Verkaufs-Pitch für einen zufälligen Gegenstand im Raum. Überzeugendste Person verteilt 4 Schlucke.",
       "en": "Challenge: 15-second sales pitch for a random object in the room. Most convincing hands out 4 sips.",
       "drunkLevel": 5,
       "deepness": 1,
@@ -41,7 +41,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Challenge: Erfindet einen 12-Wort-Reim \u00fcber die Runde. Bestes Reimfeuer verteilt 5 Schlucke.",
+      "de": "Challenge: Erfindet einen 12-Wort-Reim über die Runde. Bestes Reimfeuer verteilt 5 Schlucke.",
       "en": "Challenge: craft a 12-word rhyme about the group. Best rhyme blast hands out 5 sips.",
       "drunkLevel": 6,
       "deepness": 2,
@@ -50,10 +50,37 @@
       "manual_approval": 0
     },
     {
-      "de": "Challenge: 20-Sekunden-R\u00e4tsel erfinden. Wer das cleverste kurze R\u00e4tsel liefert, verteilt 3 Schlucke.",
+      "de": "Challenge: 20-Sekunden-Rätsel erfinden. Wer das cleverste kurze Rätsel liefert, verteilt 3 Schlucke.",
       "en": "Challenge: invent a 20-second riddle. Cleverest short riddle hands out 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Stapelt drei Gegenstände so hoch wie möglich in 20 Sekunden. Höchster Stapel verteilt 3 Schlucke.",
+      "en": "Challenge: stack three objects as high as possible in 20 seconds. Tallest stack hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Zeichnet blind ein Gesicht auf Papier. Erkennbarstes Ergebnis verteilt 3 Schlucke.",
+      "en": "Challenge: draw a face blindfolded on paper. Most recognizable result hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet in 20 Sekunden einen Werbeslogan. Bester Slogan verteilt 3 Schlucke.",
+      "en": "Challenge: invent an ad slogan in 20 seconds. Best slogan hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
       "drink": true,
       "drinking": true,
       "manual_approval": 0

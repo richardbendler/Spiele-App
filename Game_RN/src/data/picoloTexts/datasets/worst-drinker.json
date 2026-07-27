@@ -23,7 +23,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Challenge: Fl\u00fcster ein Wort durch die Runde (Stille Post). Wenn es bei dir falsch endet, trink 3 Schlucke.",
+      "de": "Challenge: Flüster ein Wort durch die Runde (Stille Post). Wenn es bei dir falsch endet, trink 3 Schlucke.",
       "en": "Challenge: whisper a word around (telephone). If it ends wrong on you, drink 3 sips.",
       "drunkLevel": 3,
       "deepness": 1,
@@ -41,7 +41,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Challenge: Erkl\u00e4re einen Film ohne Titel in 15 Sekunden. Wenn niemand es rafft, trink 3 Schlucke.",
+      "de": "Challenge: Erkläre einen Film ohne Titel in 15 Sekunden. Wenn niemand es rafft, trink 3 Schlucke.",
       "en": "Challenge: explain a movie without naming it in 15 seconds. If nobody gets it, drink 3 sips.",
       "drunkLevel": 4,
       "deepness": 1,
@@ -52,6 +52,33 @@
     {
       "de": "Challenge: 10-Sekunden-Reim. Wer keinen passenden Reim findet, trinkt 2 Schlucke.",
       "en": "Challenge: 10-second rhyme. Fail to find a rhyme, drink 2 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Balanciert 10 Sekunden auf einem Bein. Wer zuerst wackelt, trinkt 3 Schlucke.",
+      "en": "Challenge: balance on one leg for 10 seconds. First to wobble drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Spricht einen Zungenbrecher. Wer sich verhaspelt, trinkt 3 Schlucke.",
+      "en": "Challenge: say a tongue twister. Whoever trips up drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Macht das überzeugendste Tiergeräusch. Schwächstes Geräusch trinkt 3 Schlucke.",
+      "en": "Challenge: make the most convincing animal sound. Weakest attempt drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 1,
       "drink": true,

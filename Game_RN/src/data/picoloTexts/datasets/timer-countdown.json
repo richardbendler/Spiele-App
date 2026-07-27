@@ -103,6 +103,126 @@
           "en": "Time's up! Nice feeling, right?"
         }
       }
+    },
+    {
+      "de": "Countdown: Reim-Kette",
+      "en": "Countdown: rhyme chain",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Findet gemeinsam so viele Reime auf ein Wort eurer Wahl wie möglich, bevor der Timer abläuft.",
+          "en": "Find as many rhymes as possible for a word of your choice before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Menschliche Skulptur",
+      "en": "Countdown: human sculpture",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "text": {
+          "de": "Formt gemeinsam eine menschliche Skulptur zu einem vorgegebenen Wort, bevor der Timer abläuft.",
+          "en": "Form a human sculpture representing a given word before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Erkennt die Runde das Wort?",
+          "en": "Time's up! Does the group recognize the word?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Städte-Sprint",
+      "en": "Countdown: city sprint",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Nennt so viele Städte wie möglich, bevor der Timer abläuft.",
+          "en": "Name as many cities as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Karten-Turm",
+      "en": "Countdown: card tower",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 25,
+        "text": {
+          "de": "Baut gemeinsam einen Turm aus Bierdeckeln oder Karten, bevor der Timer abläuft.",
+          "en": "Build a tower from coasters or cards together before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Steht der Turm noch?",
+          "en": "Time's up! Is the tower still standing?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Insider-Sammlung",
+      "en": "Countdown: inside-joke collection",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Sammelt so viele gemeinsame Insider-Witze wie möglich, bevor der Timer abläuft.",
+          "en": "Collect as many shared inside jokes as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Tier-Imitationen",
+      "en": "Countdown: animal impressions",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "text": {
+          "de": "Macht reihum so viele verschiedene Tiergeräusche wie möglich, bevor der Timer abläuft.",
+          "en": "Take turns making as many different animal sounds as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei!",
+          "en": "Time's up!"
+        }
+      }
     }
   ]
 }

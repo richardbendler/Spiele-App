@@ -123,6 +123,150 @@
           "en": "Dare: whisper a compliment into the ear of someone of your choice."
         }
       }
+    },
+    {
+      "de": "Buttons: Peinlich oder Mutig",
+      "en": "Buttons: embarrassing or bold",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Was war dein peinlichster Moment dieses Jahr?",
+          "en": "Truth: what was your most embarrassing moment this year?"
+        },
+        "dare": {
+          "de": "Pflicht: Erzähl der Runde deinen mutigsten Moment dieses Jahr.",
+          "en": "Dare: tell the group your boldest moment this year."
+        }
+      }
+    },
+    {
+      "de": "Buttons: Geheimnis oder Talent",
+      "en": "Buttons: secret or talent",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Welches kleine Geheimnis teilst du gerade zum ersten Mal?",
+          "en": "Truth: which small secret are you sharing for the first time right now?"
+        },
+        "dare": {
+          "de": "Pflicht: Zeig der Runde ein verstecktes Talent.",
+          "en": "Dare: show the group a hidden talent."
+        }
+      }
+    },
+    {
+      "de": "Buttons: Flirt oder Fun Fact",
+      "en": "Buttons: flirt or fun fact",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Was war dein bester Flirt-Versuch?",
+          "en": "Truth: what was your best flirting attempt ever?"
+        },
+        "dare": {
+          "de": "Pflicht: Erzähl einen Fun Fact über dich, den niemand hier kennt.",
+          "en": "Dare: share a fun fact about yourself nobody here knows."
+        }
+      }
+    },
+    {
+      "de": "Buttons: Reue oder Stolz",
+      "en": "Buttons: regret or pride",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Was bereust du am meisten aus diesem Jahr?",
+          "en": "Truth: what do you regret most from this year?"
+        },
+        "dare": {
+          "de": "Pflicht: Erzähl, worauf du dieses Jahr am stolzesten bist.",
+          "en": "Dare: tell the group what you're proudest of this year."
+        }
+      }
+    },
+    {
+      "de": "Buttons: Kompliment oder Kritik",
+      "en": "Buttons: compliment or critique",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Welches Kompliment hast du dir selbst schon lange nicht mehr gemacht?",
+          "en": "Truth: what compliment have you not given yourself in a while?"
+        },
+        "dare": {
+          "de": "Pflicht: Gib jemandem in der Runde ein ehrliches, konstruktives Feedback.",
+          "en": "Dare: give someone in the group honest, constructive feedback."
+        }
+      }
+    },
+    {
+      "de": "Buttons: Traum oder Angst",
+      "en": "Buttons: dream or fear",
+      "drunkLevel": 4,
+      "deepness": 3,
+      "tags": [
+        "interactive"
+      ],
+      "payload": {
+        "type": "truthOrDare",
+        "preface": {
+          "de": "{{target}}, du bist dran. Tippe auf Wahrheit oder Pflicht.",
+          "en": "{{target}}, it's your turn. Tap Truth or Dare."
+        },
+        "truth": {
+          "de": "Wahrheit: Was ist dein größter unerfüllter Traum?",
+          "en": "Truth: what is your biggest unfulfilled dream?"
+        },
+        "dare": {
+          "de": "Pflicht: Erzähl der Runde deine größte Angst - und wie du damit umgehst.",
+          "en": "Dare: tell the group your biggest fear - and how you deal with it."
+        }
+      }
     }
   ]
 }

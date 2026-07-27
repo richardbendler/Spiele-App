@@ -43,6 +43,46 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Fake News: Wetter — Erfinde in 15 Sekunden eine absurde Wetter-Schlagzeile und verkünde sie wie im Nachrichtenstudio.",
+      "en": "Fake News: weather — in 15 seconds invent an absurd weather headline and deliver it like a news anchor.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Technik — Erfinde in 15 Sekunden eine absurde Falschmeldung über eine neue Erfindung.",
+      "en": "Fake News: tech — in 15 seconds invent an absurd fake headline about a new invention.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Promi — Erfinde in 15 Sekunden eine absurde Schlagzeile über eine erfundene Berühmtheit.",
+      "en": "Fake News: celebrity — in 15 seconds invent an absurd headline about a made-up celebrity.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Wissenschaft — Erfinde in 15 Sekunden eine absurde 'wissenschaftliche' Entdeckung.",
+      "en": "Fake News: science — in 15 seconds invent an absurd 'scientific' discovery.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Lokales — Erfinde in 15 Sekunden eine absurde Lokalnachricht über diesen Raum.",
+      "en": "Fake News: local — in 15 seconds invent an absurd local news story about this room.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

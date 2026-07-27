@@ -43,6 +43,38 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Party…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “party…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Sommer…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “summer…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Freund…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “friend…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Nacht…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “night…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

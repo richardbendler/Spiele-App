@@ -43,6 +43,38 @@
       "deepness": 2,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Chug: Halbzeit — Trink die Hälfte deines aktuellen Drinks in einem Zug.",
+      "en": "Chug: halftime — finish half your current drink in one go.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Countdown — Trink drei Schlucke, bevor die Runde bis fünf gezählt hat.",
+      "en": "Chug: countdown — take three sips before the group counts to five.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Duo — Finde eine Partnerin oder einen Partner und trinkt gleichzeitig in großen Schlucken.",
+      "en": "Chug: duo — find a partner and both chug big sips at the same time.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Verlängerung — Trink weiter, bis dir jemand 'Stopp' zuruft.",
+      "en": "Chug: overtime — keep drinking until someone shouts 'stop'.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     }
   ]
 }
