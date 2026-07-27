@@ -39,6 +39,9 @@ const DrinkCounter = () => {
   const [profileVisible, setProfileVisible] = useState(false);
   const [userName, setUserName] = useState('');
   const [bodyWeightKg, setBodyWeightKg] = useState(DEFAULT_WEIGHT);
+  // Getrennt vom Rechenwert, damit das Eingabefeld beim ersten Öffnen leer ist
+  // (Platzhaltertext sichtbar) statt mit einem unsichtbar "geratenen" Gewicht vorbelegt zu sein.
+  const [weightInputText, setWeightInputText] = useState('');
 
   // UI
   const [editRecent, setEditRecent] = useState(false);
@@ -57,7 +60,10 @@ const DrinkCounter = () => {
         if (nameRaw) setUserName(nameRaw);
         if (weightRaw) {
           const w = parseFloat(String(weightRaw).replace(',', '.'));
-          if (!Number.isNaN(w) && w > 20 && w < 300) setBodyWeightKg(w);
+          if (!Number.isNaN(w) && w > 20 && w < 300) {
+            setBodyWeightKg(w);
+            setWeightInputText(String(w));
+          }
         }
         if (!nameRaw || !weightRaw) setProfileVisible(true);
       } catch {
@@ -68,14 +74,15 @@ const DrinkCounter = () => {
 
   const saveProfile = useCallback(async () => {
     const safeName = (userName || '').trim();
-    const w = parseFloat(String(bodyWeightKg).replace(',', '.'));
+    const w = parseFloat(String(weightInputText).replace(',', '.'));
     const safeWeight = Math.max(20, Math.min(300, Number.isNaN(w) ? DEFAULT_WEIGHT : w));
     setUserName(safeName);
     setBodyWeightKg(safeWeight);
+    setWeightInputText(String(safeWeight));
     await AsyncStorage.setItem('drinkCounter_userName', safeName);
     await AsyncStorage.setItem('drinkCounter_bodyWeightKg', String(safeWeight));
     setProfileVisible(false);
-  }, [userName, bodyWeightKg]);
+  }, [userName, weightInputText]);
 
   // Persist helpers
   const persistCatalog = useCallback(async (catalog) => {
@@ -408,7 +415,7 @@ const DrinkCounter = () => {
           <View style={styles.modalCard}>
             <Text style={styles.modalTitle}>{t('Dein Profil', 'Your Profile')}</Text>
             <View style={styles.formRow}><TextInput style={styles.formInput} placeholder={t('Name', 'Name')} placeholderTextColor="rgba(255,255,255,0.4)" value={userName} onChangeText={setUserName} /></View>
-            <View style={styles.formRow}><TextInput style={styles.formInput} placeholder={t('Körpergewicht (kg)', 'Body weight (kg)')} placeholderTextColor="rgba(255,255,255,0.4)" keyboardType="numeric" value={String(bodyWeightKg)} onChangeText={setBodyWeightKg} /></View>
+            <View style={styles.formRow}><TextInput style={styles.formInput} placeholder={t('Körpergewicht (kg)', 'Body weight (kg)')} placeholderTextColor="rgba(255,255,255,0.4)" keyboardType="numeric" value={weightInputText} onChangeText={setWeightInputText} /></View>
             <TouchableOpacity onPress={saveProfile} style={styles.closeModalButton}><Text style={styles.closeModalButtonText}>{t('Speichern', 'Save')}</Text></TouchableOpacity>
           </View>
         </View>
