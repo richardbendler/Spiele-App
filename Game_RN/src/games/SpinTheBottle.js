@@ -1,5 +1,5 @@
 // Import necessary React and React Native modules
-import React, { useState, useContext, useRef, useMemo } from 'react';
+import React, { useState, useContext, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Animated, Image, Dimensions, PanResponder } from 'react-native';
 import { VariablesContext } from '../../VariablesContext';
 import Question from './sublements/Question';
@@ -11,6 +11,12 @@ import { appStyles } from '../../styles';
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
 
+// 0-9 Reglerwert -> 1-5 Inhalts-Stufe (2 Reglerschritte pro Stufe statt nur 3 grober Buckets).
+const intensityCeilingFromSlider = (value) => {
+  const clamped = Math.max(0, Math.min(9, Number(value) || 0));
+  return Math.min(5, Math.ceil((clamped + 1) / 2));
+};
+
 // Main component for the Spin the Bottle game
 const SpinTheBottle = ({ route }) => {
   const {
@@ -18,6 +24,7 @@ const SpinTheBottle = ({ route }) => {
     tutorialEnabled,
     setTutorialEnabled,
     theOneSettings,
+    setTheOneSettings,
     spinTheBottleTruths,
     spinTheBottleDares,
   } = useContext(VariablesContext);
@@ -52,8 +59,20 @@ const SpinTheBottle = ({ route }) => {
   );
 
   const [randomSelection, setRandomSelection] = useState('initial'); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
-  const [rndIndex, setRndIndex] = useState(0); // Index fuer die zufaellig gewaehlte Aussage aus einem der Pools
   const [outcome, setOutcome] = useState({ type: 'initial' });
+  // Praeziser (fraktionaler) Fortschritt fuer die Gating-Berechnung dieser Session. Die geteilte
+  // Einstellung (theOneSettings.currentDrunkenness) wird nur gerundet zurückgeschrieben, da andere
+  // Screens (z.B. PreGameSettings) den Wert als Array-Index fuer die Skalen-Beschriftung nutzen.
+  const [drunkProgress, setDrunkProgress] = useState(() => {
+    const start = Number(theOneSettings?.currentDrunkenness);
+    return Number.isFinite(start) ? Math.max(0, Math.min(9, start)) : 4;
+  });
+  // PanResponder wird per useRef nur einmal erzeugt - sein Callback wuerde sonst den
+  // drunkProgress-Wert vom allerersten Render einfrieren (Stale Closure). Ref immer aktuell halten.
+  const drunkProgressRef = useRef(drunkProgress);
+  useEffect(() => {
+    drunkProgressRef.current = drunkProgress;
+  }, [drunkProgress]);
   const [tutorialStep, setTutorialStep] = useState(0);
   const { t } = useTranslation();
   const copy = useMemo(() => {
@@ -70,7 +89,7 @@ const SpinTheBottle = ({ route }) => {
       case 'sips':
         return `${outcome.count} ${copy.sipsLabel ?? ""}`.trim();
       case 'truth': {
-        const entry = textsWahrheitSpinTheBottle[outcome.index];
+        const entry = outcome.entry;
         if (!entry) {
           return copy.truthLabel ?? '';
         }
@@ -79,7 +98,7 @@ const SpinTheBottle = ({ route }) => {
         return `${copy.truthLabel ?? ""} ${textValue}`.trim();
       }
       case 'dare': {
-        const entry = textsPflichtSpinTheBottle[outcome.index];
+        const entry = outcome.entry;
         if (!entry) {
           return copy.dareLabel ?? '';
         }
@@ -90,9 +109,24 @@ const SpinTheBottle = ({ route }) => {
       default:
         return '';
     }
-  }, [outcome, copy, language, textsPflichtSpinTheBottle, textsWahrheitSpinTheBottle]);
+  }, [outcome, copy, language]);
 
   const questionText = useMemo(() => deleteHashtags(displayedText || ''), [displayedText]);
+
+  const drunkennessScale = useMemo(() => {
+    const value = t('scales.drunkenness');
+    return Array.isArray(value) ? value : [];
+  }, [t]);
+  const progressLabel = useMemo(() => {
+    const current = Math.round(Math.max(0, Math.min(9, Number(theOneSettings?.currentDrunkenness) || 0)));
+    const desired = Math.round(Math.max(0, Math.min(9, Number(theOneSettings?.desiredDrunkenness) || 0)));
+    const currentLabel = drunkennessScale[current] ?? `${current}/9`;
+    if (current >= desired) {
+      return language === 'de' ? `Stimmung: ${currentLabel} (Ziel erreicht)` : `Mood: ${currentLabel} (goal reached)`;
+    }
+    const desiredLabel = drunkennessScale[desired] ?? `${desired}/9`;
+    return language === 'de' ? `Stimmung: ${currentLabel} · Ziel: ${desiredLabel}` : `Mood: ${currentLabel} · Goal: ${desiredLabel}`;
+  }, [theOneSettings?.currentDrunkenness, theOneSettings?.desiredDrunkenness, drunkennessScale, language]);
   // Ref variable for the rotation value of the bottle, initialized with 0
   const rotationValue = useRef(new Animated.Value(0)).current;
   // Ref variable for the last rotation position, initialized with 0
@@ -142,16 +176,33 @@ const SpinTheBottle = ({ route }) => {
           rotationValue.setOffset(lastRotation.current);
           rotationValue.setValue(0);
 
-          // Auswahl zwischen Schlucke (0), Wahrheit (1), Pflicht (2) basierend auf "Touchy"-Level (re-uses familiarity)
+          // Inhalts-Obergrenze: eine Frage/Aufgabe wird nur angeboten, wenn sie SOWOHL zum
+          // "Touchy"-Regler ALS AUCH zum aktuellen Betrunkenheits-Fortschritt der Gruppe passt.
+          const currentDrunkenness = drunkProgressRef.current;
+          const desiredDrunkenness = Math.max(0, Math.min(9, Number(theOneSettings?.desiredDrunkenness ?? 6)));
           const touchy = Math.max(0, Math.min(9, Number(theOneSettings?.familiarity ?? 5)));
-          const pDare = 0.2 + 0.06 * touchy; // 0.2 .. 0.74
-          const pTruth = 0.5 - 0.03 * touchy; // 0.5 .. 0.23
-          const pSips = Math.max(0.06, 1 - pDare - pTruth); // remainder, keep >= 0.06
+
+          const contentCeiling = Math.min(
+            intensityCeilingFromSlider(touchy),
+            intensityCeilingFromSlider(currentDrunkenness)
+          );
+          const eligibleTruths = textsWahrheitSpinTheBottle.filter((e) => (e.intensity ?? 1) <= contentCeiling);
+          const eligibleDares = textsPflichtSpinTheBottle.filter((e) => (e.intensity ?? 1) <= contentCeiling);
+
+          // Schlucke-Anteil richtet sich danach, wie weit die Gruppe noch vom Wunschziel entfernt
+          // ist: grosse Luecke -> viele Schlucke, um aufzuholen. Ziel erreicht/ueberschritten ->
+          // kaum noch Schlucke, dafuer wieder "normalere" Wahrheit/Pflicht-Fragen.
+          const gapRatio = Math.max(0, Math.min(1, (desiredDrunkenness - currentDrunkenness) / 9));
+          const pSips = 0.15 + 0.55 * gapRatio; // 0.15 (Ziel erreicht) .. 0.70 (max. Luecke)
+          const remaining = 1 - pSips;
+          const pDareShare = Math.min(0.75, 0.35 + 0.03 * touchy);
+          const pDare = remaining * pDareShare;
+          const pTruth = Math.max(0.02, remaining - pDare);
 
           const weightedOptions = [
             { type: 'sips', weight: pSips },
-            ...(textsWahrheitSpinTheBottle.length > 0 ? [{ type: 'truth', weight: Math.max(0.02, pTruth) }] : []),
-            ...(textsPflichtSpinTheBottle.length > 0 ? [{ type: 'dare', weight: Math.max(0.02, pDare) }] : []),
+            ...(eligibleTruths.length > 0 ? [{ type: 'truth', weight: Math.max(0.02, pTruth) }] : []),
+            ...(eligibleDares.length > 0 ? [{ type: 'dare', weight: Math.max(0.02, pDare) }] : []),
           ];
 
           const totalWeight = weightedOptions.reduce((sum, entry) => sum + entry.weight, 0);
@@ -171,18 +222,23 @@ const SpinTheBottle = ({ route }) => {
             case 'sips': {  // Schlucke! Option
               const sips = generateRandomSips();
               setOutcome({ type: 'sips', count: sips });
+              // Betrunkenheits-Fortschritt der Gruppe steigt mit jedem verteilten Schluck.
+              // Praezise lokal fortschreiben, aber nur gerundet in die geteilte Einstellung
+              // zurückschreiben (siehe Kommentar bei drunkProgress).
+              const nextProgress = Math.max(0, Math.min(9, drunkProgressRef.current + sips * 0.15));
+              drunkProgressRef.current = nextProgress;
+              setDrunkProgress(nextProgress);
+              setTheOneSettings((prev) => ({ ...prev, currentDrunkenness: Math.round(nextProgress) }));
               break;
             }
             case 'truth': {  // Wahrheit! Option
-              const truthIndex = textsWahrheitSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsWahrheitSpinTheBottle.length) : 0;
-              setRndIndex(truthIndex);
-              setOutcome({ type: 'truth', index: truthIndex });
+              const entry = eligibleTruths[Math.floor(Math.random() * eligibleTruths.length)];
+              setOutcome({ type: 'truth', entry });
               break;
             }
             case 'dare': {  // Pflicht! Option
-              const dareIndex = textsPflichtSpinTheBottle.length > 0 ? Math.floor(Math.random() * textsPflichtSpinTheBottle.length) : 0;
-              setRndIndex(dareIndex);
-              setOutcome({ type: 'dare', index: dareIndex });
+              const entry = eligibleDares[Math.floor(Math.random() * eligibleDares.length)];
+              setOutcome({ type: 'dare', entry });
               break;
             }
             default: {
@@ -207,7 +263,9 @@ const SpinTheBottle = ({ route }) => {
     <View style={styles.background}>
 
         <View style={{flex: 1, height:'100%'}}>
-          <View style={{height: '20%', justifyContent: 'center', alignItems: 'center',}}></View>
+          <View style={{height: '20%', justifyContent: 'center', alignItems: 'center',}}>
+            <Text style={styles.progressLabel}>{progressLabel}</Text>
+          </View>
 
           <View style={{height: '30%', justifyContent: 'center', alignItems: 'center',}}>
             <Animated.View 
@@ -223,10 +281,8 @@ const SpinTheBottle = ({ route }) => {
           </View>
         </View>
         <View style={{height: '10%', justifyContent: 'center', alignItems: 'center'}}>
-        {randomSelection === 'truth' ? (
-          <HandleFeedback texts={textsWahrheitSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
-        ) : randomSelection === 'dare' ? (
-          <HandleFeedback texts={textsPflichtSpinTheBottle} textsIndex={rndIndex} table={'game_klassiker_questions'}/>
+        {(randomSelection === 'truth' || randomSelection === 'dare') && outcome.entry ? (
+          <HandleFeedback texts={[outcome.entry]} textsIndex={0} table={'game_klassiker_questions'}/>
         ) : null}
         </View>
 
@@ -273,6 +329,13 @@ const styles = StyleSheet.create({
   bottle: {
     width: 110,
     height: 250,
+  },
+  progressLabel: {
+    position: 'absolute',
+    top: 56,
+    fontSize: 13,
+    color: 'rgba(255,255,255,0.75)',
+    fontFamily: 'Quicksand_300Bold',
   },
   hintText: {
     marginTop: 20,
