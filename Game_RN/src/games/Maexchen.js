@@ -16,6 +16,7 @@ const diceImages = {
   6: require('../../assets/images/wuerfel_6.png'),
 };
 
+// Reihenfolge von stark nach schwach; Index dient als Rang zum Vergleichen von Ansagen.
 const RANKING_VALUES = [
   '21',
   '66',
@@ -41,6 +42,13 @@ const RANKING_VALUES = [
 
 const HIDDEN_SYMBOL = '?';
 
+const getCombinationCode = (first, second) => {
+  const high = Math.max(first, second);
+  const low = Math.min(first, second);
+  if (high === 2 && low === 1) return '21';
+  return `${high}${low}`;
+};
+
 const buildCopy = (language) => {
   if (language === 'en') {
     return {
@@ -52,16 +60,16 @@ const buildCopy = (language) => {
           body: 'The active player rolls in secret and keeps the result hidden. Shield the screen so nobody peeks.',
         },
         showing: {
-          headline: 'Remember your result',
-          body: 'Your roll: {{combination}}. Decide what to announce, cover the dice, and pass the phone along.',
+          headline: 'Choose your call',
+          body: 'Your roll: {{combination}}. Pick what to announce below, cover the dice, and pass the phone along.',
         },
         hidden: {
-          headline: 'Pass it on & bluff',
-          body: 'Announce a higher value than the one you heard. The next player can believe you and roll – or challenge.',
+          headline: 'Trust or challenge?',
+          body: 'Announced: {{announced}}. Believe it and roll onward – or challenge and see the real dice.',
         },
         revealed: {
           headline: 'Revealed!',
-          body: 'It was actually {{combination}}. Whoever guessed wrong drinks. Then start a fresh round.',
+          body: 'The real roll was {{combination}} — announced was {{announced}}.',
         },
       },
       buttons: {
@@ -82,9 +90,16 @@ const buildCopy = (language) => {
         pair: 'Double {{value}}',
         default: '',
       },
+      pickerTitle: 'What do you announce?',
+      pickerHintFirst: 'This is the first call of the round — anything goes.',
+      pickerHintBeat: 'Must be higher than: {{value}}',
+      pickerHintForced: "Your real roll isn't high enough — you have to bluff.",
+      maxAnnounced: 'Mäxchen was announced — nothing can beat that. Challenge to see if it is true!',
+      verdictHonest: 'Told the truth (or better)! Whoever doubted was wrong and drinks.',
+      verdictBluff: 'Busted bluffing! The announcer drinks.',
       infoTitle: 'Mäxchen!',
       rules:
-        'Roll in turn while keeping the result to yourself. Cover the dice and pass the phone on. The next player must name a higher value than the one they heard – either because they beat it or by bluffing.\n\nDice results are read as two-digit numbers with the higher digit first. Doubles beat normal numbers. The highest result is Mäxchen (2 and 1). If you challenge and are right, you hand out a drink; if you are wrong, you drink instead.',
+        'Roll in turn while keeping the result to yourself. Pick an announcement from the list below the dice, cover the dice, and pass the phone on. Your announcement must beat the one you were told – either because you rolled higher or by bluffing.\n\nDice results are read as two-digit numbers with the higher digit first. Doubles beat normal numbers. The highest result is Mäxchen (2 and 1). If you challenge and the announcer lied, they drink; if they told the truth (or better), you drink instead.',
     };
   }
 
@@ -97,16 +112,16 @@ const buildCopy = (language) => {
         body: 'Die Person am Zug würfelt verdeckt und behält das Ergebnis für sich. Halte den Bildschirm bedeckt, damit niemand mitschaut.',
       },
       showing: {
-        headline: 'Ergebnis merken',
-        body: 'Dein Wurf: {{combination}}. Überlege, was du ansagst, verdecke die Würfel und gib das Handy weiter.',
+        headline: 'Ansage wählen',
+        body: 'Dein Wurf: {{combination}}. Wähle unten deine Ansage, verdecke die Würfel und gib das Handy weiter.',
       },
       hidden: {
-        headline: 'Weitergeben & bluffen',
-        body: 'Sag einen höheren Wert an als zuletzt gehört. Die nächste Person darf dir glauben und würfeln – oder dich anzweifeln.',
+        headline: 'Glauben oder zweifeln?',
+        body: 'Angesagt: {{announced}}. Glaubst du es, würfle weiter – oder zweifle an und deck die echten Würfel auf.',
       },
       revealed: {
         headline: 'Aufgedeckt!',
-        body: 'Es wurde tatsächlich {{combination}}. Wer falsch lag, trinkt. Startet dann eine neue Runde.',
+        body: 'Es wurde tatsächlich {{combination}} gewürfelt — angesagt war {{announced}}.',
       },
     },
     buttons: {
@@ -127,9 +142,16 @@ const buildCopy = (language) => {
       pair: 'Pasch {{value}}',
       default: '',
     },
+    pickerTitle: 'Was sagst du an?',
+    pickerHintFirst: 'Das ist die erste Ansage der Runde — alles ist erlaubt.',
+    pickerHintBeat: 'Muss höher sein als: {{value}}',
+    pickerHintForced: 'Dein echter Wurf reicht nicht — du musst bluffen.',
+    maxAnnounced: 'Mäxchen wurde angesagt — das kann niemand mehr toppen. Nur noch Anzweifeln möglich!',
+    verdictHonest: 'Ehrlich angesagt (oder sogar tiefgestapelt)! Die zweifelnde Person lag falsch und trinkt.',
+    verdictBluff: 'Beim Bluffen erwischt! Die ansagende Person trinkt.',
     infoTitle: 'Mäxchen!',
     rules:
-      'Würfelt reihum so, dass nur ihr selbst das Ergebnis seht. Verdeckt die Würfel und gebt das Handy weiter. Die nächste Person muss einen höheren Wert nennen, als sie gehört hat – entweder weil sie es schafft oder indem sie blufft.\n\nWürfelergebnisse werden immer zur zweistelligen Zahl mit der höheren Ziffer vorne. Pasche schlagen normale Zahlen. Das höchste Ergebnis ist Mäxchen (2 und 1). Wer anzweifelt und Recht hat, verteilt einen Schluck; wer sich irrt, trinkt selbst.',
+      'Würfelt reihum so, dass nur ihr selbst das Ergebnis seht. Wählt aus der Liste unter den Würfeln eure Ansage, verdeckt die Würfel und gebt das Handy weiter. Eure Ansage muss die zuletzt gehörte übertreffen – entweder weil ihr wirklich höher liegt oder indem ihr blufft.\n\nWürfelergebnisse werden immer zur zweistelligen Zahl mit der höheren Ziffer vorne gelesen. Pasche schlagen normale Zahlen. Das höchste Ergebnis ist Mäxchen (2 und 1). Wer anzweifelt und die ansagende Person hat gelogen, die trinkt dann; war die Ansage ehrlich (oder untertrieben), trinkt die zweifelnde Person.',
   };
 };
 
@@ -137,6 +159,10 @@ const MaexchenGame = () => {
   const [diceOne, setDiceOne] = useState(1);
   const [diceTwo, setDiceTwo] = useState(1);
   const [phase, setPhase] = useState('ready');
+  // Zuletzt angesagter Wert, der ueber "hidden" hinweg sichtbar/gueltig bleibt, bis jemand anzweifelt oder eine neue Runde startet.
+  const [announcedCode, setAnnouncedCode] = useState(null);
+  // Auswahl der aktuell werfenden Person waehrend "showing", bevor sie bestaetigt wird.
+  const [selectedCode, setSelectedCode] = useState(null);
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const [tutorialStep, setTutorialStep] = useState(0);
@@ -152,18 +178,33 @@ const MaexchenGame = () => {
     [rotateAnim]
   );
 
+  const announcedIndex = announcedCode ? RANKING_VALUES.indexOf(announcedCode) : null;
+  // Erlaubt sind alle Ansagen mit echt kleinerem (= staerkerem) Index als die zuletzt gehoerte.
+  const minLegalIndex = 0;
+  const maxLegalIndex = announcedIndex === null ? RANKING_VALUES.length - 1 : announcedIndex - 1;
+  const noLegalMoveLeft = announcedIndex === 0;
+
   const rollDice = () => {
+    const nextOne = Math.floor(Math.random() * 6) + 1;
+    const nextTwo = Math.floor(Math.random() * 6) + 1;
+    const rollCode = getCombinationCode(nextOne, nextTwo);
+    const rollIndex = RANKING_VALUES.indexOf(rollCode);
+    // Vorauswahl: eigener echter Wurf, falls er legal ist - sonst der knapp ausreichende Bluff.
+    const defaultCode = rollIndex <= maxLegalIndex ? rollCode : RANKING_VALUES[Math.max(minLegalIndex, maxLegalIndex)];
+
     setPhase('showing');
+    setDiceOne(nextOne);
+    setDiceTwo(nextTwo);
+    setSelectedCode(defaultCode);
     Animated.timing(rotateAnim, {
       toValue: 1,
       duration: 600,
       useNativeDriver: true,
     }).start(() => rotateAnim.setValue(0));
-    setDiceOne(Math.floor(Math.random() * 6) + 1);
-    setDiceTwo(Math.floor(Math.random() * 6) + 1);
   };
 
   const hideDice = () => {
+    setAnnouncedCode(selectedCode);
     setPhase('hidden');
   };
 
@@ -173,37 +214,45 @@ const MaexchenGame = () => {
 
   const resetRound = () => {
     setPhase('ready');
+    setAnnouncedCode(null);
+    setSelectedCode(null);
   };
 
   const getCombinationLabel = useCallback(
-    (first, second) => {
-      const high = Math.max(first, second);
-      const low = Math.min(first, second);
-      if (high === 2 && low === 1) {
+    (code) => {
+      if (code === '21') {
         return copy.combo.maexchen;
       }
-      if (high === low) {
-        return copy.combo.pair.replace('{{value}}', String(high));
+      if (code[0] === code[1]) {
+        return copy.combo.pair.replace('{{value}}', code[0]);
       }
-      return `${high}${low}`;
+      return code;
     },
     [copy]
   );
 
-  const combinationLabel = useMemo(
-    () => getCombinationLabel(diceOne, diceTwo),
-    [diceOne, diceTwo, getCombinationLabel]
+  const myRollCode = useMemo(() => getCombinationCode(diceOne, diceTwo), [diceOne, diceTwo]);
+  const combinationLabel = useMemo(() => getCombinationLabel(myRollCode), [myRollCode, getCombinationLabel]);
+  const announcedLabel = useMemo(
+    () => (announcedCode ? getCombinationLabel(announcedCode) : ''),
+    [announcedCode, getCombinationLabel]
   );
+
+  const wasBluff = useMemo(() => {
+    if (!announcedCode) return false;
+    const rollIndex = RANKING_VALUES.indexOf(myRollCode);
+    // Hoeherer Index = schwaecher: wer schwaecher wirft als angesagt, hat geblufft.
+    return rollIndex > announcedIndex;
+  }, [announcedCode, announcedIndex, myRollCode]);
 
   const phaseInfo = useMemo(() => {
     const templates = copy.phases;
     const current = templates[phase] ?? templates.ready;
-    const replaceCombination = (text) => text.replace('{{combination}}', combinationLabel);
-    return {
-      headline: current.headline,
-      body: replaceCombination(current.body),
-    };
-  }, [copy, phase, combinationLabel]);
+    const text = current.body
+      .replace('{{combination}}', combinationLabel)
+      .replace('{{announced}}', announcedLabel);
+    return { headline: current.headline, body: text };
+  }, [copy, phase, combinationLabel, announcedLabel]);
 
   const renderPrimaryButton = () => {
     switch (phase) {
@@ -220,6 +269,9 @@ const MaexchenGame = () => {
           </TouchableOpacity>
         );
       case 'hidden':
+        if (noLegalMoveLeft) {
+          return null;
+        }
         return (
           <TouchableOpacity onPress={rollDice} style={appStyles.gameActionButton}>
             <Text style={appStyles.gameActionButtonText}>{copy.buttons.trust}</Text>
@@ -247,25 +299,20 @@ const MaexchenGame = () => {
     );
   };
 
-  const showDiceFaces = phase !== 'hidden';
+  const showDiceFaces = phase === 'showing' || phase === 'revealed';
 
   const resultText = useMemo(
     () => copy.resultLabel.replace('{{value}}', combinationLabel),
     [copy, combinationLabel]
   );
 
-  const rankingLabel = useCallback(
-    (value) => {
-      if (value === '21') {
-        return copy.ranking.maexchen;
-      }
-      if (value[0] === value[1]) {
-        return copy.ranking.pair.replace('{{value}}', value[0]);
-      }
-      return copy.ranking.default;
-    },
-    [copy]
-  );
+  const pickerHint = useMemo(() => {
+    if (announcedIndex === null) return copy.pickerHintFirst;
+    const beatLabel = getCombinationLabel(announcedCode);
+    const rollIndex = RANKING_VALUES.indexOf(myRollCode);
+    if (rollIndex > maxLegalIndex) return copy.pickerHintForced;
+    return copy.pickerHintBeat.replace('{{value}}', beatLabel);
+  }, [announcedIndex, announcedCode, myRollCode, maxLegalIndex, copy, getCombinationLabel]);
 
   return (
     <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
@@ -281,6 +328,12 @@ const MaexchenGame = () => {
         <View style={styles.phaseCard}>
           <Text style={styles.phaseHeadline}>{phaseInfo.headline}</Text>
           <Text style={styles.phaseBody}>{phaseInfo.body}</Text>
+          {phase === 'hidden' && noLegalMoveLeft ? (
+            <Text style={styles.warningText}>{copy.maxAnnounced}</Text>
+          ) : null}
+          {phase === 'revealed' ? (
+            <Text style={styles.verdictText}>{wasBluff ? copy.verdictBluff : copy.verdictHonest}</Text>
+          ) : null}
         </View>
 
         <View style={styles.diceRow}>
@@ -304,32 +357,46 @@ const MaexchenGame = () => {
           ) : null}
         </View>
 
+        {phase === 'showing' ? (
+          <View style={styles.pickerCard}>
+            <Text style={styles.pickerTitle}>{copy.pickerTitle}</Text>
+            <Text style={styles.pickerHint}>{pickerHint}</Text>
+            <View style={styles.pickerGrid}>
+              {RANKING_VALUES.map((value, index) => {
+                const isLegal = index <= maxLegalIndex;
+                const isSelected = value === selectedCode;
+                return (
+                  <TouchableOpacity
+                    key={value}
+                    disabled={!isLegal}
+                    onPress={() => setSelectedCode(value)}
+                    style={[
+                      styles.pickerChip,
+                      !isLegal && styles.pickerChipDisabled,
+                      isSelected && styles.pickerChipSelected,
+                    ]}
+                  >
+                    <Text style={[styles.pickerChipValue, isSelected && styles.pickerChipValueSelected]}>{value}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          </View>
+        ) : null}
+
         <View style={styles.buttonColumn}>
           {renderPrimaryButton()}
           {renderSecondaryButton()}
         </View>
 
-        <View style={styles.rankingCard}>
-          <Text style={styles.rankingTitle}>{copy.ranking.title}</Text>
-          <View style={styles.rankingGrid}>
-            {RANKING_VALUES.map((value) => (
-              <View key={value} style={styles.rankingItem}>
-                <Text style={styles.rankingValue}>{value}</Text>
-                {rankingLabel(value) ? <Text style={styles.rankingLabel}>{rankingLabel(value)}</Text> : null}
-              </View>
-            ))}
-          </View>
-        </View>
-
         <InfoText header={copy.infoTitle} rules={copy.rules} />
         <InfoHint />
-        {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
       </ScrollView>
       <TutorialOverlay
         visible={tutorialEnabled}
         steps={[
-          { text: language === 'de' ? 'Würfeln und Ergebnis merken.' : 'Roll dice and remember the result.', placement: 'top' },
-          { text: language === 'de' ? 'Ansage machen, verdecken, weitergeben.' : 'Announce, cover, pass on.', placement: 'bottom' },
+          { text: language === 'de' ? 'Würfeln, dann unten eine Ansage auswählen.' : 'Roll, then pick an announcement below.', placement: 'top' },
+          { text: language === 'de' ? 'Verdecken, weitergeben. Die nächste Person glaubt oder zweifelt an.' : 'Cover, pass on. The next person trusts or challenges.', placement: 'bottom' },
         ]}
         stepIndex={tutorialStep}
         onNext={() => setTutorialStep((s) => (s + 1) % 2)}
@@ -377,6 +444,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Quicksand_300Light',
   },
+  warningText: {
+    color: '#F08974',
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: 'center',
+    fontFamily: 'Quicksand_300Bold',
+    marginTop: 4,
+  },
+  verdictText: {
+    color: '#E5C185',
+    fontSize: 15,
+    lineHeight: 20,
+    textAlign: 'center',
+    fontFamily: 'Quicksand_300Bold',
+    marginTop: 4,
+  },
   diceRow: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -412,6 +495,58 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand_300Bold',
     textAlign: 'center',
   },
+  pickerCard: {
+    width: '100%',
+    backgroundColor: 'rgba(255,255,255,0.07)',
+    borderRadius: 20,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    gap: 10,
+  },
+  pickerTitle: {
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'Quicksand_300Bold',
+    fontSize: 16,
+  },
+  pickerHint: {
+    textAlign: 'center',
+    color: 'rgba(255,255,255,0.65)',
+    fontFamily: 'Quicksand_300Light',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  pickerGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  pickerChip: {
+    minWidth: 46,
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderRadius: 12,
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.15)',
+  },
+  pickerChipDisabled: {
+    opacity: 0.25,
+  },
+  pickerChipSelected: {
+    backgroundColor: '#E5C185',
+    borderColor: '#E5C185',
+  },
+  pickerChipValue: {
+    color: 'white',
+    fontFamily: 'Quicksand_300Bold',
+    fontSize: 14,
+  },
+  pickerChipValueSelected: {
+    color: '#231C18',
+  },
   buttonColumn: {
     width: '100%',
     alignItems: 'center',
@@ -428,39 +563,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Quicksand_300Bold',
     color: '#E5C185',
-  },
-  rankingCard: {
-    width: '100%',
-    backgroundColor: 'rgba(255,255,255,0.07)',
-    borderRadius: 20,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-  },
-  rankingTitle: {
-    textAlign: 'center',
-    color: 'rgba(255,255,255,0.75)',
-    fontFamily: 'Quicksand_300Bold',
-    marginBottom: 12,
-  },
-  rankingGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    rowGap: 10,
-  },
-  rankingItem: {
-    width: '30%',
-    alignItems: 'center',
-  },
-  rankingValue: {
-    color: 'white',
-    fontFamily: 'Quicksand_300Bold',
-    fontSize: 16,
-  },
-  rankingLabel: {
-    color: 'rgba(255,255,255,0.6)',
-    fontSize: 12,
-    fontFamily: 'Quicksand_300Light',
   },
 });
 
