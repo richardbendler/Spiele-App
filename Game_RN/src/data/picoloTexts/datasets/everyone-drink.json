@@ -45,229 +45,124 @@
       "manual_approval": 0
     },
     {
-      "de": "Alle, die heute bar gezahlt haben, trinken einen Schluck.",
-      "en": "Alle, die heute bar gezahlt haben, trinken einen Schluck.",
+      "de": "Alle, die schon mal im Schlafanzug Essen bestellt haben, trinken 1 Schluck.",
+      "en": "Everyone who has ordered food in pajamas drinks 1 sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Alle, die ein Meme gespeichert haben, trinken zwei Schlucke.",
-      "en": "Alle, die ein Meme gespeichert haben, trinken zwei Schlucke.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle mit Kopfhoerern in der Tasche trinken.",
-      "en": "Alle mit Kopfhoerern in der Tasche trinken.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute einen Screenshot gemacht haben, trinken.",
-      "en": "Alle, die heute einen Screenshot gemacht haben, trinken.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle mit leerem Akku unter 30% trinken.",
-      "en": "Alle mit leerem Akku unter 30% trinken.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die einen Hund gesehen haben, trinken.",
-      "en": "Alle, die einen Hund gesehen haben, trinken.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute ein Selfie gemacht haben, trinken.",
-      "en": "Alle, die heute ein Selfie gemacht haben, trinken.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die zu spaet kamen, trinken.",
-      "en": "Alle, die zu spaet kamen, trinken.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute eine Erinnerung weggesnoozt haben, trinken.",
-      "en": "Alle, die heute eine Erinnerung weggesnoozt haben, trinken.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die einen neuen Song entdeckt haben, trinken.",
-      "en": "Alle, die einen neuen Song entdeckt haben, trinken.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute Post geoeffnet haben, trinken.",
-      "en": "Alle, die heute Post geoeffnet haben, trinken.",
+      "de": "Alle, die diese Woche schon mal den Wecker weggedrückt haben, trinken 1 Schluck.",
+      "en": "Everyone who has snoozed their alarm this week drinks 1 sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Alle mit smartwatch trinken.",
-      "en": "Alle mit smartwatch trinken.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute einen Anruf ignoriert haben, trinken.",
-      "en": "Alle, die heute einen Anruf ignoriert haben, trinken.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die schonmal auf dem Tisch getanzt haben, trinken.",
-      "en": "Alle, die schonmal auf dem Tisch getanzt haben, trinken.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute etwas bestellt haben, trinken.",
-      "en": "Alle, die heute etwas bestellt haben, trinken.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute ein Lob bekommen haben, trinken.",
-      "en": "Alle, die heute ein Lob bekommen haben, trinken.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die schon geghaehnt haben, trinken.",
-      "en": "Alle, die schon geghaehnt haben, trinken.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle mit bunten Socken trinken.",
-      "en": "Alle mit bunten Socken trinken.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute draussen waren, trinken.",
-      "en": "Alle, die heute draussen waren, trinken.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die ihr Passwort veraendert haben, trinken.",
-      "en": "Alle, die ihr Passwort veraendert haben, trinken.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute eine Story gepostet haben, trinken.",
-      "en": "Alle, die heute eine Story gepostet haben, trinken.",
+      "de": "Alle, die schon mal ein Fach im Kühlschrank vergessen haben, trinken 2 Schlucke.",
+      "en": "Everyone who has forgotten about something in the fridge drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Alle, die heute barfuss waren, trinken.",
-      "en": "Alle, die heute barfuss waren, trinken.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute Glitzer gesehen haben, trinken.",
-      "en": "Alle, die heute Glitzer gesehen haben, trinken.",
-      "drunkLevel": 4,
+      "de": "Alle mit mehr als drei ungelesenen Nachrichten trinken 1 Schluck.",
+      "en": "Everyone with more than three unread messages drinks 1 sip.",
+      "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Alle, die ihr Ladekabel gesucht haben, trinken.",
-      "en": "Alle, die ihr Ladekabel gesucht haben, trinken.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Alle, die heute Kaffee verschuettet haben, trinken.",
-      "en": "Alle, die heute Kaffee verschuettet haben, trinken.",
-      "drunkLevel": 6,
+      "de": "Alle, die heute schon jemanden umarmt haben, trinken 1 Schluck.",
+      "en": "Everyone who has hugged someone today drinks 1 sip.",
+      "drunkLevel": 1,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal in der falschen Bahn/im falschen Bus saßen, trinken 2 Schlucke.",
+      "en": "Everyone who has been on the wrong train or bus before drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die heute schon ein Kompliment bekommen haben, trinken 1 Schluck.",
+      "en": "Everyone who has received a compliment today drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal live vor der Kamera eingefroren sind, trinken 2 Schlucke.",
+      "en": "Everyone who has frozen up on camera before drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle mit mehr als 5 Apps auf der zweiten Homescreen-Seite trinken 1 Schluck.",
+      "en": "Everyone with more than 5 apps on their second home screen drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal etwas gekauft haben, das sie nie benutzt haben, trinken 2 Schlucke.",
+      "en": "Everyone who has bought something they never used drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die heute schon gelacht haben, bis es wehtat, trinken 1 Schluck.",
+      "en": "Everyone who has laughed until it hurt today drinks 1 sip.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal ihr Passwort vergessen und zurücksetzen mussten, trinken 2 Schlucke.",
+      "en": "Everyone who has forgotten a password and had to reset it drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal versehentlich laut in einer stillen Umgebung gelacht haben, trinken 2 Schlucke.",
+      "en": "Everyone who has accidentally laughed loudly in a quiet place drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle mit einem ungeöffneten Karton irgendwo zu Hause trinken 1 Schluck.",
+      "en": "Everyone with an unopened box somewhere at home drinks 1 sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Alle, die schon mal aus Versehen den Wecker auf die falsche Uhrzeit gestellt haben, trinken 2 Schlucke.",
+      "en": "Everyone who has accidentally set their alarm for the wrong time drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

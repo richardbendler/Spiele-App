@@ -140,15 +140,6 @@
       "manual_approval": 0
     },
     {
-      "de": "Regel: Jede*r muss jemanden mit einem neuen Kosenamen ansprechen.",
-      "en": "Rule: Address someone with a brand-new pet name.",
-      "drunkLevel": 8,
-      "deepness": 7,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
       "de": "Regel: Vor jedem Drink flüstert ihr jemandem etwas Nettes ins Ohr.",
       "en": "Rule: Before each drink whisper something nice into someone's ear.",
       "drunkLevel": 8,
@@ -160,15 +151,6 @@
     {
       "de": "Regel: Niemand darf \"nein\" sagen. Passiert es doch, trinkt die Person doppelt.",
       "en": "Rule: Nobody may say 'no'. If it happens, they drink twice.",
-      "drunkLevel": 8,
-      "deepness": 7,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: Jede Aussage muss mit \"ehrlich gesagt\" starten.",
-      "en": "Rule: Every sentence has to start with 'honestly'.",
       "drunkLevel": 8,
       "deepness": 7,
       "drink": true,
@@ -230,1984 +212,284 @@
       "manual_approval": 0
     },
     {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen bis zum Ende der naechsten Runde.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen bis zum Ende der naechsten Runde.",
+      "de": "Regel: Ab jetzt muss jede Bestellung an der Bar mit einer Verbeugung enden. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every drink order ends with a bow. Forget it and you drink.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": false,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen solange der Timer laeuft.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen solange der Timer laeuft.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen bis jemand niest.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen bis das naechste Lied startet.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen fuer drei Prompts.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen fuer alle mit Muetze.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen fuer alle geraden Geburtsmonate.",
+      "de": "Regel: Niemand darf mit dem Zeigefinger auf etwas zeigen. Zuwiderhandlung kostet einen Schluck.",
+      "en": "Rule: Nobody may point with their index finger. Breaking it costs a sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen bis jemand einfriert.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten bis zum Ende der naechsten Runde.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten solange der Timer laeuft.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand niest.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten bis das naechste Lied startet.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten fuer drei Prompts.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle mit Muetze.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle geraden Geburtsmonate.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand einfriert.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen solange der Timer laeuft.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen bis jemand niest.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen bis das naechste Lied startet.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen bis das naechste Lied startet.",
-      "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen fuer drei Prompts.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen fuer alle mit Muetze.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen fuer alle mit Muetze.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen bis jemand einfriert.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem bis zum Ende der naechsten Runde.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem bis zum Ende der naechsten Runde.",
+      "de": "Regel: Jede Person muss vor dem Trinken kurz mit dem Glas anstoßen, auch wenn niemand sonst trinkt.",
+      "en": "Rule: Everyone must clink their glass before drinking, even solo.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem solange der Timer laeuft.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem solange der Timer laeuft.",
+      "de": "Regel: Wer seinen Namen sagt, muss danach einen Schluck trinken. Gilt bis zur nächsten Runde.",
+      "en": "Rule: Say your own name and you drink a sip afterward. Applies until the next round.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": false,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem bis jemand niest.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem bis das naechste Lied startet.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem fuer drei Prompts.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem fuer drei Prompts.",
-      "drunkLevel": 6,
+      "de": "Regel: Ab sofort muss jede Frage mit einer Gegenfrage beantwortet werden. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every question must be answered with a question. Forget it and you drink.",
+      "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem fuer alle mit Muetze.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
+      "de": "Regel: Die Person, die zuletzt aufs Handy geschaut hat, ist ab jetzt Zeitwächter*in und ruft die Uhrzeit alle 5 Minuten aus.",
+      "en": "Rule: Whoever last checked their phone is now the timekeeper and calls out the time every 5 minutes.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Wortwitze sind ab jetzt Pflicht mindestens einmal pro Prompt. Wer keinen bringt, trinkt.",
+      "en": "Rule: At least one pun is required per prompt from now on. No pun, no fun — you drink.",
+      "drunkLevel": 3,
+      "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem fuer alle geraden Geburtsmonate.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem fuer alle geraden Geburtsmonate.",
+      "de": "Regel: Wer gähnt, muss der Runde erklären, warum das Spiel gerade so spannend ist.",
+      "en": "Rule: Whoever yawns has to explain to the group why the game is so exciting right now.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Alle müssen ab jetzt mit der schwächeren Hand trinken, bis jemand danebengießt.",
+      "en": "Rule: Everyone drinks with their non-dominant hand until someone spills.",
+      "drunkLevel": 4,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Wer als Erstes nach der Uhrzeit fragt, gibt zwei Schlucke ab.",
+      "en": "Rule: First person to ask what time it is hands out two sips.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": false,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem bis jemand einfriert.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem bis jemand einfriert.",
+      "de": "Regel: Bis zum nächsten Toast muss jede Aussage mit \"angeblich\" eingeleitet werden.",
+      "en": "Rule: Until the next toast, every statement must start with 'allegedly'.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Wer die Person rechts von sich beim Namen nennt, muss ihr einen Schluck geben.",
+      "en": "Rule: Say the name of the person to your right and you owe them a sip.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
+      "de": "Regel: Ab jetzt gilt: aufstehen nur rückwärts gehend. Wer vergisst, trinkt.",
+      "en": "Rule: From now on, stand up only while walking backward. Forget it and you drink.",
+      "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute solange der Timer laeuft.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute bis jemand niest.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute bis das naechste Lied startet.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute fuer drei Prompts.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute fuer drei Prompts.",
+      "de": "Regel: Wer als Nächstes lacht, muss der Runde erklären, worüber genau.",
+      "en": "Rule: Next person to laugh must explain to the group exactly what was funny.",
       "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute fuer alle mit Muetze.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute fuer alle mit Muetze.",
+      "de": "Regel: Bis zur nächsten Karte darf niemand die Worte \"ich weiß nicht\" sagen. Zuwiderhandlung: ein Schluck.",
+      "en": "Rule: Until the next card, nobody may say 'I don't know'. Break it and drink a sip.",
       "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute bis jemand einfriert.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht bis zum Ende der naechsten Runde.",
-      "en": "Rule: vor jedem Prompt wird geklatscht bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht solange der Timer laeuft.",
-      "en": "Rule: vor jedem Prompt wird geklatscht solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht bis jemand niest.",
-      "en": "Rule: vor jedem Prompt wird geklatscht bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht bis das naechste Lied startet.",
-      "en": "Rule: vor jedem Prompt wird geklatscht bis das naechste Lied startet.",
+      "de": "Regel: Jede getrunkene Runde muss mit einem selbst erfundenen Trinkspruch eingeläutet werden.",
+      "en": "Rule: Every round of drinks must be kicked off with a self-invented toast.",
       "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht fuer drei Prompts.",
-      "en": "Rule: vor jedem Prompt wird geklatscht fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht fuer alle mit Muetze.",
-      "en": "Rule: vor jedem Prompt wird geklatscht fuer alle mit Muetze.",
-      "drunkLevel": 5,
       "deepness": 2,
       "drink": true,
-      "drinking": false,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: vor jedem Prompt wird geklatscht fuer alle geraden Geburtsmonate.",
-      "en": "Rule: vor jedem Prompt wird geklatscht fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht bis jemand einfriert.",
-      "en": "Rule: vor jedem Prompt wird geklatscht bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn bis zum Ende der naechsten Runde.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn bis zum Ende der naechsten Runde.",
+      "de": "Regel: Wer sein Glas mit beiden Händen hält, gilt als \"König/Königin\" und darf einmalig einen Schluck verteilen.",
+      "en": "Rule: Holding your glass with both hands makes you 'royalty' for a moment — hand out one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn solange der Timer laeuft.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn solange der Timer laeuft.",
+      "de": "Regel: Ab jetzt muss jeder Themenwechsel angekündigt werden (\"Themenwechsel!\"). Wer es vergisst, trinkt.",
+      "en": "Rule: Every topic change must be announced out loud ('topic change!'). Forget it and drink.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand niest.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn bis das naechste Lied startet.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn bis das naechste Lied startet.",
-      "drunkLevel": 5,
+      "de": "Regel: Wer während des Spiels niest, bekommt von der Runde spontan einen Trinkspruch gewidmet.",
+      "en": "Rule: If you sneeze during the game, the group improvises a toast dedicated to you.",
+      "drunkLevel": 2,
       "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer drei Prompts.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer drei Prompts.",
-      "drunkLevel": 6,
+      "de": "Regel: Bis zum Ende der Runde muss jede Zustimmung mit einem Daumen hoch UND einem Nicken erfolgen.",
+      "en": "Rule: Until the round ends, every 'yes' needs a thumbs-up AND a nod.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Die lauteste Person der letzten Minute muss jetzt fünf Sekunden flüstern.",
+      "en": "Rule: The loudest person of the last minute must now whisper for five seconds.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Wer sein Getränk vergisst nachzufüllen, wird von der Gruppe daran erinnert – mit Gesang.",
+      "en": "Rule: Forget to refill your drink and the group reminds you — by singing about it.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Ab jetzt endet jeder Satz mit dem Namen einer Person aus der Runde. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every sentence ends with the name of someone in the group. Forget it and drink.",
+      "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle mit Muetze.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
+      "de": "Regel: Wer als Erstes das Wort \"eigentlich\" benutzt, verteilt zwei Schlucke.",
+      "en": "Rule: First person to say 'actually' hands out two sips.",
+      "drunkLevel": 3,
+      "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle geraden Geburtsmonate.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle geraden Geburtsmonate.",
+      "de": "Regel: Bis zur nächsten Runde muss jede Person, die spricht, kurz aufstehen.",
+      "en": "Rule: Until the next round, anyone who speaks must briefly stand up.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Wer als Erstes das Handy zückt, muss der Runde laut vorlesen, was er/sie gerade tippen wollte.",
+      "en": "Rule: First person to grab their phone must read out loud what they were about to type.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Ab jetzt muss jedes 'Ja' mit einem 'obviously' auf Englisch untermalt werden.",
+      "en": "Rule: From now on every 'yes' must be followed by an emphatic 'obviously'.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Regel: Wer zweimal hintereinander dasselbe Wort benutzt, muss einen Schluck trinken.",
+      "en": "Rule: Use the same word twice in a row and you drink a sip.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Regel: Die Person mit dem vollsten Glas muss jetzt als Erste einen Toast ausrufen.",
+      "en": "Rule: The person with the fullest glass must call the next toast.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand einfriert.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand einfriert.",
+      "de": "Regel: Bis zur nächsten Karte spricht jede Person leicht singend. Wer normal redet, trinkt.",
+      "en": "Rule: Until the next card, everyone speaks in a slight sing-song voice. Talk normally and you drink.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": false,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: nur Fragen sind erlaubt bis zum Ende der naechsten Runde.",
-      "en": "Rule: nur Fragen sind erlaubt bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt solange der Timer laeuft.",
-      "en": "Rule: nur Fragen sind erlaubt solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt bis jemand niest.",
-      "en": "Rule: nur Fragen sind erlaubt bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt bis das naechste Lied startet.",
-      "en": "Rule: nur Fragen sind erlaubt bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt fuer drei Prompts.",
-      "en": "Rule: nur Fragen sind erlaubt fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt fuer alle mit Muetze.",
-      "en": "Rule: nur Fragen sind erlaubt fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt fuer alle geraden Geburtsmonate.",
-      "en": "Rule: nur Fragen sind erlaubt fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt bis jemand einfriert.",
-      "en": "Rule: nur Fragen sind erlaubt bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen bis zum Ende der naechsten Runde.",
-      "en": "Rule: keine Vokale benutzen bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen solange der Timer laeuft.",
-      "en": "Rule: keine Vokale benutzen solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen bis jemand niest.",
-      "en": "Rule: keine Vokale benutzen bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen bis das naechste Lied startet.",
-      "en": "Rule: keine Vokale benutzen bis das naechste Lied startet.",
-      "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen fuer drei Prompts.",
-      "en": "Rule: keine Vokale benutzen fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen fuer alle mit Muetze.",
-      "en": "Rule: keine Vokale benutzen fuer alle mit Muetze.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: keine Vokale benutzen fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen bis jemand einfriert.",
-      "en": "Rule: keine Vokale benutzen bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle muessen in dritter Person sprechen bis zum Ende der naechsten Runde.",
+      "de": "Regel: Wer als Erstes über etwas Alltägliches meckert, muss es der Runde positiv umformulieren.",
+      "en": "Rule: First person to complain about something mundane must rephrase it positively for the group.",
       "drunkLevel": 2,
       "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Regel: alle muessen in dritter Person sprechen solange der Timer laeuft.",
-      "en": "Rule: alle muessen in dritter Person sprechen solange der Timer laeuft.",
+      "de": "Regel: Ab jetzt muss jede Ablehnung mit einer Verbeugung erfolgen. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every 'no' requires a small bow. Forget it and you drink.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drinking": true
     },
     {
-      "de": "Regel: alle muessen in dritter Person sprechen bis jemand niest.",
-      "en": "Rule: alle muessen in dritter Person sprechen bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen bis das naechste Lied startet.",
-      "en": "Rule: alle muessen in dritter Person sprechen bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen fuer drei Prompts.",
-      "en": "Rule: alle muessen in dritter Person sprechen fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen fuer alle mit Muetze.",
-      "en": "Rule: alle muessen in dritter Person sprechen fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle muessen in dritter Person sprechen fuer alle geraden Geburtsmonate.",
+      "de": "Regel: Wer als Nächstes ein Getränk umstößt (auch nur beinahe), bekommt einen Ehrentitel für den Abend.",
+      "en": "Rule: Next person to knock over a drink (even almost) earns an honorary title for the night.",
       "drunkLevel": 2,
       "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Regel: alle muessen in dritter Person sprechen bis jemand einfriert.",
-      "en": "Rule: alle muessen in dritter Person sprechen bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke bis zum Ende der naechsten Runde.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke solange der Timer laeuft.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke bis jemand niest.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke bis das naechste Lied startet.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke fuer drei Prompts.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke fuer alle mit Muetze.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke fuer alle geraden Geburtsmonate.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke bis jemand einfriert.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden solange der Timer laeuft.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden bis jemand niest.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden bis das naechste Lied startet.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden bis das naechste Lied startet.",
-      "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden fuer drei Prompts.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden fuer alle mit Muetze.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden fuer alle mit Muetze.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden bis jemand einfriert.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben bis zum Ende der naechsten Runde.",
-      "en": "Rule: ein Bein bleibt immer oben bis zum Ende der naechsten Runde.",
+      "de": "Regel: Bis zur nächsten Runde muss jede Zahl, die genannt wird, laut mitgezählt werden.",
+      "en": "Rule: Until the next round, every number mentioned must be counted out loud by everyone.",
       "drunkLevel": 2,
       "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drink": false,
+      "drinking": false
     },
     {
-      "de": "Regel: ein Bein bleibt immer oben solange der Timer laeuft.",
-      "en": "Rule: ein Bein bleibt immer oben solange der Timer laeuft.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben bis jemand niest.",
-      "en": "Rule: ein Bein bleibt immer oben bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben bis das naechste Lied startet.",
-      "en": "Rule: ein Bein bleibt immer oben bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben fuer drei Prompts.",
-      "en": "Rule: ein Bein bleibt immer oben fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben fuer alle mit Muetze.",
-      "en": "Rule: ein Bein bleibt immer oben fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben fuer alle geraden Geburtsmonate.",
-      "en": "Rule: ein Bein bleibt immer oben fuer alle geraden Geburtsmonate.",
+      "de": "Regel: Wer als Erstes fragt \"was machen wir jetzt?\", muss die nächste Runde moderieren.",
+      "en": "Rule: First person to ask 'what do we do now?' hosts the next round.",
       "drunkLevel": 2,
       "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben bis jemand einfriert.",
-      "en": "Rule: ein Bein bleibt immer oben bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter bis zum Ende der naechsten Runde.",
-      "en": "Rule: keine englischen Woerter bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter solange der Timer laeuft.",
-      "en": "Rule: keine englischen Woerter solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter bis jemand niest.",
-      "en": "Rule: keine englischen Woerter bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter bis das naechste Lied startet.",
-      "en": "Rule: keine englischen Woerter bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter fuer drei Prompts.",
-      "en": "Rule: keine englischen Woerter fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter fuer alle mit Muetze.",
-      "en": "Rule: keine englischen Woerter fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter fuer alle geraden Geburtsmonate.",
-      "en": "Rule: keine englischen Woerter fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter bis jemand einfriert.",
-      "en": "Rule: keine englischen Woerter bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle Toasts passieren ohne Worte bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte solange der Timer laeuft.",
-      "en": "Rule: alle Toasts passieren ohne Worte solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte bis jemand niest.",
-      "en": "Rule: alle Toasts passieren ohne Worte bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte bis das naechste Lied startet.",
-      "en": "Rule: alle Toasts passieren ohne Worte bis das naechste Lied startet.",
-      "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte fuer drei Prompts.",
-      "en": "Rule: alle Toasts passieren ohne Worte fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte fuer alle mit Muetze.",
-      "en": "Rule: alle Toasts passieren ohne Worte fuer alle mit Muetze.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle Toasts passieren ohne Worte fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte bis jemand einfriert.",
-      "en": "Rule: alle Toasts passieren ohne Worte bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert bis zum Ende der naechsten Runde.",
-      "en": "Rule: bei Namen wird salutiert bis zum Ende der naechsten Runde.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert solange der Timer laeuft.",
-      "en": "Rule: bei Namen wird salutiert solange der Timer laeuft.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert bis jemand niest.",
-      "en": "Rule: bei Namen wird salutiert bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert bis das naechste Lied startet.",
-      "en": "Rule: bei Namen wird salutiert bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert fuer drei Prompts.",
-      "en": "Rule: bei Namen wird salutiert fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert fuer alle mit Muetze.",
-      "en": "Rule: bei Namen wird salutiert fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert fuer alle geraden Geburtsmonate.",
-      "en": "Rule: bei Namen wird salutiert fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert bis jemand einfriert.",
-      "en": "Rule: bei Namen wird salutiert bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat bis zum Ende der naechsten Runde.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat solange der Timer laeuft.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat bis jemand niest.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat bis das naechste Lied startet.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat fuer drei Prompts.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat fuer alle mit Muetze.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat fuer alle geraden Geburtsmonate.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat bis jemand einfriert.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung bis zum Ende der naechsten Runde.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung bis zum Ende der naechsten Runde.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung solange der Timer laeuft.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung solange der Timer laeuft.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung bis jemand niest.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung bis jemand niest.",
-      "drunkLevel": 2,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung bis das naechste Lied startet.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung bis das naechste Lied startet.",
-      "drunkLevel": 3,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung fuer drei Prompts.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung fuer drei Prompts.",
-      "drunkLevel": 4,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung fuer alle mit Muetze.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung fuer alle mit Muetze.",
-      "drunkLevel": 5,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung fuer alle geraden Geburtsmonate.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 6,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung bis jemand einfriert.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung bis jemand einfriert.",
-      "drunkLevel": 7,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen bis zum Ende der naechsten Runde.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen bis zum Ende der naechsten Runde.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen solange der Timer laeuft.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen solange der Timer laeuft.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen bis jemand niest.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen bis das naechste Lied startet.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen fuer drei Prompts.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen fuer alle mit Muetze.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen bis jemand einfriert.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt bis zum Ende der naechsten Runde.",
-      "en": "Rule: nur Reime sind erlaubt bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt solange der Timer laeuft.",
-      "en": "Rule: nur Reime sind erlaubt solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt bis jemand niest.",
-      "en": "Rule: nur Reime sind erlaubt bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt bis das naechste Lied startet.",
-      "en": "Rule: nur Reime sind erlaubt bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt fuer drei Prompts.",
-      "en": "Rule: nur Reime sind erlaubt fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt fuer alle mit Muetze.",
-      "en": "Rule: nur Reime sind erlaubt fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt fuer alle geraden Geburtsmonate.",
-      "en": "Rule: nur Reime sind erlaubt fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt bis jemand einfriert.",
-      "en": "Rule: nur Reime sind erlaubt bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen fuer alle Brillentraeger.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf das Wort Trinkspiel sagen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: niemand darf das Wort Trinkspiel sagen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle Brillentraeger.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand einen Schluck verschuettet.",
-      "en": "Rule: jede Antwort muss mit einem Emoji-Geraeusch starten bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen fuer alle Brillentraeger.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle cheersen mit dem linken Ellenbogen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle cheersen mit dem linken Ellenbogen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem fuer alle Brillentraeger.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer lacht, tauscht Platz mit jemandem bis jemand einen Schluck verschuettet.",
-      "en": "Rule: wer lacht, tauscht Platz mit jemandem bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute fuer alle Brillentraeger.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle stellen den Timer auf 20 Sekunden mute bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle stellen den Timer auf 20 Sekunden mute bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht fuer alle Brillentraeger.",
-      "en": "Rule: vor jedem Prompt wird geklatscht fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: vor jedem Prompt wird geklatscht bis jemand einen Schluck verschuettet.",
-      "en": "Rule: vor jedem Prompt wird geklatscht bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle Brillentraeger.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand einen Schluck verschuettet.",
-      "en": "Rule: jede Aussage bekommt ein Echo vom rechten Nachbarn bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt fuer alle Brillentraeger.",
-      "en": "Rule: nur Fragen sind erlaubt fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Fragen sind erlaubt bis jemand einen Schluck verschuettet.",
-      "en": "Rule: nur Fragen sind erlaubt bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen fuer alle Brillentraeger.",
-      "en": "Rule: keine Vokale benutzen fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Vokale benutzen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: keine Vokale benutzen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen fuer alle Brillentraeger.",
-      "en": "Rule: alle muessen in dritter Person sprechen fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen in dritter Person sprechen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle muessen in dritter Person sprechen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke fuer alle Brillentraeger.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: der Juengste verteilt Bonusschlucke bis jemand einen Schluck verschuettet.",
-      "en": "Rule: der Juengste verteilt Bonusschlucke bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden fuer alle Brillentraeger.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Geraeusche muessen gefluestert werden bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle Geraeusche muessen gefluestert werden bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben fuer alle Brillentraeger.",
-      "en": "Rule: ein Bein bleibt immer oben fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: ein Bein bleibt immer oben bis jemand einen Schluck verschuettet.",
-      "en": "Rule: ein Bein bleibt immer oben bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter fuer alle Brillentraeger.",
-      "en": "Rule: keine englischen Woerter fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine englischen Woerter bis jemand einen Schluck verschuettet.",
-      "en": "Rule: keine englischen Woerter bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte fuer alle Brillentraeger.",
-      "en": "Rule: alle Toasts passieren ohne Worte fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle Toasts passieren ohne Worte bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle Toasts passieren ohne Worte bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert fuer alle Brillentraeger.",
-      "en": "Rule: bei Namen wird salutiert fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: bei Namen wird salutiert bis jemand einen Schluck verschuettet.",
-      "en": "Rule: bei Namen wird salutiert bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat fuer alle Brillentraeger.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: wer sein Glas abstellt, macht einen Beat bis jemand einen Schluck verschuettet.",
-      "en": "Rule: wer sein Glas abstellt, macht einen Beat bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung fuer alle Brillentraeger.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: jedes Prost braucht eine Handbewegung bis jemand einen Schluck verschuettet.",
-      "en": "Rule: jedes Prost braucht eine Handbewegung bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen fuer alle Brillentraeger.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: keine Wiederholungen von Kategorienamen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: keine Wiederholungen von Kategorienamen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt fuer alle Brillentraeger.",
-      "en": "Rule: nur Reime sind erlaubt fuer alle Brillentraeger.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: nur Reime sind erlaubt bis jemand einen Schluck verschuettet.",
-      "en": "Rule: nur Reime sind erlaubt bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen bis zum Ende der naechsten Runde.",
-      "en": "Rule: niemand darf Nein sagen bis zum Ende der naechsten Runde.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen solange der Timer laeuft.",
-      "en": "Rule: niemand darf Nein sagen solange der Timer laeuft.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen bis jemand niest.",
-      "en": "Rule: niemand darf Nein sagen bis jemand niest.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen bis das naechste Lied startet.",
-      "en": "Rule: niemand darf Nein sagen bis das naechste Lied startet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen fuer drei Prompts.",
-      "en": "Rule: niemand darf Nein sagen fuer drei Prompts.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen fuer alle mit Muetze.",
-      "en": "Rule: niemand darf Nein sagen fuer alle mit Muetze.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen fuer alle geraden Geburtsmonate.",
-      "en": "Rule: niemand darf Nein sagen fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen bis jemand einfriert.",
-      "en": "Rule: niemand darf Nein sagen bis jemand einfriert.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen fuer alle Brillentraeger.",
-      "en": "Rule: niemand darf Nein sagen fuer alle Brillentraeger.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: niemand darf Nein sagen bis jemand einen Schluck verschuettet.",
-      "en": "Rule: niemand darf Nein sagen bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz bis zum Ende der naechsten Runde.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz bis zum Ende der naechsten Runde.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz solange der Timer laeuft.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz solange der Timer laeuft.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz bis jemand niest.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz bis jemand niest.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz bis das naechste Lied startet.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz bis das naechste Lied startet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz fuer drei Prompts.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz fuer drei Prompts.",
-      "drunkLevel": 6,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz fuer alle mit Muetze.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz fuer alle mit Muetze.",
-      "drunkLevel": 7,
-      "deepness": 3,
-      "drink": true,
-      "drinking": false,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz fuer alle geraden Geburtsmonate.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz fuer alle geraden Geburtsmonate.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz bis jemand einfriert.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz bis jemand einfriert.",
-      "drunkLevel": 3,
-      "deepness": 2,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz fuer alle Brillentraeger.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz fuer alle Brillentraeger.",
-      "drunkLevel": 4,
-      "deepness": 3,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Regel: alle muessen zweimal blinzeln vor einem Satz bis jemand einen Schluck verschuettet.",
-      "en": "Rule: alle muessen zweimal blinzeln vor einem Satz bis jemand einen Schluck verschuettet.",
-      "drunkLevel": 5,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
+      "drink": false,
+      "drinking": false
     }
   ]
 }
