@@ -228,6 +228,231 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "1v1: Daumenkrieg — Best-of-3. Verlierer trinkt einen Schluck.",
+      "en": "1v1: Thumb war — best of 3. Loser drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Tierarten — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming animals — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer hält länger die Luft an? Verlierer trinkt zwei Schlucke.",
+      "en": "1v1: Who can hold their breath longer? Loser drinks two sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Armdrücken zu zweit. Verlierer trinkt zwei Schlucke.",
+      "en": "1v1: Arm wrestling. Loser drinks two sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Filme mit gleichem Anfangsbuchstaben — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming movies starting with the same letter — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann länger ein Pokerface halten, während der andere Grimassen schneidet? Verlierer trinkt.",
+      "en": "1v1: Who can hold a poker face longer while the other makes faces? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Rate-Duell — beschreibt abwechselnd einen Begriff, der andere errät. Langsamer trinkt.",
+      "en": "1v1: Guessing duel — take turns describing a word, the other guesses. Slower one drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten auf einem Bein balancieren? Verlierer trinkt einen Schluck.",
+      "en": "1v1: Who can balance on one leg longer? Loser drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Wörter, die sich reimen — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate saying words that rhyme — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann die überzeugendste Comic-Stimme machen? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who does the most convincing cartoon voice? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Fingerhakeln — Best-of-3. Verlierer trinkt.",
+      "en": "1v1: Finger wrestling — best of 3. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am schnellsten fünf Songtitel mit dem Wort 'Liebe' nennen? Langsamer trinkt.",
+      "en": "1v1: Who can name five song titles containing 'love' fastest? Slower one drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Impro-Interview — einer interviewt, einer antwortet nur mit Ja/Nein. Wer zuerst lacht, trinkt.",
+      "en": "1v1: Improv interview — one interviews, one only answers yes/no. Whoever laughs first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Sportarten — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming sports — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten ernst bleiben bei einem schlechten Witz des anderen? Verlierer trinkt.",
+      "en": "1v1: Who can stay serious longest at the other's bad joke? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Schnellste Reaktion — einer klatscht in die Hände, der andere muss so schnell wie möglich blinzeln. Verlierer trinkt.",
+      "en": "1v1: Fastest reaction — one claps, the other must blink as fast as possible. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann in 10 Sekunden mehr Namen aus der Gruppe aufsagen? Langsamer trinkt.",
+      "en": "1v1: Who can name more people in the group in 10 seconds? Slower one drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Grimassen-Duell — wer zuerst lacht, trinkt.",
+      "en": "1v1: Face-pulling duel — whoever laughs first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten mit ausgestrecktem Arm ein Glas halten? Verlierer trinkt zwei Schlucke.",
+      "en": "1v1: Who can hold a glass with an outstretched arm longer? Loser drinks two sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Wörter zu einem Thema eurer Wahl — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming words on a topic of your choice — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer errät zuerst das pantomimisch dargestellte Wort des anderen? Langsamer trinkt.",
+      "en": "1v1: Who guesses the other's mimed word first? Slower one drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Rückwärts-Zählen-Duell — wer zuerst einen Fehler macht, trinkt.",
+      "en": "1v1: Backward-counting duel — whoever makes a mistake first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann die dramatischste Filmszene improvisieren? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who improvises the most dramatic movie scene? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Zungenbrecher-Duell — wer sich zuerst verhaspelt, trinkt.",
+      "en": "1v1: Tongue-twister duel — whoever trips up first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am überzeugendsten Nachrichtensprecher spielen? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who plays the most convincing news anchor? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
