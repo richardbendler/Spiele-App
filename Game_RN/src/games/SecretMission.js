@@ -63,8 +63,8 @@ const SecretMission = () => {
       info:
         copy.info ||
         (language === 'de'
-          ? 'Nimm reihum das Handy und decke nur auf, wenn du dran bist. Merke dir deine Mission und verdecke sie wieder, damit die Nächste Person ihre eigene Mission ziehen kann.'
-          : 'Take turns with the phone. Reveal only when it is your turn. Remember your mission and hide it again so the next person can draw theirs.'),
+          ? 'Nimm reihum das Handy und decke nur auf, wenn du dran bist. Merke dir deine Mission und verdecke sie wieder, damit die nächste Person ihre eigene Mission ziehen kann.\n\nErfülle deine Mission irgendwann im Laufe des Abends. Sobald sie erfüllt ist, darfst du einen Schluck an eine beliebige Person verteilen.'
+          : 'Take turns with the phone. Reveal only when it is your turn. Remember your mission and hide it again so the next person can draw theirs.\n\nComplete your mission at any point during the evening. Once it is done, you get to hand out one sip to anyone you like.'),
     };
   }, [copy, language]);
 
@@ -122,8 +122,11 @@ const SecretMission = () => {
             </Animated.View>
 
             {/* BACK (revealed) */}
-            <Animated.View style={[StyleSheet.absoluteFill, styles.cardFace, { transform: [{ rotateY: spinBack }], opacity: backOpacity }]}> 
-              <View style={styles.card}> 
+            <Animated.View style={[StyleSheet.absoluteFill, styles.cardFace, { transform: [{ rotateY: spinBack }], opacity: backOpacity }]}>
+              <View style={styles.card}>
+                <Text style={styles.rewardText}>
+                  {language === 'de' ? '🍹 Belohnung: Bei Erfüllung 1 Schluck verteilen' : '🍹 Reward: give away 1 sip once completed'}
+                </Text>
                 <Text style={styles.missionText}>{missionText}</Text>
               </View>
             </Animated.View>
@@ -179,6 +182,20 @@ const styles = StyleSheet.create({
   cardTitle: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 24, textAlign: 'center' },
   hintText: { color: 'rgba(255,255,255,0.8)', fontFamily: 'Quicksand_300Light', fontSize: 14, marginTop: 10, textAlign: 'center' },
   endText: { color: '#fff', fontFamily: 'Quicksand_700Bold', fontSize: 16, marginTop: 8, textAlign: 'center' },
+  rewardText: {
+    color: '#E5C185',
+    fontFamily: 'Quicksand_700Bold',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(229,193,133,0.5)',
+    backgroundColor: 'rgba(229,193,133,0.12)',
+    overflow: 'hidden',
+  },
   missionText: { color: '#F5E9D7', fontFamily: 'Quicksand_700Bold', fontSize: 20, lineHeight: 28, textAlign: 'center' },
   controls: { paddingVertical: 16 },
 });
