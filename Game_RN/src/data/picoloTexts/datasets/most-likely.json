@@ -45,8 +45,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer startet einen Podcast ueber diese Runde? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer startet einen Podcast ueber diese Runde? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten einen Podcast über diese Runde starten? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to start a podcast about this group? That person drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
@@ -54,8 +54,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer vergisst sein Passwort noch heute? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer vergisst sein Passwort noch heute? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten noch heute sein Passwort vergessen? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to forget their password today? That person drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
       "drink": true,
@@ -63,8 +63,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer gewinnt einen Karaoke-Abend? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer gewinnt einen Karaoke-Abend? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten einen Karaoke-Abend gewinnen? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to win a karaoke night? That person drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
       "drink": true,
@@ -72,8 +72,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer schreibt das laengste Dankes-Meme? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer schreibt das laengste Dankes-Meme? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten das längste Dankes-Meme schreiben? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to write the longest thank-you meme? That person drinks 5 sips.",
       "drunkLevel": 5,
       "deepness": 4,
       "drink": true,
@@ -81,8 +81,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer legt einen Ghosting-Marathon hin? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer legt einen Ghosting-Marathon hin? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten einen Ghosting-Marathon hinlegen? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to go on a ghosting marathon? That person drinks 2 sips.",
       "drunkLevel": 6,
       "deepness": 1,
       "drink": true,
@@ -90,8 +90,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer macht als erstes Urlaub? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer macht als erstes Urlaub? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten als Erstes Urlaub machen? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to go on vacation first? That person drinks 3 sips.",
       "drunkLevel": 7,
       "deepness": 2,
       "drink": true,
@@ -99,8 +99,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer zieht in eine WG mit allen hier? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer zieht in eine WG mit allen hier? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten in eine WG mit allen hier ziehen? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to move into a shared flat with everyone here? That person drinks 4 sips.",
       "drunkLevel": 8,
       "deepness": 3,
       "drink": true,
@@ -108,8 +108,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer wird Food-Blogger? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer wird Food-Blogger? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten Food-Blogger*in werden? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to become a food blogger? That person drinks 5 sips.",
       "drunkLevel": 2,
       "deepness": 4,
       "drink": true,
@@ -117,8 +117,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer liefert den besten Lifehack-Thread? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer liefert den besten Lifehack-Thread? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten den besten Lifehack-Thread liefern? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to deliver the best life-hack thread? That person drinks 2 sips.",
       "drunkLevel": 3,
       "deepness": 1,
       "drink": true,
@@ -126,8 +126,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer faengt einen DIY-Kanal an? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer faengt einen DIY-Kanal an? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten einen DIY-Kanal anfangen? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to start a DIY channel? That person drinks 3 sips.",
       "drunkLevel": 4,
       "deepness": 2,
       "drink": true,
@@ -135,8 +135,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer heult bei einem Werbespot? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer heult bei einem Werbespot? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten bei einem Werbespot heulen? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to cry at a commercial? That person drinks 4 sips.",
       "drunkLevel": 5,
       "deepness": 3,
       "drink": true,
@@ -144,8 +144,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer startet eine Haustier-Cam? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer startet eine Haustier-Cam? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten eine Haustier-Cam starten? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to start a pet cam? That person drinks 5 sips.",
       "drunkLevel": 6,
       "deepness": 4,
       "drink": true,
@@ -153,8 +153,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer verkauft alles auf Kleinanzeigen? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer verkauft alles auf Kleinanzeigen? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten alles auf Kleinanzeigen verkaufen? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to sell everything on a marketplace app? That person drinks 2 sips.",
       "drunkLevel": 7,
       "deepness": 1,
       "drink": true,
@@ -162,8 +162,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer landet im Trend-Video? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer landet im Trend-Video? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten in einem Trend-Video landen? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to end up in a viral video? That person drinks 3 sips.",
       "drunkLevel": 8,
       "deepness": 2,
       "drink": true,
@@ -171,8 +171,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer wird Sport-Coach? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer wird Sport-Coach? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten Sport-Coach werden? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to become a sports coach? That person drinks 4 sips.",
       "drunkLevel": 2,
       "deepness": 3,
       "drink": true,
@@ -180,8 +180,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer macht als erstes einen Detox? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer macht als erstes einen Detox? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten als Erstes einen Detox machen? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to do a detox first? That person drinks 5 sips.",
       "drunkLevel": 3,
       "deepness": 4,
       "drink": true,
@@ -189,8 +189,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer sammelt als erster Autogramme? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer sammelt als erster Autogramme? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten als Erster Autogramme sammeln? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to collect autographs first? That person drinks 2 sips.",
       "drunkLevel": 4,
       "deepness": 1,
       "drink": true,
@@ -198,8 +198,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer schreibt einen Song ueber Snacks? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer schreibt einen Song ueber Snacks? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten einen Song über Snacks schreiben? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to write a song about snacks? That person drinks 3 sips.",
       "drunkLevel": 5,
       "deepness": 2,
       "drink": true,
@@ -207,8 +207,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer wird Escape-Room-Profi? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer wird Escape-Room-Profi? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten Escape-Room-Profi werden? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to become an escape-room pro? That person drinks 4 sips.",
       "drunkLevel": 6,
       "deepness": 3,
       "drink": true,
@@ -216,8 +216,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer druckt Sticker von der Runde? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer druckt Sticker von der Runde? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten Sticker von der Runde drucken lassen? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to print stickers of the group? That person drinks 5 sips.",
       "drunkLevel": 7,
       "deepness": 4,
       "drink": true,
@@ -225,8 +225,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer streamt heute Nacht am laengsten? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer streamt heute Nacht am laengsten? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten heute Nacht am längsten streamen? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to stream the longest tonight? That person drinks 2 sips.",
       "drunkLevel": 8,
       "deepness": 1,
       "drink": true,
@@ -234,8 +234,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer vergisst morgen den Wecker? Person trinkt 3 Schlucke.",
-      "en": "Who's most likely to wer vergisst morgen den Wecker? That person drinks 3 sips.",
+      "de": "Wer würde am ehesten morgen den Wecker vergessen? Person trinkt 3 Schlucke.",
+      "en": "Who's most likely to forget their alarm tomorrow? That person drinks 3 sips.",
       "drunkLevel": 2,
       "deepness": 2,
       "drink": true,
@@ -243,8 +243,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer wird der beste Trauzeuge? Person trinkt 4 Schlucke.",
-      "en": "Who's most likely to wer wird der beste Trauzeuge? That person drinks 4 sips.",
+      "de": "Wer würde am ehesten der beste Trauzeuge werden? Person trinkt 4 Schlucke.",
+      "en": "Who's most likely to become the best best man or maid of honor? That person drinks 4 sips.",
       "drunkLevel": 3,
       "deepness": 3,
       "drink": true,
@@ -252,8 +252,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer startet einen Club? Person trinkt 5 Schlucke.",
-      "en": "Who's most likely to wer startet einen Club? That person drinks 5 sips.",
+      "de": "Wer würde am ehesten einen Club starten? Person trinkt 5 Schlucke.",
+      "en": "Who's most likely to start a club? That person drinks 5 sips.",
       "drunkLevel": 4,
       "deepness": 4,
       "drink": true,
@@ -261,8 +261,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Wer wuerde am ehesten wer schreibt den besten Serien-Recap? Person trinkt 2 Schlucke.",
-      "en": "Who's most likely to wer schreibt den besten Serien-Recap? That person drinks 2 sips.",
+      "de": "Wer würde am ehesten den besten Serien-Recap schreiben? Person trinkt 2 Schlucke.",
+      "en": "Who's most likely to write the best show recap? That person drinks 2 sips.",
       "drunkLevel": 5,
       "deepness": 1,
       "drink": true,
