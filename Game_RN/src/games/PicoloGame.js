@@ -26,7 +26,6 @@ import {
   getCategoryColor,
   normalizeCategoryKey,
 } from '../utils/categoryColors';
-import { filterManualApproved } from '../utils/manualApproval';
 
 const buildWheelPools = (rawPrompts = []) => {
   const map = new Map();
@@ -139,12 +138,12 @@ const PicoloGame = ({ route }) => {
   const rawPrompts = useMemo(() => {
     const routeData = route.params?.theOneData;
     if (Array.isArray(routeData) && routeData.length > 0) {
-      return filterManualApproved(routeData);
+      return routeData;
     }
     if (Array.isArray(approvedTheOnePrompts) && approvedTheOnePrompts.length > 0) {
       return [...approvedTheOnePrompts];
     }
-    return filterManualApproved(theOnePrompts);
+    return Array.isArray(theOnePrompts) ? theOnePrompts : [];
   }, [route.params?.theOneData, theOnePrompts, approvedTheOnePrompts]);
   const { wheelPools, poolColorMap } = useMemo(() => buildWheelPools(rawPrompts), [rawPrompts]);
   const questions = useMemo(
