@@ -35,7 +35,7 @@ npm start
 ```
 Startet den Metro-Bundler und zeigt einen QR-Code in der Konsole/im Browser-Tab. Von dort aus:
 - **Handy (empfohlen, am schnellsten):** Expo Go App öffnen und den QR-Code scannen. Handy und PC müssen im selben WLAN sein.
-- **Android-Emulator:** im laufenden `npm start` die Taste `a` drücken, oder direkt `npm run android` (Emulator muss vorher in Android Studio gestartet sein).
+- **Android-Emulator:** Emulator vorher in Android Studio starten, dann `npm run android`. Das Script (`scripts/runAndroid.js`) fragt `adb devices` ab, filtert Geister-Einträge mit Status `offline`/`unauthorized` heraus und startet Expo explizit auf dem ersten wirklich aktiven Gerät (`ANDROID_SERIAL`) — nötig, weil `adb` nach abgestürzten/nicht sauber beendeten Emulator-Sessions gerne verwaiste `offline`-Einträge stehen lässt, die Expo sonst fälschlich anzusteuern versucht.
 - **iOS-Simulator (nur macOS):** Taste `i` drücken, oder `npm run ios`.
 - **Web:** Taste `w` drücken, oder `npm run web` (nützlich für schnelle UI-Checks, aber kein vollständiger Ersatz für den Test auf echten Geräten, da einige RN-Module sich im Web anders verhalten).
 
