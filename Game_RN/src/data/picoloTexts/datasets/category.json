@@ -2208,6 +2208,465 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Sätze, die man in einem Aufzug sagt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you say in an elevator — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe mit viel Verantwortung — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs with a lot of responsibility — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man an einem Flughafen sieht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you see at an airport — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit starken weiblichen Hauptfiguren — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with strong female leads — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man in einer Garage findet — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you find in a garage — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'müde' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'tired' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Nudelgerichte — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Pasta dishes — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Zelten hört — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Sounds you hear while camping — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Anwaltskanzleien — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows set in law firms — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einer Aktentasche — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a briefcase — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe im Theater — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs at a theater — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'traurig' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'sad' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Getränke mit Kohlensäure — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Carbonated drinks — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Angeln braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for fishing — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Zeitschleifen — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with time loops — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einer Federmappe — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a pencil case — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe an Bord eines Schiffes — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs on board a ship — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'glücklich' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'happy' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Suppentopf-Zutaten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Ingredients for a pot of soup — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Skifahren braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for skiing — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Geheimagenten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with secret agents — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einem Portemonnaie — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a wallet — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe im Restaurant — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs at a restaurant — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'wütend' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'angry' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Salate — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Types of salad — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Snowboarden trägt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things worn while snowboarding — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Piraten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with pirates — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einer Reisetasche — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a travel bag — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe auf einer Farm mit Tieren — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs on a farm with animals — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'aufgeregt' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'excited' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Frühlingsrollen-Zutaten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Spring roll ingredients — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Segeln braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for sailing — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Hexen oder Magie — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with witches or magic — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einer Sporttasche fürs Schwimmbad — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a swim bag — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe in einem Museum — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs at a museum — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'gelangweilt' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'bored' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Currygerichte — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Curry dishes — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Skaten braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for skating — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Königshäusern — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows about royal families — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einer Kühltasche — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things in a cooler bag — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe im Sicherheitsdienst — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs in security — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'neugierig' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'curious' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dips und Saucen — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Dips and sauces — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Snorcheln braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for snorkeling — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Alien-Invasionen — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with alien invasions — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge in einem Werkzeuggürtel — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things on a tool belt — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Berufe in einer Werkstatt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Jobs at a workshop — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Wörter für 'überrascht' — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Words for 'surprised' — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Smoothie-Zutaten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Smoothie ingredients — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Dinge, die man beim Reiten braucht — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Things you need for horseback riding — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Kategorie: Serien mit Superschurken — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
+      "en": "Category: Shows with supervillains — whoever hesitates or repeats drinks one sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

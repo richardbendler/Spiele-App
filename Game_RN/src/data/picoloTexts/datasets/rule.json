@@ -742,6 +742,168 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer die Augenbrauen hochzieht, muss trinken.",
+      "en": "Rule: Whoever raises their eyebrows must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder vor dem Antworten dreimal blinzeln. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on everyone must blink three times before answering. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer die Hand hebt, um etwas zu sagen, statt einfach zu reden, trinkt.",
+      "en": "Rule: Whoever raises their hand to speak instead of just talking drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder, der lacht, kurz applaudieren. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on everyone who laughs must briefly applaud. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer 'eigentlich' sagt, muss trinken.",
+      "en": "Rule: Whoever says 'actually' must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder Satz mit einem Tiername enden. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every sentence must end with an animal name. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer die Beine wackeln lässt, muss trinken.",
+      "en": "Rule: Whoever jiggles their leg must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres darf niemand 'okay' sagen — nur 'verstanden'. Fehler kostet einen Schluck.",
+      "en": "Rule: From now on nobody may say 'okay' — only 'understood'. Slip-ups cost a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer seine Trinkposition ändert (steht statt sitzt oder umgekehrt), muss es ansagen oder trinken.",
+      "en": "Rule: Whoever changes their drinking position (standing vs sitting) must announce it or drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder vor dem Sprechen den Namen der Person rechts von sich nennen. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on everyone must say the name of the person to their right before speaking. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer sich am Kopf kratzt, muss trinken.",
+      "en": "Rule: Whoever scratches their head must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder, der zustimmt, laut 'Bestätigt' sagen. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on everyone who agrees must say 'confirmed' out loud. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer die Füße übereinanderschlägt, muss trinken.",
+      "en": "Rule: Whoever crosses their feet must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres darf niemand direkt 'nein' sagen — nur 'eher nicht'. Fehler kostet einen Schluck.",
+      "en": "Rule: From now on nobody may say 'no' directly — only 'rather not'. Slip-ups cost a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer als Erstes das Wort 'eigentlich' oder 'krass' benutzt, verteilt einen Schluck.",
+      "en": "Rule: Whoever says the word 'actually' or 'wild' first hands out a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder, der aufsteht, kurz in die Hände klatschen. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on everyone who stands up must clap once. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Wer die Stirn runzelt, muss trinken.",
+      "en": "Rule: Whoever furrows their brow must drink.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Regel: Bis auf Weiteres muss jeder Satz mit dem eigenen Vornamen beginnen. Wer es vergisst, trinkt.",
+      "en": "Rule: From now on every sentence must start with your own first name. Forgetting means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

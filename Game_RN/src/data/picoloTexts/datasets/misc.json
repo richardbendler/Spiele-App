@@ -425,6 +425,102 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Sache, für die sie diese Woche dankbar war.",
+      "en": "Everyone names something they were grateful for this week.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut aus Servietten oder Papier eine kleine Skulptur zum Thema 'Freundschaft'.",
+      "en": "Build a small sculpture from napkins or paper on the theme of 'friendship'.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ihre aktuelle Lieblingsapp und begründet es in einem Satz.",
+      "en": "Everyone names their current favorite app and explains why in one sentence.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde einigt sich auf ein gemeinsames Codewort für 'alles gut'.",
+      "en": "The group agrees on a shared code word for 'all good'.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt ihre aktuelle Akkuanzeige — niedrigster Akku bekommt Szenenapplaus.",
+      "en": "Everyone shows their current battery level — lowest battery gets a round of applause.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam ein Emoji, das es noch nicht gibt, und beschreibt es.",
+      "en": "Invent an emoji that doesn't exist yet, together, and describe it.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Kleinigkeit, die sie sich für morgen vornimmt.",
+      "en": "Everyone names one small thing they plan to do tomorrow.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde stimmt ab: Wer hat heute Abend das beste Outfit? Diese Person bekommt Applaus.",
+      "en": "The group votes: who has the best outfit tonight? That person gets applause.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ein Wort, das sie diese Woche zum ersten Mal benutzt hat.",
+      "en": "Everyone names a word they used for the first time this week.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut gemeinsam eine kleine Pyramide aus Gläsern oder Dosen (leer, versteht sich).",
+      "en": "Build a small pyramid together out of glasses or cans (empty ones, of course).",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Erinnerung an diesen Abend, die sie behalten möchte.",
+      "en": "Everyone names a memory from tonight they want to keep.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde erfindet gemeinsam ein Motto für das nächste Jahr.",
+      "en": "The group invents a motto for next year together.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
     }
   ]
 }
