@@ -571,6 +571,96 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am schnellsten fünf Möbelstücke im Raum nennen? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who names five pieces of furniture in the room fastest? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am längsten die Zähne zusammenbeißen, ohne zu lächeln? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who can clench their jaw longest without smiling? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer errät zuerst, welches Lied auf dem Tisch geklopft wird? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who guesses the tapped-out song on the table first? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am schnellsten die eigenen Schnürsenkel binden? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who can tie their own shoelaces fastest? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am überzeugendsten eine Stand-up-Minute improvisieren? Runde stimmt ab, Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who improvises the most convincing one-minute stand-up bit? Group votes, loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am längsten die Hände über dem Kopf halten? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who can hold their hands over their head the longest? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer errät als Erstes das gezeichnete Wort in 10 Sekunden? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who guesses the drawn word first within 10 seconds? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am schnellsten fünf Wörter mit 'Ge-' am Anfang nennen? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who names five words starting with 'Ge-' fastest? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am überzeugendsten weinen und dann sofort lachen? Runde stimmt ab, Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who cries then instantly laughs most convincingly? Group votes, loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Mini-Competition: Wer kann am schnellsten rückwärts das Alphabet aufsagen? Verlierer*in trinkt 2 Schlucke.",
+      "en": "Mini-competition: Who recites the alphabet backward fastest? Loser drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
