@@ -255,6 +255,42 @@
           "en": "{{target}} has talked the most in the last 5 minutes and drinks 2 sips."
         }
       }
+    },
+    {
+      "de": "Applaus-Steuer",
+      "en": "Applause tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt am lautesten applaudiert und trinkt einen Schluck.",
+          "en": "{{target}} applauded loudest most recently and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Vorschlags-Steuer",
+      "en": "Suggestion tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat den letzten Vorschlag gemacht und trinkt 2 Schlucke.",
+          "en": "{{target}} made the last suggestion and drinks 2 sips."
+        }
+      }
     }
   ]
 }

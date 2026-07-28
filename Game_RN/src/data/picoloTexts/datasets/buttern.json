@@ -467,6 +467,151 @@
         ],
         "rewardPerCorrect": 1
       }
+    },
+    {
+      "de": "Buttern: Serien-Fans",
+      "en": "Buttern: Show Fans",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Serien-Fans",
+              "en": "Show Fans"
+            },
+            "topics": [
+              "Cliffhanger",
+              "Serien-Marathon",
+              "Spoiler",
+              "Lieblingscharakter",
+              "Staffelfinale"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Grillmeister",
+      "en": "Buttern: BBQ Masters",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Grillmeister",
+              "en": "BBQ Masters"
+            },
+            "topics": [
+              "Marinade",
+              "Kohle-Anzuenden",
+              "Grillzange",
+              "Steak-Grad",
+              "Beilagensalat"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Wellness",
+      "en": "Buttern: Wellness",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Wellness",
+              "en": "Wellness"
+            },
+            "topics": [
+              "Sauna",
+              "Massage",
+              "Duftkerze",
+              "Yogamatte",
+              "Tiefenentspannung"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Handwerk",
+      "en": "Buttern: DIY Crafts",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Handwerk",
+              "en": "DIY Crafts"
+            },
+            "topics": [
+              "Bohrmaschine",
+              "Schraubenzieher",
+              "Duebel",
+              "Bauanleitung",
+              "Ikea-Moebel"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Kino-Erlebnis",
+      "en": "Buttern: Cinema Experience",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Kino-Erlebnis",
+              "en": "Cinema Experience"
+            },
+            "topics": [
+              "Popcorn",
+              "Werbeblock",
+              "Sitzreihe",
+              "3D-Brille",
+              "Abspann"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
     }
   ]
 }

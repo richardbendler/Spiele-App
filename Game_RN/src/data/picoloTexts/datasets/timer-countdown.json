@@ -223,6 +223,66 @@
           "en": "Time's up!"
         }
       }
+    },
+    {
+      "de": "Countdown: Wortkette",
+      "en": "Countdown: word chain",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Bildet gemeinsam eine Wortkette (letzter Buchstabe = neuer Anfang), bevor der Timer abläuft.",
+          "en": "Build a word chain together (last letter starts the next word) before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie lang wurde die Kette?",
+          "en": "Time's up! How long was the chain?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Gefühls-Charade",
+      "en": "Countdown: emotion charades",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "text": {
+          "de": "Stellt reihum ein Gefühl pantomimisch dar, bevor der Timer abläuft. Runde rät.",
+          "en": "Take turns miming an emotion before the timer runs out. Group guesses."
+        },
+        "successText": {
+          "de": "Zeit vorbei!",
+          "en": "Time's up!"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Human Knot",
+      "en": "Countdown: human knot",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 30,
+        "text": {
+          "de": "Verknotet eure Arme ineinander und versucht, euch zu entwirren, bevor der Timer abläuft.",
+          "en": "Tangle your arms together and try to untangle before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Geschafft oder nicht?",
+          "en": "Time's up! Did you make it?"
+        }
+      }
     }
   ]
 }
