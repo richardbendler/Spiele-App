@@ -355,6 +355,206 @@
       "deepness": 1,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welches Land grenzt an die meisten anderen Länder? (Antwort: China oder Russland (je 14)) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which country borders the most other countries? (Answer: China or Russia (14 each)) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — Wer war der erste Kaiser Roms? (Antwort: Augustus) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — who was the first Roman emperor? (Answer: Augustus) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie viele Planeten hat unser Sonnensystem? (Antwort: 8) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — how many planets does our solar system have? (Answer: 8) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — Welches Studio produzierte 'Toy Story'? (Antwort: Pixar) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — which studio produced 'Toy Story'? (Answer: Pixar) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Wie viele Ringe hat das olympische Symbol? (Antwort: 5) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — how many rings does the Olympic symbol have? (Answer: 5) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — Welches Instrument spielte Jimi Hendrix hauptsächlich? (Antwort: Gitarre) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — which instrument did Jimi Hendrix mainly play? (Answer: guitar) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Aus welchem Land kommt der Döner ursprünglich? (Antwort: Türkei) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — which country does döner originally come from? (Answer: Turkey) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Technik — Wer erfand das World Wide Web? (Antwort: Tim Berners-Lee) Wer falsch liegt, trinkt.",
+      "en": "Quiz: tech — who invented the World Wide Web? (Answer: Tim Berners-Lee) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Tiere — Welches Tier hat den längsten Hals der Welt? (Antwort: die Giraffe) Wer falsch liegt, trinkt.",
+      "en": "Quiz: animals — which animal has the longest neck in the world? (Answer: the giraffe) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welcher ist der höchste Berg der Welt? (Antwort: der Mount Everest) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which is the highest mountain in the world? (Answer: Mount Everest) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — In welchem Jahr endete der Zweite Weltkrieg? (Antwort: 1945) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — in which year did World War II end? (Answer: 1945) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie nennt man die Studie von Erdbeben? (Antwort: Seismologie) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — what is the study of earthquakes called? (Answer: seismology) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — Welcher Regisseur drehte 'Jurassic Park'? (Antwort: Steven Spielberg) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — which director made 'Jurassic Park'? (Answer: Steven Spielberg) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Wie viele Punkte ist ein Touchdown im American Football wert? (Antwort: 6) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — how many points is a touchdown worth in American football? (Answer: 6) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — In welcher Stadt wurde der Grunge-Sound geprägt? (Antwort: Seattle) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — in which city was the grunge sound shaped? (Answer: Seattle) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Welches Land isst am meisten Schokolade pro Kopf? (Antwort: die Schweiz) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — which country eats the most chocolate per capita? (Answer: Switzerland) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Technik — Wie heißt die erste Programmiersprache, die weit verbreitet war? (Antwort: FORTRAN) Wer falsch liegt, trinkt.",
+      "en": "Quiz: tech — what was the first widely used programming language called? (Answer: FORTRAN) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Tiere — Welches Tier kann seinen Kopf um 270 Grad drehen? (Antwort: die Eule) Wer falsch liegt, trinkt.",
+      "en": "Quiz: animals — which animal can turn its head 270 degrees? (Answer: the owl) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welcher See ist der größte Süßwassersee der Welt? (Antwort: der Oberer See) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which is the largest freshwater lake in the world by area? (Answer: Lake Superior) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — Wer schrieb die amerikanische Unabhängigkeitserklärung hauptsächlich? (Antwort: Thomas Jefferson) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — who mainly wrote the American Declaration of Independence? (Answer: Thomas Jefferson) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie viele Zähne hat ein erwachsener Mensch normalerweise? (Antwort: 32) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — how many teeth does an adult human normally have? (Answer: 32) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — Wie heißt das fiktive Land in 'Black Panther'? (Antwort: Wakanda) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — what is the fictional country in 'Black Panther' called? (Answer: Wakanda) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Welche Sportart wird auf einem 'Court' gespielt? (Antwort: Basketball oder Tennis) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — which sport is played on a 'court'? (Answer: basketball or tennis) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — Welches Land veranstaltet jährlich den Eurovision Song Contest, wenn es gewinnt? (Antwort: das Gewinnerland des Vorjahres) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — which country hosts Eurovision each year? (Answer: the previous year's winning country) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Welches Getränk wird aus fermentiertem Traubensaft hergestellt? (Antwort: Wein) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — which drink is made from fermented grape juice? (Answer: wine) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }
