@@ -233,6 +233,52 @@
           "en": "Forget it and drink."
         }
       }
+    },
+    {
+      "de": "Virus: Dankespflicht",
+      "en": "Virus: gratitude requirement",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Dankespflicht",
+          "en": "Virus: gratitude requirement"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: jeder muss sich vor dem Trinken laut bei der Gruppe bedanken.",
+          "en": "Until the next card: everyone must thank the group out loud before drinking."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt einen Extraschluck.",
+          "en": "Forget it and drink an extra sip."
+        }
+      }
+    },
+    {
+      "de": "Virus: Ein-Wort-Antworten",
+      "en": "Virus: one-word answers",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Ein-Wort-Antworten",
+          "en": "Virus: one-word answers"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: alle antworten nur noch mit einem einzigen Wort.",
+          "en": "Until the next card: everyone answers with just one word."
+        },
+        "penalty": {
+          "de": "Wer mehr sagt, trinkt.",
+          "en": "Say more than that and drink."
+        }
+      }
     }
   ]
 }

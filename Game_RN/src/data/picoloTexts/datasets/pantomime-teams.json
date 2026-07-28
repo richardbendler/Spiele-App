@@ -153,6 +153,36 @@
           "en": "{{teamA}} mimes an animal's daily routine, {{teamB}} guesses which animal."
         }
       }
+    },
+    {
+      "de": "Team Charades: Reisechaos",
+      "en": "Team charades: travel chaos",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine Reisekatastrophe dar, {{teamB}} rät was passiert ist.",
+          "en": "{{teamA}} mimes a travel disaster, {{teamB}} guesses what happened."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Gadget der Zukunft 2",
+      "en": "Team charades: future gadget 2",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt ein zweites erfundenes Zukunfts-Gadget dar, {{teamB}} rät die Funktion.",
+          "en": "{{teamA}} mimes another made-up future gadget, {{teamB}} guesses its function."
+        }
+      }
     }
   ]
 }

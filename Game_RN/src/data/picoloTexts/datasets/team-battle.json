@@ -153,6 +153,36 @@
           "en": "{{teamA}} vs {{teamB}}: alternate quick-witted answers to a group question. Slower team drinks 2 sips."
         }
       }
+    },
+    {
+      "de": "Teamduell: Fake-News-Battle",
+      "en": "Team duel: fake-news battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} erfinden je eine absurde Schlagzeile, Runde wählt die beste. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} each invent an absurd headline, group picks the best. Losing team drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Gedächtnis-Duell",
+      "en": "Team duel: memory duel",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: merkt euch eine Wortliste, wer sich mehr merkt gewinnt. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: memorize a word list, whoever remembers more wins. Losing team drinks 2 sips."
+        }
+      }
     }
   ]
 }

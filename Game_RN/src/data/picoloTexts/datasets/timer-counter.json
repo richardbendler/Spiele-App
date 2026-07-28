@@ -213,6 +213,48 @@
           "en": "Every fun fact counts."
         }
       }
+    },
+    {
+      "de": "Counter: Wortpaare",
+      "en": "Counter: word pairs",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele zusammengesetzte Wörter mit einem vorgegebenen Wort findet ihr, bevor der Timer abläuft?",
+          "en": "How many compound words with a given word can you find before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jedes Wort zählt.",
+          "en": "Every word counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Luftgitarre",
+      "en": "Counter: air guitar",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele verschiedene Luftgitarren-Posen schafft eine Person, bevor der Timer abläuft?",
+          "en": "How many different air-guitar poses can one person pull off before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jede neue Pose zählt.",
+          "en": "Every new pose counts."
+        }
+      }
     }
   ]
 }

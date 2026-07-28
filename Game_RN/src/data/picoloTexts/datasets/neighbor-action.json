@@ -201,6 +201,42 @@
           "en": "{{anchor}} and {{left}} hold eye contact for 10 seconds without laughing."
         }
       }
+    },
+    {
+      "de": "Nachbarschaftsduo: Gemeinsamer Song",
+      "en": "Neighbor duo: shared song",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} einigen sich in 5 Sekunden auf einen Lieblingssong und summen ihn gemeinsam.",
+          "en": "{{anchor}} and {{right}} agree on a favorite song in 5 seconds and hum it together."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Blitzinterview",
+      "en": "Neighbor duo: lightning interview",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} interviewt {{left}} 15 Sekunden lang zu einem lustigen Thema.",
+          "en": "{{anchor}} interviews {{left}} for 15 seconds on a funny topic."
+        }
+      }
     }
   ]
 }
