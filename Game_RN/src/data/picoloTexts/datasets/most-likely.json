@@ -596,6 +596,166 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Wochenende komplett offline verbringen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend a whole weekend completely offline? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine spontane Karaoke-Nacht organisieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to organize a spontaneous karaoke night? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Haustier mit auf Reisen nehmen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to bring a pet along on a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein komplettes Menü nur aus Resten zaubern? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to whip up a full menu only from leftovers? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten sich in einem Escape Room als Anführer aufspielen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to take charge as the leader in an escape room? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Geschenk noch am selben Tag zurückgeben? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to return a gift the same day they got it? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten während eines Films laut mitkommentieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to loudly comment along during a movie? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Bewerbung auf den letzten Drücker abschicken? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to send a job application at the very last minute? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten mit Fremden über Nacht Freundschaft schließen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to make lifelong friends with strangers overnight? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Missverständnis wochenlang nicht aufklären? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to leave a misunderstanding uncorrected for weeks? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Konzert auswendig mitsingen, ohne die Band zu kennen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to sing along to a whole concert without knowing the band? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten die Gruppe zu einem Kostümabend überreden? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to convince the group to have a costume night? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten nach einem Umzug sofort das ganze Viertel kennen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to know the whole neighborhood right after moving in? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Spiel absichtlich verlieren, um nett zu sein? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to deliberately lose a game to be nice? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Bewerbung für eine Reality-Show abschicken? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to apply for a reality TV show? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Handy-Update sofort installieren, ohne zu lesen was es macht? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to install a phone update instantly without reading what it does? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten einen kompletten Tag im Bademantel verbringen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend a whole day in a bathrobe? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten die Gruppe zu einem 5-Uhr-Sonnenaufgang schleppen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to drag the group to a 5am sunrise? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ihr halbes Gehalt für ein Hobby ausgeben? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend half their paycheck on a hobby? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten mit dem Nachbarn eine Freundschaft fürs Leben schließen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to become lifelong friends with a neighbor? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

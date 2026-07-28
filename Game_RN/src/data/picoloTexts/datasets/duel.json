@@ -453,6 +453,96 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Marken — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming brands — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten mit verschränkten Armen balancieren? Verlierer trinkt.",
+      "en": "1v1: Who can balance longest with arms crossed? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Reaktionstest — wer schneller auf ein Kommando reagiert, gewinnt. Verlierer trinkt.",
+      "en": "1v1: Reaction test — whoever reacts to a signal faster wins. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann die meisten Wörter mit dem Anfangsbuchstaben des Gegners nennen? Langsamer trinkt.",
+      "en": "1v1: Who can name the most words starting with the opponent's initial? Slower one drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer hält länger einen imaginären Handstand-Pose-Wettbewerb durch? Verlierer trinkt.",
+      "en": "1v1: Who holds a mock handstand pose longer? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wortassoziations-Duell — schnellste Assoziationskette gewinnt. Verlierer trinkt.",
+      "en": "1v1: Word-association duel — fastest chain of associations wins. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am überzeugendsten die Stimme einer Comicfigur nachmachen? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who does the most convincing cartoon-character voice? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer stapelt schneller drei Münzen oder Kronkorken übereinander? Verlierer trinkt.",
+      "en": "1v1: Who stacks three coins or bottle caps faster? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Wörter mit Doppelbuchstaben — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming words with double letters — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten die Balance auf einem Bein mit geschlossenen Augen halten? Verlierer trinkt.",
+      "en": "1v1: Who balances on one leg longest with eyes closed? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

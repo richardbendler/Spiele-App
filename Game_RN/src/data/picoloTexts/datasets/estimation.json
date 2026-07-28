@@ -1176,6 +1176,486 @@
       },
       "drinking": false,
       "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Minuten am Tag verbringt eine Person durchschnittlich mit Zähneputzen? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many minutes a day does the average person spend brushing their teeth? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten am Tag verbringt eine Person durchschnittlich mit Zähneputzen?",
+              "en": "How many minutes a day does the average person spend brushing their teeth?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 4-5 Minuten. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 4-5 minutes. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Wörter kann ein Mensch pro Minute im Schnitt tippen? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many words per minute can the average person type? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Wörter kann ein Mensch pro Minute im Schnitt tippen?",
+              "en": "How many words per minute can the average person type?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 40. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 40. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Restaurants besucht eine Person im Schnitt pro Monat? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many restaurants does the average person visit per month? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Restaurants besucht eine Person im Schnitt pro Monat?",
+              "en": "How many restaurants does the average person visit per month?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 3-4. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 3-4. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Paar Schuhe besitzt eine Person im Schnitt? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many pairs of shoes does the average person own? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Paar Schuhe besitzt eine Person im Schnitt?",
+              "en": "How many pairs of shoes does the average person own?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 12. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 12. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Minuten dauert die durchschnittliche Autofahrt zur Arbeit? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many minutes is the average commute to work? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten dauert die durchschnittliche Autofahrt zur Arbeit?",
+              "en": "How many minutes is the average commute to work?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 27 Minuten. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 27 minutes. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Filme schaut eine Person im Schnitt pro Monat? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many movies does the average person watch per month? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Filme schaut eine Person im Schnitt pro Monat?",
+              "en": "How many movies does the average person watch per month?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 3. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 3. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Tassen Tee trinkt eine Person im Schnitt pro Woche, wenn sie überhaupt Tee trinkt? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many cups of tea does a tea-drinker have per week on average? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Tassen Tee trinkt eine Person im Schnitt pro Woche, wenn sie überhaupt Tee trinkt?",
+              "en": "How many cups of tea does a tea-drinker have per week on average?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 10. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 10. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele verschiedene Restaurants hat eine Person im Schnitt im letzten Jahr besucht? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many different restaurants has the average person visited in the last year? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele verschiedene Restaurants hat eine Person im Schnitt im letzten Jahr besucht?",
+              "en": "How many different restaurants has the average person visited in the last year?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 20. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 20. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Minuten verbringt man im Schnitt täglich mit Kochen? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many minutes does the average person spend cooking per day? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten verbringt man im Schnitt täglich mit Kochen?",
+              "en": "How many minutes does the average person spend cooking per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 37 Minuten. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 37 minutes. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Kontakte hat eine Person im Schnitt in ihrem Handy gespeichert? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many contacts does the average person have saved in their phone? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Kontakte hat eine Person im Schnitt in ihrem Handy gespeichert?",
+              "en": "How many contacts does the average person have saved in their phone?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 150-200. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 150-200. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Stunden pro Woche verbringt man im Schnitt mit Gaming, wenn man überhaupt spielt? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many hours per week does an average gamer spend playing? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Stunden pro Woche verbringt man im Schnitt mit Gaming, wenn man überhaupt spielt?",
+              "en": "How many hours per week does an average gamer spend playing?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 7. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 7. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Liter Wasser sollte ein Mensch im Schnitt pro Tag trinken? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many liters of water should the average person drink per day? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Liter Wasser sollte ein Mensch im Schnitt pro Tag trinken?",
+              "en": "How many liters of water should the average person drink per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 2-2,5 Liter. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 2-2.5 liters. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Minuten dauert ein durchschnittliches Telefonat? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many minutes does an average phone call last? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Minuten dauert ein durchschnittliches Telefonat?",
+              "en": "How many minutes does an average phone call last?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 3-4 Minuten. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 3-4 minutes. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Push-Nachrichten bekommt eine Person im Schnitt pro Tag? Wer am nächsten liegt, verteilt 3 Schlucke.",
+      "en": "Estimate: How many push notifications does the average person get per day? Closest guess hands out 3 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Push-Nachrichten bekommt eine Person im Schnitt pro Tag?",
+              "en": "How many push notifications does the average person get per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 45. Wer am nächsten dran ist, verteilt 3 Schlucke.",
+              "en": "Answer: about 45. Closest guess hands out 3 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Schätzen: Wie viele Kilometer läuft ein Mensch im Schnitt pro Tag zu Fuß? Wer am nächsten liegt, verteilt 2 Schlucke.",
+      "en": "Estimate: How many kilometers does the average person walk per day? Closest guess hands out 2 sips.",
+      "drunkLevel": 4,
+      "payload": {
+        "type": "hiddenReveal",
+        "sections": [
+          {
+            "id": "question",
+            "text": {
+              "de": "Wie viele Kilometer läuft ein Mensch im Schnitt pro Tag zu Fuß?",
+              "en": "How many kilometers does the average person walk per day?"
+            },
+            "hidden": false
+          },
+          {
+            "id": "answer",
+            "text": {
+              "de": "Antwort: etwa 4-5 km. Wer am nächsten dran ist, verteilt 2 Schlucke.",
+              "en": "Answer: about 4-5 km. Closest guess hands out 2 sips."
+            },
+            "hidden": true,
+            "revealLabel": {
+              "de": "Auflösung",
+              "en": "Reveal answer"
+            }
+          }
+        ]
+      },
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }

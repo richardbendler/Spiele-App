@@ -723,6 +723,276 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Wolf\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Wolf\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Fisch\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Fisch\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Stuhl\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Stuhl\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Rose\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Rose\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Krone\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Krone\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Faden\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Faden\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Segel\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Segel\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Bogen\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Bogen\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Mauer\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Mauer\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Feld\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Feld\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Kreis\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Kreis\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Kiste\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Kiste\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Turm\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Turm\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Weg\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Weg\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Mut\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Mut\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Kraft\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Kraft\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Klang\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Klang\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Duft\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Duft\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Blitz\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Blitz\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Donner\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Donner\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Schnee\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Schnee\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Eis\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Eis\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Fluss\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Fluss\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Wald\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Wald\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Wiese\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Wiese\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Himmel\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Himmel\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Erde\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Erde\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Stein\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Stein\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Holz\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Holz\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Reimrunde: Findet Reime auf \"Gold\" – wer hängt, nippt einen Schluck.",
+      "en": "Rhyme round: find rhymes for \"Gold\" — whoever stalls takes a sip.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
