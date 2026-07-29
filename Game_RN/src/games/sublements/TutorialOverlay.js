@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { VariablesContext } from '../../../VariablesContext';
 
+// Wird von praktisch jedem Spiel eingebunden - Sprache daher direkt aus dem Context lesen,
+// statt sie als Prop durchreichen zu muessen (sonst muesste jeder Aufrufer angepasst werden).
 const TutorialOverlay = ({ visible, steps = [], stepIndex = 0, onNext, onClose }) => {
+  const { language } = useContext(VariablesContext);
   if (!visible || !steps.length) return null;
   const step = steps[Math.max(0, Math.min(stepIndex, steps.length - 1))] || {};
   const { text, placement = 'bottom', highlightStyle } = step;
   const containerStyle = [styles.overlay, placement === 'top' ? styles.top : styles.bottom];
   const isLast = stepIndex >= steps.length - 1;
-  const nextLabel = isLast ? 'Start' : 'Weiter';
+  const nextLabel = language === 'en' ? (isLast ? 'Start' : 'Next') : (isLast ? 'Start' : 'Weiter');
   return (
     <View pointerEvents="box-none" style={[StyleSheet.absoluteFill, { zIndex: 1000, elevation: 1000 }]}>
       {!!highlightStyle && <View pointerEvents="none" style={[styles.highlight, highlightStyle]} />}
