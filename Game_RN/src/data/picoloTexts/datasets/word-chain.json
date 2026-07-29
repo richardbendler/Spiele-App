@@ -75,6 +75,78 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Glück…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “luck…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Wasser…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “water…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Herz…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “heart…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Sonnen…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “sun…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Stadt…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “city…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Musik…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “music…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Reise…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “travel…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Traum…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “dream…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Startet ein Wort mit „Feuer…“. Wer stockt oder unmögliche Wörter bildet, trinkt 2 Schlucke.",
+      "en": "Start a word with “fire…”. Hesitate or invent nonsense and you drink 2 sips.",
+      "drunkLevel": 3,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

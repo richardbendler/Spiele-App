@@ -84,6 +84,87 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet in 20 Sekunden einen Werbespruch für die Runde. Bester Spruch verteilt 3 Schlucke.",
+      "en": "Challenge: invent an ad slogan for the group in 20 seconds. Best slogan hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Macht das überzeugendste Tiergeräusch. Beste Person verteilt 3 Schlucke.",
+      "en": "Challenge: make the most convincing animal sound. Best one hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Baut in 20 Sekunden den höchsten Turm aus Bierdeckeln. Höchster Turm verteilt 3 Schlucke.",
+      "en": "Challenge: build the tallest coaster tower in 20 seconds. Tallest tower hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet einen Fantasienamen für euch selbst. Bester Name verteilt 3 Schlucke.",
+      "en": "Challenge: invent a fantasy name for yourself. Best name hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Zeichnet blind ein Tier. Erkennbarstes Tier verteilt 3 Schlucke.",
+      "en": "Challenge: draw an animal blindfolded. Most recognizable one hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Haltet die längste Zeit ein Pokerface. Beste Person verteilt 3 Schlucke.",
+      "en": "Challenge: hold a poker face the longest. Best person hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet den besten Namen für einen Cocktail. Bester Name verteilt 3 Schlucke.",
+      "en": "Challenge: invent the best cocktail name. Best name hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Macht die überzeugendste Filmtrailer-Stimme. Beste Person verteilt 3 Schlucke.",
+      "en": "Challenge: do the most convincing movie-trailer voice. Best one hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Erfindet in 20 Sekunden einen Comic-Superhelden. Bester Held verteilt 3 Schlucke.",
+      "en": "Challenge: invent a comic superhero in 20 seconds. Best hero hands out 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

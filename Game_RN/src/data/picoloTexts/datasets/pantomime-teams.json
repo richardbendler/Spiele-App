@@ -183,6 +183,111 @@
           "en": "{{teamA}} mimes another made-up future gadget, {{teamB}} guesses its function."
         }
       }
+    },
+    {
+      "de": "Team Charades: Alltagsroutine",
+      "en": "Team charades: daily routine",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine morgendliche Routine dar, {{teamB}} rät, um wessen Routine es geht.",
+          "en": "{{teamA}} mimes a morning routine, {{teamB}} guesses whose it is."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Reisemomente",
+      "en": "Team charades: travel moments",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt einen typischen Reisemoment dar, {{teamB}} rät, welcher es ist.",
+          "en": "{{teamA}} mimes a typical travel moment, {{teamB}} guesses which one."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Sportlegende",
+      "en": "Team charades: sports legend",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt eine berühmte Sportszene dar, {{teamB}} rät die Sportart.",
+          "en": "{{teamA}} mimes a famous sports scene, {{teamB}} guesses the sport."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Party-Chaos",
+      "en": "Team charades: party chaos",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt ein Party-Missgeschick dar, {{teamB}} rät, was passiert ist.",
+          "en": "{{teamA}} mimes a party mishap, {{teamB}} guesses what happened."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Naturschauspiel",
+      "en": "Team charades: nature scene",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt ein Naturphänomen dar, {{teamB}} rät welches.",
+          "en": "{{teamA}} mimes a natural phenomenon, {{teamB}} guesses which one."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Erfindung",
+      "en": "Team charades: invention",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt die Erfindung eines Alltagsgegenstands dar, {{teamB}} rät den Gegenstand.",
+          "en": "{{teamA}} mimes the invention of an everyday object, {{teamB}} guesses the object."
+        }
+      }
+    },
+    {
+      "de": "Team Charades: Musikgenre",
+      "en": "Team charades: music genre",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} stellt ein Musikgenre pantomimisch dar, {{teamB}} rät welches.",
+          "en": "{{teamA}} mimes a music genre, {{teamB}} guesses which one."
+        }
+      }
     }
   ]
 }

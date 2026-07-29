@@ -75,6 +75,78 @@
       "deepness": 2,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Chug: Doppelrunde — Trink zwei kleine Schlucke direkt hintereinander, ohne abzusetzen.",
+      "en": "Chug: double round — take two small sips back to back without putting the drink down.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Zeitdruck — Trink einen großen Schluck, bevor die Runde bis fünf gezählt hat.",
+      "en": "Chug: time pressure — take a big sip before the group counts to five.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Partnerwahl — Wähle jemanden, der mit dir gleichzeitig einen großen Schluck nimmt.",
+      "en": "Chug: partner pick — choose someone to take a big sip with you at the same time.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Stille Runde — Trink einen großen Schluck, ohne dabei ein Geräusch zu machen.",
+      "en": "Chug: silent round — take a big sip without making a sound.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Countdown — Trink weiter, bis die Runde bis zehn gezählt hat.",
+      "en": "Chug: countdown — keep drinking until the group counts to ten.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Blindtrinken — Trink einen großen Schluck mit geschlossenen Augen.",
+      "en": "Chug: blind drinking — take a big sip with your eyes closed.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Ansage — Kündige laut an, wie viele Schlucke du nimmst, und halte dich daran.",
+      "en": "Chug: announcement — loudly announce how many sips you'll take, then follow through.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Wahlfreiheit — Lass die Runde entscheiden, wie viele Schlucke du nimmst.",
+      "en": "Chug: group's choice — let the group decide how many sips you take.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Chug: Finale — Trink den Rest deines aktuellen Drinks in einem Zug.",
+      "en": "Chug: finale — finish the rest of your current drink in one go.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

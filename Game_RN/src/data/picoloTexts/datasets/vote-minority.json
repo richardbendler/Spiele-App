@@ -5,7 +5,7 @@
   "poolKey": "vote-minority",
   "items": [
     {
-      "de": "Abstimmung: Wer sorgt am ehesten dafuer, dass alle mit Snacks und Drinks versorgt sind? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer sorgt am ehesten dafür, dass alle mit Snacks und Drinks versorgt sind? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep everyone stocked with snacks and drinks? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -32,7 +32,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten heimlich Shots verteilen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten heimlich Shots verteilen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to quietly hand out shots? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -50,7 +50,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer ueberredet die Runde am ehesten zu einer After-Party? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer überredet die Runde am ehesten zu einer After-Party? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to convince the group to hit an afterparty? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -59,7 +59,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten die Stimmung oben, wenn alle muede werden? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten die Stimmung oben, wenn alle müde werden? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep the vibe up when everyone gets tired? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -68,7 +68,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten noch schnell ein Sofa besorgen, wenn Plaetze fehlen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten noch schnell ein Sofa besorgen, wenn Plätze fehlen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to find an extra couch when seats are missing? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -86,7 +86,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer traegt am ehesten einen Insider durch den ganzen Abend? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer trägt am ehesten einen Insider durch den ganzen Abend? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to carry an inside joke all night? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -95,7 +95,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer filmt am ehesten die Highlights und schneidet spaeter ein Reel? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer filmt am ehesten die Highlights und schneidet später ein Reel? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to film highlights and cut a reel later? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -113,7 +113,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten Karaoke starten, ohne gefragt zu werden? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten Karaoke starten, ohne gefragt zu werden? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to start karaoke without being asked? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -149,7 +149,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten zwei fremde Gruppen zusammenbringen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten zwei fremde Gruppen zusammenbringen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to merge two stranger groups? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -176,7 +176,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer plant am ehesten den Heimweg fuer alle mit? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer plant am ehesten den Heimweg für alle mit? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to plan everyone's ride home? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -185,7 +185,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer hat am ehesten am naechsten Morgen die wenigsten Erinnerungen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer hat am ehesten am nächsten Morgen die wenigsten Erinnerungen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to remember the least tomorrow? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -194,7 +194,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten fuer alle ein Taxi rufen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten für alle ein Taxi rufen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to call a taxi for everyone? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -221,7 +221,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer kennt am ehesten immer den naechsten Club? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer kennt am ehesten immer den nächsten Club? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to know the next club to go to? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -230,7 +230,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer hat am ehesten Geheimtipps fuer Mitternachtssnacks? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hat am ehesten Geheimtipps für Mitternachtssnacks? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to know midnight snack secrets? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -266,7 +266,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten eine peinliche Story ueber dich auspacken? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten eine peinliche Story über dich auspacken? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to drop an embarrassing story about you? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -293,7 +293,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten die Stimmung hoch, wenn die Musik ausfaellt? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten die Stimmung hoch, wenn die Musik ausfällt? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep spirits up when the music dies? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -311,7 +311,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer dreht am ehesten die Lautstaerke lauter? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer dreht am ehesten die Lautstärke lauter? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to crank the volume up? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 1,
@@ -320,7 +320,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten um 4 Uhr noch Pizza organisieren? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten um 4 Uhr noch Pizza organisieren? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to secure pizza at 4 a.m.? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -338,7 +338,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer schreibt am ehesten am naechsten Tag die laengste Nachricht im Chat? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer schreibt am ehesten am nächsten Tag die längste Nachricht im Chat? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to write the longest recap in the chat? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -365,7 +365,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer ueberzeugt am ehesten jemanden, noch zu bleiben? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer überzeugt am ehesten jemanden, noch zu bleiben? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to convince someone to stay longer? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -437,7 +437,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten spontan ein Trink-Gadget basteln? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten spontan ein Trink-Gadget basteln? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to craft a drinking gadget on the spot? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -446,7 +446,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer bleibt am ehesten am laengsten wach? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer bleibt am ehesten am längsten wach? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to stay up the longest? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -455,7 +455,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten den Barkeeper nach einer Geheimzutat fragen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten den Barkeeper nach einer Geheimzutat fragen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to ask the bartender for a secret ingredient? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -482,7 +482,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer plant am ehesten schon das naechste Treffen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer plant am ehesten schon das nächste Treffen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to plan the next hangout already? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -491,7 +491,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten ein Trinkquiz moderieren? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten ein Trinkquiz moderieren? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to host a drinking quiz? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -509,7 +509,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten eine peinliche Challenge aufnehmen? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten eine peinliche Challenge aufnehmen? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to accept an embarrassing challenge? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -536,7 +536,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten ein Meme aus dem Abend bauen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten ein Meme aus dem Abend bauen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to turn the night into a meme? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -545,7 +545,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten Smalltalk auch mit dem Taxifahrer? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten Smalltalk auch mit dem Taxifahrer? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep small talk going with the taxi driver? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -554,7 +554,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer klaert am ehesten jeden Streit, bevor er beginnt? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer klärt am ehesten jeden Streit, bevor er beginnt? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to defuse any argument before it starts? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -572,7 +572,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten die ganze Runde in einen Kreis ziehen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten die ganze Runde in einen Kreis ziehen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to pull everyone into a circle? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -608,7 +608,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer schenkt am ehesten grosszuegig nach? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer schenkt am ehesten großzügig nach? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to top up everyone's glasses generously? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -626,7 +626,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten eine Fotoecke aufbauen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten eine Fotoecke aufbauen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to set up a photo corner? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -644,7 +644,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten das Trinktempo im Blick? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten das Trinktempo im Blick? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to watch the drinking pace? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -653,7 +653,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten ein spontanes Motto ausrufen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten ein spontanes Motto ausrufen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to declare a spontaneous theme? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -698,7 +698,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten den DJ um einen Song bitten? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten den DJ um einen Song bitten? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to request a song from the DJ? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -725,7 +725,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten ein Trink-Bingo malen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten ein Trink-Bingo malen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to draw a drinking bingo card? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -734,7 +734,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer setzt am ehesten Limits, damit niemand uebertreibt? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer setzt am ehesten Limits, damit niemand übertreibt? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to set limits so no one overdoes it? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -743,7 +743,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten die Playlist fuer den Heimweg starten? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten die Playlist für den Heimweg starten? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to start the playlist for the ride home? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -761,7 +761,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten fremden Leuten ein Kompliment machen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten fremden Leuten ein Kompliment machen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to compliment strangers? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,
@@ -770,7 +770,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer klaert am ehesten die Rechnung ohne Drama? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer klärt am ehesten die Rechnung ohne Drama? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to settle the bill without drama? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -779,7 +779,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten durch, obwohl morgen frueh ein Termin ist? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten durch, obwohl morgen früh ein Termin ist? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to power through despite an early meeting tomorrow? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -788,7 +788,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten noch Shots holen, wenn alle muede sind? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten noch Shots holen, wenn alle müde sind? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to get more shots when everyone is tired? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -815,7 +815,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten die Gruppe vor der Tuersicherung charmant rausreden? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten die Gruppe vor der Türsicherung charmant rausreden? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to charm the bouncer for the group? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -824,7 +824,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer faengt am ehesten unerwartet an zu freestylen? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer fängt am ehesten unerwartet an zu freestylen? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to start freestyle rapping unexpectedly? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -833,7 +833,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten die Regeln fair, wenn Stimmen laut werden? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten die Regeln fair, wenn Stimmen laut werden? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep rules fair when voices get loud? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -842,7 +842,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten jemanden nach Hause begleiten, auch wenn es Umweg ist? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten jemanden nach Hause begleiten, auch wenn es Umweg ist? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to walk someone home even if it's a detour? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 3,
@@ -851,7 +851,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer uebersetzt am ehesten zwischen Touristen und der Runde? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer übersetzt am ehesten zwischen Touristen und der Runde? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to translate between tourists and the group? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 3,
@@ -860,7 +860,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten auf dem Rueckweg einen Snack-Stop erzwingen? Minderheit trinkt 3 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten auf dem Rückweg einen Snack-Stop erzwingen? Minderheit trinkt 3 Schlucke.",
       "en": "Vote: Who is most likely to force a snack stop on the way home? Minority drinks 3 sips.",
       "drunkLevel": 3,
       "deepness": 2,
@@ -878,7 +878,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer wuerde am ehesten eine Serenade unter einem Balkon starten? Minderheit trinkt 4 Schlucke.",
+      "de": "Abstimmung: Wer würde am ehesten eine Serenade unter einem Balkon starten? Minderheit trinkt 4 Schlucke.",
       "en": "Vote: Who is most likely to start a balcony serenade? Minority drinks 4 sips.",
       "drunkLevel": 4,
       "deepness": 3,
@@ -887,7 +887,7 @@
       "manual_approval": 0
     },
     {
-      "de": "Abstimmung: Wer haelt am ehesten alle Handys geladen? Minderheit trinkt 2 Schlucke.",
+      "de": "Abstimmung: Wer hält am ehesten alle Handys geladen? Minderheit trinkt 2 Schlucke.",
       "en": "Vote: Who is most likely to keep everyone's phones charged? Minority drinks 2 sips.",
       "drunkLevel": 2,
       "deepness": 2,

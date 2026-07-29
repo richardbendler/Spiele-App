@@ -237,6 +237,186 @@
           "en": "{{anchor}} interviews {{left}} for 15 seconds on a funny topic."
         }
       }
+    },
+    {
+      "de": "Nachbarschaftsduo: Reim-Duo",
+      "en": "Neighbor duo: rhyme duo",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} finden gemeinsam drei Reime auf ein Wort eurer Wahl.",
+          "en": "{{anchor}} and {{right}} find three rhymes together for a word of your choice."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Doppel-Tanz",
+      "en": "Neighbor duo: double dance",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{left}} tanzen 15 Sekunden synchron zu einem Lied eurer Wahl.",
+          "en": "{{anchor}} and {{left}} dance in sync to a song of your choice for 15 seconds."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Erinnerungsaustausch",
+      "en": "Neighbor duo: memory swap",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} erzählen sich je eine Kindheitserinnerung.",
+          "en": "{{anchor}} and {{right}} share one childhood memory each."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Fake-Interview",
+      "en": "Neighbor duo: fake interview",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} interviewt {{left}} als wäre er/sie berühmt.",
+          "en": "{{anchor}} interviews {{left}} as if they were famous."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Gemeinsamer Reim",
+      "en": "Neighbor duo: shared rhyme",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} erfinden gemeinsam einen Zweizeiler über den heutigen Abend.",
+          "en": "{{anchor}} and {{right}} invent a two-line rhyme about tonight together."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Blindes Vertrauen",
+      "en": "Neighbor duo: blind trust",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} führt {{left}} mit geschlossenen Augen 10 Sekunden durch den Raum.",
+          "en": "{{anchor}} guides {{left}} through the room for 10 seconds with eyes closed."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Kompliment-Kette",
+      "en": "Neighbor duo: compliment chain",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{right}} machen sich abwechselnd drei Komplimente.",
+          "en": "{{anchor}} and {{right}} give each other three compliments in turn."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Vorhersage",
+      "en": "Neighbor duo: prediction",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} sagt voraus, was {{left}} als Nächstes tun wird.",
+          "en": "{{anchor}} predicts what {{left}} will do next."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Rücken-Zeichnung",
+      "en": "Neighbor duo: back drawing",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} zeichnet {{right}} mit dem Finger ein Symbol auf den Rücken, {{right}} rät.",
+          "en": "{{anchor}} draws a symbol on {{right}}'s back with a finger, {{right}} guesses."
+        }
+      }
+    },
+    {
+      "de": "Nachbarschaftsduo: Gemeinsames Motto",
+      "en": "Neighbor duo: shared motto",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "neighbor"
+        },
+        "template": {
+          "de": "{{anchor}} und {{left}} einigen sich in 10 Sekunden auf ein gemeinsames Motto für den Abend.",
+          "en": "{{anchor}} and {{left}} agree on a shared motto for tonight within 10 seconds."
+        }
+      }
     }
   ]
 }

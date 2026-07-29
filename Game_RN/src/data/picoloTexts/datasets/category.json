@@ -473,8 +473,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Getraenke ohne Koffein - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Getraenke ohne Koffein - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Getränke ohne Koffein - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Getränke ohne Koffein - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 3,
       "deepness": 3,
       "drink": true,
@@ -554,8 +554,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Sozialen Netzwerke frueher - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Sozialen Netzwerke frueher - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Sozialen Netzwerke früher - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Sozialen Netzwerke früher - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 6,
       "deepness": 3,
       "drink": true,
@@ -581,8 +581,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Bundeslaender - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Bundeslaender - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Bundesländer - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Bundesländer - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 3,
       "deepness": 3,
       "drink": true,
@@ -608,8 +608,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Saenger mit einem Buchstaben im Namen - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Saenger mit einem Buchstaben im Namen - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Sänger mit einem Buchstaben im Namen - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Sänger mit einem Buchstaben im Namen - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 6,
       "deepness": 3,
       "drink": true,
@@ -644,8 +644,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Fruehstueckscerealien - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Fruehstueckscerealien - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Frühstückscerealien - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Frühstückscerealien - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 4,
       "deepness": 1,
       "drink": true,
@@ -671,8 +671,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Zutaten fuer Sandwiches - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Zutaten fuer Sandwiches - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Zutaten für Sandwiches - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Zutaten für Sandwiches - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 1,
       "deepness": 1,
       "drink": true,
@@ -824,8 +824,8 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Arten von Kaffeegetraenken - wer stockt oder wiederholt, trinkt einen Schluck.",
-      "en": "Category: Arten von Kaffeegetraenken - whoever hesitates or repeats drinks a sip.",
+      "de": "Kategorie: Arten von Kaffeegetränken - wer stockt oder wiederholt, trinkt einen Schluck.",
+      "en": "Category: Arten von Kaffeegetränken - whoever hesitates or repeats drinks a sip.",
       "drunkLevel": 6,
       "deepness": 3,
       "drink": true,
@@ -1166,15 +1166,6 @@
       "manual_approval": 0
     },
     {
-      "de": "Kategorie: Eissorten — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Category: Ice cream flavors — whoever hesitates or repeats drinks one sip.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
       "de": "Kategorie: Fahrzeuge ohne Motor — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
       "en": "Category: Vehicles without an engine — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
@@ -1195,15 +1186,6 @@
     {
       "de": "Kategorie: Wörter, die man im Ausland zuerst lernt — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
       "en": "Category: Words you learn first abroad — whoever hesitates or repeats drinks one sip.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Kategorie: Brettspiele — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Category: Board games — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,
@@ -1276,15 +1258,6 @@
     {
       "de": "Kategorie: Serien-Detektive — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
       "en": "Category: TV detectives — whoever hesitates or repeats drinks one sip.",
-      "drunkLevel": 2,
-      "deepness": 1,
-      "drink": true,
-      "drinking": true,
-      "manual_approval": 0
-    },
-    {
-      "de": "Kategorie: Frühstücksgerichte — wer stockt oder etwas wiederholt, trinkt einen Schluck.",
-      "en": "Category: Breakfast foods — whoever hesitates or repeats drinks one sip.",
       "drunkLevel": 2,
       "deepness": 1,
       "drink": true,

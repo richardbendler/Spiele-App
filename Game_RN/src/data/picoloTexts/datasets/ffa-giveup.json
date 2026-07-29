@@ -75,6 +75,78 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Grimassen-Contest: Alle schneiden die schlimmste Grimasse. Wer zuerst lacht, trinkt 3 Schlucke.",
+      "en": "Grimace contest: everyone pulls their worst face. First to laugh drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Balance-Contest: Alle stehen auf einem Bein. Wer zuerst umfällt, trinkt 3 Schlucke.",
+      "en": "Balance contest: everyone stands on one leg. First to fall drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Sitzstreik: Alle sitzen so unbequem wie möglich. Wer zuerst umsitzt, trinkt 3 Schlucke.",
+      "en": "Sit-in: everyone sits as uncomfortably as possible. First to shift drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Zungenbrecher-Marathon: Alle sagen denselben Zungenbrecher immer wieder. Wer zuerst patzt, trinkt 3 Schlucke.",
+      "en": "Tongue-twister marathon: everyone repeats the same twister. First to slip drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Lächel-Contest: Alle lächeln so breit wie möglich. Wer zuerst aufhört, trinkt 3 Schlucke.",
+      "en": "Smile contest: everyone smiles as wide as possible. First to stop drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Klatsch-Contest: Alle klatschen im gleichen Takt. Wer zuerst aus dem Takt fällt, trinkt 3 Schlucke.",
+      "en": "Clap contest: everyone claps in the same rhythm. First to lose the beat drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wackel-Contest: Alle wackeln mit den Ohren (oder versuchen es). Wer zuerst aufgibt, trinkt 3 Schlucke.",
+      "en": "Wiggle contest: everyone wiggles their ears (or tries to). First to give up drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Still-Contest: Alle bleiben so lange wie möglich stumm. Wer zuerst spricht, trinkt 3 Schlucke.",
+      "en": "Silence contest: everyone stays silent as long as possible. First to speak drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Starr-Contest: Alle starren sich gegenseitig an. Wer zuerst blinzelt, trinkt 3 Schlucke.",
+      "en": "Staring contest: everyone stares at each other. First to blink drinks 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
