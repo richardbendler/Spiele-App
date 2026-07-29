@@ -1,4 +1,4 @@
-import {StyleSheet, useState} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const colorSchemeArray = [
   ['#1E3D59','#BFC0C0','#D4AF37'],
@@ -15,7 +15,6 @@ const colorChoice = 2;
 
 const primaryColor = colorSchemeArray[colorChoice][0]//'#1E3D59';//'#008b8b';
 const secondaryColor = colorSchemeArray[colorChoice][1]//'#BFC0C0';//'#ff7474';
-const tertiaryColor = colorSchemeArray[colorChoice][2]//'#D4AF37'
 
 const menuStyles = StyleSheet.create({
   //Umfasst die gesamte Seite
@@ -49,22 +48,6 @@ const menuStyles = StyleSheet.create({
     alignItems: 'center',
     //backgroundColor: primaryColor, 
   },
-  settingsContainer: {
-    width: '100%',
-    height: '90%',
-    alignItems: 'center',       // Horizontale Zentrierung
-    justifyContent: 'center',   // Vertikale Zentrierung
-    //backgroundColor: primaryColor, 
-  },
-  smallSettingsContainer: {
-    width: '90%',
-    height: '90%',
-    alignItems: 'center',       // Horizontale Zentrierung
-    justifyContent: 'center',   // Vertikale Zentrierung
-    //backgroundColor: primaryColor, 
-  },
-
-  
 });
 
 const gameStyles = StyleSheet.create({
@@ -90,14 +73,6 @@ const gameStyles = StyleSheet.create({
 
 const buttonStyles = StyleSheet.create({
   //Menu
-  smallMenuButton: { //Wird in Settings genutzt
-    backgroundColor: secondaryColor,
-    padding: 20,
-    borderRadius: 15,
-    margin: 30,
-    width: '80%',
-    alignItems: 'center',
-  },
   chalkboardButton: { //Wird in Menüs benutzt
     backgroundColor: 'rgba(0, 0, 0, 0.8)',  // Halbtransparentes Schwarz
     borderRadius: 10,  // Abgerundete Ecken
@@ -114,32 +89,6 @@ const buttonStyles = StyleSheet.create({
     padding: 5,  // Innenabstand
   },
 
-  //Settings Button
-  settingsButton: {
-    position: 'absolute',
-    left: 20,         // Abstand vom linken Rand des Containers
-    bottom: 0,       // Abstand vom unteren Rand des Containers
-    backgroundColor: tertiaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 70, // Breite des Buttons
-    height: 70, // Höhe des Buttons
-    alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
-  },
-  settingsCloseButton: {
-    position: 'absolute',
-    top: 20,         // Abstand vom linken Rand des Containers
-    right: 20,       // Abstand vom unteren Rand des Containers
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',  // Halbtransparentes Schwarz //tertiaryColor,
-    padding: 5,
-    borderRadius: 50, // Setzen Sie dies auf die Hälfte der Breite und Höhe, um den Button rund zu machen
-    width: 40, // Breite des Buttons
-    height: 40, // Höhe des Buttons
-    alignItems: 'center',
-    justifyContent: 'center', // Zentrierung des Emojis
-  },
-  
   //Bottle Buttons
   imageWithTextContainer: {
     position: 'absolute',
@@ -271,16 +220,6 @@ const modalStyles = StyleSheet.create({
 
 
 const buttonTextStyles = StyleSheet.create({
-  menuButtonText:{ //wird in Settings genutzt
-    fontFamily: font1,
-    fontWeight: 'bold',
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-    padding: 0,
-    //textTransform: 'uppercase', //
-  },
-
   chalkboardButtonText: {
     fontFamily: font1,
     fontWeight: 'bold',
@@ -319,13 +258,7 @@ const buttonTextStyles = StyleSheet.create({
     //fontFamily: 'MyHandwritingFont',
   },
 
-  //Buttons wie Info und Einstellungen die nur ein i oder x enthalten
-  settingsButtonText: {
-    fontFamily: font1,
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-  },
+  //Buttons wie Info die nur ein i enthalten
   infoButtonText: {
     fontFamily: font1,
     color: 'white',
@@ -458,13 +391,6 @@ const backgroundStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FAD02E',  // You can use a gradient or image
   },
-
-  imageBackgroundStyle: {
-    width: '100%',  // Füllt die gesamte Breite des übergeordneten Containers aus
-    height: '100%', // Füllt die gesamte Höhe des übergeordneten Containers aus
-    alignItems: 'center',
-    justifyContent: 'center',
-},
 
 });
 

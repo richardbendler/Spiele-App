@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
-import Settings from './sublements/Settings';
 import { useTranslation } from '../i18n';
 
 const CARD_BG = 'rgba(18,14,12,0.96)';
@@ -72,7 +71,7 @@ const GAME_STYLE_MAP = {
   'Geheime Mission': { icon: '🕵️', accent: '#7AC1B2' },
 };
 
-const DEFAULT_CARD_STYLE = { icon: 'ðŸŽ®', accent: '#E5C185' };
+const DEFAULT_CARD_STYLE = { icon: '🎮', accent: '#E5C185' };
 
 const TitleNoWordBreak = ({ text, style }) => {
   const words = String(text || '').split(' ');
@@ -481,8 +480,6 @@ function MainMenu({ navigation }) {
           </View>
         </View>
       ) : null}
-
-      <Settings />
     </View>
   );
 }
