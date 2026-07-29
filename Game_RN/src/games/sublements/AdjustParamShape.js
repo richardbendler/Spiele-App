@@ -38,10 +38,12 @@ export const replaceHashtagsWithoutDuplicates = (inputString, options = {}) => {
   }
 };
 
+// Entfernt ein uebrig gebliebenes "#"-Platzhalterzeichen (das eigentliche Zeichen, das
+// replaceHashtagsWithoutDuplicates durch Spielernamen ersetzt) samt folgendem Leerzeichen,
+// falls Text mal ungefiltert angezeigt wird. Die vorherige Regex verlangte "#" + ein Zeichen +
+// Komma + Leerzeichen - ein Muster, das in echten Inhalten praktisch nie vorkam.
 export const deleteHashtags = (inputString) => {
-  return (inputString || '').replace(/#[a-zA-Z0-9_], +/g, () => {
-    return '';
-  });
+  return (inputString || '').replace(/#\s*/g, '');
 };
 
 export const shuffleArrayFisherYates = (array) => {
