@@ -11,6 +11,7 @@ import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape'
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
 import { manyQuestionsSampleTexts } from '../data/manyQuestionsTexts';
+import { markContentSeen } from '../utils/contentMemory';
 
 const ManyQuestionsGame = ({ route }) => {
   const [gameEnded, setGameEnded] = useState(false);
@@ -47,6 +48,12 @@ const ManyQuestionsGame = ({ route }) => {
   }, [questions]);
 
   const currentQuestion = questions.length > 0 ? questions[questionIndex] : null;
+
+  useEffect(() => {
+    if (currentQuestion?.question_id !== undefined) {
+      markContentSeen('manyQuestions', [currentQuestion.question_id]);
+    }
+  }, [currentQuestion]);
 
   const questionText = currentQuestion
     ? replaceHashtagsWithoutDuplicates(

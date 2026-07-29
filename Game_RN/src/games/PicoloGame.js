@@ -18,6 +18,7 @@ import { useTranslation } from '../i18n';
 
 import { buildTheOneDeck } from './sublements/theOneDeckBuilder';
 import HandleFeedback from './sublements/HandleFeedBack';
+import { markContentSeen } from '../utils/contentMemory';
 import PromptRenderer from './sublements/PromptRenderer';
 import {
   CATEGORY_COLOR_DEFS,
@@ -163,6 +164,12 @@ const PicoloGame = ({ route }) => {
   const hasQuestions = questions.length > 0;
   const currentQuestion = hasQuestions ? questions[currentIndex] : null;
   const currentPoolKey = currentQuestion?.pool?.key;
+
+  useEffect(() => {
+    if (currentQuestion?.content) {
+      markContentSeen('theOne', [currentQuestion.content]);
+    }
+  }, [currentQuestion]);
 
   useEffect(() => {
     if (!hasQuestions || !currentPoolKey) {

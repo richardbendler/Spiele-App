@@ -11,6 +11,7 @@ import { manyQuestionsSampleTexts } from "./src/data/manyQuestionsTexts";
 import { activitySampleWords } from "./src/data/activityWords";
 import { spinTheBottleTruthTexts } from "./src/data/spinTheBottleTruth";
 import { spinTheBottleDareTexts } from "./src/data/spinTheBottleDare";
+import { ensureContentMemoryLoaded, orderBySeenPriority } from "./src/utils/contentMemory";
 
 //Import der Menus
 import StartMenu from "./src/menus/StartMenu";
@@ -38,7 +39,6 @@ import SecretMission from "./src/games/SecretMission";
 import { VariablesContext } from "./VariablesContext";
 
 //Import von Hilfsfunktionen
-import { shuffleArrayFisherYates } from "./src/games/sublements/AdjustParamShape";
 import { normalizeCategoryKey } from "./src/utils/categoryColors";
 
 import { enableScreens } from "react-native-screens";
@@ -302,6 +302,22 @@ export default function App() {
     loadFromDisk(setWords, "words");
   }, []);
 
+  // Laedt das geraeteseitige "schon gesehen"-Gedaechtnis einmalig beim App-Start. Bis das
+  // erledigt ist, liefern die betroffenen useMemo-Decks unten einen normalen Zufalls-Shuffle -
+  // sobald contentMemoryReady auf true kippt, werden sie mit echter Seen-Praeferenz neu berechnet.
+  const [contentMemoryReady, setContentMemoryReady] = useState(false);
+  useEffect(() => {
+    let mounted = true;
+    ensureContentMemoryLoaded().then(() => {
+      if (mounted) {
+        setContentMemoryReady(true);
+      }
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   useEffect(() => {
     const loadDrinkData = async () => {
       try {
@@ -360,7 +376,16 @@ export default function App() {
   const [language, setLanguage] = useState("de");
   const [tutorialEnabled, setTutorialEnabled] = useState(false);
 
-  const shuffledManyQuestions = useMemo(() => shuffleArrayFisherYates([...manyQuestions]), [manyQuestions]);
+  const shuffledManyQuestions = useMemo(
+    () => orderBySeenPriority('manyQuestions', manyQuestions, (entry) => entry?.question_id),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [manyQuestions, contentMemoryReady]
+  );
+  const orderedActivityWords = useMemo(
+    () => orderBySeenPriority('activityWords', words, (entry) => entry?.id),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [words, contentMemoryReady]
+  );
 
   const navigationRef = React.useRef();
   const routeNameRef = React.useRef();
@@ -436,7 +461,7 @@ export default function App() {
             <Stack.Screen name="NeverHaveIEverGame" component={NeverHaveIEverGame} />
             <Stack.Screen name="Kingscup" component={Kingscup} />
             <Stack.Screen name="MaexchenGame" component={MaexchenGame} />
-            <Stack.Screen name="Activity" component={Activity} initialParams={{ words }} />
+            <Stack.Screen name="Activity" component={Activity} initialParams={{ words: orderedActivityWords }} />
             <Stack.Screen name="DrinkCounter" component={DrinkCounter} />
             <Stack.Screen
               name="SpinTheBottle"
