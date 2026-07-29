@@ -166,6 +166,15 @@ const DrinkCounter = () => {
     setForm({ name: '', abv: '5', volume: '500', icon: '' });
   }, [form, drinkCatalog, persistCatalog, guessIconForName]);
 
+  // Ohne einen periodischen Tick wuerde dieser Wert nur neu berechnet, wenn sich drinkLog
+  // oder bodyWeightKg aendern - der Pegel bliebe also eingefroren, solange die Person nur
+  // auf den Bildschirm schaut, statt (wie in Wirklichkeit) langsam weiter abzusinken.
+  const [nowTick, setNowTick] = useState(() => Date.now());
+  useEffect(() => {
+    const interval = setInterval(() => setNowTick(Date.now()), 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   // BAC estimate (promille)
   const estimatedPromille = useMemo(() => {
     const weightGrams = bodyWeightKg * 1000;
@@ -173,14 +182,14 @@ const DrinkCounter = () => {
     (drinkLog || []).forEach((e) => {
       const time = new Date(e.timestamp).getTime();
       if (Number.isNaN(time)) return;
-      const hours = Math.max((Date.now() - time) / 3600000, 0);
+      const hours = Math.max((nowTick - time) / 3600000, 0);
       const grams = e.volumeMl * (e.abv / 100) * ALCOHOL_DENSITY;
       const raw = (grams / (BODY_WATER * weightGrams)) * 100; // g/dL
       const elim = Math.min(raw, hours * METABOLISM_PER_HOUR);
       bacGdL += Math.max(raw - elim, 0);
     });
     return +(bacGdL * 10).toFixed(2);
-  }, [drinkLog, bodyWeightKg]);
+  }, [drinkLog, bodyWeightKg, nowTick]);
 
   // Compute BAC at time helper
   const computePromilleAt = useCallback((timeMs) => {
@@ -201,7 +210,7 @@ const DrinkCounter = () => {
   // Timeline (last 24h)
   const TIMELINE_POINTS = 12;
   const promilleTimeline = useMemo(() => {
-    const current = Date.now();
+    const current = nowTick;
     const start = current - 24 * 60 * 60 * 1000;
     const step = (current - start) / TIMELINE_POINTS;
     const pts = [];
@@ -210,7 +219,7 @@ const DrinkCounter = () => {
       pts.push({ time: t, value: computePromilleAt(t) });
     }
     return pts;
-  }, [computePromilleAt]);
+  }, [computePromilleAt, nowTick]);
   const timelineMax = useMemo(() => promilleTimeline.reduce((m, p) => Math.max(m, p.value), 0), [promilleTimeline]);
   const timelineTrend = useMemo(() => {
     if (promilleTimeline.length < 2) return 0;
