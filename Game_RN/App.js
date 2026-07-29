@@ -370,7 +370,6 @@ export default function App() {
   }, [players]);
 
   const Stack = createStackNavigator();
-  const [settingsVisible, setSettingsVisible] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
   const [players, setPlayers] = useState([]);
   const [language, setLanguage] = useState("de");
@@ -397,8 +396,6 @@ export default function App() {
   return (
     <VariablesContext.Provider
       value={{
-        settingsVisible,
-        setSettingsVisible,
         infoVisible,
         setInfoVisible,
         drinkCatalog,
