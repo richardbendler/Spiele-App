@@ -57,14 +57,21 @@ const Activity = ({route }) => {
         <HandleFeedback texts={words} textsIndex={wordsIndex} table={'game_activity_words'}/>
 
         <TouchableOpacity onPress={() => setTutorialEnabled(!tutorialEnabled)} style={[appStyles.infoButton, { top: 24, right: 16, alignSelf: 'flex-end', zIndex: 10 }]}>
-          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? 'Tutorial aus' : 'Tutorial an'}</Text>
+          <Text style={appStyles.infoButtonText}>{tutorialEnabled ? (language === 'de' ? 'Tutorial aus' : 'Tutorial off') : (language === 'de' ? 'Tutorial an' : 'Tutorial on')}</Text>
         </TouchableOpacity>
-        <InfoText header={"Activity!"} rules={"Ihr seid reihum nacheinander mit erklären dran. Wer dran ist, hat 30 Sekunden Zeit, so viele angezeigte Wörter zu erklären oder per Pantomime vorzuführen. Für jedes richtig erratene Wort darf die erklärende Person und die Person, die es gerade erraten hat, einen Schluck direkt verteilen. Have Fun!"}/>
+        <InfoText
+          header={"Activity!"}
+          rules={
+            language === 'de'
+              ? 'Ihr seid reihum nacheinander mit erklären dran. Wer dran ist, hat 30 Sekunden Zeit, so viele angezeigte Wörter zu erklären oder per Pantomime vorzuführen. Für jedes richtig erratene Wort darf die erklärende Person und die Person, die es gerade erraten hat, einen Schluck direkt verteilen. Have Fun!'
+              : "Take turns explaining. Whoever's turn it is has 30 seconds to explain or act out as many shown words as possible. For every correctly guessed word, the explaining person and the person who guessed it may each hand out one sip right away. Have fun!"
+          }
+        />
         <TutorialOverlay
           visible={tutorialEnabled}
           steps={[
-            { text: 'Wort lesen und erklären oder pantomimisch darstellen.', placement: 'top' },
-            { text: 'Tippt unten auf weiter, sobald ihr bereit seid.', placement: 'bottom' },
+            { text: language === 'de' ? 'Wort lesen und erklären oder pantomimisch darstellen.' : 'Read the word and explain it or act it out.', placement: 'top' },
+            { text: language === 'de' ? 'Tippt unten auf weiter, sobald ihr bereit seid.' : 'Tap anywhere below to move on once you are ready.', placement: 'bottom' },
           ]}
           stepIndex={tutorialStep}
           onNext={() => setTutorialStep((s)=> Math.min(1, s+1))}
