@@ -6,7 +6,13 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
-import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { orderBySeenPriority, markContentSeen } from '../utils/contentMemory';
+
+// "Wer würde eher" ist die einzige Quelle des most-likely-Pools UND wird gleichzeitig innerhalb
+// von "The One" mitgemischt - daher eigener Namespace, damit "in diesem Spielmodus schon
+// gesehen" nicht mit dem allgemeinen The-One-Shuffle vermischt wird (siehe contentMemory.js).
+const NAMESPACE = 'theOne:most-likely';
+const getPromptId = (entry) => entry?.content;
 
 const WhoWouldLikelyGame = () => {
   const { tutorialEnabled, setTutorialEnabled, mostLikelyPrompts } = useContext(VariablesContext);
@@ -16,20 +22,27 @@ const WhoWouldLikelyGame = () => {
   const copy = useMemo(() => t('whoWould'), [t]);
 
   const deckSource = useMemo(() => (Array.isArray(mostLikelyPrompts) ? mostLikelyPrompts : []), [mostLikelyPrompts]);
-  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...deckSource]));
+  const [deck, setDeck] = useState(() => orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const revealAnim = React.useRef(new Animated.Value(0)).current;
   const [contentVisible, setContentVisible] = useState(false);
 
   React.useEffect(() => {
-    setDeck(shuffleArrayFisherYates([...deckSource]));
+    setDeck(orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
     setIndex(0);
     setFinished(deckSource.length === 0);
   }, [deckSource]);
 
   const currentCard = finished ? null : deck[index] ?? null;
   const questionText = currentCard ? (language === 'en' ? currentCard.content_en : currentCard.content) : '';
+
+  React.useEffect(() => {
+    const id = getPromptId(currentCard);
+    if (id) {
+      markContentSeen(NAMESPACE, [id]);
+    }
+  }, [currentCard]);
 
   React.useEffect(() => {
     if (finished) {
@@ -43,7 +56,7 @@ const WhoWouldLikelyGame = () => {
 
   const advance = () => {
     if (finished) {
-      setDeck(shuffleArrayFisherYates([...deckSource]));
+      setDeck(orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
       setIndex(0);
       setFinished(deckSource.length === 0);
       return;

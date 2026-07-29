@@ -7,7 +7,12 @@ import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 import { askForRatingIfEligible } from '../utils/rating';
-import { shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { orderBySeenPriority, markContentSeen } from '../utils/contentMemory';
+
+// Eigener Namespace, da derselbe never-have-i-ever-Pool auch innerhalb des allgemeinen
+// "The One"-Shuffles auftaucht (siehe contentMemory.js).
+const NAMESPACE = 'theOne:never-have-i-ever';
+const getPromptId = (entry) => entry?.content;
 
 const NeverHaveIEverGame = () => {
   const { tutorialEnabled, setTutorialEnabled, neverHaveIEverPrompts } = useContext(VariablesContext);
@@ -16,7 +21,7 @@ const NeverHaveIEverGame = () => {
   const copy = useMemo(() => t('neverHaveIEver'), [t]);
 
   const deckSource = useMemo(() => (Array.isArray(neverHaveIEverPrompts) ? neverHaveIEverPrompts : []), [neverHaveIEverPrompts]);
-  const [deck, setDeck] = useState(() => shuffleArrayFisherYates([...deckSource]));
+  const [deck, setDeck] = useState(() => orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
@@ -24,13 +29,20 @@ const NeverHaveIEverGame = () => {
   const [contentVisible, setContentVisible] = useState(false);
 
   React.useEffect(() => {
-    setDeck(shuffleArrayFisherYates([...deckSource]));
+    setDeck(orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
     setIndex(0);
     setFinished(deckSource.length === 0);
   }, [deckSource]);
 
   const currentCard = finished ? null : deck[index] ?? null;
   const statementText = currentCard ? (language === 'en' ? currentCard.content_en : currentCard.content) : '';
+
+  React.useEffect(() => {
+    const id = getPromptId(currentCard);
+    if (id) {
+      markContentSeen(NAMESPACE, [id]);
+    }
+  }, [currentCard]);
 
   React.useEffect(() => {
     if (finished) {
@@ -44,7 +56,7 @@ const NeverHaveIEverGame = () => {
 
   const advance = () => {
     if (finished) {
-      setDeck(shuffleArrayFisherYates([...deckSource]));
+      setDeck(orderBySeenPriority(NAMESPACE, deckSource, getPromptId));
       setIndex(0);
       setFinished(deckSource.length === 0);
       return;

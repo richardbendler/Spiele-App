@@ -1,4 +1,14 @@
-import { shuffleArrayFisherYates } from './AdjustParamShape.js';
+import { orderBySeenPriorityForPopFromEnd } from '../../utils/contentMemory';
+
+// Der ganze restliche Deck-Aufbau unten (Buckets nach Betrunkenheitsstufe, Pool-Balance,
+// Gating) bleibt unveraendert - nur die beiden Stellen, an denen bisher rein zufaellig
+// gemischt wurde, bevorzugen jetzt Prompts, die diese Person in "The One" noch nie oder am
+// laengsten nicht mehr gesehen hat. popMatching() weiter unten entnimmt Kandidaten immer vom
+// ENDE der jeweiligen Liste, daher liegt der bevorzugte Eintrag hier bewusst am Ende.
+const THE_ONE_NAMESPACE = 'theOne';
+const getPromptContentId = (prompt) => prompt?.content;
+const orderPromptsBySeenPriority = (list) =>
+  orderBySeenPriorityForPopFromEnd(THE_ONE_NAMESPACE, list, getPromptContentId);
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
@@ -363,11 +373,14 @@ export const buildTheOneDeck = (prompts, settings, options = {}) => {
     }
   });
 
-  buckets.forEach((bucket) => {
-    shuffleArrayFisherYates(bucket);
-    bucket.forEach((item) => overflowPool.push(item));
+  buckets.forEach((bucket, level) => {
+    const ordered = orderPromptsBySeenPriority(bucket);
+    buckets.set(level, ordered);
+    ordered.forEach((item) => overflowPool.push(item));
   });
-  shuffleArrayFisherYates(overflowPool);
+  const orderedOverflow = orderPromptsBySeenPriority(overflowPool);
+  overflowPool.length = 0;
+  overflowPool.push(...orderedOverflow);
 
   const deck = [];
   const total = overflowPool.length;

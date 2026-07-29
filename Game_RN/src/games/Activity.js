@@ -1,16 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Question from './sublements/Question';
 import { appStyles } from '../../styles';
 import { VariablesContext } from '../../VariablesContext';
-import { replaceHashtagsWithoutDuplicates, shuffleArrayFisherYates } from './sublements/AdjustParamShape';
+import { replaceHashtagsWithoutDuplicates } from './sublements/AdjustParamShape';
 import HandleFeedback from './sublements/HandleFeedBack';
 import InfoText from './sublements/InfoText';
 import TutorialOverlay from './sublements/TutorialOverlay';
 import InfoHint from './sublements/InfoHint';
+import { markContentSeen } from '../utils/contentMemory';
 
 const Activity = ({route }) => {
-  const { words } = shuffleArrayFisherYates(route.params);
+  // Reihenfolge kommt bereits aus App.js (orderedActivityWords), dort nach Seen-Prioritaet
+  // sortiert - hier nur noch entnehmen, nicht nochmal mischen.
+  const { words } = route.params;
 
   const { players, language, tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
 
@@ -25,6 +28,13 @@ const Activity = ({route }) => {
     }
 
   };
+
+  useEffect(() => {
+    const currentWord = words?.[wordsIndex];
+    if (currentWord?.id !== undefined) {
+      markContentSeen('activityWords', [currentWord.id]);
+    }
+  }, [words, wordsIndex]);
 
   const [tutorialStep, setTutorialStep] = useState(0);
   return (

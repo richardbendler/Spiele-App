@@ -7,22 +7,17 @@ import InfoHint from './sublements/InfoHint';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
 import { secretMissions } from '../data/secretMissions';
+import { orderBySeenPriority, markContentSeen } from '../utils/contentMemory';
 
-const shuffle = (arr) => {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
+const NAMESPACE = 'secretMissions';
+const getMissionId = (entry) => entry?.id;
 
 const SecretMission = () => {
   const { tutorialEnabled, setTutorialEnabled } = useContext(VariablesContext);
   const { t, language } = useTranslation();
   const copy = useMemo(() => t('secretMission') || {}, [t]);
 
-  const [deck, setDeck] = useState(() => shuffle([...secretMissions]));
+  const [deck, setDeck] = useState(() => orderBySeenPriority(NAMESPACE, secretMissions, getMissionId));
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -51,6 +46,13 @@ const SecretMission = () => {
   const mission = finished ? null : deck[index] ?? null;
   const missionText = mission ? (language === 'en' ? mission.en : mission.de) : '';
   const [tutorialStep, setTutorialStep] = useState(0);
+
+  React.useEffect(() => {
+    const id = getMissionId(mission);
+    if (id !== undefined) {
+      markContentSeen(NAMESPACE, [id]);
+    }
+  }, [mission]);
 
   const labels = useMemo(() => {
     return {
@@ -92,7 +94,7 @@ const SecretMission = () => {
   };
 
   const restartGame = () => {
-    setDeck(shuffle([...secretMissions]));
+    setDeck(orderBySeenPriority(NAMESPACE, secretMissions, getMissionId));
     setIndex(0);
     setFinished(false);
     setRevealed(false);

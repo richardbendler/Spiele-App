@@ -10,6 +10,7 @@ import TutorialOverlay from './sublements/TutorialOverlay';
 import { appStyles } from '../../styles';
 import HandleFeedback from './sublements/HandleFeedBack';
 import { useTranslation } from '../i18n';
+import { orderBySeenPriority, markContentSeen } from '../utils/contentMemory';
 
 // 0-9 Reglerwert -> 1-5 Inhalts-Stufe (2 Reglerschritte pro Stufe statt nur 3 grober Buckets).
 const intensityCeilingFromSlider = (value) => {
@@ -232,12 +233,21 @@ const SpinTheBottle = ({ route }) => {
               break;
             }
             case 'truth': {  // Wahrheit! Option
-              const entry = eligibleTruths[Math.floor(Math.random() * eligibleTruths.length)];
+              // Bevorzugt eine Frage, die diese Person in diesem Spielmodus noch nie (oder am
+              // laengsten nicht mehr) gesehen hat, statt rein zufaellig aus allen infrage
+              // kommenden Fragen zu waehlen.
+              const entry = orderBySeenPriority('spinTheBottleTruth', eligibleTruths, (e) => e.question_id)[0];
+              if (entry) {
+                markContentSeen('spinTheBottleTruth', [entry.question_id]);
+              }
               setOutcome({ type: 'truth', entry });
               break;
             }
             case 'dare': {  // Pflicht! Option
-              const entry = eligibleDares[Math.floor(Math.random() * eligibleDares.length)];
+              const entry = orderBySeenPriority('spinTheBottleDare', eligibleDares, (e) => e.question_id)[0];
+              if (entry) {
+                markContentSeen('spinTheBottleDare', [entry.question_id]);
+              }
               setOutcome({ type: 'dare', entry });
               break;
             }
