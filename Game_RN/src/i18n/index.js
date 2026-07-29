@@ -22,7 +22,7 @@ const translations = {
         'In der Liste könnt ihr markieren, ob Personen Alkohol trinken oder nicht. Wer nicht trinkt, bekommt keine Trinkaufgaben.',
       listHeader: 'Wer ist dabei:',
       sliderCurrent: 'Wie betrunken seid ihr gerade?',
-      sliderCurrentLabel: 'Aktüll:',
+      sliderCurrentLabel: 'Aktuell:',
       sliderDesired: 'Wie betrunken möchtet ihr werden?',
       sliderDesiredLabel: 'Ziel:',
       sliderFamiliarity: 'Wie gut kennt ihr euch schon?',
@@ -31,6 +31,7 @@ const translations = {
       clearAll: 'Alle löschen',
       alertTitle: 'Zu wenig Spieler',
       alertMessage: 'Um dieses Spiel zu starten, braucht ihr mindestens zwei Personen.',
+      limitReached: 'Maximal 12 Spieler*innen erreicht.',
     },
     scales: {
       drunkenness: [
@@ -247,6 +248,7 @@ const translations = {
       clearAll: 'Clear all',
       alertTitle: 'Not enough players',
       alertMessage: 'You need at least two players to start this game.',
+      limitReached: 'Maximum of 12 players reached.',
     },
     scales: {
       drunkenness: [
@@ -449,13 +451,13 @@ export const useTranslation = () => {
 
   const t = useCallback(
     (path, fallback) => {
-      const valü = resolveTranslation(language, path);
-      if (valü !== undefined) {
-        return valü;
+      const value = resolveTranslation(language, path);
+      if (value !== undefined) {
+        return value;
       }
-      const fallbackValü = resolveTranslation('de', path);
-      if (fallbackValü !== undefined) {
-        return fallbackValü;
+      const fallbackValue = resolveTranslation('de', path);
+      if (fallbackValue !== undefined) {
+        return fallbackValue;
       }
       return fallback ?? path;
     },

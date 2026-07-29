@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, Linking } from 'react-native';
 import { PLAY_STORE_URL } from '../utils/rating';
 import { VariablesContext } from '../../VariablesContext';
 import { useTranslation } from '../i18n';
-import NetInfo from "@react-native-community/netinfo"; // bleibt
 
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
 import { Caveat_400Regular, Caveat_500Medium, Caveat_600SemiBold, Caveat_700Bold } from "@expo-google-fonts/caveat";
@@ -20,14 +19,6 @@ const StartMenu = ({ navigation }) => {
   const playLabel = startText?.playButton ?? (language === 'de' ? 'Jetzt starten' : 'Start now');
   const quickDrinkCounterLabel = language === 'de' ? 'Getränkezähler' : 'Drink counter';
   const quickOpenLabel = language === 'de' ? 'Öffnen' : 'Open';
-
-  const [isConnected, setIsConnected] = useState(true);
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
-      setIsConnected(state.isConnected);
-    });
-    return () => unsubscribe();
-  }, []);
 
   const [fontsLoaded] = useFonts({
     Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold,
