@@ -84,6 +84,87 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Sagt schnell einen Zungenbrecher dreimal auf. Wer patzt, trinkt 3 Schlucke.",
+      "en": "Challenge: say a tongue twister three times fast. Whoever slips drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Balanciert auf einem Bein mit geschlossenen Augen. Wer zuerst wackelt, trinkt 3 Schlucke.",
+      "en": "Challenge: balance on one leg with eyes closed. First to wobble drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Zählt rückwärts von 30. Wer sich verzählt, trinkt 3 Schlucke.",
+      "en": "Challenge: count backward from 30. Whoever miscounts drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Macht das schlechteste Tiergeräusch. Schwächstes Geräusch trinkt 3 Schlucke.",
+      "en": "Challenge: make the worst animal sound. Weakest one drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Balanciert ein Buch auf dem Kopf, während ihr geht. Wer es fallen lässt, trinkt 3 Schlucke.",
+      "en": "Challenge: balance a book on your head while walking. Whoever drops it drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Haltet die Luft an. Wer zuerst aufgibt, trinkt 3 Schlucke.",
+      "en": "Challenge: hold your breath. First to give up drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Sprecht einen Satz nur rückwärts. Wer scheitert, trinkt 3 Schlucke.",
+      "en": "Challenge: say a sentence backward. Whoever fails drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Bleibt am längsten ernst, während alle Grimassen schneiden. Wer zuerst lacht, trinkt 3 Schlucke.",
+      "en": "Challenge: stay serious longest while everyone makes faces. First to laugh drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Challenge: Sagt das Alphabet rückwärts auf. Wer zuerst patzt, trinkt 3 Schlucke.",
+      "en": "Challenge: recite the alphabet backward. Whoever slips first drinks 3 sips.",
+      "drunkLevel": 3,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

@@ -183,6 +183,81 @@
           "en": "{{teamA}} vs {{teamB}}: memorize a word list, whoever remembers more wins. Losing team drinks 2 sips."
         }
       }
+    },
+    {
+      "de": "Teamduell: Emoji-Story",
+      "en": "Team duel: emoji story",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} erzählen je eine Geschichte nur mit Geräuschen und Gesten. Publikum wählt das bessere Team, Verlierer trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} each tell a story using only sounds and gestures. Audience picks the better team, loser drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Turmbau",
+      "en": "Team duel: tower building",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: baut in 30 Sekunden den höheren Turm aus Gegenständen vom Tisch. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: build the taller tower from table objects in 30 seconds. Losing team drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Fun-Fact-Battle",
+      "en": "Team duel: fun fact battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} sammeln abwechselnd Fun Facts. Wer zuerst stockt, verliert. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} alternate sharing fun facts. Whoever stalls first loses. Losing team drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Gesichter-Battle",
+      "en": "Team duel: face-off",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} gegen {{teamB}}: wer bringt das andere Team zuerst zum Lachen? Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} vs {{teamB}}: who makes the other team laugh first? Losing team drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Teamduell: Reise-Battle",
+      "en": "Team duel: travel battle",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "teamChallenge",
+        "challengeText": {
+          "de": "{{teamA}} und {{teamB}} nennen abwechselnd Reiseziele. Wer zuerst wiederholt, verliert. Verlierer-Team trinkt 2 Schlucke.",
+          "en": "{{teamA}} and {{teamB}} alternate naming travel destinations. Whoever repeats first loses. Losing team drinks 2 sips."
+        }
+      }
     }
   ]
 }

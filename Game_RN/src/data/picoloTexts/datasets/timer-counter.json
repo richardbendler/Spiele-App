@@ -255,6 +255,153 @@
           "en": "Every new pose counts."
         }
       }
+    },
+    {
+      "de": "Counter: Sprüche",
+      "en": "Counter: catchphrases",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele bekannte Sprüche oder Zitate kann die Runde zusammentragen, bevor der Timer abläuft?",
+          "en": "How many famous sayings or quotes can the group come up with before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Spruch zählt.",
+          "en": "Every saying counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Sit-ups",
+      "en": "Counter: sit-ups",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Sit-ups schafft eine Person, bevor der Timer abläuft?",
+          "en": "How many sit-ups can one person do before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Sit-up zählt.",
+          "en": "Every sit-up counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Zungenbrecher-Fails",
+      "en": "Counter: tongue-twister fails",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie oft verhaspelt sich eine Person bei einem Zungenbrecher, bevor der Timer abläuft?",
+          "en": "How many times does one person trip over a tongue twister before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Ausrutscher zählt.",
+          "en": "Every slip-up counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Wortassoziationen",
+      "en": "Counter: word associations",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Wortassoziationen schafft die Runde in Folge, bevor der Timer abläuft?",
+          "en": "How many word associations can the group chain together before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jede Assoziation zählt.",
+          "en": "Every association counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Luftschläge",
+      "en": "Counter: shadow-boxing hits",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Luftschläge schafft eine Person, bevor der Timer abläuft?",
+          "en": "How many shadow-boxing hits can one person land before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Schlag zählt.",
+          "en": "Every hit counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Kicherer",
+      "en": "Counter: giggles",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "mode": "counter",
+        "text": {
+          "de": "Wie oft muss die Runde kichern, bevor der Timer abläuft?",
+          "en": "How many times does the group giggle before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jedes Kichern zählt.",
+          "en": "Every giggle counts."
+        }
+      }
+    },
+    {
+      "de": "Counter: Fingerschnippen",
+      "en": "Counter: finger snaps",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 15,
+        "mode": "counter",
+        "text": {
+          "de": "Wie viele Fingerschnipser schafft eine Person, bevor der Timer abläuft?",
+          "en": "How many finger snaps can one person do before the timer runs out?"
+        },
+        "counterHint": {
+          "de": "Jeder Schnipser zählt.",
+          "en": "Every snap counts."
+        }
+      }
     }
   ]
 }

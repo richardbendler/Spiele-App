@@ -83,6 +83,86 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Fake News: Handys — Erfinde in 15 Sekunden eine absurde Falschmeldung über Smartphones.",
+      "en": "Fake News: phones — in 15 seconds invent an absurd fake headline about smartphones.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Haustiere — Erfinde eine absurde Schlagzeile über ein Haustier, das berühmt wird.",
+      "en": "Fake News: pets — invent an absurd headline about a pet that becomes famous.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Reisen — Erfinde eine absurde Falschmeldung über eine neu entdeckte Insel.",
+      "en": "Fake News: travel — invent an absurd fake headline about a newly discovered island.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Essen — Erfinde eine absurde Schlagzeile über ein neues Trend-Gericht.",
+      "en": "Fake News: food — invent an absurd headline about a new trendy dish.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Musik — Erfinde eine absurde Falschmeldung über eine Band, die es nicht gibt.",
+      "en": "Fake News: music — invent an absurd fake headline about a band that doesn't exist.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Sport — Erfinde eine absurde Schlagzeile über eine neue Sportart.",
+      "en": "Fake News: sports — invent an absurd headline about a brand-new sport.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Mode — Erfinde eine absurde Falschmeldung über einen neuen Modetrend.",
+      "en": "Fake News: fashion — invent an absurd fake headline about a new fashion trend.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Weltraum — Erfinde eine absurde Schlagzeile über eine Entdeckung im All.",
+      "en": "Fake News: space — invent an absurd headline about a discovery in space.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Nachbarschaft — Erfinde eine absurde Lokalmeldung über diese Straße.",
+      "en": "Fake News: neighborhood — invent an absurd local news story about this street.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Fake News: Zukunft — Erfinde eine absurde Schlagzeile aus dem Jahr 2050.",
+      "en": "Fake News: future — invent an absurd headline from the year 2050.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

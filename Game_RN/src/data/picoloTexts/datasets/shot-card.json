@@ -75,6 +75,78 @@
       "deepness": 2,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Shot: Reim-Pflicht — Erfinde einen Reim, bevor du den Shot nimmst.",
+      "en": "Shot: rhyme requirement — invent a rhyme before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Namensrunde — Sag den Namen jeder Person in der Runde, bevor du den Shot nimmst.",
+      "en": "Shot: name round — say every person's name in the group before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Geheimnis — Verrate ein kleines Geheimnis, bevor du den Shot nimmst.",
+      "en": "Shot: secret — reveal a small secret before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Tanzeinlage — Tanze 5 Sekunden, bevor du den Shot nimmst.",
+      "en": "Shot: dance break — dance for 5 seconds before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Partnerwahl — Wähle jemanden, der mit dir anstößt, bevor du den Shot nimmst.",
+      "en": "Shot: partner pick — choose someone to clink glasses with before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Kompliment — Mach der Runde ein Kompliment, bevor du den Shot nimmst.",
+      "en": "Shot: compliment — give the group a compliment before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Stille — Halte 5 Sekunden Stille, bevor du den Shot nimmst.",
+      "en": "Shot: silence — hold 5 seconds of silence before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Pose — Nimm eine Siegerpose ein, bevor du den Shot nimmst.",
+      "en": "Shot: pose — strike a victory pose before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Shot: Geräusch — Mach ein Tiergeräusch, bevor du den Shot nimmst.",
+      "en": "Shot: sound effect — make an animal sound before taking the shot.",
+      "drunkLevel": 5,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

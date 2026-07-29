@@ -291,6 +291,348 @@
           "en": "{{target}} made the last suggestion and drinks 2 sips."
         }
       }
+    },
+    {
+      "de": "Lachsteuer",
+      "en": "Laugh tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt am lautesten gelacht und trinkt einen Schluck.",
+          "en": "{{target}} laughed loudest most recently and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Zuspätkommer-Steuer",
+      "en": "Latecomer tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} kam heute als Letztes an und trinkt 2 Schlucke.",
+          "en": "{{target}} arrived last today and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Wetten-Steuer",
+      "en": "Betting tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat die letzte Wette verloren und trinkt 2 Schlucke.",
+          "en": "{{target}} lost the last bet and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Gähn-Steuer",
+      "en": "Yawn tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt gegähnt und trinkt einen Schluck.",
+          "en": "{{target}} yawned most recently and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Wortführer-Bonus",
+      "en": "Talker's bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat gerade am meisten geredet und darf 2 Schlucke verteilen.",
+          "en": "{{target}} has talked the most and gets to hand out 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Erinnerungssteuer",
+      "en": "Memory tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat sich zuletzt an etwas nicht erinnert und trinkt 2 Schlucke.",
+          "en": "{{target}} couldn't remember something recently and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Kompliment-Bonus",
+      "en": "Compliment bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt ein Kompliment bekommen und darf einen Schluck verteilen.",
+          "en": "{{target}} received the last compliment and gets to hand out one sip."
+        }
+      }
+    },
+    {
+      "de": "Wachtraum-Steuer",
+      "en": "Daydream tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} wirkte gerade am abwesendsten und trinkt 2 Schlucke.",
+          "en": "{{target}} seemed most zoned-out just now and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Schnellste-Antwort-Bonus",
+      "en": "Fastest-reply bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt am schnellsten geantwortet und darf 2 Schlucke verteilen.",
+          "en": "{{target}} replied fastest most recently and gets to hand out 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Stille-Steuer",
+      "en": "Silence tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat am längsten nichts gesagt und trinkt 2 Schlucke.",
+          "en": "{{target}} has stayed quiet longest and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Trend-Steuer",
+      "en": "Trend tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat zuletzt einen Trend erwähnt und trinkt einen Schluck.",
+          "en": "{{target}} mentioned a trend most recently and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Optimisten-Bonus",
+      "en": "Optimist bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} klang gerade am positivsten und darf 2 Schlucke verteilen.",
+          "en": "{{target}} sounded most upbeat just now and gets to hand out 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Verspätungssteuer",
+      "en": "Delay tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat die Runde zuletzt aufgehalten und trinkt 2 Schlucke.",
+          "en": "{{target}} held up the group most recently and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Gedächtnis-Bonus",
+      "en": "Memory bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat sich zuletzt an etwas Kleines erinnert und darf einen Schluck verteilen.",
+          "en": "{{target}} remembered a small detail recently and gets to hand out one sip."
+        }
+      }
+    },
+    {
+      "de": "Handysteuer",
+      "en": "Phone tax v2",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat als Letztes aufs Handy geschaut und trinkt 2 Schlucke.",
+          "en": "{{target}} looked at their phone most recently and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Vorschlagssteuer",
+      "en": "Suggestion tax v2",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat den letzten Vorschlag für die Runde gemacht und trinkt einen Schluck.",
+          "en": "{{target}} made the group's last suggestion and drinks one sip."
+        }
+      }
+    },
+    {
+      "de": "Frühaufsteher-Bonus",
+      "en": "Early-riser bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} war heute vermutlich als Erste*r wach und darf 2 Schlucke verteilen.",
+          "en": "{{target}} was probably awake earliest today and gets to hand out 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Namensvergesser-Steuer",
+      "en": "Name-forgetter tax",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat sich zuletzt einen Namen nicht merken können und trinkt 2 Schlucke.",
+          "en": "{{target}} couldn't remember a name recently and drinks 2 sips."
+        }
+      }
+    },
+    {
+      "de": "Foto-Bonus",
+      "en": "Photo bonus",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "targetedAction",
+        "target": {
+          "mode": "single"
+        },
+        "template": {
+          "de": "{{target}} hat das letzte Gruppenfoto gemacht und darf einen Schluck verteilen.",
+          "en": "{{target}} took the last group photo and gets to hand out one sip."
+        }
+      }
     }
   ]
 }

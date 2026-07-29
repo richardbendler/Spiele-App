@@ -283,6 +283,146 @@
           "en": "Time's up! Did you make it?"
         }
       }
+    },
+    {
+      "de": "Countdown: Turmsturz",
+      "en": "Countdown: tower collapse",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Baut zusammen einen Turm und versucht, ihn absichtlich elegant einstürzen zu lassen, bevor der Timer abläuft.",
+          "en": "Build a tower together and try to make it collapse elegantly before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie elegant war der Einsturz?",
+          "en": "Time's up! How elegant was the collapse?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Namensflut",
+      "en": "Countdown: name flood",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Nennt so viele Vornamen wie möglich, bevor der Timer abläuft.",
+          "en": "Name as many first names as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Balance-Kunst",
+      "en": "Countdown: balance art",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Stapelt so viele Gegenstände wie möglich zu einer Skulptur, bevor der Timer abläuft.",
+          "en": "Stack as many objects as possible into a sculpture before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Steht die Skulptur noch?",
+          "en": "Time's up! Is the sculpture still standing?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Reimflut",
+      "en": "Countdown: rhyme flood",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Findet so viele Reime auf ein vorgegebenes Wort wie möglich, bevor der Timer abläuft.",
+          "en": "Find as many rhymes for a given word as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Emoji-Geschichte",
+      "en": "Countdown: emoji story",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 25,
+        "text": {
+          "de": "Erzählt gemeinsam eine Geschichte nur mit Emoji-Geräuschen und Gesten, bevor der Timer abläuft.",
+          "en": "Tell a story together using only emoji-style sounds and gestures before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei!",
+          "en": "Time's up!"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Menschliches Alphabet",
+      "en": "Countdown: human alphabet",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Formt mit euren Körpern so viele Buchstaben wie möglich, bevor der Timer abläuft.",
+          "en": "Form as many letters as possible with your bodies before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Wie viele wurden es?",
+          "en": "Time's up! How many did you get?"
+        }
+      }
+    },
+    {
+      "de": "Countdown: Stille-Post-Sprint",
+      "en": "Countdown: telephone sprint",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false,
+      "payload": {
+        "type": "timer",
+        "durationSeconds": 20,
+        "text": {
+          "de": "Gebt einen Satz per Flüstern durch die ganze Runde, so oft es geht, bevor der Timer abläuft.",
+          "en": "Pass a sentence by whisper around the group as many times as possible before the timer runs out."
+        },
+        "successText": {
+          "de": "Zeit vorbei! Was kam am Ende an?",
+          "en": "Time's up! What made it to the end?"
+        }
+      }
     }
   ]
 }

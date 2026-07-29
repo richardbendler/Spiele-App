@@ -99,6 +99,86 @@
       "deepness": 2,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Zwinkere bis zur nächsten Karte jedem zu, der ein bestimmtes Wort sagt.",
+      "en": "Don't read aloud: wink at anyone who says a specific word until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte immer eine Hand am Herzen.",
+      "en": "Don't read aloud: keep one hand on your heart until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Nicke bis zur nächsten Karte zu allem, was gesagt wird.",
+      "en": "Don't read aloud: nod to everything said until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte Blickkontakt mit der Person dir gegenüber.",
+      "en": "Don't read aloud: hold eye contact with the person across from you until the next card.",
+      "drunkLevel": 3,
+      "deepness": 3,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Sprich bis zur nächsten Karte nur im Flüsterton.",
+      "en": "Don't read aloud: speak only in a whisper until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte die Hände gefaltet.",
+      "en": "Don't read aloud: keep your hands folded until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Lächle bis zur nächsten Karte bei allem, was du hörst.",
+      "en": "Don't read aloud: smile at everything you hear until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Berühre bis zur nächsten Karte bei jedem Schluck kurz den Tisch.",
+      "en": "Don't read aloud: briefly touch the table with every sip until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Halte bis zur nächsten Karte die Füße nebeneinander, egal wie du sitzt.",
+      "en": "Don't read aloud: keep your feet together no matter how you sit, until the next card.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Nicht vorlesen: Wiederhole bis zur nächsten Karte das letzte Wort jedes Satzes leise.",
+      "en": "Don't read aloud: quietly repeat the last word of every sentence until the next card.",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

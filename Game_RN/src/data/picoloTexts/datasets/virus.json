@@ -279,6 +279,144 @@
           "en": "Say more than that and drink."
         }
       }
+    },
+    {
+      "de": "Virus: Reimzwang",
+      "en": "Virus: rhyme compulsion",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Reimzwang",
+          "en": "Virus: rhyme compulsion"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: jeder Satz muss auf den vorherigen reimen.",
+          "en": "Until the next card: every sentence must rhyme with the previous one."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
+    },
+    {
+      "de": "Virus: Zeigefinger-Verbot",
+      "en": "Virus: no pointing",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Zeigefinger-Verbot",
+          "en": "Virus: no pointing"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: Zeigen mit dem Finger ist verboten, nur mit dem Kopf nicken erlaubt.",
+          "en": "Until the next card: pointing with a finger is banned, only head nods allowed."
+        },
+        "penalty": {
+          "de": "Wer zeigt, trinkt.",
+          "en": "Point and drink."
+        }
+      }
+    },
+    {
+      "de": "Virus: Lob-Pflicht",
+      "en": "Virus: praise requirement",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Lob-Pflicht",
+          "en": "Virus: praise requirement"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: jeder muss vor dem Trinken ein Kompliment machen.",
+          "en": "Until the next card: everyone must give a compliment before drinking."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt einen Extraschluck.",
+          "en": "Forget it and drink an extra sip."
+        }
+      }
+    },
+    {
+      "de": "Virus: Stumme Minute",
+      "en": "Virus: silent minute",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Stumme Minute",
+          "en": "Virus: silent minute"
+        },
+        "rule": {
+          "de": "Sobald jemand niest oder hustet, müssen alle 10 Sekunden schweigen.",
+          "en": "Whenever someone sneezes or coughs, everyone must stay silent for 10 seconds."
+        },
+        "penalty": {
+          "de": "Wer zuerst spricht, trinkt.",
+          "en": "First to speak drinks."
+        }
+      }
+    },
+    {
+      "de": "Virus: Handshake-Pflicht",
+      "en": "Virus: handshake requirement",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Handshake-Pflicht",
+          "en": "Virus: handshake requirement"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: wer zustimmt, muss dabei die Hand schütteln.",
+          "en": "Until the next card: agreeing requires a handshake."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
+    },
+    {
+      "de": "Virus: Ehren-Titel",
+      "en": "Virus: honorary title",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "virus",
+        "title": {
+          "de": "Virus: Ehren-Titel",
+          "en": "Virus: honorary title"
+        },
+        "rule": {
+          "de": "Bis zur nächsten Karte: jeder muss die Person rechts mit einem erfundenen Titel ansprechen.",
+          "en": "Until the next card: address the person on your right with a made-up title."
+        },
+        "penalty": {
+          "de": "Wer es vergisst, trinkt.",
+          "en": "Forget it and drink."
+        }
+      }
     }
   ]
 }

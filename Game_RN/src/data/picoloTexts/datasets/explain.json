@@ -83,6 +83,86 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Erklären: Regenschirm — Erkläre einen Regenschirm, als wärst du ein Alien, das ihn zum ersten Mal sieht.",
+      "en": "Explain: umbrella — explain an umbrella as if you were an alien seeing it for the first time.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Wecker — Erkläre einen Wecker jemandem, der noch nie geschlafen hat.",
+      "en": "Explain: alarm clock — explain an alarm clock to someone who has never slept.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Kalender — Erkläre einen Kalender, als wäre Zeit ein neues Konzept für dich.",
+      "en": "Explain: calendar — explain a calendar as if time were a brand-new concept to you.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Kopfhörer — Erkläre Kopfhörer einem imaginären Publikum aus dem Mittelalter.",
+      "en": "Explain: headphones — explain headphones to an imaginary medieval audience.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Spiegel — Erkläre einen Spiegel, als hättest du dein eigenes Gesicht noch nie gesehen.",
+      "en": "Explain: mirror — explain a mirror as if you'd never seen your own face before.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Kreditkarte — Erkläre eine Kreditkarte, als wäre sie magisches Papier.",
+      "en": "Explain: credit card — explain a credit card as if it were magic paper.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Fahrstuhl — Erkläre einen Fahrstuhl, als wäre er ein Zauberkasten.",
+      "en": "Explain: elevator — explain an elevator as if it were a magic box.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Schuhe — Erkläre Schuhe jemandem, der noch nie gelaufen ist.",
+      "en": "Explain: shoes — explain shoes to someone who has never walked.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Regenbogen — Erkläre einen Regenbogen als wissenschaftliches Wunder, mit vollem Ernst.",
+      "en": "Explain: rainbow — explain a rainbow as a scientific miracle, with full seriousness.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erklären: Kissen — Erkläre ein Kissen, als wäre es ein hochtechnisches Gerät.",
+      "en": "Explain: pillow — explain a pillow as if it were high-tech equipment.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

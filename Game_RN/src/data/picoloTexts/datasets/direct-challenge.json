@@ -115,6 +115,134 @@
       "deepness": 1,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Herausforderung: Spiegel-Duell — Fordere jemanden heraus, 10 Sekunden lang jede deiner Bewegungen zu spiegeln. Wer zuerst danebenliegt, trinkt.",
+      "en": "Challenge: mirror duel — challenge someone to mirror your movements for 10 seconds. Whoever slips up first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Gedächtnis-Kette — Fordere jemanden heraus, eine wachsende Wortliste fehlerfrei zu wiederholen. Wer zuerst patzt, trinkt.",
+      "en": "Challenge: memory chain — challenge someone to repeat a growing word list. Whoever slips up first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Flüster-Test — Fordere jemanden heraus, einen Satz nur per Lippenlesen zu erraten. Falsch geraten heißt trinken.",
+      "en": "Challenge: lip-reading test — challenge someone to guess a sentence by lip-reading only. Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Stiller Countdown — Fordere jemanden heraus, lautlos bis 10 zu zählen und dabei synchron zu bleiben. Wer daneben liegt, trinkt.",
+      "en": "Challenge: silent countdown — challenge someone to silently count to 10 in sync. Whoever's off drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Emoji-Übersetzung — Fordere jemanden heraus, einen Satz nur mit Emojis zu erklären. Rät die Runde falsch, trinkt der Erklärende.",
+      "en": "Challenge: emoji translation — challenge someone to explain a sentence using only emojis. Wrong group guess means the explainer drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Balance-Battle — Fordere jemanden heraus, ein Buch auf dem Kopf zu balancieren, während ihr beide geht. Wer es fallen lässt, trinkt.",
+      "en": "Challenge: balance battle — challenge someone to balance a book on their head while walking. Whoever drops it drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Wortfindungs-Duell — Fordere jemanden heraus, abwechselnd Synonyme für ein Wort zu finden. Wer zuerst stockt, trinkt.",
+      "en": "Challenge: word-find duel — challenge someone to alternate finding synonyms for a word. Whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Stimmimitation — Fordere jemanden heraus, deine Stimme nachzuahmen. Die Runde stimmt ab, schlechtere Person trinkt.",
+      "en": "Challenge: voice impression — challenge someone to imitate your voice. Group votes, worse impression drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Reaktionstest — Fordere jemanden heraus, bei einem Klatschen so schnell wie möglich stillzustehen. Wer sich zuletzt bewegt, trinkt.",
+      "en": "Challenge: reaction test — challenge someone to freeze instantly on a clap. Last to freeze drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Zahlenspiel — Fordere jemanden heraus, abwechselnd bis 30 zu zählen, ohne '3' oder ein Vielfaches davon zu sagen (Klatschen stattdessen). Wer patzt, trinkt.",
+      "en": "Challenge: number game — challenge someone to count to 30 in turn, clapping instead of saying '3' or multiples. Whoever slips drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Geheimwort — Fordere jemanden heraus, ein vereinbartes Wort möglichst oft unauffällig ins Gespräch einzubauen, ohne dass die Runde es merkt. Wird es entdeckt, trinkt die Person.",
+      "en": "Challenge: secret word — challenge someone to sneak an agreed word into conversation without the group noticing. Caught means drinking.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Standbild — Fordere jemanden heraus, ein Gefühl als Standbild darzustellen. Rät die Runde falsch, trinkt die darstellende Person.",
+      "en": "Challenge: freeze pose — challenge someone to represent an emotion as a freeze pose. Wrong group guess means the poser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Reimschlacht — Fordere jemanden heraus, abwechselnd auf ein Wort zu reimen, bis jemand aufgibt. Verlierer trinkt.",
+      "en": "Challenge: rhyme battle — challenge someone to alternate rhyming on a word until someone gives up. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Blindtest — Fordere jemanden heraus, mit geschlossenen Augen einen Gegenstand zu ertasten und zu erraten. Falsch geraten heißt trinken.",
+      "en": "Challenge: blind test — challenge someone to feel and guess an object with eyes closed. Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Impro-Werbespot — Fordere jemanden heraus, einen 10-Sekunden-Werbespot für einen zufälligen Gegenstand zu improvisieren. Die Runde bewertet, schlechterer Auftritt trinkt.",
+      "en": "Challenge: improv commercial — challenge someone to improvise a 10-second ad for a random object. Group rates, weaker performance drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Herausforderung: Blicktausch — Fordere jemanden heraus, sich 15 Sekunden anzustarren, ohne zu lächeln. Wer zuerst lächelt, trinkt.",
+      "en": "Challenge: staring exchange — challenge someone to stare for 15 seconds without smiling. Whoever smiles first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }

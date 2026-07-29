@@ -83,6 +83,86 @@
       "deepness": 1,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Solo Mime: Detektiv — Stelle 15 Sekunden lang einen Detektiv bei der Arbeit dar, Runde rät den Fall.",
+      "en": "Solo mime: detective — mime a detective at work for 15 seconds, group guesses the case.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Astronaut — Stelle 15 Sekunden lang einen Astronauten im All dar, Runde rät die Tätigkeit.",
+      "en": "Solo mime: astronaut — mime an astronaut in space for 15 seconds, group guesses the activity.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Koch — Stelle 15 Sekunden lang einen gestressten Koch dar, Runde rät das Gericht.",
+      "en": "Solo mime: chef — mime a stressed-out chef for 15 seconds, group guesses the dish.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Zauberer — Stelle 15 Sekunden lang einen Zauberer bei einem Trick dar, Runde rät den Trick.",
+      "en": "Solo mime: magician — mime a magician performing a trick for 15 seconds, group guesses the trick.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Pilot — Stelle 15 Sekunden lang einen Piloten beim Landen dar, Runde rät die Situation.",
+      "en": "Solo mime: pilot — mime a pilot landing a plane for 15 seconds, group guesses the situation.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Gärtner*in — Stelle 15 Sekunden lang eine Person beim Gärtnern dar, Runde rät die Pflanze.",
+      "en": "Solo mime: gardener — mime someone gardening for 15 seconds, group guesses the plant.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Feuerwehr — Stelle 15 Sekunden lang einen Feuerwehreinsatz dar, Runde rät die Situation.",
+      "en": "Solo mime: firefighter — mime a firefighting scene for 15 seconds, group guesses the situation.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Museumsführung — Stelle 15 Sekunden lang eine Museumsführung dar, Runde rät das Exponat.",
+      "en": "Solo mime: museum tour — mime a museum tour for 15 seconds, group guesses the exhibit.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Bäcker*in — Stelle 15 Sekunden lang eine Backszene dar, Runde rät das Gebäck.",
+      "en": "Solo mime: baker — mime a baking scene for 15 seconds, group guesses the baked good.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Solo Mime: Filmregie — Stelle 15 Sekunden lang eine Filmregie-Szene dar, Runde rät das Genre.",
+      "en": "Solo mime: film directing — mime a film-directing scene for 15 seconds, group guesses the genre.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
     }
   ]
 }

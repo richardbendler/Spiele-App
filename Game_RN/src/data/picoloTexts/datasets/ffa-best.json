@@ -75,6 +75,78 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Wer erzählt die beste (frei erfundene) Verschwörungstheorie? Beste Person verteilt 3 Schlucke.",
+      "en": "Who tells the best (made-up) conspiracy theory? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer hält die überzeugendste Wahlkampfrede für sich selbst? Beste Person verteilt 3 Schlucke.",
+      "en": "Who gives the most convincing campaign speech for themselves? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet den besten Bandnamen für eine Fantasieband? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best name for a fantasy band? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer macht das überzeugendste Interview mit sich selbst? Beste Person verteilt 3 Schlucke.",
+      "en": "Who does the most convincing self-interview? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet die beste Superkraft für sich selbst? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best superpower for themselves? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer hält die überzeugendste Dankesrede für einen erfundenen Preis? Beste Person verteilt 3 Schlucke.",
+      "en": "Who gives the most convincing acceptance speech for a made-up award? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet den besten Namen für ein neues Land? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best name for a new country? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer macht das überzeugendste Wetter-Update? Beste Person verteilt 3 Schlucke.",
+      "en": "Who does the most convincing weather update? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer erfindet den besten Verschwörungsnamen für eine Katze? Beste Person verteilt 3 Schlucke.",
+      "en": "Who invents the best conspiracy name for a cat? Winner hands out 3 sips.",
+      "drunkLevel": 4,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
