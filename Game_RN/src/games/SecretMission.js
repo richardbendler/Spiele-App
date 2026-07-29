@@ -154,7 +154,7 @@ const SecretMission = () => {
           <TutorialOverlay
             visible={tutorialEnabled}
             steps={[
-              { text: language === 'de' ? 'Jede Person bekommt eine geheime Mission fuer den Abend. Tippe auf Aufdecken, um deine zu sehen.' : 'Each player gets a secret mission for the evening. Tap Reveal to view yours.', placement: 'bottom' },
+              { text: language === 'de' ? 'Jede Person bekommt eine geheime Mission für den Abend. Tippe auf Aufdecken, um deine zu sehen.' : 'Each player gets a secret mission for the evening. Tap Reveal to view yours.', placement: 'bottom' },
               { text: language === 'de' ? 'Verdecke die Karte wieder und gib das Handy weiter. Erfuelle deine Mission irgendwann im Laufe des Abends.' : 'Hide the card again and pass the phone. Complete your mission at any time during the evening.', placement: 'top' },
             ]}
             stepIndex={tutorialStep}

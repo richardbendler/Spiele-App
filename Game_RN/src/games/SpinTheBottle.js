@@ -60,14 +60,14 @@ const SpinTheBottle = ({ route }) => {
 
   const [randomSelection, setRandomSelection] = useState('initial'); // Entscheidung ob Schlucke, Wahrheit oder Pflicht
   const [outcome, setOutcome] = useState({ type: 'initial' });
-  // Praeziser (fraktionaler) Fortschritt fuer die Gating-Berechnung dieser Session. Die geteilte
+  // Präziser (fraktionaler) Fortschritt für die Gating-Berechnung dieser Session. Die geteilte
   // Einstellung (theOneSettings.currentDrunkenness) wird nur gerundet zurückgeschrieben, da andere
-  // Screens (z.B. PreGameSettings) den Wert als Array-Index fuer die Skalen-Beschriftung nutzen.
+  // Screens (z.B. PreGameSettings) den Wert als Array-Index für die Skalen-Beschriftung nutzen.
   const [drunkProgress, setDrunkProgress] = useState(() => {
     const start = Number(theOneSettings?.currentDrunkenness);
     return Number.isFinite(start) ? Math.max(0, Math.min(9, start)) : 4;
   });
-  // PanResponder wird per useRef nur einmal erzeugt - sein Callback wuerde sonst den
+  // PanResponder wird per useRef nur einmal erzeugt - sein Callback würde sonst den
   // drunkProgress-Wert vom allerersten Render einfrieren (Stale Closure). Ref immer aktuell halten.
   const drunkProgressRef = useRef(drunkProgress);
   useEffect(() => {
@@ -166,7 +166,7 @@ const SpinTheBottle = ({ route }) => {
 
         // Starten der neuen Animation mit einem zufaelligen Endwert
         Animated.timing(rotationValue, {
-          toValue: Math.random() * 360 * 30,  // Zufaelliger Endwert fuer die Animation, multipliziert mit 5
+          toValue: Math.random() * 360 * 30,  // Zufälliger Endwert für die Animation, multipliziert mit 5
           duration: Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000,  // Zufaellige Dauer zwischen 3 und 5 Sekunden
           useNativeDriver: false,
         }).start(() => {
@@ -190,10 +190,10 @@ const SpinTheBottle = ({ route }) => {
           const eligibleDares = textsPflichtSpinTheBottle.filter((e) => (e.intensity ?? 1) <= contentCeiling);
 
           // Schlucke-Anteil richtet sich danach, wie weit die Gruppe noch vom Wunschziel entfernt
-          // ist: grosse Luecke -> viele Schlucke, um aufzuholen. Ziel erreicht/ueberschritten ->
-          // kaum noch Schlucke, dafuer wieder "normalere" Wahrheit/Pflicht-Fragen.
+          // ist: große Lücke -> viele Schlucke, um aufzuholen. Ziel erreicht/überschritten ->
+          // kaum noch Schlucke, dafür wieder "normalere" Wahrheit/Pflicht-Fragen.
           const gapRatio = Math.max(0, Math.min(1, (desiredDrunkenness - currentDrunkenness) / 9));
-          const pSips = 0.15 + 0.55 * gapRatio; // 0.15 (Ziel erreicht) .. 0.70 (max. Luecke)
+          const pSips = 0.15 + 0.55 * gapRatio; // 0.15 (Ziel erreicht) .. 0.70 (max. Lücke)
           const remaining = 1 - pSips;
           const pDareShare = Math.min(0.75, 0.35 + 0.03 * touchy);
           const pDare = remaining * pDareShare;

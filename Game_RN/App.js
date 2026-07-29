@@ -262,8 +262,8 @@ export default function App() {
   });
 
   // manual_approval ist im gebuendelten Content durchgaengig 0 (kein Kurations-Workflow setzt es
-  // je auf 1), weshalb ein Filtern darauf hier den kompletten Prompt-Pool leerraeumen wuerde -
-  // sowohl fuer "The One" als auch fuer Flaschendrehen. Bis es eine echte Content-Moderation gibt,
+  // je auf 1), weshalb ein Filtern darauf hier den kompletten Prompt-Pool leerräumen würde -
+  // sowohl für "The One" als auch für Flaschendrehen. Bis es eine echte Content-Moderation gibt,
   // gilt gebuendelter Content als freigegeben.
   const approvedTheOnePrompts = useMemo(
     () => (Array.isArray(theOnePrompts) ? theOnePrompts : []),
@@ -277,7 +277,7 @@ export default function App() {
     () => filterByPoolKey(theOnePrompts, "never-have-i-ever"),
     [theOnePrompts]
   );
-  // Dediziertes Truth/Dare-Set fuer Flaschendrehen (unabhaengig vom "The One"-Prompt-Pool).
+  // Dediziertes Truth/Dare-Set für Flaschendrehen (unabhaengig vom "The One"-Prompt-Pool).
   const spinTheBottleTruths = spinTheBottleTruthTexts;
   const spinTheBottleDares = spinTheBottleDareTexts;
 
