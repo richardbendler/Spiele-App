@@ -555,6 +555,246 @@
       "deepness": 1,
       "drink": true,
       "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welcher Fluss fließt durch Paris? (Antwort: die Seine) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which river flows through Paris? (Answer: the Seine) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — In welchem Jahr wurde das Internet für die Öffentlichkeit zugänglich? (Antwort: 1991) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — in which year did the internet become publicly accessible? (Answer: 1991) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie viele Kammern hat ein menschliches Gehirn nicht, sondern das Herz? (Antwort: 4) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — how many chambers does the human heart have? (Answer: 4) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — Welche Farbe hat Shreks Haut? (Antwort: grün) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — what color is Shrek's skin? (Answer: green) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Wie lange dauert eine Fußball-Halbzeit? (Antwort: 45 Minuten) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — how long is a soccer half? (Answer: 45 minutes) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — Aus welchem Land kommt Beethoven? (Antwort: Deutschland) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — which country is Beethoven from? (Answer: Germany) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Welches Land isst am meisten Reis pro Kopf? (Antwort: Bangladesch) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — which country eats the most rice per capita? (Answer: Bangladesh) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Technik — Welches Unternehmen entwickelte das erste iPhone? (Antwort: Apple) Wer falsch liegt, trinkt.",
+      "en": "Quiz: tech — which company developed the first iPhone? (Answer: Apple) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Tiere — Wie lange kann eine Schildkröte durchschnittlich leben? (Antwort: über 100 Jahre) Wer falsch liegt, trinkt.",
+      "en": "Quiz: animals — how long can a tortoise typically live? (Answer: over 100 years) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welches Land hat die meisten aktiven Vulkane? (Antwort: Indonesien) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which country has the most active volcanoes? (Answer: Indonesia) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — Wer entdeckte 1492 Amerika (aus europäischer Sicht)? (Antwort: Christoph Kolumbus) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — who is credited with discovering America in 1492 (from a European perspective)? (Answer: Christopher Columbus) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie viele Chromosomen hat ein Mensch normalerweise? (Antwort: 46) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — how many chromosomes does a human normally have? (Answer: 46) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — Welches Tier ist Simba in 'König der Löwen'? (Antwort: ein Löwe) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — what animal is Simba in 'The Lion King'? (Answer: a lion) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Wie viele Spieler hat ein Volleyball-Team auf dem Feld? (Antwort: 6) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — how many players are on a volleyball team on the court? (Answer: 6) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — Welches Instrument hat typischerweise 6 Saiten? (Antwort: die Gitarre) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — which instrument typically has 6 strings? (Answer: the guitar) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Woraus wird traditioneller Balsamico-Essig hergestellt? (Antwort: Traubenmost) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — what is traditional balsamic vinegar made from? (Answer: grape must) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Technik — Wie heißt das Betriebssystem hinter den meisten Android-Handys? (Antwort: Android (Linux-Kernel)) Wer falsch liegt, trinkt.",
+      "en": "Quiz: tech — what operating system powers most Android phones? (Answer: Android (Linux kernel)) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Tiere — Welches Tier hat das beste Gedächtnis unter Landtieren? (Antwort: der Elefant) Wer falsch liegt, trinkt.",
+      "en": "Quiz: animals — which land animal is known for having the best memory? (Answer: the elephant) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Welcher Ozean ist der kälteste? (Antwort: der Arktische Ozean) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — which ocean is the coldest? (Answer: the Arctic Ocean) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — Wie hieß die erste Frau im Weltraum? (Antwort: Valentina Tereschkowa) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — who was the first woman in space? (Answer: Valentina Tereshkova) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Was misst ein Barometer? (Antwort: Luftdruck) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — what does a barometer measure? (Answer: air pressure) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Popkultur — In welcher Stadt spielt Batman hauptsächlich? (Antwort: Gotham City) Wer falsch liegt, trinkt.",
+      "en": "Quiz: pop culture — in which city is Batman mainly set? (Answer: Gotham City) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Sport — Wie viele Runden hat ein Boxkampf meistens maximal? (Antwort: 12) Wer falsch liegt, trinkt.",
+      "en": "Quiz: sports — how many rounds does a boxing match typically have at most? (Answer: 12) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Musik — Welche Band schrieb 'Bohemian Rhapsody'? (Antwort: Queen) Wer falsch liegt, trinkt.",
+      "en": "Quiz: music — which band wrote 'Bohemian Rhapsody'? (Answer: Queen) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Essen — Welches Land gilt als Heimat des Croissants (ursprünglich)? (Antwort: Österreich) Wer falsch liegt, trinkt.",
+      "en": "Quiz: food — which country is considered the original home of the croissant? (Answer: Austria) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Technik — Wie heißt die Programmiersprache, benannt nach einer Kaffeesorte? (Antwort: Java) Wer falsch liegt, trinkt.",
+      "en": "Quiz: tech — what is the programming language named after a coffee variety? (Answer: Java) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Tiere — Welches Tier hat die kürzeste Schwangerschaftsdauer? (Antwort: das Opossum (ca. 12 Tage)) Wer falsch liegt, trinkt.",
+      "en": "Quiz: animals — which animal has the shortest gestation period? (Answer: the opossum (about 12 days)) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geografie — Wie viele Kontinente gibt es üblicherweise gezählt? (Antwort: 7) Wer falsch liegt, trinkt.",
+      "en": "Quiz: geography — how many continents are typically counted? (Answer: 7) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Geschichte — In welchem Jahrhundert begann die industrielle Revolution? (Antwort: 18. Jahrhundert) Wer falsch liegt, trinkt.",
+      "en": "Quiz: history — in which century did the industrial revolution begin? (Answer: the 18th century) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
+    },
+    {
+      "de": "Quiz: Wissenschaft — Wie viele Sinne hat der Mensch klassischerweise? (Antwort: 5) Wer falsch liegt, trinkt.",
+      "en": "Quiz: science — how many senses does a human classically have? (Answer: 5) Wrong guess drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true
     }
   ]
 }
