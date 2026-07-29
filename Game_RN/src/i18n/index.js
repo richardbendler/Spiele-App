@@ -159,7 +159,7 @@ const translations = {
         partyBoard: {
           title: 'Bar-Odyssee',
           parameters: 'Trinklevel: ★★☆☆☆ (2/5)\\nKennenlernen: ★★★☆☆ (3/5)',
-          description: 'Reist durch die Bar-Odyssee, sammelt Münzen und Sterne und entscheidet mit Minispielen die Reihenfolge.',
+          description: 'Rundenbasiertes Brettspiel: echte Gruppen-Challenges entscheiden die Reihenfolge, dann würfelt ihr auf einen Rundkurs mit Trink-, Duell-, Wahrheit-oder-Pflicht- und The-One-Feldern. Wer zuerst 5 Sterne sammelt, gewinnt.',
         },
         secretMission: {
           title: 'Geheime Mission',
@@ -370,7 +370,7 @@ const translations = {
         partyBoard: {
           title: 'Bar Odyssey',
           parameters: 'Drink level: ★★☆☆☆ (2/5)\nGetting to know each other: ★★★☆☆ (3/5)',
-          description: 'Travel through the Bar Odyssey, collect coins and stars, and decide the order with fun mini games.',
+          description: 'Round-based board game: real group challenges set the turn order, then you roll around a loop full of drink, duel, truth-or-dare, and The One tiles. First to 5 stars wins.',
         },
         secretMission: {
           title: 'Secret Mission',
