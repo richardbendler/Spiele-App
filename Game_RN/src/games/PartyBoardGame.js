@@ -1,10 +1,17 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+// Bar-Odyssee: rundenbasiertes Brettspiel im Stil von Mario Party / Wii Party Island.
+// Jede Runde beginnt mit einer echten Gruppen-Challenge (aus dem Wettkampf-Pool), die
+// Bonusmuenzen und die Zugreihenfolge vergibt. Danach wuerfelt jede Person nacheinander
+// und bewegt sich auf einem Rundkurs vorwaerts; das Feld, auf dem sie landet, zieht eine
+// zufaellige Karte aus dem passenden Inhalts-Pool (Trinken, 1v1-Duell, Wahrheit oder
+// Pflicht, The-One-Aufgabe, Muenzen, Stern-Tausch, Abkuerzung, Ruhepause). Wer zuerst
+// eine Ziel-Sternzahl erreicht (oder nach einer Rundenobergrenze die meisten Sterne hat),
+// gewinnt.
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground } from "react-native";
 import { VariablesContext } from "../../VariablesContext";
 import { appStyles } from "../../styles";
 import InfoText from "./sublements/InfoText";
 import InfoHint from './sublements/InfoHint';
-import { shuffleArrayFisherYates } from "./sublements/AdjustParamShape";
 
 const formatTemplate = (template, values = {}) => {
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => {
@@ -13,341 +20,260 @@ const formatTemplate = (template, values = {}) => {
   });
 };
 
-const PARTY_BOARD_COPY = {
+const pickRandom = (list, fallback) => {
+  if (Array.isArray(list) && list.length > 0) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+  return fallback;
+};
+
+const STAR_COST = 5;
+const TARGET_STARS = 5;
+const MAX_ROUNDS = 12;
+
+// Reihenfolge der Feldtypen entlang des Rundkurses. Jeder Besuch zieht innerhalb des Typs
+// zufaelligen Inhalt, daher fuehlt sich kein Umlauf wie der vorherige an.
+const BOARD_TYPES = [
+  "start", "bonus", "drink", "truthOrDare", "warpTo9", "duel", "star", "theOne",
+  "drink", "bonus", "truthOrDare", "duel", "star", "bonus", "drink", "warpTo20",
+  "theOne", "lounge", "duel", "bonus", "star", "drink",
+];
+const BOARD_LENGTH = BOARD_TYPES.length;
+const warpTargetOf = (type) => (type === "warpTo9" ? 9 : type === "warpTo20" ? 20 : null);
+const normalizedType = (type) => (type.startsWith("warp") ? "warp" : type);
+
+const BOARD_COLUMNS = 6;
+const BOARD_LAYOUT = (() => {
+  const layout = [];
+  let row = 0;
+  let col = 0;
+  for (let i = 0; i < BOARD_LENGTH; i += 1) {
+    const reversed = row % 2 === 1;
+    layout.push({ row, col: reversed ? BOARD_COLUMNS - 1 - col : col });
+    col += 1;
+    if (col >= BOARD_COLUMNS) {
+      col = 0;
+      row += 1;
+    }
+  }
+  return layout;
+})();
+
+const TYPE_META = {
+  start: { icon: "🏁", backgroundColor: "rgba(68, 86, 105, 0.85)", borderColor: "#E5C185" },
+  bonus: { icon: "💰", backgroundColor: "rgba(38, 68, 52, 0.85)", borderColor: "rgba(149, 213, 178, 0.8)" },
+  drink: { icon: "🍹", backgroundColor: "rgba(125, 53, 62, 0.85)", borderColor: "rgba(249, 144, 155, 0.45)" },
+  star: { icon: "⭐", backgroundColor: "rgba(150, 102, 60, 0.85)", borderColor: "rgba(255, 214, 137, 0.5)" },
+  warp: { icon: "🌀", backgroundColor: "rgba(46, 70, 100, 0.85)", borderColor: "rgba(147, 206, 255, 0.45)" },
+  duel: { icon: "⚔️", backgroundColor: "rgba(92, 60, 112, 0.85)", borderColor: "rgba(214, 154, 255, 0.42)" },
+  truthOrDare: { icon: "🎯", backgroundColor: "rgba(72, 52, 92, 0.85)", borderColor: "rgba(204, 153, 255, 0.45)" },
+  theOne: { icon: "🃏", backgroundColor: "rgba(54, 66, 105, 0.85)", borderColor: "rgba(124, 167, 255, 0.45)" },
+  lounge: { icon: "💺", backgroundColor: "rgba(45, 57, 76, 0.85)", borderColor: "rgba(180, 190, 205, 0.3)" },
+  default: { icon: "•", backgroundColor: "rgba(24, 30, 44, 0.85)", borderColor: "rgba(255, 255, 255, 0.08)" },
+};
+
+const FLAVOR = {
+  bonus: [
+    { de: "{{player}} findet eine Runde Freigetränke und kassiert {{coins}} Münzen.", en: "{{player}} finds a round of free drinks and gains {{coins}} coins." },
+    { de: "{{player}} gewinnt an der Losbude {{coins}} Münzen.", en: "{{player}} wins {{coins}} coins at the raffle stand." },
+    { de: "{{player}} schnappt sich Trinkgeld vom Tresen: {{coins}} Münzen.", en: "{{player}} grabs a tip off the bar: {{coins}} coins." },
+    { de: "{{player}} findet {{coins}} Münzen unter einem Bierdeckel.", en: "{{player}} finds {{coins}} coins under a coaster." },
+    { de: "Die Bar spendiert {{player}} {{coins}} Münzen für gute Laune.", en: "The bar treats {{player}} to {{coins}} coins for good vibes." },
+  ],
+  drink: [
+    { de: "{{player}} muss {{sips}} Schluck(e) nehmen — Pech gehabt an der Theke.", en: "{{player}} takes {{sips}} sip(s) — bad luck at the bar." },
+    { de: "{{player}} verschüttet den Drink und nimmt zum Trost {{sips}} Schluck(e).", en: "{{player}} spills their drink and takes {{sips}} consolation sip(s)." },
+    { de: "{{player}} wird Zeuge eines Trinkspruchs und muss {{sips}} Schluck(e) mitmachen.", en: "{{player}} witnesses a toast and has to join in with {{sips}} sip(s)." },
+    { de: "{{player}} landet in der Shot-Gasse: {{sips}} Schluck(e) fällig.", en: "{{player}} lands in Shot Alley: {{sips}} sip(s) due." },
+    { de: "{{player}} verliert eine Runde Bier-Pong und trinkt {{sips}} Schluck(e).", en: "{{player}} loses a round of beer pong and drinks {{sips}} sip(s)." },
+  ],
+  loungeText: [
+    { de: "{{player}} setzt sich kurz hin und verschnauft. Keine Aktion.", en: "{{player}} sits down for a breather. No effect." },
+    { de: "{{player}} plaudert an der Bar. Nichts weiter passiert.", en: "{{player}} chats at the bar. Nothing else happens." },
+    { de: "{{player}} genießt die Musik einen Moment lang. Keine Aktion.", en: "{{player}} enjoys the music for a moment. No effect." },
+  ],
+  starSuccess: [
+    { de: "{{player}} tauscht {{cost}} Münzen gegen einen glitzernden Stern.", en: "{{player}} trades {{cost}} coins for a sparkling star." },
+    { de: "{{player}} bekommt für {{cost}} Münzen Applaus und einen Stern.", en: "{{player}} gets applause and a star for {{cost}} coins." },
+  ],
+  starFail: [
+    { de: "{{player}} hat nicht genug Münzen für einen Stern ({{cost}} nötig).", en: "{{player}} doesn't have enough coins for a star ({{cost}} needed)." },
+  ],
+  warp: [
+    { de: "{{player}} nimmt die Abkürzung und springt vor.", en: "{{player}} takes the shortcut and jumps ahead." },
+  ],
+  start: [
+    { de: "{{player}} kommt an der Bar vorbei und kassiert 2 Bonus-Münzen.", en: "{{player}} passes the bar and picks up 2 bonus coins." },
+  ],
+};
+
+const BASE_COPY = {
   de: {
     title: "Bar-Odyssee",
-    subtitle: "Reist durch die Bar-Odyssee, sammelt Münzen und Sterne und entscheidet jede Runde mit einem Minispiel die Zugreihenfolge.",
+    subtitle: "Ein rundenbasiertes Partyspiel: Gruppen-Challenge, Würfeln, Feldkarten - wer zuerst 5 Sterne sammelt, gewinnt.",
     needPlayers: "Fügt mindestens zwei Spieler*innen hinzu, um loszulegen.",
     addPlayers: "Spieler hinzufügen",
-    roundLabel: "Runde {{round}}",
+    roundLabel: "Runde {{round}} / {{maxRound}}",
     miniGame: {
-      headline: "Minispiel",
-      prompt: "Aktuelles Minispiel: {{name}}",
-      description: "{{description}}",
-      rewards: "Belohnung: 1. Platz +3, 2. Platz +2, 3. Platz +1 Münze.",
-      ready: "Wenn ihr bereit seid, wertet das Minispiel aus, um die Zugreihenfolge festzulegen.",
+      headline: "Gruppen-Challenge",
+      instruction: "Spielt diese Challenge jetzt live in der Runde. Tippt danach auf die Person, die gewonnen hat.",
+      reward: "Gewinn: +3 Münzen und startet diese Runde.",
     },
     turn: {
-      headline: "Zugphase",
-      prompt: "{{player}} ist am Zug. Tippt auf Würfeln, um euch vorwärts zu bewegen.",
-      lastRoll: "Letzter Wurf: {{value}}",
-      waiting: "Kein letzter Wurf. Tippt auf Würfeln, um zu starten.",
-    },
-    buttons: {
-      resolveMiniGame: "Minispiel auswerten",
-      roll: "Würfeln",
-      nextRound: "Nächste Runde starten",
+      headline: "{{player}} ist dran",
+      body: "Gebt {{player}} das Handy. Tippt auf Würfeln, um euch vorwärts zu bewegen.",
+      button: "Würfeln",
+      rollResult: "{{player}} würfelt eine {{roll}}!",
     },
     events: {
-      roll: "{{player}} würfelt eine {{roll}} und landet auf {{space}}.",
-      bonus: "{{player}} findet Trinkmarken und erhält {{coins}} Münzen.",
-      challenge: "{{player}} startet eine Challenge. Alle anderen trinken einen Schluck.",
-      drink: "{{player}} stolpert und verliert {{coins}} Münzen.",
-      shopSuccess: "{{player}} tauscht 5 Münzen gegen einen Stern.",
-      shopFail: "{{player}} braucht mehr Münzen für den Stern.",
-      starSpaceSuccess: "{{player}} schnappt sich einen Stern für 5 Münzen.",
-      starSpaceFail: "{{player}} steht vor dem Stern, aber es fehlen Münzen.",
-      warp: "{{player}} nimmt die Abkürzung und springt zu {{space}}.",
-      duelWin: "{{player}} gewinnt die Mini-Challenge und nimmt {{target}} eine Münze ab.",
-      lounge: "{{player}} entspannt kurz. Keine Aktion.",
+      truthOrDareChoice: "{{player}}, wählt: Wahrheit oder Pflicht?",
+      truthOrDareTruth: "Wahrheit",
+      truthOrDareDare: "Pflicht",
+      truthOrDareReward: "+1 Münze für erledigt.",
+      theOneReward: "+1 Münze für erledigt.",
+      duelPrompt: "1v1-Duell: {{player}} gegen {{opponent}}",
+      duelQuestion: "Wer hat gewonnen?",
+      duelReward: "Gewinn: 2 Münzen von {{opponent}}, Verlierer*in trinkt einen Schluck.",
+      done: "Erledigt, weiter",
     },
-    scoreboard: {
-      title: "Rangliste",
-      stars: "Sterne",
-      coins: "Münzen",
-      position: "Feld {{index}}",
+    buttons: {
+      continue: "Weiter",
+      newGame: "Neues Spiel starten",
     },
+    scoreboard: { title: "Rangliste", stars: "Sterne", coins: "Münzen", position: "Feld {{index}}" },
     logTitle: "Ereignisse",
     logEmpty: "Noch keine Ereignisse.",
     legend: {
       title: "Feld-Legende",
       entries: {
-        start: { title: "Start", body: "Hier beginnt jede Runde." },
-        bonus: { title: "Bonusfeld", body: "Erhalte zusätzliche Münzen." },
-        challenge: { title: "Challenge", body: "Bestimmt gemeinsam, wer trinken muss." },
-        drink: { title: "Drinkzone", body: "Verliert Münzen oder trinkt." },
-        shop: { title: "Stern-Shop", body: "Tauscht 5 Münzen gegen einen Stern." },
-        star: { title: "Sternfeld", body: "Sichert euch einen Stern, wenn ihr 5 Münzen habt." },
-        warp: { title: "Shortcut", body: "Springt direkt auf ein anderes Feld." },
-        duel: { title: "Duell", body: "Fordert den reichsten Gegenüber heraus." },
+        start: { title: "Start", body: "Hier beginnt der Rundkurs." },
+        bonus: { title: "Bonusfeld", body: "Erhaltet zusätzliche Münzen." },
+        drink: { title: "Trinkfeld", body: "Nehmt ein paar Schlucke." },
+        star: { title: "Sternfeld", body: `Tauscht ${STAR_COST} Münzen gegen einen Stern.` },
+        warp: { title: "Shortcut", body: "Springt direkt vorwärts auf dem Rundkurs." },
+        duel: { title: "1v1-Duell", body: "Fordert eine zufällige Person zu einer kurzen Challenge heraus." },
+        truthOrDare: { title: "Wahrheit oder Pflicht", body: "Wählt Wahrheit oder Pflicht." },
+        theOne: { title: "The-One-Karte", body: "Zieht eine Aufgabe aus The One." },
         lounge: { title: "Lounge", body: "Kurze Pause ohne Effekt." },
       },
     },
-    board: {
-      title: "Bar-Odyssee",
-      hint: "Die Farben zeigen den Feldtyp. Initialen markieren, wo die Spieler*innen unterwegs sind.",
+    board: { title: "Der Rundkurs", hint: "Farben zeigen den Feldtyp, Initialen die Position aller Spieler*innen." },
+    finished: {
+      title: "Spiel vorbei!",
+      winner: "🏆 {{player}} gewinnt mit {{stars}} Sternen!",
+      body: "Danke fürs Mitspielen - startet jederzeit eine neue Runde.",
     },
-    overlays: {
-      miniGameBody: "Spielt das Minispiel und legt eure Reihenfolge fest. Danach auf Minispiel auswerten tippen.",
-      miniGameButton: "Weiter",
-      orderTitle: "Reihenfolge steht!",
-      orderBody: "So tretet ihr an:",
-      orderButton: "Zur Runde",
-      turnBody: "Gebt der aktiven Person den Würfel und tippt auf Würfeln.",
-      turnButton: "Würfeln",
-    },
-    miniGames: [
-      {
-        name: "Zapf-Meister",
-        description: "Stapelt Becher zu einem Turm, ohne dass er fällt. Die stabilsten Hände gewinnen.",
-      },
-      {
-        name: "Quiz-Rausch",
-        description: "Beantwortet schnelle Partyfragen. Wer zuerst richtig liegt, sammelt Punkte.",
-      },
-      {
-        name: "Party-Pantomime",
-        description: "Stellt Partybegriffe pantomimisch dar. Die meisten Treffer bestimmen die Reihenfolge.",
-      },
-      {
-        name: "Beat Battle",
-        description: "Erfindet einen Body-Beat. Die Runde stimmt ab und verteilt die Münzen.",
-      },
-    ],
     info: {
       title: "So funktioniert die Bar-Odyssee",
-      body:
-        "Spielt rundenbasiert: Zu Beginn klärt ein Minispiel die Reihenfolge und schenkt Bonusmünzen. Danach würfelt jede Person und zieht vorwärts. Felder bringen Drinks, Bonus-Münzen, Abkürzungen oder Sterne. Wer genug Münzen spart, tauscht sie gegen Sterne. Nach der letzten Person startet automatisch das nächste Minispiel.",
+      body: `Jede Runde startet mit einer Gruppen-Challenge (live in der Runde gespielt, ohne Material) - die gewinnende Person bekommt Bonusmünzen und beginnt die Runde. Danach würfelt jede Person nacheinander und zieht vorwärts. Felder bringen Trinken, 1v1-Duelle, Wahrheit-oder-Pflicht, Aufgaben aus The One, Bonusmünzen, Abkürzungen oder Sternfelder (${STAR_COST} Münzen = 1 Stern). Wer zuerst ${TARGET_STARS} Sterne sammelt oder nach ${MAX_ROUNDS} Runden die meisten Sterne hat, gewinnt.`,
     },
   },
   en: {
     title: "Bar Odyssey",
-    subtitle: "Roll through the Bar Odyssey, gather coins and stars, and lock in the turn order with a mini game each round.",
+    subtitle: "A round-based party board game: group challenge, dice, tile cards - first to 5 stars wins.",
     needPlayers: "Add at least two players to get started.",
     addPlayers: "Add players",
-    roundLabel: "Round {{round}}",
+    roundLabel: "Round {{round}} / {{maxRound}}",
     miniGame: {
-      headline: "Mini Game",
-      prompt: "Current mini game: {{name}}",
-      description: "{{description}}",
-      rewards: "Rewards: 1st +3, 2nd +2, 3rd +1 coin.",
-      ready: "When you are ready, resolve the mini game to lock in the order.",
+      headline: "Group Challenge",
+      instruction: "Play this challenge live right now. Then tap whoever won.",
+      reward: "Reward: +3 coins and starts this round.",
     },
     turn: {
-      headline: "Turn Phase",
-      prompt: "{{player}} to move. Tap roll to advance.",
-      lastRoll: "Last roll: {{value}}",
-      waiting: "No roll yet. Tap roll to get going.",
-    },
-    buttons: {
-      resolveMiniGame: "Resolve mini game",
-      roll: "Roll the dice",
-      nextRound: "Start next round",
+      headline: "{{player}}'s turn",
+      body: "Hand the phone to {{player}}. Tap roll to move forward.",
+      button: "Roll the dice",
+      rollResult: "{{player}} rolls a {{roll}}!",
     },
     events: {
-      roll: "{{player}} rolls a {{roll}} and lands on {{space}}.",
-      bonus: "{{player}} finds drink tokens and gains {{coins}} coins.",
-      challenge: "{{player}} kicks off a challenge. Everyone else takes a sip.",
-      drink: "{{player}} drops their cup and loses {{coins}} coins.",
-      shopSuccess: "{{player}} trades 5 coins for a star.",
-      shopFail: "{{player}} needs more coins for the star.",
-      starSpaceSuccess: "{{player}} grabs a star for 5 coins.",
-      starSpaceFail: "{{player}} reaches the star but is short on coins.",
-      warp: "{{player}} uses the shortcut and jumps to {{space}}.",
-      duelWin: "{{player}} wins the mini challenge and takes a coin from {{target}}.",
-      lounge: "{{player}} takes a breather. No effect.",
+      truthOrDareChoice: "{{player}}, choose: Truth or Dare?",
+      truthOrDareTruth: "Truth",
+      truthOrDareDare: "Dare",
+      truthOrDareReward: "+1 coin for completing it.",
+      theOneReward: "+1 coin for completing it.",
+      duelPrompt: "1v1 duel: {{player}} vs {{opponent}}",
+      duelQuestion: "Who won?",
+      duelReward: "Reward: 2 coins from {{opponent}}, loser takes a sip.",
+      done: "Done, continue",
     },
-    scoreboard: {
-      title: "Scoreboard",
-      stars: "Stars",
-      coins: "Coins",
-      position: "Space {{index}}",
+    buttons: {
+      continue: "Continue",
+      newGame: "Start new game",
     },
+    scoreboard: { title: "Scoreboard", stars: "Stars", coins: "Coins", position: "Space {{index}}" },
     logTitle: "Event Log",
     logEmpty: "No events yet.",
     legend: {
       title: "Field legend",
       entries: {
-        start: { title: "Start", body: "Where each round begins." },
+        start: { title: "Start", body: "Where the loop begins." },
         bonus: { title: "Bonus", body: "Gain extra coins." },
-        challenge: { title: "Challenge", body: "Group decides who drinks." },
-        drink: { title: "Drink Zone", body: "Lose coins or take a sip." },
-        shop: { title: "Star Shop", body: "Trade 5 coins for a star." },
-        star: { title: "Star Field", body: "Take a star if you have 5 coins." },
-        warp: { title: "Shortcut", body: "Jump to another space." },
-        duel: { title: "Duel", body: "Challenge the richest opponent." },
+        drink: { title: "Drink tile", body: "Take a few sips." },
+        star: { title: "Star tile", body: `Trade ${STAR_COST} coins for a star.` },
+        warp: { title: "Shortcut", body: "Jump forward along the loop." },
+        duel: { title: "1v1 duel", body: "Challenge a random player to a quick contest." },
+        truthOrDare: { title: "Truth or Dare", body: "Pick truth or dare." },
+        theOne: { title: "The One card", body: "Draw a task from The One." },
         lounge: { title: "Lounge", body: "A calm spot with no effect." },
       },
     },
-    board: {
-      title: "Bar Odyssey",
-      hint: "Colors highlight the field type. Initials show where players are on their route.",
+    board: { title: "The Loop", hint: "Colors show the tile type, initials show where everyone stands." },
+    finished: {
+      title: "Game Over!",
+      winner: "🏆 {{player}} wins with {{stars}} stars!",
+      body: "Thanks for playing - start a new round any time.",
     },
-    overlays: {
-      miniGameBody: "Play the mini game to decide the order. Then tap Resolve mini game.",
-      miniGameButton: "Continue",
-      orderTitle: "Order Locked In!",
-      orderBody: "Play in this order:",
-      orderButton: "Start round",
-      turnBody: "Hand the dice to the player and tap roll.",
-      turnButton: "Roll now",
-    },
-    miniGames: [
-      {
-        name: "Tap Master",
-        description: "Stack cups into a tall tower before it falls. The steadiest hands win.",
-      },
-      {
-        name: "Quiz Rush",
-        description: "Answer quick party trivia. Fastest correct answers earn points.",
-      },
-      {
-        name: "Party Mime",
-        description: "Act out party terms. The most correct guesses set the turn order.",
-      },
-      {
-        name: "Beat Battle",
-        description: "Create a body beat. The group votes and hands out the coins.",
-      },
-    ],
     info: {
-      title: "How the Bar Odyssey Works",
-      body:
-        "Play in rounds: a mini game sets the order and awards bonus coins. Each person rolls forward. Spaces grant coins, force drinks, open shortcuts, or sell stars. After the last person moved, a fresh mini game begins automatically.",
+      title: "How the Bar Odyssey works",
+      body: `Each round starts with a group challenge (played live, no materials needed) - the winner gets bonus coins and starts the round. Then everyone rolls in turn and moves forward. Tiles bring drinks, 1v1 duels, truth or dare, The One tasks, bonus coins, shortcuts, or star tiles (${STAR_COST} coins = 1 star). First to ${TARGET_STARS} stars, or the most stars after ${MAX_ROUNDS} rounds, wins.`,
     },
   },
 };
 
-const BOARD_SPACES = [
-  {
-    key: "start",
-    type: "start",
-    label: { de: "Startfeld", en: "Start" },
-    description: { de: "Alle starten hier mit 3 Münzen.", en: "Everyone starts here with 3 coins." },
-    position: { row: 0, col: 0 },
-  },
-  {
-    key: "welcomeShots",
-    type: "bonus",
-    coins: 2,
-    label: { de: "Willkommensshots", en: "Welcome Shots" },
-    description: { de: "Legt los mit zwei extra Münzen.", en: "Kick off with two extra coins." },
-    position: { row: 0, col: 1 },
-  },
-  {
-    key: "quizCorner",
-    type: "challenge",
-    label: { de: "Quiz-Ecke", en: "Quiz Corner" },
-    description: { de: "Stellt der Runde eine schnelle Quizfrage.", en: "Throw a quick quiz question at the group." },
-    position: { row: 0, col: 2 },
-  },
-  {
-    key: "taproom",
-    type: "bonus",
-    coins: 1,
-    label: { de: "Zapfstation", en: "Taproom" },
-    description: { de: "Zapft einen Gratisdrink und kassiert 1 Münze.", en: "Grab a free refill and gain 1 coin." },
-    position: { row: 0, col: 3 },
-  },
-  {
-    key: "shotAlley",
-    type: "drink",
-    coins: 2,
-    label: { de: "Shot-Gasse", en: "Shot Alley" },
-    description: { de: "Ein verschütteter Shot kostet bis zu 2 Münzen.", en: "A spilled shot costs up to 2 coins." },
-    position: { row: 1, col: 3 },
-  },
-  {
-    key: "confettiShortcut",
-    type: "warp",
-    target: 7,
-    label: { de: "Konfetti-Shortcut", en: "Confetti Shortcut" },
-    description: { de: "Rutscht durch das Konfetti direkt zum Münzbrunnen.", en: "Slide through confetti straight to the coin fountain." },
-    position: { row: 2, col: 3 },
-  },
-  {
-    key: "starLounge",
-    type: "star",
-    label: { de: "Stern-Lounge", en: "Star Lounge" },
-    description: { de: "Für 5 Münzen gibt es hier einen Stern und Applaus.", en: "Trade 5 coins here for a star and a cheer." },
-    position: { row: 3, col: 3 },
-  },
-  {
-    key: "coinFountain",
-    type: "bonus",
-    coins: 3,
-    label: { de: "Münzbrunnen", en: "Coin Fountain" },
-    description: { de: "Schopft drei Münzen aus dem Brunnen.", en: "Scoop three coins from the fountain." },
-    position: { row: 3, col: 2 },
-  },
-  {
-    key: "duelStage",
-    type: "duel",
-    label: { de: "Battle-Bühne", en: "Duel Stage" },
-    description: { de: "Fordert die reichste Person zur schnellen Challenge heraus.", en: "Challenge the richest player to a quick duel." },
-    position: { row: 3, col: 1 },
-  },
-  {
-    key: "chillCorner",
-    type: "lounge",
-    label: { de: "Chill-Ecke", en: "Chill Corner" },
-    description: { de: "Verschnaufpause ohne Effekt.", en: "Take a breather with no effect." },
-    position: { row: 3, col: 0 },
-  },
-  {
-    key: "lostAndFound",
-    type: "drink",
-    coins: 1,
-    label: { de: "Fundkiste", en: "Lost & Found" },
-    description: { de: "Der Becher ist weg. Zahlt 1 Münze in die Kasse.", en: "Your cup is gone. Pay 1 coin back to the stash." },
-    position: { row: 2, col: 0 },
-  },
-  {
-    key: "starBazaar",
-    type: "shop",
-    label: { de: "Stern-Basar", en: "Star Bazaar" },
-    description: { de: "Hier gibt es Sterne für 5 Münzen aus der Vitrine.", en: "Buy a displayed star here for 5 coins." },
-    position: { row: 1, col: 0 },
-  },
-  {
-    key: "mixMaster",
-    type: "challenge",
-    label: { de: "Mix-Master", en: "Mix Master" },
-    description: { de: "Erfindet einen verrückten Drink und lasst die Runde urteilen.", en: "Invent a wild drink and let the group judge." },
-    position: { row: 1, col: 1 },
-  },
-  {
-    key: "danceFloor",
-    type: "bonus",
-    coins: 2,
-    label: { de: "Tanzfläche", en: "Dance Floor" },
-    description: { de: "Zeigt eure Moves und kassiert 2 Münzen.", en: "Show your moves and gain 2 coins." },
-    position: { row: 1, col: 2 },
-  },
-  {
-    key: "secretStar",
-    type: "star",
-    label: { de: "Geheimer Stern", en: "Secret Star" },
-    description: { de: "Ein verstecktes Sternfeld für 5 Münzen.", en: "A hidden star field worth 5 coins." },
-    position: { row: 2, col: 2 },
-  },
-  {
-    key: "serviceTunnel",
-    type: "warp",
-    target: 11,
-    label: { de: "Service-Tunnel", en: "Service Tunnel" },
-    description: { de: "Nehmt den Tunnel direkt zum Stern-Shop.", en: "Take the tunnel straight to the star shop." },
-    position: { row: 2, col: 1 },
-  },
-];
-
-const SPACE_THEMES = {
-  start: { backgroundColor: "rgba(68, 86, 105, 0.85)", borderColor: "#E5C185" },
-  bonus: { backgroundColor: "rgba(38, 68, 52, 0.85)", borderColor: "rgba(149, 213, 178, 0.8)" },
-  challenge: { backgroundColor: "rgba(72, 52, 92, 0.85)", borderColor: "rgba(204, 153, 255, 0.45)" },
-  drink: { backgroundColor: "rgba(125, 53, 62, 0.85)", borderColor: "rgba(249, 144, 155, 0.45)" },
-  shop: { backgroundColor: "rgba(54, 66, 105, 0.85)", borderColor: "rgba(124, 167, 255, 0.45)" },
-  star: { backgroundColor: "rgba(150, 102, 60, 0.85)", borderColor: "rgba(255, 214, 137, 0.5)" },
-  warp: { backgroundColor: "rgba(46, 70, 100, 0.85)", borderColor: "rgba(147, 206, 255, 0.45)" },
-  duel: { backgroundColor: "rgba(92, 60, 112, 0.85)", borderColor: "rgba(214, 154, 255, 0.42)" },
-  lounge: { backgroundColor: "rgba(45, 57, 76, 0.85)", borderColor: "rgba(180, 190, 205, 0.3)" },
-  default: { backgroundColor: "rgba(24, 30, 44, 0.85)", borderColor: "rgba(255, 255, 255, 0.08)" },
+const getInitials = (name, fallback) => {
+  if (!name || typeof name !== "string") return fallback;
+  const trimmed = name.trim();
+  if (trimmed.length === 0) return fallback;
+  const parts = trimmed.split(/\s+/);
+  return parts.map((part) => part[0]).join("").slice(0, 2).toUpperCase();
 };
-const MINI_GAME_REWARDS = [3, 2, 1];
 
 const PartyBoardGame = ({ navigation }) => {
-  const { players, language } = useContext(VariablesContext);
-  const copy = useMemo(() => PARTY_BOARD_COPY[language === "en" ? "en" : "de"], [language]);
+  const { players, language, approvedTheOnePrompts, theOnePrompts, spinTheBottleTruths, spinTheBottleDares } =
+    useContext(VariablesContext);
+  const lang = language === "en" ? "en" : "de";
+  const copy = useMemo(() => BASE_COPY[lang], [lang]);
+
+  const rawTheOnePrompts = useMemo(() => {
+    if (Array.isArray(approvedTheOnePrompts) && approvedTheOnePrompts.length > 0) return approvedTheOnePrompts;
+    return Array.isArray(theOnePrompts) ? theOnePrompts : [];
+  }, [approvedTheOnePrompts, theOnePrompts]);
+
+  const duelPool = useMemo(() => rawTheOnePrompts.filter((p) => p?.pool?.key === "duel"), [rawTheOnePrompts]);
+  const groupChallengePool = useMemo(
+    () => rawTheOnePrompts.filter((p) => ["competition", "ffa-best", "ffa-giveup"].includes(p?.pool?.key)),
+    [rawTheOnePrompts]
+  );
+  // Duell/Wettkampf-Pools bleiben den dedizierten Duel-/Gruppen-Challenge-Feldern vorbehalten,
+  // damit ein "The One"-Feld sich inhaltlich von den anderen Feldtypen abhebt.
+  const theOneFlavorPool = useMemo(
+    () =>
+      rawTheOnePrompts.filter(
+        (p) =>
+          p &&
+          !p.custom_payload &&
+          typeof p.content === "string" &&
+          !["duel", "competition", "ffa-best", "ffa-giveup"].includes(p?.pool?.key)
+      ),
+    [rawTheOnePrompts]
+  );
+  const truthPool = useMemo(() => (Array.isArray(spinTheBottleTruths) ? spinTheBottleTruths : []), [spinTheBottleTruths]);
+  const darePool = useMemo(() => (Array.isArray(spinTheBottleDares) ? spinTheBottleDares : []), [spinTheBottleDares]);
+
+  const promptText = useCallback((entry, fallback) => {
+    if (!entry) return fallback;
+    return (lang === "en" && entry.content_en ? entry.content_en : entry.content) || fallback;
+  }, [lang]);
 
   const [positions, setPositions] = useState(() => players.map(() => 0));
   const [scores, setScores] = useState(() => players.map(() => ({ stars: 0, coins: 3 })));
@@ -355,349 +281,323 @@ const PartyBoardGame = ({ navigation }) => {
   const [round, setRound] = useState(1);
   const [order, setOrder] = useState(() => players.map((_, index) => index));
   const [activeIndex, setActiveIndex] = useState(0);
-  const [phase, setPhase] = useState("setup"); // setup | minigame | turn | waiting
-  const [currentMiniGame, setCurrentMiniGame] = useState(null);
-  const [lastRoll, setLastRoll] = useState(null);
-  const [overlay, setOverlay] = useState(null);
-  const pendingActionRef = useRef(null);
-  const miniGamePromptKeyRef = useRef(null);
-  const lastTurnPromptRef = useRef(null);
+  const [phase, setPhase] = useState("setup"); // setup | minigame | turn | event | finished
+  const [currentChallenge, setCurrentChallenge] = useState(null);
+  const [pendingEvent, setPendingEvent] = useState(null);
+  const [winnerIndex, setWinnerIndex] = useState(null);
 
-  const confirmOverlay = useCallback(() => {
-    if (!overlay) {
-      return;
-    }
-    const handler = overlay.onConfirm;
-    setOverlay(null);
-    if (typeof handler === "function") {
-      handler();
-    }
-  }, [overlay]);
+  const addLogEntry = useCallback((message) => {
+    setEventLog((prev) => [message, ...prev].slice(0, 12));
+  }, []);
 
-  const resetGameState = useCallback(() => {
+  const drawGroupChallenge = useCallback(() => {
+    const entry = pickRandom(groupChallengePool, null);
+    setCurrentChallenge(entry);
+  }, [groupChallengePool]);
+
+  const resetGame = useCallback(() => {
     setPositions(players.map(() => 0));
     setScores(players.map(() => ({ stars: 0, coins: 3 })));
     setEventLog([]);
     setRound(1);
     setOrder(players.map((_, index) => index));
     setActiveIndex(0);
-    setOverlay(null);
-    pendingActionRef.current = null;
-    miniGamePromptKeyRef.current = null;
-    lastTurnPromptRef.current = null;
+    setPendingEvent(null);
+    setWinnerIndex(null);
     if (players.length >= 2) {
-      prepareMiniGame(true);
+      drawGroupChallenge();
+      setPhase("minigame");
     } else {
-      setPhase("waiting");
+      setPhase("setup");
     }
-  }, [players]);
+  }, [players, drawGroupChallenge]);
 
   useEffect(() => {
-    resetGameState();
-  }, [players, resetGameState]);
+    resetGame();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [players.length]);
 
-  const addLogEntry = useCallback(
-    (message) => {
-      setEventLog((prev) => [message, ...prev].slice(0, 12));
-    },
-    []
-  );
-
-  const prepareMiniGame = useCallback(
-    (initial = false) => {
-      if (players.length < 2) {
-        setPhase("waiting");
-        return;
-      }
-      const games = copy.miniGames;
-      const nextMini = games[Math.floor(Math.random() * games.length)];
-      setCurrentMiniGame(nextMini);
-      setPhase(initial ? "minigame" : "minigame");
-    },
-    [players.length, copy]
-  );
-
-  const resolveMiniGame = useCallback(() => {
-    if (players.length < 2) {
-      return;
-    }
-    const shuffled = shuffleArrayFisherYates(players.map((_, index) => index));
-    setOrder(shuffled);
-    const updates = [...scores];
-    shuffled.forEach((playerIndex, rank) => {
-      const reward = MINI_GAME_REWARDS[rank] ?? 0;
-      if (reward > 0) {
-        updates[playerIndex] = {
-          ...updates[playerIndex],
-          coins: updates[playerIndex].coins + reward,
-        };
-      }
-    });
-    setScores(updates);
-    const rankingNames = shuffled.map((idx) => {
+  const playerName = useCallback(
+    (idx) => {
       const raw = players[idx]?.name;
-      if (typeof raw === "string" && raw.trim().length > 0) {
-        return raw.trim();
-      }
-      return `P${idx + 1}`;
-    });
-    addLogEntry(`${copy.miniGame.headline}: ${rankingNames.join(" > ")}`);
-    setActiveIndex(0);
-    setPhase("turn");
-    setLastRoll(null);
-    lastTurnPromptRef.current = null;
-    setOverlay({
-      type: "order",
-      title: formatTemplate(copy.roundLabel, { round }),
-      subtitle: copy.overlays.orderTitle,
-      body: copy.overlays.orderBody,
-      list: rankingNames.length > 0 ? rankingNames.map((name, idx) => `${idx + 1}. ${name}`) : [],
-      buttonLabel: copy.overlays.orderButton,
-    });
-  }, [players, scores, addLogEntry, copy, round]);
-
-  useEffect(() => {
-    if (phase !== "minigame") {
-      miniGamePromptKeyRef.current = null;
-      return;
-    }
-    if (!currentMiniGame) {
-      return;
-    }
-    lastTurnPromptRef.current = null;
-    const promptKey = `${round}-${currentMiniGame.name ?? ""}`;
-    if (overlay || miniGamePromptKeyRef.current === promptKey) {
-      return;
-    }
-    miniGamePromptKeyRef.current = promptKey;
-    const descriptionCopy = formatTemplate(copy.miniGame.description, { description: currentMiniGame.description });
-    setOverlay({
-      type: "minigame",
-      title: formatTemplate(copy.roundLabel, { round }),
-      subtitle: formatTemplate(copy.miniGame.prompt, { name: currentMiniGame.name }),
-      bodyLines: [descriptionCopy, copy.overlays.miniGameBody],
-      footnote: copy.miniGame.rewards,
-      buttonLabel: copy.overlays.miniGameButton,
-    });
-  }, [phase, currentMiniGame, overlay, copy, round]);
-
-  useEffect(() => {
-    if (phase !== "turn") {
-      pendingActionRef.current = null;
-    }
-  }, [phase]);
-
-  const handleSpaceEffect = useCallback(
-    (playerIndex, space, playerName) => {
-      let extraPosition = null;
-      const scoreUpdates = [...scores];
-      const currentScore = scoreUpdates[playerIndex] ?? { stars: 0, coins: 0 };
-      switch (space.type) {
-        case "bonus": {
-          const coins = space.coins ?? 2;
-          scoreUpdates[playerIndex] = { ...currentScore, coins: currentScore.coins + coins };
-          addLogEntry(formatTemplate(copy.events.bonus, { player: playerName, coins }));
-          break;
-        }
-        case "challenge": {
-          addLogEntry(formatTemplate(copy.events.challenge, { player: playerName }));
-          break;
-        }
-        case "drink": {
-          const loss = Math.min(space.coins ?? 1, currentScore.coins);
-          scoreUpdates[playerIndex] = { ...currentScore, coins: currentScore.coins - loss };
-          addLogEntry(formatTemplate(copy.events.drink, { player: playerName, coins: loss }));
-          break;
-        }
-        case "shop": {
-          if (currentScore.coins >= 5) {
-            scoreUpdates[playerIndex] = {
-              stars: currentScore.stars + 1,
-              coins: currentScore.coins - 5,
-            };
-            addLogEntry(formatTemplate(copy.events.shopSuccess, { player: playerName }));
-          } else {
-            addLogEntry(formatTemplate(copy.events.shopFail, { player: playerName }));
-          }
-          break;
-        }
-        case "star": {
-          if (currentScore.coins >= 5) {
-            scoreUpdates[playerIndex] = {
-              stars: currentScore.stars + 1,
-              coins: currentScore.coins - 5,
-            };
-            addLogEntry(formatTemplate(copy.events.starSpaceSuccess, { player: playerName }));
-          } else {
-            addLogEntry(formatTemplate(copy.events.starSpaceFail, { player: playerName }));
-          }
-          break;
-        }
-        case "warp": {
-          if (typeof space.target === "number") {
-            extraPosition = Math.max(0, Math.min(space.target, BOARD_SPACES.length - 1));
-            addLogEntry(
-              formatTemplate(copy.events.warp, {
-                player: playerName,
-                space: BOARD_SPACES[extraPosition].label[language === "en" ? "en" : "de"],
-              })
-            );
-          }
-          break;
-        }
-        case "duel": {
-          const opponents = scores
-            .map((score, idx) => ({ idx, coins: score?.coins ?? 0 }))
-            .filter((entry) => entry.idx !== playerIndex && entry.coins > 0);
-          if (opponents.length > 0) {
-            opponents.sort((a, b) => b.coins - a.coins);
-            const target = opponents[0];
-            scoreUpdates[playerIndex] = {
-              ...currentScore,
-              coins: currentScore.coins + 1,
-            };
-            const targetScore = scores[target.idx] ?? { coins: 0, stars: 0 };
-            scoreUpdates[target.idx] = {
-              ...targetScore,
-              coins: targetScore.coins - 1,
-            };
-            const targetName = players[target.idx]?.name ?? "?";
-            addLogEntry(formatTemplate(copy.events.duelWin, { player: playerName, target: targetName }));
-          } else {
-            addLogEntry(formatTemplate(copy.events.lounge, { player: playerName }));
-          }
-          break;
-        }
-        case "lounge": {
-          addLogEntry(formatTemplate(copy.events.lounge, { player: playerName }));
-          break;
-        }
-        default:
-          break;
-      }
-      setScores(scoreUpdates);
-      return extraPosition;
+      return typeof raw === "string" && raw.trim().length > 0 ? raw.trim() : `P${idx + 1}`;
     },
-    [scores, copy, addLogEntry, players, language]
+    [players]
   );
 
-  const advanceTurn = useCallback(
-    (nextPhase = "turn") => {
-      const nextIndex = activeIndex + 1;
-      if (nextIndex >= order.length) {
-        setRound((prev) => prev + 1);
-        setLastRoll(null);
-        prepareMiniGame();
-      } else {
-        setLastRoll(null);
-        setActiveIndex(nextIndex);
-        setPhase(nextPhase);
+  const finishGame = useCallback(() => {
+    let bestIdx = 0;
+    scores.forEach((score, idx) => {
+      const best = scores[bestIdx] ?? { stars: 0, coins: 0 };
+      if ((score?.stars ?? 0) > (best.stars ?? 0) || ((score?.stars ?? 0) === (best.stars ?? 0) && (score?.coins ?? 0) > (best.coins ?? 0))) {
+        bestIdx = idx;
       }
+    });
+    setWinnerIndex(bestIdx);
+    setPhase("finished");
+  }, [scores]);
+
+  const startNextRound = useCallback(() => {
+    if (round + 1 > MAX_ROUNDS) {
+      finishGame();
+      return;
+    }
+    setRound((prev) => prev + 1);
+    drawGroupChallenge();
+    setPhase("minigame");
+  }, [round, drawGroupChallenge, finishGame]);
+
+  const advanceTurn = useCallback(() => {
+    const nextIndex = activeIndex + 1;
+    if (nextIndex >= order.length) {
+      startNextRound();
+    } else {
+      setActiveIndex(nextIndex);
+      setPhase("turn");
+    }
+  }, [activeIndex, order.length, startNextRound]);
+
+  const pickMiniGameWinner = useCallback(
+    (winnerGlobalIndex) => {
+      setScores((prev) => {
+        const next = [...prev];
+        const current = next[winnerGlobalIndex] ?? { stars: 0, coins: 0 };
+        next[winnerGlobalIndex] = { ...current, coins: current.coins + 3 };
+        return next;
+      });
+      setOrder((prev) => [winnerGlobalIndex, ...prev.filter((idx) => idx !== winnerGlobalIndex)]);
+      addLogEntry(
+        formatTemplate(lang === "en" ? "{{player}} wins the group challenge (+3 coins) and starts this round." : "{{player}} gewinnt die Gruppen-Challenge (+3 Münzen) und startet diese Runde.", {
+          player: playerName(winnerGlobalIndex),
+        })
+      );
+      setActiveIndex(0);
+      setPhase("turn");
     },
-    [activeIndex, order.length, prepareMiniGame]
+    [addLogEntry, lang, playerName]
   );
 
   const rollDice = useCallback(() => {
-    if (phase !== "turn" || players.length === 0) {
-      pendingActionRef.current = null;
-      return;
-    }
-    const playerGlobalIndex = order[activeIndex];
-    const playerName = players[playerGlobalIndex]?.name ?? `P${playerGlobalIndex + 1}`;
+    const activePlayerIdx = order[activeIndex];
     const roll = Math.floor(Math.random() * 6) + 1;
-    setLastRoll(roll);
-    let targetIndex = 0;
+    const oldPos = positions[activePlayerIdx] ?? 0;
+    let newPos = oldPos + roll;
+    let lapped = false;
+    if (newPos >= BOARD_LENGTH) {
+      newPos -= BOARD_LENGTH;
+      lapped = true;
+    }
     setPositions((prev) => {
       const next = [...prev];
-      const currentPos = next[playerGlobalIndex] ?? 0;
-      targetIndex = currentPos + roll;
-      if (targetIndex >= BOARD_SPACES.length) {
-        targetIndex = BOARD_SPACES.length - 1;
-      }
-      next[playerGlobalIndex] = targetIndex;
+      next[activePlayerIdx] = newPos;
       return next;
     });
-    const landingSpace = BOARD_SPACES[targetIndex];
-    addLogEntry(
-      formatTemplate(copy.events.roll, {
-        player: playerName,
-        roll,
-        space: landingSpace.label[language === "en" ? "en" : "de"],
-      })
-    );
-    const extraPosition = handleSpaceEffect(playerGlobalIndex, landingSpace, playerName);
-    if (typeof extraPosition === "number") {
-      setPositions((prev) => {
+    if (lapped) {
+      setScores((prev) => {
         const next = [...prev];
-        next[playerGlobalIndex] = extraPosition;
+        const current = next[activePlayerIdx] ?? { stars: 0, coins: 0 };
+        next[activePlayerIdx] = { ...current, coins: current.coins + 2 };
         return next;
       });
+      addLogEntry(formatTemplate(pickRandom(FLAVOR.start, FLAVOR.start[0])[lang], { player: playerName(activePlayerIdx) }));
     }
-    pendingActionRef.current = null;
-    advanceTurn("turn");
-  }, [
-    phase,
-    players,
-    order,
-    activeIndex,
-    copy.events,
-    language,
-    handleSpaceEffect,
-    addLogEntry,
-    advanceTurn,
-  ]);
+    addLogEntry(formatTemplate(copy.turn.rollResult, { player: playerName(activePlayerIdx), roll }));
 
-  useEffect(() => {
-    if (phase !== "turn") {
-      lastTurnPromptRef.current = null;
-      return;
-    }
-    if (overlay || pendingActionRef.current) {
-      return;
-    }
-    const playerGlobalIndex = order[activeIndex];
-    if (typeof playerGlobalIndex !== "number" || playerGlobalIndex < 0) {
-      return;
-    }
-    const promptKey = `${round}-${playerGlobalIndex}-${positions[playerGlobalIndex] ?? 0}`;
-    if (lastTurnPromptRef.current === promptKey) {
-      return;
-    }
-    lastTurnPromptRef.current = promptKey;
-    const playerName = players[playerGlobalIndex]?.name ?? `P${playerGlobalIndex + 1}`;
-    setOverlay({
-      type: "turn",
-      title: formatTemplate(copy.roundLabel, { round }),
-      subtitle: formatTemplate(copy.turn.prompt, { player: playerName }),
-      body: copy.overlays.turnBody,
-      buttonLabel: copy.overlays.turnButton,
-      onConfirm: () => {
-        pendingActionRef.current = "rolling";
-        rollDice();
-      },
-    });
-  }, [phase, overlay, order, activeIndex, positions, players, copy, round, rollDice]);
+    const rawType = BOARD_TYPES[newPos];
+    const type = normalizedType(rawType);
+    const opponents = order.filter((idx) => idx !== activePlayerIdx);
 
-  const formatPositionLabel = useCallback(
-    (index) => {
-      const space = BOARD_SPACES[index];
-      if (!space) {
-        return copy.scoreboard.position.replace("{{index}}", index + 1);
+    switch (type) {
+      case "bonus": {
+        const coins = 2 + Math.floor(Math.random() * 2);
+        setPendingEvent({ type: "bonus", playerIndex: activePlayerIdx, coins, flavor: pickRandom(FLAVOR.bonus, FLAVOR.bonus[0]) });
+        break;
       }
-      return space.label[language === "en" ? "en" : "de"];
+      case "drink": {
+        const sips = 1 + Math.floor(Math.random() * 3);
+        setPendingEvent({ type: "drink", playerIndex: activePlayerIdx, sips, flavor: pickRandom(FLAVOR.drink, FLAVOR.drink[0]) });
+        break;
+      }
+      case "star": {
+        setPendingEvent({ type: "star", playerIndex: activePlayerIdx });
+        break;
+      }
+      case "warp": {
+        const target = warpTargetOf(rawType) ?? newPos;
+        setPendingEvent({ type: "warp", playerIndex: activePlayerIdx, target, flavor: pickRandom(FLAVOR.warp, FLAVOR.warp[0]) });
+        break;
+      }
+      case "duel": {
+        const opponentIdx = pickRandom(opponents, null);
+        if (opponentIdx === null) {
+          setPendingEvent({ type: "lounge", playerIndex: activePlayerIdx, flavor: pickRandom(FLAVOR.loungeText, FLAVOR.loungeText[0]) });
+          break;
+        }
+        const challenge = pickRandom(duelPool, null);
+        setPendingEvent({ type: "duel", playerIndex: activePlayerIdx, opponentIndex: opponentIdx, challenge });
+        break;
+      }
+      case "truthOrDare": {
+        setPendingEvent({ type: "truthOrDare", playerIndex: activePlayerIdx, stage: "choice" });
+        break;
+      }
+      case "theOne": {
+        const entry = pickRandom(theOneFlavorPool, null);
+        setPendingEvent({ type: "theOne", playerIndex: activePlayerIdx, entry });
+        break;
+      }
+      case "lounge":
+      case "start":
+      default: {
+        setPendingEvent({ type: "lounge", playerIndex: activePlayerIdx, flavor: pickRandom(FLAVOR.loungeText, FLAVOR.loungeText[0]) });
+        break;
+      }
+    }
+    setPhase("event");
+  }, [order, activeIndex, positions, copy, lang, playerName, addLogEntry, duelPool, theOneFlavorPool]);
+
+  const finishEvent = useCallback(() => {
+    setPendingEvent(null);
+    const anyStarWinner = scores.some((score) => (score?.stars ?? 0) >= TARGET_STARS);
+    if (anyStarWinner) {
+      finishGame();
+    } else {
+      advanceTurn();
+    }
+  }, [scores, finishGame, advanceTurn]);
+
+  const resolveBonus = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex, coins, flavor } = pendingEvent;
+    setScores((prev) => {
+      const next = [...prev];
+      const current = next[playerIndex] ?? { stars: 0, coins: 0 };
+      next[playerIndex] = { ...current, coins: current.coins + coins };
+      return next;
+    });
+    addLogEntry(formatTemplate(flavor[lang], { player: playerName(playerIndex), coins }));
+    finishEvent();
+  }, [pendingEvent, addLogEntry, lang, playerName, finishEvent]);
+
+  const resolveDrink = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex, sips, flavor } = pendingEvent;
+    addLogEntry(formatTemplate(flavor[lang], { player: playerName(playerIndex), sips }));
+    finishEvent();
+  }, [pendingEvent, addLogEntry, lang, playerName, finishEvent]);
+
+  const resolveLounge = useCallback(() => {
+    if (!pendingEvent) return;
+    addLogEntry(formatTemplate(pendingEvent.flavor[lang], { player: playerName(pendingEvent.playerIndex) }));
+    finishEvent();
+  }, [pendingEvent, addLogEntry, lang, playerName, finishEvent]);
+
+  const resolveStar = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex } = pendingEvent;
+    // Direkte Lese-dann-Schreib-Aktualisierung statt Updater-Funktion, damit der frisch
+    // vergebene Stern SOFORT (im selben Tick) fuer die Sieg-Pruefung sichtbar ist - ueber
+    // eine Updater-Funktion waere der neue Wert erst im naechsten Render lesbar und ein
+    // Sieg beim entscheidenden Stern wuerde einen Zug zu spaet erkannt.
+    const current = scores[playerIndex] ?? { stars: 0, coins: 0 };
+    let reachedTarget = false;
+    if (current.coins >= STAR_COST) {
+      const newStars = current.stars + 1;
+      const next = [...scores];
+      next[playerIndex] = { stars: newStars, coins: current.coins - STAR_COST };
+      setScores(next);
+      addLogEntry(formatTemplate(pickRandom(FLAVOR.starSuccess, FLAVOR.starSuccess[0])[lang], { player: playerName(playerIndex), cost: STAR_COST }));
+      reachedTarget = newStars >= TARGET_STARS;
+    } else {
+      addLogEntry(formatTemplate(FLAVOR.starFail[0][lang], { player: playerName(playerIndex), cost: STAR_COST }));
+    }
+    setPendingEvent(null);
+    if (reachedTarget) {
+      setWinnerIndex(playerIndex);
+      setPhase("finished");
+    } else {
+      advanceTurn();
+    }
+  }, [pendingEvent, scores, addLogEntry, lang, playerName, advanceTurn]);
+
+  const resolveWarp = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex, target } = pendingEvent;
+    setPositions((prev) => {
+      const next = [...prev];
+      next[playerIndex] = target;
+      return next;
+    });
+    addLogEntry(formatTemplate(pendingEvent.flavor[lang], { player: playerName(playerIndex) }));
+    finishEvent();
+  }, [pendingEvent, addLogEntry, lang, playerName, finishEvent]);
+
+  const chooseTruthOrDare = useCallback(
+    (kind) => {
+      if (!pendingEvent) return;
+      const pool = kind === "truth" ? truthPool : darePool;
+      const entry = pickRandom(pool, null);
+      setPendingEvent((prev) => ({ ...prev, stage: "reveal", kind, entry }));
     },
-    [language, copy.scoreboard.position]
+    [pendingEvent, truthPool, darePool]
+  );
+
+  const resolveTruthOrDare = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex } = pendingEvent;
+    setScores((prev) => {
+      const next = [...prev];
+      const current = next[playerIndex] ?? { stars: 0, coins: 0 };
+      next[playerIndex] = { ...current, coins: current.coins + 1 };
+      return next;
+    });
+    finishEvent();
+  }, [pendingEvent, finishEvent]);
+
+  const resolveTheOne = useCallback(() => {
+    if (!pendingEvent) return;
+    const { playerIndex } = pendingEvent;
+    setScores((prev) => {
+      const next = [...prev];
+      const current = next[playerIndex] ?? { stars: 0, coins: 0 };
+      next[playerIndex] = { ...current, coins: current.coins + 1 };
+      return next;
+    });
+    finishEvent();
+  }, [pendingEvent, finishEvent]);
+
+  const resolveDuel = useCallback(
+    (winnerIsActivePlayer) => {
+      if (!pendingEvent) return;
+      const { playerIndex, opponentIndex } = pendingEvent;
+      const winnerIdx = winnerIsActivePlayer ? playerIndex : opponentIndex;
+      const loserIdx = winnerIsActivePlayer ? opponentIndex : playerIndex;
+      setScores((prev) => {
+        const next = [...prev];
+        const winnerScore = next[winnerIdx] ?? { stars: 0, coins: 0 };
+        const loserScore = next[loserIdx] ?? { stars: 0, coins: 0 };
+        const stake = Math.min(2, loserScore.coins);
+        next[winnerIdx] = { ...winnerScore, coins: winnerScore.coins + stake };
+        next[loserIdx] = { ...loserScore, coins: loserScore.coins - stake };
+        return next;
+      });
+      addLogEntry(
+        formatTemplate(
+          lang === "en" ? "{{winner}} wins the duel against {{loser}} and takes 2 coins." : "{{winner}} gewinnt das Duell gegen {{loser}} und nimmt 2 Münzen.",
+          { winner: playerName(winnerIdx), loser: playerName(loserIdx) }
+        )
+      );
+      finishEvent();
+    },
+    [pendingEvent, addLogEntry, lang, playerName, finishEvent]
   );
 
   const boardGrid = useMemo(() => {
-    const maxRow = Math.max(...BOARD_SPACES.map((space) => space.position.row));
-    const maxCol = Math.max(...BOARD_SPACES.map((space) => space.position.col));
-    const grid = Array.from({ length: maxRow + 1 }, () => Array(maxCol + 1).fill(null));
-    BOARD_SPACES.forEach((space, index) => {
-      const { row, col } = space.position;
-      if (grid[row]) {
-        grid[row][col] = { ...space, index };
-      }
+    const maxRow = Math.max(...BOARD_LAYOUT.map((p) => p.row));
+    const grid = Array.from({ length: maxRow + 1 }, () => Array(BOARD_COLUMNS).fill(null));
+    BOARD_TYPES.forEach((type, index) => {
+      const { row, col } = BOARD_LAYOUT[index];
+      grid[row][col] = { type: normalizedType(type), index };
     });
     return grid;
   }, []);
@@ -706,26 +606,11 @@ const PartyBoardGame = ({ navigation }) => {
     const map = new Map();
     positions.forEach((spaceIndex, playerIndex) => {
       const target = typeof spaceIndex === "number" ? spaceIndex : 0;
-      if (!map.has(target)) {
-        map.set(target, []);
-      }
+      if (!map.has(target)) map.set(target, []);
       map.get(target).push(playerIndex);
     });
     return map;
   }, [positions]);
-
-  const getInitials = useCallback((name, fallback) => {
-    if (!name || typeof name !== "string") {
-      return fallback;
-    }
-    const trimmed = name.trim();
-    if (trimmed.length === 0) {
-      return fallback;
-    }
-    const parts = trimmed.split(/\s+/);
-    const initials = parts.map((part) => part[0]).join("");
-    return initials.slice(0, 2).toUpperCase();
-  }, []);
 
   if (players.length < 2) {
     return (
@@ -733,10 +618,7 @@ const PartyBoardGame = ({ navigation }) => {
         <View style={styles.centeredContainer}>
           <Text style={styles.emptyTitle}>{copy.title}</Text>
           <Text style={styles.emptySubtitle}>{copy.needPlayers}</Text>
-          <TouchableOpacity
-            style={[appStyles.chalkboardButton, { marginTop: 24 }]}
-            onPress={() => navigation.navigate("AddPlayer")}
-          >
+          <TouchableOpacity style={[appStyles.chalkboardButton, { marginTop: 24 }]} onPress={() => navigation.navigate("AddPlayer")}>
             <Text style={appStyles.chalkboardButtonText}>{copy.addPlayers}</Text>
           </TouchableOpacity>
         </View>
@@ -745,19 +627,174 @@ const PartyBoardGame = ({ navigation }) => {
   }
 
   const activePlayerIndex = order[activeIndex] ?? 0;
-  const activePlayerName = players[activePlayerIndex]?.name ?? `P${activePlayerIndex + 1}`;
 
-  const TYPE_ABBREV = {
-    start: '⭘',
-    bonus: 'B',
-    challenge: 'C',
-    drink: 'D',
-    shop: '$',
-    star: '★',
-    warp: '↗',
-    duel: '⚔',
-    lounge: '☕',
-    default: '•',
+  const renderModal = () => {
+    if (phase === "minigame") {
+      return (
+        <ModalCard>
+          <Text style={styles.overlayTitle}>{copy.miniGame.headline}</Text>
+          <Text style={styles.overlaySubtitle}>{promptText(currentChallenge, copy.miniGame.instruction)}</Text>
+          <Text style={styles.overlayBody}>{copy.miniGame.instruction}</Text>
+          <Text style={styles.overlayFootnote}>{copy.miniGame.reward}</Text>
+          <View style={styles.playerButtonWrap}>
+            {order.map((idx) => (
+              <TouchableOpacity key={idx} style={styles.playerButton} onPress={() => pickMiniGameWinner(idx)}>
+                <Text style={styles.playerButtonText}>{playerName(idx)}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ModalCard>
+      );
+    }
+
+    if (phase === "turn") {
+      return (
+        <ModalCard>
+          <Text style={styles.overlayTitle}>{formatTemplate(copy.turn.headline, { player: playerName(activePlayerIndex) })}</Text>
+          <Text style={styles.overlayBody}>{formatTemplate(copy.turn.body, { player: playerName(activePlayerIndex) })}</Text>
+          <TouchableOpacity style={styles.overlayButton} onPress={rollDice}>
+            <Text style={styles.overlayButtonText}>{copy.turn.button}</Text>
+          </TouchableOpacity>
+        </ModalCard>
+      );
+    }
+
+    if (phase === "event" && pendingEvent) {
+      const p = pendingEvent;
+      if (p.type === "bonus") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.bonus.icon} {copy.legend.entries.bonus.title}</Text>
+            <Text style={styles.overlayBody}>{formatTemplate(p.flavor[lang], { player: playerName(p.playerIndex), coins: p.coins })}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveBonus}>
+              <Text style={styles.overlayButtonText}>{copy.buttons.continue}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "drink") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.drink.icon} {copy.legend.entries.drink.title}</Text>
+            <Text style={styles.overlayBody}>{formatTemplate(p.flavor[lang], { player: playerName(p.playerIndex), sips: p.sips })}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveDrink}>
+              <Text style={styles.overlayButtonText}>{copy.buttons.continue}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "star") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.star.icon} {copy.legend.entries.star.title}</Text>
+            <Text style={styles.overlayBody}>{copy.legend.entries.star.body}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveStar}>
+              <Text style={styles.overlayButtonText}>{copy.buttons.continue}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "warp") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.warp.icon} {copy.legend.entries.warp.title}</Text>
+            <Text style={styles.overlayBody}>{formatTemplate(p.flavor[lang], { player: playerName(p.playerIndex) })}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveWarp}>
+              <Text style={styles.overlayButtonText}>{copy.buttons.continue}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "lounge") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.lounge.icon} {copy.legend.entries.lounge.title}</Text>
+            <Text style={styles.overlayBody}>{formatTemplate(p.flavor[lang], { player: playerName(p.playerIndex) })}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveLounge}>
+              <Text style={styles.overlayButtonText}>{copy.buttons.continue}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "theOne") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.theOne.icon} {copy.legend.entries.theOne.title}</Text>
+            <Text style={styles.overlaySubtitle}>{playerName(p.playerIndex)}</Text>
+            <Text style={styles.overlayBody}>{promptText(p.entry, "—")}</Text>
+            <Text style={styles.overlayFootnote}>{copy.events.theOneReward}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveTheOne}>
+              <Text style={styles.overlayButtonText}>{copy.events.done}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "truthOrDare") {
+        if (p.stage === "choice") {
+          return (
+            <ModalCard>
+              <Text style={styles.overlayTitle}>{TYPE_META.truthOrDare.icon} {copy.legend.entries.truthOrDare.title}</Text>
+              <Text style={styles.overlayBody}>{formatTemplate(copy.events.truthOrDareChoice, { player: playerName(p.playerIndex) })}</Text>
+              <View style={styles.playerButtonWrap}>
+                <TouchableOpacity style={styles.playerButton} onPress={() => chooseTruthOrDare("truth")}>
+                  <Text style={styles.playerButtonText}>{copy.events.truthOrDareTruth}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.playerButton} onPress={() => chooseTruthOrDare("dare")}>
+                  <Text style={styles.playerButtonText}>{copy.events.truthOrDareDare}</Text>
+                </TouchableOpacity>
+              </View>
+            </ModalCard>
+          );
+        }
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>
+              {TYPE_META.truthOrDare.icon} {p.kind === "truth" ? copy.events.truthOrDareTruth : copy.events.truthOrDareDare}
+            </Text>
+            <Text style={styles.overlaySubtitle}>{playerName(p.playerIndex)}</Text>
+            <Text style={styles.overlayBody}>{promptText(p.entry, "—")}</Text>
+            <Text style={styles.overlayFootnote}>{copy.events.truthOrDareReward}</Text>
+            <TouchableOpacity style={styles.overlayButton} onPress={resolveTruthOrDare}>
+              <Text style={styles.overlayButtonText}>{copy.events.done}</Text>
+            </TouchableOpacity>
+          </ModalCard>
+        );
+      }
+      if (p.type === "duel") {
+        return (
+          <ModalCard>
+            <Text style={styles.overlayTitle}>{TYPE_META.duel.icon} {formatTemplate(copy.events.duelPrompt, { player: playerName(p.playerIndex), opponent: playerName(p.opponentIndex) })}</Text>
+            <Text style={styles.overlayBody}>{promptText(p.challenge, "—")}</Text>
+            <Text style={styles.overlayFootnote}>{formatTemplate(copy.events.duelReward, { opponent: playerName(p.opponentIndex) })}</Text>
+            <Text style={[styles.overlayBody, { marginTop: 12 }]}>{copy.events.duelQuestion}</Text>
+            <View style={styles.playerButtonWrap}>
+              <TouchableOpacity style={styles.playerButton} onPress={() => resolveDuel(true)}>
+                <Text style={styles.playerButtonText}>{playerName(p.playerIndex)}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.playerButton} onPress={() => resolveDuel(false)}>
+                <Text style={styles.playerButtonText}>{playerName(p.opponentIndex)}</Text>
+              </TouchableOpacity>
+            </View>
+          </ModalCard>
+        );
+      }
+    }
+
+    if (phase === "finished") {
+      const winnerScore = scores[winnerIndex] ?? { stars: 0 };
+      return (
+        <ModalCard>
+          <Text style={styles.overlayTitle}>{copy.finished.title}</Text>
+          <Text style={styles.overlaySubtitle}>{formatTemplate(copy.finished.winner, { player: playerName(winnerIndex ?? 0), stars: winnerScore.stars ?? 0 })}</Text>
+          <Text style={styles.overlayBody}>{copy.finished.body}</Text>
+          <TouchableOpacity style={styles.overlayButton} onPress={resetGame}>
+            <Text style={styles.overlayButtonText}>{copy.buttons.newGame}</Text>
+          </TouchableOpacity>
+        </ModalCard>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -765,56 +802,12 @@ const PartyBoardGame = ({ navigation }) => {
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <Text style={appStyles.textHeader1}>{copy.title}</Text>
-          <View style={styles.headerTips}>
-            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '🎯 Minispiel legt Reihenfolge fest' : '🎯 Mini game sets the order'}</Text></View>
-            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '🎲 Zieh vor, folge dem Feld' : '🎲 Move forward, follow the tile'}</Text></View>
-            <View style={styles.tipChip}><Text style={styles.tipText}>{language === 'de' ? '⭐ 5 Münzen = 1 Stern' : '⭐ 5 coins = 1 star'}</Text></View>
-          </View>
+          <Text style={styles.subtitle}>{copy.subtitle}</Text>
         </View>
 
         <View style={styles.roundBadge}>
-          <Text style={styles.roundText}>{formatTemplate(copy.roundLabel, { round })}</Text>
+          <Text style={styles.roundText}>{formatTemplate(copy.roundLabel, { round, maxRound: MAX_ROUNDS })}</Text>
         </View>
-
-        {phase === "minigame" && currentMiniGame ? (
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>{copy.miniGame.headline}</Text>
-            <Text style={styles.cardSubtitle}>
-              {formatTemplate(copy.miniGame.prompt, { name: currentMiniGame.name })}
-            </Text>
-            <Text style={styles.cardBody}>{formatTemplate(copy.miniGame.description, { description: currentMiniGame.description })}</Text>
-            <Text style={styles.cardBody}>{copy.miniGame.rewards}</Text>
-            <Text style={[styles.cardBody, { marginTop: 8 }]}>{copy.miniGame.ready}</Text>
-            <TouchableOpacity style={styles.primaryButton} onPress={resolveMiniGame}>
-              <Text style={styles.primaryButtonText}>{copy.buttons.resolveMiniGame}</Text>
-            </TouchableOpacity>
-          </View>
-        ) : null}
-
-        {phase === "turn" ? (
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>{copy.turn.headline}</Text>
-            <Text style={styles.cardSubtitle}>
-              {formatTemplate(copy.turn.prompt, { player: activePlayerName })}
-            </Text>
-            {lastRoll != null ? (
-              <Text style={styles.cardBody}>
-                {formatTemplate(copy.turn.lastRoll, { value: lastRoll })}
-              </Text>
-            ) : (
-              <Text style={styles.cardBody}>{copy.turn.waiting}</Text>
-            )}
-            <TouchableOpacity
-              style={styles.primaryButton}
-              onPress={() => {
-                pendingActionRef.current = "rolling";
-                rollDice();
-              }}
-            >
-              <Text style={styles.primaryButtonText}>{copy.buttons.roll}</Text>
-            </TouchableOpacity>
-          </View>
-        ) : null}
 
         <View style={[styles.card, styles.boardCard]}>
           <Text style={styles.cardTitle}>{copy.board.title}</Text>
@@ -822,59 +815,36 @@ const PartyBoardGame = ({ navigation }) => {
           <View style={styles.boardGrid}>
             {boardGrid.map((row, rowIndex) => (
               <View key={`row-${rowIndex}`} style={styles.boardRow}>
-                {row.map((space, colIndex) => {
-                  if (!space) {
-                    return <View key={`empty-${rowIndex}-${colIndex}`} style={styles.boardCellEmpty} />;
-                  }
-                  const theme = SPACE_THEMES[space.type] ?? SPACE_THEMES.default;
-                  const occupantIndices = occupantsBySpace.get(space.index) ?? [];
-                  const typeLegend = copy.legend.entries[space.type];
-                  const typeTitle =
-                    typeLegend?.title ?? space.type.charAt(0).toUpperCase() + space.type.slice(1);
-                  const description =
-                    space.description?.[language === "en" ? "en" : "de"] ?? typeLegend?.body ?? "";
+                {row.map((cell, colIndex) => {
+                  if (!cell) return <View key={`empty-${rowIndex}-${colIndex}`} style={styles.boardCellEmpty} />;
+                  const theme = TYPE_META[cell.type] ?? TYPE_META.default;
+                  const occupantIndices = occupantsBySpace.get(cell.index) ?? [];
                   const isActiveSpace = occupantIndices.includes(activePlayerIndex);
                   return (
-                    <TouchableOpacity
-                      key={space.key}
+                    <View
+                      key={cell.index}
                       style={[
                         styles.boardCell,
                         { backgroundColor: theme.backgroundColor, borderColor: theme.borderColor },
                         isActiveSpace ? styles.boardCellActive : null,
                       ]}
-                      activeOpacity={0.85}
-                      onPress={() => {
-                        setOverlay({
-                          title: typeTitle,
-                          subtitle: space.label[language === 'en' ? 'en' : 'de'],
-                          body: description,
-                          buttonLabel: language === 'en' ? 'OK' : 'OK',
-                        });
-                      }}
                     >
-                      <View style={styles.boardCellHeaderSmall}>
-                        <Text style={styles.boardIndex}>{String(space.index + 1).padStart(2, '0')}</Text>
-                      </View>
+                      <Text style={styles.boardIndex}>{String(cell.index + 1).padStart(2, "0")}</Text>
                       <View style={styles.boardSymbolWrap}>
-                        <Text style={styles.boardSymbol}>{TYPE_ABBREV[space.type] ?? TYPE_ABBREV.default}</Text>
+                        <Text style={styles.boardSymbol}>{theme.icon}</Text>
                       </View>
                       <View style={styles.boardOccupants}>
                         {occupantIndices.length === 0 ? (
                           <Text style={styles.boardEmptySlot}>-</Text>
                         ) : (
-                          occupantIndices.map((playerIndex) => {
-                            const playerName = players[playerIndex]?.name ?? `P${playerIndex + 1}`;
-                            return (
-                              <View key={`${space.key}-${playerIndex}`} style={styles.token}>
-                                <Text style={styles.tokenText}>
-                                  {getInitials(playerName, `P${playerIndex + 1}`)}
-                                </Text>
-                              </View>
-                            );
-                          })
+                          occupantIndices.map((playerIndex) => (
+                            <View key={`${cell.index}-${playerIndex}`} style={styles.token}>
+                              <Text style={styles.tokenText}>{getInitials(playerName(playerIndex), `P${playerIndex + 1}`)}</Text>
+                            </View>
+                          ))
                         )}
                       </View>
-                    </TouchableOpacity>
+                    </View>
                   );
                 })}
               </View>
@@ -885,15 +855,12 @@ const PartyBoardGame = ({ navigation }) => {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>{copy.legend.title}</Text>
           {Object.entries(copy.legend.entries).map(([type, item]) => {
-            const theme = SPACE_THEMES[type] ?? SPACE_THEMES.default;
+            const theme = TYPE_META[type] ?? TYPE_META.default;
             return (
               <View key={type} style={styles.legendRow}>
-                <View
-                  style={[
-                    styles.legendSwatch,
-                    { backgroundColor: theme.backgroundColor, borderColor: theme.borderColor },
-                  ]}
-                />
+                <View style={[styles.legendSwatch, { backgroundColor: theme.backgroundColor, borderColor: theme.borderColor }]}>
+                  <Text style={styles.legendIcon}>{theme.icon}</Text>
+                </View>
                 <View style={styles.legendTextBlock}>
                   <Text style={styles.legendTitle}>{item.title}</Text>
                   <Text style={styles.legendBody}>{item.body}</Text>
@@ -902,37 +869,29 @@ const PartyBoardGame = ({ navigation }) => {
             );
           })}
         </View>
+
         <View style={styles.scoreCard}>
           <Text style={styles.scoreTitle}>{copy.scoreboard.title}</Text>
-          {scores.map((score, index) => {
-            const player = players[index];
-            const positionIndex = positions[index] ?? 0;
-            const positionCopy = formatTemplate(copy.scoreboard.position, { index: positionIndex + 1 });
-            const positionLabel = formatPositionLabel(positionIndex);
-            const isPlayerActive = index === activePlayerIndex;
-            return (
-              <View
-                key={player?.name ?? index}
-                style={[styles.scoreRow, isPlayerActive ? styles.scoreRowActive : null]}
-              >
-                <View style={styles.scoreNameColumn}>
-                  <Text style={styles.scoreName}>{player?.name ?? `P${index + 1}`}</Text>
-                  <Text style={styles.scorePosition}>{positionCopy}</Text>
-                  <Text style={styles.scoreSpaceLabel}>{positionLabel}</Text>
+          {[...order]
+            .sort((a, b) => (scores[b]?.stars ?? 0) - (scores[a]?.stars ?? 0) || (scores[b]?.coins ?? 0) - (scores[a]?.coins ?? 0))
+            .map((index) => {
+              const score = scores[index];
+              const positionIndex = positions[index] ?? 0;
+              const isPlayerActive = index === activePlayerIndex && (phase === "turn" || phase === "event");
+              return (
+                <View key={index} style={[styles.scoreRow, isPlayerActive ? styles.scoreRowActive : null]}>
+                  <View style={styles.scoreNameColumn}>
+                    <Text style={styles.scoreName}>{playerName(index)}</Text>
+                    <Text style={styles.scorePosition}>{formatTemplate(copy.scoreboard.position, { index: positionIndex + 1 })}</Text>
+                  </View>
+                  <View style={styles.scoreValueColumn}>
+                    <Text style={styles.scoreValue}>⭐ {score?.stars ?? 0}</Text>
+                    <Text style={styles.scoreValue}>💰 {score?.coins ?? 0}</Text>
+                  </View>
                 </View>
-                <View style={styles.scoreValueColumn}>
-                  <Text style={styles.scoreValue}>
-                    {copy.scoreboard.stars}: {score?.stars ?? 0}
-                  </Text>
-                  <Text style={styles.scoreValue}>
-                    {copy.scoreboard.coins}: {score?.coins ?? 0}
-                  </Text>
-                </View>
-              </View>
-            );
-          })}
+              );
+            })}
         </View>
-
 
         <View style={styles.logCard}>
           <Text style={styles.scoreTitle}>{copy.logTitle}</Text>
@@ -948,66 +907,31 @@ const PartyBoardGame = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      <OverlayPrompt overlay={overlay} onConfirm={confirmOverlay} language={language} />
+      {renderModal()}
 
       <InfoText header={copy.info.title} rules={copy.info.body} />
       <InfoHint />
-      {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
     </ImageBackground>
   );
 };
 
+function ModalCard({ children }) {
+  return (
+    <View style={styles.overlayBackdrop}>
+      <ScrollView contentContainerStyle={styles.overlayScroll}>
+        <View style={styles.overlayCard}>{children}</View>
+      </ScrollView>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 24,
-    paddingBottom: 80,
-  },
-  headerTips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 6,
-  },
-  tipChip: {
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    borderRadius: 14,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.18)'
-  },
-  tipText: {
-    color: '#F5E9D7',
-    fontSize: 12,
-    fontWeight: '600'
-  },
-  centeredContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 32,
-  },
-  emptyTitle: {
-    fontSize: 32,
-    fontWeight: "700",
-    color: "#FFFFFF",
-    marginBottom: 12,
-  },
-  emptySubtitle: {
-    fontSize: 16,
-    color: "rgba(255,255,255,0.8)",
-    textAlign: "center",
-  },
-  header: {
-    marginTop: 32,
-    marginBottom: 12,
-  },
-  subtitle: {
-    color: "rgba(255,255,255,0.7)",
-    fontSize: 14,
-    marginTop: 8,
-    lineHeight: 20,
-  },
+  container: { paddingHorizontal: 24, paddingBottom: 80 },
+  centeredContainer: { flex: 1, alignItems: "center", justifyContent: "center", paddingHorizontal: 32 },
+  emptyTitle: { fontSize: 32, fontWeight: "700", color: "#FFFFFF", marginBottom: 12 },
+  emptySubtitle: { fontSize: 16, color: "rgba(255,255,255,0.8)", textAlign: "center" },
+  header: { marginTop: 32, marginBottom: 12 },
+  subtitle: { color: "rgba(255,255,255,0.7)", fontSize: 14, marginTop: 8, lineHeight: 20 },
   roundBadge: {
     alignSelf: "flex-start",
     backgroundColor: "rgba(229,193,133,0.2)",
@@ -1016,11 +940,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     marginBottom: 16,
   },
-  roundText: {
-    color: "#E5C185",
-    fontWeight: "600",
-    fontSize: 14,
-  },
+  roundText: { color: "#E5C185", fontWeight: "600", fontSize: 14 },
   card: {
     backgroundColor: "rgba(18, 22, 32, 0.85)",
     borderRadius: 18,
@@ -1029,84 +949,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.08)",
   },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#FFFFFF",
-    marginBottom: 4,
-  },
-  cardSubtitle: {
-    fontSize: 15,
-    color: "rgba(229,193,133,0.85)",
-    marginBottom: 8,
-  },
-  cardBody: {
-    fontSize: 14,
-    color: "rgba(255,255,255,0.75)",
-    lineHeight: 20,
-    marginBottom: 4,
-  },
-  primaryButton: {
-    marginTop: 12,
-    alignSelf: "flex-start",
-    backgroundColor: "#E5C185",
-    borderRadius: 14,
-    paddingHorizontal: 18,
-    paddingVertical: 10,
-  },
-  primaryButtonText: {
-    color: "#1F1712",
-    fontSize: 15,
-    fontWeight: "600",
-  },
-  boardCard: {
-    paddingBottom: 20,
-  },
-  boardHint: {
-    color: "rgba(255,255,255,0.65)",
-    fontSize: 13,
-    marginTop: 4,
-    lineHeight: 18,
-  },
-  boardGrid: {
-    marginTop: 12,
-  },
-  boardRow: {
-    flexDirection: "row",
-    marginBottom: 6,
-  },
-  boardCell: {
-    flex: 1,
-    borderRadius: 12,
-    borderWidth: 1,
-    padding: 6,
-    marginHorizontal: 3,
-    minHeight: 64,
-  },
-  boardCellEmpty: {
-    flex: 1,
-    marginHorizontal: 3,
-    minHeight: 64,
-    opacity: 0,
-    backgroundColor: "transparent",
-  },
-  boardCellHeaderSmall: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  boardIndex: {
-    color: "rgba(255,255,255,0.5)",
-    fontSize: 10,
-    fontWeight: "600",
-  },
-  boardSymbolWrap: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  boardSymbol: { color: '#F6D58C', fontSize: 18, fontWeight: '800' },
-  boardOccupants: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 6,
-  },
-  boardEmptySlot: {
-    color: "rgba(255,255,255,0.4)",
-    fontSize: 10,
-  },
+  cardTitle: { fontSize: 18, fontWeight: "700", color: "#FFFFFF", marginBottom: 4 },
+  boardCard: { paddingBottom: 20 },
+  boardHint: { color: "rgba(255,255,255,0.65)", fontSize: 13, marginTop: 4, lineHeight: 18 },
+  boardGrid: { marginTop: 12 },
+  boardRow: { flexDirection: "row", marginBottom: 6 },
+  boardCell: { flex: 1, borderRadius: 12, borderWidth: 1, padding: 6, marginHorizontal: 3, minHeight: 64 },
+  boardCellEmpty: { flex: 1, marginHorizontal: 3, minHeight: 64, opacity: 0, backgroundColor: "transparent" },
+  boardIndex: { color: "rgba(255,255,255,0.5)", fontSize: 10, fontWeight: "600" },
+  boardSymbolWrap: { flex: 1, alignItems: "center", justifyContent: "center" },
+  boardSymbol: { fontSize: 20 },
+  boardOccupants: { flexDirection: "row", flexWrap: "wrap", marginTop: 4, justifyContent: "center" },
+  boardEmptySlot: { color: "rgba(255,255,255,0.4)", fontSize: 10, textAlign: "center" },
   boardCellActive: {
     borderColor: "#F6D58C",
     borderWidth: 2,
@@ -1117,110 +971,31 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   token: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 26,
+    height: 26,
+    borderRadius: 13,
     backgroundColor: "rgba(229,193,133,0.28)",
     borderWidth: 1,
     borderColor: "rgba(229,193,133,0.6)",
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 8,
-    marginBottom: 8,
+    margin: 2,
   },
-  tokenText: {
-    color: "#F8E5C5",
-    fontWeight: "700",
-    fontSize: 12,
-  },
-  legendRow: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginBottom: 12,
-  },
+  tokenText: { color: "#F8E5C5", fontWeight: "700", fontSize: 10 },
+  legendRow: { flexDirection: "row", alignItems: "flex-start", marginBottom: 12 },
   legendSwatch: {
-    width: 28,
-    height: 28,
+    width: 32,
+    height: 32,
     borderRadius: 8,
     borderWidth: 1,
     marginRight: 12,
-  },
-  legendTextBlock: {
-    flex: 1,
-  },
-  legendTitle: {
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontWeight: "600",
-  },
-  legendBody: {
-    color: "rgba(255,255,255,0.7)",
-    fontSize: 12,
-    lineHeight: 18,
-    marginTop: 2,
-  },
-  overlayBackdrop: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(8,12,20,0.82)",
-    paddingHorizontal: 24,
+    alignItems: "center",
     justifyContent: "center",
-    alignItems: "center",
   },
-  overlayCard: {
-    width: "100%",
-    backgroundColor: "rgba(24,30,44,0.96)",
-    borderRadius: 26,
-    padding: 24,
-    borderWidth: 1,
-    borderColor: "rgba(229,193,133,0.4)",
-  },
-  overlayTitle: {
-    color: "#FFFFFF",
-    fontSize: 22,
-    fontWeight: "800",
-    marginBottom: 8,
-  },
-  overlaySubtitle: {
-    color: "#E5C185",
-    fontSize: 16,
-    fontWeight: "600",
-    marginBottom: 12,
-  },
-  overlayBody: {
-    color: "rgba(255,255,255,0.85)",
-    fontSize: 14,
-    lineHeight: 20,
-    marginBottom: 4,
-  },
-  overlayList: {
-    marginTop: 8,
-  },
-  overlayListItem: {
-    color: "rgba(255,255,255,0.82)",
-    fontSize: 14,
-    lineHeight: 20,
-  },
-  overlayFootnote: {
-    marginTop: 12,
-    color: "rgba(229,193,133,0.85)",
-    fontSize: 12,
-  },
-  overlayButton: {
-    marginTop: 20,
-    backgroundColor: "#E5C185",
-    borderRadius: 18,
-    paddingVertical: 12,
-    alignItems: "center",
-  },
-  overlayButtonText: {
-    color: "#1F1712",
-    fontSize: 16,
-    fontWeight: "700",
-  },
+  legendIcon: { fontSize: 15 },
+  legendTextBlock: { flex: 1 },
+  legendTitle: { color: "#FFFFFF", fontSize: 14, fontWeight: "600" },
+  legendBody: { color: "rgba(255,255,255,0.7)", fontSize: 12, lineHeight: 18, marginTop: 2 },
   scoreCard: {
     backgroundColor: "rgba(12,16,26,0.9)",
     borderRadius: 18,
@@ -1229,12 +1004,7 @@ const styles = StyleSheet.create({
     padding: 18,
     marginBottom: 18,
   },
-  scoreTitle: {
-    color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "700",
-    marginBottom: 12,
-  },
+  scoreTitle: { color: "#FFFFFF", fontSize: 18, fontWeight: "700", marginBottom: 12 },
   scoreRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -1243,37 +1013,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "rgba(255,255,255,0.05)",
   },
-  scoreRowActive: {
-    backgroundColor: "rgba(229,193,133,0.12)",
-    borderRadius: 12,
-    borderBottomWidth: 0,
-    paddingHorizontal: 12,
-  },
-  scoreNameColumn: {
-    flex: 1,
-  },
-  scoreValueColumn: {
-    alignItems: "flex-end",
-  },
-  scoreName: {
-    color: "#FFFFFF",
-    fontSize: 15,
-    fontWeight: "600",
-  },
-  scorePosition: {
-    color: "rgba(255,255,255,0.55)",
-    fontSize: 12,
-    marginTop: 2,
-  },
-  scoreSpaceLabel: {
-    color: "rgba(229,193,133,0.85)",
-    fontSize: 12,
-    marginTop: 2,
-  },
-  scoreValue: {
-    color: "rgba(229,193,133,0.85)",
-    fontSize: 13,
-  },
+  scoreRowActive: { backgroundColor: "rgba(229,193,133,0.12)", borderRadius: 12, borderBottomWidth: 0, paddingHorizontal: 12 },
+  scoreNameColumn: { flex: 1 },
+  scoreValueColumn: { alignItems: "flex-end" },
+  scoreName: { color: "#FFFFFF", fontSize: 15, fontWeight: "600" },
+  scorePosition: { color: "rgba(255,255,255,0.55)", fontSize: 12, marginTop: 2 },
+  scoreValue: { color: "rgba(229,193,133,0.85)", fontSize: 13 },
   logCard: {
     backgroundColor: "rgba(12,16,26,0.9)",
     borderRadius: 18,
@@ -1282,61 +1027,42 @@ const styles = StyleSheet.create({
     padding: 18,
     marginBottom: 42,
   },
-  logEntry: {
-    color: "rgba(255,255,255,0.75)",
-    fontSize: 13,
-    marginBottom: 6,
+  logEntry: { color: "rgba(255,255,255,0.75)", fontSize: 13, marginBottom: 6 },
+  logEmpty: { color: "rgba(255,255,255,0.45)", fontSize: 13 },
+  overlayBackdrop: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(8,12,20,0.85)",
+    justifyContent: "center",
   },
-  logEmpty: {
-    color: "rgba(255,255,255,0.45)",
-    fontSize: 13,
+  overlayScroll: { paddingHorizontal: 24, paddingVertical: 40, flexGrow: 1, justifyContent: "center" },
+  overlayCard: {
+    width: "100%",
+    backgroundColor: "rgba(24,30,44,0.97)",
+    borderRadius: 26,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: "rgba(229,193,133,0.4)",
   },
+  overlayTitle: { color: "#FFFFFF", fontSize: 20, fontWeight: "800", marginBottom: 8 },
+  overlaySubtitle: { color: "#E5C185", fontSize: 15, fontWeight: "600", marginBottom: 10 },
+  overlayBody: { color: "rgba(255,255,255,0.88)", fontSize: 15, lineHeight: 21, marginBottom: 4 },
+  overlayFootnote: { marginTop: 10, color: "rgba(229,193,133,0.85)", fontSize: 12 },
+  overlayButton: { marginTop: 20, backgroundColor: "#E5C185", borderRadius: 18, paddingVertical: 12, alignItems: "center" },
+  overlayButtonText: { color: "#1F1712", fontSize: 16, fontWeight: "700" },
+  playerButtonWrap: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginTop: 16 },
+  playerButton: {
+    backgroundColor: "rgba(255,255,255,0.1)",
+    borderWidth: 1,
+    borderColor: "rgba(229,193,133,0.5)",
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+  playerButtonText: { color: "#F5E9D7", fontSize: 14, fontWeight: "700" },
 });
-
-function OverlayPrompt({ overlay, onConfirm, language }) {
-  if (!overlay) {
-    return null;
-  }
-  const buttonLabel =
-    overlay.buttonLabel ?? (language === "en" ? "Continue" : "Weiter");
-  const bodyLines = overlay.bodyLines ?? (overlay.body ? [overlay.body] : []);
-  const filteredBodyLines = bodyLines.filter(
-    (line) => typeof line === "string" && line.trim().length > 0
-  );
-  const listItems = (overlay.list ?? []).filter(
-    (item) => typeof item === "string" && item.trim().length > 0
-  );
-
-  return (
-    <View style={styles.overlayBackdrop}>
-      <View style={styles.overlayCard}>
-        {overlay.title ? <Text style={styles.overlayTitle}>{overlay.title}</Text> : null}
-        {overlay.subtitle ? (
-          <Text style={styles.overlaySubtitle}>{overlay.subtitle}</Text>
-        ) : null}
-        {filteredBodyLines.map((line, idx) => (
-          <Text key={`body-${idx}`} style={styles.overlayBody}>
-            {line}
-          </Text>
-        ))}
-        {listItems.length > 0 ? (
-          <View style={styles.overlayList}>
-            {listItems.map((item, idx) => (
-              <Text key={`item-${idx}`} style={styles.overlayListItem}>
-                {item}
-              </Text>
-            ))}
-          </View>
-        ) : null}
-        {overlay.footnote ? (
-          <Text style={styles.overlayFootnote}>{overlay.footnote}</Text>
-        ) : null}
-        <TouchableOpacity style={styles.overlayButton} onPress={onConfirm}>
-          <Text style={styles.overlayButtonText}>{buttonLabel}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
 
 export default PartyBoardGame;
