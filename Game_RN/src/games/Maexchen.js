@@ -38,6 +38,7 @@ const RANKING_VALUES = [
   '42',
   '41',
   '32',
+  '31',
 ];
 
 const HIDDEN_SYMBOL = '?';
@@ -182,7 +183,9 @@ const MaexchenGame = () => {
   // Erlaubt sind alle Ansagen mit echt kleinerem (= staerkerem) Index als die zuletzt gehoerte.
   const minLegalIndex = 0;
   const maxLegalIndex = announcedIndex === null ? RANKING_VALUES.length - 1 : announcedIndex - 1;
-  const noLegalMoveLeft = announcedIndex === 0;
+  // < 0 statt strikt === 0, damit ein unbekannter/ungueltiger announcedCode (Index -1) ebenfalls
+  // sauber als "kein legaler Zug mehr" behandelt wird, statt den Reroll-Button faelschlich zu zeigen.
+  const noLegalMoveLeft = maxLegalIndex < 0;
 
   const rollDice = () => {
     const nextOne = Math.floor(Math.random() * 6) + 1;
