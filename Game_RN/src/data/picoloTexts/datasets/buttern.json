@@ -516,7 +516,7 @@
             },
             "topics": [
               "Marinade",
-              "Kohle-Anzuenden",
+              "Kohle-Anzünden",
               "Grillzange",
               "Steak-Grad",
               "Beilagensalat"
@@ -575,9 +575,9 @@
             "topics": [
               "Bohrmaschine",
               "Schraubenzieher",
-              "Duebel",
+              "Dübel",
               "Bauanleitung",
-              "Ikea-Moebel"
+              "Ikea-Möbel"
             ]
           }
         ],
@@ -607,6 +607,847 @@
               "Sitzreihe",
               "3D-Brille",
               "Abspann"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Streaming-Marathon",
+      "en": "Buttern: Streaming Marathon",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Streaming-Marathon",
+              "en": "Streaming Marathon"
+            },
+            "topics": [
+              "Bingewatchen",
+              "Cliffhanger",
+              "Autoplay",
+              "Empfehlungsalgorithmus",
+              "Staffelfinale"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Karnevalszeit",
+      "en": "Buttern: Carnival Season",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Karnevalszeit",
+              "en": "Carnival Season"
+            },
+            "topics": [
+              "Kostümwahl",
+              "Konfettiregen",
+              "Faschingsumzug",
+              "Büttenrede",
+              "Kamelle"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Frühjahrsputz",
+      "en": "Buttern: Spring Cleaning",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Frühjahrsputz",
+              "en": "Spring Cleaning"
+            },
+            "topics": [
+              "Ausmisten",
+              "Staubwedel",
+              "Second-Hand",
+              "Fensterputzen",
+              "Kellerfund"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Konzertreisen",
+      "en": "Buttern: Concert Trips",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Konzertreisen",
+              "en": "Concert Trips"
+            },
+            "topics": [
+              "Vorband",
+              "Ticketkauf",
+              "Merch-Stand",
+              "Anreise",
+              "Zugabe"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Sportarten",
+      "en": "Buttern: Sports",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Sportarten",
+              "en": "Sports"
+            },
+            "topics": [
+              "Handball",
+              "Tischtennis",
+              "Klettern",
+              "Segeln",
+              "Bogenschießen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Feierabendbier",
+      "en": "Buttern: After-Work Beer",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Feierabendbier",
+              "en": "After-Work Beer"
+            },
+            "topics": [
+              "Terrassenbier",
+              "Runde geben",
+              "Kneipenbekanntschaft",
+              "Feierabendquatsch",
+              "Anstoßen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Studentenleben",
+      "en": "Buttern: Student Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Studentenleben",
+              "en": "Student Life"
+            },
+            "topics": [
+              "WG-Küche",
+              "Semesterferien",
+              "Bibliotheks-Panik",
+              "Mensaessen",
+              "Nachtschicht-Lernen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Wellness-Wochenende",
+      "en": "Buttern: Wellness Weekend",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Wellness-Wochenende",
+              "en": "Wellness Weekend"
+            },
+            "topics": [
+              "Massage",
+              "Whirlpool",
+              "Kräuterbad",
+              "Ruhezone",
+              "Aromaöl"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Gaming-Abend",
+      "en": "Buttern: Gaming Night",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Gaming-Abend",
+              "en": "Gaming Night"
+            },
+            "topics": [
+              "Highscore",
+              "Ladebildschirm",
+              "Team-Voice",
+              "Controller-Streit",
+              "Speedrun"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Nachbarschaftshilfe",
+      "en": "Buttern: Neighborhood Help",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Nachbarschaftshilfe",
+              "en": "Neighborhood Help"
+            },
+            "topics": [
+              "Blumengießen",
+              "Paketannahme",
+              "Werkzeugleihe",
+              "Grillfest",
+              "Treppenhausklatsch"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Retro-Trends",
+      "en": "Buttern: Retro Trends",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Retro-Trends",
+              "en": "Retro Trends"
+            },
+            "topics": [
+              "Vinyl",
+              "Polaroid",
+              "Neonfarben",
+              "Walkman",
+              "Discokugel"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Sommerfest",
+      "en": "Buttern: Summer Party",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Sommerfest",
+              "en": "Summer Party"
+            },
+            "topics": [
+              "Wasserschlacht",
+              "Sonnenbrand",
+              "Grillduft",
+              "Lichterkette",
+              "Barfußlaufen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Weltraum",
+      "en": "Buttern: Outer Space",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Weltraum",
+              "en": "Outer Space"
+            },
+            "topics": [
+              "Rakete",
+              "Astronaut",
+              "Schwerelosigkeit",
+              "Sternschnuppe",
+              "Marslandung"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Detektivarbeit",
+      "en": "Buttern: Detective Work",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Detektivarbeit",
+              "en": "Detective Work"
+            },
+            "topics": [
+              "Fingerabdruck",
+              "Alibi",
+              "Lupenglas",
+              "Verhörzimmer",
+              "Indizienkette"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Mittelalter",
+      "en": "Buttern: Medieval Times",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Mittelalter",
+              "en": "Medieval Times"
+            },
+            "topics": [
+              "Ritterturnier",
+              "Burggraben",
+              "Drachenmythos",
+              "Minnesang",
+              "Wappenkunde"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Backstube",
+      "en": "Buttern: Bakery Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Backstube",
+              "en": "Bakery Life"
+            },
+            "topics": [
+              "Sauerteig",
+              "Zuckerguss",
+              "Ofenwärme",
+              "Rezeptbuch",
+              "Bleche"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Großstadtleben",
+      "en": "Buttern: City Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Großstadtleben",
+              "en": "City Life"
+            },
+            "topics": [
+              "U-Bahn-Stau",
+              "Rooftop-Bar",
+              "Foodtruck",
+              "Wolkenkratzer",
+              "Streetart"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Wintersport",
+      "en": "Buttern: Winter Sports",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Wintersport",
+              "en": "Winter Sports"
+            },
+            "topics": [
+              "Skipiste",
+              "Schneeballschlacht",
+              "Glühwein",
+              "Rodelbahn",
+              "Eiszapfen"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Zirkuswelt",
+      "en": "Buttern: Circus World",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Zirkuswelt",
+              "en": "Circus World"
+            },
+            "topics": [
+              "Trapezkünstler",
+              "Feuerschlucker",
+              "Seiltanz",
+              "Clownsnase",
+              "Manege"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Musikfestival",
+      "en": "Buttern: Music Festival",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Musikfestival",
+              "en": "Music Festival"
+            },
+            "topics": [
+              "Hauptbühne",
+              "Zeltcamp",
+              "Bändchenkontrolle",
+              "Zugabe",
+              "Foodstand"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Piratenleben",
+      "en": "Buttern: Pirate Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Piratenleben",
+              "en": "Pirate Life"
+            },
+            "topics": [
+              "Schatzkarte",
+              "Papagei",
+              "Kanonenkugel",
+              "Augenklappe",
+              "Meuterei"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Fitnessstudio",
+      "en": "Buttern: Gym Life",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Fitnessstudio",
+              "en": "Gym Life"
+            },
+            "topics": [
+              "Langhantel",
+              "Cheat-Day",
+              "Fitness-Tracker",
+              "Umkleide-Small-Talk",
+              "Post-Workout-Shake"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Bahnfahrten",
+      "en": "Buttern: Train Rides",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Bahnfahrten",
+              "en": "Train Rides"
+            },
+            "topics": [
+              "Verspätungsansage",
+              "Bordbistro",
+              "Reservierungsschild",
+              "Gepäckablage",
+              "Fahrplanwechsel"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Escape Rooms",
+      "en": "Buttern: Escape Rooms",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Escape Rooms",
+              "en": "Escape Rooms"
+            },
+            "topics": [
+              "Zahlenschloss",
+              "Countdown",
+              "Geheimtür",
+              "Hinweiskarte",
+              "Teamgeist"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Nachtleben",
+      "en": "Buttern: Nightlife",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Nachtleben",
+              "en": "Nightlife"
+            },
+            "topics": [
+              "Türsteher",
+              "Cocktailkarte",
+              "Tanzfläche",
+              "Garderobenmarke",
+              "Afterhour"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Camping",
+      "en": "Buttern: Camping",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Camping",
+              "en": "Camping"
+            },
+            "topics": [
+              "Lagerfeuer",
+              "Schlafsack",
+              "Zeltplane",
+              "Mückenschutz",
+              "Campingkocher"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Handwerksmarkt",
+      "en": "Buttern: Craft Market",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Handwerksmarkt",
+              "en": "Craft Market"
+            },
+            "topics": [
+              "Töpferware",
+              "Seifenstand",
+              "Handgestrickt",
+              "Marmeladenglas",
+              "Kerzenzieher"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Bootstour",
+      "en": "Buttern: Boat Tour",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Bootstour",
+              "en": "Boat Tour"
+            },
+            "topics": [
+              "Rettungsweste",
+              "Steuerrad",
+              "Möwenschrei",
+              "Anlegestelle",
+              "Sonnendeck"
+            ]
+          }
+        ],
+        "rewardPerCorrect": 1
+      }
+    },
+    {
+      "de": "Buttern: Schulzeit-Erinnerungen",
+      "en": "Buttern: School Memories",
+      "drunkLevel": 3,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "payload": {
+        "type": "buttern",
+        "topicBuckets": [
+          {
+            "min": 0,
+            "max": 9,
+            "label": {
+              "de": "Schulzeit-Erinnerungen",
+              "en": "School Memories"
+            },
+            "topics": [
+              "Klassenfahrt",
+              "Zeugnisangst",
+              "Pausenhofspiel",
+              "Schulranzen",
+              "Tafelanschrieb"
             ]
           }
         ],
