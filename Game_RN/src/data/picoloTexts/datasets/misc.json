@@ -521,6 +521,166 @@
       "deepness": 2,
       "drink": false,
       "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Zahl von 1 bis 100 — wer am nächsten an der Zahl der Runde liegt, gewinnt Szenenapplaus.",
+      "en": "Everyone names a number from 1 to 100 — closest to the group's chosen number wins applause.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut aus euren Armen gemeinsam eine Uhrzeit nach, die vorgegeben wird.",
+      "en": "Use your arms together to form a given time on a clock.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ihr Lieblingswort in einer Fremdsprache und erklärt, warum.",
+      "en": "Everyone names their favorite word in a foreign language and explains why.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde einigt sich auf einen gemeinsamen Rhythmus und klatscht ihn 15 Sekunden synchron.",
+      "en": "The group agrees on a rhythm and claps it in sync for 15 seconds.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt die App, die sie diese Woche am meisten geöffnet hat.",
+      "en": "Everyone shows the app they opened most this week.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam ein Motto für die nächsten 24 Stunden.",
+      "en": "Invent a motto for the next 24 hours together.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Kleinigkeit, die sie heute noch erledigen will.",
+      "en": "Everyone names one small thing they still want to get done today.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut gemeinsam eine Buchstabenkette: jede Person fügt einen Buchstaben zu einem Wort hinzu.",
+      "en": "Build a letter chain together: each person adds one letter to a word.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde stimmt ab: Wer hat gerade das gemütlichste Outfit an?",
+      "en": "The group votes: who's wearing the coziest outfit right now?",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ein Wort, das sie diesen Monat zum ersten Mal gehört hat.",
+      "en": "Everyone names a word they heard for the first time this month.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam eine Faustregel für gute Partys.",
+      "en": "Invent a rule of thumb for good parties together.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt pantomimisch ihr Lieblingswetter.",
+      "en": "Everyone mimes their favorite kind of weather.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde baut gemeinsam einen Turm aus den Händen aller.",
+      "en": "The group builds a tower using everyone's hands.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine App, die sie gerne löschen würde, aber nicht kann.",
+      "en": "Everyone names an app they wish they could delete but can't.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Erfindet gemeinsam einen Begrüßungssatz, den die Gruppe ab jetzt benutzt.",
+      "en": "Invent a greeting phrase the group uses from now on.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person zeigt, wie sie sich fühlt, nur mit einer Handbewegung.",
+      "en": "Everyone shows how they feel using only a hand gesture.",
+      "drunkLevel": 1,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Die Runde einigt sich in 10 Sekunden auf das schönste Wort des Abends.",
+      "en": "The group agrees within 10 seconds on the nicest word of the night.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt ihre Lieblingszahl zwischen 1 und 10 und begründet es kurz.",
+      "en": "Everyone names their favorite number between 1 and 10 and briefly explains why.",
+      "drunkLevel": 1,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Baut aus Gegenständen vom Tisch gemeinsam ein Fantasietier.",
+      "en": "Build a fantasy creature together using objects from the table.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": false,
+      "drinking": false
+    },
+    {
+      "de": "Jede Person nennt eine Sache, die sie diese Woche zum ersten Mal gemacht hat.",
+      "en": "Everyone names something they did for the first time this week.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": false,
+      "drinking": false
     }
   ]
 }
