@@ -1484,6 +1484,574 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan einen Segelschein machen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously get a sailing license? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten mitten im Gespräch einschlafen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to fall asleep mid-conversation? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Fremdsprache nur wegen einer Serie lernen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to learn a foreign language just because of a show? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Haustier adoptieren, das niemand erwartet hätte? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to adopt a pet nobody would have expected? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einer Karaoke-Nacht das Mikrofon nicht mehr abgeben? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to refuse to give up the mic at karaoke night? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten einen kompletten Tag im Bett verbringen, ohne schlecht zu fühlen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend a whole day in bed without feeling bad about it? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einem Flohmarkt alles verkaufen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously sell everything at a flea market? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Wette mit einem Handschlag besiegeln? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to seal a bet with a handshake? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einem Roadtrip die Musik komplett übernehmen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to completely take over the music on a road trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Rezept aus dem Internet blind nachkochen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to blindly cook a recipe found online? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Umzug alles in letzter Minute packen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to pack everything last minute during a move? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Verabredung mit einem Fremden aus dem Zug vereinbaren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to arrange a meetup with a stranger from the train? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein ganzes Wochenende ohne Handy verbringen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend a whole weekend without a phone? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Spieleabend die Regeln zu ihren Gunsten auslegen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to interpret the rules in their favor during game night? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Bewerbung für ein Auslandsjahr abschicken? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously send in an application for a year abroad? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einem Konzert die Setlist mitsingen, bevor sie gespielt wird? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to sing the setlist before it's even played at a concert? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine ganze Nacht Sterne beobachten? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to stargaze all night long? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Missgeschick in ein virales Video verwandeln? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to turn a mishap into a viral video? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einem Marathon mitlaufen, ohne angemeldet zu sein? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously join a marathon without being registered? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einer Reise das Hotel wegen der Aussicht wählen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to choose a hotel purely for the view on a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Gespräch mit einem Fremden am Flughafen beginnen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to start a conversation with a stranger at the airport? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Fotoshooting die meisten Posen vorschlagen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to suggest the most poses during a photoshoot? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Museum wegen des Cafés besuchen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to visit a museum just for the café? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Fahrradtour über 50 Kilometer machen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously go on a 50-kilometer bike ride? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Regenschauer draußen tanzen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to dance outside during a rain shower? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Rätsel lösen, bevor es überhaupt gestellt wird? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to solve a riddle before it's even asked? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einer Feier den Kuchen heimlich probieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to secretly taste the cake at a party? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Fremdsprache vortäuschen zu sprechen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously pretend to speak a foreign language? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Zelt mitten in der Stadt aufschlagen, aus Spaß? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to pitch a tent in the middle of the city just for fun? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Wettbewerb die Regeln neu erfinden? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to reinvent the rules during a competition? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten eine Verabredung mit einem Picknick krönen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to top off a hangout with a picnic? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einem Spaziergang eine ganze Wanderung improvisieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to improvise a whole hike during a walk? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einer Feuerwehrübung zusehen, statt weiterzugehen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to stop to watch a fire drill instead of continuing on? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Fest mit einer Überraschungsband krönen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to top off a party with a surprise band? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug die Kamera nie aus der Hand legen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to never put the camera down during a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Einladung zu einer fremden Feier annehmen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously accept an invitation to a stranger's party? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Bild malen, das niemand versteht, aber jeder lobt? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to paint a picture nobody understands but everyone praises? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einer Zugfahrt das ganze Abteil zum Lachen bringen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to make the whole train car laugh? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einem Wohltätigkeitslauf mitmachen, ohne zu trainieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously join a charity run without training? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Missverständnis erst nach Wochen aufklären, aus Bequemlichkeit? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to only clear up a misunderstanding after weeks, out of laziness? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug die Route nach dem besten Essen planen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to plan the route of a trip around the best food? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Zimmer nach den eigenen Vorstellungen komplett umgestalten? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to completely redesign a room to their own taste? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten auf einer Reise das Gepäck strategisch nach Gewicht packen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to strategically pack luggage by weight on a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Spieleabend als Erstes die Anleitung ignorieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to be the first to ignore the instructions during game night? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einer Nachbarschaftsfeier mitmachen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously join a neighborhood party? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Foto so lange schießen, bis es perfekt ist? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to keep taking a photo until it's perfect? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug die Wettervorhersage komplett ignorieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to completely ignore the forecast on a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan einen ganzen Tag nur mit Nachbarn verbringen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spend a whole day just with neighbors, on a whim? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Gespräch mit einer steilen These beginnen und es ernst meinen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to start a conversation with a bold claim and actually mean it? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Wettbewerb aus Prinzip weitermachen, obwohl er verloren ist? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to keep going in a competition out of principle even after losing? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Reise nur wegen eines Fotos buchen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to book a trip purely because of one photo? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Rätsel lieber alleine als in der Gruppe lösen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to prefer solving a puzzle alone rather than in a group? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Fest die Musikanlage eigenmächtig übernehmen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to take over the sound system at a party without asking? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan einen Kurs für ein Instrument buchen, das sie nie gespielt haben? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to book a class for an instrument they've never played? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Missgeschick mit einer perfekten Ausrede retten? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to save a mishap with a perfect excuse? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug die Gruppe in Grüppchen aufteilen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to split the group into smaller groups during a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einem Casting mitmachen, obwohl sie nervös sind? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously join a casting call despite being nervous? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Zimmer nach Duft statt nach Optik einrichten? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to furnish a room based on scent rather than looks? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einer Wette alles auf eine Karte setzen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to bet everything on one outcome? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Verabredung mit einem Rätsel ankündigen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously announce a hangout with a riddle? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Gespräch retten, das schon halb gescheitert war? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to save a conversation that was already half-failed? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug die teuersten Souvenirs kaufen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to buy the most expensive souvenirs on a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einer Fremdsprachen-Challenge mitmachen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously join a foreign-language challenge? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Foto posten und sofort wieder löschen, aus Unsicherheit? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to post a photo and immediately delete it out of insecurity? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Fest bis zum bitteren Ende bleiben? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to stay at a party until the bitter end? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan eine Verabredung mit einem Fremden vereinbaren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously arrange a hangout with a stranger? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Rezept doppelt so würzig machen wie empfohlen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to make a recipe twice as spicy as recommended? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Ausflug ständig Fotos von Essen machen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to constantly take photos of food during a trip? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten spontan bei einem Nachtmarkt alles probieren? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to spontaneously try everything at a night market? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten ein Gespräch retten, indem sie über sich selbst lachen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to save a conversation by laughing at themselves? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Wer würde am ehesten bei einem Fest als Letzte*r das Licht ausmachen? Person trinkt 2 Schlucke.",
+      "en": "Who is most likely to be the last to turn off the lights at a party? That person drinks 2 sips.",
+      "drunkLevel": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }

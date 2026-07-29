@@ -1677,6 +1677,1185 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einem Fremden im Aufzug beginnt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to start a conversation with a stranger in an elevator? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Standpauke hält, die keiner ernst nimmt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to give a lecture nobody takes seriously? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den ganzen Kühlschrank nach Mitternacht leert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to raid the fridge after midnight? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Missverständnis absichtlich weiterlaufen lässt, weil es lustiger ist? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to let a misunderstanding continue because it's funnier? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan ein Zimmer umräumt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously rearrange a room? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten mit einer Notlüge davonkommt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to get away with a white lie? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das letzte Bier für sich beansprucht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to claim the last beer for themselves? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung um eine Stunde verschiebt und es vergisst mitzuteilen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to push back a meetup an hour and forget to mention it? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten sich für ein Gruppenfoto extra in Positur wirft? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to strike an extra pose for a group photo? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den Namen einer neuen Bekanntschaft sofort wieder vergisst? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to instantly forget a new acquaintance's name? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Wette abschließt, die niemand gewinnen kann? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to make a bet nobody can win? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten mitten im Gespräch das Thema wechselt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to change the topic mid-conversation? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Kompliment mit einem Gegenkompliment kontert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to counter a compliment with another compliment? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine App löscht und am selben Tag neu installiert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to delete an app and reinstall it the same day? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten bei einer Verabredung als Erstes ankommt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to be the first to arrive at a meetup? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das Gespräch rettet, wenn es peinlich still wird? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to save the conversation when it goes awkwardly quiet? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Foto postet, das schon Stunden alt ist? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to post a photo that's already hours old? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Runde Süßigkeiten für alle mitbringt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to bring a round of candy for everyone? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten still und heimlich der Beste in etwas ist? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to be secretly the best at something? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten einen Streit mit Humor auflöst? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to defuse an argument with humor? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den Wetterbericht besser kennt als die eigene Agenda? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to know the forecast better than their own schedule? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Nachricht mit zu vielen Emojis verschickt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to send a message with way too many emojis? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den ganzen Abend über eine Kleinigkeit nachdenkt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to think about one small thing all evening? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan ein Kompliment über etwas Ungewöhnliches macht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously compliment something unusual? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Spiel gewinnt, ohne die Regeln zu kennen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to win a game without knowing the rules? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine falsche Antwort mit voller Überzeugung verkündet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to announce a wrong answer with total confidence? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung spontan verlängert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously extend a hangout? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten mit vollem Mund noch ein Kompliment macht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to give a compliment with their mouth full? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer Anekdote eröffnet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to open a conversation with an anecdote? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Melodie summt, ohne es zu merken? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to hum a tune without realizing it? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten am längsten auf eine Antwort wartet, bevor er nachfragt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to wait longest for a reply before following up? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Kleinigkeit zum Running Gag der Gruppe macht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to turn a small thing into the group's running gag? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Getränk verschüttet und cool bleibt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spill a drink and stay cool about it? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Codewort bestätigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to confirm plans with a secret code word? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan jemandem hilft, ohne gefragt zu werden? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously help someone without being asked? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine falsche Vorhersage trifft und trotzdem gefeiert wird? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to make a wrong prediction and still get celebrated? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten am längsten an einem Insider-Witz festhält? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to hold onto an inside joke the longest? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Nachricht mit Absicht falsch verschickt, aus Spaß? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to deliberately send a wrong message as a joke? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das letzte Wort behalten will? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to insist on having the last word? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer Frage rettet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to save a conversation with a question? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe an eine vergessene Verabredung erinnert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to remind the group of a forgotten plan? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Diskussion mit einem Sprichwort beendet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a discussion with a proverb? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan ein Lied für die Gruppe erfindet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously invent a song for the group? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch über Belangloses stundenlang fortführt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to keep a trivial conversation going for hours? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das teuerste Gericht auf der Karte bestellt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to order the most expensive dish on the menu? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Überraschungsbesuch krönt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to top off a hangout with a surprise visit? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das letzte Stück vom Kuchen für andere übrig lässt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to leave the last piece of cake for others? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten mit Absicht eine falsche Route nimmt, um mehr zu sehen? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to deliberately take the wrong route to see more? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Nachricht mit einem Insider beendet, den keiner versteht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a message with an inside joke nobody gets? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer steilen These eröffnet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to open a conversation with a bold claim? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den Wecker fünfmal snoozed und trotzdem pünktlich ist? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to snooze five times and still be on time? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Insidertreffpunkt vorschlägt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to suggest an inside-joke meeting spot? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten in einem Streit zuerst lacht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to laugh first during an argument? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Frage stellt, auf die niemand eine Antwort hat? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to ask a question nobody has an answer to? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan einen Toast auf die Gruppe ausbringt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously make a toast to the group? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die längste Sprachnachricht der Gruppe verschickt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to send the group's longest voice message? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten sich selbst zum Schiedsrichter eines Streits ernennt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to appoint themselves referee of an argument? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine falsche Zahl schätzt, aber überzeugend klingt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to guess a wrong number but sound convincing? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Kompliment zu einer ganzen Rede ausbaut? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to turn a compliment into a whole speech? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einem schlechten Wortspiel aufweckt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to wake the group up with a bad pun? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Getränk bestellt, das niemand aussprechen kann? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to order a drink nobody can pronounce? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den letzten Sitzplatz für jemand anderen freihält? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to save the last seat for someone else? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Diskussion mit einer Anekdote unterbricht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to interrupt a discussion with an anecdote? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan eine Umfrage in der Gruppe startet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously start a poll within the group? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Foto so lange bearbeitet, bis es perfekt ist? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to edit a photo until it's perfect? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit dem Wetterbericht plant? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to plan a hangout around the weather forecast? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten sich für jemand anderen entschuldigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to apologize on someone else's behalf? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer rhetorischen Frage beendet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a conversation with a rhetorical question? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das leiseste Lachen der Gruppe hat? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to have the group's quietest laugh? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Ausrede erfindet, die tatsächlich funktioniert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to invent an excuse that actually works? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan einen Spitznamen für jemanden erfindet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously invent a nickname for someone? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Getränk mit dem meisten Eis bestellt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to order the drink with the most ice? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einer Wegbeschreibung überkompliziert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to overcomplicate directions for a meetup? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten der Gruppe eine unnötige Fun-Fact-Sammlung liefert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to supply the group with unnecessary fun facts? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das letzte Wort in einem Streit still lässt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to let someone else have the last word in an argument? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan ein Ranking der Gruppe aufstellt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously rank the group on something? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Kompliment ablehnt, obwohl es stimmt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to reject a compliment even though it's true? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe zu einem spontanen Spaziergang überredet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to talk the group into a spontaneous walk? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einer Deadline versieht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to put a deadline on a casual hangout? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den größten Umweg als Abenteuer verkauft? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to sell the longest detour as an adventure? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Missverständnis mit einem Lachanfall auflöst? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to resolve a misunderstanding with a fit of laughter? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Rezept nach Gefühl statt nach Anleitung kocht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to cook by feel instead of following a recipe? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Rätsel ankündigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to announce a hangout with a riddle? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den ganzen Abend über ein Detail nachdenkt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to think about one detail all evening? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das Gespräch mit einer Gegenfrage kontert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to counter with a question of their own? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan eine Verabredung zu dritt organisiert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously organize a three-person hangout? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Kleinigkeit zum Gesprächsthema des Abends macht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to turn a small thing into the topic of the night? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Foto mit dem besten Winkel aller findet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to find the best angle for a photo? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine falsche Erinnerung mit voller Überzeugung verteidigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to defend a false memory with full conviction? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten den ganzen Tisch zum Lachen bringt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to make the whole table laugh? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit Verspätung zur Kunstform macht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to turn showing up late into an art form? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Nachricht mit zu vielen Ausrufezeichen schreibt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to write a message with way too many exclamation points? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan eine zweite Meinung einholt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously get a second opinion? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer steilen Wette überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with a bold bet? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einem Zitat beendet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a conversation with a quote? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die beste Ausrede für Verspätung parat hat? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to have the best excuse for being late? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit Vorfreude ankündigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to announce a hangout with visible excitement? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das letzte Wort mit einem Lächeln lässt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to let the last word go with a smile? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan ein Kompliment zurückhält, aus Schüchternheit? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to hold back a compliment out of shyness? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Kleinigkeit als großen Sieg feiert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to celebrate a small thing like a big win? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer steilen Behauptung testet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to test a conversation with a bold claim? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer spontanen Challenge überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with a spontaneous challenge? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten das ruhigste Mitglied der Gruppe zum Reden bringt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to get the quietest member of the group talking? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Motto versieht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to give a hangout a theme? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Missgeschick mit Humor abtut? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to shrug off a mishap with humor? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan die Rolle des Vermittlers übernimmt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously take on the role of mediator? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer unerwarteten Geste überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with an unexpected gesture? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Kleinigkeit zu lange analysiert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to overanalyze a small thing? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer steilen Prognose beendet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a conversation with a bold prediction? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan die Stimmung der Gruppe hebt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously lift the group's mood? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer ehrlichen Meinung überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with an honest opinion? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Verabredung mit einem Countdown ankündigt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to announce a hangout with a countdown? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einem Fun Fact eröffnet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to open a conversation with a fun fact? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe zu einem spontanen Kochabend überredet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to talk the group into a spontaneous cooking night? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Missgeschick sofort zugibt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to immediately admit a mistake? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten eine Kleinigkeit über Wochen im Kopf behält? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to remember a small thing for weeks? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan die Initiative bei einem Streit ergreift? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously take the initiative during an argument? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer spontanen Reise überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with a spontaneous trip? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer steilen Meinung eröffnet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to open a conversation with a bold opinion? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan das letzte Wort abgibt, aus Höflichkeit? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to give up the last word out of politeness? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer unerwarteten Frage überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with an unexpected question? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Kompliment sofort erwidert? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to immediately return a compliment? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan eine zweite Runde vorschlägt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously suggest a second round? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer ehrlichen Geschichte überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with an honest story? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einem steilen Vergleich beendet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to end a conversation with a bold comparison? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan die Verantwortung übernimmt? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously take responsibility? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer unerwarteten Idee überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with an unexpected idea? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Missverständnis mit einem Witz auflöst? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to resolve a misunderstanding with a joke? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten spontan die Stimmung rettet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to spontaneously save the mood? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten die Gruppe mit einer steilen Idee überrascht? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to surprise the group with a bold idea? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "Abstimmung: Wer am ehesten ein Gespräch mit einer steilen Frage eröffnet? Minderheit trinkt 2 Schlucke.",
+      "en": "Vote: Who is most likely to open a conversation with a bold question? Minority drinks 2 sips.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
