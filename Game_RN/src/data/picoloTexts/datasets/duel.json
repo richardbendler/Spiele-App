@@ -543,6 +543,186 @@
       "drink": true,
       "drinking": true,
       "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten ohne zu blinzeln in die Kamera schauen? Verlierer trinkt.",
+      "en": "1v1: Who can stare at the camera longest without blinking? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Obstsorten — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming fruits — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am schnellsten fünf Wörter rückwärts aussprechen? Verlierer trinkt.",
+      "en": "1v1: Who can say five words backward fastest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Daumendruck-Wettbewerb: Wer hält länger durch? Verlierer trinkt.",
+      "en": "1v1: Thumb-press contest: who holds out longer? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann die überzeugendste Politiker-Rede improvisieren? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who improvises the most convincing politician's speech? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Filmtitel mit einem Zahlwort darin — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming movie titles with a number in them — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten mit verschränkten Armen auf einem Bein stehen? Verlierer trinkt.",
+      "en": "1v1: Who can stand on one leg with arms crossed the longest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wortkettenduell: reimt abwechselnd auf ein Wort. Wer stockt, trinkt.",
+      "en": "1v1: Word-chain duel: rhyme in turn on a word. Whoever stalls drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am überzeugendsten eine Werbe-Jingle-Stimme machen? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who does the most convincing jingle voice? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am schnellsten die eigene Jacke an- und wieder ausziehen? Verlierer trinkt.",
+      "en": "1v1: Who can put on and take off their jacket fastest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Automarken — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming car brands — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten still sitzen, während der andere Grimassen schneidet? Verlierer trinkt.",
+      "en": "1v1: Who can sit still longest while the other makes faces? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Rate-Duell: beschreibt abwechselnd einen Ort ohne ihn zu nennen. Wer zuerst erraten wird, verliert.",
+      "en": "1v1: Guessing duel: describe a place without naming it. First to be guessed loses.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am schnellsten fünf Getränke ohne Alkohol nennen? Verlierer trinkt.",
+      "en": "1v1: Who names five non-alcoholic drinks fastest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer hält am längsten ein Blatt Papier nur mit einem Finger balanciert? Verlierer trinkt.",
+      "en": "1v1: Who balances a sheet of paper on one finger the longest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Nennt abwechselnd Wörter, die mit 'Sonne' beginnen — wer zuerst stockt, trinkt.",
+      "en": "1v1: Alternate naming words starting with 'sun' — whoever stalls first drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann die überzeugendste Zeitlupen-Bewegung machen? Publikum entscheidet, Verlierer trinkt.",
+      "en": "1v1: Who does the most convincing slow-motion movement? Audience decides, loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am schnellsten rückwärts bis 15 zählen? Verlierer trinkt.",
+      "en": "1v1: Who can count backward to 15 fastest? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Fingerspitzenduell: haltet Zeigefinger aneinander und versucht, den anderen aus dem Gleichgewicht zu bringen. Verlierer trinkt.",
+      "en": "1v1: Fingertip duel: touch index fingers and try to unbalance the other. Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
+    },
+    {
+      "de": "1v1: Wer kann am längsten ohne Punkt und Komma über ein Thema reden? Verlierer trinkt.",
+      "en": "1v1: Who can talk about a topic longest without pausing? Loser drinks.",
+      "drunkLevel": 2,
+      "deepness": 1,
+      "drink": true,
+      "drinking": true,
+      "manual_approval": 0
     }
   ]
 }
