@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Animated, Easing, StyleSheet, View, Text } from 'react-native';
+import { VariablesContext } from '../../../VariablesContext';
 
 // Lightweight pulse/arrow hint near the info button (top-left)
 // Shows briefly after mount, then fades out. pointerEvents=none.
 const InfoHint = ({ durationMs = 2200, offsetTop = 26, offsetLeft = 70 }) => {
+  const { language } = useContext(VariablesContext);
   const [visible, setVisible] = useState(true);
   const scale = useRef(new Animated.Value(0.8)).current;
   const opacity = useRef(new Animated.Value(0)).current;
@@ -39,7 +41,7 @@ const InfoHint = ({ durationMs = 2200, offsetTop = 26, offsetLeft = 70 }) => {
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>
       <Animated.View style={[styles.hint, { top: offsetTop, left: offsetLeft, transform: [{ scale }], opacity }]}>
         <View style={styles.dot} />
-        <Text style={styles.label}>Regeln</Text>
+        <Text style={styles.label}>{language === 'en' ? 'Rules' : 'Regeln'}</Text>
       </Animated.View>
     </View>
   );

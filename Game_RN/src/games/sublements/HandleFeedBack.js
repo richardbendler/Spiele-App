@@ -1,8 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
+import { VariablesContext } from '../../../VariablesContext';
 // import { handleSqlRequest, postFeedback } from "../../general"; // API_RESTORE_STEP: uncomment to enable server feedback again
 
+// Wird von praktisch jedem Spiel eingebunden - Sprache daher direkt aus dem Context lesen,
+// statt sie durchgereicht zu bekommen (sonst muesste jeder einzelne Aufrufer angepasst werden).
 const HandleFeedback = ({ texts, textsIndex, table }) => {
+  const { language } = useContext(VariablesContext);
+  const isEn = language === 'en';
   //Für Feedback
   const [feedbackText, setFeedbackText] = useState(null);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -10,7 +15,11 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
 
   function handleFeedback(feedback, table) {
     //Animation
-    setFeedbackText(feedback === 1 ? '👍 Danke für dein Feedback!' : '👎 Danke für dein Feedback!');
+    setFeedbackText(
+      feedback === 1
+        ? (isEn ? '👍 Thanks for your feedback!' : '👍 Danke für dein Feedback!')
+        : (isEn ? '👎 Thanks for your feedback!' : '👎 Danke für dein Feedback!')
+    );
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
@@ -49,7 +58,7 @@ const HandleFeedback = ({ texts, textsIndex, table }) => {
   return (
     <View style={styles.feedbackContainer}>
       {(!hasVoted) && <View style={styles.feedbackContainer}>
-        <Text style={styles.questionText}>Wie findest du diese Frage?</Text>
+        <Text style={styles.questionText}>{isEn ? 'What do you think of this question?' : 'Wie findest du diese Frage?'}</Text>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={() => checkVote(1)}>
             <Text style={styles.buttonText}>👍</Text>
