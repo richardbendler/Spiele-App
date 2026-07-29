@@ -91,7 +91,11 @@ const PreGameSettings = ({ navigation, route }) => {
             />
             <Text style={styles.sliderValue}>
               {nextGame === 'SpinTheBottle'
-                ? (theOneSettings.familiarity <= 2 ? 'soft' : theOneSettings.familiarity <= 6 ? 'medium' : 'spicy')
+                ? (theOneSettings.familiarity <= 2
+                    ? (language === 'de' ? 'sanft' : 'soft')
+                    : theOneSettings.familiarity <= 6
+                      ? (language === 'de' ? 'mittel' : 'medium')
+                      : (language === 'de' ? 'gewagt' : 'spicy'))
                 : `${copy.sliderFamiliarityLabel} ${mapScaleLabel(familiarityScale, theOneSettings.familiarity)}`}
             </Text>
           </View>

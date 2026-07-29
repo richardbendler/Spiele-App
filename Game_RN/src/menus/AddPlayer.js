@@ -12,12 +12,14 @@ const mapScaleLabel = (scale, index) => {
   return scale[index];
 };
 
-const PlayerInput = React.memo(function PlayerInput({ onAddPlayer, copy }) {
+const MAX_PLAYERS = 12;
+
+const PlayerInput = React.memo(function PlayerInput({ onAddPlayer, copy, atLimit }) {
   const [currentName, setCurrentName] = useState("");
 
   const handler = () => {
     const trimmedName = currentName.trim();
-    if (trimmedName !== "") {
+    if (trimmedName !== "" && !atLimit) {
       onAddPlayer(trimmedName);
       setCurrentName("");
     }
@@ -26,7 +28,7 @@ const PlayerInput = React.memo(function PlayerInput({ onAddPlayer, copy }) {
   return (
     <View style={styles.playerInputSection}>
       <Text style={styles.sectionLabel}>{copy.inputTitle}</Text>
-      <Text style={styles.sectionHint}>{copy.inputSubtitle}</Text>
+      <Text style={styles.sectionHint}>{atLimit ? copy.limitReached : copy.inputSubtitle}</Text>
       <View style={styles.inputRow}>
         <TextInput
           placeholder={copy.placeholder}
@@ -37,8 +39,14 @@ const PlayerInput = React.memo(function PlayerInput({ onAddPlayer, copy }) {
           returnKeyType="done"
           onSubmitEditing={handler}
           blurOnSubmit={false}
+          editable={!atLimit}
         />
-        <TouchableOpacity onPress={handler} style={styles.addPlayerButton} activeOpacity={0.9}>
+        <TouchableOpacity
+          onPress={handler}
+          style={[styles.addPlayerButton, atLimit && styles.addPlayerButtonDisabled]}
+          activeOpacity={0.9}
+          disabled={atLimit}
+        >
           <Text style={styles.addPlayerButtonText}>{copy.addButton}</Text>
         </TouchableOpacity>
       </View>
@@ -72,6 +80,7 @@ const AddPlayer = ({ navigation, route }) => {
       inputSubtitle: addPlayerText.inputSubtitle,
       placeholder: addPlayerText.placeholder,
       addButton: addPlayerText.addButton,
+      limitReached: addPlayerText.limitReached,
     }),
     [addPlayerText]
   );
@@ -88,13 +97,18 @@ const AddPlayer = ({ navigation, route }) => {
     [setTheOneSettings, sliderMaxIndex]
   );
 
+  const atPlayerLimit = players.length >= MAX_PLAYERS;
+
   const handleAddPlayer = useCallback(
     (name) => {
+      if (players.length >= MAX_PLAYERS) {
+        return;
+      }
       const nextId = nextIdRef.current;
       nextIdRef.current += 1;
       setPlayers((prev) => [...prev, { id: nextId, name, drinks: true }]);
     },
-    [setPlayers]
+    [players.length, setPlayers]
   );
 
   const handleClearPlayers = useCallback(() => {
@@ -123,7 +137,7 @@ const AddPlayer = ({ navigation, route }) => {
         <View style={styles.playerListCard}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>{addPlayerText.listHeader}</Text>
-            <Text style={styles.cardCounter}>{players.length} / 12</Text>
+            <Text style={styles.cardCounter}>{players.length} / {MAX_PLAYERS}</Text>
           </View>
           {players.length === 0 ? (
             <View style={styles.emptyPlayerContainer}>
@@ -140,7 +154,7 @@ const AddPlayer = ({ navigation, route }) => {
             </View>
           )}
           <View style={styles.cardDivider} />
-          <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} />
+          <PlayerInput onAddPlayer={handleAddPlayer} copy={playerInputCopy} atLimit={atPlayerLimit} />
         </View>
 
         {players.length > 0 ? (
@@ -290,6 +304,9 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     backgroundColor: "#E5C185",
     alignItems: 'center',
+  },
+  addPlayerButtonDisabled: {
+    opacity: 0.4,
   },
   addPlayerButtonText: {
     color: "#241D18",
