@@ -164,12 +164,17 @@ const App = () => {
 
   if (winner) {
     return (
-        <View style={styles.winnerScreen}>
-            <Text style={styles.winnerText}>{`Gewinner: ${winner.suit}A`}</Text>
-            <TouchableOpacity onPress={() => restartGame(deck)} style={styles.restartButton}>
-                <Text style={styles.buttonText}>Spiel neustarten</Text>
-            </TouchableOpacity>
+      <ImageBackground source={require('../../assets/images/bar/table.png')} style={{ flex: 1 }}>
+        <View style={appStyles.winnerScreen}>
+          <Text style={styles.winnerSuitIcon}>{winner.suit}</Text>
+          <Text style={appStyles.winnerText}>
+            {language === 'de' ? `Gewinner: Ass ${winner.suit}` : `Winner: Ace of ${winner.suit}`}
+          </Text>
+          <TouchableOpacity onPress={restartGame} style={[appStyles.restartButton, { marginTop: 24 }]}>
+            <Text style={appStyles.restartButtonText}>{language === 'de' ? 'Spiel neustarten' : 'Restart game'}</Text>
+          </TouchableOpacity>
         </View>
+      </ImageBackground>
     );
   }
 
@@ -274,7 +279,14 @@ const App = () => {
           onClose={() => setTutorialEnabled(false)}
         />
       </View>
-        <InfoText header={"Pferderennen!"} rules={"Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das dopppelte ihrer Schluckanzahl verteilen."}/>
+        <InfoText
+          header={language === 'de' ? 'Pferderennen!' : 'Horse Race!'}
+          rules={
+            language === 'de'
+              ? "Bei Spielstart kann jede Person auf ein Pferd (Ass) eine bestimmte Schluckzahl setzen, z.B. '5 Schlucke auf Herz'. Diese Schlücke müsst ihr direkt selbst trinken. \n\n Jetzt könnt ihr nacheinander Karten aufdecken, das entsprechende Pferd zieht nach vorne. Sind alle Pferde an einer Karte an der Seite vorbei, wird diese aufgedeckt und das entsprechende Pferd muss ein Feld zurück. Sobald ein Pferd die Ziellinie erreicht, dürfen alle Personen, die richtig lagen, das doppelte ihrer Schluckanzahl verteilen."
+              : "At the start, everyone bets a number of sips on a horse (ace), e.g. '5 sips on Hearts'. You drink those sips yourself right away. \n\n Now take turns revealing cards - the matching horse moves forward. Once all horses have passed a hidden side card, it flips over and that horse moves back one space. As soon as a horse crosses the finish line, everyone who bet correctly gets to hand out double their sip count."
+          }
+        />
         <InfoHint />
         {/** Regeln-Button entfernt (Tutorials ersetzen ihn) */}
 
@@ -376,31 +388,10 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
-  winnerScreen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FAD02E',  // You can use a gradient or image
+  winnerSuitIcon: {
+    fontSize: 64,
+    marginBottom: 12,
   },
-  winnerText: {
-      fontSize: 40,
-      fontWeight: 'bold',
-      color: '#D84315',
-      marginBottom: 20,
-      textShadowColor: 'rgba(0, 0, 0, 0.75)',
-      textShadowOffset: { width: -1, height: 1 },
-      textShadowRadius: 10
-  },
-  restartButton: {
-      padding: 15,
-      borderRadius: 8,
-      backgroundColor: '#D84315',  // Use a color that stands out
-  },
-  buttonText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#FAD02E',
-  }
 });
 
 export default App;
