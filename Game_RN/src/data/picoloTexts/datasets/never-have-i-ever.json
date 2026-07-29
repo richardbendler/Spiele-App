@@ -1315,6 +1315,406 @@
       "deepness": 2,
       "drinking": false,
       "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Zimmer nur aufgeräumt, um es dann sofort wieder zu verwüsten.",
+      "en": "I've never tidied a room only to immediately trash it again.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über ein Missverständnis kaputtgelacht, statt es aufzuklären.",
+      "en": "I've never laughed my head off at a misunderstanding instead of clearing it up.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich ein Kompliment über mich selbst mitgehört und mich gefreut.",
+      "en": "I've never secretly overheard a compliment about myself and been thrilled.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung nur zugesagt, um nicht Nein sagen zu müssen.",
+      "en": "I've never only agreed to plans because I couldn't say no.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich in einem Streit selbst überzeugt, obwohl ich Unrecht hatte.",
+      "en": "I've never convinced myself I was right in an argument even though I wasn't.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Geschenk noch vor dem Auspacken erraten.",
+      "en": "I've never guessed a gift before even unwrapping it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine falsche Wegbeschreibung geärgert, die ich selbst gegeben habe.",
+      "en": "I've never gotten annoyed at wrong directions I gave myself.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich ein zweites Mal auf 'Gefällt mir' geklickt, aus Versehen.",
+      "en": "I've never accidentally double-tapped like on something.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung mit einer Notlüge abgesagt und es bereut.",
+      "en": "I've never canceled plans with a white lie and regretted it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über meine eigene Reaktion auf ein Foto von früher gewundert.",
+      "en": "I've never been surprised by my own reaction to an old photo.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch begonnen, nur um die Stille zu füllen.",
+      "en": "I've never started a conversation just to fill the silence.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über ein Kompliment gefreut, das eigentlich nicht mir galt.",
+      "en": "I've never been happy about a compliment that wasn't actually meant for me.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich das letzte Wort in einer Nachricht geändert, bevor ich sie abgeschickt habe.",
+      "en": "I've never secretly changed the last word of a message before sending it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung verschoben, nur um mehr Zeit zum Vorbereiten zu haben.",
+      "en": "I've never postponed plans just to have more time to prepare.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine falsche Zahl im Kopf verrechnet und trotzdem recht behalten.",
+      "en": "I've never miscalculated something in my head and still ended up right.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch absichtlich verlängert, weil es mir gefallen hat.",
+      "en": "I've never deliberately dragged out a conversation because I enjoyed it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine Kleinigkeit an einem schlechten Tag gefreut.",
+      "en": "I've never been happy about something small on a bad day.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich eine Nachricht dreimal gelesen, bevor ich geantwortet habe.",
+      "en": "I've never secretly read a message three times before replying.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung abgesagt, weil das Wetter zu schön war, um drinnen zu bleiben.",
+      "en": "I've never canceled plans because the weather was too nice to stay in.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über meine eigene Ausrede amüsiert, während ich sie erzählt habe.",
+      "en": "I've never been amused by my own excuse while telling it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch beendet, weil ich das Gefühl hatte zu gewinnen.",
+      "en": "I've never ended a conversation because I felt like I was winning.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine falsche Vermutung geärgert, die sich als richtig herausstellte.",
+      "en": "I've never gotten annoyed at a guess that turned out to be right.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich stolz auf ein Missgeschick gewesen, weil es eine gute Geschichte wurde.",
+      "en": "I've never secretly been proud of a mishap because it made a good story.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung mit einem falschen Ort verwechselt.",
+      "en": "I've never mixed up the location of a hangout.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine Kleinigkeit an mir selbst gewundert.",
+      "en": "I've never been surprised by something small about myself.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch mit einer Notlüge gerettet, die niemand hinterfragt hat.",
+      "en": "I've never saved a conversation with a white lie nobody questioned.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich das letzte Wort behalten, obwohl ich Unrecht hatte.",
+      "en": "I've never kept the last word even though I was wrong.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung abgesagt, nur um allein zu sein.",
+      "en": "I've never canceled plans just to be alone.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über ein Kompliment mehr gefreut, als es verdient hätte.",
+      "en": "I've never been happier about a compliment than it deserved.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch begonnen, das ich eigentlich vermeiden wollte.",
+      "en": "I've never started a conversation I actually wanted to avoid.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich für ein Kompliment bedankt, das ich nicht verstanden habe.",
+      "en": "I've never thanked someone for a compliment I didn't understand.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung mit einer Ausrede abgesagt, die zu gut war, um wahr zu sein.",
+      "en": "I've never canceled plans with an excuse that was too good to be true.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über die eigene Reaktion auf schlechte Nachrichten gewundert.",
+      "en": "I've never been surprised by my own reaction to bad news.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch heimlich mit dem Handy aufgenommen, weil es zu lustig war.",
+      "en": "I've never secretly recorded a conversation on my phone because it was too funny.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Nachricht geschrieben und dann eine Stunde nicht abgeschickt.",
+      "en": "I've never written a message and not sent it for an hour.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine falsche Erinnerung an einen Abend gestritten.",
+      "en": "I've never argued over a false memory of an evening.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich das Licht angelassen, weil ich Angst im Dunkeln hatte.",
+      "en": "I've never secretly left the light on because I was scared of the dark.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung mit einem Fremden verwechselt.",
+      "en": "I've never mixed up plans with the wrong person.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über ein Kompliment geärgert, weil es zu spät kam.",
+      "en": "I've never gotten annoyed at a compliment because it came too late.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch beendet, um eine bessere Antwort vorzubereiten.",
+      "en": "I've never ended a conversation to prepare a better comeback.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine Kleinigkeit an einem guten Tag noch mehr gefreut.",
+      "en": "I've never been even happier about a small thing on a good day.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich eine Notiz geschrieben, nur um sie nie wieder zu lesen.",
+      "en": "I've never secretly written a note just to never read it again.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung abgesagt, weil ich zu müde zum Reden war.",
+      "en": "I've never canceled plans because I was too tired to talk.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über meine eigene Stimme in einer Sprachnachricht erschrocken.",
+      "en": "I've never been startled by my own voice in a voice message.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch begonnen, das ich sofort bereut habe.",
+      "en": "I've never started a conversation I instantly regretted.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über ein Missverständnis amüsiert, das eigentlich peinlich war.",
+      "en": "I've never been amused by a misunderstanding that was actually embarrassing.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie heimlich ein Foto gelöscht, weil ich darauf komisch aussah.",
+      "en": "I've never secretly deleted a photo because I looked weird in it.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie eine Verabredung mit einer Überraschung gekrönt, die niemand erwartet hat.",
+      "en": "I've never topped off plans with a surprise nobody expected.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie mich über eine falsche Vorhersage gefreut, weil sie besser war als die Wahrheit.",
+      "en": "I've never been happy about a wrong prediction because it was better than the truth.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
+    },
+    {
+      "de": "Ich hab noch nie ein Gespräch mit einem Themenwechsel gerettet, den niemand bemerkt hat.",
+      "en": "I've never saved a conversation with a topic change nobody noticed.",
+      "drunkLevel": 2,
+      "deepness": 2,
+      "drinking": false,
+      "manual_approval": 0
     }
   ]
 }
