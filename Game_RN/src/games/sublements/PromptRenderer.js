@@ -400,21 +400,25 @@ const ButternCard = ({
         desired <= bucket.max,
     ) || topicBuckets[0];
 
+  const topicIndex = useMemo(() => {
+    const list = selectedBucket?.topics;
+    if (!Array.isArray(list) || list.length === 0) {
+      return -1;
+    }
+    return Math.floor(Math.random() * list.length);
+  }, [selectedBucket, promptId]);
+
   const topic = useMemo(() => {
-    if (!selectedBucket || !Array.isArray(selectedBucket.topics)) {
+    const list = selectedBucket?.topics;
+    if (topicIndex < 0 || !Array.isArray(list)) {
       return '';
     }
-    const list = selectedBucket.topics;
-    if (list.length === 0) {
-      return '';
-    }
-    const index = Math.floor(Math.random() * list.length);
-    const entry = list[index];
+    const entry = list[topicIndex];
     if (typeof entry === 'string') {
       return entry;
     }
     return localize(entry, language);
-  }, [selectedBucket, promptId]);
+  }, [selectedBucket, topicIndex, language]);
 
   const target = useMemo(
     () => pickRandomPlayer(players, language, { requireDrinker: requireDrinkingPlayers }),
