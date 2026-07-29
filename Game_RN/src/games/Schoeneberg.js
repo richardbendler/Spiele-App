@@ -254,8 +254,8 @@ const Schoeneberg = () => {
 
   // Karten haben immer eine feste, komfortable Groesse. Nur der Abstand zwischen ihnen
   // schrumpft (mit leichter Ueberlappung), falls eine Reihe mehr Karten enthaelt, als
-  // ohne Ueberlappung in die verfuegbare Breite passen wuerden - statt vorab fix Platz
-  // fuer alle 9 moeglichen Slots zu reservieren (was Karten winzig machte, selbst wenn
+  // ohne Ueberlappung in die verfügbare Breite passen würden - statt vorab fix Platz
+  // für alle 9 möglichen Slots zu reservieren (was Karten winzig machte, selbst wenn
   // eine Reihe nur 1-2 Karten hat).
   const { width: screenWidth } = Dimensions.get('window');
   const sideWidth = 48;
