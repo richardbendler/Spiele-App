@@ -74,6 +74,48 @@ Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht gela
 
 **Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen. Für iOS entsprechend `eas build --platform ios` (erfordert ein Apple-Developer-Konto).
 
+## Ubuntu / Linux
+
+Alle Kommandos oben (`npm install`, `npm start`, `npm run android`, `npm run lint`, `eas build`, ...) sind identisch unter Ubuntu — einfach in einem normalen Bash-Terminal statt PowerShell ausführen. Folgende Punkte unterscheiden sich:
+
+### Node.js
+Am einfachsten über [nvm](https://github.com/nvm-sh/nvm) installieren (die von `apt` mitgelieferte Node-Version ist oft veraltet):
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# neues Terminal öffnen, dann:
+nvm install --lts
+```
+
+### Android Studio + Emulator
+```bash
+sudo snap install android-studio --classic
+```
+Danach wie unter Windows im SDK Manager mindestens eine Android-Plattform, "Android Emulator" und "Android SDK Platform-Tools" installieren und im Device Manager ein AVD anlegen (siehe [SETUP.md](SETUP.md)).
+
+Für eine hardwarebeschleunigte (also nutzbar schnelle) Emulation muss KVM verfügbar sein:
+```bash
+sudo apt install cpu-checker qemu-kvm
+kvm-ok                       # bestaetigt, dass KVM-Beschleunigung moeglich ist
+sudo usermod -aG kvm $USER   # danach einmal aus- und wieder einloggen (oder neu starten)
+```
+
+`ANDROID_HOME` dauerhaft setzen, in `~/.bashrc` (oder `~/.zshrc`) ergänzen und danach `source ~/.bashrc` bzw. ein neues Terminal öffnen:
+```bash
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+```
+(Pfad ggf. anpassen — im SDK Manager unter "Android SDK Location" nachsehen, falls Android Studio das SDK woanders abgelegt hat.)
+
+### iOS
+Weiterhin nicht lokal möglich (Xcode/Simulator gibt es nur für macOS). `eas build --platform ios` funktioniert aber auch von Ubuntu aus, da der Build in der Cloud läuft — es wird nur ein Apple-Developer-Konto benötigt, kein lokales macOS.
+
+### Bekannte Linux-Eigenheit: „ENOSPC: System limit for number of file watchers reached“
+Metro (der Bundler hinter `npm start`) beobachtet beim Entwickeln laufend Dateiänderungen. Linux begrenzt die Anzahl gleichzeitiger `inotify`-Watches standardmäßig recht niedrig, wodurch dieser Fehler bei größeren Projekten auftreten kann. Fix (einmalig):
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
 ## Datenpflege-Skripte
 Unter `scripts/` liegen Node-Skripte zur Pflege der Picolo-Prompt-Datasets (`node scripts/<name>.js` ausführen):
 - `exportPicoloDatasets.js` – exportiert die rohen Prompt-Daten als JSON-Datasets.
