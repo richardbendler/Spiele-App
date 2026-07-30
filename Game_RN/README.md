@@ -74,6 +74,23 @@ Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht gela
 
 **Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen. Für iOS entsprechend `eas build --platform ios` (erfordert ein Apple-Developer-Konto).
 
+**Direkt in die Stores hochladen (Alternative zum manuellen Upload):**
+```powershell
+eas submit --platform android --profile production
+eas submit --platform ios --profile production
+```
+Fragt beim ersten Mal interaktiv nach den nötigen Zugangsdaten (Play-Store-Service-Account-JSON bzw. Apple-Zugangsdaten) und speichert sie für künftige Submits.
+
+### Alternative: lokaler Build ohne Expo-Cloud-Warteschlange
+Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag) — nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
+
+**Wichtig:** Lokale Builds werden von `eas-cli` unter **nativem Windows nicht unterstützt** — es braucht Linux oder macOS, z.B. via WSL (siehe [Ubuntu / Linux](#ubuntu--linux) oben) oder direkt in einer nativen Ubuntu-Umgebung. Einmaliges Einrichten des dafür nötigen nativen Android-Toolchains (Java, Android SDK Command-Line-Tools) unter [SETUP.md](SETUP.md#lokale-eas-builds-einrichten-wsllinuxmacos-einmalig-optional).
+
+```bash
+eas build --platform android --profile production --local
+```
+Das Ergebnis liegt danach als `.aab`-/`.apk`-Datei direkt im aktuellen Verzeichnis, ganz ohne Upload in die Expo-Cloud.
+
 ## Ubuntu / Linux
 
 Alle Kommandos oben (`npm install`, `npm start`, `npm run android`, `npm run lint`, `eas build`, ...) sind identisch unter Ubuntu — einfach in einem normalen Bash-Terminal statt PowerShell ausführen. Folgende Punkte unterscheiden sich:

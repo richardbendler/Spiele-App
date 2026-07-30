@@ -39,6 +39,61 @@ Get-CimInstance Win32_Service -Filter "Name LIKE '%<Teil des Prozessnamens>%'"  
 
 **Für den täglichen Gebrauch danach nicht mehr nötig:** `npm run android` (siehe README.md) nutzt `scripts/runAndroid.js`, das dieses Geräte-Enumerations-Problem umgeht (eigenes `adb reverse` + App-Start nur auf dem echten Gerät, ohne Expos absturzanfällige interne Geräte-Abfrage) und funktioniert dauerhaft, solange Expo Go einmal installiert ist.
 
+## Lokale EAS-Builds einrichten (WSL/Linux/macOS, einmalig, optional)
+
+Nur nötig, falls lokal gebaut werden soll (`eas build --local`, siehe README.md), statt in der Expo-Cloud — z.B. um Warteschlangen/Limits im kostenlosen EAS-Tier zu umgehen. `eas-cli` unterstützt lokale Builds **nicht unter nativem Windows**; unter Windows also in WSL (Ubuntu) ausführen, siehe [README.md#ubuntu--linux](README.md#ubuntu--linux) für die Grundeinrichtung von Node/Android SDK dort.
+
+Zusätzlich zum dort beschriebenen Emulator-Setup braucht ein lokaler Build noch ein natives Java/Android-Build-Toolchain (Gradle, Build-Tools, NDK):
+
+1. **Java 17:**
+   ```bash
+   sudo apt install -y openjdk-17-jdk
+   echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+   source ~/.bashrc
+   java -version
+   ```
+2. **Android Command-Line-Tools** (falls noch keine volle Android-Studio-Installation mit SDK vorhanden ist, z.B. auf einem Server/in WSL ohne GUI):
+   ```bash
+   mkdir -p ~/Android/Sdk/cmdline-tools && cd ~/Android/Sdk/cmdline-tools
+   wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+   unzip tools.zip && mkdir -p latest && mv cmdline-tools/* latest/
+   echo 'export ANDROID_HOME=$HOME/Android/Sdk' >> ~/.bashrc
+   echo 'export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH' >> ~/.bashrc
+   source ~/.bashrc
+   yes | sdkmanager --licenses
+   ```
+   Fehlende Plattform-/Build-Tools-/NDK-Pakete meldet `eas build --local` beim ersten Lauf konkret mit Namen — dann gezielt per `sdkmanager "<paketname>"` nachinstallieren.
+3. **EAS CLI ohne sudo** (falls `npm install -g` Berechtigungsprobleme macht):
+   ```bash
+   mkdir -p ~/.npm-global
+   npm config set prefix '~/.npm-global'
+   echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   npm install -g eas-cli
+   eas login
+   ```
+
+### Troubleshooting (nur WSL2): NDK-Download bricht mit `AEADBadTagException`/`Tag mismatch!` ab
+
+**Symptom:** Der erste `eas build --local` (bzw. `sdkmanager` beim NDK-Download, ~1 GB) bricht in WSL2 mit `javax.crypto.AEADBadTagException: Tag mismatch!` oder `Failed to install the following SDK components: ndk;...` ab.
+
+**Ursache:** Ein bekannter WSL2-Bug — der virtuelle Hyper-V-Netzwerkadapter berechnet TCP-Checksummen bei großen Downloads manchmal falsch, wodurch Pakete bei der TLS-Entschlüsselung als beschädigt erkannt werden. Betrifft nur WSL2, nicht natives Linux/Ubuntu.
+
+**Fix (einmalig, in einer PowerShell **als Administrator** unter Windows, nicht in WSL):**
+```powershell
+Get-NetAdapter | Where-Object { $_.InterfaceDescription -match "Hyper-V" }
+# Namen aus der Ausgabe uebernehmen, z.B. "vEthernet (WSL (Hyper-V firewall))"
+Set-NetAdapterChecksumOffload -Name "vEthernet (WSL (Hyper-V firewall))" -TcpIPv4 Disabled -UdpIPv4 Disabled -IpIPv4 Disabled -TcpIPv6 Disabled -UdpIPv6 Disabled
+wsl --shutdown
+```
+Danach WSL neu starten und den Download erneut versuchen.
+
+**Schnellerer Workaround** (nur falls auf demselben Windows-Rechner schon eine Android-SDK-Installation mit derselben NDK-Version existiert, z.B. von Android Studio): NDK-Ordner direkt aus Windows nach WSL kopieren statt neu herunterzuladen:
+```bash
+cp -r "/mnt/c/Users/<DEIN_USER>/AppData/Local/Android/Sdk/ndk/<version>" ~/Android/Sdk/ndk/
+```
+Das behebt aber nur diese eine Maschine — der Netzwerk-Fix oben behebt die Ursache dauerhaft für jeden Download.
+
 ## Ursprüngliche NPM-Paketliste (historisch)
 
 Die folgenden Schritte wurden einmalig bei Projektsetup ausgeführt und müssten nur bei einer Migration in ein komplett neues Projekt erneut ausgeführt werden — z.B. falls die gratis Expo-Lizenz an ein Limit kommt und zu einem neuen Expo-Account migriert wird. Im normalen Alltag reicht `npm install`, da alle Packages bereits in `package.json` eingetragen sind; die folgende Liste ist ein historisches Protokoll der ursprünglichen Einrichtung.
