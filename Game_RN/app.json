@@ -30,7 +30,7 @@
         "android.permission.INTERNET"
       ],
       "versionCode": 56,
-      "package": "com.felsbend.Game_RN"
+      "package": "com.felsbend.Trinkspiel_RN"
     },
     "web": {
       "favicon": "./assets/images/logo/favicon.png"
