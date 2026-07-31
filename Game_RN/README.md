@@ -67,12 +67,17 @@ Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht gela
 1. `versionCode` in `app.json` (unter `expo.android.versionCode`) hochzählen — Play Store akzeptiert sonst keinen erneuten Upload.
 2. Build starten:
    ```powershell
-   eas build --platform android
+   eas build --platform android --profile production
    ```
    Build-Profile (`development`, `preview`, `production`) sind in `eas.json` definiert; ohne `--profile`-Flag wird `production` verwendet.
 3. Das Ergebnis ist eine `.aab`-Datei (Android App Bundle), keine direkt installierbare `.apk`.
 
-**Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen. Für iOS entsprechend `eas build --platform ios` (erfordert ein Apple-Developer-Konto).
+**Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen.
+
+**Für iOS** (erfordert ein Apple-Developer-Konto):
+```powershell
+eas build --platform ios --profile production
+```
 
 **Direkt in die Stores hochladen (Alternative zum manuellen Upload):**
 ```powershell
