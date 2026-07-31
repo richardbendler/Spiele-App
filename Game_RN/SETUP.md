@@ -39,6 +39,14 @@ Get-CimInstance Win32_Service -Filter "Name LIKE '%<Teil des Prozessnamens>%'"  
 
 **Für den täglichen Gebrauch danach nicht mehr nötig:** `npm run android` (siehe README.md) nutzt `scripts/runAndroid.js`, das dieses Geräte-Enumerations-Problem umgeht (eigenes `adb reverse` + App-Start nur auf dem echten Gerät, ohne Expos absturzanfällige interne Geräte-Abfrage) und funktioniert dauerhaft, solange Expo Go einmal installiert ist.
 
+### Troubleshooting: `eas build` bricht ab mit „Slug for project identified by ... does not match the slug field"
+
+**Symptom:** `eas build` (egal ob Cloud oder `--local`) bricht sofort ab mit einer Fehlermeldung wie `Project config: Slug for project identified by "extra.eas.projectId" (Trinkspiel_RN) does not match the "slug" field (Game_RN)`.
+
+**Ursache:** Der `slug` in `app.json` wurde im Laufe der Projektgeschichte mehrfach umbenannt (siehe `git log -p -- app.json`), das bei Expo unter `extra.eas.projectId` hinterlegte Projekt aber nie mit. Anders als der "Display name" (im Expo-Dashboard unter Projekt-Settings editierbar) ist der `slug` nach Projekterstellung faktisch unveränderlich — es gibt dafür kein Feld im Dashboard.
+
+**Fix:** `slug` in `app.json` auf den beim verlinkten Projekt tatsächlich hinterlegten Wert zurücksetzen (aktuell `Trinkspiel_RN`) statt den bei Expo hinterlegten Slug ändern zu wollen. Das hat keine sichtbaren Auswirkungen — App-Name und Store-Paket kommen aus den separaten Feldern `name` und `android.package`. Nur falls tatsächlich ein komplett neues EAS-Projekt gewünscht ist (z.B. bewusster Cloud-Migrationsschritt), stattdessen `eas init` neu ausführen — dabei aber beachten, dass das bestehende Android-Signing-Keystore beim alten Projekt hängen bleibt und für Play-Store-Updates manuell mit übernommen werden müsste.
+
 ## Lokale EAS-Builds einrichten (WSL/Linux/macOS, einmalig, optional)
 
 Nur nötig, falls lokal gebaut werden soll (`eas build --local`, siehe README.md), statt in der Expo-Cloud — z.B. um Warteschlangen/Limits im kostenlosen EAS-Tier zu umgehen. `eas-cli` unterstützt lokale Builds **nicht unter nativem Windows**; unter Windows also in WSL (Ubuntu) ausführen, siehe [README.md#ubuntu--linux](README.md#ubuntu--linux) für die Grundeinrichtung von Node/Android SDK dort.
