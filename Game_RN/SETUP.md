@@ -2,6 +2,13 @@
 
 Diese Datei ist für **einmalige** Einrichtungsschritte gedacht: Projekt auf einer neuen Maschine komplett neu aufsetzen, Umzug auf einen neuen Expo-Account/Server, oder Umgebungsprobleme, die nur beim erstmaligen Einrichten auftreten. Für den normalen Entwickler-Alltag (Setup, lokal testen, linten, bauen) siehe [README.md](README.md) — dort reicht in der Regel einfach `npm install`.
 
+## EAS CLI installieren & einloggen (einmalig)
+```powershell
+npm install -g eas-cli
+eas login
+```
+Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist"): PowerShell **als Administrator** öffnen und einmalig `Set-ExecutionPolicy RemoteSigned` ausführen (mit "Ja" bestätigen).
+
 ## Android-Emulator einrichten (einmalig pro Rechner)
 
 1. [Android Studio](https://developer.android.com/studio) installieren.
@@ -51,9 +58,51 @@ Get-CimInstance Win32_Service -Filter "Name LIKE '%<Teil des Prozessnamens>%'"  
 
 Der falsche `android.package` war dabei auch die eigentliche Ursache eines scheinbaren Signaturschlüssel-Problems: `eas build --local` bot beim ersten Lauf an, einen neuen Android-Keystore zu generieren, und lieferte einen SHA1-Fingerabdruck, der nicht zu dem von Play Console erwarteten passte ("Dein App Bundle ist mit dem falschen Schlüssel signiert"). Das lag **nicht** an einem verlorenen/überschriebenen Original-Keystore, sondern schlicht daran, dass EAS die Credentials unter dem (zu dem Zeitpunkt noch falschen) Package-Namen `com.felsbend.Game_RN` gesucht hat und dafür naturgemäß nichts Passendes fand. Der echte, ursprüngliche Keystore lag die ganze Zeit unversehrt unter dem korrekten Package-Namen. Nach Korrektur von `android.package` fand `eas build` den richtigen Keystore automatisch wieder — kein Play-Store-seitiger Upload-Key-Reset nötig. **Lehre:** Bei einem Signaturschlüssel-Mismatch zuerst prüfen, ob `slug`/`android.package` tatsächlich mit dem verlinkten Projekt übereinstimmen, bevor an den Credentials selbst herumgefixt wird.
 
+## Linux/Ubuntu: native Entwicklungsumgebung einrichten (einmalig)
+
+Alle Alltags-Kommandos (`npm install`, `npm start`, `npm run android`, `npm run lint`, `eas build`, ...) sind identisch unter Ubuntu wie unter Windows — einfach in einem normalen Bash-Terminal statt PowerShell ausführen (siehe README.md). Folgende Einrichtungsschritte unterscheiden sich:
+
+### Node.js
+Am einfachsten über [nvm](https://github.com/nvm-sh/nvm) installieren (die von `apt` mitgelieferte Node-Version ist oft veraltet):
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# neues Terminal öffnen, dann:
+nvm install --lts
+```
+
+### Android Studio + Emulator
+```bash
+sudo snap install android-studio --classic
+```
+Danach wie unter Windows im SDK Manager mindestens eine Android-Plattform, "Android Emulator" und "Android SDK Platform-Tools" installieren und im Device Manager ein AVD anlegen (siehe oben).
+
+Für eine hardwarebeschleunigte (also nutzbar schnelle) Emulation muss KVM verfügbar sein:
+```bash
+sudo apt install cpu-checker qemu-kvm
+kvm-ok                       # bestaetigt, dass KVM-Beschleunigung moeglich ist
+sudo usermod -aG kvm $USER   # danach einmal aus- und wieder einloggen (oder neu starten)
+```
+
+`ANDROID_HOME` dauerhaft setzen, in `~/.bashrc` (oder `~/.zshrc`) ergänzen und danach `source ~/.bashrc` bzw. ein neues Terminal öffnen:
+```bash
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+```
+(Pfad ggf. anpassen — im SDK Manager unter "Android SDK Location" nachsehen, falls Android Studio das SDK woanders abgelegt hat.)
+
+### iOS
+Weiterhin nicht lokal möglich (Xcode/Simulator gibt es nur für macOS). `eas build --platform ios` funktioniert aber auch von Ubuntu aus, da der Build in der Cloud läuft — es wird nur ein Apple-Developer-Konto benötigt, kein lokales macOS.
+
+### Bekannte Linux-Eigenheit: „ENOSPC: System limit for number of file watchers reached“
+Metro (der Bundler hinter `npm start`) beobachtet beim Entwickeln laufend Dateiänderungen. Linux begrenzt die Anzahl gleichzeitiger `inotify`-Watches standardmäßig recht niedrig, wodurch dieser Fehler bei größeren Projekten auftreten kann. Fix (einmalig):
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
 ## Lokale EAS-Builds einrichten (WSL/Linux/macOS, einmalig, optional)
 
-Nur nötig, falls lokal gebaut werden soll (`eas build --local`, siehe README.md), statt in der Expo-Cloud — z.B. um Warteschlangen/Limits im kostenlosen EAS-Tier zu umgehen. `eas-cli` unterstützt lokale Builds **nicht unter nativem Windows**; unter Windows also in WSL (Ubuntu) ausführen, siehe [README.md#ubuntu--linux](README.md#ubuntu--linux) für die Grundeinrichtung von Node/Android SDK dort.
+Nur nötig, falls lokal gebaut werden soll (`eas build --local`, siehe README.md), statt in der Expo-Cloud — z.B. um Warteschlangen/Limits im kostenlosen EAS-Tier zu umgehen. `eas-cli` unterstützt lokale Builds **nicht unter nativem Windows**; unter Windows also in WSL (Ubuntu) ausführen, siehe [Linux/Ubuntu: native Entwicklungsumgebung einrichten](#linuxubuntu-native-entwicklungsumgebung-einrichten-einmalig) oben für die Grundeinrichtung von Node/Android SDK dort.
 
 Zusätzlich zum dort beschriebenen Emulator-Setup braucht ein lokaler Build noch ein natives Java/Android-Build-Toolchain (Gradle, Build-Tools, NDK):
 
@@ -123,7 +172,7 @@ diese App freigeschaltet werden (siehe unten).
 
 Die vollständige Schritt-für-Schritt-Anleitung zum Anlegen eines Dienstkontos (Cloud Console →
 IAM & Verwaltung → Dienstkonten → JSON-Key erzeugen) steht bereits ausführlich in
-[`../../sport_for_insta_time/README.md`](../../sport_for_insta_time/README.md#google-play-service-account--eas-submit-android)
+[`../../sport_for_insta_time/SETUP.md`](../../sport_for_insta_time/SETUP.md#google-play-service-account--eas-submit-android--einmalig)
 – hier nur die für Game_RN spezifischen Punkte:
 
 1. **Play Console → Nutzer und Berechtigungen**: Falls das Dienstkonto dort noch nicht für
@@ -157,7 +206,7 @@ IAM & Verwaltung → Dienstkonten → JSON-Key erzeugen) steht bereits ausführl
    Nur falls die Datei auf einer bestimmten Maschine an einem anderen Ort liegt, muss dieser
    Pfad lokal angepasst werden. Die Datei selbst **niemals ins Git-Repo committen**.
 3. **WSL:** Datei innerhalb von WSL nach `~/.keys` kopieren (nicht per `scp` – siehe
-   Sport-README), z.B.:
+   sport_for_insta_time/SETUP.md), z.B.:
    ```bash
    mkdir -p ~/.keys
    cp "/mnt/c/Users/richa/Documents/Programmieren/.keys/play-console-access-504713-dc6c0f3c622b.json" ~/.keys/
