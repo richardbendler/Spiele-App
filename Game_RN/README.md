@@ -1,9 +1,9 @@
 # Game_RN – Client
 
-React Native / Expo App ("The One"). Diese README deckt den laufenden Entwickler-Alltag ab: Projekt installieren, lokal testen, linten, Builds erstellen.
+React Native / Expo App ("The One"). Diese README deckt den laufenden Entwickler-Alltag ab: Projekt installieren, lokal testen, linten, Builds erstellen, in die Stores hochladen.
 
 Nicht hier, sondern anderswo dokumentiert:
-- Einmaliges Einrichten einer neuen Entwicklungsumgebung (z.B. Android-Emulator auf einem neuen Rechner), Projekt-/Konto-Migration und bekannte Umgebungs-Troubleshooting-Fälle: [SETUP.md](SETUP.md)
+- Einmaliges Einrichten einer neuen Entwicklungsumgebung (EAS CLI, Android-Emulator, lokale EAS-Builds unter WSL/Linux, Google Play Service Account), Projekt-/Konto-Migration und bekannte Umgebungs-Troubleshooting-Fälle: [SETUP.md](SETUP.md)
 - Alles rund um das Backend (Rust/Rocket + legacy Node.js): [../Backend](../Backend)
 
 > **Hinweis:** Die Backend-Anbindung des Clients ist aktuell bewusst deaktiviert (siehe `src/general.js`, `getGameData`/`postFeedback`). Alle Spiele laufen mit lokal gebündelten Daten aus `src/data`. Die `.env`-Variablen unten werden erst wieder relevant, sobald das Backend reaktiviert wird.
@@ -47,23 +47,18 @@ Startet Expo im Tunnel-Modus (`expo start --tunnel`) — etwas langsamer, funkti
 
 **Versions-Mismatch in Expo Go:** Zeigt Expo Go beim Verbinden einen Fehler wegen unpassender SDK-Version, in den App-Store/Play-Store gehen und Expo Go auf die neueste Version aktualisieren (das Projekt nutzt aktuell Expo SDK 54, siehe `package.json`).
 
+Unter Ubuntu/Linux sind alle Kommandos oben identisch, einfach in einem normalen Bash-Terminal statt PowerShell ausführen. Einmalige Einrichtung der Linux-Entwicklungsumgebung (Node, Android Studio, KVM, `ANDROID_HOME`) siehe [SETUP.md](SETUP.md#linuxubuntu-native-entwicklungsumgebung-einrichten-einmalig).
+
 ## Linting
 ```powershell
 npm run lint
 ```
 Führt ESLint (`eslint-config-expo`) über den Client-Code aus. Vor größeren Commits ausführen; sollte 0 Fehler zeigen (Warnungen sind bekannter, dokumentierter Backlog).
 
-## Build (EAS)
-Für einen echten Installations-Build (statt nur lokalem Testen über Expo Go) wird [EAS](https://docs.expo.dev/build/setup/) verwendet.
+## Build und Release
+Für einen echten Installations-Build (statt nur lokalem Testen über Expo Go) wird [EAS](https://docs.expo.dev/build/setup/) verwendet. Einmalige Einrichtung von EAS CLI/Login siehe [SETUP.md](SETUP.md#eas-cli-installieren--einloggen-einmalig).
 
-### Einmalig einrichten
-```powershell
-npm install -g eas-cli
-eas login
-```
-Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist"): PowerShell **als Administrator** öffnen und einmalig `Set-ExecutionPolicy RemoteSigned` ausführen (mit "Ja" bestätigen).
-
-### Build erstellen
+### Android: Cloud-Build
 1. `versionCode` in `app.json` (unter `expo.android.versionCode`) hochzählen — Play Store akzeptiert sonst keinen erneuten Upload.
 2. Build starten:
    ```powershell
@@ -74,7 +69,18 @@ Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht gela
 
 **Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen.
 
-**Für iOS** (erfordert ein Apple-Developer-Konto):
+### Android: Lokaler Build (WSL / Linux)
+Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag) — nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
+
+**Wichtig:** Lokale Builds werden von `eas-cli` unter **nativem Windows nicht unterstützt** — es braucht Linux oder macOS, z.B. via WSL oder direkt in einer nativen Ubuntu-Umgebung. Einmaliges Einrichten des dafür nötigen nativen Android-Toolchains (Java, Android SDK Command-Line-Tools) unter [SETUP.md](SETUP.md#lokale-eas-builds-einrichten-wsllinuxmacos-einmalig-optional).
+
+```bash
+eas build --platform android --profile production --local
+```
+Das Ergebnis liegt danach als `.aab`-/`.apk`-Datei direkt im aktuellen Verzeichnis, ganz ohne Upload in die Expo-Cloud.
+
+### iOS: Cloud-Build
+Erfordert ein Apple-Developer-Konto:
 ```powershell
 eas build --platform ios --profile production
 ```
@@ -83,7 +89,11 @@ mit deinem Apple Developer Account verknüpft ist (`eas credentials` zum manuell
 Stelle vorher sicher, dass die App in App Store Connect angelegt ist (Bundle-ID siehe
 `ios.bundleIdentifier` in `app.json`).
 
-**Direkt in die Stores hochladen (Alternative zum manuellen Upload):**
+Läuft auch von Ubuntu/WSL aus, da der Build in der Cloud passiert — es wird nur das
+Apple-Developer-Konto benötigt, kein lokales macOS. Lokales iOS-Bauen bleibt weiterhin nur auf
+macOS möglich (Xcode/Simulator gibt es nicht für andere Plattformen).
+
+## In die Stores hochladen (eas submit)
 ```powershell
 eas submit --platform android --profile production --latest
 eas submit --platform ios --profile production --latest
@@ -114,58 +124,6 @@ Versionen.
 4. Für die finale Veröffentlichung: alle App-Infos, Screenshots und Preisangaben in App Store
    Connect prüfen und die Version zur Prüfung einreichen („Preparing for Submission“ > „Submit
    for Review“).
-
-### Alternative: lokaler Build ohne Expo-Cloud-Warteschlange
-Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag) — nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
-
-**Wichtig:** Lokale Builds werden von `eas-cli` unter **nativem Windows nicht unterstützt** — es braucht Linux oder macOS, z.B. via WSL (siehe [Ubuntu / Linux](#ubuntu--linux) oben) oder direkt in einer nativen Ubuntu-Umgebung. Einmaliges Einrichten des dafür nötigen nativen Android-Toolchains (Java, Android SDK Command-Line-Tools) unter [SETUP.md](SETUP.md#lokale-eas-builds-einrichten-wsllinuxmacos-einmalig-optional).
-
-```bash
-eas build --platform android --profile production --local
-```
-Das Ergebnis liegt danach als `.aab`-/`.apk`-Datei direkt im aktuellen Verzeichnis, ganz ohne Upload in die Expo-Cloud.
-
-## Ubuntu / Linux
-
-Alle Kommandos oben (`npm install`, `npm start`, `npm run android`, `npm run lint`, `eas build`, ...) sind identisch unter Ubuntu — einfach in einem normalen Bash-Terminal statt PowerShell ausführen. Folgende Punkte unterscheiden sich:
-
-### Node.js
-Am einfachsten über [nvm](https://github.com/nvm-sh/nvm) installieren (die von `apt` mitgelieferte Node-Version ist oft veraltet):
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-# neues Terminal öffnen, dann:
-nvm install --lts
-```
-
-### Android Studio + Emulator
-```bash
-sudo snap install android-studio --classic
-```
-Danach wie unter Windows im SDK Manager mindestens eine Android-Plattform, "Android Emulator" und "Android SDK Platform-Tools" installieren und im Device Manager ein AVD anlegen (siehe [SETUP.md](SETUP.md)).
-
-Für eine hardwarebeschleunigte (also nutzbar schnelle) Emulation muss KVM verfügbar sein:
-```bash
-sudo apt install cpu-checker qemu-kvm
-kvm-ok                       # bestaetigt, dass KVM-Beschleunigung moeglich ist
-sudo usermod -aG kvm $USER   # danach einmal aus- und wieder einloggen (oder neu starten)
-```
-
-`ANDROID_HOME` dauerhaft setzen, in `~/.bashrc` (oder `~/.zshrc`) ergänzen und danach `source ~/.bashrc` bzw. ein neues Terminal öffnen:
-```bash
-export ANDROID_HOME="$HOME/Android/Sdk"
-export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
-```
-(Pfad ggf. anpassen — im SDK Manager unter "Android SDK Location" nachsehen, falls Android Studio das SDK woanders abgelegt hat.)
-
-### iOS
-Weiterhin nicht lokal möglich (Xcode/Simulator gibt es nur für macOS). `eas build --platform ios` funktioniert aber auch von Ubuntu aus, da der Build in der Cloud läuft — es wird nur ein Apple-Developer-Konto benötigt, kein lokales macOS.
-
-### Bekannte Linux-Eigenheit: „ENOSPC: System limit for number of file watchers reached“
-Metro (der Bundler hinter `npm start`) beobachtet beim Entwickeln laufend Dateiänderungen. Linux begrenzt die Anzahl gleichzeitiger `inotify`-Watches standardmäßig recht niedrig, wodurch dieser Fehler bei größeren Projekten auftreten kann. Fix (einmalig):
-```bash
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
-```
 
 ## Datenpflege-Skripte
 Unter `scripts/` liegen Node-Skripte zur Pflege der Picolo-Prompt-Datasets (`node scripts/<name>.js` ausführen):
