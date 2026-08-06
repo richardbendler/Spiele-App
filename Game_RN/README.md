@@ -58,14 +58,19 @@ Führt ESLint (`eslint-config-expo`) über den Client-Code aus. Vor größeren C
 ## Build und Release
 Für einen echten Installations-Build (statt nur lokalem Testen über Expo Go) wird [EAS](https://docs.expo.dev/build/setup/) verwendet. Einmalige Einrichtung von EAS CLI/Login siehe [SETUP.md](SETUP.md#eas-cli-installieren--einloggen-einmalig).
 
+**Wichtig:** Alle `eas`-Befehle in diesem Abschnitt müssen aus dem `Game_RN`-Verzeichnis heraus laufen (dort liegen `eas.json`/`app.json`), nicht aus dem Repo-Root `Spiele-App/`:
+```bash
+cd Game_RN
+```
+Sonst bricht `eas build`/`eas submit` sofort mit `Run this command inside a project directory.` ab.
+
 ### Android: Cloud-Build
-1. `versionCode` in `app.json` (unter `expo.android.versionCode`) hochzählen — Play Store akzeptiert sonst keinen erneuten Upload.
-2. Build starten:
-   ```powershell
-   eas build --platform android --profile production
-   ```
-   Build-Profile (`development`, `preview`, `production`) sind in `eas.json` definiert; ohne `--profile`-Flag wird `production` verwendet.
-3. Das Ergebnis ist eine `.aab`-Datei (Android App Bundle), keine direkt installierbare `.apk`.
+```powershell
+eas build --platform android --profile production
+```
+Build-Profile (`development`, `preview`, `production`) sind in `eas.json` definiert; ohne `--profile`-Flag wird `production` verwendet. Das Ergebnis ist eine `.aab`-Datei (Android App Bundle), keine direkt installierbare `.apk`.
+
+Der `versionCode` wird dank `autoIncrement`/`appVersionSource: remote` in `eas.json` bei jedem Build automatisch hochgezählt (von EAS serverseitig verwaltet) — kein manuelles Hochzählen in `app.json` mehr nötig. Einmalige Umstellung/Synchronisierung dieser Zählung siehe [SETUP.md](SETUP.md#android-versionierung-auf-eas-umstellen-einmalig).
 
 **Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen.
 
