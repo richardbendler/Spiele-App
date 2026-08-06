@@ -106,6 +106,65 @@ cp -r "/mnt/c/Users/<DEIN_USER>/AppData/Local/Android/Sdk/ndk/<version>" ~/Andro
 ```
 Das behebt aber nur diese eine Maschine — der Netzwerk-Fix oben behebt die Ursache dauerhaft für jeden Download.
 
+## Google Play: Service-Account für `eas submit` (einmalig)
+
+Damit `eas submit --platform android` Builds automatisch (ohne manuellen Upload über die
+Play-Console-Weboberfläche) hochladen kann, braucht EAS ein **Google-Cloud-Dienstkonto** mit
+Freigabe in der Play Console.
+
+**Aktueller Stand hier:** Es wird das **gemeinsame Dienstkonto**
+`play-console-releases@play-console-access-504713.iam.gserviceaccount.com` genutzt, das
+bereits für die Schwester-App *Sport for Screen Time* eingerichtet ist (Cloud-Projekt
+`play-console-access`). Ein Google-Cloud-Projekt/Dienstkonto reicht für **alle** eigenen Apps
+zusammen – die Trennung zwischen Apps passiert in der Play Console über die pro-App-Rolle
+(„Nutzer und Berechtigungen“ → App-Berechtigungen), nicht auf Cloud-Projekt-Ebene. Es muss also
+**kein neues** Dienstkonto für Game_RN/„The One“ angelegt werden – nur in der Play Console für
+diese App freigeschaltet werden (siehe unten).
+
+Die vollständige Schritt-für-Schritt-Anleitung zum Anlegen eines Dienstkontos (Cloud Console →
+IAM & Verwaltung → Dienstkonten → JSON-Key erzeugen) steht bereits ausführlich in
+[`../../sport_for_insta_time/README.md`](../../sport_for_insta_time/README.md#google-play-service-account--eas-submit-android)
+– hier nur die für Game_RN spezifischen Punkte:
+
+1. **Play Console → Nutzer und Berechtigungen**: Falls das Dienstkonto dort noch nicht für
+   „The One“ (bzw. den in der Play Console hinterlegten App-Namen zu `com.felsbend.Trinkspiel_RN`)
+   freigeschaltet ist, unter „App-Berechtigungen“ zusätzlich diese App ankreuzen (die vier
+   nötigen Checkboxen sind dieselben wie in der verlinkten Anleitung: „App-Informationen
+   ansehen“, „Informationen zur App-Qualität ansehen“, „Produktionsversionen veröffentlichen …“,
+   „Apps in Test-Tracks veröffentlichen“). Ablaufdatum-Toggle ausgeschaltet lassen.
+2. **JSON-Schlüsseldatei:** dieselbe Datei wie bei *Sport for Screen Time* wiederverwenden –
+   liegt bereits **eine Ebene über beiden Projektordnern**:
+   ```
+   Programmieren/
+   ├── .keys/
+   │   └── play-console-access-504713-dc6c0f3c622b.json
+   ├── sport_for_insta_time/
+   └── Spiele-App/
+       └── Game_RN/
+   ```
+   Da `Game_RN` (anders als `sport_for_insta_time`) eine Ebene tiefer liegt, ist der relative
+   Pfad in `eas.json` hier `../../.keys/...` (zwei Ebenen hoch) statt `../.keys/...`. Ist bereits
+   so eingetragen:
+   ```json
+   "submit": {
+     "production": {
+       "android": {
+         "serviceAccountKeyPath": "../../.keys/play-console-access-504713-dc6c0f3c622b.json"
+       }
+     }
+   }
+   ```
+   Nur falls die Datei auf einer bestimmten Maschine an einem anderen Ort liegt, muss dieser
+   Pfad lokal angepasst werden. Die Datei selbst **niemals ins Git-Repo committen**.
+3. **WSL:** Datei innerhalb von WSL nach `~/.keys` kopieren (nicht per `scp` – siehe
+   Sport-README), z.B.:
+   ```bash
+   mkdir -p ~/.keys
+   cp "/mnt/c/Users/richa/Documents/Programmieren/.keys/play-console-access-504713-dc6c0f3c622b.json" ~/.keys/
+   ```
+   und den Pfad in `eas.json` entsprechend anpassen, falls lokale Builds unter WSL aus einem
+   anderen relativen Verzeichnis heraus laufen.
+
 ## Ursprüngliche NPM-Paketliste (historisch)
 
 Die folgenden Schritte wurden einmalig bei Projektsetup ausgeführt und müssten nur bei einer Migration in ein komplett neues Projekt erneut ausgeführt werden — z.B. falls die gratis Expo-Lizenz an ein Limit kommt und zu einem neuen Expo-Account migriert wird. Im normalen Alltag reicht `npm install`, da alle Packages bereits in `package.json` eingetragen sind; die folgende Liste ist ein historisches Protokoll der ursprünglichen Einrichtung.

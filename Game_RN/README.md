@@ -78,13 +78,42 @@ Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht gela
 ```powershell
 eas build --platform ios --profile production
 ```
+Beim ersten Build legt Expo Zertifikate/Provisioning-Profile automatisch an, sofern der Account
+mit deinem Apple Developer Account verknüpft ist (`eas credentials` zum manuellen Verwalten).
+Stelle vorher sicher, dass die App in App Store Connect angelegt ist (Bundle-ID siehe
+`ios.bundleIdentifier` in `app.json`).
 
 **Direkt in die Stores hochladen (Alternative zum manuellen Upload):**
 ```powershell
-eas submit --platform android --profile production
-eas submit --platform ios --profile production
+eas submit --platform android --profile production --latest
+eas submit --platform ios --profile production --latest
 ```
-Fragt beim ersten Mal interaktiv nach den nötigen Zugangsdaten (Play-Store-Service-Account-JSON bzw. Apple-Zugangsdaten) und speichert sie für künftige Submits.
+`--latest` nimmt automatisch den zuletzt erzeugten Build (Cloud oder lokal) – kein manuelles
+Suchen/Angeben des `.aab`/`.ipa`-Pfads nötig. Alternativ mit `--path <datei>` einen bestimmten
+Build hochladen.
+
+Android läuft dank `serviceAccountKeyPath` in `eas.json` nicht-interaktiv (siehe
+[SETUP.md](SETUP.md#google-play-service-account-für-eas-submit-einmalig) für die Einrichtung).
+iOS fragt beim ersten Mal interaktiv nach den Apple-Zugangsdaten und speichert sie für künftige
+Submits.
+
+**Hinweis:** Falls eine App noch nie manuell über die Play-Console-Weboberfläche hochgeladen
+wurde (kein einziger Entwurf/Release existiert), verlangt Googles Publishing-API, dass der
+allererste Upload manuell passiert – danach funktioniert `eas submit` für alle weiteren
+Versionen.
+
+### Apple: TestFlight / App Store Distribution
+1. Lade das `.ipa` aus dem Expo Dashboard herunter oder verwende `eas submit --platform ios
+   --profile production`, um den Upload direkt in App Store Connect zu erledigen.
+2. In App Store Connect: App wählen → „Build“-Reiter unter „App-Informationen“ → neuen Build
+   hinzufügen. Metadaten (Screenshots, Beschreibung, Kategorien, Datenschutz, Altersfreigabe)
+   ausfüllen, falls noch nicht geschehen.
+3. Build für eine interne/beta TestFlight-Runde freigeben oder zur Prüfung einreichen.
+   Tester:innen danach via E-Mail oder öffentlichem Link einladen (Einstellungen > TestFlight >
+   Gruppe/Tester).
+4. Für die finale Veröffentlichung: alle App-Infos, Screenshots und Preisangaben in App Store
+   Connect prüfen und die Version zur Prüfung einreichen („Preparing for Submission“ > „Submit
+   for Review“).
 
 ### Alternative: lokaler Build ohne Expo-Cloud-Warteschlange
 Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag) — nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
