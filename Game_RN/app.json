@@ -19,7 +19,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "trinkspiel-01"
+      "bundleIdentifier": "trinkspiel-01",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
