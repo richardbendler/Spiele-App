@@ -9,6 +9,18 @@ eas login
 ```
 Falls PowerShell die Ausführung von Skripten verweigert ("Datei kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist"): PowerShell **als Administrator** öffnen und einmalig `Set-ExecutionPolicy RemoteSigned` ausführen (mit "Ja" bestätigen).
 
+## Android-Versionierung auf EAS umstellen (einmalig)
+
+`eas.json` ist inzwischen auf `"appVersionSource": "remote"` + `"autoIncrement": true` umgestellt (analog zu `sport_for_insta_time`): EAS zählt den `versionCode` bei jedem Production-Build serverseitig automatisch hoch, statt ihn manuell in `app.json` zu pflegen. Das behebt den Fehler `You've already submitted this version of the app` bei `eas submit`, der vorher auftrat, wenn das manuelle Hochzählen vergessen wurde.
+
+**Wichtig, nur beim Umstieg von lokal verwaltetem auf remote verwaltetem `versionCode` nötig:** EAS' Remote-Zähler startet ohne expliziten Startwert bei `1` – das würde sofort mit bereits in der Play Console veröffentlichten Versionen kollidieren (aktuell ist dort mindestens `versionCode 56` vergeben, siehe `app.json`). Deshalb **einmalig** den Startwert setzen, bevor der nächste Build läuft:
+```bash
+eas build:version:set
+```
+Plattform `android` wählen und als Startwert eine Zahl **größer** als die zuletzt in der Play Console veröffentlichte eintragen (aktuell also mindestens `57`). Danach zählt jeder weitere `eas build --platform android --profile production` automatisch von dort weiter hoch – keine weitere manuelle Aktion nötig.
+
+Das `expo.android.versionCode`-Feld in `app.json` wird ab jetzt von EAS nicht mehr gelesen oder aktualisiert und bleibt nur als historischer Wert stehen.
+
 ## Android-Emulator einrichten (einmalig pro Rechner)
 
 1. [Android Studio](https://developer.android.com/studio) installieren.
