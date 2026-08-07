@@ -99,23 +99,43 @@ Apple-Developer-Konto benötigt, kein lokales macOS. Lokales iOS-Bauen bleibt we
 macOS möglich (Xcode/Simulator gibt es nicht für andere Plattformen).
 
 ## In die Stores hochladen (eas submit)
-```powershell
+
+### Android (Google Play)
+**Wichtig:** `eas submit` lädt standardmäßig **nicht** direkt live in Production hoch. Es gibt
+zwei Submit-Profile in `eas.json`, die genau das steuern - je nachdem, welches du mit
+`--profile` angibst, landet der Build in einem anderen Play-Console-Track:
+
+```bash
+# Internal-Test-Track: nur für eingeladene Tester sichtbar, geht sofort automatisch "live"
+# (aber eben nur für Tester, nicht öffentlich im Play Store):
 eas submit --platform android --profile production --latest
+
+# Production-Track: für alle im Play Store sichtbar/installierbar - wird aber als ENTWURF
+# hochgeladen (releaseStatus: draft) und muss in der Play Console erst manuell geprüft und
+# veröffentlicht werden (Release-Übersicht → Entwurf → "Zur Prüfung freigeben"/"Veröffentlichen"):
+eas submit --platform android --profile production-release --latest
+```
+
+`--latest` nimmt in beiden Fällen automatisch den zuletzt erzeugten Build (Cloud oder lokal) -
+kein manuelles Suchen/Angeben des `.aab`-Pfads nötig. Läuft dank `serviceAccountKeyPath` in
+`eas.json` nicht-interaktiv (siehe [SETUP.md](SETUP.md#google-play-service-account-für-eas-submit-einmalig)
+für die Einrichtung).
+
+Hinweis: Falls eine App noch nie manuell über die Play-Console-Weboberfläche hochgeladen wurde
+(kein einziger Entwurf/Release existiert), verlangt Googles Publishing-API, dass der allererste
+Upload manuell passiert – danach funktioniert `eas submit` für alle weiteren Versionen.
+
+### iOS (App Store Connect / TestFlight)
+Bei iOS gibt es die Internal/Production-Unterscheidung wie bei Android **nicht** - es gibt nur
+ein Submit-Profil, weil `eas submit --platform ios` sowieso nie automatisch öffentlich live
+geht. Es lädt den Build lediglich zu App Store Connect hoch (dort landet er zunächst in
+TestFlight); die tatsächliche Veröffentlichung im App Store passiert immer manuell über die
+Schritte unten ("Submit for Review" + Apples Review-Prozess).
+```bash
 eas submit --platform ios --profile production --latest
 ```
-`--latest` nimmt automatisch den zuletzt erzeugten Build (Cloud oder lokal) – kein manuelles
-Suchen/Angeben des `.aab`/`.ipa`-Pfads nötig. Alternativ mit `--path <datei>` einen bestimmten
-Build hochladen.
-
-Android läuft dank `serviceAccountKeyPath` in `eas.json` nicht-interaktiv (siehe
-[SETUP.md](SETUP.md#google-play-service-account-für-eas-submit-einmalig) für die Einrichtung).
-iOS fragt beim ersten Mal interaktiv nach den Apple-Zugangsdaten und speichert sie für künftige
+Fragt beim ersten Mal interaktiv nach den Apple-Zugangsdaten und speichert sie für künftige
 Submits.
-
-**Hinweis:** Falls eine App noch nie manuell über die Play-Console-Weboberfläche hochgeladen
-wurde (kein einziger Entwurf/Release existiert), verlangt Googles Publishing-API, dass der
-allererste Upload manuell passiert – danach funktioniert `eas submit` für alle weiteren
-Versionen.
 
 ### Apple: TestFlight / App Store Distribution
 1. Lade das `.ipa` aus dem Expo Dashboard herunter oder verwende `eas submit --platform ios
