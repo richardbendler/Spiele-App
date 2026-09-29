@@ -1,54 +1,98 @@
-# Game App
+# The One – Party Game App
 
-Game App is a multi-game party app built with React Native and a Rust-based backend. It bundles multiple classic and custom game modes, supports curated prompt decks, and provides a scalable API layer for serving game content and collecting feedback.
+A cross-platform party game app for groups: one app, fourteen game modes, from well-known
+classics to self-designed games. Players are added once at the start and are carried through
+every game; the app handles turns, cards, prompts and rules so the group can focus on playing.
 
-This repository contains two main components:
-- `Game_RN`: the React Native client (Expo) used to run the app on iOS/Android.
-- `Backend`: the server-side components (Rust Rocket + legacy Node.js).
+The repository contains the mobile client (React Native / Expo) and a REST backend written in
+Rust for serving game content and collecting feedback.
 
-## Functional Overview
-- Multi-game hub with themed game modes and a modern UI flow.
-- Curated prompt pools and datasets for conversational and party-style games.
-- Local data handling and caching for fast gameplay.
-- Server API support for fetching game content and submitting feedback.
+![React Native](https://img.shields.io/badge/React%20Native-0.81-61DAFB?logo=react&logoColor=black)
+![Expo](https://img.shields.io/badge/Expo-SDK%2054-000020?logo=expo&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-Rocket%20%2B%20SQLx-000000?logo=rust&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
-## Tech Tree
-```
-Game App
-|-- Game_RN (React Native / Expo)
-|   |-- Games (UI + logic)
-|   |-- Data (prompt pools, datasets)
-|   `-- i18n (multi-language copy)
-`-- Backend
-    |-- rocket (Rust / Rocket / SQLx)
-    `-- js (Node.js / Express / MySQL) [legacy]
-```
+---
+
+## Game Modes
+
+| Game | Description |
+| --- | --- |
+| **The One** | Prompt-driven party game with truth, dare, categories, rhymes, duels and rules |
+| **Bar Odyssey** | Turn-based board game in the style of Mario Party: group challenges, dice, event fields |
+| **Many Questions** | Large pool of conversation questions |
+| **Never Have I Ever** | The classic, with curated prompt decks |
+| **Who Would Most Likely** | Group voting game |
+| **Truth or Dare / Spin the Bottle** | Animated bottle with separate truth and dare pools |
+| **Secret Mission** | Each player secretly receives a mission to complete during the evening |
+| **Activity** | Explain, draw or mime a term |
+| **King's Cup** | Card game with a digital deck |
+| **Horse Race** | Card-based race with side cards revealed row by row |
+| **Six by Six** | Card guessing game |
+| **Schöneberg** | Self-designed card game |
+| **Mäxchen** | The classic dice bluffing game |
+| **Drink Counter** | Tracks drinks and gives a rough BAC estimate based on the Widmark formula |
+
+## Features
+
+- **Shared player management** – players are entered once and used by all game modes
+- **Content memory** – the app remembers which prompts were already shown and prefers unseen
+  content, so long sessions don't repeat themselves (without ever running out of content)
+- **Localization** – German and English
+- **Offline-first** – all game content is bundled with the app; no connection required
+- **Custom UI** – own design system with category colors, custom fonts and animations
 
 ## Architecture
-The client renders all game flows, manages player state, and loads prompts from curated local datasets. The Rust Rocket server exposes game routes and integrates with a MySQL database, and a legacy Node.js backend exists for historical reference — however, the client's calls to the backend API (`getGameData`/`postFeedback` in `Game_RN/src/general.js`) are currently disabled by design while the app is being polished for release. All game content is served from bundled local data until the backend is reconnected.
 
-## Development Setup
-### Prerequisites
-- Node.js + npm
-- Expo CLI
-- (Optional) Rust toolchain for backend work
+```
+The One
+├── Game_RN/                    Mobile client (React Native / Expo)
+│   ├── App.js                  Navigation and app-wide state
+│   └── src/
+│       ├── games/              One module per game mode (UI + game logic)
+│       ├── menus/              Start menu, player setup, game selection, pre-game settings
+│       ├── data/               Bundled prompt pools and word lists
+│       ├── i18n/               Translations (DE/EN)
+│       └── utils/              Content memory, rating, shared helpers
+├── Backend/
+│   ├── rocket/rocket_server/   REST API in Rust (Rocket, SQLx, MySQL)
+│   └── js/                     Earlier Node.js/Express implementation of the API
+└── Inhalt/                     Source material for the prompt decks
+```
 
-### Client (React Native)
-1. `cd Game_RN`
-2. `npm install`
-3. `npm start`
+**Client.** Each game mode is a self-contained screen with its own game logic; navigation is
+handled by React Navigation, shared state (players, language, settings) is provided via React
+Context and persisted with AsyncStorage.
 
-### Backend (Rocket)
-Follow instructions in `Backend/rocket/rocket_server/README.md` for Rust + SQLx setup.
+**Backend.** The Rust service exposes endpoints for game content and feedback and connects to
+a MySQL database via SQLx. It replaces an earlier Node.js/Express implementation that is kept
+for reference. The client currently runs entirely on bundled content; the API connection can be
+re-enabled in `Game_RN/src/general.js`.
 
-## Project Structure Highlights
-- `Game_RN/src/games`: game screens and interaction logic.
-- `Game_RN/src/data`: prompt pools and datasets.
-- `Game_RN/src/i18n`: localization strings.
-- `Backend/rocket/rocket_server/src`: API routes and database access.
+**Release pipeline.** Android builds are created and published to Google Play with EAS Build and
+EAS Submit, with separate profiles for the internal test track and the production release.
 
-## Build & Release
-For Expo build steps, see `Game_RN/README.md`. For server deployment, see `Backend/rocket/rocket_server/README.md`.
+## Tech Stack
 
-## Contribution Notes
-This is a personal project with a strong focus on UX and gameplay flow. If you plan to extend it, keep changes incremental and avoid breaking existing game logic.
+| Area | Technology |
+| --- | --- |
+| Mobile | React Native 0.81, Expo SDK 54, React 19, React Navigation |
+| Persistence | AsyncStorage |
+| Backend | Rust, Rocket 0.5, SQLx, MySQL (Node.js/Express as predecessor) |
+| Build & Release | EAS Build, EAS Submit, Google Play |
+| Tooling | ESLint, patch-package |
+
+## Getting Started
+
+```bash
+cd Game_RN
+npm install
+npm start
+```
+
+Scan the QR code with Expo Go, or run `npm run android` to start on an Android emulator.
+
+Further documentation:
+- [Game_RN/README.md](Game_RN/README.md) – development workflow, builds and store releases
+- [Game_RN/SETUP.md](Game_RN/SETUP.md) – one-time environment setup
+- [Backend/rocket/rocket_server/README.md](Backend/rocket/rocket_server/README.md) – backend setup
