@@ -1,8 +1,9 @@
 # The One – Party Game App
 
-A cross-platform party game app for groups: one app, fourteen game modes, from well-known
-classics to self-designed games. Players are added once at the start and are carried through
-every game; the app handles turns, cards, prompts and rules so the group can focus on playing.
+A cross-platform party game app for groups: one app, twelve game modes – from well-known
+classics to self-designed games – plus a drink counter. Players are added once at the start and
+are carried through every game; the app handles turns, cards, prompts and rules so the group can
+focus on playing.
 
 The repository contains the mobile client (React Native / Expo) and a REST backend written in
 Rust for serving game content and collecting feedback.
@@ -12,20 +13,23 @@ Rust for serving game content and collecting feedback.
 ![Rust](https://img.shields.io/badge/Rust-Rocket%20%2B%20SQLx-000000?logo=rust&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
+| Start | Game selection | The One | Bar Odyssey |
+| --- | --- | --- | --- |
+| ![Start screen](docs/screenshots/start.jpg) | ![Game selection](docs/screenshots/game-selection.jpg) | ![The One wheel](docs/screenshots/the-one-wheel.jpg) | ![Bar Odyssey](docs/screenshots/bar-odyssey.jpg) |
+
 ---
 
 ## Game Modes
 
 | Game | Description |
 | --- | --- |
-| **The One** | Prompt-driven party game with truth, dare, categories, rhymes, duels and rules |
-| **Bar Odyssey** | Turn-based board game in the style of Mario Party: group challenges, dice, event fields |
-| **Many Questions** | Large pool of conversation questions |
+| **The One** | Wheel of fortune with around 30 task categories: truth or dare, quiz, pantomime, duels, rules and more |
+| **Bar Odyssey** *(beta)* | Turn-based board game in the style of Mario Party: group challenges, dice, event fields |
+| **100 Questions** | Large pool of conversation questions |
 | **Never Have I Ever** | The classic, with curated prompt decks |
 | **Who Would Most Likely** | Group voting game |
-| **Truth or Dare / Spin the Bottle** | Animated bottle with separate truth and dare pools |
+| **Spin the Bottle** | Animated bottle with separate truth and dare pools |
 | **Secret Mission** | Each player secretly receives a mission to complete during the evening |
-| **Activity** | Explain, draw or mime a term |
 | **King's Cup** | Card game with a digital deck |
 | **Horse Race** | Card-based race with side cards revealed row by row |
 | **Six by Six** | Card guessing game |
@@ -33,9 +37,15 @@ Rust for serving game content and collecting feedback.
 | **Mäxchen** | The classic dice bluffing game |
 | **Drink Counter** | Tracks drinks and gives a rough BAC estimate based on the Widmark formula |
 
+In development: *Scale*, *Top 10*, *Activity* and *Head Poker*.
+
+Each game shows a short description and ratings for intensity and "getting to know each other"
+before it starts; the pre-game settings let the group tune the intensity of the prompts.
+
 ## Features
 
-- **Shared player management** – players are entered once and used by all game modes
+- **Shared player management** – players are entered once and used by all game modes; players
+  can be marked as non-drinking and then receive no drinking tasks
 - **Content memory** – the app remembers which prompts were already shown and prefers unseen
   content, so long sessions don't repeat themselves (without ever running out of content)
 - **Localization** – German and English
