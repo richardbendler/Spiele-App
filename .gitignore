@@ -39,3 +39,7 @@ yarn-error.*
 .vscode/
 target/
 .env
+
+# Lokale Tool-Konfiguration
+CLAUDE.md
+.claude/
