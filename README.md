@@ -12,12 +12,6 @@ Rust for serving game content and collecting feedback.
 ![Rust](https://img.shields.io/badge/Rust-Rocket%20%2B%20SQLx-000000?logo=rust&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
-| Start | Game selection | The One | Bar Odyssey |
-| --- | --- | --- | --- |
-| ![Start screen](docs/screenshots/start.jpg) | ![Game selection](docs/screenshots/game-selection.jpg) | ![The One wheel](docs/screenshots/the-one-wheel.jpg) | ![Bar Odyssey](docs/screenshots/bar-odyssey.jpg) |
-
----
-
 ## Game Modes
 
 | Game | Description |
