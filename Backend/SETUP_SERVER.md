@@ -3,7 +3,7 @@ Die folgenden Schritte wurden einmalig ausgeführt und sind nur für Serverumzug
 
 ### Grundlegende Infos
 Der Server wird von Richard gehostet und läuft mit Debian 12. Alle Zugangsdaten hat Richard.
-Hinweis: Hier steht "Netcup" als Hoster, in `Backend/rocket/rocket_server/README.md` ist dagegen von "Strato" die Rede – das sollte einmal abgeglichen werden, falls der Hoster gewechselt wurde und eine der beiden Angaben veraltet ist.
+Hinweis: Hier steht "Netcup" als Hoster, in `Backend/rocket/rocket_server/README.md` ist dagegen von "Strato" die Rede. Das sollte einmal abgeglichen werden, falls der Hoster gewechselt wurde und eine der beiden Angaben veraltet ist.
 
 ### Datenbank
 Install MariaDB: https://kifarunix.com/install-mariadb-10-on-debian-12/#install-maria-db-10-on-debian-12

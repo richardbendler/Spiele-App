@@ -1,9 +1,8 @@
-# The One – Party Game App
+# The One: Party Game App
 
-A cross-platform party game app for groups: one app, twelve game modes – from well-known
-classics to self-designed games – plus a drink counter. Players are added once at the start and
-are carried through every game; the app handles turns, cards, prompts and rules so the group can
-focus on playing.
+A cross-platform party and group game app: one app, twelve game modes, from well-known classics
+to self-designed games. Players are added once at the start and are carried through every game;
+the app handles turns, cards, prompts and rules so the group can focus on playing.
 
 The repository contains the mobile client (React Native / Expo) and a REST backend written in
 Rust for serving game content and collecting feedback.
@@ -30,27 +29,26 @@ Rust for serving game content and collecting feedback.
 | **Who Would Most Likely** | Group voting game |
 | **Spin the Bottle** | Animated bottle with separate truth and dare pools |
 | **Secret Mission** | Each player secretly receives a mission to complete during the evening |
-| **King's Cup** | Card game with a digital deck |
+| **Kings (card game)** | Card game with a digital deck |
 | **Horse Race** | Card-based race with side cards revealed row by row |
 | **Six by Six** | Card guessing game |
 | **Schöneberg** | Self-designed card game |
 | **Mäxchen** | The classic dice bluffing game |
-| **Drink Counter** | Tracks drinks and gives a rough BAC estimate based on the Widmark formula |
 
 In development: *Scale*, *Top 10*, *Activity* and *Head Poker*.
 
-Each game shows a short description and ratings for intensity and "getting to know each other"
-before it starts; the pre-game settings let the group tune the intensity of the prompts.
+Before a game starts, it shows a short description and ratings for intensity and "getting to
+know each other". The pre-game settings let the group tune the intensity of the prompts.
 
 ## Features
 
-- **Shared player management** – players are entered once and used by all game modes; players
-  can be marked as non-drinking and then receive no drinking tasks
-- **Content memory** – the app remembers which prompts were already shown and prefers unseen
-  content, so long sessions don't repeat themselves (without ever running out of content)
-- **Localization** – German and English
-- **Offline-first** – all game content is bundled with the app; no connection required
-- **Custom UI** – own design system with category colors, custom fonts and animations
+- **Shared player management:** players are entered once and used by all game modes. Players
+  can opt out of certain task types.
+- **Content memory:** the app remembers which prompts were already shown and prefers unseen
+  content, so long sessions don't repeat themselves (without ever running out of content).
+- **Localization:** German and English.
+- **Offline-first:** all game content is bundled with the app; no connection required.
+- **Custom UI:** own design system with category colors, custom fonts and animations.
 
 ## Architecture
 
@@ -70,8 +68,8 @@ The One
 └── Inhalt/                     Source material for the prompt decks
 ```
 
-**Client.** Each game mode is a self-contained screen with its own game logic; navigation is
-handled by React Navigation, shared state (players, language, settings) is provided via React
+**Client.** Each game mode is a self-contained screen with its own game logic. Navigation is
+handled by React Navigation; shared state (players, language, settings) is provided via React
 Context and persisted with AsyncStorage.
 
 **Backend.** The Rust service exposes endpoints for game content and feedback and connects to
@@ -103,6 +101,6 @@ npm start
 Scan the QR code with Expo Go, or run `npm run android` to start on an Android emulator.
 
 Further documentation:
-- [Game_RN/README.md](Game_RN/README.md) – development workflow, builds and store releases
-- [Game_RN/SETUP.md](Game_RN/SETUP.md) – one-time environment setup
-- [Backend/rocket/rocket_server/README.md](Backend/rocket/rocket_server/README.md) – backend setup
+- [Game_RN/README.md](Game_RN/README.md): development workflow, builds and store releases
+- [Game_RN/SETUP.md](Game_RN/SETUP.md): one-time environment setup
+- [Backend/rocket/rocket_server/README.md](Backend/rocket/rocket_server/README.md): backend setup

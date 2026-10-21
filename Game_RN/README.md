@@ -1,4 +1,4 @@
-# Game_RN – Client
+# Game_RN: Client
 
 React Native / Expo App ("The One"). Diese README deckt den laufenden Entwickler-Alltag ab: Projekt installieren, lokal testen, linten, Builds erstellen, in die Stores hochladen.
 
@@ -10,7 +10,7 @@ Nicht hier, sondern anderswo dokumentiert:
 
 ## Voraussetzungen
 - [Node.js](https://nodejs.org/en/download/) + npm
-- Ein Smartphone mit der **Expo Go**-App (schnellster Weg zum Testen, kein Emulator nötig) — oder:
+- Ein Smartphone mit der **Expo Go**-App (schnellster Weg zum Testen, kein Emulator nötig), oder:
   - **Android:** Android Studio mit eingerichtetem Emulator (einmaliges Einrichten: siehe [SETUP.md](SETUP.md))
   - **iOS:** nur auf macOS möglich, mit Xcode und iOS-Simulator
 
@@ -27,7 +27,7 @@ Nur relevant, sobald das Backend wieder angebunden wird:
 2. `EXPO_PUBLIC_API_TOKEN` setzen (Bearer-Token, ohne `Bearer`-Prefix).
 3. Optional `EXPO_PUBLIC_API_BASE_URL` anpassen, falls der Server nicht unter der Standard-URL läuft.
 
-Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` ins Client-Bundle übernommen — und landen damit auch für alle sichtbar in der gebauten App. Keine echten Geheimnisse dort hineinschreiben, die schützenswert sind.
+Hinweis: In Expo werden nur Variablen mit dem Prefix `EXPO_PUBLIC_` ins Client-Bundle übernommen und landen damit auch für alle sichtbar in der gebauten App. Keine echten Geheimnisse dort hineinschreiben, die schützenswert sind.
 
 ## Lokal testen
 ```powershell
@@ -35,7 +35,7 @@ npm start
 ```
 Startet den Metro-Bundler und zeigt einen QR-Code in der Konsole/im Browser-Tab. Von dort aus:
 - **Handy (empfohlen, am schnellsten):** Expo Go App öffnen und den QR-Code scannen. Handy und PC müssen im selben WLAN sein.
-- **Android-Emulator:** ⚠️ **nicht** die von Metro selbst angezeigte Taste `a` drücken — das nutzt Expos eigene Geräte-Erkennung, die abstürzt, sobald `adb` auch nur einen einzigen nicht erreichbaren Geister-Eintrag listet (siehe Troubleshooting in [SETUP.md](SETUP.md)). Stattdessen den laufenden `npm start` mit `Strg+C` beenden und stattdessen `npm run android` ausführen — das startet bei Bedarf automatisch einen Emulator, öffnet die App gezielt darauf und umgeht das Problem komplett.
+- **Android-Emulator:** ⚠️ **nicht** die von Metro selbst angezeigte Taste `a` drücken. Das nutzt Expos eigene Geräte-Erkennung, die abstürzt, sobald `adb` auch nur einen einzigen nicht erreichbaren Geister-Eintrag listet (siehe Troubleshooting in [SETUP.md](SETUP.md)). Stattdessen den laufenden `npm start` mit `Strg+C` beenden und stattdessen `npm run android` ausführen. Das startet bei Bedarf automatisch einen Emulator, öffnet die App gezielt darauf und umgeht das Problem komplett.
 - **iOS-Simulator (nur macOS):** Taste `i` drücken, oder `npm run ios`.
 - **Web:** Taste `w` drücken, oder `npm run web` (nützlich für schnelle UI-Checks, aber kein vollständiger Ersatz für den Test auf echten Geräten, da einige RN-Module sich im Web anders verhalten).
 
@@ -43,7 +43,7 @@ Falls das Handy nicht im selben Netzwerk ist oder die WLAN-Verbindung blockiert 
 ```powershell
 npm run local
 ```
-Startet Expo im Tunnel-Modus (`expo start --tunnel`) — etwas langsamer, funktioniert aber unabhängig vom lokalen Netzwerk.
+Startet Expo im Tunnel-Modus (`expo start --tunnel`): etwas langsamer, funktioniert aber unabhängig vom lokalen Netzwerk.
 
 **Versions-Mismatch in Expo Go:** Zeigt Expo Go beim Verbinden einen Fehler wegen unpassender SDK-Version, in den App-Store/Play-Store gehen und Expo Go auf die neueste Version aktualisieren (das Projekt nutzt aktuell Expo SDK 54, siehe `package.json`).
 
@@ -70,14 +70,14 @@ eas build --platform android --profile production
 ```
 Build-Profile (`development`, `preview`, `production`) sind in `eas.json` definiert; ohne `--profile`-Flag wird `production` verwendet. Das Ergebnis ist eine `.aab`-Datei (Android App Bundle), keine direkt installierbare `.apk`.
 
-Der `versionCode` wird dank `autoIncrement`/`appVersionSource: remote` in `eas.json` bei jedem Build automatisch hochgezählt (von EAS serverseitig verwaltet) — kein manuelles Hochzählen in `app.json` mehr nötig. Einmalige Umstellung/Synchronisierung dieser Zählung siehe [SETUP.md](SETUP.md#android-versionierung-auf-eas-umstellen-einmalig).
+Der `versionCode` wird dank `autoIncrement`/`appVersionSource: remote` in `eas.json` bei jedem Build automatisch hochgezählt (von EAS serverseitig verwaltet), kein manuelles Hochzählen in `app.json` mehr nötig. Einmalige Umstellung/Synchronisierung dieser Zählung siehe [SETUP.md](SETUP.md#android-versionierung-auf-eas-umstellen-einmalig).
 
 **Um eine installierbare APK zu bekommen:** die `.aab` in der [Play Console](https://play.google.com/console) hochladen (z.B. als internen Test) und von dort die APK herunterladen.
 
 ### Android: Lokaler Build (WSL / Linux)
-Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag) — nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
+Statt in der Expo-Cloud zu bauen, kann `eas build` auch komplett lokal laufen (`--local`-Flag), nützlich bei Warteschlangen oder Limits im kostenlosen EAS-Tier. Das ist trotz Managed-Workflow (kein eingechecktes `android/`-Verzeichnis) möglich, da EAS dafür intern automatisch ein temporäres `expo prebuild` durchführt.
 
-**Wichtig:** Lokale Builds werden von `eas-cli` unter **nativem Windows nicht unterstützt** — es braucht Linux oder macOS, z.B. via WSL oder direkt in einer nativen Ubuntu-Umgebung. Einmaliges Einrichten des dafür nötigen nativen Android-Toolchains (Java, Android SDK Command-Line-Tools) unter [SETUP.md](SETUP.md#lokale-eas-builds-einrichten-wsllinuxmacos-einmalig-optional).
+**Wichtig:** Lokale Builds werden von `eas-cli` unter **nativem Windows nicht unterstützt**. Es braucht Linux oder macOS, z.B. via WSL oder direkt in einer nativen Ubuntu-Umgebung. Einmaliges Einrichten des dafür nötigen nativen Android-Toolchains (Java, Android SDK Command-Line-Tools) unter [SETUP.md](SETUP.md#lokale-eas-builds-einrichten-wsllinuxmacos-einmalig-optional).
 
 ```bash
 eas build --platform android --profile production --local
@@ -94,7 +94,7 @@ mit deinem Apple Developer Account verknüpft ist (`eas credentials` zum manuell
 Stelle vorher sicher, dass die App in App Store Connect angelegt ist (Bundle-ID siehe
 `ios.bundleIdentifier` in `app.json`).
 
-Läuft auch von Ubuntu/WSL aus, da der Build in der Cloud passiert — es wird nur das
+Läuft auch von Ubuntu/WSL aus, da der Build in der Cloud passiert. Es wird nur das
 Apple-Developer-Konto benötigt, kein lokales macOS. Lokales iOS-Bauen bleibt weiterhin nur auf
 macOS möglich (Xcode/Simulator gibt es nicht für andere Plattformen).
 
@@ -116,7 +116,7 @@ eas submit --platform android --profile production --latest
 eas submit --platform android --profile production-release --latest
 ```
 **Achtung:** `production-release` macht die neue Version sofort für alle Nutzer live (ggf. mit
-kurzer Google-Prüfzeit dazwischen) — vorher unbedingt mit dem `production`-Profil (Internal
+kurzer Google-Prüfzeit dazwischen). Vorher unbedingt mit dem `production`-Profil (Internal
 Track) getestet haben.
 
 `--latest` nimmt in beiden Fällen automatisch den zuletzt erzeugten Build (Cloud oder lokal) -
@@ -126,7 +126,7 @@ für die Einrichtung).
 
 Hinweis: Falls eine App noch nie manuell über die Play-Console-Weboberfläche hochgeladen wurde
 (kein einziger Entwurf/Release existiert), verlangt Googles Publishing-API, dass der allererste
-Upload manuell passiert – danach funktioniert `eas submit` für alle weiteren Versionen.
+Upload manuell passiert. Danach funktioniert `eas submit` für alle weiteren Versionen.
 
 ### iOS (App Store Connect / TestFlight)
 Bei iOS gibt es die Internal/Production-Unterscheidung wie bei Android **nicht** - es gibt nur
@@ -155,12 +155,12 @@ Submits.
 
 ## Datenpflege-Skripte
 Unter `scripts/` liegen Node-Skripte zur Pflege der Picolo-Prompt-Datasets (`node scripts/<name>.js` ausführen):
-- `exportPicoloDatasets.js` – exportiert die rohen Prompt-Daten als JSON-Datasets.
-- `regeneratePoolFiles.js` – baut aus den JSON-Datasets wieder die `*Pool`-JS-Dateien.
-- `tagDrinkingPrompts.js` – markiert Prompts automatisch anhand von Schlüsselwörtern als trinkbezogen.
+- `exportPicoloDatasets.js`: exportiert die rohen Prompt-Daten als JSON-Datasets.
+- `regeneratePoolFiles.js`: baut aus den JSON-Datasets wieder die `*Pool`-JS-Dateien.
+- `tagDrinkingPrompts.js`: markiert Prompts automatisch anhand von Schlüsselwörtern als trinkbezogen.
 
 Diese werden nur bei Änderungen an den Prompt-Rohdaten benötigt, nicht für den normalen App-Betrieb.
 
 ## Datenbank (Referenz, für spätere Backend-Anbindung)
-Zugangsdaten (URL, Benutzername, Passwort) bei Richard erfragen bzw. im Passwortmanager nachsehen – nicht im Repo dokumentieren, da es öffentlich ist.
+Zugangsdaten (URL, Benutzername, Passwort) bei Richard erfragen bzw. im Passwortmanager nachsehen, nicht im Repo dokumentieren, da es öffentlich ist.
 Name der DB: `TrinkspielDB`
